@@ -1,5 +1,6 @@
 import React, { ReactElement, FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faAngleDown } from '@fortawesome/pro-light-svg-icons'
 
 import FieldWrapper from '../FieldWrapper'
@@ -28,7 +29,7 @@ const Select: FC<SelectProps> = ({
           })}
         </Styled.Select>
         <Styled.IconWrapper>
-          <FontAwesomeIcon icon={faAngleDown} />
+          <FontAwesomeIcon icon={faAngleDown as IconProp} />
         </Styled.IconWrapper>
       </Styled.SelectWrapper>
     </FieldWrapper>

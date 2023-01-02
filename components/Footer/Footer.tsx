@@ -2,6 +2,7 @@
 import React, { ReactElement, FC } from 'react'
 // import { useStaticQuery, graphql } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faAngleDoubleUp } from '@fortawesome/pro-light-svg-icons'
 import dayjs from 'dayjs'
 
@@ -64,7 +65,7 @@ const Footer: FC = (): ReactElement => {
       <Section appearance='secondary'>
         <Styled.Top>
           <Logo inverse />
-          <Styled.ScrollUp onClick={scrollToTop}><FontAwesomeIcon icon={faAngleDoubleUp} size='2x' /> Back to Top</Styled.ScrollUp>
+          <Styled.ScrollUp onClick={scrollToTop}><FontAwesomeIcon icon={faAngleDoubleUp as IconProp} size='2x' /> Back to Top</Styled.ScrollUp>
         </Styled.Top>
         <Styled.Main>
           {/*<FooterMainMenu menu={flatListToHierarchical(footerMenus.primaryMenu.menuItems.nodes)} />*/}

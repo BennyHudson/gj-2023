@@ -2,6 +2,7 @@ import React, { ReactElement, FC, useState, useContext, useEffect } from 'react'
 // import { navigate } from 'gatsby'
 import { Formik } from 'formik'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faArrowRight, faSpinner } from '@fortawesome/pro-light-svg-icons'
 
 import PageContext, { PageContextType } from '@context/PageContext'
@@ -38,9 +39,9 @@ const SearchForm: FC = (): ReactElement => {
             <Styled.TextField id="searchTerm" name='searchTerm' loading={loading} placeholder='Enter Search Term' />
             <Styled.Submit type='submit' loading={loading}>
               {loading ? 
-                <FontAwesomeIcon icon={faSpinner} spin />
+                <FontAwesomeIcon icon={faSpinner as IconProp} spin />
                 :
-                <FontAwesomeIcon icon={faArrowRight} />
+                <FontAwesomeIcon icon={faArrowRight as IconProp} />
               }
             </Styled.Submit>
           </Styled.SearchForm>

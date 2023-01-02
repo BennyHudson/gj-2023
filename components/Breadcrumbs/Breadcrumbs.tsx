@@ -1,5 +1,6 @@
 import React, { ReactElement, FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faAngleRight } from '@fortawesome/pro-light-svg-icons'
 
 import Link from '@components/Link'
@@ -19,7 +20,7 @@ const Breadcrumbs: FC<BreadcrumbsProps> = ({
             {index !== links.length - 1 ?
               <>
                 <Link to={link.url}>{link.title}</Link>
-                <FontAwesomeIcon icon={faAngleRight} />
+                <FontAwesomeIcon icon={faAngleRight as IconProp} />
               </>
               :
               <span>{link.title}</span>

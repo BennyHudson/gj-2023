@@ -1,5 +1,6 @@
 import React, { ReactElement, FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faLockAlt } from '@fortawesome/pro-light-svg-icons'
 
 import Heading from '@components/Heading'
@@ -24,7 +25,7 @@ const PostExcerpt: FC<PostExcerptProps> = ({
       <Thumbnail featuredImage={featuredImage.node.sourceUrl} />
       <Meta categories={categories} date={date} inverse={inverse} />
       <Styled.Title inverse={inverse}>
-        {membersOnly && <FontAwesomeIcon icon={faLockAlt} />}
+        {membersOnly && <FontAwesomeIcon icon={faLockAlt as IconProp} />}
         <Heading size={1} text={title} inverse={inverse} />
       </Styled.Title>
       

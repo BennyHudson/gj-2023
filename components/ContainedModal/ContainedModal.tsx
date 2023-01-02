@@ -1,5 +1,6 @@
 import React, { ReactElement, FC, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faTimes } from '@fortawesome/pro-light-svg-icons'
 
 import PageContext, { PageContextType } from '@context/PageContext'
@@ -16,7 +17,7 @@ const ContainedModal: FC<ContainedModalProps> = ({
     <>
       <Styled.ContainedModal headerHeight={headerHeight}>
         <Styled.CloseButton onClick={() => setShowModal(null)}>
-          <FontAwesomeIcon icon={faTimes} />
+          <FontAwesomeIcon icon={faTimes as IconProp} />
         </Styled.CloseButton>
         {children}
       </Styled.ContainedModal>

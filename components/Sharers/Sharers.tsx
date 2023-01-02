@@ -1,5 +1,6 @@
 import React, { ReactElement, FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faEnvelope } from '@fortawesome/pro-light-svg-icons'
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
@@ -15,16 +16,16 @@ const Sharers: FC<SharersProps> = ({
   return (
     <Styled.Sharers>
       <Styled.Sharer href='#'>
-        <FontAwesomeIcon icon={faTwitter} />
+        <FontAwesomeIcon icon={faTwitter as IconProp} />
       </Styled.Sharer>
       <Styled.Sharer href='#'>
-        <FontAwesomeIcon icon={faFacebook} />
+        <FontAwesomeIcon icon={faFacebook as IconProp} />
       </Styled.Sharer>
       <Styled.Sharer href='#'>
-        <FontAwesomeIcon icon={faLinkedin} />
+        <FontAwesomeIcon icon={faLinkedin as IconProp} />
       </Styled.Sharer>
       <Styled.Sharer href='#'>
-        <FontAwesomeIcon icon={faEnvelope} />
+        <FontAwesomeIcon icon={faEnvelope as IconProp} />
       </Styled.Sharer>
     </Styled.Sharers>
   )

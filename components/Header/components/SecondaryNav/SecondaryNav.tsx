@@ -1,5 +1,6 @@
 import React, { ReactElement, FC, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faSearch, faUser, faShoppingBag, faEnvelope } from '@fortawesome/pro-light-svg-icons'
 import { Link } from 'gatsby'
 
@@ -23,22 +24,22 @@ const SecondaryNav: FC<SecondaryNavProps> = ({
       <ul>
         <li>
           <Styled.IconButton inverse={inverse} as='button' onClick={() => setShowModal(<SearchForm />)}>
-            <FontAwesomeIcon icon={faSearch} />
+            <FontAwesomeIcon icon={faSearch as IconProp} />
           </Styled.IconButton>
         </li>
         <li>
           <Styled.IconButton inverse={inverse} as='button' onClick={() => setShowModal(<LoginForm />)}>
-            <FontAwesomeIcon icon={faUser} />
+            <FontAwesomeIcon icon={faUser as IconProp} />
           </Styled.IconButton>
         </li>
         <li>
           <Styled.IconButton inverse={inverse} as='button' onClick={() => setShowModal(<Cart />)}>
-            <FontAwesomeIcon icon={faShoppingBag} />
+            <FontAwesomeIcon icon={faShoppingBag as IconProp} />
           </Styled.IconButton>
         </li>
         <li>
           <Styled.Button inverse={inverse} onClick={() => setShowModal(<NewsletterModal />)}>
-            <FontAwesomeIcon icon={faEnvelope} /> Newsletter
+            <FontAwesomeIcon icon={faEnvelope as IconProp} /> Newsletter
           </Styled.Button>
         </li>
       </ul>

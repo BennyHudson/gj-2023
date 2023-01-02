@@ -2,6 +2,7 @@ import React, { ReactElement, FC } from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/pro-light-svg-icons'
 
 import useFeaturedImage from '@hooks/useFeaturedImage'
@@ -25,8 +26,8 @@ const ImageSlider: FC<ImageSliderProps> = ({ slides }: ImageSliderProps): ReactE
         }
       }
     ],
-    nextArrow: <FontAwesomeIcon icon={faChevronCircleRight} />,
-    prevArrow: <FontAwesomeIcon icon={faChevronCircleLeft} />,
+    nextArrow: <FontAwesomeIcon icon={faChevronCircleRight as IconProp} />,
+    prevArrow: <FontAwesomeIcon icon={faChevronCircleLeft as IconProp} />,
   }
   return (
     <Styled.ImageSlider>
