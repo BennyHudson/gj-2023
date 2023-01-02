@@ -1,4 +1,3 @@
-/* eslint-disable jsx-control-statements/jsx-use-if-tag */
 import React, { ReactElement, FC } from 'react'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

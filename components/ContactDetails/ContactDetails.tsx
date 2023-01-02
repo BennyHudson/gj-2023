@@ -5,7 +5,7 @@ import * as Styled from './styles/ContactDetails.style'
 import { ContactDetailsProps } from './ContactDetails.types'
 
 const ContactDetails: FC<ContactDetailsProps> = ({
-  // add props
+  children,
 }: ContactDetailsProps): ReactElement => {
   return (
     <Styled.ContactDetails>

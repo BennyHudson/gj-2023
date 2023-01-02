@@ -1,6 +1,6 @@
 import React, { ReactElement, FC } from 'react'
 
-import useFeaturedImage from '@hooks/useFeaturedImage'
+// import useFeaturedImage from '@hooks/useFeaturedImage'
 import Paragraph from '@components/Paragraph'
 
 import * as Styled from './styles/Byline.style'
@@ -26,7 +26,7 @@ const Byline: FC<BylineProps> = ({
         <>
           <Paragraph noMargin size={1} font='Cera'>In association with:</Paragraph>
           <Styled.SponsoredPost as={sponsoredPost.disableLink ? 'div' : 'a'} href={sponsoredPost.url}>
-            <Styled.SponsorLogo src={useFeaturedImage(sponsoredPost.logoId).featuredImage} alt={sponsoredPost.name} />
+            {/* <Styled.SponsorLogo src={useFeaturedImage(sponsoredPost.logoId).featuredImage} alt={sponsoredPost.name} /> */}
           </Styled.SponsoredPost>
         </>
       }

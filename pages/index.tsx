@@ -1,12 +1,11 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { gql } from '@apollo/client'
+// import Head from 'next/head'
+// import Image from 'next/image'
+// import { gql } from '@apollo/client'
 
 import client from '../apollo-client'
 
 import { homepageQuery } from '@queries/homepage/homepage'
 import { latestPostsQuery } from '@queries/homepage/latest-posts'
-import { coverInterviewsQuery } from '@queries/homepage/cover-interviews'
 import { sessionsFeatureQuery } from '@queries/homepage/sessions-feature'
 import { latestPodcastsQuery } from '@queries/homepage/latest-podcasts'
 import { latestVideoQuery } from '@queries/homepage/latest-video'
@@ -140,7 +139,7 @@ export default function Home({
       />
       <BannerAdvert />
       <Section>
-        <Title title={`Editor's Pick`} />
+        <Title title={'Editor\'s Pick'} />
         <PostGrid posts={pageData.homeEditorsPick.homeEditorsPick} />
       </Section>
       <Section>

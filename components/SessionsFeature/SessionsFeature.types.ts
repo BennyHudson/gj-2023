@@ -1,4 +1,4 @@
-import { Post } from "@typings/Post.types";
+import { Post } from '@typings/Post.types'
 
 export interface SessionsFeatureProps {
   content: string

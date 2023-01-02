@@ -31,10 +31,10 @@ const ImageSlider: FC<ImageSliderProps> = ({ slides }: ImageSliderProps): ReactE
   return (
     <Styled.ImageSlider>
       <Slider {...sliderSettings}>
-        {slides.map((slide) => {
+        {slides.map((slide, index) => {
           return (
-            <Styled.Slide>
-              <Styled.Image key={slide} src={useFeaturedImage(slide).featuredImage} />
+            <Styled.Slide key={index}>
+              {/* <Styled.Image key={slide} src={useFeaturedImage(slide).featuredImage} /> */}
             </Styled.Slide>
           )
         })}

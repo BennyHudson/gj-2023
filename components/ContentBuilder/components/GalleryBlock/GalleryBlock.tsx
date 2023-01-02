@@ -12,7 +12,7 @@ const GalleryBlock: FC<GalleryBlockProps> = ({
 }: GalleryBlockProps): ReactElement => {
   return (
     <Styled.GalleryBlock imageCount={gallery.length}>
-      {gallery.map((image) => {
+      {/* {gallery.map((image) => {
         const { featuredImage, caption, loaded } = useFeaturedImage(image)
         return (
           <div key={image}>
@@ -24,7 +24,7 @@ const GalleryBlock: FC<GalleryBlockProps> = ({
             }
           </div>
         )
-      })}
+      })} */}
     </Styled.GalleryBlock>
   )
 }

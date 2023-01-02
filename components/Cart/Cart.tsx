@@ -5,7 +5,7 @@ import * as Styled from './styles/Cart.style'
 import { CartProps } from './Cart.types'
 
 const Cart: FC<CartProps> = ({
-  // add props
+  children,
 }: CartProps): ReactElement => {
   return (
     <Styled.Cart>
