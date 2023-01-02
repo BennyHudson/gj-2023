@@ -1,0 +1,129 @@
+@font-face {
+  font-family: 'Cera Pro Regular';
+  src: url('/fonts/cera/cera-regular.otf');
+  src: url('/fonts/cera/cera-regular.woff2') format('woff2'),
+        url('/fonts/cera/cera-regular.woff') format('woff'),
+        url('/fonts/cera/cera-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cera Pro Light';
+  src: url('/fonts/cera/cera-light.otf');
+  src: url('/fonts/cera/cera-light.woff2') format('woff2'),
+        url('/fonts/cera/cera-light.woff') format('woff'),
+        url('/fonts/cera/cera-light.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cera Pro Semibold';
+  src: url('/fonts/cera/cera-semibold.otf');
+  src: url('/fonts/cera/cera-semibold.woff2') format('woff2'),
+        url('/fonts/cera/cera-semibold.woff') format('woff'),
+        url('/fonts/cera/cera-semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cera Pro Bold';
+  src: url('/fonts/cera/cera-bold.otf');
+  src: url('/fonts/cera/cera-bold.woff2') format('woff2'),
+        url('/fonts/cera/cera-bold.woff') format('woff'),
+        url('/fonts/cera/cera-bold.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Chronicle Regular';
+  src: url('/fonts/chronicle/chronicle-regular.otf');
+  src: url('/fonts/chronicle/chronicle-regular.woff2') format('woff2'),
+        url('/fonts/chronicle/chronicle-regular.woff') format('woff'),
+        url('/fonts/chronicle/chronicle-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Chronicle Regular italic';
+  src: url('/fonts/chronicle/chronicle-regularit.otf');
+  src: url('/fonts/chronicle/chronicle-regularit.woff2') format('woff2'),
+        url('/fonts/chronicle/chronicle-regularit.woff') format('woff'),
+        url('/fonts/chronicle/chronicle-regularit.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Chronicle Light';
+  src: url('/fonts/chronicle/chronicle-light.otf');
+  src: url('/fonts/chronicle/chronicle-light.woff2') format('woff2'),
+        url('/fonts/chronicle/chronicle-light.woff') format('woff'),
+        url('/fonts/chronicle/chronicle-light.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Chronicle Semibold';
+  src: url('/fonts/chronicle/chronicle-semibold.otf');
+  src: url('/fonts/chronicle/chronicle-semibold.woff2') format('woff2'),
+        url('/fonts/chronicle/chronicle-semibold.woff') format('woff'),
+        url('/fonts/chronicle/chronicle-semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Chronicle Bold';
+  src: url('/fonts/chronicle/chronicle-bold.otf');
+  src: url('/fonts/chronicle/chronicle-bold.woff2') format('woff2'),
+        url('/fonts/chronicle/chronicle-bold.woff') format('woff'),
+        url('/fonts/chronicle/chronicle-bold.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Chronicle Condensed Regular';
+  src: url('/fonts/chronicle-condensed/chronicle-regular.otf');
+  src: url('/fonts/chronicle-condensed/chronicle-regular.woff2') format('woff2'),
+        url('/fonts/chronicle-condensed/chronicle-regular.woff') format('woff'),
+        url('/fonts/chronicle-condensed/chronicle-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Chronicle Condensed Light';
+  src: url('/fonts/chronicle-condensed/chronicle-light.otf');
+  src: url('/fonts/chronicle-condensed/chronicle-light.woff2') format('woff2'),
+        url('/fonts/chronicle-condensed/chronicle-light.woff') format('woff'),
+        url('/fonts/chronicle-condensed/chronicle-light.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Chronicle Condensed Semibold';
+  src: url('/fonts/chronicle-condensed/chronicle-semibold.otf');
+  src: url('/fonts/chronicle-condensed/chronicle-semibold.woff2') format('woff2'),
+        url('/fonts/chronicle-condensed/chronicle-semibold.woff') format('woff'),
+        url('/fonts/chronicle-condensed/chronicle-semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Chronicle Condensed Bold';
+  src: url('/fonts/chronicle-condensed/chronicle-bold.otf');
+  src: url('/fonts/chronicle-condensed/chronicle-bold.woff2') format('woff2'),
+        url('/fonts/chronicle-condensed/chronicle-bold.woff') format('woff'),
+        url('/fonts/chronicle-condensed/chronicle-bold.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}

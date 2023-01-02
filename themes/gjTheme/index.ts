@@ -1,0 +1,1 @@
+export { gjTheme } from './gjTheme'
