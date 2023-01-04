@@ -9,6 +9,7 @@ export const ButtonBlock = styled.div((props: StyledButtonBlockProps): FlattenSi
   display: flex;
   align-items: center;
   grid-column: col-start 3 / span 7;
+  gap: ${props.theme.spacing[2]}px;
 
   &:last-child {
     margin-bottom: 0;

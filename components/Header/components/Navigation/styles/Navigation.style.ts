@@ -1,5 +1,5 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
-import { Link } from 'gatsby'
+import Link from 'next/link'
 
 import { PostGrid } from '@components/PostGrid/styles/PostGrid.style'
 import { Heading } from '@components/Heading/styles/Heading.style'
@@ -41,6 +41,12 @@ export const MenuLink = styled(Link)((props: StyledNavigationProps) => css`
       transform: translateY(-2px);
     }
   }
+
+  ${props.active && css`
+    &::after {
+      transform: translateY(-2px);
+    }
+  `}
 `)
 
 export const SubMenuWrapper = styled.div((props: StyledNavigationProps): FlattenSimpleInterpolation => css`
@@ -53,6 +59,7 @@ export const SubMenuWrapper = styled.div((props: StyledNavigationProps): Flatten
   opacity: 0;
   transform: translateY(-${props.theme.spacing[1]}px);
   transition: 0.4s all ease;
+  transition-delay: 0.2s;
   border-top: 1px solid rgba(0,0,0,.1);
   border-bottom: 1px solid rgba(0,0,0,.1);
   z-index: -1;
@@ -94,7 +101,7 @@ export const SubMenuWrapper = styled.div((props: StyledNavigationProps): Flatten
     ${Thumbnail} {
       margin-bottom: ${props.theme.spacing[2]}px;
 
-      &::before {
+      img {
         filter: grayscale(100%);
       }
     }

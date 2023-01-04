@@ -2,6 +2,8 @@ import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 
 import { StyledGiftGuideFeatureProps } from './GiftGuideFeature.style.types'
 
+type ThemeProps = Pick<StyledGiftGuideFeatureProps, 'theme'>
+
 export const GiftGuideFeature = styled.div((props: StyledGiftGuideFeatureProps): FlattenSimpleInterpolation => css`
   position: relative;
   padding: ${props.theme.spacing[8]}px 0 0;
@@ -10,7 +12,7 @@ export const GiftGuideFeature = styled.div((props: StyledGiftGuideFeatureProps):
   display: flex;
 `)
 
-export const Container = styled.div((props: StyledGiftGuideFeatureProps): FlattenSimpleInterpolation => css`
+export const Container = styled.div((props: ThemeProps): FlattenSimpleInterpolation => css`
   width: 90%;
   max-width: ${props.theme.containerWidth}px;
   margin: 0 auto;
@@ -20,7 +22,7 @@ export const Container = styled.div((props: StyledGiftGuideFeatureProps): Flatte
   align-items: flex-end;
 `)
 
-export const Content = styled.div((props: StyledGiftGuideFeatureProps): FlattenSimpleInterpolation => css`
+export const Content = styled.div((props: ThemeProps): FlattenSimpleInterpolation => css`
   padding: ${props.theme.spacing[4]}px 0 ${props.theme.spacing[8]}px ${props.theme.spacing[8]}px;
   border-left: 1px solid ${props.theme.colours.white};
   grid-column: col-start / span 7;

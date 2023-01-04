@@ -1,6 +1,5 @@
 import { Theme } from '@themes/gjTheme/gjTheme.types'
 
-export interface StyledLogoProps {
+export interface StyledDividerProps {
   theme: Theme
-  inverse: boolean
 }

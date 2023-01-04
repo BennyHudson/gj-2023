@@ -1,4 +1,7 @@
 import React, { ReactElement, FC } from 'react'
+import Image from 'next/image'
+
+import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import Heading from '@components/Heading'
 import Paragraph from '@components/Paragraph'
@@ -12,9 +15,11 @@ const ButtonBlock: FC<ButtonBlockProps> = ({
   callToAction,
   link,
   price,
+  image,
 }: ButtonBlockProps): ReactElement => {
   return (
     <Styled.ButtonBlock>
+      {image?.sourceUrl && <Image src={featuredImageUrl(image.sourceUrl)} width={150} height={150} alt={image.caption || ''} />}
       <div>
         <Heading text={title} weight={3} level={2} font='Cera' size={1} noMargin />
         {price &&

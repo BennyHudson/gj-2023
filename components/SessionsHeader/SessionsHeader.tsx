@@ -15,7 +15,7 @@ const SessionsHeader: FC<SessionsHeaderProps> = ({
   secondaryArticles,
   tertiaryArticles,
 }: SessionsHeaderProps): ReactElement => {
-  console.log(secondaryArticles.nodes)
+  // console.log(secondaryArticles.nodes)
   return (
     <>
       <Title title='Latest Performers' inverse />

@@ -7,27 +7,24 @@ import { StyledImageBlockProps } from './ImageBlock.style.types'
 export const ImageBlock = styled.div((props: StyledImageBlockProps): FlattenSimpleInterpolation => css`
   grid-column: col-start / span 12;
   // background: ${props.theme.colours.lightGrey};
-  padding: ${props.theme.spacing[4]}px 0;
+  // padding: ${props.theme.spacing[4]}px 0;
+  position: relative;
 
   ${props.imageSize === 'standard--full' && css`
     grid-column: col-start / span 12;
-    
-    ${!props.loaded && css`
-      aspect-ratio: 3 / 2;
-    `}
   `}
 
-  ${props.imageSize === 'standard--tall' && css`
+  ${(props.imageSize === 'standard--tall' || props.imageSize === 'standard') && css`
     grid-column: col-start 3 / span 7;
-    
-    ${!props.loaded && css`
-      aspect-ratio: 2 / 3;
-    `}
   `}
 
-  & + ${GalleryBlock} {
+  /* & + ${GalleryBlock} {
     padding-top: 0;
-    margin-top: -${props.theme.spacing[6]}px;
+    margin-top: -${props.theme.spacing[2]}px;
+  } */
+
+  img {
+    object-fit: contain;
   }
 `)
 

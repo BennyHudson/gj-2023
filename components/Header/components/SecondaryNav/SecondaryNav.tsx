@@ -9,7 +9,7 @@ import SearchForm from '@components/SearchForm'
 import Cart from '@components/Cart'
 import NewsletterModal from '@components/NewsletterModal'
 
-import PageContext, { PageContextType } from '@context/PageContext'
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 import * as Styled from './styles/SecondaryNav.style'
 
@@ -18,7 +18,7 @@ import { SecondaryNavProps } from './SecondaryNav.types'
 const SecondaryNav: FC<SecondaryNavProps> = ({
   inverse,
 }: SecondaryNavProps): ReactElement => {
-  const { setShowModal } = useContext(PageContext) as PageContextType
+  const { setShowModal } = useContext(PageContext) as PageContextProps
   return (
     <Styled.SecondaryNav>
       <ul>

@@ -1,92 +1,33 @@
-import React, { ReactElement, FC } from 'react'
-// import { useStaticQuery, graphql } from 'gatsby'
+import React, { ReactElement, FC, useContext } from 'react'
+import { useQuery } from '@apollo/client'
+
+import { headerNavQuery } from '@queries/global/header-nav'
+import Link from 'next/link'
 
 import Title from '@components/Title'
-
 import PostGrid from '@components/PostGrid'
 
-// import flatListToHierarchical from '@helpers/flatListToHierarchical'
+import flatListToHierarchical from '@helpers/flatListToHierarchical'
+
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 import * as Styled from './styles/Navigation.style'
 
 import { NavigationProps } from './Navigation.types'
 
 const Navigation: FC<NavigationProps> = ({ inverse = false }: NavigationProps): ReactElement => {
-  // const menu = useStaticQuery(graphql`
-  //   query mainMenu {
-  //     menu(id: "dGVybTo5NjE3") {
-  //       menuItems {
-  //         nodes {
-  //           key: id
-  //           label
-  //           uri
-  //           parentId
-  //         }
-  //       }
-  //     }
-  //     allWpPodcast(limit: 4) {
-  //       nodes {
-  //         title
-  //         featuredImageDatabaseId
-  //         uri
-  //         podcasts {
-  //           podcastMeta {
-  //             guest {
-  //               name
-  //               about
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //     allWpHouseNote(limit: 4) {
-  //       nodes {
-  //         title
-  //         featuredImageDatabaseId
-  //         uri
-  //       }
-  //     }
-  //     videos: allWpArticle(
-  //       filter: {categories: {nodes: {elemMatch: {name: {eq: "Video"}}}}}
-  //       limit: 4
-  //       sort: {date: DESC}
-  //     ) {
-  //       nodes {
-  //         articleAcf {
-  //           standfirst
-  //         }
-  //         categories {
-  //           nodes {
-  //             name
-  //           }
-  //         }
-  //         uri
-  //         databaseId
-  //         featuredImageDatabaseId
-  //         title
-  //         date
-  //       }
-  //     }
-  //     sessions: allWpArticle(
-  //       filter: {categories: {nodes: {elemMatch: {name: {eq: "GJ Sessions"}}}}}
-  //       limit: 4
-  //     ) {
-  //       nodes {
-  //         title
-  //         uri
-  //         databaseId
-  //         featuredImageDatabaseId
-  //         categories {
-  //           nodes {
-  //             name
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
-
-  const heirarchalNav = flatListToHierarchical(menu.wpMenu.menuItems.nodes)
+  const { activeNavElement, setNavLoaded } = useContext(PageContext) as PageContextProps
+  
+  const { data } = useQuery(headerNavQuery.query, {
+    onCompleted: () => {
+      setNavLoaded(true)
+    }
+  })
+  
+  let heirarchalNav = []
+  if (data) {
+    heirarchalNav = flatListToHierarchical(data.menu.menuItems.nodes)  
+  }
 
   return (
     <Styled.Navigation>
@@ -95,17 +36,17 @@ const Navigation: FC<NavigationProps> = ({ inverse = false }: NavigationProps): 
           heirarchalNav.map((item, index) => {
             if (item.children.length) return (
               <Styled.MenuItem key={index} inverse={inverse}>
-                <Styled.MenuLink to={item.uri}>{item.label}</Styled.MenuLink>
+                <Styled.MenuLink active={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
                 <Styled.SubMenuWrapper>
                   <Styled.SubMenu subListCount={item.children.length}>
                     {item.children.map((child, index) => {
                       return (
                         <li key={index}>
-                          <Styled.SubLink inverse={inverse} feature to={child.uri}>{child.label}</Styled.SubLink>
+                          <Styled.SubLink inverse={inverse} feature href={child.uri}>{child.label}</Styled.SubLink>
                           <Styled.SubMenuList>
                             {child.children.map((cat, index) => {
                               return (
-                                <Styled.SubLink inverse={inverse} to={cat.uri} key={index}>{cat.label}</Styled.SubLink>
+                                <Styled.SubLink inverse={inverse} href={cat.uri} key={index}>{cat.label}</Styled.SubLink>
                               )
                             })}
                           </Styled.SubMenuList>
@@ -120,7 +61,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false }: NavigationProps): 
             if (item.uri === '/podcasts/') {
               return (
                 <Styled.MenuItem key={index} inverse={inverse}>
-                  <Styled.MenuLink to={item.uri}>{item.label}</Styled.MenuLink>
+                  <Styled.MenuLink active={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
                   <Styled.SubMenuWrapper>
                     <Title
                       title='Latest'
@@ -131,7 +72,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false }: NavigationProps): 
                         }
                       ]}
                     />
-                    <PostGrid inverse={inverse} posts={menu.allWpPodcast.nodes} />
+                    <PostGrid inverse={inverse} posts={data.podcasts.nodes} />
                   </Styled.SubMenuWrapper>
                 </Styled.MenuItem>
               )
@@ -140,7 +81,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false }: NavigationProps): 
             if (item.uri === '/house-notes/') {
               return (
                 <Styled.MenuItem key={index} inverse={inverse}>
-                  <Styled.MenuLink to={item.uri}>{item.label}</Styled.MenuLink>
+                  <Styled.MenuLink active={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
                   <Styled.SubMenuWrapper>
                     <Title
                       title='Latest'
@@ -151,7 +92,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false }: NavigationProps): 
                         }
                       ]}
                     />
-                    <PostGrid inverse={inverse} posts={menu.allWpHouseNote.nodes} />
+                    <PostGrid inverse={inverse} posts={data.houseNotes.nodes} />
                   </Styled.SubMenuWrapper>
                 </Styled.MenuItem>
               )
@@ -160,7 +101,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false }: NavigationProps): 
             if (item.uri === '/category/video/') {
               return (
                 <Styled.MenuItem key={index} inverse={inverse}>
-                  <Styled.MenuLink to={item.uri}>{item.label}</Styled.MenuLink>
+                  <Styled.MenuLink active={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
                   <Styled.SubMenuWrapper>
                     <Title
                       title='Latest'
@@ -171,7 +112,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false }: NavigationProps): 
                         }
                       ]}
                     />
-                    <PostGrid inverse={inverse} posts={menu.videos.nodes} />
+                    <PostGrid inverse={inverse} posts={data.videos.nodes} />
                   </Styled.SubMenuWrapper>
                 </Styled.MenuItem>
               )
@@ -180,7 +121,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false }: NavigationProps): 
             if (item.uri === '/gj-sessions/') {
               return (
                 <Styled.MenuItem key={index} inverse={inverse}>
-                  <Styled.MenuLink to={item.uri}>{item.label}</Styled.MenuLink>
+                  <Styled.MenuLink active={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
                   <Styled.SubMenuWrapper>
                     <Title
                       title='Latest'
@@ -191,7 +132,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false }: NavigationProps): 
                         }
                       ]}
                     />
-                    <PostGrid inverse={inverse} posts={menu.sessions.nodes} />
+                    <PostGrid inverse={inverse} posts={data.sessions.nodes} />
                   </Styled.SubMenuWrapper>
                 </Styled.MenuItem>
               )
@@ -199,7 +140,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false }: NavigationProps): 
 
             return (
               <Styled.MenuItem key={index} inverse={inverse}>
-                <Styled.MenuLink to={item.uri}>{item.label}</Styled.MenuLink>
+                <Styled.MenuLink active={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
               </Styled.MenuItem>
             )
           })

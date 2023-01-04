@@ -5,13 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faArrowRight, faSpinner } from '@fortawesome/pro-light-svg-icons'
 
-import PageContext, { PageContextType } from '@context/PageContext'
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 import * as Styled from './styles/SearchForm.style'
 
 const SearchForm: FC = (): ReactElement => {
   const [loading, setLoading] = useState(false)
-  const { searchTerm, setSearchTerm, apiUrl, setSearchResults, setShowModal, searchResults } = useContext(PageContext) as PageContextType
+  const { searchTerm, setSearchTerm, apiUrl, setSearchResults, setShowModal, searchResults } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
     // navigate('/search')

@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 export interface FieldWrapperProps {
   children: ReactNode
-  target: number
+  target: string
   label: string
   required: boolean
   hideLabels?: boolean

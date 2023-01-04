@@ -4,7 +4,7 @@ import Time from './components/Time'
 import Navigation from './components/Navigation'
 import SecondaryNav from './components/SecondaryNav'
 
-import PageContext, { PageContextType } from '@context/PageContext'
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 import Logo from '@components/Logo'
 
@@ -16,7 +16,7 @@ const Header: FC<HeaderProps> = ({
   headerStyle = 'standard',
 }: HeaderProps): ReactElement => {
   const header = useRef<HTMLDivElement>(null)
-  const { setHeaderHeight, showModal } = useContext(PageContext) as PageContextType
+  const { setHeaderHeight, showModal, navLoaded } = useContext(PageContext) as PageContextProps
 
   const [transparent, setTransparent] = useState<HeaderState['transparent']>(headerStyle === 'feature' && !showModal) 
   
@@ -33,7 +33,7 @@ const Header: FC<HeaderProps> = ({
     if (header.current) {
       setHeaderHeight(header.current?.clientHeight)
     }
-  }, [])
+  }, [navLoaded])
 
   useEffect(() => {
     setTransparent(headerStyle === 'feature' && !showModal)
@@ -48,7 +48,7 @@ const Header: FC<HeaderProps> = ({
         <Logo inverse={transparent} />
         <SecondaryNav inverse={transparent} />
       </Styled.HeaderContents>
-      
+      <Navigation inverse={transparent} />
     </Styled.Header>
   )
 }

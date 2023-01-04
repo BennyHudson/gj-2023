@@ -1,3 +1,6 @@
 export interface GalleryBlockProps {
-  gallery: number[]
+  gallery: {
+    sourceUrl: string
+    caption?: string
+  }[]
 }

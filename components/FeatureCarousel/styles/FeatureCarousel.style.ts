@@ -4,7 +4,10 @@ import { Section, Content } from '@components/Section/styles/Section.style'
 
 import { StyledFeatureCarouselProps } from './FeatureCarousel.style.types'
 
-export const FeatureCarousel = styled.div((props: StyledFeatureCarouselProps): FlattenSimpleInterpolation => css`
+type ThemeProps = Pick<StyledFeatureCarouselProps, 'theme'>
+
+type FeatureCarouselProps = Pick<StyledFeatureCarouselProps, 'headerHeight'>
+export const FeatureCarousel = styled.div((props: FeatureCarouselProps): FlattenSimpleInterpolation => css`
   height: calc(100vh - ${props.headerHeight}px);
   display: flex;
   position: relative;
@@ -37,9 +40,13 @@ export const ImageWrapper = styled.div((): FlattenSimpleInterpolation => css`
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
   }
+
+  img {
+    object-fit: cover;
+  }
 `)
 
-export const Title = styled.div((props: StyledFeatureCarouselProps): FlattenSimpleInterpolation => css`
+export const Title = styled.div((props: ThemeProps): FlattenSimpleInterpolation => css`
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -48,7 +55,8 @@ export const Title = styled.div((props: StyledFeatureCarouselProps): FlattenSimp
   max-width: 40%;
 `)
 
-export const Thumbs = styled.ul((props: StyledFeatureCarouselProps): FlattenSimpleInterpolation => css`
+type ThumbsProps = Pick<StyledFeatureCarouselProps, 'count' | 'theme' | 'activeIndex'>
+export const Thumbs = styled.ul((props: ThumbsProps): FlattenSimpleInterpolation => css`
   width: 100%;
   border-top: 1px solid ${props.theme.colours.grey};
   position: relative;
@@ -75,7 +83,8 @@ export const Thumbs = styled.ul((props: StyledFeatureCarouselProps): FlattenSimp
   }
 `)
 
-export const Index = styled.span((props: StyledFeatureCarouselProps): FlattenSimpleInterpolation => css`
+type IndexProps = Pick<StyledFeatureCarouselProps, 'theme' | 'active'>
+export const Index = styled.span((props: IndexProps): FlattenSimpleInterpolation => css`
   display: flex;
   text-align: center;
   justify-content: center;
@@ -97,7 +106,7 @@ export const Index = styled.span((props: StyledFeatureCarouselProps): FlattenSim
   `}
 `)
 
-export const Thumb = styled.button((props: StyledFeatureCarouselProps): FlattenSimpleInterpolation => css`
+export const Thumb = styled.button((props: ThemeProps): FlattenSimpleInterpolation => css`
   background: none;
   border: none;
   color: ${props.theme.colours.white};

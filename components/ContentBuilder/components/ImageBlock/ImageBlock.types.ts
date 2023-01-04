@@ -1,4 +1,7 @@
 export interface ImageBlockProps {
-  image: number
-  imageSize: 'standard--tall' | 'standard--full'
+  image: {
+    sourceUrl: string
+    caption?: string
+  }
+  imageSize: 'standard' | 'standard--tall' | 'standard--full'
 }

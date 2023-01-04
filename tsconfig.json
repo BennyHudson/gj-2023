@@ -28,7 +28,8 @@
       "@typings/*": ["typings/*"],
       "@utils/*": ["utils/*"],
       "@context/*": ["context/*"],
-      "@queries/*": ["queries/*"]
+      "@queries/*": ["queries/*"],
+      "@lib/*": ["lib/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

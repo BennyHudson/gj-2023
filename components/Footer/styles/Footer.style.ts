@@ -7,8 +7,6 @@ import { FooterMainMenu } from '../components/FooterMainMenu/styles/FooterMainMe
 import { StyledFooterProps } from './Footer.style.types'
 
 export const Footer = styled.div((props: StyledFooterProps): FlattenSimpleInterpolation => css`
-  border-top: 1px solid ${props.theme.colours.grey};
-
   ${Link} {
     margin-bottom: 0;
 

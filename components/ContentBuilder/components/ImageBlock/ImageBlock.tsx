@@ -1,21 +1,25 @@
 import React, { ReactElement, FC } from 'react'
+import Image from 'next/image'
 
-import useFeaturedImage from '@hooks/useFeaturedImage'
+import featuredImageUrl from '@helpers/featuredImageUrl'
+
 import RawHtmlWrapper from '@components/RawHtmlWrapper'
 
 import * as Styled from './styles/ImageBlock.style'
 
 import { ImageBlockProps } from './ImageBlock.types'
 
-const ImageBlock: FC<ImageBlockProps> = ({ image, imageSize }): ReactElement => {
-  const { featuredImage, loaded, caption } = useFeaturedImage(image)
-
+const ImageBlock: FC<ImageBlockProps> = ({ imageSize, image }): ReactElement => {
   return (
-    <Styled.ImageBlock loaded={loaded} imageSize={imageSize}>
-      <Styled.Image src={featuredImage} alt={caption} placeholder='blurred' />
-      {caption && 
+    <Styled.ImageBlock imageSize={imageSize}>
+      {imageSize === 'standard--full' ? 
+        <Image src={featuredImageUrl(image.sourceUrl)} fill alt={image.caption || ''} />
+        :
+        <Image src={featuredImageUrl(image.sourceUrl)} width={750} height={1000} alt={image.caption || ''} />
+      } 
+      {image.caption && 
         <Styled.Caption imageSize={imageSize}>
-          <RawHtmlWrapper content={caption} />
+          <RawHtmlWrapper content={image.caption} />
         </Styled.Caption>
       }
     </Styled.ImageBlock>

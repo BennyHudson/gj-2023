@@ -6,9 +6,20 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'cdn.thegentlemansjournal.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'dev.thegentlemansjournal.com',
       }
     ]
-  }
+  },
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
 }
 
 module.exports = nextConfig

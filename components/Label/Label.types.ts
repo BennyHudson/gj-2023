@@ -1,5 +1,5 @@
-import { ReactNode } from 'react'
-
 export interface LabelProps {
-  children: ReactNode
+  target: string
+  text: string
+  required: boolean
 }

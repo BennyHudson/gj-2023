@@ -1,5 +1,21 @@
-import { Post } from '@typings/Post'
-import { Podcast } from '@typings/Podcast'
+import { Post } from '@typings/Post.types'
+import { Podcast } from '@typings/Podcast.types'
+
+interface PostProps extends Post {
+  subtitle?: string
+  meta?: string
+}
+
+interface PodcastProps extends Podcast {
+  subtitle?: string
+  meta?: string
+  categories?: {
+    nodes: {
+      name: string
+      uri: string
+    }[]
+  }
+}
 
 export interface FeatureCarouselProps {
   title?: string
@@ -9,5 +25,5 @@ export interface FeatureCarouselProps {
     showIcon?: boolean
   }[]
   cta: string
-  posts: Post[] | Podcast[]
+  posts: PostProps[] | PodcastProps[]
 }

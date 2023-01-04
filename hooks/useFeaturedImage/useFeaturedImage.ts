@@ -1,13 +1,13 @@
 import { useEffect, useState, useContext } from 'react'
 
-import PageContext, { PageContextType } from '@context/PageContext'
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 function useFeaturedImage(databaseId: number): { featuredImage: string, loaded: boolean, caption?: string } {
   const [featuredImage, setFeaturedImage ] = useState('')
   const [ caption, setCaption ] = useState()
   const [loaded, setLoaded ] = useState(false)
 
-  const { cmsUrl, apiUrl, featuredImages, setFeaturedImages } = useContext(PageContext) as PageContextType
+  const { cmsUrl, apiUrl, featuredImages, setFeaturedImages } = useContext(PageContext) as PageContextProps
 
   const getPostData = async () => {
     if (!databaseId) return

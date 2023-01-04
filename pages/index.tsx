@@ -1,8 +1,5 @@
-// import Head from 'next/head'
-// import Image from 'next/image'
-// import { gql } from '@apollo/client'
-
-import client from '../apollo-client'
+import React, { FC, ReactElement, useEffect, useContext } from 'react'
+import client from '@lib/apollo-client'
 
 import { homepageQuery } from '@queries/homepage/homepage'
 import { latestPostsQuery } from '@queries/homepage/latest-posts'
@@ -23,7 +20,9 @@ import SessionsFeature from '@components/SessionsFeature'
 import PodcastGrid from '@components/PodcastGrid'
 import FeatureCarousel from '@components/FeatureCarousel'
 
-export default function Home({ 
+import PageContext, { PageContextProps } from '@context/PageContext'
+
+const Home: FC = ({ 
   pageData, 
   latestPosts, 
   coverInterviews, 
@@ -31,8 +30,13 @@ export default function Home({
   latestPodcasts,
   latestVideo,
   competitions,
-}) {
-  console.log(latestVideo)
+}): ReactElement => {
+  const { setActiveNavElement } = useContext(PageContext) as PageContextProps
+
+  useEffect(() => {
+    setActiveNavElement(-1)
+  }, [setActiveNavElement])
+
   return (
     <>
       <FullPageFeature
@@ -161,6 +165,8 @@ export default function Home({
     </>
   )
 }
+
+export default Home
 
 export async function getStaticProps() {
   const homepage = await client.query(homepageQuery)

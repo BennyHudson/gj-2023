@@ -1,6 +1,6 @@
 import React, { ReactElement, FC, useContext } from 'react'
 
-import PageContext, { PageContextType } from '@context/PageContext'
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 import * as Styled from './styles/HeroVideo.style'
 
@@ -9,7 +9,7 @@ import { HeroVideoProps } from './HeroVideo.types'
 const HeroVideo: FC<HeroVideoProps> = ({
   video,
 }: HeroVideoProps): ReactElement => {
-  const { headerHeight } = useContext(PageContext) as PageContextType
+  const { headerHeight } = useContext(PageContext) as PageContextProps
   let videoId = video.split('=')[1]
   if (!video.includes('=')) { 
     const videoArray = video.split('/')

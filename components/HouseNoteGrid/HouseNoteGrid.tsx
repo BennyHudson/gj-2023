@@ -7,7 +7,6 @@ import HouseNoteExcerpt from '@components/HouseNoteExcerpt'
 import * as Styled from './styles/HouseNoteGrid.style'
 
 import { HouseNoteGridProps } from './HouseNoteGrid.types'
-import Heading from '@components/Heading'
 
 const HouseNoteGrid: FC<HouseNoteGridProps> = ({
   posts,
@@ -21,7 +20,7 @@ const HouseNoteGrid: FC<HouseNoteGridProps> = ({
       >
         {posts.map((post, index) => {
           return (
-            <HouseNoteExcerpt key={index} {...post} feature={false} />
+            <HouseNoteExcerpt key={index} {...post.node} feature={false} />
           )
         })}
       </Masonry>

@@ -5,6 +5,9 @@ export interface PodcastIntroProps {
     user: {
       moreInfo: {
         role: string
+        profileImage: {
+          sourceUrl: string
+        }
       }
     }
   }

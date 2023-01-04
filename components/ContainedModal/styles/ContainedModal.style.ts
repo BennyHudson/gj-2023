@@ -22,7 +22,8 @@ export const ContainedModal = styled.div((props: StyledContainedModalProps): Fla
   justify-content: center;
 `)
 
-export const CloseButton = styled.button((props: StyledContainedModalProps): FlattenSimpleInterpolation => css`
+type CloseButtonProps = Pick<StyledContainedModalProps, 'theme'>
+export const CloseButton = styled.button((props: CloseButtonProps): FlattenSimpleInterpolation => css`
   background: none;
   padding: 0;
   border: none;

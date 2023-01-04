@@ -1,6 +1,8 @@
 import React, { ReactElement, FC, useState, useContext } from 'react'
 import Image from 'next/image'
 
+import featuredImageUrl from '@helpers/featuredImageUrl'
+
 import Section from '@components/Section'
 import Title from '@components/Title'
 import Heading from '@components/Heading'
@@ -8,7 +10,7 @@ import Paragraph from '@components/Paragraph'
 import Meta from '@components/Meta'
 import Link from '@components/Link'
 
-import PageContext, { PageContextType } from '@context/PageContext'
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 import * as Styled from './styles/FeatureCarousel.style'
 
@@ -20,16 +22,16 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
   posts,
   cta,
 }: FeatureCarouselProps): ReactElement => {
-  const { headerHeight } = useContext(PageContext) as PageContextType
+  const { headerHeight } = useContext(PageContext) as PageContextProps
   const [activeIndex, setActiveIndex] = useState(0)
   
   return (
     <Styled.FeatureCarousel headerHeight={headerHeight}>
       <Section appearance='secondary' containerWidth='wide'>
-        <Title title={title} links={links} inverse />
+        {title && <Title title={title} links={links} inverse />}
         <Styled.Title>
           <Meta date={posts[activeIndex].date} categories={posts[activeIndex].categories} inverse />
-          {posts[activeIndex].meta && <Heading size={1} text={posts[activeIndex].meta} inverse font='Cera' />}
+          {posts[activeIndex].meta && <Heading size={1} text={posts[activeIndex].meta!} inverse font='Cera' />}
           <Heading text={posts[activeIndex].title} size={4} inverse font='ChronicleCondensed' />
           <Link to={posts[activeIndex].uri} size={1} weight={3} inverse font='Cera' showIcon>{cta}</Link>
         </Styled.Title>
@@ -51,7 +53,7 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
         {posts.map((post, index) => {
           if (index !== activeIndex) return
           return (
-            <Image src={post.featuredImage.node.sourceUrl.replace('cdn.dev', 'cdn')} fill alt='' key={index} />
+            <Image src={featuredImageUrl(post.featuredImage.node.sourceUrl)} fill alt='' key={index} />
           )
         })}
       </Styled.ImageWrapper>

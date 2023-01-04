@@ -27,7 +27,7 @@ export const Thumbnail = styled.div((props: StyledThumbnailProps): FlattenSimple
     `}
 
     ${props.size === 3 && css`
-      max-width: 148px;
+      max-width: 200px;
     `}
   `}
   

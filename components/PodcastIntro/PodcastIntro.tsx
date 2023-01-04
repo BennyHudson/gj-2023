@@ -22,7 +22,7 @@ const PodcastIntro: FC<PodcastIntroProps> = ({
           <RawHtmlWrapper content={text} />
         </Styled.Intro>
         <Styled.Host>
-          <Thumbnail type='circle' />
+          <Thumbnail type='circle' featuredImage={host.user.moreInfo.profileImage.sourceUrl} />
           <div>
             <Paragraph size={1} transform='uppercase' text='Your host' font='Cera' noMargin />
             <Heading text={host?.name} size={1} />

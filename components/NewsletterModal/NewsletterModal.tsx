@@ -3,7 +3,7 @@ import React, { ReactElement, FC, useContext } from 'react'
 
 import useFeaturedImage from '@hooks/useFeaturedImage'
 
-import PageContext, { PageContextType } from '@context/PageContext'
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 import Newsletter from '@components/Newsletter'
 import Heading from '@components/Heading'
@@ -27,7 +27,7 @@ const NewsletterModal: FC = (): ReactElement => {
   //   }
   // `)
 
-  // const { headerHeight } = useContext(PageContext) as PageContextType
+  // const { headerHeight } = useContext(PageContext) as PageContextProps
 
   // return (
   //   <Styled.NewsletterModal headerHeight={headerHeight}>

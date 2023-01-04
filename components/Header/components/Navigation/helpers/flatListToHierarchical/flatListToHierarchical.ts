@@ -1,12 +1,14 @@
+import { MenuItems } from '@typings/MenuItems.types'
+
 const flatListToHierarchical = (
-  data = [],
+  data: MenuItems[] = [],
   {
     idKey = 'key',
     parentKey = 'parentId',
     childrenKey = 'children'
   } = {}
-) => {
-  const tree = []
+): MenuItems[] => {
+  const tree: MenuItems[] = []
   const childrenOf = {}
   data.forEach((item) => {
     const newItem = {...item}

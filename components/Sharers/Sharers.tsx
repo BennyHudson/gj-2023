@@ -12,7 +12,7 @@ const Sharers: FC<SharersProps> = ({
   title,
   url,
 }: SharersProps): ReactElement => {
-  console.log(title, url)
+  // console.log(title, url)
   return (
     <Styled.Sharers>
       <Styled.Sharer href='#'>

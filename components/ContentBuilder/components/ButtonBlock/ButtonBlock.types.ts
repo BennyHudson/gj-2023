@@ -3,4 +3,8 @@ export interface ButtonBlockProps {
   callToAction?: string
   link: string
   price?: number
+  image?: {
+    sourceUrl: string
+    caption?: string
+  }
 }

@@ -19,43 +19,44 @@ const ContentBuilder: FC<ContentBuilderProps> = ({
   return (
     <>
       {content.map((block) => {
-        switch (block.acf_fc_layout) {
-        case 'paragraph' :
+        const prefix = 'Article_Articleacf_ContentBuilder'
+        switch (block.fieldGroupName) {
+        case `${prefix}_Paragraph` :
           return (
             <TextBlock content={block.paragraph} />
           )
 
-        case 'heading' :
+        case `${prefix}_Heading` :
           return (
             <HeadingBlock text={block.heading} />
           )
 
-        case 'video_embed' :
+        case `${prefix}_VideoEmbed` :
           return (
-            <VideoBlock videoUrl={block.video_embed} />
+            <VideoBlock videoUrl={block.videoEmbed} />
           )
 
-        case 'image' :
+        case `${prefix}_Image` :
           return (
-            <ImageBlock image={block.image} imageSize={block.image_size} />
+            <ImageBlock {...block} />
           )
 
-        case 'image_gallery' :
+        case `${prefix}_ImageGallery` :
           return (
             <GalleryBlock gallery={block.gallery} />
           )
 
-        case 'button_info_block' :
+        case `${prefix}_ButtonInfoBlock` :
           return (
             <ButtonBlock {...block} />
           )
 
-        case 'blockquote' :
+        case `${prefix}_Blockquote` :
           return (
             <QuoteBlock text={block.text} />
           )
 
-        case 'single_affiliate' :
+        case `${prefix}_SingleAffiliate` :
           return (
             <ButtonBlock {...block} callToAction='Buy Now' />
           )
@@ -65,9 +66,9 @@ const ContentBuilder: FC<ContentBuilderProps> = ({
             <ImageSlider slides={block.slider} />
           )
 
-        case 'competition_form' :
+        case `${prefix}_CompetitionForm` :
           return (
-            <Form slides={block.slider} />
+            <Form />
           )
         }        
       })}

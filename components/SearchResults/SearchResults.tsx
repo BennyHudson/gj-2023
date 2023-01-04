@@ -5,12 +5,12 @@ import Link from '@components/Link'
 import LoadMore from '@components/LoadMore'
 import Heading from '@components/Heading'
 
-import PageContext, { PageContextType } from '@context/PageContext'
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 import * as Styled from './styles/SearchResults.style'
 
 const SearchResults: FC = (): ReactElement => {
-  const { cmsUrl, searchResults, searchPage, setSearchPage, searchTerm, apiUrl, setSearchResults } = useContext(PageContext) as PageContextType
+  const { cmsUrl, searchResults, searchPage, setSearchPage, searchTerm, apiUrl, setSearchResults } = useContext(PageContext) as PageContextProps
   
   const moreResults = async () => {
     const search = await fetch(`${apiUrl}/search?search=${searchTerm}&page=${searchPage + 1}`)

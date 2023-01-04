@@ -10,9 +10,11 @@ interface FeaturedImage {
   url: string
 }
 
-export interface PageContextType {
+export interface PageContextProps {
   cmsUrl: string
   apiUrl: string
+  activeNavElement: number
+  setActiveNavElement: (navElement: number) => void
   headerHeight: number
   setHeaderHeight: (headerHeight: number) => void
   showModal: ReactNode
@@ -23,8 +25,8 @@ export interface PageContextType {
   setSearchResults: (results: SearchResult[]) => void
   searchPage: number
   setSearchPage: (searchPage: number) => void
-  featuredImages: FeaturedImage[]
-  setFeaturedImages: (featuredImages: FeaturedImage[]) => void
+  navLoaded: boolean
+  setNavLoaded: (navLoaded: boolean) => void
 }
 
-export default React.createContext<Partial<PageContextType>>({})
+export default React.createContext<Partial<PageContextProps>>({})

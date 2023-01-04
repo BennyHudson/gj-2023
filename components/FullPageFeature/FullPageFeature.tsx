@@ -1,6 +1,8 @@
 import React, { ReactElement, FC, useEffect, useState } from 'react'
 import Image from 'next/image'
 
+import featuredImageUrl from '@helpers/featuredImageUrl'
+
 import Heading from '@components/Heading'
 import Paragraph from '@components/Paragraph'
 import Link from '@components/Link'
@@ -17,8 +19,9 @@ const FullPageFeature: FC<FullPageFeatureProps> = ({
 }: FullPageFeatureProps): ReactElement => {
   const [opacity, setOpacity] = useState(1)
   
-  const onScroll = (e) => {
-    const scrollTop = e.target.documentElement.scrollTop
+  const onScroll = (e: Event): void => {
+    const window = e.target as Window
+    const scrollTop = window.documentElement.scrollTop
     const viewportHeight = window.innerHeight
     const offset = (viewportHeight - scrollTop) / viewportHeight
 
@@ -37,7 +40,7 @@ const FullPageFeature: FC<FullPageFeatureProps> = ({
       <Styled.Spacer></Styled.Spacer>
       <Styled.Background>
         <Styled.FullPageFeature opacity={opacity}>
-          <Image src={featuredImage.node.sourceUrl.replace('cdn.dev', 'cdn')} alt='' fill />
+          <Image src={featuredImageUrl(featuredImage.node.sourceUrl)} alt='' fill />
           <Styled.Content>
             <Paragraph size={1} weight={3} text='Featured Article' inverse font='Cera' transform='uppercase' />
             <Heading text={title} level={1} size={5} inverse font='ChronicleCondensed' />

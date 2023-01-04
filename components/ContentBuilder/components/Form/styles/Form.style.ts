@@ -4,7 +4,8 @@ import { Form as FormikForm } from 'formik'
 
 import { StyledFormProps } from './Form.style.types'
 
-export const Form = styled(FormikForm)((props: StyledFormProps): FlattenSimpleInterpolation => css`
+type FormProps = Pick<StyledFormProps, 'theme'>
+export const Form = styled(FormikForm)((props: FormProps): FlattenSimpleInterpolation => css`
   grid-column: col-start 2 / span 9;
   border-top: 1px solid ${props.theme.colours.grey};
   border-bottom: 1px solid ${props.theme.colours.grey};

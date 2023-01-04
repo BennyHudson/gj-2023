@@ -9,9 +9,9 @@ const Logo: FC<LogoProps> = ({
   inverse = false,
 }: LogoProps): ReactElement => {
   return (
-    <Styled.Logo inverse={inverse}>
+    <Styled.Logo>
       <Styled.LogoLink href='/'>
-        <Image src='/svg/logo.svg' width={230} height={36} />
+        <Image src={inverse ? '/svg/logo-inverse.svg' : '/svg/logo.svg'} width={230} height={36} alt={'Gentleman\'s Journal'} />
       </Styled.LogoLink>
     </Styled.Logo>
   )

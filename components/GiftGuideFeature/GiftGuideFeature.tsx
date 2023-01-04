@@ -4,7 +4,7 @@ import Heading from '@components/Heading'
 import Paragraph from '@components/Paragraph'
 import Link from '@components/Link'
 
-import PageContext, { PageContextType } from '@context/PageContext'
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 import * as Styled from './styles/GiftGuideFeature.style'
 
@@ -16,7 +16,7 @@ const GiftGuideFeature: FC<GiftGuideFeatureProps> = ({
   subtitle,
   url,
 }: GiftGuideFeatureProps): ReactElement => {
-  const { headerHeight } = useContext(PageContext) as PageContextType
+  const { headerHeight } = useContext(PageContext) as PageContextProps
   return (
     <Styled.GiftGuideFeature headerHeight={headerHeight}>
       <Styled.Container>

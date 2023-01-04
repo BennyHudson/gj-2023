@@ -1,30 +1,31 @@
 import React, { ReactElement, FC } from 'react'
+import Image from 'next/image'
+
+import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import RawHtmlWrapper from '@components/RawHtmlWrapper'
 
 import * as Styled from './styles/GalleryBlock.style'
 
 import { GalleryBlockProps } from './GalleryBlock.types'
-import useFeaturedImage from '@hooks/useFeaturedImage'
 
 const GalleryBlock: FC<GalleryBlockProps> = ({
   gallery,
 }: GalleryBlockProps): ReactElement => {
   return (
     <Styled.GalleryBlock imageCount={gallery.length}>
-      {/* {gallery.map((image) => {
-        const { featuredImage, caption, loaded } = useFeaturedImage(image)
+      {gallery.map((image, index) => {
         return (
-          <div key={image}>
-            <Styled.GalleryImage src={featuredImage} alt={caption} loaded={loaded} />
-            {caption && 
+          <div key={index}>
+            <Image src={featuredImageUrl(image.sourceUrl)} width={900} height={900} alt={image.caption || ''} />
+            {image.caption && 
               <Styled.Caption>
-                <RawHtmlWrapper content={caption} />
+                <RawHtmlWrapper content={image.caption} />
               </Styled.Caption>
             }
           </div>
         )
-      })} */}
+      })}
     </Styled.GalleryBlock>
   )
 }

@@ -5,7 +5,7 @@ import { CSSTransition } from 'react-transition-group'
 import GlobalStyle from '@styles/GlobalStyle'
 import { gjTheme } from '@themes/gjTheme'
 
-import PageContext, { PageContextType } from '@context/PageContext'
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 import useKeyPress from '@hooks/useKeyPress'
 
@@ -18,12 +18,13 @@ import * as Styled from './styles/PageLayout.style'
 import { PageLayoutProps } from './PageLayout.types'
 
 const PageLayout: FC<PageLayoutProps> = ({ children, locationPath }: PageLayoutProps): ReactElement => {
-  const [ headerHeight, setHeaderHeight ] = useState<PageContextType['headerHeight']>(0)
-  const [ showModal, setShowModal ] = useState<PageContextType['showModal']>()
-  const [ searchTerm, setSearchTerm ] = useState<PageContextType['searchTerm']>()
-  const [ searchResults, setSearchResults ] = useState<PageContextType['searchResults']>([])
-  const [ searchPage, setSearchPage ] = useState<PageContextType['searchPage']>(1)
-  const [ featuredImages, setFeaturedImages ] = useState<PageContextType['featuredImages']>([])
+  const [ activeNavElement, setActiveNavElement ] = useState<PageContextProps['headerHeight']>(-1)
+  const [ headerHeight, setHeaderHeight ] = useState<PageContextProps['headerHeight']>(0)
+  const [ showModal, setShowModal ] = useState<PageContextProps['showModal']>()
+  const [ searchTerm, setSearchTerm ] = useState<PageContextProps['searchTerm']>()
+  const [ searchResults, setSearchResults ] = useState<PageContextProps['searchResults']>([])
+  const [ searchPage, setSearchPage ] = useState<PageContextProps['searchPage']>(1)
+  const [ navLoaded, setNavLoaded ] = useState<PageContextProps['navLoaded']>(false)
 
   const keyPress = useKeyPress()
 
@@ -52,6 +53,8 @@ const PageLayout: FC<PageLayoutProps> = ({ children, locationPath }: PageLayoutP
         value={{
           cmsUrl, 
           apiUrl: `${cmsUrl}/wp-json/wp/v2`,
+          activeNavElement,
+          setActiveNavElement,
           headerHeight,
           setHeaderHeight,
           showModal,
@@ -62,8 +65,8 @@ const PageLayout: FC<PageLayoutProps> = ({ children, locationPath }: PageLayoutP
           setSearchResults,
           searchPage,
           setSearchPage,
-          featuredImages,
-          setFeaturedImages,
+          navLoaded, 
+          setNavLoaded,
         }}
       >
         <Styled.PageLayout>

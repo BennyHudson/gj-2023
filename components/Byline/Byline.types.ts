@@ -6,7 +6,7 @@ export interface BylineProps {
     content: string
   }[]
   sponsoredPost?: {
-    logoId: number
+    logo: string
     name: string
     url: string
     disableLink: boolean

@@ -11,7 +11,7 @@ import { HouseNoteExcerptProps } from './HouseNoteExcerpt.types'
 
 const HouseNoteExcerpt: FC<HouseNoteExcerptProps> = ({
   feature = true,
-  featuredImageDatabaseId,
+  featuredImage,
   uri,
   articleType,
   title,
@@ -19,7 +19,7 @@ const HouseNoteExcerpt: FC<HouseNoteExcerptProps> = ({
 }: HouseNoteExcerptProps): ReactElement => {
   return (
     <Styled.HouseNoteExcerpt>
-      {featuredImageDatabaseId && <Thumbnail featuredImageDatabaseId={featuredImageDatabaseId} to={uri} type='square' />}
+      {featuredImage && <Thumbnail featuredImage={featuredImage.node.sourceUrl} to={uri} type='square' />}
       <Styled.ArticleType><span>{articleType.articleType}</span></Styled.ArticleType>
       <Heading text={title} size={feature ? 2 : 1} noMargin />
       {articleType.articleTypeLandingPageExcerpt && (

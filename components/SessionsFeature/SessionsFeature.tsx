@@ -12,7 +12,7 @@ import * as Styled from './styles/SessionsFeature.style'
 
 const SessionsFeature: FC<SessionsFeatureProps> = ({ content, post }: SessionsFeatureProps): ReactElement => {
   
-  console.log(post.featuredImage.node.sourceUrl)
+  // console.log(post.featuredImage.node.sourceUrl)
   // const featuredArticle = sessionsContent.allWpArticle.edges[0].node
 
   return (

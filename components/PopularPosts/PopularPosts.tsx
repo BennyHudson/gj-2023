@@ -5,7 +5,7 @@ import he from 'he'
 import Heading from '@components/Heading'
 import Link from '@components/Link'
 
-import PageContext, { PageContextType } from '@context/PageContext'
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 import * as Styled from './styles/PopularPosts.style'
 
@@ -14,7 +14,7 @@ const PopularPosts: FC = (): ReactElement => {
   const [ popularPosts, setPopularPosts ] = useState([])
   const ranges = ['week', 'month', 'year']
 
-  const { apiUrl, cmsUrl } = useContext(PageContext) as PageContextType
+  const { apiUrl, cmsUrl } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
     const date = dayjs().subtract(1, dateRange as ManipulateType).toISOString()

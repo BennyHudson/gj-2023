@@ -9,5 +9,5 @@ export interface ThumbnailProps {
   title?: Post['title']
   categories?: Post['categories']
   date?: Post['date']
-  featuredImage: string
+  featuredImage?: string
 }

@@ -41,6 +41,10 @@ export const FullPageFeature = styled.div((props: StyledFullPageFeatureProps): F
     width: 100%;
     z-index: 1;
   }
+
+  img {
+    object-fit: cover;
+  }
 `)
 
 type ContentProps = Pick<StyledFullPageFeatureProps, 'theme'>
