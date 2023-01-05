@@ -20,7 +20,7 @@ const nextConfig = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
-  staticPageGenerationTimeout: 600,
+  staticPageGenerationTimeout: 6000,
 }
 
 module.exports = nextConfig
