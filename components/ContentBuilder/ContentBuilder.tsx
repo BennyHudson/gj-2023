@@ -15,7 +15,7 @@ import { ContentBuilderProps } from './ContentBuilder.types'
 const ContentBuilder: FC<ContentBuilderProps> = ({
   content,
 }: ContentBuilderProps): ReactElement => {
-  console.log(content)
+  // console.log(content)
   return (
     <>
       {content.map((block, index) => {

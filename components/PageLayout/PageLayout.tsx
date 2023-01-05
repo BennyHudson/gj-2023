@@ -1,5 +1,6 @@
 import React, { FC, ReactElement, useState, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
+import { useRouter } from 'next/router'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
@@ -14,6 +15,8 @@ import * as Styled from './styles/PageLayout.style'
 import { PageLayoutProps } from './PageLayout.types'
 
 const PageLayout: FC<PageLayoutProps> = ({ children, locationPath }: PageLayoutProps): ReactElement => {
+  const { pathname } = useRouter()
+
   const [ activeNavElement, setActiveNavElement ] = useState<PageContextProps['headerHeight']>(-1)
   const [ headerHeight, setHeaderHeight ] = useState<PageContextProps['headerHeight']>(0)
   const [ showModal, setShowModal ] = useState<PageContextProps['showModal']>()
@@ -64,7 +67,7 @@ const PageLayout: FC<PageLayoutProps> = ({ children, locationPath }: PageLayoutP
       }}
     >
       <Styled.PageLayout>
-        <Header headerStyle={locationPath === '/' ? 'feature' : 'standard'} />
+        <Header headerStyle={pathname === '/' ? 'feature' : 'standard'} />
         <Styled.Page>
           {children}
         </Styled.Page>
