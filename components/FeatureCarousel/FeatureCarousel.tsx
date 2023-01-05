@@ -39,7 +39,7 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
           {posts.map((post, index) => {
             return (
               <li key={index}>
-                <Styled.Index active={index === activeIndex}>{index + 1}</Styled.Index>
+                <Styled.Index $active={index === activeIndex}>{index + 1}</Styled.Index>
                 <Styled.Thumb onClick={() => setActiveIndex(index)}>
                   <Paragraph font='Cera' size={2} inverse>{post.title}</Paragraph>
                   <Paragraph font='Cera' size={2} inverse>{post.subtitle}</Paragraph>

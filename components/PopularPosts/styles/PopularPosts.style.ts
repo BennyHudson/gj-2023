@@ -46,7 +46,7 @@ export const Toggle = styled.button((props: StyledPopularPostsProps): FlattenSim
   text-transform: uppercase;
   border-bottom: 1px solid transparent;
 
-  ${props.isActive && css`
+  ${props.$isActive && css`
   color: ${props.theme.colours.black};
     border-bottom: 1px solid ${props.theme.colours.black};
   `}

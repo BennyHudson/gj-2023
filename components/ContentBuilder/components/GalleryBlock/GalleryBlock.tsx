@@ -11,7 +11,9 @@ import { GalleryBlockProps } from './GalleryBlock.types'
 
 const GalleryBlock: FC<GalleryBlockProps> = ({
   gallery,
-}: GalleryBlockProps): ReactElement => {
+}: GalleryBlockProps): ReactElement | undefined => {
+  if (!gallery) return
+
   return (
     <Styled.GalleryBlock imageCount={gallery.length}>
       {gallery.map((image, index) => {

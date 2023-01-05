@@ -34,7 +34,7 @@ const PopularPosts: FC = (): ReactElement => {
         <Styled.Toggles>
           {ranges.map((range, index) => {
             return (
-              <li key={index}><Styled.Toggle isActive={dateRange === range} onClick={() => setDateRange(range)}>{range}</Styled.Toggle></li>
+              <li key={index}><Styled.Toggle $isActive={dateRange === range} onClick={() => setDateRange(range)}>{range}</Styled.Toggle></li>
             )
           })}
         </Styled.Toggles>

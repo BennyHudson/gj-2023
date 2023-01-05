@@ -17,7 +17,8 @@ export const Navigation = styled.nav((): FlattenSimpleInterpolation => css`
   z-index: 1;
 `)
 
-export const MenuLink = styled(Link)((props: StyledNavigationProps) => css`
+type MenuLinkProps = Pick<StyledNavigationProps, 'theme' | '$isActive'>
+export const MenuLink = styled(Link)((props: MenuLinkProps) => css`
   text-decoration: none;
   position: relative;
   padding: ${props.theme.spacing[1] / 2}px ${props.theme.spacing[1]}px;
@@ -42,14 +43,15 @@ export const MenuLink = styled(Link)((props: StyledNavigationProps) => css`
     }
   }
 
-  ${props.active && css`
+  ${props.$isActive && css`
     &::after {
       transform: translateY(-2px);
     }
   `}
 `)
 
-export const SubMenuWrapper = styled.div((props: StyledNavigationProps): FlattenSimpleInterpolation => css`
+type SubMenuWrapperProps = Pick<StyledNavigationProps, 'theme'>
+export const SubMenuWrapper = styled.div((props: SubMenuWrapperProps): FlattenSimpleInterpolation => css`
   position: absolute;
   left: 0;
   top: 100%;
@@ -108,7 +110,8 @@ export const SubMenuWrapper = styled.div((props: StyledNavigationProps): Flatten
   }
 `)
 
-export const MenuItem = styled.li((props: StyledNavigationProps) => css`
+type MenuItemProps = Pick<StyledNavigationProps, 'theme' | '$inverse'>
+export const MenuItem = styled.li((props: MenuItemProps) => css`
   ${MenuLink} {
     color: ${props.theme.colours.black};
 
@@ -116,7 +119,7 @@ export const MenuItem = styled.li((props: StyledNavigationProps) => css`
       background: ${props.theme.colours.black};
     }
 
-    ${props.inverse && css`
+    ${props.$inverse && css`
       color: ${props.theme.colours.white};
 
       &::after {
@@ -161,13 +164,13 @@ export const SubLink = styled(Link)((props: StyledNavigationProps) => css`
   text-decoration: none;
   text-transform: none;
 
-  ${props.feature && css`
+  ${props.$feature && css`
     color: ${props.theme.colours.black};
     text-transform: uppercase;
   `}
 
-  ${props.inverse && css`
-  color: ${props.theme.colours.white};
+  ${props.$inverse && css`
+    color: ${props.theme.colours.white};
   `}
 `)
 
@@ -182,7 +185,7 @@ export const MainMenu = styled.ul((props: StyledNavigationProps) => css`
   text-transform: uppercase;
   transition: 0.4s all ease;
 
-  ${props.inverse && css`
+  ${props.$inverse && css`
     color: ${props.theme.colours.white};
 
     ${SubMenuWrapper} {

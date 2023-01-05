@@ -3,7 +3,7 @@ import { Theme } from '@themes/gjTheme/gjTheme.types'
 export interface StyledFeatureCarouselProps {
   theme: Theme
   activeIndex: number
-  active: boolean
+  $isActive: boolean
   count: number
   headerHeight: number
 }

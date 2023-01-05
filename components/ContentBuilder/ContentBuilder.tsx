@@ -18,57 +18,57 @@ const ContentBuilder: FC<ContentBuilderProps> = ({
   console.log(content)
   return (
     <>
-      {content.map((block) => {
+      {content.map((block, index) => {
         const prefix = 'Article_Articleacf_ContentBuilder'
         switch (block.fieldGroupName) {
         case `${prefix}_Paragraph` :
           return (
-            <TextBlock content={block.paragraph} />
+            <TextBlock key={index} content={block.paragraph} />
           )
 
         case `${prefix}_Heading` :
           return (
-            <HeadingBlock text={block.heading} />
+            <HeadingBlock key={index} text={block.heading} />
           )
 
         case `${prefix}_VideoEmbed` :
           return (
-            <VideoBlock videoUrl={block.videoEmbed} />
+            <VideoBlock key={index} videoUrl={block.videoEmbed} />
           )
 
         case `${prefix}_Image` :
           return (
-            <ImageBlock {...block} />
+            <ImageBlock key={index} {...block} />
           )
 
         case `${prefix}_ImageGallery` :
           return (
-            <GalleryBlock gallery={block.gallery} />
+            <GalleryBlock key={index} gallery={block.gallery} />
           )
 
         case `${prefix}_ButtonInfoBlock` :
           return (
-            <ButtonBlock {...block} />
+            <ButtonBlock key={index} {...block} />
           )
 
         case `${prefix}_Blockquote` :
           return (
-            <QuoteBlock text={block.text} />
+            <QuoteBlock key={index} text={block.text} />
           )
 
         case `${prefix}_SingleAffiliate` :
           return (
-            <ButtonBlock {...block} callToAction='Buy Now' />
+            <ButtonBlock key={index} {...block} callToAction='Buy Now' />
           )
 
         case 'image_slider' :
           return (
-            <ImageSlider slides={block.slider} />
+            <ImageSlider key={index} slides={block.slider} />
           )
 
         case `${prefix}_CompetitionForm` :
           return (
-            <Form />
+            <Form key={index} />
           )
         }        
       })}

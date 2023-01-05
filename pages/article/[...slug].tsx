@@ -19,33 +19,44 @@ const Article: FC = ({ data }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
+    if (!articleContent.categories) {
+      setActiveNavElement(1)
+      return
+    }
+
     if (articleContent.categories.nodes.find(category => category.name === 'Video')) {
       setActiveNavElement(4)
-    } else {
-      setActiveNavElement(1)
+      return
     }
+
+    setActiveNavElement(1)
   }, [setActiveNavElement, articleContent])
 
-  const breadcrumbs = [
-    {
-      title: 'Home',
-      url: '/'
-    },
-    ...articleContent.categories.nodes.map((category) => {
+  const homeLink = {
+    title: 'Home',
+    url: '/',
+  }
+
+  let categoryCrumbs = []
+  if (articleContent.categories) {
+    categoryCrumbs = articleContent.categories.nodes.map((category) => {
       return {
         title: category.name,
         url: category.uri,
       }
-    }),
-    {
-      title: articleContent!.title,
-      url: articleContent!.uri,
-    }
-  ]
+    })
+  }
+
+  const currentPage = {
+    title: articleContent!.title,
+    url: articleContent!.uri,
+  }
+  
+  const breadcrumbs = [homeLink, ...categoryCrumbs, currentPage]
 
   return (
     <>
-      <HeroImage featuredImage={articleContent.featuredImage.node.sourceUrl} />
+      {articleContent.featuredImage && <HeroImage featuredImage={articleContent.featuredImage.node.sourceUrl} />}
       <BannerAdvert />
       <Section>
         <Masthead

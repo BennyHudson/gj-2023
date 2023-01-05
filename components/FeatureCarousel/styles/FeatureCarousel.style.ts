@@ -83,7 +83,7 @@ export const Thumbs = styled.ul((props: ThumbsProps): FlattenSimpleInterpolation
   }
 `)
 
-type IndexProps = Pick<StyledFeatureCarouselProps, 'theme' | 'active'>
+type IndexProps = Pick<StyledFeatureCarouselProps, 'theme' | '$isActive'>
 export const Index = styled.span((props: IndexProps): FlattenSimpleInterpolation => css`
   display: flex;
   text-align: center;
@@ -100,7 +100,7 @@ export const Index = styled.span((props: IndexProps): FlattenSimpleInterpolation
   border-radius: 50%;
   transition: 0.4s all ease;
 
-  ${props.active && css`
+  ${props.$isActive && css`
     background: ${props.theme.colours.white};
     color: ${props.theme.colours.black}
   `}
