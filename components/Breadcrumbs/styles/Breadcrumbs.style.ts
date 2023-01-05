@@ -22,6 +22,10 @@ export const Breadcrumbs = styled.ul((props: StyledBreadcrumbsProps): FlattenSim
     margin-bottom: 0;
     text-transform: capitalize;
   }
+
+  svg {
+    width: 8px;
+  }
 `)
 
 export const Breadcrumb = styled.li((props: StyledBreadcrumbsProps): FlattenSimpleInterpolation => css`

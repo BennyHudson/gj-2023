@@ -38,7 +38,6 @@ export async function getStaticPaths() {
   const allPodcasts = await getAllPosts('podcast')
 
   const paths = allPodcasts.map((podcast) => {
-    console.log(podcast)
     if (!podcast) return
     if (!podcast.node) return
     return {
