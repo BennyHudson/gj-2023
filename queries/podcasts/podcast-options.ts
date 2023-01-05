@@ -1,7 +1,13 @@
 import { gql } from '@apollo/client'
+import { disableFragmentWarnings } from 'graphql-tag'
+
+import { podcastContent } from '@queries/fragments/podcastContent'
+
+disableFragmentWarnings()
 
 export const podcastOptionsQuery = {
   query: gql`
+    ${podcastContent}
     query podcastOptionsQuery {
       podcastOptions {
         podcastOptions {
@@ -22,42 +28,12 @@ export const podcastOptionsQuery = {
             featured {
               featured {
                 ... on Podcast {
-                  podcasts {
-                    podcastMeta {
-                      guest {
-                        name
-                        about
-                      }
-                    }
-                  }
-                  uri
-                  title
-                  date
-                  featuredImage {
-                    node {
-                      sourceUrl
-                    }
-                  }
+                 ... PodcastContent
                 }
               }
               hero {
                 ... on Podcast {
-                  uri
-                  title
-                  date
-                  featuredImage {
-                    node {
-                      sourceUrl
-                    }
-                  }
-                  podcasts {
-                    podcastMeta {
-                      guest {
-                        name
-                        about
-                      }
-                    }
-                  }
+                  ... PodcastContent
                 }
               }
             }

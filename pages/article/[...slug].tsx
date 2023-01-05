@@ -15,7 +15,6 @@ import PageContext, { PageContextProps } from '@context/PageContext'
 
 const Article: FC = ({ data }): ReactElement => {
   const articleContent = data.article
-
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {

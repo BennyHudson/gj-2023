@@ -1,27 +1,14 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client'
+
+import { podcastContent } from '@queries/fragments/podcastContent'
 
 export const latestPodcastsQuery = {
   query: gql`
+    ${podcastContent}
     query latestPodcastsQuery {
       podcasts(first: 5) {
         nodes {
-          uri
-          databaseId
-          title
-          date
-          featuredImage {
-            node {
-              sourceUrl
-            }
-          }
-          podcasts {
-            podcastMeta {
-              guest {
-                name
-                about
-              }
-            }
-          }
+          ... PodcastContent
         }
       }
     }

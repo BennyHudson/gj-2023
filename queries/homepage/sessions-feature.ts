@@ -1,7 +1,10 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client'
+
+import { articleContent } from '@queries/fragments/articleContent'
 
 export const sessionsFeatureQuery = {
   query: gql`
+    ${articleContent}
     query sessionsQuery {
       page(id: "388179", idType: DATABASE_ID) {
         sessions {
@@ -12,20 +15,7 @@ export const sessionsFeatureQuery = {
       }
       articles(where: {categoryName: "GJ Sessions"}, first: 1) {
         nodes {
-          title
-          date
-          uri
-          databaseId
-          featuredImage {
-            node {
-              sourceUrl
-            }
-          }
-          categories {
-            nodes {
-              name
-            }
-          }
+          ... ArticleContent
         }
       }
     }

@@ -1,75 +1,33 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client'
+import { disableFragmentWarnings } from 'graphql-tag'
+
+import { articleContent } from '@queries/fragments/articleContent'
+
+disableFragmentWarnings()
 
 export const homepageQuery = {
   query: gql`
+    ${articleContent}
     query homepageQuery {
       page(id: "cG9zdDo3NDE3NA==") {
         homeFeaturedPost {
           homeFeaturedPost {
             ... on Article {
-              title
-              date
-              categories {
-                nodes {
-                  name
-                }
-              }
-              uri
-              databaseId
-              articleAcf {
-                standfirst
-              }
-              featuredImage {
-                node {
-                  sourceUrl
-                }
-              }
+              ... ArticleContent
             }
           }
         }
         homeWeeklyHighlight {
           homeWeeklyHighlight {
             ... on Article {
-              title
-              date
-              categories {
-                nodes {
-                  name
-                }
-              }
-              uri
-              databaseId
-              articleAcf {
-                standfirst
-              }
-              featuredImage {
-                node {
-                  sourceUrl
-                }
-              }
+              ... ArticleContent
             }
           }
         }
         homeEditorsPick {
           homeEditorsPick {
             ... on Article {
-              title
-              date
-              categories {
-                nodes {
-                  name
-                }
-              }
-              uri
-              databaseId
-              articleAcf {
-                standfirst
-              }
-              featuredImage {
-                node {
-                  sourceUrl
-                }
-              }
+              ... ArticleContent
             }
           }
         }

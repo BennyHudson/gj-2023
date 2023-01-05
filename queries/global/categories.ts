@@ -1,8 +1,11 @@
 import { gql } from '@apollo/client'
 
+import { articleContent } from '@queries/fragments/articleContent'
+
 export const categoryQuery = (categoryName: string) => {
   return {
     query: gql`
+      ${articleContent}
       query latestArticlesByCategory($after: String) {
         articles(first: 20, after: $after, where: {categoryName: "${categoryName}"}) {
           pageInfo {
@@ -14,20 +17,7 @@ export const categoryQuery = (categoryName: string) => {
           edges {
             cursor
             node {
-              title
-              date
-              uri
-              databaseId
-              featuredImage {
-                node {
-                  sourceUrl
-                }
-              }
-              categories {
-                nodes {
-                  name
-                }
-              }
+              ...ArticleContent
             }
           }
         }

@@ -1,27 +1,14 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client'
+
+import { articleContent } from '@queries/fragments/articleContent'
 
 export const latestVideoQuery = {
   query: gql`
+    ${articleContent}
     query latestVideoQuery {
       articles(where: {categoryName: "Video"}, first: 4) {
         nodes {
-          articleAcf {
-            standfirst
-          }
-          categories {
-            nodes {
-              name
-            }
-          }
-          featuredImage {
-            node {
-              sourceUrl
-            }
-          }
-          uri
-          databaseId
-          title
-          date
+          ... ArticleContent
         }
       }
     }

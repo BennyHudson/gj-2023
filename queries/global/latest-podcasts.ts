@@ -1,7 +1,10 @@
 import { gql } from '@apollo/client'
 
+import { podcastContent } from '@queries/fragments/podcastContent'
+
 export const latestPodcastsQuery = {
   query: gql`
+    ${podcastContent}
     query latestPodcastsQuery($after: String) {
       podcasts(first: 10, after: $after) {
         pageInfo {
@@ -13,23 +16,7 @@ export const latestPodcastsQuery = {
         edges {
           cursor
           node {
-            uri
-            databaseId
-            title
-            date
-            featuredImage {
-              node {
-                sourceUrl
-              }
-            }
-            podcasts {
-              podcastMeta {
-                guest {
-                  name
-                  about
-                }
-              }
-            }
+            ...PodcastContent
           }
         }
       }

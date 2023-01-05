@@ -1,5 +1,6 @@
 import React, { FC, ReactElement, useEffect, useContext } from 'react'
 import { gql } from '@apollo/client'
+import he from 'he'
 
 import client from '@lib/apollo-client'
 
@@ -11,7 +12,7 @@ import Feed from '@components/Feed'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
-export default function Category ({data}) {
+const Category: FC =  ({ data }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -79,6 +80,8 @@ export default function Category ({data}) {
     </>
   )
 }
+
+export default Category
 
 export async function getStaticPaths() {
   const getAllCategories = await client.query({

@@ -1,8 +1,11 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client'
+
+import { articleContent } from '@queries/fragments/articleContent'
 
 export const categoryQuery = (categoryName: string) => {
   return {
     query: gql`
+      ${articleContent}
       query categoryQuery {
         category(id: "${categoryName}", idType: NAME) {
           description
@@ -11,20 +14,7 @@ export const categoryQuery = (categoryName: string) => {
         }
         articles(first: 4, where: {categoryName: "${categoryName}"}) {
           nodes {
-            title
-            date
-            uri
-            databaseId
-            featuredImage {
-              node {
-                sourceUrl
-              }
-            }
-            categories {
-              nodes {
-                name
-              }
-            }
+            ...ArticleContent
           }
         }
       }

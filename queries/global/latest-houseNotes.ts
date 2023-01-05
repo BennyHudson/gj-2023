@@ -1,7 +1,10 @@
 import { gql } from '@apollo/client'
 
+import { houseNoteContent } from '@queries/fragments/houseNoteContent'
+
 export const latestHouseNotesQuery = {
   query: gql`
+    ${houseNoteContent}
     query latestHouseNotesQuery($after: String) {
       houseNotes(first: 12, after: $after) {
         pageInfo {
@@ -13,22 +16,7 @@ export const latestHouseNotesQuery = {
         edges {
           cursor
           node {
-            articleType {
-              articleType
-              articleTypeLandingPageExcerpt
-            }
-            title
-            uri
-            featuredImage {
-              node {
-                sourceUrl
-              }
-            }
-            author {
-              node {
-                name
-              }
-            }
+            ...HouseNoteContent
           }
         }
       }

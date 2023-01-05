@@ -7,7 +7,9 @@ import { QuoteBlockProps } from './QuoteBlock.types'
 
 const QuoteBlock: FC<QuoteBlockProps> = ({
   text,
-}: QuoteBlockProps): ReactElement => {
+}: QuoteBlockProps): ReactElement | undefined => {
+  if (!text) return
+  
   return (
     <Styled.QuoteBlock>
       {he.decode(text)}

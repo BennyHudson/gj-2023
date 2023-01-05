@@ -1,7 +1,14 @@
 import { gql } from '@apollo/client'
 
+import { articleContent } from '@queries/fragments/articleContent'
+import { houseNoteContent } from '@queries/fragments/houseNoteContent'
+import { podcastContent } from '@queries/fragments/podcastContent'
+
 export const headerNavQuery = {
   query: gql`
+    ${articleContent}
+    ${houseNoteContent}
+    ${podcastContent}
     query mainMenu {
       menu(id: "dGVybTo5MjQx") {
         menuItems(first: 1000) {
@@ -15,75 +22,22 @@ export const headerNavQuery = {
       }
       podcasts(first: 4) {
         nodes {
-          uri
-          databaseId
-          title
-          date
-          featuredImage {
-            node {
-              sourceUrl
-            }
-          }
-          podcasts {
-            podcastMeta {
-              guest {
-                name
-                about
-              }
-            }
-          }
+          ...PodcastContent
         }
       }
       houseNotes(first: 4) {
         nodes {
-          uri
-          databaseId
-          title
-          date
-          featuredImage {
-            node {
-              sourceUrl
-            }
-          }
+          ...HouseNoteContent
         }
       }
       videos: articles(where: {categoryName: "Video"}, first: 4) {
         nodes {
-          articleAcf {
-            standfirst
-          }
-          categories {
-            nodes {
-              name
-            }
-          }
-          featuredImage {
-            node {
-              sourceUrl
-            }
-          }
-          uri
-          databaseId
-          title
-          date
+          ...ArticleContent
         }
       }
       sessions: articles(where: {categoryName: "GJ Sessions"}, first: 4) {
         nodes {
-          title
-          date
-          uri
-          databaseId
-          featuredImage {
-            node {
-              sourceUrl
-            }
-          }
-          categories {
-            nodes {
-              name
-            }
-          }
+          ...ArticleContent
         }
       }
     }

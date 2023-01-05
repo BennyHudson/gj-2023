@@ -1,7 +1,13 @@
 import { gql } from '@apollo/client'
+import { disableFragmentWarnings } from 'graphql-tag'
+
+import { houseNoteContent } from '@queries/fragments/houseNoteContent'
+
+disableFragmentWarnings()
 
 export const houseNotesQuery = {
   query: gql`
+    ${houseNoteContent}
     query HouseNotesQuery {
       page(id: "387159", idType: DATABASE_ID) {
         title
@@ -12,121 +18,32 @@ export const houseNotesQuery = {
         houseNotes {
           houseNotesOverheardColumn {
             ... on HouseNote {
-              articleType {
-                articleType
-                articleTypeLandingPageExcerpt
-              }
-              title
-              uri
-              featuredImage {
-                node {
-                  sourceUrl
-                }
-              }
-              author {
-                node {
-                  name
-                }
-              }
+              ... HouseNoteContent
             }
           }
           houseNotesPodcastColumn {
             ... on HouseNote {
-              articleType {
-                articleType
-              }
-              title
-              uri
-              featuredImage {
-                node {
-                  sourceUrl
-                }
-              }
-              author {
-                node {
-                  name
-                }
-              }
+              ... HouseNoteContent
             }
           }
           houseNotesWatchColumn {
             ... on HouseNote {
-              articleType {
-                articleType
-                articleTypeLandingPageExcerpt
-              }
-              title
-              uri
-              featuredImage {
-                node {
-                  sourceUrl
-                }
-              }
-              author {
-                node {
-                  name
-                }
-              }
+              ... HouseNoteContent
             }
           }
           houseNotesScrollColumn {
             ... on HouseNote {
-              articleType {
-                articleType
-                articleTypeLandingPageExcerpt
-              }
-              title
-              uri
-              featuredImage {
-                node {
-                  sourceUrl
-                }
-              }
-              author {
-                node {
-                  name
-                }
-              }
+              ... HouseNoteContent
             }
           }
           houseNotesReadColumn {
             ... on HouseNote {
-              articleType {
-                articleType
-                articleTypeLandingPageExcerpt
-              }
-              title
-              uri
-              featuredImage {
-                node {
-                  sourceUrl
-                }
-              }
-              author {
-                node {
-                  name
-                }
-              }
+              ... HouseNoteContent
             }
           }
           houseNotesQuoteColumn {
             ... on HouseNote {
-              articleType {
-                articleType
-                articleTypeLandingPageExcerpt
-              }
-              title
-              uri
-              featuredImage {
-                node {
-                  sourceUrl
-                }
-              }
-              author {
-                node {
-                  name
-                }
-              }
+              ... HouseNoteContent
             }
           }
         }   
