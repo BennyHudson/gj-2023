@@ -67,7 +67,7 @@ export const Link = styled.div((props: StyledLinkProps): FlattenSimpleInterpolat
     }
   `}
 
-  ${props.showIcon && css`
+  ${props.$showIcon && css`
     &::after {
       content: none;
     }

@@ -8,6 +8,12 @@ export const homepageQuery = {
           homeFeaturedPost {
             ... on Article {
               title
+              date
+              categories {
+                nodes {
+                  name
+                }
+              }
               uri
               databaseId
               articleAcf {
@@ -25,6 +31,12 @@ export const homepageQuery = {
           homeWeeklyHighlight {
             ... on Article {
               title
+              date
+              categories {
+                nodes {
+                  name
+                }
+              }
               uri
               databaseId
               articleAcf {
@@ -42,6 +54,12 @@ export const homepageQuery = {
           homeEditorsPick {
             ... on Article {
               title
+              date
+              categories {
+                nodes {
+                  name
+                }
+              }
               uri
               databaseId
               articleAcf {

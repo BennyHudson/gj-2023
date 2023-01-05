@@ -29,7 +29,7 @@ const GJLink: FC<LinkProps> = ({
           font={font}
           transform={transform}
           appearance={appearance}
-          showIcon={showIcon}
+          $showIcon={showIcon}
           as='a'
           href={to}
         >
@@ -37,13 +37,13 @@ const GJLink: FC<LinkProps> = ({
         </Styled.Link>
         :
         <Styled.Link 
-          inverse={inverse} 
+          $inverse={inverse} 
           size={size}
           weight={weight}
           font={font}
           transform={transform}
           appearance={appearance}
-          showIcon={showIcon}
+          $showIcon={showIcon}
           as={Link}
           href={to}
         >

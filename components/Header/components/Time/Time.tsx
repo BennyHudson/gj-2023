@@ -10,7 +10,11 @@ import { TimeProps } from './Time.types'
 
 const Time: FC<TimeProps> = ({ inverse = false }: TimeProps): ReactElement => {
   dayjs.extend(advancedFormat)
-  const [time, setTime] = useState(dayjs().format('dddd Do MMMM YYYY HH:mm:ss'))
+  const [time, setTime] = useState()
+
+  useEffect(() => {
+    setTime(dayjs().format('dddd Do MMMM YYYY HH:mm:ss'))
+  }, [])
 
   useEffect(() => {
     setTimeout(() => {
@@ -20,7 +24,7 @@ const Time: FC<TimeProps> = ({ inverse = false }: TimeProps): ReactElement => {
   
   return (
     <Styled.Time>
-      <Paragraph inverse={inverse} size={1} weight={2} font='Cera'>{time}</Paragraph>
+      {time && <Paragraph inverse={inverse} size={1} weight={2} font='Cera'>{time}</Paragraph>}
     </Styled.Time>
   )
 }

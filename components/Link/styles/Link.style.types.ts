@@ -11,6 +11,6 @@ export interface StyledLinkProps {
   $inverse: boolean
   font: LinkProps['font']
   transform: LinkProps['transform']
-  showIcon: boolean
+  $showIcon: boolean
   appearance: LinkProps['appearance'] 
 }

@@ -1,9 +1,5 @@
 import React, { FC, ReactElement, useState, useEffect } from 'react'
-import { ThemeProvider } from 'styled-components'
 import { CSSTransition } from 'react-transition-group'
-
-import GlobalStyle from '@styles/GlobalStyle'
-import { gjTheme } from '@themes/gjTheme'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
@@ -47,45 +43,41 @@ const PageLayout: FC<PageLayoutProps> = ({ children, locationPath }: PageLayoutP
   const cmsUrl = 'https://thegentlemansjournal.com'
     
   return (
-    <ThemeProvider theme={gjTheme}>
-      <GlobalStyle />
-      <PageContext.Provider
-        value={{
-          cmsUrl, 
-          apiUrl: `${cmsUrl}/wp-json/wp/v2`,
-          activeNavElement,
-          setActiveNavElement,
-          headerHeight,
-          setHeaderHeight,
-          showModal,
-          setShowModal,
-          searchTerm,
-          setSearchTerm,
-          searchResults,
-          setSearchResults,
-          searchPage,
-          setSearchPage,
-          navLoaded, 
-          setNavLoaded,
-        }}
-      >
-        <Styled.PageLayout>
-          <Header headerStyle={locationPath === '/' ? 'feature' : 'standard'} />
-          <Styled.Page>
-            {children}
-          </Styled.Page>
-          <CSSTransition
-            in={!!showModal}
-            timeout={400}
-            unmountOnExit
-          >
-            <ContainedModal>{showModal}</ContainedModal>
-          </CSSTransition>
-          <Footer />
-        </Styled.PageLayout>
-      </PageContext.Provider>
-      
-    </ThemeProvider>
+    <PageContext.Provider
+      value={{
+        cmsUrl, 
+        apiUrl: `${cmsUrl}/wp-json/wp/v2`,
+        activeNavElement,
+        setActiveNavElement,
+        headerHeight,
+        setHeaderHeight,
+        showModal,
+        setShowModal,
+        searchTerm,
+        setSearchTerm,
+        searchResults,
+        setSearchResults,
+        searchPage,
+        setSearchPage,
+        navLoaded, 
+        setNavLoaded,
+      }}
+    >
+      <Styled.PageLayout>
+        <Header headerStyle={locationPath === '/' ? 'feature' : 'standard'} />
+        <Styled.Page>
+          {children}
+        </Styled.Page>
+        <CSSTransition
+          in={!!showModal}
+          timeout={400}
+          unmountOnExit
+        >
+          <ContainedModal>{showModal}</ContainedModal>
+        </CSSTransition>
+        <Footer />
+      </Styled.PageLayout>
+    </PageContext.Provider>
   )
 }
 
