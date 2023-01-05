@@ -78,6 +78,7 @@ export async function getStaticPaths() {
   const allArticles = await getAllPosts('article')
 
   const paths = allArticles.map((article) => {
+    if (!article.node) return
     return {
       params: {
         slug: [article.node.slug],

@@ -3,6 +3,7 @@ import React, { FC, ReactElement, useEffect, useContext } from 'react'
 import { gql } from '@apollo/client'
 
 import client from '@lib/apollo-client'
+import { getAllPosts } from '@lib/api'
 
 import { podcastOptionsQuery } from '@queries/podcasts/podcast-options'
 
@@ -11,7 +12,6 @@ import PodcastContent from '@components/PodcastContent'
 import PodcastCarousel from '@components/PodcastCarousel'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
-import { getAllPosts } from '@lib/api'
 
 const Podcast: FC = ({ podcastData, podcastOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -38,6 +38,9 @@ export async function getStaticPaths() {
   const allPodcasts = await getAllPosts('podcast')
 
   const paths = allPodcasts.map((podcast) => {
+    console.log(podcast)
+    if (!podcast) return
+    if (!podcast.node) return
     return {
       params: {
         slug: [podcast.node.slug],
