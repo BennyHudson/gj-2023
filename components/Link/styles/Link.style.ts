@@ -82,4 +82,8 @@ export const Link = styled.div((props: StyledLinkProps): FlattenSimpleInterpolat
       transform: translateY(-1px);
     }
   }
+
+  svg {
+    width: 12px;
+  }
 `)

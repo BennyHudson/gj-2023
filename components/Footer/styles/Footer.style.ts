@@ -42,11 +42,16 @@ export const ScrollUp = styled.button((props: StyledFooterProps): FlattenSimpleI
   display: flex;
   align-items: center;
   gap: ${props.theme.spacing[2]}px;
+
+  svg {
+    width: 12px;
+  }
 `)
 
-export const Main = styled.div((): FlattenSimpleInterpolation => css`
+export const Main = styled.div((props: StyledFooterProps): FlattenSimpleInterpolation => css`
   display: grid;
   grid-template-columns: repeat(12, [col-start] 1fr);
+  padding: ${props.theme.spacing[4]}px 0;
 
   ${FooterMainMenu} {
     grid-column: col-start / span 9;
