@@ -40,7 +40,7 @@ const FullPageFeature: FC<FullPageFeatureProps> = ({
       <Styled.Spacer></Styled.Spacer>
       <Styled.Background>
         <Styled.FullPageFeature opacity={opacity}>
-          <Image src={featuredImageUrl(featuredImage.node.sourceUrl)} alt='' fill />
+          <Image src={featuredImageUrl(featuredImage.node.sourceUrl)} alt='' fill priority />
           <Styled.Content>
             <Paragraph size={1} weight={3} text='Featured Article' inverse font='Cera' transform='uppercase' />
             <Heading text={title} level={1} size={5} inverse font='ChronicleCondensed' />

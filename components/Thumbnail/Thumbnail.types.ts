@@ -10,4 +10,5 @@ export interface ThumbnailProps {
   categories?: Post['categories']
   date?: Post['date']
   featuredImage?: string
+  priority?: boolean
 }

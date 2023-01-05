@@ -18,11 +18,12 @@ const PostExcerpt: FC<PostExcerptProps> = ({
   categories,
   inverse = false,
   featuredImage,
+  priority = false,
 }: PostExcerptProps): ReactElement => {
   const membersOnly = categories && categories.nodes.find(category => category.name === 'Members')
   return (
     <Styled.PostExcerpt href={uri}>
-      <Thumbnail featuredImage={featuredImage.node.sourceUrl} />
+      <Thumbnail priority={priority} featuredImage={featuredImage.node.sourceUrl} />
       <Meta categories={categories} date={date} inverse={inverse} />
       <Styled.Title inverse={inverse}>
         {membersOnly && <FontAwesomeIcon icon={faLockAlt as IconProp} />}

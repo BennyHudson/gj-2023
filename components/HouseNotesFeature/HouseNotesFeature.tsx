@@ -22,19 +22,19 @@ const HouseNotesFeature: FC<HouseNotesFeatureProps> = ({
         {columns.read && (
           <Styled.FeatureColumn>
             <Styled.FeatureTitle><span>Read</span></Styled.FeatureTitle>
-            <HouseNoteExcerpt {...columns.read[0]} />
+            <HouseNoteExcerpt priority {...columns.read[0]} />
           </Styled.FeatureColumn>
         )}
         {columns.scroll && (
           <Styled.FeatureColumn>
             <Styled.FeatureTitle><span>Scroll</span></Styled.FeatureTitle>
-            <HouseNoteExcerpt {...columns.scroll[0]} />
+            <HouseNoteExcerpt priority {...columns.scroll[0]} />
           </Styled.FeatureColumn>
         )}
         {columns.listen && (
           <Styled.FeatureColumn>
             <Styled.FeatureTitle><span>Listen</span></Styled.FeatureTitle>
-            <HouseNoteExcerpt {...columns.listen} />
+            <HouseNoteExcerpt priority {...columns.listen} />
           </Styled.FeatureColumn>
         )}
         {columns.quote && (

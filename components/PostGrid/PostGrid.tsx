@@ -15,7 +15,12 @@ const PostGrid: FC<PostGridProps> = ({
     <Styled.PostGrid columns={columns}>
       {posts.map((post, index) => {
         return (
-          <PostExcerpt key={index} inverse={inverse} {...post} />
+          <PostExcerpt
+            priority={index < 4}
+            key={index} 
+            inverse={inverse} 
+            {...post}
+          />
         )
       })}
     </Styled.PostGrid>

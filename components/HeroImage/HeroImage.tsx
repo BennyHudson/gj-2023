@@ -13,7 +13,7 @@ const HeroImage: FC<HeroImageProps> = ({ featuredImage, height = 2 }: HeroImageP
   const { headerHeight } = useContext(PageContext) as PageContextProps
   return (
     <Styled.HeroImage headerHeight={headerHeight} height={height}>
-      <Image src={featuredImageUrl(featuredImage)} fill alt='' quality={100} />
+      <Image src={featuredImageUrl(featuredImage)} fill alt='' quality={100} priority />
     </Styled.HeroImage>
   )
 }
