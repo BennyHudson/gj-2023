@@ -11,6 +11,7 @@ import PodcastContent from '@components/PodcastContent'
 import PodcastCarousel from '@components/PodcastCarousel'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import { getAllPosts } from '@lib/api'
 
 const Podcast: FC = ({ podcastData, podcastOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -34,28 +35,12 @@ const Podcast: FC = ({ podcastData, podcastOptions }): ReactElement => {
 export default Podcast
 
 export async function getStaticPaths() {
-  const getAllPodcasts = await client.query({
-    query: gql`
-      query allPodcasts {
-        podcasts(first: 100) {
-          nodes {
-            slug
-            uri
-          }
-        }
-      }
-    `
-  })
-
-  const allPodcasts = getAllPodcasts.data.podcasts.nodes
-
-  if (!allPodcasts) return 
+  const allPodcasts = await getAllPosts('podcast')
 
   const paths = allPodcasts.map((podcast) => {
-    if (!podcast.slug) return
     return {
       params: {
-        slug: [podcast.slug],
+        slug: [podcast.node.slug],
       }
     }
   })

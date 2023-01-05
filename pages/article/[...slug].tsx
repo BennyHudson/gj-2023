@@ -3,6 +3,8 @@ import { gql } from '@apollo/client'
 
 import client from '@lib/apollo-client'
 
+import { getAllPosts } from '@lib/api'
+
 import HeroImage from '@components/HeroImage'
 import BannerAdvert from '@components/BannerAdvert'
 import Masthead from '@components/Masthead'
@@ -73,28 +75,12 @@ const Article: FC = ({ data }): ReactElement => {
 export default Article
 
 export async function getStaticPaths() {
-  const getAllArticles = await client.query({
-    query: gql`
-      query allArticles {
-        articles(first: 100) {
-          nodes {
-            slug
-            uri
-          }
-        }
-      }
-    `
-  })
-
-  const allArticles = getAllArticles.data.articles.nodes
-
-  if (!allArticles) return 
+  const allArticles = await getAllPosts('article')
 
   const paths = allArticles.map((article) => {
-    if (!article.slug) return
     return {
       params: {
-        slug: [article.slug],
+        slug: [article.node.slug],
       }
     }
   })
