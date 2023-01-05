@@ -23,7 +23,7 @@ const GJLink: FC<LinkProps> = ({
     <>
       {to.includes('http') ? 
         <Styled.Link 
-          inverse={inverse} 
+          $inverse={inverse} 
           size={size}
           weight={weight}
           font={font}

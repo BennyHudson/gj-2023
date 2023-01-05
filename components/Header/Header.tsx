@@ -44,7 +44,7 @@ const Header: FC<HeaderProps> = ({
   return (
     <Styled.Header transparent={transparent} headerStyle={headerStyle} ref={header}>
       <Styled.HeaderContents transparent={transparent}>
-        {/* <Time inverse={transparent} /> */}
+        <Time inverse={transparent} />
         <Logo inverse={transparent} />
         <SecondaryNav inverse={transparent} />
       </Styled.HeaderContents>

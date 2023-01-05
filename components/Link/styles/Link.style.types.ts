@@ -8,7 +8,7 @@ export interface StyledLinkProps {
   theme: Theme
   size: ParagraphKeys
   weight: WeightKeys
-  inverse: boolean
+  $inverse: boolean
   font: LinkProps['font']
   transform: LinkProps['transform']
   showIcon: boolean

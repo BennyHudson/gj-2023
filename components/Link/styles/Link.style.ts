@@ -59,7 +59,7 @@ export const Link = styled.div((props: StyledLinkProps): FlattenSimpleInterpolat
     `}
   `}
 
-  ${props.inverse && css`
+  ${props.$inverse && css`
     color: ${props.theme.colours.white};
 
     &::after {

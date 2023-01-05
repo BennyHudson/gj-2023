@@ -16,7 +16,7 @@ const PostGrid: FC<PostGridProps> = ({
       {posts.map((post, index) => {
         return (
           <PostExcerpt
-            priority={index < 4}
+            priority={index < 8}
             key={index} 
             inverse={inverse} 
             {...post}
