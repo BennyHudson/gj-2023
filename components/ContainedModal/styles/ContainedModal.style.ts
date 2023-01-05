@@ -45,4 +45,8 @@ export const CloseButton = styled.button((props: CloseButtonProps): FlattenSimpl
   &:hover {
     background: ${props.theme.colours.lightGrey};
   }
+
+  svg {
+    width: 20px;
+  }
 `)

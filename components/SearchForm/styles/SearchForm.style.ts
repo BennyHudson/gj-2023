@@ -55,6 +55,10 @@ export const Submit = styled.button((props: StyledSearchFormProps): FlattenSimpl
     background: ${props.theme.colours.midGrey};
     box-shadow: 0 0 0 2px ${props.theme.colours.midGrey};
   `}
+
+  svg {
+    width: 18px;
+  }
 `)
 
 export const TextField = styled(Field)((props: StyledSearchFormProps): FlattenSimpleInterpolation => css`

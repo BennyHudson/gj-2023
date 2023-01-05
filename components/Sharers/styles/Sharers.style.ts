@@ -14,4 +14,8 @@ export const Sharer = styled.a((props: StyledSharersProps): FlattenSimpleInterpo
   font-size: ${props.theme.typography.heading[2].fontSize};
   line-height: ${props.theme.typography.heading[2].lineHeight};
   color: ${props.theme.colours.grey};
+
+  svg {
+    width: 24px;
+  }
 `)

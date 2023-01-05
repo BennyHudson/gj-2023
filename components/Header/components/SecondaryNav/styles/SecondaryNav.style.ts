@@ -46,6 +46,10 @@ export const IconButton = styled.div((props: StyledSecondaryNavProps): FlattenSi
       background: ${props.theme.colours.black};
     }
   `}
+
+  svg {
+    width: 14px;
+  }
 `)
 
 export const Button = styled.button((props: StyledSecondaryNavProps): FlattenSimpleInterpolation => css`
@@ -76,4 +80,8 @@ export const Button = styled.button((props: StyledSecondaryNavProps): FlattenSim
       background: ${props.theme.colours.black};
     }
   `}
+
+  svg {
+    width: 14px;
+  }
 `)
