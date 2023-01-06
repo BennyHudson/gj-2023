@@ -1,6 +1,6 @@
 import { FC, ReactElement, useContext, useEffect } from 'react'
 import { gql } from '@apollo/client'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 
 import client from '@lib/apollo-client'
 
@@ -18,7 +18,7 @@ import FurtherReading from '@components/FurtherReading'
 import PageContext, { PageContextProps } from '@context/PageContext'
 
 const Article: FC = ({ data }): ReactElement => {
-  const router = useRouter()
+  // const router = useRouter()
 
   const articleData = data.article
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -35,13 +35,13 @@ const Article: FC = ({ data }): ReactElement => {
     }
 
     setActiveNavElement(1)
-  }, [setActiveNavElement, articleData, router.isFallback])
+  }, [setActiveNavElement, articleData])
 
-  // If the page is not yet generated, this will be displayed
-  // initially until getStaticProps() finishes running
-  if (router.isFallback) {
-    return <div>Loading...</div>
-  }
+  // // If the page is not yet generated, this will be displayed
+  // // initially until getStaticProps() finishes running
+  // if (router.isFallback) {
+  //   return <div>Loading...</div>
+  // }
 
   const homeLink = {
     title: 'Home',
@@ -50,7 +50,9 @@ const Article: FC = ({ data }): ReactElement => {
 
   let categoryCrumbs = []
   if (articleData.categories) {
+    console.log('hello')
     categoryCrumbs = articleData.categories.nodes.map((category) => {
+      console.log(category)
       return {
         title: category.name,
         url: category.uri,
@@ -89,7 +91,7 @@ const Article: FC = ({ data }): ReactElement => {
           }}
           contentBuilder={articleData.articleAcf.contentBuilder}
         />
-        {articleData.categories &&
+        {articleData.categories?.nodes.length &&
           <>
             <FurtherReading
               articleId={articleData.id}

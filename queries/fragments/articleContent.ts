@@ -15,6 +15,7 @@ export const articleContent = gql`
     categories {
       nodes {
         name
+        uri
       }
     }
     articleAcf {
