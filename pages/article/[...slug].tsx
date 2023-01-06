@@ -1,5 +1,6 @@
 import { FC, ReactElement, useContext, useEffect } from 'react'
 import { gql } from '@apollo/client'
+import { useRouter } from 'next/router'
 
 import client from '@lib/apollo-client'
 
@@ -14,6 +15,8 @@ import ContentGrid from '@components/ContentGrid'
 import PageContext, { PageContextProps } from '@context/PageContext'
 
 const Article: FC = ({ data }): ReactElement => {
+  const router = useRouter()
+
   const articleContent = data.article
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
@@ -29,7 +32,13 @@ const Article: FC = ({ data }): ReactElement => {
     }
 
     setActiveNavElement(1)
-  }, [setActiveNavElement, articleContent])
+  }, [setActiveNavElement, articleContent, router.isFallback])
+
+  // If the page is not yet generated, this will be displayed
+  // initially until getStaticProps() finishes running
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
 
   const homeLink = {
     title: 'Home',
@@ -102,7 +111,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   }
 }
 
