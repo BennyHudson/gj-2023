@@ -50,9 +50,7 @@ const Article: FC = ({ data }): ReactElement => {
 
   let categoryCrumbs = []
   if (articleData.categories) {
-    console.log('hello')
     categoryCrumbs = articleData.categories.nodes.map((category) => {
-      console.log(category)
       return {
         title: category.name,
         url: category.uri,
