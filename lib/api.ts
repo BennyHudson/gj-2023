@@ -27,7 +27,7 @@ const queryPostType = (postType: string, after?: string) => {
 
 export const getAllPosts = async (postType: string): Promise<{cursor: string; node: { slug: string}}[]> => {
   const allPosts = []
-  const hasNextPage = false
+  let hasNextPage = true
   let after = ''
 
   while (hasNextPage) {
@@ -35,6 +35,7 @@ export const getAllPosts = async (postType: string): Promise<{cursor: string; no
     if (posts) {
       allPosts.push(...posts.data[`${postType}s`].edges)
       // hasNextPage = posts.data[`${postType}s`].pageInfo.hasNextPage
+      hasNextPage = false
       after = posts.data[`${postType}s`].pageInfo.endCursor
     }
   }
