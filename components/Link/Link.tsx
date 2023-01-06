@@ -19,6 +19,7 @@ const GJLink: FC<LinkProps> = ({
   transform,
   showIcon = false,
 }: LinkProps): ReactElement => {
+  if (!to) return 
   return (
     <>
       {to.includes('http') ? 

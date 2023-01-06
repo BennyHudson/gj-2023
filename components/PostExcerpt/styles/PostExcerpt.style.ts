@@ -32,3 +32,15 @@ export const Title = styled.div((props: StyledPostExcerptProps): FlattenSimpleIn
     color: ${props.theme.colours.white};
   `}
 `)
+
+export const IconWrapper = styled.div((props: StyledPostExcerptProps): FlattenSimpleInterpolation => css`
+  display: flex;
+  align-items: center;
+  height: ${props.theme.typography.heading[1].lineHeight};
+  width: 12px;
+  flex-shrink: 0;
+
+  svg {
+    width: 100%;
+  }
+`)

@@ -6,33 +6,36 @@ import client from '@lib/apollo-client'
 
 import { getAllPosts } from '@lib/api'
 
+import { articleContent } from '@queries/fragments/articleContent'
+
 import HeroImage from '@components/HeroImage'
 import BannerAdvert from '@components/BannerAdvert'
 import Masthead from '@components/Masthead'
 import Section from '@components/Section'
 import ContentGrid from '@components/ContentGrid'
+import FurtherReading from '@components/FurtherReading'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
 const Article: FC = ({ data }): ReactElement => {
   const router = useRouter()
 
-  const articleContent = data.article
+  const articleData = data.article
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
-    if (!articleContent.categories) {
+    if (!articleData.categories) {
       setActiveNavElement(1)
       return
     }
 
-    if (articleContent.categories.nodes.find(category => category.name === 'Video')) {
+    if (articleData.categories.nodes.find(category => category.name === 'Video')) {
       setActiveNavElement(4)
       return
     }
 
     setActiveNavElement(1)
-  }, [setActiveNavElement, articleContent, router.isFallback])
+  }, [setActiveNavElement, articleData, router.isFallback])
 
   // If the page is not yet generated, this will be displayed
   // initially until getStaticProps() finishes running
@@ -46,8 +49,8 @@ const Article: FC = ({ data }): ReactElement => {
   }
 
   let categoryCrumbs = []
-  if (articleContent.categories) {
-    categoryCrumbs = articleContent.categories.nodes.map((category) => {
+  if (articleData.categories) {
+    categoryCrumbs = articleData.categories.nodes.map((category) => {
       return {
         title: category.name,
         url: category.uri,
@@ -56,36 +59,44 @@ const Article: FC = ({ data }): ReactElement => {
   }
 
   const currentPage = {
-    title: articleContent!.title,
-    url: articleContent!.uri,
+    title: articleData!.title,
+    url: articleData!.uri,
   }
   
   const breadcrumbs = [homeLink, ...categoryCrumbs, currentPage]
 
   return (
     <>
-      {articleContent.featuredImage && <HeroImage featuredImage={articleContent.featuredImage.node.sourceUrl} />}
+      {articleData.featuredImage && <HeroImage featuredImage={articleData.featuredImage.node.sourceUrl} />}
       <BannerAdvert />
       <Section>
         <Masthead
-          title={articleContent.title}
+          title={articleData.title}
           breadcrumbs={breadcrumbs}
-          subtitle={articleContent.articleAcf?.standfirst}
+          subtitle={articleData.articleAcf?.standfirst}
         />
         <ContentGrid
           byline={{
-            author: articleContent.author?.node.name,
-            photographer: articleContent.byLineAdditional?.photographerName,
-            additionalBylines: articleContent.byLineAdditional?.otherByLines,
+            author: articleData.author?.node.name,
+            photographer: articleData.byLineAdditional?.photographerName,
+            additionalBylines: articleData.byLineAdditional?.otherByLines,
             sponsoredPost: {
-              logo: articleContent.sponsoredPost?.sponsorLogo?.sourceUrl,
-              name: articleContent.sponsoredPost?.sponsorName,
-              url: articleContent.sponsoredPost?.sponsorUrl,
-              disableLink: articleContent.sponsoredPost?.sponsorDisableLink,
+              logo: articleData.sponsoredPost?.sponsorLogo?.sourceUrl,
+              name: articleData.sponsoredPost?.sponsorName,
+              url: articleData.sponsoredPost?.sponsorUrl,
+              disableLink: articleData.sponsoredPost?.sponsorDisableLink,
             },
           }}
-          contentBuilder={articleContent.articleAcf.contentBuilder}
+          contentBuilder={articleData.articleAcf.contentBuilder}
         />
+        {articleData.categories &&
+          <>
+            <FurtherReading
+              articleId={articleData.id}
+              category={articleData.categories.nodes[articleData.categories.nodes.length - 1].name}
+            />
+          </>
+        }
       </Section>
     </>
   )
@@ -119,19 +130,10 @@ export async function getStaticProps({ params }) {
   const { slug } = params
   const response = await client.query({
     query: gql`
+      ${articleContent}
       query articleQuery {
         article(id: "${slug}", idType: SLUG) {
-          title
-          featuredImage {
-            node {
-              sourceUrl
-            }
-          }
-          author {
-            node {
-              name
-            }
-          }
+          ... ArticleContent
           byLineAdditional {
             photographerName
             otherByLines {
@@ -146,12 +148,6 @@ export async function getStaticProps({ params }) {
             sponsorDisableLink
             sponsorName
             sponsorUrl
-          }
-          categories {
-            nodes {
-              name
-              uri
-            }
           }
           articleAcf {
             standfirst

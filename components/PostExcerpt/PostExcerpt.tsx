@@ -26,7 +26,7 @@ const PostExcerpt: FC<PostExcerptProps> = ({
       <Thumbnail priority={priority} featuredImage={featuredImage.node.sourceUrl} />
       <Meta categories={categories} date={date} inverse={inverse} />
       <Styled.Title inverse={inverse}>
-        {membersOnly && <FontAwesomeIcon icon={faLockAlt as IconProp} />}
+        {membersOnly && <Styled.IconWrapper><FontAwesomeIcon icon={faLockAlt as IconProp} /></Styled.IconWrapper>}
         <Heading size={1} text={title} inverse={inverse} />
       </Styled.Title>
       

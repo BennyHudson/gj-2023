@@ -34,8 +34,8 @@ export const getAllPosts = async (postType: string): Promise<{cursor: string; no
     const posts = await client.query(queryPostType(postType, after))
     if (posts) {
       allPosts.push(...posts.data[`${postType}s`].edges)
-      // hasNextPage = posts.data[`${postType}s`].pageInfo.hasNextPage
-      hasNextPage = false
+      hasNextPage = posts.data[`${postType}s`].pageInfo.hasNextPage
+      // hasNextPage = false
       after = posts.data[`${postType}s`].pageInfo.endCursor
     }
   }
