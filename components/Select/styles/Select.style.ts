@@ -21,4 +21,12 @@ export const IconWrapper = styled.span((props: StyledSelectProps): FlattenSimple
   transform: translateY(-50%);
   right: ${props.theme.spacing[2]}px;
   pointer-events: none;
+  width: 12px;
+  display: flex;
+  align-items: center;
+
+  svg {
+    width: 100%;
+    color: ${props.theme.colours.grey};
+  }
 `)

@@ -1,8 +1,12 @@
 import React, { ReactElement, FC, useContext } from 'react'
+import Image from 'next/image'
+
+import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import Heading from '@components/Heading'
 import Paragraph from '@components/Paragraph'
 import Link from '@components/Link'
+import Overlay from '@components/Overlay'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
@@ -15,6 +19,7 @@ const GiftGuideFeature: FC<GiftGuideFeatureProps> = ({
   meta,
   subtitle,
   url,
+  featuredImage,
 }: GiftGuideFeatureProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps
   return (
@@ -27,6 +32,12 @@ const GiftGuideFeature: FC<GiftGuideFeatureProps> = ({
           <Link to={url} size={2} font='Cera' transform='uppercase' showIcon inverse>Read More</Link>
         </Styled.Content>
       </Styled.Container>
+      {featuredImage && 
+        <>
+          <Overlay />
+          <Image src={featuredImageUrl(featuredImage)} fill alt='' />
+        </>
+      }
     </Styled.GiftGuideFeature>
   )
 }

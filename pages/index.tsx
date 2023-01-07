@@ -5,6 +5,7 @@ import { homepageQuery } from '@queries/homepage/homepage'
 import { latestPostsQuery } from '@queries/homepage/latest-posts'
 import { sessionsFeatureQuery } from '@queries/homepage/sessions-feature'
 import { latestPodcastsQuery } from '@queries/homepage/latest-podcasts'
+import { giftGuideQuery } from '@queries/homepage/gift-guide'
 import { latestVideoQuery } from '@queries/homepage/latest-video'
 import { categoryQuery } from '@queries/homepage/category'
 
@@ -12,7 +13,6 @@ import FullPageFeature from '@components/FullPageFeature'
 import Section from '@components/Section'
 import Title from '@components/Title'
 import PostGrid from '@components/PostGrid'
-import VerticalSpacer from '@components/VerticalSpacer'
 import BannerAdvert from '@components/BannerAdvert'
 import GiftGuideFeature from '@components/GiftGuideFeature'
 import WeeklyHighlight from '@components/WeeklyHighlight'
@@ -27,6 +27,7 @@ const Home: FC = ({
   latestPosts, 
   coverInterviews, 
   sessionsFeature,
+  giftGuide,
   latestPodcasts,
   latestVideo,
   competitions,
@@ -56,21 +57,7 @@ const Home: FC = ({
         />
         <PostGrid
           columns={3}
-          posts={[
-            latestPosts[0],
-            latestPosts[1],
-            latestPosts[2],
-          ]}
-        />
-        <VerticalSpacer spacingLevel={4} />
-        <PostGrid
-          columns={4}
-          posts={[
-            latestPosts[3],
-            latestPosts[4],
-            latestPosts[5],
-            latestPosts[6],
-          ]}
+          posts={latestPosts}
         />
       </Section>
       <BannerAdvert />
@@ -96,6 +83,7 @@ const Home: FC = ({
         title={`Introducing the Gentleman's Journal Gift Guide`}
         subtitle='Perfect presents for everyone in your life as chosen by our experts'
         url='/gift-guide'
+        featuredImage={giftGuide.featuredImage.node.sourceUrl}
       />
       <Section>
         <Title
@@ -173,6 +161,7 @@ export async function getStaticProps() {
   const latestPosts = await client.query(latestPostsQuery)
   const coverInterviews = await client.query(categoryQuery('Cover Interviews'))
   const sessionFeature = await client.query(sessionsFeatureQuery)
+  const giftGuide = await client.query(giftGuideQuery)
   const latestPodcasts = await client.query(latestPodcastsQuery)
   const latestVideo = await client.query(latestVideoQuery)
   const competitions = await client.query(categoryQuery('Competitions'))
@@ -183,6 +172,7 @@ export async function getStaticProps() {
       latestPosts: latestPosts.data.articles.nodes,
       coverInterviews: coverInterviews.data,
       sessionsFeature: sessionFeature.data,
+      giftGuide: giftGuide.data.page.pageGifting.ctaFirst,
       latestPodcasts: latestPodcasts.data,
       latestVideo: latestVideo.data.articles.nodes,
       competitions: competitions.data,

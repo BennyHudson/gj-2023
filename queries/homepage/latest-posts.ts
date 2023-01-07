@@ -6,7 +6,7 @@ export const latestPostsQuery = {
   query: gql`
     ${articleContent}
     query latestPosts {
-      articles(first: 7) {
+      articles(first: 6) {
         nodes {
           ... ArticleContent
         }

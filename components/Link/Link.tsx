@@ -18,39 +18,28 @@ const GJLink: FC<LinkProps> = ({
   font = 'Chronicle',
   transform,
   showIcon = false,
+  href,
 }: LinkProps): ReactElement => {
+  const renderAs = (): string | typeof Link => {
+    if (to) return Link
+    if (to && to.includes('http')) return a
+    return 'a'
+  }
+
   return (
-    <>
-      {to.includes('http') ? 
-        <Styled.Link 
-          $inverse={inverse} 
-          size={size}
-          weight={weight}
-          font={font}
-          transform={transform}
-          appearance={appearance}
-          $showIcon={showIcon}
-          as='a'
-          href={to}
-        >
-          {children} {showIcon && <FontAwesomeIcon icon={faAngleRight as IconProp} size='2x' />}
-        </Styled.Link>
-        :
-        <Styled.Link 
-          $inverse={inverse} 
-          size={size}
-          weight={weight}
-          font={font}
-          transform={transform}
-          appearance={appearance}
-          $showIcon={showIcon}
-          as={Link}
-          href={to}
-        >
-          {children} {showIcon && <FontAwesomeIcon icon={faAngleRight as IconProp} size='2x' />}
-        </Styled.Link>
-      }
-    </>
+    <Styled.Link 
+      $inverse={inverse} 
+      size={size}
+      weight={weight}
+      font={font}
+      transform={transform}
+      appearance={appearance}
+      $showIcon={showIcon}
+      as={renderAs()}
+      href={href ? href : to}
+    >
+      {children} {showIcon && <FontAwesomeIcon icon={faAngleRight as IconProp} size='2x' />}
+    </Styled.Link>
   )
 }
 

@@ -6,6 +6,7 @@ import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import Meta from '@components/Meta'
 import Heading from '@components/Heading'
+import Overlay from '@components/Overlay'
 
 import * as Styled from './styles/Thumbnail.style'
 
@@ -21,19 +22,31 @@ const Thumbnail: FC<ThumbnailProps> = ({
   title,
   date,
   priority = false,
+  href,
+  contain = false,
 }: ThumbnailProps): ReactElement => {  
+  const renderAs = (): string | typeof Link => {
+    if (to) return Link
+    if (href) return 'a'
+    return 'div'
+  }
+
   return (
     <Styled.Thumbnail 
       type={type} 
-      href={to} 
-      as={to ? Link : 'div'} 
+      href={href ? href : to} 
+      as={renderAs()} 
       size={size}
+      contain={contain}
     >
       {showTitle && 
-        <Styled.ThumbnailContent>
-          <Meta categories={categories} date={date} inverse />
-          <Heading text={title} inverse font='ChronicleCondensed' size={3} />
-        </Styled.ThumbnailContent>
+        <>
+          <Styled.ThumbnailContent>
+            <Meta categories={categories} date={date} inverse />
+            <Heading text={title} inverse font='ChronicleCondensed' size={3} />
+          </Styled.ThumbnailContent>
+          <Overlay />
+        </>
       }
       {featuredImage && 
         <Image 

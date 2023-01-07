@@ -15,6 +15,7 @@ import PageContext, { PageContextProps } from '@context/PageContext'
 import * as Styled from './styles/FeatureCarousel.style'
 
 import { FeatureCarouselProps } from './FeatureCarousel.types'
+import Overlay from '@components/Overlay'
 
 const FeatureCarousel: FC<FeatureCarouselProps> = ({
   title,
@@ -50,6 +51,7 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
         </Styled.Thumbs>
       </Section>
       <Styled.ImageWrapper>
+        <Overlay />
         {posts.map((post, index) => {
           if (index !== activeIndex) return
           return (

@@ -12,9 +12,10 @@ const TextArea: FC<FormFieldProps> = ({
   isRequired,
   id,
   databaseId,
+  labelPlacement,
 }: FormFieldProps): ReactElement => {
   return (
-    <FieldWrapper target={target} label={label} required={isRequired}>
+    <FieldWrapper target={target} label={label} required={isRequired} labelPlacement={labelPlacement}>
       <Styled.TextArea name={`input_${id}`} id={`input_${databaseId}_${id}`} as='textarea' rows={4} />
     </FieldWrapper>
   )

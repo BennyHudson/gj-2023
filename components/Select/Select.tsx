@@ -16,10 +16,10 @@ const Select: FC<SelectProps> = ({
   id,
   databaseId,
   choices,
-  hideLabels = false,
+  labelPlacement,
 }: SelectProps): ReactElement => {
   return (
-    <FieldWrapper target={target} label={label} required={isRequired} hideLabels={hideLabels}>
+    <FieldWrapper target={target} label={label} required={isRequired} labelPlacement={labelPlacement}>
       <Styled.SelectWrapper>
         <Styled.Select name={`input_${id}`} id={`input_${databaseId}_${id}`} as='select'>
           {choices.map((choice, index) => {

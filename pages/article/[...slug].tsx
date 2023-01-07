@@ -6,7 +6,7 @@ import client from '@lib/apollo-client'
 
 import { getAllPosts } from '@lib/api'
 
-import { articleContent } from '@queries/fragments/articleContent'
+import { articleBody } from '@queries/article/article-body'
 
 import HeroImage from '@components/HeroImage'
 import BannerAdvert from '@components/BannerAdvert'
@@ -18,8 +18,6 @@ import FurtherReading from '@components/FurtherReading'
 import PageContext, { PageContextProps } from '@context/PageContext'
 
 const Article: FC = ({ data }): ReactElement => {
-  // const router = useRouter()
-
   const articleData = data.article
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
@@ -36,12 +34,6 @@ const Article: FC = ({ data }): ReactElement => {
 
     setActiveNavElement(1)
   }, [setActiveNavElement, articleData])
-
-  // // If the page is not yet generated, this will be displayed
-  // // initially until getStaticProps() finishes running
-  // if (router.isFallback) {
-  //   return <div>Loading...</div>
-  // }
 
   const homeLink = {
     title: 'Home',
@@ -88,6 +80,7 @@ const Article: FC = ({ data }): ReactElement => {
             },
           }}
           contentBuilder={articleData.articleAcf.contentBuilder}
+          contentBuilderPrefix='Article_Articleacf_ContentBuilder'
         />
         {articleData.categories?.nodes.length &&
           <>
@@ -128,207 +121,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { slug } = params
-  const response = await client.query({
-    query: gql`
-      ${articleContent}
-      query articleQuery {
-        article(id: "${slug}", idType: SLUG) {
-          ... ArticleContent
-          byLineAdditional {
-            photographerName
-            otherByLines {
-              content
-              title
-            }
-          }
-          sponsoredPost {
-            sponsorLogo {
-              sourceUrl
-            }
-            sponsorDisableLink
-            sponsorName
-            sponsorUrl
-          }
-          articleAcf {
-            standfirst
-            featuredMedia
-            featuredVideo
-            contentBuilder {
-              ... on Article_Articleacf_ContentBuilder_Heading {
-                heading
-                pull
-                selectHeadingType
-                fieldGroupName
-              }
-              ... on Article_Articleacf_ContentBuilder_Paragraph {
-                fieldGroupName
-                paragraph
-                pull
-              }
-              ... on Article_Articleacf_ContentBuilder_Blockquote {
-                text
-                fieldGroupName
-              }
-              ... on Article_Articleacf_ContentBuilder_Image {
-                fieldGroupName
-                image {
-                  sourceUrl
-                  caption
-                }
-                hasLink
-                imageSize
-                internalExternal
-                externalLink
-                internalLink {
-                  ... on Article {
-                    id
-                    uri
-                  }
-                  ... on Post {
-                    id
-                    uri
-                  }
-                  ... on Page {
-                    id
-                    uri
-                  }
-                }
-              }
-              ... on Article_Articleacf_ContentBuilder_VideoEmbed {
-                fieldGroupName
-                videoEmbed
-                videoThumb {
-                  sourceUrl
-                }
-              }
-              ... on Article_Articleacf_ContentBuilder_ImageGallery {
-                fieldGroupName
-                type
-                gallery {
-                  sourceUrl
-                  caption
-                }
-              }
-              ... on Article_Articleacf_ContentBuilder_MasonryGallery {
-                fieldGroupName
-                gallery {
-                  caption
-                  sourceUrl
-                }
-              }
-              ... on Article_Articleacf_ContentBuilder_ImageSlider {
-                fieldGroupName
-                slider {
-                  caption
-                  sourceUrl
-                }
-              }
-              ... on Article_Articleacf_ContentBuilder_List {
-                fieldGroupName
-                listTitle
-                list {
-                  listItem
-                }
-              }
-              ... on Article_Articleacf_ContentBuilder_CodeSnippet {
-                adCode
-                fieldGroupName
-              }
-              ... on Article_Articleacf_ContentBuilder_RecommendedProducts {
-                fieldGroupName
-                recommendedProducts {
-                  ... on SubscriptionProduct {
-                    id
-                    name
-                  }
-                }
-              }
-              ... on Article_Articleacf_ContentBuilder_AffiliateProducts {
-                fieldGroupName
-                affiliateProducts {
-                  urlButtonText
-                  title
-                  text
-                  price
-                  affiliateLink
-                  image {
-                    caption
-                    sourceUrl
-                  }
-                }
-              }
-              ... on Article_Articleacf_ContentBuilder_SingleAffiliate {
-                description
-                fieldGroupName
-                link
-                price
-                title
-                image {
-                  caption
-                  sourceUrl
-                }
-              }
-              ... on Article_Articleacf_ContentBuilder_ButtonInfoBlock {
-                callToAction
-                fieldGroupName
-                image {
-                  caption
-                  sourceUrl
-                }
-                link
-                title
-              }
-              ... on Article_Articleacf_ContentBuilder_AffiliateButton {
-                fieldGroupName
-                text
-                url
-              }
-              ... on Article_Articleacf_ContentBuilder_CompetitionForm {
-                fieldGroupName
-                formShortcode
-              }
-              ... on Article_Articleacf_ContentBuilder_Heading2 {
-                fieldGroupName
-                heading2
-              }
-              ... on Article_Articleacf_ContentBuilder_Heading3 {
-                fieldGroupName
-                heading3
-              }
-              ... on Article_Articleacf_ContentBuilder_MediaAndText {
-                alignment
-                fieldGroupName
-                gallery {
-                  caption
-                  sourceUrl
-                }
-              }
-              ... on Article_Articleacf_ContentBuilder_PodcastPlayer {
-                fieldGroupName
-                title
-                source {
-                  ... on Podcast {
-                    id
-                    podcasts {
-                      podcastMeta {
-                        media {
-                          audio
-                        }
-                        guest {
-                          name
-                          about
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    `,
-  })
+  const response = await client.query(articleBody(slug))
 
   return {
     props: {

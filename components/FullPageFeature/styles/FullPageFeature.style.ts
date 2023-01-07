@@ -29,18 +29,7 @@ export const FullPageFeature = styled.div((props: StyledFullPageFeatureProps): F
   align-items: flex-end;
   width: 100%;
   opacity: ${props.opacity};
-  position: relative;;
-
-  &::before {
-    background-image: linear-gradient(0deg, rgba(0,0,0,.7), hsla(0,0%,100%,0) 50%, rgba(0,0,0,.3));
-    bottom: 0;
-    content: "";
-    height: 100%;
-    left: 0;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-  }
+  position: relative;
 
   img {
     object-fit: cover;
@@ -52,7 +41,6 @@ export const Content = styled.div((props: ContentProps): FlattenSimpleInterpolat
   grid-column: col-start / span 6;
   position: relative;
   z-index: 2;
-  backdrop-filter: blur(5px);
   padding: ${props.theme.spacing[4]}px;
   border-top: 2px solid ${props.theme.colours.white};
 `)

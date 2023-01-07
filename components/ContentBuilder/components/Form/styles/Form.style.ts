@@ -1,6 +1,7 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
-
 import { Form as FormikForm } from 'formik'
+
+import { Heading } from '@components/Heading/styles/Heading.style'
 
 import { StyledFormProps } from './Form.style.types'
 
@@ -11,6 +12,10 @@ export const Form = styled(FormikForm)((props: FormProps): FlattenSimpleInterpol
   border-bottom: 1px solid ${props.theme.colours.grey};
   padding: ${props.theme.spacing[8]}px ${props.theme.spacing[4]}px;
   margin: ${props.theme.spacing[4]}px 0;
+
+  ${Heading} {
+    margin-bottom: ${props.theme.spacing[6]}px;
+  }
 `)
 
 export const Submit = styled.button((props: StyledFormProps): FlattenSimpleInterpolation => css`

@@ -11,4 +11,6 @@ export interface ThumbnailProps {
   date?: Post['date']
   featuredImage?: string
   priority?: boolean
+  href?: string
+  contain?: boolean
 }

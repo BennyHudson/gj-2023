@@ -11,11 +11,11 @@ const FieldWrapper: FC<FieldWrapperProps> = ({
   label,
   children,
   required = false,
-  hideLabels = false,
+  labelPlacement = 'TOP',
 }: FieldWrapperProps): ReactElement => {
   return (
-    <Styled.FieldWrapper>
-      {!hideLabels && <Label target={target} text={label} required={required} />}
+    <Styled.FieldWrapper labelPlacement={labelPlacement}>
+      {labelPlacement !== 'HIDDEN' && <Label target={target} text={label} required={required} />}
       {children}
     </Styled.FieldWrapper>
   )

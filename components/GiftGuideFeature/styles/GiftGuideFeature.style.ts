@@ -20,6 +20,7 @@ export const Container = styled.div((props: ThemeProps): FlattenSimpleInterpolat
   grid-template-columns: repeat(12, [col-start] 1fr);
   gap: ${props.theme.spacing[4]}px;
   align-items: flex-end;
+  z-index: 2;
 `)
 
 export const Content = styled.div((props: ThemeProps): FlattenSimpleInterpolation => css`

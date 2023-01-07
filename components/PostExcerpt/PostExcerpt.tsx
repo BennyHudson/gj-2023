@@ -23,7 +23,7 @@ const PostExcerpt: FC<PostExcerptProps> = ({
   const membersOnly = categories && categories.nodes.find(category => category.name === 'Members')
   return (
     <Styled.PostExcerpt href={uri}>
-      <Thumbnail priority={priority} featuredImage={featuredImage.node.sourceUrl} />
+      <Thumbnail priority={priority} featuredImage={featuredImage?.node.sourceUrl} />
       <Meta categories={categories} date={date} inverse={inverse} />
       <Styled.Title inverse={inverse}>
         {membersOnly && <Styled.IconWrapper><FontAwesomeIcon icon={faLockAlt as IconProp} /></Styled.IconWrapper>}

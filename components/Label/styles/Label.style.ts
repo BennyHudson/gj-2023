@@ -4,7 +4,6 @@ import { StyledLabelProps } from './Label.style.types'
 
 export const Label = styled.label((props: StyledLabelProps): FlattenSimpleInterpolation => css`
   display: block;
-  font-family: 'Chronicle Regular';
   margin-bottom: ${props.theme.spacing[2]}px;
 `)
 

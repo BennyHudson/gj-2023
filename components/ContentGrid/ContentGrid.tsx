@@ -10,13 +10,16 @@ import { ContentGridProps } from './ContentGrid.types'
 const ContentGrid: FC<ContentGridProps> = ({
   byline,
   contentBuilder,
+  contentBuilderPrefix,
 }: ContentGridProps): ReactElement => {
   return (
     <Styled.ContentGrid>
-      <Styled.Sidebar>
-        <Byline {...byline} />
-      </Styled.Sidebar>
-      <ContentBuilder content={contentBuilder} />
+      {byline &&
+        <Styled.Sidebar>
+          <Byline {...byline} />
+        </Styled.Sidebar>
+      }
+      <ContentBuilder content={contentBuilder} prefix={contentBuilderPrefix} />
       <Styled.SecondarySidebar>
 
       </Styled.SecondarySidebar>

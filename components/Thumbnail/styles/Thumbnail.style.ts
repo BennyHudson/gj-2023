@@ -48,7 +48,7 @@ export const Thumbnail = styled.div((props: StyledThumbnailProps): FlattenSimple
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: ${props.contain ? 'contain' : 'cover'};
     transition: 1s all ease;
   }
 
@@ -73,7 +73,7 @@ export const ThumbnailContent = styled.div((props: StyledThumbnailProps): Flatte
   position: absolute;
   width: 100%;
   height: 50%;
-  z-index: 1;
+  z-index: 2;
   top: 50%;
   left: 0;
   display: flex;

@@ -3,4 +3,5 @@ export interface GiftGuideFeatureProps {
   meta: string
   subtitle?: string
   url: string
+  featuredImage?: string
 }

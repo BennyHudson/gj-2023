@@ -14,12 +14,12 @@ import { ContentBuilderProps } from './ContentBuilder.types'
 
 const ContentBuilder: FC<ContentBuilderProps> = ({
   content,
+  prefix,
 }: ContentBuilderProps): ReactElement => {
   // console.log(content)
   return (
     <>
       {content.map((block, index) => {
-        const prefix = 'Article_Articleacf_ContentBuilder'
         switch (block.fieldGroupName) {
         case `${prefix}_Paragraph` :
           return (
@@ -68,7 +68,7 @@ const ContentBuilder: FC<ContentBuilderProps> = ({
 
         case `${prefix}_CompetitionForm` :
           return (
-            <Form key={index} />
+            <Form key={index} formId={block.gravityForm} />
           )
         }        
       })}

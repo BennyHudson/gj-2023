@@ -13,11 +13,11 @@ const TextField: FC<FormFieldProps> = ({
   id,
   databaseId,
   placeholder,
-  hideLabels = false,
+  labelPlacement,
   type = 'text'
 }: FormFieldProps): ReactElement => {
   return (
-    <FieldWrapper target={target} label={label} required={isRequired} hideLabels={hideLabels}>
+    <FieldWrapper target={target} label={label} required={isRequired} labelPlacement={labelPlacement}>
       <Styled.TextField name={`input_${id}`} id={`input_${databaseId}_${id}`} placeholder={placeholder} type={type} />
     </FieldWrapper>
   )

@@ -15,6 +15,9 @@ export const FeatureCarousel = styled.div((props: FeatureCarouselProps): Flatten
   ${Section} {
     width: 100%;
     display: flex;
+    position: relative;
+    z-index: 2;
+    background: none;
   }
 
   ${Content} {

@@ -3,12 +3,19 @@ import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { TextArea } from '../../TextArea/styles/TextArea.style'
 import { TextField } from '../../TextField/styles/TextField.style'
 import { Select } from '../../Select/styles/Select.style'
+import { Label } from '@components/Label/styles/Label.style'
 
 import { StyledFieldWrapperProps } from './FieldWrapper.style.types'
 
 export const FieldWrapper = styled.div((props: StyledFieldWrapperProps): FlattenSimpleInterpolation => css`
   margin-bottom: ${props.theme.spacing[4]}px;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  ${props.labelPlacement === 'INHERIT' && css`
+    flex-direction: column-reverse;
+  `}
 
   ${TextField},
   ${Select} {
@@ -18,13 +25,15 @@ export const FieldWrapper = styled.div((props: StyledFieldWrapperProps): Flatten
   ${TextArea},
   ${TextField} {
     border: 1px solid ${props.theme.colours.midGrey};
-    padding: ${props.theme.spacing[2]}px;
-    font-size: ${props.theme.typography.heading[1].fontSize};
+    padding: ${props.theme.spacing[1]}px ${props.theme.spacing[2]}px;
+    font-family: 'Cera Pro Regular';
+    font-size: 16px;
+    line-height: 24px;
     flex-grow: 1;
     transition: 0.4s all ease;
-    font-family: 'Chronicle Condensed Regular';
     background: none;
     width: 100%;
+    color: ${props.theme.colours.black};
 
     &:focus {
       outline: 1px solid ${props.theme.colours.grey};
@@ -34,11 +43,13 @@ export const FieldWrapper = styled.div((props: StyledFieldWrapperProps): Flatten
 
   ${Select} {
     border: 1px solid ${props.theme.colours.midGrey};
-    padding: ${props.theme.spacing[2]}px ${props.theme.spacing[4]}px ${props.theme.spacing[2]}px ${props.theme.spacing[2]}px;
+    padding: ${props.theme.spacing[1]}px ${props.theme.spacing[4]}px ${props.theme.spacing[1]}px ${props.theme.spacing[2]}px;
     font-size: ${props.theme.typography.heading[1].fontSize};
     flex-grow: 1;
     transition: 0.4s all ease;
-    font-family: 'Chronicle Condensed Regular';
+    font-family: 'Cera Pro Regular';
+    font-size: 16px;
+    line-height: 24px;
     background: none;
     width: 100%;
 
@@ -46,5 +57,24 @@ export const FieldWrapper = styled.div((props: StyledFieldWrapperProps): Flatten
       outline: 1px solid ${props.theme.colours.grey};
       border: 1px solid ${props.theme.colours.white};
     }
+  }
+
+  label {
+    font-family: 'Cera Pro Regular';
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  ${Label} {
+    font-family: 'Cera Pro Bold';
+    font-size: 18px;
+    line-height: 26px;
+
+    ${props.labelPlacement === 'INHERIT' && css`
+      font-family: 'Cera Pro Regular';
+      font-size: 16px;
+      line-height: 24px;
+      padding: ${props.theme.spacing[1] / 2}px ${props.theme.spacing[2]}px 0;
+    `}
   }
 `)
