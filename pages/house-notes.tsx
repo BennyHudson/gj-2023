@@ -10,6 +10,7 @@ import Section from '@components/Section'
 import Title from '@components/Title'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import HeadTags from '@components/HeadTags'
 
 const HouseNotes: FC = ({ featuredHouseNotes }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -20,15 +21,16 @@ const HouseNotes: FC = ({ featuredHouseNotes }): ReactElement => {
 
   return (
     <>
+      <HeadTags seo={featuredHouseNotes.seo} />
       <HouseNotesFeature
-        introText={featuredHouseNotes.page.additionalPageData.subtitleText.replace(/<\/?[^>]+(>|$)/g, '')}
+        introText={featuredHouseNotes.additionalPageData.subtitleText.replace(/<\/?[^>]+(>|$)/g, '')}
         columns={{
-          overheard: featuredHouseNotes.page.houseNotes.houseNotesOverheardColumn,
-          listen: featuredHouseNotes.page.houseNotes.houseNotesPodcastColumn,
-          watch: featuredHouseNotes.page.houseNotes.houseNotesWatchColumn,
-          scroll: featuredHouseNotes.page.houseNotes.houseNotesScrollColumn,
-          read: featuredHouseNotes.page.houseNotes.houseNotesReadColumn,
-          quote: featuredHouseNotes.page.houseNotes.houseNotesQuoteColumn,
+          overheard: featuredHouseNotes.houseNotes.houseNotesOverheardColumn,
+          listen: featuredHouseNotes.houseNotes.houseNotesPodcastColumn,
+          watch: featuredHouseNotes.houseNotes.houseNotesWatchColumn,
+          scroll: featuredHouseNotes.houseNotes.houseNotesScrollColumn,
+          read: featuredHouseNotes.houseNotes.houseNotesReadColumn,
+          quote: featuredHouseNotes.houseNotes.houseNotesQuoteColumn,
         }}
       />
       <Section>
@@ -46,7 +48,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      featuredHouseNotes: featuredHouseNotes.data,
+      featuredHouseNotes: featuredHouseNotes.data.page,
     }
   }
 }

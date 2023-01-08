@@ -12,6 +12,7 @@ import PodcastCarousel from '@components/PodcastCarousel'
 import Divider from '@components/Divider'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import HeadTags from '@components/HeadTags'
 
 const Podcasts: FC = ({ podcastOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -22,6 +23,7 @@ const Podcasts: FC = ({ podcastOptions }): ReactElement => {
 
   return (
     <>
+      <HeadTags seo={{ title: 'Podcasts | The Gentleman\'s Journal'  }} />
       <FeatureCarousel
         title='Podcasts'
         cta='Listen Now'

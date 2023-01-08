@@ -1,6 +1,6 @@
 export interface BreadcrumbsProps {
   links: {
-    title: string
+    text: string
     url: string
   }[]
 }

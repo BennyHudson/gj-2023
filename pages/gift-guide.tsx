@@ -15,18 +15,18 @@ import BannerAdvert from '@components/BannerAdvert'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 import Feed from '@components/Feed'
+import HeadTags from '@components/HeadTags'
 
-const GiftGuidePage: FC = ({ pageData }): ReactElement => {
+const GiftGuidePage: FC = ({ pageData, seo }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
     setActiveNavElement(2)
   }, [setActiveNavElement])
-
-  console.log(pageData)
   
   return (
     <>
+      <HeadTags seo={seo} />
       <GiftGuideFeature
         meta={pageData.ctaFirst.categories.nodes[0].name}
         title={pageData.ctaFirst.title}
@@ -95,6 +95,7 @@ export async function getStaticProps() {
   return {
     props: {
       pageData: giftsPage.data.page.pageGifting,
+      seo: giftsPage.data.page.seo,
     }
   }
 }

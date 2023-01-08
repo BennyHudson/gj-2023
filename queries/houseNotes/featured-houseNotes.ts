@@ -46,7 +46,43 @@ export const houseNotesQuery = {
               ... HouseNoteContent
             }
           }
-        }   
+        }  
+        seo {
+          breadcrumbs {
+            text
+            url
+          }
+          canonical
+          cornerstone
+          focuskw
+          metaDesc
+          metaKeywords
+          metaRobotsNofollow
+          metaRobotsNoindex
+          opengraphAuthor
+          opengraphDescription
+          opengraphImage {
+            sourceUrl
+          }
+          opengraphModifiedTime
+          opengraphPublishedTime
+          opengraphPublisher
+          opengraphSiteName
+          opengraphTitle
+          opengraphType
+          opengraphUrl
+          readingTime
+          schema {
+            articleType
+            pageType
+          }
+          title
+          twitterDescription
+          twitterImage {
+            sourceUrl
+          }
+          twitterTitle
+        } 
       }
     }
   `

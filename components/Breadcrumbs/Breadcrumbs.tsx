@@ -19,11 +19,11 @@ const Breadcrumbs: FC<BreadcrumbsProps> = ({
           <Styled.Breadcrumb key={index}>
             {index !== links.length - 1 ?
               <>
-                <Link to={link.url}>{link.title}</Link>
+                <Link to={link.url.replace('https://www.thegentlemansjournal.com/', '/')} font='Cera'>{link.text}</Link>
                 <FontAwesomeIcon icon={faAngleRight as IconProp} />
               </>
               :
-              <span>{link.title}</span>
+              <span>{link.text}</span>
             }
           </Styled.Breadcrumb>
         )

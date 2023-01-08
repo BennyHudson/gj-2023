@@ -22,41 +22,6 @@ const Category: FC =  ({ data }): ReactElement => {
       setActiveNavElement(1)
     }
   }, [setActiveNavElement, data.category.name])
-
-  const breadcrumbs = () => {
-    const homeLink = {
-      title: 'Home',
-      url: '/'
-    }
-
-    const currentLink = {
-      title: data.category.name,
-      url: data.category.uri,
-    }
-
-    const breadcrumbArray = data.category.uri.split('/')
-    const cleanArray: string[] = []
-    breadcrumbArray.forEach((element) => {
-      if (element === data.category.taxonomyName) return
-      if (element === '') return
-      if (element === data.category.slug) return
-      cleanArray.push(element)
-    })
-
-    let crumbs = `/${data.category.taxonomyName}`
-    const breadcrumbsList = cleanArray.map((crumb) => {
-      if (crumb === data.category.taxonomyName) return {
-        url: `${crumbs}`,
-      }
-      crumbs = `${crumbs}/${crumb}`
-      return {
-        title: crumb.replace('-', ' '),
-        url: `${crumbs}`,
-      }
-    })
-
-    return [homeLink, ...breadcrumbsList, currentLink]
-  }
   
   const childCategories = () => {
     if (data.category.children.nodes.length) {
@@ -73,7 +38,7 @@ const Category: FC =  ({ data }): ReactElement => {
     <>
       <BannerAdvert />
       <Section>
-        <Breadcrumbs links={breadcrumbs()} />
+        <Breadcrumbs links={data.category.seo.breadcrumbs} />
         <Title title={data.category.name} subtitle={data.category.description} links={childCategories()} />
         <Feed category={data.category.name} />
       </Section>
@@ -130,6 +95,42 @@ export async function getStaticProps({ params }) {
           uri
           taxonomyName
           slug
+          seo {
+            breadcrumbs {
+              text
+              url
+            }
+            canonical
+            cornerstone
+            focuskw
+            metaDesc
+            metaKeywords
+            metaRobotsNofollow
+            metaRobotsNoindex
+            opengraphAuthor
+            opengraphDescription
+            opengraphImage {
+              sourceUrl
+            }
+            opengraphModifiedTime
+            opengraphPublishedTime
+            opengraphPublisher
+            opengraphSiteName
+            opengraphTitle
+            opengraphType
+            opengraphUrl
+            readingTime
+            schema {
+              articleType
+              pageType
+            }
+            title
+            twitterDescription
+            twitterImage {
+              sourceUrl
+            }
+            twitterTitle
+          }
           children {
             nodes {
               name

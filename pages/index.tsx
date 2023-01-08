@@ -21,6 +21,7 @@ import PodcastGrid from '@components/PodcastGrid'
 import FeatureCarousel from '@components/FeatureCarousel'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import HeadTags from '@components/HeadTags'
 
 const Home: FC = ({ 
   pageData, 
@@ -40,6 +41,7 @@ const Home: FC = ({
 
   return (
     <>
+      <HeadTags seo={pageData.seo} />
       <FullPageFeature
         {...pageData.homeFeaturedPost.homeFeaturedPost}
         excerpt={pageData.homeFeaturedPost.homeFeaturedPost.articleAcf.standfirst}

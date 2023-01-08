@@ -13,6 +13,7 @@ import HeroImage from '@components/HeroImage'
 import Section from '@components/Section'
 import Masthead from '@components/Masthead'
 import ContentGrid from '@components/ContentGrid'
+import HeadTags from '@components/HeadTags'
 
 const Podcast: FC = ({ pageData }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -23,6 +24,7 @@ const Podcast: FC = ({ pageData }): ReactElement => {
 
   return (
     <>
+      <HeadTags seo={pageData.seo} />
       <HeroImage featuredImage={pageData.featuredImage.node.sourceUrl} />
       <BannerAdvert />
       <Section>
@@ -70,6 +72,42 @@ export async function getStaticProps({ params }) {
       query houseNoteQuery {
         houseNote(id: "${slug}", idType: SLUG) {
           ... HouseNoteContent
+          seo {
+            breadcrumbs {
+              text
+              url
+            }
+            canonical
+            cornerstone
+            focuskw
+            metaDesc
+            metaKeywords
+            metaRobotsNofollow
+            metaRobotsNoindex
+            opengraphAuthor
+            opengraphDescription
+            opengraphImage {
+              sourceUrl
+            }
+            opengraphModifiedTime
+            opengraphPublishedTime
+            opengraphPublisher
+            opengraphSiteName
+            opengraphTitle
+            opengraphType
+            opengraphUrl
+            readingTime
+            schema {
+              articleType
+              pageType
+            }
+            title
+            twitterDescription
+            twitterImage {
+              sourceUrl
+            }
+            twitterTitle
+          }
           articleAcf {
             contentBuilder {
               ... on HouseNote_Articleacf_ContentBuilder_Heading {

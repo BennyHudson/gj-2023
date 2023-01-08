@@ -7,6 +7,7 @@ import { getAllPosts } from '@lib/api'
 import { podcastOptionsQuery } from '@queries/podcasts/podcast-options'
 import { podcastContent } from '@queries/fragments/podcastContent'
 
+import HeadTags from '@components/HeadTags'
 import BannerAdvert from '@components/BannerAdvert'
 import PodcastContent from '@components/PodcastContent'
 import PodcastCarousel from '@components/PodcastCarousel'
@@ -22,6 +23,7 @@ const Podcast: FC = ({ podcastData, podcastOptions }): ReactElement => {
 
   return (
     <>
+      <HeadTags seo={podcastData.seo} />
       <BannerAdvert />
       <PodcastContent {...podcastData} {...podcastOptions} />
       <PodcastCarousel 
@@ -62,6 +64,42 @@ export async function getStaticProps({ params }) {
         podcast(id: "${slug}", idType: SLUG) {
           ... PodcastContent
           content
+          seo {
+            breadcrumbs {
+              text
+              url
+            }
+            canonical
+            cornerstone
+            focuskw
+            metaDesc
+            metaKeywords
+            metaRobotsNofollow
+            metaRobotsNoindex
+            opengraphAuthor
+            opengraphDescription
+            opengraphImage {
+              sourceUrl
+            }
+            opengraphModifiedTime
+            opengraphPublishedTime
+            opengraphPublisher
+            opengraphSiteName
+            opengraphTitle
+            opengraphType
+            opengraphUrl
+            readingTime
+            schema {
+              articleType
+              pageType
+            }
+            title
+            twitterDescription
+            twitterImage {
+              sourceUrl
+            }
+            twitterTitle
+          }
         }
       }
     `,

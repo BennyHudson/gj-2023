@@ -12,6 +12,42 @@ export const giftGuideContentQuery = {
     ${giftContent}
     query giftGuideContentQuery {
       page(id: "388680", idType: DATABASE_ID) {
+        seo {
+          breadcrumbs {
+            text
+            url
+          }
+          canonical
+          cornerstone
+          focuskw
+          metaDesc
+          metaKeywords
+          metaRobotsNofollow
+          metaRobotsNoindex
+          opengraphAuthor
+          opengraphDescription
+          opengraphImage {
+            sourceUrl
+          }
+          opengraphModifiedTime
+          opengraphPublishedTime
+          opengraphPublisher
+          opengraphSiteName
+          opengraphTitle
+          opengraphType
+          opengraphUrl
+          readingTime
+          schema {
+            articleType
+            pageType
+          }
+          title
+          twitterDescription
+          twitterImage {
+            sourceUrl
+          }
+          twitterTitle
+        }
         pageGifting {
           featuredBrandsLink
           featuredBrandsTitle

@@ -1,5 +1,5 @@
 import { FC, ReactElement, useContext, useEffect } from 'react'
-import { gql } from '@apollo/client'
+import Head from 'next/head'
 // import { useRouter } from 'next/router'
 
 import client from '@lib/apollo-client'
@@ -14,6 +14,7 @@ import Masthead from '@components/Masthead'
 import Section from '@components/Section'
 import ContentGrid from '@components/ContentGrid'
 import FurtherReading from '@components/FurtherReading'
+import HeadTags from '@components/HeadTags'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
@@ -35,36 +36,15 @@ const Article: FC = ({ data }): ReactElement => {
     setActiveNavElement(1)
   }, [setActiveNavElement, articleData])
 
-  const homeLink = {
-    title: 'Home',
-    url: '/',
-  }
-
-  let categoryCrumbs = []
-  if (articleData.categories) {
-    categoryCrumbs = articleData.categories.nodes.map((category) => {
-      return {
-        title: category.name,
-        url: category.uri,
-      }
-    })
-  }
-
-  const currentPage = {
-    title: articleData!.title,
-    url: articleData!.uri,
-  }
-  
-  const breadcrumbs = [homeLink, ...categoryCrumbs, currentPage]
-
   return (
     <>
+      <HeadTags seo={articleData.seo} />
       {articleData.featuredImage && <HeroImage featuredImage={articleData.featuredImage.node.sourceUrl} />}
       <BannerAdvert />
       <Section>
         <Masthead
           title={articleData.title}
-          breadcrumbs={breadcrumbs}
+          breadcrumbs={articleData.seo.breadcrumbs}
           subtitle={articleData.articleAcf?.standfirst}
         />
         <ContentGrid

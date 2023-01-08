@@ -6,7 +6,7 @@ const queryPostType = (postType: string, after?: string) => {
   return {
     query: gql`
       query getAll {
-        ${postType}s(first: 500, after: "${after}") {
+        ${postType}s(first: ${process.env.NEXT_PUBLIC_API_REQUEST_VOLUME}, after: "${after}") {
           pageInfo {
             hasNextPage
             hasPreviousPage
@@ -34,8 +34,8 @@ export const getAllPosts = async (postType: string): Promise<{cursor: string; no
     const posts = await client.query(queryPostType(postType, after))
     if (posts) {
       allPosts.push(...posts.data[`${postType}s`].edges)
-      hasNextPage = posts.data[`${postType}s`].pageInfo.hasNextPage
-      // hasNextPage = false
+      // hasNextPage = posts.data[`${postType}s`].pageInfo.hasNextPage
+      hasNextPage = false
       after = posts.data[`${postType}s`].pageInfo.endCursor
     }
   }
