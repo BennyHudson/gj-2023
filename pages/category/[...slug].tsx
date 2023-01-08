@@ -69,8 +69,6 @@ export async function getStaticPaths() {
 
   const paths = allCategories.map((category) => {
     const trimmedPath = category.uri.replace('/category/', '')
-    // console.log(category.slug)
-    if (!category.slug) { console.log(category.name) }
     return {
       params: {
         slug: trimmedPath.split('/'),

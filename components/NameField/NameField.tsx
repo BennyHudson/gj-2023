@@ -9,7 +9,6 @@ import { NameFieldProps } from './NameField.types'
 import FieldWrapper from '@components/FieldWrapper'
 
 const NameField: FC<NameFieldProps> = (props: NameFieldProps): ReactElement => {
-  console.log(props)
   return (
     <FieldWrapper label={props.label}>
       <Styled.NameFields>

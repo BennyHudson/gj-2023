@@ -21,7 +21,7 @@ import NameField from '@components/NameField'
 const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
   const { loading, data } = useQuery(formQuery(formId).query)
 
-  console.log(data)
+  // console.log(data)
 
   if (loading) return <div>Loading...</div>
 

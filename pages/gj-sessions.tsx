@@ -21,8 +21,6 @@ const SessionsPage: FC = ({ pageData, featuredArticle }): ReactElement => {
   useEffect(() => {
     setActiveNavElement(7)
   }, [setActiveNavElement])
-
-  console.log(featuredArticle)
   
   return (
     <>

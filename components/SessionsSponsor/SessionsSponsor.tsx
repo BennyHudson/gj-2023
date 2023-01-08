@@ -14,7 +14,6 @@ import Button from '@components/Button'
 const SessionsSponsor: FC<SessionsSponsorProps> = ({
   sponsor,
 }: SessionsSponsorProps): ReactElement => {
-  console.log(sponsor)
   return (
     <Styled.SessionsSponsor>
       <Section>
