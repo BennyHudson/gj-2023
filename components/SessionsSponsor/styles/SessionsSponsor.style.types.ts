@@ -1,6 +1,5 @@
 import { Theme } from '@themes/gjTheme/gjTheme.types'
 
-export interface StyledButtonProps {
+export interface StyledSessionsSponsorProps {
   theme: Theme
-  size: 1 | 2
 }

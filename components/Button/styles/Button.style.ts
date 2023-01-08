@@ -9,9 +9,13 @@ export const Button = styled.button((props: StyledButtonProps): FlattenSimpleInt
   font-family: inherit;
   text-align: left;
   cursor: pointer;
-  padding: ${props.theme.spacing[2]}px ${props.theme.spacing[6]}px;
+  padding: ${props.size === 2 ? props.theme.spacing[2] : props.theme.spacing[1] * 1.5}px ${props.size === 2 ? props.theme.spacing[6] : props.theme.spacing[4]}px;
   border-radius: 2px;
   font-family: 'Cera Pro Semibold', sans-serif;
-  text-transform: uppercase;
+  text-decoration: none;
   // font-weight: 600;
+
+  ${props.size === 2 && css`
+    text-transform: uppercase;
+  `}
 `)

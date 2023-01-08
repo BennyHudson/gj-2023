@@ -8,9 +8,11 @@ const Button: FC<ButtonProps> = ({
   onClick,
   text,
   type = 'button',
+  href,
+  size = 2,
 }: ButtonProps): ReactElement => {
   return (
-    <Styled.Button onClick={onClick} type={type}>
+    <Styled.Button href={href} onClick={onClick} type={type} as={href ? 'a' : 'button'} size={size}>
       {text}
     </Styled.Button>
   )

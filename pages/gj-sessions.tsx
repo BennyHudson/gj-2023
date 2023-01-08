@@ -13,6 +13,7 @@ import Section from '@components/Section'
 import SessionsHeader from '@components/SessionsHeader'
 import BannerAdvert from '@components/BannerAdvert'
 import SessionsFeed from '@components/SessionsFeed'
+import SessionsSponsor from '@components/SessionsSponsor'
 
 const SessionsPage: FC = ({ pageData, featuredArticle }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -38,6 +39,15 @@ const SessionsPage: FC = ({ pageData, featuredArticle }): ReactElement => {
       </SessionsHeader>
       <BannerAdvert />
       <SessionsFeed />
+      <SessionsSponsor 
+        sponsor={{
+          backgroundImage: pageData.sessions.sessions.sponsorBackgroundImage.sourceUrl,
+          buttonText: pageData.sessions.sessions.sponsorButtonText,
+          sponsorContent: pageData.sessions.sessions.sponsorContent,
+          sponsorLink: pageData.sessions.sessions.sponsorLink,
+          logo: pageData.sessions.sessions.sponsorLogoAlt.sourceUrl,
+        }}
+      />
     </>
   )
 }
@@ -59,7 +69,7 @@ export async function getStaticProps() {
               sponsorButtonText
               sponsorContent
               sponsorLink
-              sponsorLogo {
+              sponsorLogoAlt {
                 sourceUrl
               }
             }
