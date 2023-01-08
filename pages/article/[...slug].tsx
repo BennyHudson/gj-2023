@@ -20,6 +20,7 @@ import PageContext, { PageContextProps } from '@context/PageContext'
 
 const Article: FC = ({ data }): ReactElement => {
   const articleData = data.article
+  const { articleNote } = data.gjOptions
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -66,6 +67,7 @@ const Article: FC = ({ data }): ReactElement => {
           }}
           contentBuilder={articleData.articleAcf.contentBuilder}
           contentBuilderPrefix='Article_Articleacf_ContentBuilder'
+          articleNote={articleNote}
         />
         {articleData.categories?.nodes.length &&
           <>

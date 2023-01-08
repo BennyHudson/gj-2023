@@ -38,7 +38,7 @@ const Feed: FC<FeedProps> = ({ category, columns = 4 }: FeedProps): ReactElement
         <SkeletonLoader columns={columns} />
         :
         <>
-          {allArticles && <PostGrid posts={allArticles.map((article) => article.node)} columns={columns} />}
+          {allArticles && <div><PostGrid posts={allArticles.map((article) => article.node)} columns={columns} /></div>}
           {morePosts && <LoadMore onClick={getMore} />}
         </>
       }

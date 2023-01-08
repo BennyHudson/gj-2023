@@ -15,6 +15,7 @@ export const Link = styled.div((props: StyledLinkProps): FlattenSimpleInterpolat
   gap: ${props.theme.spacing[1]}px;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
 
   &::after {
     content: '';

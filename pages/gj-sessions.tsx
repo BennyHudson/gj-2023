@@ -7,9 +7,9 @@ import { sessionsFeatureQuery } from '@queries/homepage/sessions-feature'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
+import HeadTags from '@components/HeadTags'
 import TitleAndIntro from '@components/TitleAndIntro'
 import Thumbnail from '@components/Thumbnail'
-import Section from '@components/Section'
 import SessionsHeader from '@components/SessionsHeader'
 import BannerAdvert from '@components/BannerAdvert'
 import SessionsFeed from '@components/SessionsFeed'
@@ -24,6 +24,7 @@ const SessionsPage: FC = ({ pageData, featuredArticle }): ReactElement => {
   
   return (
     <>
+      <HeadTags seo={pageData.seo} />
       <SessionsHeader>
         <TitleAndIntro title={pageData.title.toUpperCase()} intro={pageData.sessions.sessions.sessionsIntroText} inverse />
         <Thumbnail 
@@ -58,6 +59,42 @@ export async function getStaticProps() {
       query sessionsPage {
         page(id: 388179, idType: DATABASE_ID) {
           title
+          seo {
+            breadcrumbs {
+              text
+              url
+            }
+            canonical
+            cornerstone
+            focuskw
+            metaDesc
+            metaKeywords
+            metaRobotsNofollow
+            metaRobotsNoindex
+            opengraphAuthor
+            opengraphDescription
+            opengraphImage {
+              sourceUrl
+            }
+            opengraphModifiedTime
+            opengraphPublishedTime
+            opengraphPublisher
+            opengraphSiteName
+            opengraphTitle
+            opengraphType
+            opengraphUrl
+            readingTime
+            schema {
+              articleType
+              pageType
+            }
+            title
+            twitterDescription
+            twitterImage {
+              sourceUrl
+            }
+            twitterTitle
+          }
           sessions {
             sessions {
               sessionsIntroText

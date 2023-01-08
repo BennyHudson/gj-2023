@@ -49,6 +49,7 @@ const PageLayout: FC<PageLayoutProps> = ({ children, locationPath }: PageLayoutP
     if (pathname === '/') return 'feature'
     if (pathname === '/podcasts') return 'feature'
     if (pathname === '/gj-sessions') return 'feature'
+    if (pathname === '/club') return 'feature'
     if (pathname.includes('article')) return 'feature'
     if (pathname.includes('gift-guide')) return 'feature'
     return 'standard'

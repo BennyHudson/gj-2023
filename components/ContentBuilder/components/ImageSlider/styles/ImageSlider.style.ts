@@ -92,7 +92,3 @@ export const ImageSlider = styled.div((props: StyledImageSliderProps): FlattenSi
     }
   }
 `)
-
-export const Image = styled.img((): FlattenSimpleInterpolation => css`
-  display: block;
-`)

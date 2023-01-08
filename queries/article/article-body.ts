@@ -225,6 +225,18 @@ export const articleBody = (slug: string) => {
             }
           }
         }
+        gjOptions {
+          articleNote {
+            content
+            image {
+              sourceUrl
+            }
+            link {
+              title
+              url
+            }
+          }
+        }
       }
     `
   }

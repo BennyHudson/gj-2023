@@ -9,6 +9,7 @@ import QuoteBlock from './components/QuoteBlock'
 import HeadingBlock from './components/HeadingBlock'
 import ImageSlider from './components/ImageSlider'
 import Form from './components/Form'
+import CodeBlock from './components/CodeBlock'
 
 import { ContentBuilderProps } from './ContentBuilder.types'
 
@@ -16,7 +17,7 @@ const ContentBuilder: FC<ContentBuilderProps> = ({
   content,
   prefix,
 }: ContentBuilderProps): ReactElement => {
-  // console.log(content)
+  console.log(content)
   return (
     <>
       {content.map((block, index) => {
@@ -61,9 +62,14 @@ const ContentBuilder: FC<ContentBuilderProps> = ({
             <ButtonBlock key={index} {...block} callToAction='Buy Now' />
           )
 
-        case 'image_slider' :
+        case `${prefix}_ImageSlider` :
           return (
             <ImageSlider key={index} slides={block.slider} />
+          )
+
+        case `${prefix}_CodeSnippet` :
+          return (
+            <CodeBlock key={index} adCode={block.adCode} />
           )
 
         case `${prefix}_CompetitionForm` :

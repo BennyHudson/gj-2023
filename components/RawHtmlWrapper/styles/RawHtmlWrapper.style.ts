@@ -52,4 +52,16 @@ export const RawHtmlWrapper = styled.div((props: StyledRawHtmlWrapperProps): Fla
   ${props.inverse && css`
     color: ${props.theme.colours.white};
   `}
+
+  ${props.font === 'Cera' && css`
+    font-family: 'Cera Pro Regular';
+
+    em, i {
+      font-family: 'Cera Pro Regular', sans-serif;
+    }
+
+    strong, b {
+      font-family: 'Cera Pro Regular', sans-serif;
+    }
+  `}
 `)

@@ -28,7 +28,7 @@ const Byline: FC<BylineProps> = ({
         <>
           <Paragraph noMargin size={1} font='Cera'>In association with:</Paragraph>
           <Styled.SponsoredPost as={sponsoredPost.disableLink ? 'div' : 'a'} href={sponsoredPost.url}>
-            <Image src={sponsoredPost.logo} alt={sponsoredPost.name} width={300} height={300} />
+            <Image src={featuredImageUrl(sponsoredPost.logo)} alt={sponsoredPost.name} width={80} height={80} />
           </Styled.SponsoredPost>
         </>
       }

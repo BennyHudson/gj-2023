@@ -4,6 +4,9 @@ import Slider from 'react-slick'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/pro-light-svg-icons'
+import Image from 'next/image'
+
+import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import * as Styled from './styles/ImageSlider.style'
 
@@ -38,7 +41,7 @@ const ImageSlider: FC<ImageSliderProps> = ({ slides }: ImageSliderProps): ReactE
           {slides.map((slide, index) => {
             return (
               <Styled.Slide key={index}>
-                {/* <Styled.Image key={slide} src={useFeaturedImage(slide).featuredImage} /> */}
+                <Image key={slide} src={featuredImageUrl(slide.sourceUrl)} width={360} height={240} alt='' />
               </Styled.Slide>
             )
           })}
