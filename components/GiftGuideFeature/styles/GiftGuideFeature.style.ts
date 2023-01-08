@@ -8,7 +8,7 @@ export const GiftGuideFeature = styled.div((props: StyledGiftGuideFeatureProps):
   position: relative;
   padding: ${props.theme.spacing[8]}px 0 0;
   background: ${props.theme.colours.black};
-  height: calc(100vh - ${props.headerHeight}px);
+  height: ${props.height === 2 ? '100vh' : `calc(100vh - ${props.headerHeight}px)`};
   display: flex;
 `)
 

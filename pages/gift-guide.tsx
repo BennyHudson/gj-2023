@@ -28,6 +28,7 @@ const GiftGuidePage: FC = ({ pageData, seo }): ReactElement => {
     <>
       <HeadTags seo={seo} />
       <GiftGuideFeature
+        height={2}
         meta={pageData.ctaFirst.categories.nodes[0].name}
         title={pageData.ctaFirst.title}
         subtitle={pageData.ctaFirst.articleAcf.standfirst}

@@ -44,6 +44,15 @@ const PageLayout: FC<PageLayoutProps> = ({ children, locationPath }: PageLayoutP
   }, [keyPress])
 
   const cmsUrl = 'https://thegentlemansjournal.com'
+
+  const useFeatureHeader = (): string => {
+    if (pathname === '/') return 'feature'
+    if (pathname === '/podcasts') return 'feature'
+    if (pathname === '/gj-sessions') return 'feature'
+    if (pathname.includes('article')) return 'feature'
+    if (pathname.includes('gift-guide')) return 'feature'
+    return 'standard'
+  }
     
   return (
     <PageContext.Provider
@@ -67,7 +76,7 @@ const PageLayout: FC<PageLayoutProps> = ({ children, locationPath }: PageLayoutP
       }}
     >
       <Styled.PageLayout>
-        <Header headerStyle={pathname === '/' ? 'feature' : 'standard'} />
+        <Header headerStyle={useFeatureHeader()} />
         <Styled.Page>
           {children}
         </Styled.Page>

@@ -33,6 +33,11 @@ const Article: FC = ({ data }): ReactElement => {
       return
     }
 
+    if (articleData.categories.nodes.find(category => category.name === 'GJ Sessions')) {
+      setActiveNavElement(7)
+      return
+    }
+
     setActiveNavElement(1)
   }, [setActiveNavElement, articleData])
 

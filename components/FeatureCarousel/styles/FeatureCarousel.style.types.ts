@@ -6,4 +6,5 @@ export interface StyledFeatureCarouselProps {
   $isActive: boolean
   count: number
   headerHeight: number
+  height: 1 | 2
 }

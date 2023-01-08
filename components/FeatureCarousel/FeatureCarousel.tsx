@@ -22,12 +22,13 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
   links,
   posts,
   cta,
+  height = 1,
 }: FeatureCarouselProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps
   const [activeIndex, setActiveIndex] = useState(0)
   
   return (
-    <Styled.FeatureCarousel headerHeight={headerHeight}>
+    <Styled.FeatureCarousel headerHeight={headerHeight} height={height}>
       <Section appearance='secondary' containerWidth='wide'>
         {title && <Title title={title} links={links} inverse />}
         <Styled.Title>

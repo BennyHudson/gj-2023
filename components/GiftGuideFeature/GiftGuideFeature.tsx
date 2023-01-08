@@ -20,10 +20,11 @@ const GiftGuideFeature: FC<GiftGuideFeatureProps> = ({
   subtitle,
   url,
   featuredImage,
+  height = 1,
 }: GiftGuideFeatureProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps
   return (
-    <Styled.GiftGuideFeature headerHeight={headerHeight}>
+    <Styled.GiftGuideFeature headerHeight={headerHeight} height={height}>
       <Styled.Container>
         <Styled.Content>
           <Heading text={meta} size={1} font='Cera' inverse noMargin transform='uppercase' weight={3} />

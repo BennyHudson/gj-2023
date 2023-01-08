@@ -25,6 +25,7 @@ const Podcasts: FC = ({ podcastOptions }): ReactElement => {
     <>
       <HeadTags seo={{ title: 'Podcasts | The Gentleman\'s Journal'  }} />
       <FeatureCarousel
+        height={2}
         title='Podcasts'
         cta='Listen Now'
         posts={podcastOptions.featured.hero.map((podcast) => {

@@ -9,13 +9,14 @@ import { SkeletonLoaderProps } from './SkeletonLoader.types'
 
 const SkeletonLoader: FC<SkeletonLoaderProps> = ({
   type = 'post',
+  columns = 4
 }: SkeletonLoaderProps): ReactElement => {
-  const postArray = [1, 2, 3, 4, 5, 6, 7, 8]
+  const postArray = Array.from(Array(columns * 2).keys())
 
   return (
     <Styled.SkeletonLoader>
       {type === 'post' ?
-        <Styled.PostGrid>
+        <Styled.PostGrid columns={columns}>
           {postArray.map((index) => {
             return (
               <Styled.Excerpt key={index}>

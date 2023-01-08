@@ -4,7 +4,7 @@ import { StyledHeroImageProps } from './HeroImage.style.types'
 
 export const HeroImage = styled.div((props: StyledHeroImageProps): FlattenSimpleInterpolation => css`
   background: ${props.theme.colours.black};
-  height: ${props.height === 2 ? `calc(100vh - ${props.headerHeight}px)` : `calc(80vh - ${props.headerHeight}px)`};
+  height: ${props.height === 2 ? '100vh' : '80vh'};
   display: flex;
   align-items: center;
   justify-content: center;

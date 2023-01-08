@@ -1,6 +1,5 @@
 import { Theme } from '@themes/gjTheme/gjTheme.types'
 
-export interface StyledSkeletonLoaderProps {
+export interface StyledSessionsFeedProps {
   theme: Theme
-  columns: 3 | 4
 }

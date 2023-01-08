@@ -1,38 +1,23 @@
-import React, { ReactElement, FC } from 'react'
+import React, { ReactElement, FC, useContext } from 'react'
 
-import Title from '@components/Title'
 import Section from '@components/Section'
-import Thumbnail from '@components/Thumbnail'
-import PostExcerpt from '@components/PostExcerpt'
-import PostGrid from '@components/PostGrid'
+
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 import * as Styled from './styles/SessionsHeader.style'
 
 import { SessionsHeaderProps } from './SessionsHeader.types'
 
 const SessionsHeader: FC<SessionsHeaderProps> = ({
-  featuredArticle,
-  secondaryArticles,
-  tertiaryArticles,
+  children,
 }: SessionsHeaderProps): ReactElement => {
-  // console.log(secondaryArticles.nodes)
+  const { headerHeight } = useContext(PageContext) as PageContextProps
   return (
-    <>
-      <Title title='Latest Performers' inverse />
-      <Styled.PostGrid>
-        <Styled.Feature>
-          <Thumbnail showTitle to={featuredArticle.uri} {...featuredArticle} />
-        </Styled.Feature>
-        <Styled.SecondaryPosts>
-          {secondaryArticles.nodes.map((post, index) => {
-            return (
-              <PostExcerpt key={index} {...post} inverse />
-            )
-          })}
-        </Styled.SecondaryPosts>
-      </Styled.PostGrid>
-      <PostGrid posts={tertiaryArticles.nodes} inverse />
-    </>
+    <Styled.SessionsHeader headerHeight={headerHeight}>
+      <Section appearance='secondary'>
+        {children}
+      </Section>
+    </Styled.SessionsHeader>
   )
 }
 

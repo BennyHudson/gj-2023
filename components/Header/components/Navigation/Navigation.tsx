@@ -72,7 +72,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false }: NavigationProps): 
                         }
                       ]}
                     />
-                    <PostGrid $inverse={inverse} posts={data.podcasts.nodes} />
+                    <PostGrid inverse={inverse} posts={data.podcasts.nodes} />
                   </Styled.SubMenuWrapper>
                 </Styled.MenuItem>
               )
@@ -92,7 +92,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false }: NavigationProps): 
                         }
                       ]}
                     />
-                    <PostGrid $inverse={inverse} posts={data.houseNotes.nodes} />
+                    <PostGrid inverse={inverse} posts={data.houseNotes.nodes} />
                   </Styled.SubMenuWrapper>
                 </Styled.MenuItem>
               )
@@ -112,7 +112,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false }: NavigationProps): 
                         }
                       ]}
                     />
-                    <PostGrid $inverse={inverse} posts={data.videos.nodes} />
+                    <PostGrid inverse={inverse} posts={data.videos.nodes} />
                   </Styled.SubMenuWrapper>
                 </Styled.MenuItem>
               )
@@ -132,7 +132,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false }: NavigationProps): 
                         }
                       ]}
                     />
-                    <PostGrid $inverse={inverse} posts={data.sessions.nodes} />
+                    <PostGrid inverse={inverse} posts={data.sessions.nodes} />
                   </Styled.SubMenuWrapper>
                 </Styled.MenuItem>
               )

@@ -119,11 +119,6 @@ export async function getStaticProps({ params }) {
             opengraphTitle
             opengraphType
             opengraphUrl
-            readingTime
-            schema {
-              articleType
-              pageType
-            }
             title
             twitterDescription
             twitterImage {

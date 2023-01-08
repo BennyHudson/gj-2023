@@ -2,12 +2,12 @@ import { gql } from '@apollo/client'
 
 import { articleContent } from '@queries/fragments/articleContent'
 
-export const categoryQuery = (categoryName: string) => {
+export const categoryQuery = (categoryName: string, columns: number) => {
   return {
     query: gql`
       ${articleContent}
       query latestArticlesByCategory($after: String) {
-        articles(first: 20, after: $after, where: {categoryName: "${categoryName}"}) {
+        articles(first: ${columns === 4 ? 20 : 12}, after: $after, where: {categoryName: "${categoryName}"}) {
           pageInfo {
             hasNextPage
             hasPreviousPage

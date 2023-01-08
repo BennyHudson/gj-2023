@@ -3,6 +3,13 @@ import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { PostExcerpt } from '@components/PostExcerpt/styles/PostExcerpt.style'
 
 import { StyledSessionsHeaderProps } from './SessionsHeader.style.types'
+import { Section } from '@components/Section/styles/Section.style'
+
+export const SessionsHeader = styled.div((props: StyledSessionsHeaderProps): FlattenSimpleInterpolation => css`
+  ${Section} {
+    padding-top: ${props.headerHeight + props.theme.spacing[8]}px;
+  }
+`)
 
 export const PostGrid = styled.div((props: StyledSessionsHeaderProps): FlattenSimpleInterpolation => css`
   display: grid;

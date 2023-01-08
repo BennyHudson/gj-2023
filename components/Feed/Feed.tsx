@@ -10,12 +10,12 @@ import SkeletonLoader from '@components/SkeletonLoader'
 
 import { FeedProps, FeedState } from './Feed.types'
 
-const Feed: FC<FeedProps> = ({ category }: FeedProps): ReactElement => {
+const Feed: FC<FeedProps> = ({ category, columns = 4 }: FeedProps): ReactElement => {
   const [last, setLast] = useState<FeedState['last']>()
   const [allArticles, setAllArticles] = useState<FeedState['allArticles']>([])
   const [morePosts, setMorePosts] = useState<FeedState['morePosts']>(true)
 
-  const { loading, fetchMore } = useQuery(category ? categoryQuery(category).query : latestArticlesQuery.query, {
+  const { loading, fetchMore } = useQuery(category ? categoryQuery(category, columns).query : latestArticlesQuery(columns).query, {
     onCompleted: (data) => {
       setLast(data.articles.pageInfo.endCursor)
       setAllArticles(data.articles.edges)
@@ -35,10 +35,10 @@ const Feed: FC<FeedProps> = ({ category }: FeedProps): ReactElement => {
   return (
     <>
       {loading ? 
-        <SkeletonLoader />
+        <SkeletonLoader columns={columns} />
         :
         <>
-          {allArticles && <PostGrid posts={allArticles.map((article) => article.node)} />}
+          {allArticles && <PostGrid posts={allArticles.map((article) => article.node)} columns={columns} />}
           {morePosts && <LoadMore onClick={getMore} />}
         </>
       }
