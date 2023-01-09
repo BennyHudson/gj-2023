@@ -17,7 +17,7 @@ const ContentBuilder: FC<ContentBuilderProps> = ({
   content,
   prefix,
 }: ContentBuilderProps): ReactElement => {
-  console.log(content)
+  // console.log(content)
   return (
     <>
       {content.map((block, index) => {
