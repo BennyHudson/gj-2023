@@ -1,6 +1,7 @@
 import React, { FC, ReactElement, useState, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
@@ -77,6 +78,9 @@ const PageLayout: FC<PageLayoutProps> = ({ children, locationPath }: PageLayoutP
       }}
     >
       <Styled.PageLayout>
+        <Styled.Background>
+          <Image src='/svg/logo-small.svg' width={50} height={50} alt='' />
+        </Styled.Background>
         <Header headerStyle={useFeatureHeader()} />
         <Styled.Page>
           {children}
