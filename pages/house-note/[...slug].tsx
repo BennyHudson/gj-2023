@@ -15,7 +15,7 @@ import Masthead from '@components/Masthead'
 import ContentGrid from '@components/ContentGrid'
 import HeadTags from '@components/HeadTags'
 
-const Podcast: FC = ({ pageData }): ReactElement => {
+const Podcast: FC = ({ pageData, articleNote }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -37,6 +37,7 @@ const Podcast: FC = ({ pageData }): ReactElement => {
         <ContentGrid
           contentBuilder={pageData.articleAcf.contentBuilder}
           contentBuilderPrefix='HouseNote_Articleacf_ContentBuilder'
+          articleNote={articleNote}
         />
       </Section>
     </>
@@ -301,6 +302,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       pageData: response.data.houseNote,
+      articleNote: response.data.gjOptions.articleNote,
     }
   }
 }

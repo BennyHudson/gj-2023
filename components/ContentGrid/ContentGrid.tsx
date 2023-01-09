@@ -26,13 +26,15 @@ const ContentGrid: FC<ContentGridProps> = ({
         </Styled.Sidebar>
       }
       <ContentBuilder content={contentBuilder} prefix={contentBuilderPrefix} />
-      <Styled.ArticleNote>
-        <Image src={featuredImageUrl(articleNote.image.sourceUrl)} alt='' width={200} height={200} />
-        <Styled.ArticleNoteContent>
-          <RawHtmlWrapper content={articleNote.content} />
-          <Link href={articleNote.link.url} size={2} font='Cera' transform='uppercase' showIcon>{articleNote.link.title}</Link>
-        </Styled.ArticleNoteContent>
-      </Styled.ArticleNote>
+      {articleNote &&
+        <Styled.ArticleNote>
+          <Image src={featuredImageUrl(articleNote.image.sourceUrl)} alt='' width={200} height={200} />
+          <Styled.ArticleNoteContent>
+            <RawHtmlWrapper content={articleNote.content} />
+            <Link href={articleNote.link.url} size={2} font='Cera' transform='uppercase' showIcon>{articleNote.link.title}</Link>
+          </Styled.ArticleNoteContent>
+        </Styled.ArticleNote>
+      }
       <Styled.SecondarySidebar>
 
       </Styled.SecondarySidebar>
