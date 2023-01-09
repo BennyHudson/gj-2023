@@ -43,7 +43,7 @@ const PostCarousel: FC<PostCarouselProps> = ({
         <Slider {...sliderSettings}>
           {posts.map((post, index) => {
             return (
-              <Styled.Post to={post.node.uri} key={index}>
+              <Styled.Post href={post.node.uri} key={index} scroll={false}>
                 <Thumbnail type='circle' size={1} featuredImageDatabaseId={post.node.featuredImageDatabaseId} />
                 <Paragraph text={post.node.title} size={2} font='Cera' />
               </Styled.Post>

@@ -38,6 +38,7 @@ const Thumbnail: FC<ThumbnailProps> = ({
       as={renderAs()} 
       size={size}
       contain={contain}
+      scroll={false}
     >
       {showTitle && 
         <>

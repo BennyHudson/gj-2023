@@ -16,7 +16,7 @@ const PodcastGrid: FC<PodcastGridProps> = ({
     <Styled.PodcastGrid>
       <Styled.FeaturedPodcast>
         <Thumbnail to={podcasts[0].uri} featuredImage={podcasts[0].featuredImage.node.sourceUrl} />
-        <Styled.FeatureDetails href={podcasts[0].uri}>
+        <Styled.FeatureDetails href={podcasts[0].uri} scroll={false}>
           <Meta date={podcasts[0].date} />
           <Heading text={podcasts[0].title} size={3} font='ChronicleCondensed' />
           <Paragraph font='Cera' weight={1} size={2} appearance='secondary'>{podcasts[0].podcasts.podcastMeta.guest.name}, {podcasts[0].podcasts.podcastMeta.guest.about}</Paragraph>
@@ -27,7 +27,7 @@ const PodcastGrid: FC<PodcastGridProps> = ({
           return (
             <Styled.Podcast key={index}>
               <Thumbnail type='circle' to={podcast.uri} featuredImage={podcast.featuredImage.node.sourceUrl} />
-              <Styled.PodcastDetails href={podcast.uri}>
+              <Styled.PodcastDetails href={podcast.uri} scroll={false}>
                 <Meta date={podcasts[0].date} />
                 <Heading size={1} text={podcast.title} />
                 <Paragraph font='Cera' weight={1} size={1} appearance='secondary'>{podcast.podcasts.podcastMeta.guest.name}, {podcast.podcasts.podcastMeta.guest.about}</Paragraph>

@@ -37,6 +37,7 @@ const GJLink: FC<LinkProps> = ({
       $showIcon={showIcon}
       as={renderAs()}
       href={href ? href : to}
+      scroll={false}
     >
       {children} {showIcon && <FontAwesomeIcon icon={faAngleRight as IconProp} size='2x' />}
     </Styled.Link>

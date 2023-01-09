@@ -1,5 +1,5 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
-import { Link } from 'gatsby'
+import Link from 'next/link'
 
 import { StyledPostCarouselProps } from './PostCarousel.style.types'
 

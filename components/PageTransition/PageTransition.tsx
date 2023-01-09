@@ -11,8 +11,6 @@ const PageTransition: FC<PageTransitionProps> = ({
 }: PageTransitionProps): ReactElement => {
   const router = useRouter()
 
-  console.log(router)
-
   const variants = {
     out: {
       opacity: 0,
@@ -33,7 +31,7 @@ const PageTransition: FC<PageTransitionProps> = ({
 
   return (
     <Styled.PageTransition>
-      <AnimatePresence initial={false} mode='wait'>
+      <AnimatePresence initial={false} mode='wait' onExitComplete={() => window.scrollTo(0, 0)}>
         <motion.div 
           key={router.asPath}
           variants={variants}
