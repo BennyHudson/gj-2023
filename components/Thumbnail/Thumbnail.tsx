@@ -50,7 +50,7 @@ const Thumbnail: FC<ThumbnailProps> = ({
       }
       {featuredImage && 
         <Image 
-          src={featuredImageUrl(featuredImage)} 
+          src={featuredImageUrl(featuredImage)!} 
           width={type === 'circle' ? 400 : 900} 
           height={type === 'circle' ? 400 : 600} 
           alt='' 
