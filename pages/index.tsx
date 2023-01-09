@@ -1,6 +1,9 @@
 import React, { FC, ReactElement, useEffect, useContext } from 'react'
 import client from '@lib/apollo-client'
 
+import { headerNavQuery } from '@queries/global/header-nav'
+import { footerNavQuery } from '@queries/global/footer-nav'
+
 import { homepageQuery } from '@queries/homepage/homepage'
 import { latestPostsQuery } from '@queries/homepage/latest-posts'
 import { sessionsFeatureQuery } from '@queries/homepage/sessions-feature'
@@ -9,21 +12,24 @@ import { giftGuideQuery } from '@queries/homepage/gift-guide'
 import { latestVideoQuery } from '@queries/homepage/latest-video'
 import { categoryQuery } from '@queries/homepage/category'
 
-import FullPageFeature from '@components/FullPageFeature'
-import Section from '@components/Section'
-import Title from '@components/Title'
-import PostGrid from '@components/PostGrid'
-import BannerAdvert from '@components/BannerAdvert'
-import GiftGuideFeature from '@components/GiftGuideFeature'
-import WeeklyHighlight from '@components/WeeklyHighlight'
-import SessionsFeature from '@components/SessionsFeature'
-import PodcastGrid from '@components/PodcastGrid'
-import FeatureCarousel from '@components/FeatureCarousel'
+import FullPageFeature from '@components/imagery/FullPageFeature'
+import Section from '@components/layout/Section'
+import Title from '@components/typography/Title'
+import PostGrid from '@components/grids/PostGrid'
+import BannerAdvert from '@components/layout/BannerAdvert'
+import GiftGuideFeature from '@components/imagery/GiftGuideFeature'
+import WeeklyHighlight from '@components/home/WeeklyHighlight'
+import SessionsFeature from '@components/sessions/SessionsFeature'
+import PodcastGrid from '@components/podcast/PodcastGrid'
+import FeatureCarousel from '@components/carousels/FeatureCarousel'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
-import HeadTags from '@components/HeadTags'
+import HeadTags from '@components/layout/HeadTags'
+import PageLayout from '@components/layout/PageLayout'
 
 const Home: FC = ({ 
+  headerNav,
+  footerNav,
   pageData, 
   latestPosts, 
   coverInterviews, 
@@ -40,7 +46,7 @@ const Home: FC = ({
   }, [setActiveNavElement])
 
   return (
-    <>
+    <PageLayout headerNav={headerNav} footerNav={footerNav}>
       <HeadTags seo={pageData.seo} />
       <FullPageFeature
         {...pageData.homeFeaturedPost.homeFeaturedPost}
@@ -152,13 +158,16 @@ const Home: FC = ({
           posts={competitions.articles.nodes}
         />
       </Section>
-    </>
+    </PageLayout>
   )
 }
 
 export default Home
 
 export async function getStaticProps() {
+  const headerNav = await client.query(headerNavQuery)
+  const footerNav = await client.query(footerNavQuery)
+
   const homepage = await client.query(homepageQuery)
   const latestPosts = await client.query(latestPostsQuery)
   const coverInterviews = await client.query(categoryQuery('Cover Interviews'))
@@ -170,6 +179,8 @@ export async function getStaticProps() {
 
   return {
     props: {
+      headerNav: headerNav.data,
+      footerNav: footerNav.data,
       pageData: homepage.data.page,
       latestPosts: latestPosts.data.articles.nodes,
       coverInterviews: coverInterviews.data,

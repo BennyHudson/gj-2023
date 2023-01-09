@@ -1,8 +1,33 @@
 import { gql } from '@apollo/client'
 
-import { articleContent } from '@queries/fragments/articleContent'
-import { houseNoteContent } from '@queries/fragments/houseNoteContent'
-import { podcastContent } from '@queries/fragments/podcastContent'
+import { articleContent, Article } from '@queries/fragments/articleContent'
+import { houseNoteContent, HouseNote } from '@queries/fragments/houseNoteContent'
+import { podcastContent, Podcast } from '@queries/fragments/podcastContent'
+
+export interface HeaderNav {
+  menu: {
+    menuItems: {
+      nodes: {
+        key: string
+        label: string
+        uri: string
+        parentId: string
+      }
+    }
+  }
+  podcasts: {
+    nodes: Podcast[]
+  }
+  houseNotes: {
+    nodes: HouseNote[]
+  }
+  videos: {
+    nodes: Article[]
+  }
+  sessions: {
+    nodes: Article[]
+  }
+}
 
 export const headerNavQuery = {
   query: gql`

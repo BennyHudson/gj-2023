@@ -1,20 +1,30 @@
 import React, { FC, ReactElement, useEffect, useContext } from 'react'
-import { gql } from '@apollo/client'
 
 import client from '@lib/apollo-client'
 import { getAllPosts } from '@lib/api'
 
-import { podcastOptionsQuery } from '@queries/podcasts/podcast-options'
-import { podcastContent } from '@queries/fragments/podcastContent'
+import { PodcastOptions, podcastOptionsQuery } from '@queries/podcasts/podcast-options'
+import { headerNavQuery } from '@queries/global/header-nav'
+import { footerNavQuery } from '@queries/global/footer-nav'
+import { PodcastBody, podcastBodyQuery } from '@queries/podcasts/podcast-body'
 
-import HeadTags from '@components/HeadTags'
-import BannerAdvert from '@components/BannerAdvert'
-import PodcastContent from '@components/PodcastContent'
-import PodcastCarousel from '@components/PodcastCarousel'
+import PageLayout from '@components/layout/PageLayout'
+import HeadTags from '@components/layout/HeadTags'
+import BannerAdvert from '@components/layout/BannerAdvert'
+import PodcastContent from '@components/podcast/PodcastContent'
+import PodcastCarousel from '@components/carousels/PodcastCarousel'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
-const Podcast: FC = ({ podcastData, podcastOptions }): ReactElement => {
+import { StaticPaths } from '@typings/StaticPaths.types'
+import { PageData } from '@typings/PageData.types'
+
+interface PodcastData extends PageData {
+  podcastData: PodcastBody
+  podcastOptions: PodcastOptions
+}
+
+const Podcast: FC<PodcastData> = ({ podcastData, podcastOptions, headerNav, footerNav }: PodcastData): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -22,7 +32,7 @@ const Podcast: FC = ({ podcastData, podcastOptions }): ReactElement => {
   }, [setActiveNavElement])
 
   return (
-    <>
+    <PageLayout headerNav={headerNav} footerNav={footerNav}>
       <HeadTags seo={podcastData.seo} />
       <BannerAdvert />
       <PodcastContent {...podcastData} {...podcastOptions} />
@@ -30,7 +40,7 @@ const Podcast: FC = ({ podcastData, podcastOptions }): ReactElement => {
         title='You might also like'
         podcasts={podcastOptions.featured.featured}
       />
-    </>
+    </PageLayout>
   )
 }
 
@@ -55,61 +65,19 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: StaticPaths) {
   const { slug } = params
-  const response = await client.query({
-    query: gql`
-      ${podcastContent}
-      query podcastQuery {
-        podcast(id: "${slug}", idType: SLUG) {
-          ... PodcastContent
-          content
-          seo {
-            breadcrumbs {
-              text
-              url
-            }
-            canonical
-            cornerstone
-            focuskw
-            metaDesc
-            metaKeywords
-            metaRobotsNofollow
-            metaRobotsNoindex
-            opengraphAuthor
-            opengraphDescription
-            opengraphImage {
-              sourceUrl
-            }
-            opengraphModifiedTime
-            opengraphPublishedTime
-            opengraphPublisher
-            opengraphSiteName
-            opengraphTitle
-            opengraphType
-            opengraphUrl
-            readingTime
-            schema {
-              articleType
-              pageType
-            }
-            title
-            twitterDescription
-            twitterImage {
-              sourceUrl
-            }
-            twitterTitle
-          }
-        }
-      }
-    `,
-  })
-
+  
+  const headerNav = await client.query(headerNavQuery)
+  const footerNav = await client.query(footerNavQuery) 
+  const podcast = await client.query(podcastBodyQuery(slug))
   const podcastOptions = await client.query(podcastOptionsQuery)
       
   return {
     props: {
-      podcastData: response.data.podcast,
+      headerNav: headerNav.data,
+      footerNav: footerNav.data,
+      podcastData: podcast.data.podcast,
       podcastOptions: podcastOptions.data.podcastOptions.podcastOptions.podcastGlobal,
     }
   }

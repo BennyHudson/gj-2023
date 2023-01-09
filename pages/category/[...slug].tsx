@@ -1,31 +1,40 @@
 import React, { FC, ReactElement, useEffect, useContext } from 'react'
 import { gql } from '@apollo/client'
-import he from 'he'
 
 import client from '@lib/apollo-client'
 
-import BannerAdvert from '@components/BannerAdvert'
-import Section from '@components/Section'
-import Breadcrumbs from '@components/Breadcrumbs'
-import Title from '@components/Title'
-import Feed from '@components/Feed'
+import BannerAdvert from '@components/layout/BannerAdvert'
+import Section from '@components/layout/Section'
+import Breadcrumbs from '@components/typography/Breadcrumbs'
+import Title from '@components/typography/Title'
+import Feed from '@components/grids/Feed'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import { headerNavQuery } from '@queries/global/header-nav'
+import { footerNavQuery } from '@queries/global/footer-nav'
+import PageLayout from '@components/layout/PageLayout'
+import { CategoryBody, categoryBodyQuery } from '@queries/category/category-body'
+import { StaticPaths } from '@typings/StaticPaths.types'
+import { PageData } from '@typings/PageData.types'
 
-const Category: FC =  ({ data }): ReactElement => {
+interface CategoryData extends PageData {
+  category: CategoryBody
+}
+
+const Category: FC<CategoryData> =  ({ category, headerNav, footerNav }: CategoryData): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
-    if (data.category.name === 'Video') {
+    if (category.name === 'Video') {
       setActiveNavElement(4)
     } else {
       setActiveNavElement(1)
     }
-  }, [setActiveNavElement, data.category.name])
+  }, [setActiveNavElement, category.name])
   
   const childCategories = () => {
-    if (data.category.children.nodes.length) {
-      return data.category.children.nodes.map((category) => {
+    if (category.children.nodes.length) {
+      return category.children.nodes.map((category) => {
         return {
           text: category.name,
           url: category.uri,
@@ -35,14 +44,14 @@ const Category: FC =  ({ data }): ReactElement => {
   }
 
   return (
-    <>
+    <PageLayout headerNav={headerNav} footerNav={footerNav}>
       <BannerAdvert />
       <Section>
-        <Breadcrumbs links={data.category.seo.breadcrumbs} />
-        <Title title={data.category.name} subtitle={data.category.description} links={childCategories()} />
-        <Feed category={data.category.name} />
+        <Breadcrumbs links={category.seo.breadcrumbs!} />
+        <Title title={category.name} subtitle={category.description} links={childCategories()} />
+        <Feed category={category.name} />
       </Section>
-    </>
+    </PageLayout>
   )
 }
 
@@ -54,8 +63,6 @@ export async function getStaticPaths() {
       query allCats {
         categories(first: 10000) {
           nodes {
-            name
-            slug
             uri
           }
         }
@@ -67,7 +74,7 @@ export async function getStaticPaths() {
 
   const allCategories = getAllCategories.data.categories.nodes
 
-  const paths = allCategories.map((category) => {
+  const paths = allCategories.map((category: { uri: string }) => {
     const trimmedPath = category.uri.replace('/category/', '')
     return {
       params: {
@@ -82,62 +89,18 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: StaticPaths) {
   const { slug } = params
-  const response = await client.query({
-    query: gql`
-      query categoryQuery {
-        category(id: "${slug[slug.length - 1]}", idType: SLUG) {
-          name
-          description
-          uri
-          taxonomyName
-          slug
-          seo {
-            breadcrumbs {
-              text
-              url
-            }
-            canonical
-            cornerstone
-            focuskw
-            metaDesc
-            metaKeywords
-            metaRobotsNofollow
-            metaRobotsNoindex
-            opengraphAuthor
-            opengraphDescription
-            opengraphImage {
-              sourceUrl
-            }
-            opengraphModifiedTime
-            opengraphPublishedTime
-            opengraphPublisher
-            opengraphSiteName
-            opengraphTitle
-            opengraphType
-            opengraphUrl
-            title
-            twitterDescription
-            twitterImage {
-              sourceUrl
-            }
-            twitterTitle
-          }
-          children {
-            nodes {
-              name
-              uri
-            }
-          }
-        }
-      }
-    `,
-  })
 
+  const headerNav = await client.query(headerNavQuery)
+  const footerNav = await client.query(footerNavQuery)
+  const category = await client.query(categoryBodyQuery(slug[slug.length - 1]))
+  
   return {
     props: {
-      data: response.data,
+      headerNav: headerNav.data,
+      footerNav: footerNav.data,
+      category: category.data.category,
     }
   }
 }

@@ -1,18 +1,24 @@
 import React, { FC, ReactElement, useEffect, useContext } from 'react'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
 import client from '@lib/apollo-client'
 import { gql } from '@apollo/client'
 
-import ClubOverview from '@components/ClubOverview'
-import ClubAdverts from '@components/ClubAdverts'
-import ClubGift from '@components/ClubGift'
-import ClubBuy from '@components/ClubBuy'
-import ClubPerks from '@components/ClubPerks'
-import ClubHero from '@components/ClubHero'
-import HeadTags from '@components/HeadTags'
+import { headerNavQuery } from '@queries/global/header-nav'
+import { footerNavQuery } from '@queries/global/footer-nav'
 
-const ClubPage: FC = ({ pageData }): ReactElement => {
+import PageLayout from '@components/layout/PageLayout'
+import HeadTags from '@components/layout/HeadTags'
+
+import ClubOverview from '@components/club/ClubOverview'
+import ClubAdverts from '@components/club/ClubAdverts'
+import ClubGift from '@components/club/ClubGift'
+import ClubBuy from '@components/club/ClubBuy'
+import ClubPerks from '@components/club/ClubPerks'
+import ClubHero from '@components/club/ClubHero'
+
+import PageContext, { PageContextProps } from '@context/PageContext'
+
+const ClubPage: FC = ({ pageData, headerNav, footerNav }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -20,7 +26,7 @@ const ClubPage: FC = ({ pageData }): ReactElement => {
   }, [setActiveNavElement])
   
   return (
-    <>
+    <PageLayout headerNav={headerNav} footerNav={footerNav}>
       <HeadTags seo={pageData.seo} />
       <ClubHero 
         title={pageData.title} 
@@ -33,13 +39,15 @@ const ClubPage: FC = ({ pageData }): ReactElement => {
       <ClubBuy />
       <ClubPerks perks={pageData.subscriptionPage.club.subscriptionPerks} />
       <ClubBuy />
-    </>
+    </PageLayout>
   )
 }
 
 export default ClubPage
 
 export async function getStaticProps() {
+  const headerNav = await client.query(headerNavQuery)
+  const footerNav = await client.query(footerNavQuery)
   const clubPage = await client.query({
     query: gql`
       query clubQuery {
@@ -124,6 +132,8 @@ export async function getStaticProps() {
 
   return {
     props: {
+      headerNav: headerNav.data,
+      footerNav: footerNav.data,
       pageData: clubPage.data.page,
     }
   }

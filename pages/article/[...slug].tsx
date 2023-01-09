@@ -1,24 +1,31 @@
 import { FC, ReactElement, useContext, useEffect } from 'react'
-import Head from 'next/head'
-// import { useRouter } from 'next/router'
 
 import client from '@lib/apollo-client'
 
 import { getAllPosts } from '@lib/api'
 
-import { articleBody } from '@queries/article/article-body'
+import { headerNavQuery, HeaderNav } from '@queries/global/header-nav'
+import { footerNavQuery, FooterNav } from '@queries/global/footer-nav'
+import { articleBody, ArticleBody } from '@queries/article/article-body'
 
-import HeroImage from '@components/HeroImage'
-import BannerAdvert from '@components/BannerAdvert'
-import Masthead from '@components/Masthead'
-import Section from '@components/Section'
-import ContentGrid from '@components/ContentGrid'
-import FurtherReading from '@components/FurtherReading'
-import HeadTags from '@components/HeadTags'
+import HeroImage from '@components/imagery/HeroImage'
+import BannerAdvert from '@components/layout/BannerAdvert'
+import Masthead from '@components/layout/Masthead'
+import Section from '@components/layout/Section'
+import ContentGrid from '@components/grids/ContentGrid'
+import FurtherReading from '@components/grids/FurtherReading'
+import HeadTags from '@components/layout/HeadTags'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import PageLayout from '@components/layout/PageLayout'
+import { StaticPaths } from '@typings/StaticPaths.types'
+import { PageData } from '@typings/PageData.types'
 
-const Article: FC = ({ data }): ReactElement => {
+interface ArticleData extends PageData {
+  data: ArticleBody
+}
+
+const Article: FC<ArticleData> = ({ data, headerNav, footerNav }: ArticleData): ReactElement => {
   const articleData = data.article
   const { articleNote } = data.gjOptions
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -43,7 +50,7 @@ const Article: FC = ({ data }): ReactElement => {
   }, [setActiveNavElement, articleData])
 
   return (
-    <>
+    <PageLayout headerNav={headerNav} footerNav={footerNav}>
       <HeadTags seo={articleData.seo} />
       {articleData.featuredImage && <HeroImage featuredImage={articleData.featuredImage.node.sourceUrl} />}
       <BannerAdvert />
@@ -51,19 +58,14 @@ const Article: FC = ({ data }): ReactElement => {
         <Masthead
           title={articleData.title}
           breadcrumbs={articleData.seo.breadcrumbs}
-          subtitle={articleData.articleAcf?.standfirst}
+          subtitle={articleData.articleAcf.standfirst}
         />
         <ContentGrid
           byline={{
             author: articleData.author?.node.name,
             photographer: articleData.byLineAdditional?.photographerName,
             additionalBylines: articleData.byLineAdditional?.otherByLines,
-            sponsoredPost: {
-              logo: articleData.sponsoredPost?.sponsorLogo?.sourceUrl,
-              name: articleData.sponsoredPost?.sponsorName,
-              url: articleData.sponsoredPost?.sponsorUrl,
-              disableLink: articleData.sponsoredPost?.sponsorDisableLink,
-            },
+            sponsoredPost: articleData.sponsoredPost,
           }}
           contentBuilder={articleData.articleAcf.contentBuilder}
           contentBuilderPrefix='Article_Articleacf_ContentBuilder'
@@ -78,7 +80,7 @@ const Article: FC = ({ data }): ReactElement => {
           </>
         }
       </Section>
-    </>
+    </PageLayout>
   )
 }
 
@@ -86,9 +88,6 @@ export default Article
 
 export async function getStaticPaths() {
   const allArticles = await getAllPosts('article')
-  // const allPosts = await getAllPosts('post')
-
-  // const all = [...allArticles, ...allPosts]
 
   const paths = allArticles.map((article) => {
     if (!article) return
@@ -106,13 +105,18 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: StaticPaths) {
   const { slug } = params
-  const response = await client.query(articleBody(slug))
+
+  const headerNav = await client.query(headerNavQuery)
+  const footerNav = await client.query(footerNavQuery)
+  const article = await client.query(articleBody(slug))
 
   return {
     props: {
-      data: response.data,
+      headerNav: headerNav.data,
+      footerNav: footerNav.data,
+      data: article.data,
     }
   }
 }

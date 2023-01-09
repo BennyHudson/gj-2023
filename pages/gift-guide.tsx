@@ -4,20 +4,23 @@ import client from '@lib/apollo-client'
 
 import { giftGuideContentQuery } from '@queries/giftGuide/giftGuide-content'
 
-import GiftGuideFeature from '@components/GiftGuideFeature'
-import Section from '@components/Section'
-import VerticalSpacer from '@components/VerticalSpacer'
-import PostGrid from '@components/PostGrid'
-import Title from '@components/Title'
-import BrandGrid from '@components/BrandGrid'
-import GiftGrid from '@components/GiftGrid'
-import BannerAdvert from '@components/BannerAdvert'
+import GiftGuideFeature from '@components/imagery/GiftGuideFeature'
+import Section from '@components/layout/Section'
+import VerticalSpacer from '@components/layout/VerticalSpacer'
+import PostGrid from '@components/grids/PostGrid'
+import Title from '@components/typography/Title'
+import BrandGrid from '@components/grids/BrandGrid'
+import GiftGrid from '@components/grids/GiftGrid'
+import BannerAdvert from '@components/layout/BannerAdvert'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
-import Feed from '@components/Feed'
-import HeadTags from '@components/HeadTags'
+import Feed from '@components/grids/Feed'
+import HeadTags from '@components/layout/HeadTags'
+import { headerNavQuery } from '@queries/global/header-nav'
+import { footerNavQuery } from '@queries/global/footer-nav'
+import PageLayout from '@components/layout/PageLayout'
 
-const GiftGuidePage: FC = ({ pageData, seo }): ReactElement => {
+const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -25,7 +28,7 @@ const GiftGuidePage: FC = ({ pageData, seo }): ReactElement => {
   }, [setActiveNavElement])
   
   return (
-    <>
+    <PageLayout headerNav={headerNav} footerNav={footerNav}>
       <HeadTags seo={seo} />
       <GiftGuideFeature
         height={2}
@@ -84,17 +87,21 @@ const GiftGuidePage: FC = ({ pageData, seo }): ReactElement => {
         <Title title='All Guides' />
         <Feed category='Gift Guide' />
       </Section>
-    </>
+    </PageLayout>
   )
 }
 
 export default GiftGuidePage
 
 export async function getStaticProps() {
+  const headerNav = await client.query(headerNavQuery)
+  const footerNav = await client.query(footerNavQuery)
   const giftsPage = await client.query(giftGuideContentQuery)
 
   return {
     props: {
+      headerNav: headerNav.data,
+      footerNav: footerNav.data,
       pageData: giftsPage.data.page.pageGifting,
       seo: giftsPage.data.page.seo,
     }

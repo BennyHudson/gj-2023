@@ -1,5 +1,38 @@
 import { gql } from '@apollo/client'
 
+export interface FooterNav {
+  primaryMenu: {
+    menuItems: {
+      nodes: {
+        key: string
+        label: string
+        uri: string
+        parentId: string
+      }[]
+    }
+  }
+  secondaryMenu: {
+    menuItems: {
+      nodes: {
+        key: string
+        label: string
+        uri: string
+        parentId: string
+      }[]
+    }
+  }
+  legalMenu: {
+    menuItems: {
+      nodes: {
+        key: string
+        label: string
+        uri: string
+        parentId: string
+      }[]
+    }
+  }
+}
+
 export const footerNavQuery = {
   query: gql`
     query footerMenus {
