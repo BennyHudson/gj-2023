@@ -70,6 +70,18 @@ export async function getStaticProps({ params }) {
     query: gql`
       ${houseNoteContent}
       query houseNoteQuery {
+        gjOptions {
+          articleNote {
+            content
+            image {
+              sourceUrl
+            }
+            link {
+              title
+              url
+            }
+          }
+        }
         houseNote(id: "${slug}", idType: SLUG) {
           ... HouseNoteContent
           seo {
