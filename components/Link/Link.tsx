@@ -22,7 +22,7 @@ const GJLink: FC<LinkProps> = ({
 }: LinkProps): ReactElement => {
   const renderAs = (): string | typeof Link => {
     if (to) return Link
-    if (to && to.includes('http')) return a
+    if (to && to.includes('http')) return 'a'
     return 'a'
   }
 
