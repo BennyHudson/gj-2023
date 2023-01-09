@@ -1,4 +1,4 @@
-import React, { ReactElement, FC } from 'react'
+import React, { ReactElement, FC, useRef } from 'react'
 import Image from 'next/image'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
@@ -11,13 +11,16 @@ import Heading from '@components/Heading'
 import RawHtmlWrapper from '@components/RawHtmlWrapper'
 import Link from '@components/Link'
 import Title from '@components/Title'
+import useNextLink from '@hooks/useNextLink'
 
 const ClubPerks: FC<ClubPerksProps> = ({
   perks,
 }: ClubPerksProps): ReactElement => {
+  const perksList = useRef<HTMLDivElement>(null)
+  useNextLink(perksList)
   return (
     <Section>
-      <Styled.ClubPerks>
+      <Styled.ClubPerks ref={perksList}>
         <Title title='Join the club.' subtitle='Scroll to see the perks' />
         {perks.map((perk, index) => {
           return (

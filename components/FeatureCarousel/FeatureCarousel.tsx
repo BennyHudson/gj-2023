@@ -56,7 +56,7 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
         {posts.map((post, index) => {
           if (index !== activeIndex) return
           return (
-            <Image src={featuredImageUrl(post.featuredImage.node.sourceUrl)} fill alt='' key={index} priority />
+            <Image src={featuredImageUrl(post.featuredImage.node.sourceUrl)!} fill alt='' key={index} priority />
           )
         })}
       </Styled.ImageWrapper>

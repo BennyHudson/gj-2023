@@ -6,11 +6,12 @@ import { StyledFeatureCarouselProps } from './FeatureCarousel.style.types'
 
 type ThemeProps = Pick<StyledFeatureCarouselProps, 'theme'>
 
-type FeatureCarouselProps = Pick<StyledFeatureCarouselProps, 'headerHeight' | 'height'>
+type FeatureCarouselProps = Pick<StyledFeatureCarouselProps, 'headerHeight' | 'height' | 'theme'>
 export const FeatureCarousel = styled.div((props: FeatureCarouselProps): FlattenSimpleInterpolation => css`
   height: ${props.height === 2 ? '100vh' : `calc(100vh - ${props.headerHeight}px)`};
   display: flex;
   position: relative;
+  background: ${props.theme.colours.black};
 
   ${props.height === 2 && css`
     padding-top: ${props.headerHeight}px;
