@@ -17,7 +17,7 @@ const Header: FC<HeaderProps> = ({
   headerNav,
 }: HeaderProps): ReactElement => {
   const header = useRef<HTMLDivElement>(null)
-  const { setHeaderHeight, showModal, navLoaded } = useContext(PageContext) as PageContextProps
+  const { setHeaderHeight, showModal } = useContext(PageContext) as PageContextProps
 
   const [transparent, setTransparent] = useState<HeaderState['transparent']>(headerStyle === 'feature' && !showModal) 
   
@@ -34,7 +34,7 @@ const Header: FC<HeaderProps> = ({
     if (header.current) {
       setHeaderHeight(header.current?.clientHeight)
     }
-  }, [navLoaded, setHeaderHeight])
+  }, [])
 
   useEffect(() => {
     setTransparent(headerStyle === 'feature' && !showModal)

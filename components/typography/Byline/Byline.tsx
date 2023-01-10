@@ -15,6 +15,7 @@ const Byline: FC<BylineProps> = ({
   additionalBylines,
   sponsoredPost,
 }: BylineProps): ReactElement => {
+  console.log(sponsoredPost)
   return (
     <Styled.Byline>
       <Paragraph size={2} font='Cera'>Words: {author}</Paragraph>
@@ -26,9 +27,13 @@ const Byline: FC<BylineProps> = ({
       })}
       {sponsoredPost?.sponsorName && 
         <>
-          <Paragraph noMargin size={1} font='Cera'>In association with:</Paragraph>
+          <Paragraph noMargin size={2} font='Cera'>In association with:</Paragraph>
           <Styled.SponsoredPost as={sponsoredPost.sponsorDisableLink ? 'div' : 'a'} href={sponsoredPost.sponsorUrl}>
-            <Image src={featuredImageUrl(sponsoredPost.sponsorLogo.sourceUrl)!} alt={sponsoredPost.sponsorName} width={80} height={80} />
+            {sponsoredPost.sponsorLogo?.sourceUrl ?
+              <Image src={featuredImageUrl(sponsoredPost.sponsorLogo.sourceUrl)} alt={sponsoredPost.sponsorName} width={80} height={80} />
+              :
+              <Paragraph noMargin size={2} font='Cera'>{sponsoredPost.sponsorName}</Paragraph>
+            }
           </Styled.SponsoredPost>
         </>
       }

@@ -8,7 +8,7 @@ import PageContext, { PageContextProps } from '@context/PageContext'
 
 import Header from '@components/layout/Header'
 import Footer from '@components/layout/Footer'
-import ContainedModal from '@components/layout/ContainedModal'
+import ContainedModal from '@components/modals/ContainedModal'
 
 import { HeaderProps } from '@components/layout/Header/Header.types'
 
@@ -52,13 +52,7 @@ const PageLayout: FC<PageLayoutProps> = ({ children, headerNav, footerNav }: Pag
           {children}
         </PageTransition>
       </Styled.Page>
-      <CSSTransition
-        in={!!showModal}
-        timeout={400}
-        unmountOnExit
-      >
-        <ContainedModal>{showModal}</ContainedModal>
-      </CSSTransition>
+      {!!showModal && <ContainedModal>{showModal}</ContainedModal>}
       <Footer footerNav={footerNav} />
     </Styled.PageLayout>
   )

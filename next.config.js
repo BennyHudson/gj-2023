@@ -14,6 +14,10 @@ const nextConfig = {
       {
         protocol: 'http',
         hostname: 'thegentlemansjournal.local',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.thegentlemansjournal.com',
       }
     ]
   },
