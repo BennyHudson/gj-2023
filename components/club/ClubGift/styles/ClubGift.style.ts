@@ -9,7 +9,7 @@ export const ClubGift = styled.div((props: StyledClubGiftProps): FlattenSimpleIn
   align-items: center;
 `)
 
-export const GiftImage = styled.div((props: StyledClubGiftProps): FlattenSimpleInterpolation => css`
+export const GiftImage = styled.div((): FlattenSimpleInterpolation => css`
   grid-column: col-start / span 4;
   aspect-ratio: 1 / 1;
   position: relative;

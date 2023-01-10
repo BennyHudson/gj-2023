@@ -37,7 +37,7 @@ export const PerkContent = styled.div((props: StyledClubPerksProps): FlattenSimp
   align-self: center;
 `)
 
-export const ImageWrapper = styled.div((props: StyledClubPerksProps): FlattenSimpleInterpolation => css`
+export const ImageWrapper = styled.div((): FlattenSimpleInterpolation => css`
   position: relative;
   width: 60%;
 

@@ -9,7 +9,7 @@ const ContactDetails: FC<ContactDetailsProps> = ({
 }: ContactDetailsProps): ReactElement => {
   return (
     <Styled.ContactDetails>
-      Component ContactDetails
+      {children}
     </Styled.ContactDetails>
   )
 }

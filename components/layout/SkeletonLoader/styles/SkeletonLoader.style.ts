@@ -1,6 +1,6 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 
-import { Meta, Date } from '@components/typography/Meta/styles/Meta.style'
+import { Date } from '@components/typography/Meta/styles/Meta.style'
 
 import { StyledSkeletonLoaderProps } from './SkeletonLoader.style.types'
 

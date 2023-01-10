@@ -1,18 +1,16 @@
 import React, { ReactElement, FC } from 'react'
 import Image from 'next/image'
-
-import * as Styled from './styles/ClubGift.style'
 import { gql, useQuery } from '@apollo/client'
+
 import Section from '@components/layout/Section'
 import Title from '@components/typography/Title'
 import featuredImageUrl from '@helpers/featuredImageUrl'
-import { useTheme } from 'styled-components'
-import { Theme } from '@themes/gjTheme/gjTheme.types'
 import Heading from '@components/typography/Heading'
 import RawHtmlWrapper from '@components/typography/RawHtmlWrapper'
 
+import * as Styled from './styles/ClubGift.style'
+
 const ClubGift: FC = (): ReactElement => {
-  const theme = useTheme() as Theme
   const { data } = useQuery(gql`
     query freeGift {
       products(where: {category: "Free Gifts"}) {

@@ -45,37 +45,37 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
             switch (formField.type) {
               case 'TEXT': {
                 return (
-                  <TextField {...formField} databaseId={data.gfForm.databaseId} />
+                  <TextField key={index} {...formField} databaseId={data.gfForm.databaseId} />
                 )
               }
               
               case 'TEXTAREA': {
                 return (
-                  <TextArea {...formField} databaseId={data.gfForm.databaseId} />
+                  <TextArea key={index} {...formField} databaseId={data.gfForm.databaseId} />
                 )   
               }
 
               case 'SELECT': {
                 return (
-                  <Select {...formField} databaseId={data.gfForm.databaseId} />
+                  <Select key={index} {...formField} databaseId={data.gfForm.databaseId} />
                 )   
               }
 
               case 'CHECKBOX': {
                 return (
-                  <CheckboxList {...formField} databaseId={data.gfForm.databaseId} />
+                  <CheckboxList key={index} {...formField} databaseId={data.gfForm.databaseId} />
                 )
               }
 
               case 'RADIO': {
                 return (
-                  <RadioList {...formField} databaseId={data.gfForm.databaseId} />
+                  <RadioList key={index} {...formField} databaseId={data.gfForm.databaseId} />
                 )
               }
 
               case 'NAME': {
                 return (
-                  <NameField {...formField} databaseId={data.gfForm.databaseId} />
+                  <NameField key={index} {...formField} databaseId={data.gfForm.databaseId} />
                 )
               }
             }

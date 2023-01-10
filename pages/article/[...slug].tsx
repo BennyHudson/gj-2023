@@ -4,8 +4,8 @@ import client from '@lib/apollo-client'
 
 import { getAllPosts } from '@lib/api'
 
-import { headerNavQuery, HeaderNav } from '@queries/global/header-nav'
-import { footerNavQuery, FooterNav } from '@queries/global/footer-nav'
+import { headerNavQuery } from '@queries/global/header-nav'
+import { footerNavQuery } from '@queries/global/footer-nav'
 import { articleBody, ArticleBody } from '@queries/article/article-body'
 
 import HeroImage from '@components/imagery/HeroImage'

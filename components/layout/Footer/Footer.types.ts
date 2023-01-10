@@ -1,21 +1,5 @@
-import { MenuItems } from '@typings/MenuItems.types'
+import { FooterNav } from '@queries/global/footer-nav'
 
-export interface NavigationProps {
-  data: {
-    primaryMenu: {
-      menuItems: {
-        nodes: MenuItems[]
-      }
-    }
-    secondaryMenu: {
-      menuItems: {
-        nodes: MenuItems[]
-      }
-    }
-    legalMenu: {
-      menuItems: {
-        nodes: MenuItems[]
-      }
-    }
-  }
+export interface FooterProps {
+  footerNav: FooterNav
 }

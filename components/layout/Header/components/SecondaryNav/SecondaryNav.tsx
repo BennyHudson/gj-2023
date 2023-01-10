@@ -2,7 +2,6 @@ import React, { ReactElement, FC, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faSearch, faUser, faShoppingBag, faEnvelope } from '@fortawesome/pro-light-svg-icons'
-import { Link } from 'gatsby'
 
 import LoginForm from '@components/forms/LoginForm'
 import SearchForm from '@components/search/SearchForm'

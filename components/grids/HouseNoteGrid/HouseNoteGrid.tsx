@@ -1,7 +1,6 @@
 import React, { ReactElement, FC } from 'react'
 import Masonry from 'react-masonry-css'
 
-import Thumbnail from '@components/imagery/Thumbnail'
 import HouseNoteExcerpt from '@components/house-notes/HouseNoteExcerpt'
 
 import * as Styled from './styles/HouseNoteGrid.style'

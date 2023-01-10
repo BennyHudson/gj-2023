@@ -4,9 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faAngleDoubleUp } from '@fortawesome/pro-light-svg-icons'
 import dayjs from 'dayjs'
-import { useQuery } from '@apollo/client'
-
-import { footerNavQuery } from '@queries/global/footer-nav'
 
 import Section from '@components/layout/Section'
 import Link from '@components/interactions/Link'
@@ -17,13 +14,11 @@ import FooterMainMenu from './components/FooterMainMenu'
 
 import flatListToHierarchical from '@helpers/flatListToHierarchical'
 
-import { NavigationProps } from './Footer.types'
+import { FooterProps } from './Footer.types'
 
 import * as Styled from './styles/Footer.style'
 
-const Footer: FC = ({ footerNav }): ReactElement => {
-  // const { data } = useQuery(footerNavQuery.query) as NavigationProps
-
+const Footer: FC<FooterProps> = ({ footerNav }: FooterProps): ReactElement => {
   const scrollToTop = () =>{
     window.scrollTo({
       top: 0, 

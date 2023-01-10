@@ -29,7 +29,7 @@ export const SessionsSponsor = styled.div((props: StyledSessionsSponsorProps): F
   }
 `)
 
-export const LogoWrapper = styled.div((props: StyledSessionsSponsorProps): FlattenSimpleInterpolation => css`
+export const LogoWrapper = styled.div((): FlattenSimpleInterpolation => css`
   position: absolute;
   top: 0;
   left: 0;

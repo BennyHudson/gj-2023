@@ -1,6 +1,6 @@
-import { ReactNode } from 'react'
+import { HouseNote } from '@queries/fragments/houseNoteContent'
 
-export interface HouseNoteExcerptProps {
-  children: ReactNode
+export interface HouseNoteExcerptProps extends HouseNote {
   priority?: boolean
+  feature?: boolean
 }

@@ -27,6 +27,7 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'warn',
+    'react-hooks/exhaustive-deps': 'off',
     indent: [
       'error', 2
     ],

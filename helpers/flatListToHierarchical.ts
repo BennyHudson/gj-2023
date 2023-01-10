@@ -1,12 +1,23 @@
+import { FooterNav } from '@queries/global/footer-nav'
+import { HeaderNav } from '@queries/global/header-nav'
+import { MenuItems } from '@typings/MenuItems.types'
+
+type HeaderNavProps = HeaderNav['menu']['menuItems']['nodes']
+type FooterNavProps = FooterNav['primaryMenu']['menuItems']['nodes']
+type LegalNavProps = FooterNav['legalMenu']['menuItems']['nodes']
+type SecondaryFooterNavProps = FooterNav['primaryMenu']['menuItems']['nodes']
+
+type Menu = HeaderNavProps | FooterNavProps | LegalNavProps | SecondaryFooterNavProps
+
 const flatListToHierarchical = (
-  data = [],
+  data: Menu[] = [],
   {
     idKey = 'key',
     parentKey = 'parentId',
     childrenKey = 'children'
   } = {}
-) => {
-  const tree = []
+): MenuItems[] => {
+  const tree: MenuItems[] = []
   const childrenOf = {}
   data.forEach((item) => {
     const newItem = {...item}

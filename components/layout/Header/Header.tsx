@@ -34,7 +34,7 @@ const Header: FC<HeaderProps> = ({
     if (header.current) {
       setHeaderHeight(header.current?.clientHeight)
     }
-  }, [navLoaded])
+  }, [navLoaded, setHeaderHeight])
 
   useEffect(() => {
     setTransparent(headerStyle === 'feature' && !showModal)

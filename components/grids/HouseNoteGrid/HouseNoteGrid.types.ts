@@ -1,5 +1,7 @@
-import { ReactNode } from 'react'
+import { HouseNote } from '@queries/fragments/houseNoteContent'
 
 export interface HouseNoteGridProps {
-  children: ReactNode
+  posts: {
+    node: HouseNote
+  }[]
 }

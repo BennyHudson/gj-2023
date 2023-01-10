@@ -87,7 +87,7 @@ export const FeaturedPost = styled.div((props: StyledHouseNotesFeatureProps): Fl
   gap: ${props.theme.spacing[2]}px;
 `)
 
-export const ArticleType = styled.div((props: StyledHouseNoteGridProps): FlattenSimpleInterpolation => css`
+export const ArticleType = styled.div((props: StyledHouseNotesFeatureProps): FlattenSimpleInterpolation => css`
   font-size: ${props.theme.typography.paragraph[2].fontSize};
   line-height: ${props.theme.typography.paragraph[2].lineHeight};
   font-family: 'Cera Pro Bold';
@@ -111,7 +111,7 @@ export const ArticleType = styled.div((props: StyledHouseNoteGridProps): Flatten
   }
 `)
 
-export const Quote = styled.div((props: StyledHouseNotesFeatureProps): FlattenSimpleInterpolation => css`
+export const Quote = styled.div((): FlattenSimpleInterpolation => css`
   width: 90%;
   max-width: 800px;
   text-align: center;

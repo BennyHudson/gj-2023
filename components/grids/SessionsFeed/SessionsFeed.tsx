@@ -1,6 +1,5 @@
 import React, { ReactElement, FC, useState } from 'react'
 import { useQuery, gql } from '@apollo/client'
-import Image from 'next/image'
 
 import { articleContent } from '@queries/fragments/articleContent'
 

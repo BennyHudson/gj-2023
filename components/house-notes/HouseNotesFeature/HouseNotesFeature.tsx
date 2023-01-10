@@ -11,7 +11,6 @@ import * as Styled from './styles/HouseNotesFeature.style'
 import { HouseNotesFeatureProps } from './HouseNotesFeature.types'
 
 const HouseNotesFeature: FC<HouseNotesFeatureProps> = ({
-  posts,
   introText,
   columns,
 }: HouseNotesFeatureProps): ReactElement => {
