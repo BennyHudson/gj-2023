@@ -9,7 +9,7 @@ const Cart: FC<CartProps> = ({
 }: CartProps): ReactElement => {
   return (
     <Styled.Cart>
-      Component Cart
+      {children}
     </Styled.Cart>
   )
 }
