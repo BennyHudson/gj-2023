@@ -6,6 +6,7 @@ export const ModalTemplate = styled.div((): FlattenSimpleInterpolation => css`
   display: grid;
   grid-template-columns: repeat(12, [col-start] 1fr);
   height: 100%;
+  width: 100%;
   margin: 0 auto;
   align-items: stretch;
   align-self: stretch;

@@ -18,6 +18,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'www.thegentlemansjournal.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'secure.gravatar.com',
       }
     ]
   },

@@ -18,7 +18,7 @@ const TextField: FC<FormFieldProps> = ({
 }: FormFieldProps): ReactElement => {
   return (
     <FieldWrapper target={target} label={label} required={isRequired} labelPlacement={labelPlacement}>
-      <Styled.TextField name={`input_${id}`} id={`input_${databaseId}_${id}`} placeholder={placeholder} type={type} />
+      <Styled.TextField name={`input_${id}`} id={databaseId ? `input_${databaseId}_${id}` : `input_${id}`} placeholder={placeholder} type={type} />
     </FieldWrapper>
   )
 }

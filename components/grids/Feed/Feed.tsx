@@ -10,12 +10,12 @@ import SkeletonLoader from '@components/layout/SkeletonLoader'
 
 import { FeedProps, FeedState } from './Feed.types'
 
-const Feed: FC<FeedProps> = ({ category, columns = 4 }: FeedProps): ReactElement => {
+const Feed: FC<FeedProps> = ({ category, columns = 4, count }: FeedProps): ReactElement => {
   const [last, setLast] = useState<FeedState['last']>()
   const [allArticles, setAllArticles] = useState<FeedState['allArticles']>([])
   const [morePosts, setMorePosts] = useState<FeedState['morePosts']>(true)
 
-  const { loading, fetchMore } = useQuery(category ? categoryQuery(category, columns).query : latestArticlesQuery(columns).query, {
+  const { loading, fetchMore } = useQuery(category ? categoryQuery(category, columns, count).query : latestArticlesQuery(columns).query, {
     onCompleted: (data) => {
       setLast(data.articles.pageInfo.endCursor)
       setAllArticles(data.articles.edges)

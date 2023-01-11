@@ -15,7 +15,7 @@ import { ThumbnailProps } from './Thumbnail.types'
 const Thumbnail: FC<ThumbnailProps> = ({ 
   type = 'rectangle',
   to,
-  size = 3,
+  size = 4,
   featuredImage,
   showTitle = false,
   categories,

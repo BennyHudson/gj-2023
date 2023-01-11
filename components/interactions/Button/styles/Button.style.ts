@@ -13,6 +13,7 @@ export const Button = styled.button((props: StyledButtonProps): FlattenSimpleInt
   border-radius: 2px;
   font-family: 'Cera Pro Semibold', sans-serif;
   text-decoration: none;
+  display: inline-block;
   // font-weight: 600;
 
   ${props.size === 2 && css`

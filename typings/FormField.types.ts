@@ -3,7 +3,8 @@ export interface FormFieldProps {
   label: string
   isRequired: boolean
   id: number
-  databaseId: number
+  databaseId?: number
   placeholder?: string
   hideLabels?: boolean
+  type?: 'password'
 }

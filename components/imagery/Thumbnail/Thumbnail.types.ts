@@ -3,7 +3,7 @@ import { Post } from '@typings/Post.types'
 export interface ThumbnailProps {
   type?: 'rectangle' | 'circle' | 'square'
   to?: string
-  size?: 1 | 2 | 3
+  size?: 1 | 2 | 3 | 4
   requestThumbnail?: boolean
   showTitle?: boolean
   title?: Post['title']

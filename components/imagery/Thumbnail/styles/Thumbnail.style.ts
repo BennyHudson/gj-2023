@@ -10,13 +10,8 @@ export const Thumbnail = styled.div((props: StyledThumbnailProps): FlattenSimple
   overflow: hidden;
   display: block;
 
-  ${props.type === 'square' && css`
+  ${(props.type === 'square' || props.type === 'circle') && css`
     aspect-ratio: 1 / 1;
-  `}
-
-  ${props.type === 'circle' && css`
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
 
     ${props.size === 1 && css`
       max-width: 80px;
@@ -29,6 +24,14 @@ export const Thumbnail = styled.div((props: StyledThumbnailProps): FlattenSimple
     ${props.size === 3 && css`
       max-width: 200px;
     `}
+
+    ${props.size === 4 && css`
+      max-width: 100%;
+    `}
+  `}
+
+  ${props.type === 'circle' && css`
+    border-radius: 50%;
   `}
   
   &::after {

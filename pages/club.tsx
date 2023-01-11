@@ -17,8 +17,10 @@ import ClubPerks from '@components/club/ClubPerks'
 import ClubHero from '@components/club/ClubHero'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import { subscriptionProductsQuery } from '@queries/global/subscription-products'
+import { freeGiftQuery } from '@queries/global/free-gift'
 
-const ClubPage: FC = ({ pageData, headerNav, footerNav }): ReactElement => {
+const ClubPage: FC = ({ pageData, headerNav, footerNav, subscriptionProducts, freeGift }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -35,10 +37,10 @@ const ClubPage: FC = ({ pageData, headerNav, footerNav }): ReactElement => {
       />
       <ClubAdverts adverts={pageData.subscriptionPage.club.adImages} />
       <ClubOverview overview={pageData.subscriptionPage.club.subscriptionOverview} />
-      <ClubGift />
-      <ClubBuy />
+      <ClubGift freeGift={freeGift} />
+      <ClubBuy products={subscriptionProducts} freeGift={freeGift} />
       <ClubPerks perks={pageData.subscriptionPage.club.subscriptionPerks} />
-      <ClubBuy />
+      <ClubBuy products={subscriptionProducts} />
     </PageLayout>
   )
 }
@@ -48,6 +50,8 @@ export default ClubPage
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const subscriptionProducts = await client.query(subscriptionProductsQuery)
+  const freeGift = await client.query(freeGiftQuery)
   const clubPage = await client.query({
     query: gql`
       query clubQuery {
@@ -135,6 +139,8 @@ export async function getStaticProps() {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
       pageData: clubPage.data.page,
+      subscriptionProducts: subscriptionProducts.data.products.nodes,
+      freeGift: freeGift.data.products.nodes[0],
     }
   }
 }

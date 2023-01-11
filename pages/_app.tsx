@@ -15,6 +15,7 @@ import { gjTheme } from '@themes/gjTheme'
 import client from '@lib/apollo-client'
 
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => {
+  const [ token, setToken ] = useState<PageContextProps['token']>()
   const [ activeNavElement, setActiveNavElement ] = useState<PageContextProps['headerHeight']>(-1)
   const [ headerHeight, setHeaderHeight ] = useState<PageContextProps['headerHeight']>(0)
   const [ showModal, setShowModal ] = useState<PageContextProps['showModal']>()
@@ -22,6 +23,8 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
   const [ searchResults, setSearchResults ] = useState<PageContextProps['searchResults']>([])
   const [ searchPage, setSearchPage ] = useState<PageContextProps['searchPage']>(1)
   const [ navLoaded, setNavLoaded ] = useState<PageContextProps['navLoaded']>(false)
+  const [ customerId, setCustomerId ] = useState<PageContextProps['customerId']>()
+  const [ cart, setCart ] = useState([])
 
   const keyPress = useKeyPress()
 
@@ -59,6 +62,12 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
             setSearchPage,
             navLoaded, 
             setNavLoaded,
+            token,
+            setToken,
+            customerId,
+            setCustomerId,
+            cart,
+            setCart,
           }}
         >
           <Component {...pageProps} />

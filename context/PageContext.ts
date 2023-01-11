@@ -27,6 +27,10 @@ export interface PageContextProps {
   setSearchPage: (searchPage: number) => void
   navLoaded: boolean
   setNavLoaded: (navLoaded: boolean) => void
+  token: string
+  setToken: (token?: string) => void
+  customerId: number
+  setCustomerId: (customerId?: number) => void
 }
 
 export default React.createContext<Partial<PageContextProps>>({})

@@ -6,4 +6,5 @@ export interface FieldWrapperProps {
   label: string
   required: boolean
   hideLabels?: boolean
+  labelPlacement?: 'TOP' | 'BOTTOM'
 }
