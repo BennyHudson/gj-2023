@@ -20,10 +20,6 @@ const CustomerSubs: FC<CustomerSubsProps> = ({
   const subscriptionData = customer.meta_data.find((meta) => meta.key === '_wcs_subscription_ids_cache')
   const { data } = useSwr(`/api/subscription/${subscriptionData.value[0]}`, fetcher)
 
-  if (data) {
-    console.log(data)
-  }
-
   return (
     <Styled.CustomerSubs>
       {data &&

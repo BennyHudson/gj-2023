@@ -15,7 +15,6 @@ const Byline: FC<BylineProps> = ({
   additionalBylines,
   sponsoredPost,
 }: BylineProps): ReactElement => {
-  console.log(sponsoredPost)
   return (
     <Styled.Byline>
       <Paragraph size={2} font='Cera'>Words: {author}</Paragraph>

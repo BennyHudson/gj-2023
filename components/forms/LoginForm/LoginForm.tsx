@@ -19,7 +19,6 @@ const LoginForm: FC<LoginFormProps> = (): ReactElement => {
         input_2: '',
       }}
       onSubmit={async (values) => {
-        console.log('hello', values)
         const myHeaders = new Headers()
         const formData = new FormData()
 
