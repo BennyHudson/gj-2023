@@ -3,7 +3,7 @@ import Slider from 'react-slick'
 import Head from 'next/head'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/pro-light-svg-icons'
+import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/pro-thin-svg-icons'
 
 import Section from '@components/layout/Section'
 import Title from '@components/typography/Title'

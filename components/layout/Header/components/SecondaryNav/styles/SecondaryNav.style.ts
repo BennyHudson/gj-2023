@@ -1,4 +1,5 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import Link from 'next/link'
 
 import { StyledSecondaryNavProps } from './SecondaryNav.style.types'
 
@@ -21,7 +22,7 @@ export const SecondaryNav = styled.div((): FlattenSimpleInterpolation => css`
   }  
 `)
 
-export const IconButton = styled.div((props: StyledSecondaryNavProps): FlattenSimpleInterpolation => css`
+export const IconButton = styled(Link)((props: StyledSecondaryNavProps): FlattenSimpleInterpolation => css`
   background: none;
   padding: 0;
   border: none;
@@ -39,7 +40,7 @@ export const IconButton = styled.div((props: StyledSecondaryNavProps): FlattenSi
     background: ${props.theme.colours.lightGrey};
   }
 
-  ${props.inverse && css`
+  ${props.$inverse && css`
     color: ${props.theme.colours.white};
 
     &:hover {
@@ -52,7 +53,7 @@ export const IconButton = styled.div((props: StyledSecondaryNavProps): FlattenSi
   }
 `)
 
-export const Button = styled.button((props: StyledSecondaryNavProps): FlattenSimpleInterpolation => css`
+export const Button = styled(Link)((props: StyledSecondaryNavProps): FlattenSimpleInterpolation => css`
   background: none;
   padding: 0 ${props.theme.spacing[4]}px;
   border: none;
@@ -65,14 +66,15 @@ export const Button = styled.button((props: StyledSecondaryNavProps): FlattenSim
   justify-content: center;
   transition: 0.4s all ease;
   gap: ${props.theme.spacing[1]}px;
-  font-family: 'Cera Pro Semibold', sans-serif;
+  font-family: 'Cera Pro Light', sans-serif;
   border-left: 1px solid rgba(0,0,0,.1);
+  text-decoration: none;
 
   &:hover {
     background: ${props.theme.colours.lightGrey};
   }
 
-  ${props.inverse && css`
+  ${props.$inverse && css`
     color: ${props.theme.colours.white};
     border-left: 1px solid hsla(0,0%,100%,.1);
 

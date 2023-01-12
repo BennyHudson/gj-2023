@@ -12,10 +12,8 @@ import * as Styled from './styles/Cart.style'
 
 const Cart: FC = (): ReactElement => {
   const { cart, setCart } = useContext(PageContext) as PageContextProps
-  console.log(cart)
   return (
     <Styled.Cart>
-      <Heading size={5} text='Cart' font='ChronicleCondensed' />
       {cart.length ?
         <>
           <Styled.CartItems>

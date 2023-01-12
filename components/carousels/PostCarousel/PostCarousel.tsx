@@ -4,7 +4,7 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/pro-light-svg-icons'
+import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/pro-thin-svg-icons'
 
 import Thumbnail from '@components/imagery/Thumbnail'
 import Paragraph from '@components/typography/Paragraph'
@@ -43,7 +43,7 @@ const PostCarousel: FC<PostCarouselProps> = ({
         <Slider {...sliderSettings}>
           {posts.map((post, index) => {
             return (
-              <Styled.Post href={post.node.uri} key={index} scroll={false}>
+              <Styled.Post href={post.node.uri} key={index} >
                 <Thumbnail type='circle' size={1} featuredImageDatabaseId={post.node.featuredImageDatabaseId} />
                 <Paragraph text={post.node.title} size={2} font='Cera' />
               </Styled.Post>

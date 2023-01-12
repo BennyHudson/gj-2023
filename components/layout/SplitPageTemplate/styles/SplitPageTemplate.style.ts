@@ -35,3 +35,6 @@ export const Content = styled.div((props: StyledSplitPageTemplateProps): Flatten
   }
 `)
 
+export const Title = styled.div((props: StyledSplitPageTemplateProps): FlattenSimpleInterpolation => css`
+  margin-bottom: ${props.theme.spacing[8]}px;
+`)

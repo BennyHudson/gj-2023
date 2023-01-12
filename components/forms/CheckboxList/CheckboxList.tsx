@@ -2,7 +2,7 @@ import React, { ReactElement, FC } from 'react'
 import { Field } from 'formik'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faCheck } from '@fortawesome/pro-light-svg-icons'
+import { faCheck } from '@fortawesome/pro-thin-svg-icons'
 
 import FieldWrapper from '@components/forms/FieldWrapper'
 

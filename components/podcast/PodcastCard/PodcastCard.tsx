@@ -19,7 +19,7 @@ const PodcastCard: FC<PodcastCardProps> = ({
   } 
   return (
     <Styled.PodcastCard>
-      <Thumbnail type='circle' to={podcast.uri} featuredImage={podcast.featuredImage.node.sourceUrl} requestThumbnail />
+      <Thumbnail type='circle' to={podcast.uri} featuredImage={podcast.featuredImage.node.sourceUrl} requestThumbnail size={3} />
       <Meta date={podcast.date} />
       <Heading text={podcast.title} size={2} noMargin />
       <Paragraph size={1} text={podcastMeta} appearance='secondary' font='Cera' noMargin />

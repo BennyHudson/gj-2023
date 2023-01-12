@@ -1,7 +1,7 @@
 import React, { ReactElement, FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faAngleDown } from '@fortawesome/pro-light-svg-icons'
+import { faAngleDown } from '@fortawesome/pro-thin-svg-icons'
 
 import FieldWrapper from '../FieldWrapper'
 

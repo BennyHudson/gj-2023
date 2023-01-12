@@ -1,7 +1,7 @@
 import React, { ReactElement, FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faAngleRight } from '@fortawesome/pro-light-svg-icons'
+import { faAngleRight } from '@fortawesome/pro-thin-svg-icons'
 
 import Link from '@components/interactions/Link'
 

@@ -1,4 +1,4 @@
-import React, { ReactElement, FC } from 'react'
+import React, { ReactElement, FC, useContext } from 'react'
 
 import Section from '@components/layout/Section'
 import Heading from '@components/typography/Heading'
@@ -8,8 +8,19 @@ import * as Styled from './styles/ClubBuy.style'
 import { gql, useQuery } from '@apollo/client'
 import Button from '@components/interactions/Button'
 import Link from '@components/interactions/Link'
+import PageContext, { PageContextProps } from '@context/PageContext'
+import { useRouter } from 'next/router'
 
-const ClubBuy: FC = ({ products }): ReactElement => {
+const ClubBuy: FC = ({ products, freeGift }): ReactElement => {
+  const router = useRouter()
+
+  const { setCart } = useContext(PageContext) as PageContextProps
+
+  const addToCart = (selectedProduct) => {
+    setCart([selectedProduct, freeGift])
+    router.push('/cart')
+  }
+
   return (
     <Styled.ClubBuy>
       <Section appearance='secondary' containerWidth='narrow'>
@@ -30,7 +41,7 @@ const ClubBuy: FC = ({ products }): ReactElement => {
                     }
                   </Paragraph>
                 </div>
-                <Button onClick={() => console.log('hello')} text='Select' />
+                <Button onClick={() => addToCart(product)} text='Select' />
               </Styled.Product>
             )
           })}

@@ -8,7 +8,7 @@ export interface StyledParagraphProps {
   theme: Theme
   size: ParagraphKeys
   weight: WeightKeys
-  inverse: boolean
+  $inverse: boolean
   font: ParagraphProps['font']
   transform: ParagraphProps['transform']
   appearance: ParagraphProps['appearance']

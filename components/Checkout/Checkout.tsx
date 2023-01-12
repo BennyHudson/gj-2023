@@ -1,4 +1,7 @@
 import React, { ReactElement, FC, useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { faPenNib } from '@fortawesome/pro-thin-svg-icons'
 
 import Heading from '@components/typography/Heading'
 import EditButton from '@components/EditButton'
@@ -9,34 +12,48 @@ const Checkout: FC = (): ReactElement => {
   const [ activePanel, setActivePanel ] = useState(1)
   return (
     <Styled.Checkout>
-      <Heading size={5} text='Checkout' font='ChronicleCondensed' />
       <Styled.CheckoutPanels>
         <Styled.CheckoutPanel>
-          <Heading size={2} font='ChronicleCondensed' text='1. Your Details' />
+          <Styled.CheckoutHeader>
+            <Heading size={2} font='ChronicleCondensed' text='1. Your Details' noMargin />
+            <FontAwesomeIcon icon={faPenNib as IconProp} />
+          </Styled.CheckoutHeader>
           {activePanel === 1 &&
             <EditButton text='Continue' onClick={() => setActivePanel(activePanel + 1)} />
           }
         </Styled.CheckoutPanel>
         <Styled.CheckoutPanel>
-          <Heading size={2} font='ChronicleCondensed' text='2. Billing Details' />
+          <Styled.CheckoutHeader>
+            <Heading size={2} font='ChronicleCondensed' text='2. Billing Details' noMargin />
+            <FontAwesomeIcon icon={faPenNib as IconProp} />
+          </Styled.CheckoutHeader>
           {activePanel === 2 &&
             <EditButton text='Continue' onClick={() => setActivePanel(activePanel + 1)} />
           }
         </Styled.CheckoutPanel>
         <Styled.CheckoutPanel>
-          <Heading size={2} font='ChronicleCondensed' text='3. Shipping Details' />
+          <Styled.CheckoutHeader>
+            <Heading size={2} font='ChronicleCondensed' text='3. Shipping Details' noMargin />
+            <FontAwesomeIcon icon={faPenNib as IconProp} />
+          </Styled.CheckoutHeader>
           {activePanel === 3 &&
             <EditButton text='Continue' onClick={() => setActivePanel(activePanel + 1)} />
           }
         </Styled.CheckoutPanel>
         <Styled.CheckoutPanel>
-          <Heading size={2} font='ChronicleCondensed' text='4. Order Summary' />
+          <Styled.CheckoutHeader>
+            <Heading size={2} font='ChronicleCondensed' text='4. Order Summary' noMargin />
+            <FontAwesomeIcon icon={faPenNib as IconProp} />
+          </Styled.CheckoutHeader>
           {activePanel === 4 &&
             <EditButton text='Continue' onClick={() => setActivePanel(activePanel + 1)} />
           }
         </Styled.CheckoutPanel>
         <Styled.CheckoutPanel>
-          <Heading size={2} font='ChronicleCondensed' text='5. Payment' />
+          <Styled.CheckoutHeader>
+            <Heading size={2} font='ChronicleCondensed' text='5. Payment' noMargin />
+            <FontAwesomeIcon icon={faPenNib as IconProp} />
+          </Styled.CheckoutHeader>
           {activePanel === 5 &&
             <div>Payment</div>
           }

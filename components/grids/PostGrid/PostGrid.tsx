@@ -10,13 +10,14 @@ const PostGrid: FC<PostGridProps> = ({
   posts,
   columns = 4,
   inverse = false,
+  priority = true,
 }: PostGridProps): ReactElement => {
   return (
     <Styled.PostGrid columns={columns}>
       {posts.map((post, index) => {
         return (
           <PostExcerpt
-            priority={index < 8}
+            priority={priority && index < 8}
             key={index} 
             inverse={inverse} 
             {...post}

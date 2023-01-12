@@ -23,6 +23,7 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
   posts,
   cta,
   height = 1,
+  priority = true,
 }: FeatureCarouselProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps
   const [activeIndex, setActiveIndex] = useState(0)
@@ -56,7 +57,7 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
         {posts.map((post, index) => {
           if (index !== activeIndex) return
           return (
-            <Image src={featuredImageUrl(post.featuredImage.node.sourceUrl)!} fill alt='' key={index} priority />
+            <Image src={featuredImageUrl(post.featuredImage.node.sourceUrl)!} fill alt='' key={index} priority={priority} />
           )
         })}
       </Styled.ImageWrapper>

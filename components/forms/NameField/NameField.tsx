@@ -10,7 +10,7 @@ import FieldWrapper from '@components/forms/FieldWrapper'
 
 const NameField: FC<NameFieldProps> = (props: NameFieldProps): ReactElement => {
   return (
-    <FieldWrapper label={props.label}>
+    <FieldWrapper label={props.label} labelPlacement={props.labelPlacement}>
       <Styled.NameFields>
         {props.inputs.map((input, index) => {
           if (input.isHidden) return

@@ -27,4 +27,5 @@ export interface FeatureCarouselProps {
   }[]
   cta: string
   posts: PostProps[] | PodcastProps[]
+  priority?: boolean
 }

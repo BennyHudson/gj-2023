@@ -4,19 +4,18 @@ import { Form, Field } from 'formik'
 
 import { StyledSearchFormProps } from './SearchForm.style.types'
 
-export const SearchWrapper = styled.div((props: StyledSearchFormProps): FlattenSimpleInterpolation => css`
-  margin-bottom: ${props.theme.spacing[8]}px;
+export const SearchWrapper = styled.div((): FlattenSimpleInterpolation => css`
   width: 100%;
-  max-width: 800px;
+`)
+
+export const SearchForm = styled(Form)((props: StyledSearchFormProps): FlattenSimpleInterpolation => css`
+  display: flex;
+  width: 100%;
+  margin-bottom: ${props.theme.spacing[8]}px;
 
   &:last-child {
     margin-bottom: 0;
   }
-`)
-
-export const SearchForm = styled(Form)((): FlattenSimpleInterpolation => css`
-  display: flex;
-  width: 100%;
 `)
 
 export const Label = styled.label((): FlattenSimpleInterpolation => css`

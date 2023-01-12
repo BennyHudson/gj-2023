@@ -2,7 +2,7 @@
 import React, { ReactElement, FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faAngleDoubleUp } from '@fortawesome/pro-light-svg-icons'
+import { faAngleDoubleUp } from '@fortawesome/pro-thin-svg-icons'
 import dayjs from 'dayjs'
 
 import Section from '@components/layout/Section'

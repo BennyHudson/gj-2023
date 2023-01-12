@@ -1,4 +1,4 @@
-import React, { ReactElement, FC, useContext } from 'react'
+import React, { ReactElement, FC, useContext, useState } from 'react'
 import he from 'he'
 
 import Link from '@components/interactions/Link'
@@ -9,8 +9,11 @@ import PageContext, { PageContextProps } from '@context/PageContext'
 
 import * as Styled from './styles/SearchResults.style'
 
-const SearchResults: FC = (): ReactElement => {
-  const { cmsUrl, searchResults, searchPage, setSearchPage, searchTerm, apiUrl, setSearchResults } = useContext(PageContext) as PageContextProps
+import { SearchResultsProps } from './SearchResults.types'
+
+const SearchResults: FC<SearchResultsProps> = ({ searchResults, searchTerm, setSearchResults }: SearchResultsProps): ReactElement => {
+  const [ searchPage, setSearchPage ] = useState(1)
+  const { cmsUrl, apiUrl } = useContext(PageContext) as PageContextProps
   
   const moreResults = async () => {
     const search = await fetch(`${apiUrl}/search?search=${searchTerm}&page=${searchPage + 1}`)
@@ -33,7 +36,9 @@ const SearchResults: FC = (): ReactElement => {
               )
             })}
           </Styled.SearchResults>
-          <LoadMore onClick={moreResults} />
+          {searchResults.length % 10 === 0 &&
+            <LoadMore onClick={moreResults} />
+          }
         </>
         :
         <>

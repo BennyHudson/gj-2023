@@ -23,17 +23,17 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
           heirarchalNav.map((item, index) => {
             if (item.children.length) return (
               <Styled.MenuItem key={index} $inverse={inverse}>
-                <Styled.MenuLink scroll={false} $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
+                <Styled.MenuLink  $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
                 <Styled.SubMenuWrapper>
                   <Styled.SubMenu subListCount={item.children.length}>
                     {item.children.map((child, index) => {
                       return (
                         <li key={index}>
-                          <Styled.SubLink scroll={false} $inverse={inverse} $feature href={child.uri}>{child.label}</Styled.SubLink>
+                          <Styled.SubLink  $inverse={inverse} $feature href={child.uri}>{child.label}</Styled.SubLink>
                           <Styled.SubMenuList>
                             {child.children.map((cat, index) => {
                               return (
-                                <Styled.SubLink scroll={false} $inverse={inverse} href={cat.uri} key={index}>{cat.label}</Styled.SubLink>
+                                <Styled.SubLink  $inverse={inverse} href={cat.uri} key={index}>{cat.label}</Styled.SubLink>
                               )
                             })}
                           </Styled.SubMenuList>
@@ -48,7 +48,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
             if (item.uri === '/podcasts/') {
               return (
                 <Styled.MenuItem key={index} $inverse={inverse}>
-                  <Styled.MenuLink scroll={false} $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
+                  <Styled.MenuLink  $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
                   <Styled.SubMenuWrapper>
                     <Title
                       title='Latest'
@@ -68,7 +68,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
             if (item.uri === '/house-notes/') {
               return (
                 <Styled.MenuItem key={index} $inverse={inverse}>
-                  <Styled.MenuLink scroll={false} $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
+                  <Styled.MenuLink  $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
                   <Styled.SubMenuWrapper>
                     <Title
                       title='Latest'
@@ -88,7 +88,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
             if (item.uri === '/category/video/') {
               return (
                 <Styled.MenuItem key={index} $inverse={inverse}>
-                  <Styled.MenuLink scroll={false} $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
+                  <Styled.MenuLink  $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
                   <Styled.SubMenuWrapper>
                     <Title
                       title='Latest'
@@ -108,7 +108,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
             if (item.uri === '/gj-sessions/') {
               return (
                 <Styled.MenuItem key={index} $inverse={inverse}>
-                  <Styled.MenuLink scroll={false} $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
+                  <Styled.MenuLink  $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
                   <Styled.SubMenuWrapper>
                     <Title
                       title='Latest'
@@ -128,7 +128,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
             return (
               <Styled.MenuItem key={index} $inverse={inverse}>
                 <Styled.MenuLink 
-                  scroll={false} 
+                   
                   $isActive={index === activeNavElement} 
                   as={!item.uri ? 'span' : Link} 
                   href={item.uri}

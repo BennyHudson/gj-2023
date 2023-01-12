@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { FC, ReactElement, useContext, useEffect } from 'react'
-import { CSSTransition } from 'react-transition-group'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 
@@ -15,7 +14,6 @@ import { HeaderProps } from '@components/layout/Header/Header.types'
 import * as Styled from './styles/PageLayout.style'
 
 import { PageLayoutProps } from './PageLayout.types'
-import PageTransition from '@components/layout/PageTransition'
 
 const PageLayout: FC<PageLayoutProps> = ({ children, headerNav, footerNav }: PageLayoutProps): ReactElement => {
   const { pathname } = useRouter()
@@ -48,9 +46,7 @@ const PageLayout: FC<PageLayoutProps> = ({ children, headerNav, footerNav }: Pag
         headerNav={headerNav}
       />
       <Styled.Page>
-        <PageTransition>
-          {children}
-        </PageTransition>
+        {children}
       </Styled.Page>
       {!!showModal && <ContainedModal>{showModal}</ContainedModal>}
       <Footer footerNav={footerNav} />

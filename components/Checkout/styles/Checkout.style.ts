@@ -6,6 +6,22 @@ export const Checkout = styled.div((props: StyledCheckoutProps): FlattenSimpleIn
   color: ${props.theme.colours.primary};
 `)
 
+export const CheckoutHeader = styled.div((props: StyledCheckoutProps): FlattenSimpleInterpolation => css`
+  display: flex;
+  gap: ${props.theme.spacing[4]}px;
+  margin-bottom: ${props.theme.spacing[4]}px;
+  justify-content: space-between;
+  align-items: center;
+
+  svg {
+    width: 16px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`)
+
 export const CheckoutPanels = styled.div((props: StyledCheckoutProps): FlattenSimpleInterpolation => css`
   display: flex;
   flex-direction: column;

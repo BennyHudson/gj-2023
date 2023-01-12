@@ -2,7 +2,7 @@ import React, { ReactElement, FC, useContext } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faTimes } from '@fortawesome/pro-light-svg-icons'
+import { faTimes } from '@fortawesome/pro-thin-svg-icons'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 

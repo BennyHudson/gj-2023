@@ -1,9 +1,10 @@
-import React, { ReactElement, FC, useState, useContext, useEffect } from 'react'
-// import { navigate } from 'gatsby'
+import React, { ReactElement, FC, useState, useContext } from 'react'
 import { Formik } from 'formik'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faArrowRight, faSpinner } from '@fortawesome/pro-light-svg-icons'
+import { faArrowRight, faSpinner } from '@fortawesome/pro-thin-svg-icons'
+
+import SearchResults from '@components/search/SearchResults'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
@@ -11,11 +12,9 @@ import * as Styled from './styles/SearchForm.style'
 
 const SearchForm: FC = (): ReactElement => {
   const [loading, setLoading] = useState(false)
-  const { searchTerm, setSearchTerm, apiUrl, setSearchResults, setShowModal, searchResults } = useContext(PageContext) as PageContextProps
-
-  useEffect(() => {
-    // navigate('/search')
-  }, [searchResults])
+  const [ searchResults, setSearchResults ] = useState([])
+  const [ searchTerm, setSearchTerm ] = useState()
+  const { apiUrl } = useContext(PageContext) as PageContextProps
 
   return (
     <Styled.SearchWrapper>
@@ -29,7 +28,6 @@ const SearchForm: FC = (): ReactElement => {
           const results = await search.json()
           setLoading(false)
           setSearchResults(results)
-          setShowModal(null)
           setSearchTerm(values.searchTerm)     
         }}
       >
@@ -47,6 +45,14 @@ const SearchForm: FC = (): ReactElement => {
           </Styled.SearchForm>
         )}
       </Formik>
+
+      {searchTerm && searchResults.length > 0 &&
+        <SearchResults
+          searchResults={searchResults}
+          searchTerm={searchTerm}
+          setSearchResults={setSearchResults}
+        />
+      }
     </Styled.SearchWrapper>
   )
 }

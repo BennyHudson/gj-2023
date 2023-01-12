@@ -63,7 +63,7 @@ const Home: FC = ({
             }
           ]}
         />
-        <PostGrid
+        <PostGrid priority={false}
           columns={3}
           posts={latestPosts}
         />
@@ -80,7 +80,7 @@ const Home: FC = ({
             }
           ]}
         />
-        <PostGrid
+        <PostGrid priority={false}
           columns={4}
           posts={coverInterviews.articles.nodes}
         />
@@ -136,11 +136,12 @@ const Home: FC = ({
           }
         ]}
         cta='Watch Now'
+        priority={false}
       />
       <BannerAdvert />
       <Section>
         <Title title={'Editor\'s Pick'} />
-        <PostGrid posts={pageData.homeEditorsPick.homeEditorsPick} />
+        <PostGrid priority={false} posts={pageData.homeEditorsPick.homeEditorsPick} />
       </Section>
       <Section>
         <Title
@@ -153,7 +154,7 @@ const Home: FC = ({
             }
           ]}
         />
-        <PostGrid
+        <PostGrid priority={false}
           columns={4}
           posts={competitions.articles.nodes}
         />

@@ -38,7 +38,7 @@ export const Paragraph = styled.p((props: StyledParagraphProps): FlattenSimpleIn
     `}
   `}
 
-  ${props.inverse && css`
+  ${props.$inverse && css`
     color: ${props.theme.colours.white};
 
     ${props.appearance === 'secondary' && css`

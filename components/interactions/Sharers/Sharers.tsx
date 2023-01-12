@@ -1,7 +1,7 @@
 import React, { ReactElement, FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faEnvelope } from '@fortawesome/pro-light-svg-icons'
+import { faEnvelope } from '@fortawesome/pro-thin-svg-icons'
 import { faTwitter, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 import * as Styled from './styles/Sharers.style'

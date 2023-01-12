@@ -8,11 +8,12 @@ import { footerNavQuery } from '@queries/global/footer-nav'
 import PageLayout from '@components/layout/PageLayout'
 import SplitPageTemplate from '@components/layout/SplitPageTemplate'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
-import Checkout from '@components/Checkout'
+import SearchForm from '@components/search/SearchForm'
 
-const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
-  const { setActiveNavElement } = useContext(PageContext) as PageContextProps
+import PageContext, { PageContextProps } from '@context/PageContext'
+
+const SearchPage: FC = ({ headerNav, footerNav }): ReactElement => {
+  const { token, setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
     setActiveNavElement(-1)
@@ -20,14 +21,14 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
   
   return (
     <PageLayout headerNav={headerNav} footerNav={footerNav}>
-      <SplitPageTemplate image='https://www.thegentlemansjournal.com/wp-content/uploads/2019/09/ryan-reynolds-gentlemans-journal-aviation-gin-1.jpg' title='Checkout'>
-        <Checkout />
+      <SplitPageTemplate image='https://www.thegentlemansjournal.com/wp-content/uploads/2022/12/209490030008-2502x1200-c-center.jpg' title='Search'>
+        <SearchForm />
       </SplitPageTemplate>
     </PageLayout>
   )
 }
 
-export default CheckoutPage
+export default SearchPage
 
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)

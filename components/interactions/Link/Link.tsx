@@ -2,7 +2,7 @@ import React, { ReactElement, FC } from 'react'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faAngleRight } from '@fortawesome/pro-light-svg-icons'
+import { faAngleRight } from '@fortawesome/pro-thin-svg-icons'
 
 import * as Styled from './styles/Link.style'
 
@@ -37,7 +37,7 @@ const GJLink: FC<LinkProps> = ({
       $showIcon={showIcon}
       as={renderAs()}
       href={href ? href : to}
-      scroll={false}
+      
     >
       {children} {showIcon && <FontAwesomeIcon icon={faAngleRight as IconProp} size='2x' />}
     </Styled.Link>

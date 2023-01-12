@@ -1,7 +1,7 @@
 import React, { ReactElement, FC, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faLockAlt } from '@fortawesome/pro-light-svg-icons'
+import { faLockAlt } from '@fortawesome/pro-thin-svg-icons'
 
 import Heading from '@components/typography/Heading'
 import Meta from '@components/typography/Meta'
@@ -25,7 +25,7 @@ const PostExcerpt: FC<PostExcerptProps> = ({
   const { token } = useContext(PageContext) as PageContextProps
   const membersOnly = categories && categories.nodes.find(category => category.name === 'Members')
   return (
-    <Styled.PostExcerpt href={uri} scroll={false}>
+    <Styled.PostExcerpt href={uri} >
       <Thumbnail priority={priority} featuredImage={featuredImage?.node.sourceUrl} />
       <Meta categories={categories} date={date} inverse={inverse} />
       <Styled.Title inverse={inverse}>

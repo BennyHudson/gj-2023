@@ -22,33 +22,29 @@ const SecondaryNav: FC<SecondaryNavProps> = ({
 }: SecondaryNavProps): ReactElement => {
   const { setShowModal } = useContext(PageContext) as PageContextProps
 
-  const { data } = useQuery(newsletterModalQuery.query)
-
   return (
     <Styled.SecondaryNav>
       <ul>
         <li>
-          <Styled.IconButton inverse={inverse} as='button' onClick={() => setShowModal(<SearchForm />)}>
+          <Styled.IconButton $inverse={inverse} href='/search'>
             <FontAwesomeIcon icon={faSearch as IconProp} />
           </Styled.IconButton>
         </li>
         <li>
-          <Styled.IconButton inverse={inverse} as={Link} href='/clubhouse'>
+          <Styled.IconButton $inverse={inverse} href='/clubhouse'>
             <FontAwesomeIcon icon={faUser as IconProp} />
           </Styled.IconButton>
         </li>
         <li>
-          <Styled.IconButton inverse={inverse} as={Link} href='/cart'>
+          <Styled.IconButton $inverse={inverse} href='/cart'>
             <FontAwesomeIcon icon={faShoppingBag as IconProp} />
           </Styled.IconButton>
         </li>
-        {data && 
-          <li>
-            <Styled.Button inverse={inverse} onClick={() => setShowModal(<NewsletterModal data={data} />)}>
-              <FontAwesomeIcon icon={faEnvelope as IconProp} /> Newsletter
-            </Styled.Button>
-          </li>
-        }
+        <li>
+          <Styled.Button $inverse={inverse} href='/newsletter'>
+            <FontAwesomeIcon icon={faEnvelope as IconProp} /> Newsletter
+          </Styled.Button>
+        </li>
       </ul>
     </Styled.SecondaryNav>
   )

@@ -5,7 +5,6 @@ import { WooCommerce } from '../WooCommerce'
 export default async function userHandler(req: NextApiRequest, res: NextApiResponse) {
   const {
     query: { id },
-    method,
   } = req  
 
   const wooCommerceData = await WooCommerce.get(`subscriptions/${id}`)

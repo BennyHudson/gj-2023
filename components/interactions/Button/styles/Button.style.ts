@@ -14,7 +14,9 @@ export const Button = styled.button((props: StyledButtonProps): FlattenSimpleInt
   font-family: 'Cera Pro Semibold', sans-serif;
   text-decoration: none;
   display: inline-block;
-  // font-weight: 600;
+  text-align: center;
+  font-size: ${props.theme.typography.paragraph[2].fontSize};
+  line-height: ${props.theme.typography.paragraph[2].lineHeight};
 
   ${props.size === 2 && css`
     text-transform: uppercase;
