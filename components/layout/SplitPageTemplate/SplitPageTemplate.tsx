@@ -23,10 +23,10 @@ const SplitPageTemplate: FC<SplitPageTemplateProps> = ({
         <Image src={featuredImageUrl(image)} fill alt='' priority />
       </Styled.BackgroundImage>
       <Styled.Content>
-        <div>
+        <Styled.ContentWrapper>
           {title && <Styled.Title><Heading size={5} text={title} font='ChronicleCondensed' /></Styled.Title>}
           {children}
-        </div>
+        </Styled.ContentWrapper>
       </Styled.Content>
     </Styled.SplitPageTemplate>
   )

@@ -24,7 +24,7 @@ const NewsletterPage: FC = ({ headerNav, footerNav, newsletter, newsletterForm }
     <PageLayout headerNav={headerNav} footerNav={footerNav}>
       <SplitPageTemplate image={newsletter.image.sourceUrl} title={newsletter.title}>
         <RawHtmlWrapper content={newsletter.description} />
-        <Newsletter form={newsletterForm} />
+        <Newsletter form={newsletterForm} showTitle={false} />
       </SplitPageTemplate>
     </PageLayout>
   )

@@ -47,4 +47,15 @@ export const IconButton = styled.button((props: StyledCheckoutProps): FlattenSim
   padding: ${props.theme.spacing[1]}px;
   border-radius: 0;
   cursor: pointer;
+  background: none;
+  border: none;
+  font-size: ${props.theme.typography.paragraph[2].fontSize};
+  line-height: ${props.theme.typography.paragraph[2].fontSize};
+  color: ${props.theme.colours.black};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s all ease;
+  gap: ${props.theme.spacing[1]}px;
+  font-family: 'Cera Pro Light', sans-serif;
 `)

@@ -12,9 +12,18 @@ export const newsletterModalQuery = {
               sourceUrl
             }
           }
+          sectionNewsletter {
+            image {
+              sourceUrl
+            }
+            imageAlt {
+              sourceUrl
+            }
+          }
         }
       }
       gfForm(id: "342", idType: DATABASE_ID) {
+        title
         formFields {
           nodes {
             ... on EmailField {

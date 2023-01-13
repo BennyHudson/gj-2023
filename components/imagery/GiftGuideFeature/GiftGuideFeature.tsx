@@ -20,7 +20,7 @@ const GiftGuideFeature: FC<GiftGuideFeatureProps> = ({
   subtitle,
   url,
   featuredImage,
-  height = 1,
+  height = 2,
 }: GiftGuideFeatureProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps
   return (

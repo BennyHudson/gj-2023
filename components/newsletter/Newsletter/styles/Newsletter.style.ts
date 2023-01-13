@@ -8,7 +8,6 @@ export const Newsletter = styled.div((props: StyledNewsletterProps): FlattenSimp
   display: flex;
   gap: ${props.theme.spacing[2]}px;
   flex-direction: column;
-  padding-top: ${props.theme.spacing[2]}px;
 
   ${FieldWrapper} {
     margin-bottom: 0;

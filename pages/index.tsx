@@ -26,6 +26,8 @@ import FeatureCarousel from '@components/carousels/FeatureCarousel'
 import PageContext, { PageContextProps } from '@context/PageContext'
 import HeadTags from '@components/layout/HeadTags'
 import PageLayout from '@components/layout/PageLayout'
+import { newsletterModalQuery } from '@queries/global/site-options'
+import NewsletterBanner from '@components/newsletter/NewsletterBanner'
 
 const Home: FC = ({ 
   headerNav,
@@ -38,6 +40,8 @@ const Home: FC = ({
   latestPodcasts,
   latestVideo,
   competitions,
+  newsletter,
+  newsletterForm,
 }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
@@ -51,6 +55,10 @@ const Home: FC = ({
       <FullPageFeature
         {...pageData.homeFeaturedPost.homeFeaturedPost}
         excerpt={pageData.homeFeaturedPost.homeFeaturedPost.articleAcf.standfirst}
+      />
+      <NewsletterBanner
+        backgroundImage={newsletter.image.sourceUrl}
+        form={newsletterForm}
       />
       <Section>
         <Title
@@ -177,6 +185,7 @@ export async function getStaticProps() {
   const latestPodcasts = await client.query(latestPodcastsQuery)
   const latestVideo = await client.query(latestVideoQuery)
   const competitions = await client.query(categoryQuery('Competitions'))
+  const newsletter = await client.query(newsletterModalQuery)
 
   return {
     props: {
@@ -190,6 +199,8 @@ export async function getStaticProps() {
       latestPodcasts: latestPodcasts.data,
       latestVideo: latestVideo.data.articles.nodes,
       competitions: competitions.data,
+      newsletter: newsletter.data.gjOptions.newsletterModal.sectionNewsletter,
+      newsletterForm: newsletter.data.gfForm,
     },
     revalidate: 60,
   }

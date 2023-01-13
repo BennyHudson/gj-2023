@@ -4,5 +4,5 @@ export interface GiftGuideFeatureProps {
   subtitle?: string
   url: string
   featuredImage?: string
-  height?: 1 | 2
+  height?: 1 | 2 | 3
 }

@@ -19,6 +19,13 @@ export const NewsletterBannerContent = styled.div((props: StyledNewsletterBanner
   display: grid;
   grid-template-columns: repeat(12, [col-start] 1fr);
   padding: ${props.theme.spacing[8]}px 0;
+  position: relative;
+
+  img {
+    width: 65% !important;
+    object-fit: cover;
+    left: -10% !important;
+  }
 
   ${Newsletter} {
     grid-column: col-start 9 / span 4;

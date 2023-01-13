@@ -8,8 +8,20 @@ export const GiftGuideFeature = styled.div((props: StyledGiftGuideFeatureProps):
   position: relative;
   padding: ${props.theme.spacing[8]}px 0 0;
   background: ${props.theme.colours.black};
-  height: ${props.height === 2 ? '100vh' : `calc(100vh - ${props.headerHeight}px)`};
   display: flex;
+
+  ${props.height === 1 && css`
+    aspect-ratio: 3 / 2;
+  `}
+
+  ${props.height === 2 && css`
+    height: calc(100vh - ${props.headerHeight}px);
+  `}
+
+  ${props.height === 3 && css`
+    height: 100vh;
+  `}
+
 `)
 
 export const Container = styled.div((props: ThemeProps): FlattenSimpleInterpolation => css`

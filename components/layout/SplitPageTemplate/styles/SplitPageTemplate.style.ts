@@ -1,6 +1,7 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 
 import { StyledSplitPageTemplateProps } from './SplitPageTemplate.style.types'
+import { Newsletter } from '@components/newsletter/Newsletter/styles/Newsletter.style'
 
 export const SplitPageTemplate = styled.div((props: StyledSplitPageTemplateProps): FlattenSimpleInterpolation => css`
   display: grid;
@@ -33,6 +34,14 @@ export const Content = styled.div((props: StyledSplitPageTemplateProps): Flatten
     width: 100%;
     margin: auto 0;
   }
+
+  ${Newsletter} {
+    padding-top: ${props.theme.spacing[4]}px;
+  }
+`)
+
+export const ContentWrapper = styled.div((): FlattenSimpleInterpolation => css`
+  max-width: 800px;
 `)
 
 export const Title = styled.div((props: StyledSplitPageTemplateProps): FlattenSimpleInterpolation => css`

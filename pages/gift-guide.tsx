@@ -31,7 +31,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav }): ReactElemen
     <PageLayout headerNav={headerNav} footerNav={footerNav}>
       <HeadTags seo={seo} />
       <GiftGuideFeature
-        height={2}
+        height={3}
         meta={pageData.ctaFirst.categories.nodes[0].name}
         title={pageData.ctaFirst.title}
         subtitle={pageData.ctaFirst.articleAcf.standfirst}
@@ -45,6 +45,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav }): ReactElemen
           subtitle={pageData.featuredGuides[0].articleAcf.standfirst}
           url={pageData.featuredGuides[0].uri}
           featuredImage={pageData.featuredGuides[0].featuredImage.node.sourceUrl}
+          height={1}
         />
         <VerticalSpacer spacingLevel={4} />
         <PostGrid

@@ -1,14 +1,14 @@
 import React, { ReactElement, FC } from 'react'
 import { Formik } from 'formik'
 
-import Heading from '@components/typography/Heading'
+import Title from '@components/typography/Title'
 import TextField from '@components/forms/TextField'
 import NameField from '@components/forms/NameField'
 
 import * as Styled from './styles/Newsletter.style'
 import Button from '@components/interactions/Button'
 
-const Newsletter: FC = ({ form }): ReactElement => {
+const Newsletter: FC = ({ form, showTitle = true }): ReactElement => {
 
   const initialValues = form.formFields.nodes.reduce((acc, curr) => (
     acc[`input_${curr.id}`] = '', acc), {}
@@ -22,7 +22,7 @@ const Newsletter: FC = ({ form }): ReactElement => {
       }}
     >
       <Styled.Newsletter>
-        <Heading text={form.title} size={3} font='ChronicleCondensed' noMargin />
+        {showTitle && <Title title={form.title} />}
         {form.formFields.nodes.map((formField, index) => {
           switch (formField.type) {
           case 'NAME': {
