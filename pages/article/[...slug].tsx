@@ -117,6 +117,7 @@ export async function getStaticProps({ params }: StaticPaths) {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
       data: article.data,
-    }
+    },
+    revalidate: 60,
   }
 }

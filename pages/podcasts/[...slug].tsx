@@ -79,6 +79,7 @@ export async function getStaticProps({ params }: StaticPaths) {
       footerNav: footerNav.data,
       podcastData: podcast.data.podcast,
       podcastOptions: podcastOptions.data.podcastOptions.podcastOptions.podcastGlobal,
-    }
+    },
+    revalidate: 60
   }
 }

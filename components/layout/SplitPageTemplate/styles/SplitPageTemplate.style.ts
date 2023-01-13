@@ -14,7 +14,7 @@ export const SplitPageTemplate = styled.div((props: StyledSplitPageTemplateProps
 `)
 
 export const BackgroundImage = styled.div((): FlattenSimpleInterpolation => css`
-  grid-column: col-start / span 6;
+  grid-column: col-start / span 5;
   position: relative;
 
   img {
@@ -26,7 +26,7 @@ export const Content = styled.div((props: StyledSplitPageTemplateProps): Flatten
   padding: ${props.theme.spacing[8]}px;
   display: flex;
   align-items: flex-start;
-  grid-column: col-start 7 / span 5;
+  grid-column: col-start 6 / span 7;
   overflow: auto;
 
   & > div {

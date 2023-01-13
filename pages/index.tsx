@@ -190,6 +190,7 @@ export async function getStaticProps() {
       latestPodcasts: latestPodcasts.data,
       latestVideo: latestVideo.data.articles.nodes,
       competitions: competitions.data,
-    }
+    },
+    revalidate: 60,
   }
 }

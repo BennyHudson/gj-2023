@@ -2,9 +2,7 @@ import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 
 import { StyledCheckoutProps } from './Checkout.style.types'
 
-export const Checkout = styled.div((props: StyledCheckoutProps): FlattenSimpleInterpolation => css`
-  color: ${props.theme.colours.primary};
-`)
+export const Checkout = styled.div((): FlattenSimpleInterpolation => [])
 
 export const CheckoutHeader = styled.div((props: StyledCheckoutProps): FlattenSimpleInterpolation => css`
   display: flex;
@@ -41,4 +39,12 @@ export const CheckoutPanel = styled.div((props: StyledCheckoutProps): FlattenSim
     border-bottom: none;
     padding-bottom: 0;
   }
+`)
+
+export const IconButton = styled.button((props: StyledCheckoutProps): FlattenSimpleInterpolation => css`
+  border: none;
+  background: none;
+  padding: ${props.theme.spacing[1]}px;
+  border-radius: 0;
+  cursor: pointer;
 `)

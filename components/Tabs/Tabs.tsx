@@ -1,4 +1,4 @@
-import React, { ReactElement, FC, useState } from 'react'
+import React, { ReactElement, FC, useState, Fragment } from 'react'
 
 import * as Styled from './styles/Tabs.style'
 
@@ -21,9 +21,9 @@ const Tabs: FC<TabsProps> = ({
       {tabs.map((tab, index) => {
         if (index !== activeTab) return
         return (
-          <>
+          <Fragment key={index}>
             {tab.content}
-          </>
+          </Fragment>
         )
       })}
     </>

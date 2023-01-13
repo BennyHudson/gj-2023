@@ -89,6 +89,7 @@ export async function getStaticProps({ params }: StaticPaths) {
       footerNav: footerNav.data,
       pageData: response.data.houseNote,
       articleNote: response.data.gjOptions.articleNote,
-    }
+    },
+    revalidate: 60
   }
 }
