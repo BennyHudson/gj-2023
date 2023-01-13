@@ -102,6 +102,6 @@ export async function getStaticProps({ params }: StaticPaths) {
       footerNav: footerNav.data,
       category: category.data.category,
     },
-    revalidate: 60
+    // revalidate: 60
   }
 }

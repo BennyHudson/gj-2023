@@ -118,6 +118,6 @@ export async function getStaticProps({ params }: StaticPaths) {
       footerNav: footerNav.data,
       data: article.data,
     },
-    revalidate: 60,
+    // revalidate: 60,
   }
 }

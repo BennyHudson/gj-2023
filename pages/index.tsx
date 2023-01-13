@@ -202,6 +202,6 @@ export async function getStaticProps() {
       newsletter: newsletter.data.gjOptions.newsletterModal.sectionNewsletter,
       newsletterForm: newsletter.data.gfForm,
     },
-    revalidate: 60,
+    // revalidate: 60,
   }
 }

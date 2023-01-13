@@ -80,6 +80,6 @@ export async function getStaticProps({ params }: StaticPaths) {
       podcastData: podcast.data.podcast,
       podcastOptions: podcastOptions.data.podcastOptions.podcastOptions.podcastGlobal,
     },
-    revalidate: 60
+    // revalidate: 60
   }
 }
