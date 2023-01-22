@@ -2,7 +2,7 @@ import { gql } from '@apollo/client'
 
 import { postContent, Post } from '@queries/fragments/postContent'
 import { articleNote, ArticleNote } from '@queries/fragments/articleNote'
-import { bylineContent, Byline } from '@queries/fragments/bylineContent'
+import { bylineContent, Byline } from '@queries/fragments/postBylineContent'
 import { contentBuilder, ContentBuilder } from '@queries/fragments/contentBuilder'
 import { seo, Seo } from '@queries/fragments/seo'
 
@@ -28,9 +28,11 @@ export const postBody = (slug: string) => {
   return {
     query: gql`
       ${postContent}
+      ${bylineContent}
       query postQuery {
         post(id: "${slug}", idType: SLUG) {
           ... PostContent
+          ... BylineContent
           content
           articleAcf {
             standfirst
