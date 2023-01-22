@@ -12,22 +12,25 @@ import { giftGuideQuery } from '@queries/homepage/gift-guide'
 import { latestVideoQuery } from '@queries/homepage/latest-video'
 import { categoryQuery } from '@queries/homepage/category'
 
-import FullPageFeature from '@components/imagery/FullPageFeature'
-import Section from '@components/layout/Section'
-import Title from '@components/typography/Title'
-import PostGrid from '@components/grids/PostGrid'
-import BannerAdvert from '@components/layout/BannerAdvert'
-import GiftGuideFeature from '@components/imagery/GiftGuideFeature'
-import WeeklyHighlight from '@components/home/WeeklyHighlight'
-import SessionsFeature from '@components/sessions/SessionsFeature'
-import PodcastGrid from '@components/podcast/PodcastGrid'
-import FeatureCarousel from '@components/carousels/FeatureCarousel'
+import FullPageFeature from '@components/FullPageFeature'
+import Section from '@components/Section'
+import Title from '@components/Title'
+import PostGrid from '@components/PostGrid'
+import BannerAdvert from '@components/BannerAdvert'
+import GiftGuideFeature from '@components/GiftGuideFeature'
+import WeeklyHighlight from '@components/WeeklyHighlight'
+import SessionsFeature from '@components/SessionsFeature'
+import PodcastGrid from '@components/PodcastGrid'
+import FeatureCarousel from '@components/FeatureCarousel'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
-import HeadTags from '@components/layout/HeadTags'
-import PageLayout from '@components/layout/PageLayout'
+import PageLayout from '@components/PageLayout'
 import { newsletterModalQuery } from '@queries/global/site-options'
-import NewsletterBanner from '@components/newsletter/NewsletterBanner'
+import NewsletterBanner from '@components/NewsletterBanner'
+import { featuredProductsQuery } from '@queries/homepage/featured-products'
+import ShopGrid from '@components/ShopGrid'
+import ClubBanner from '@components/ClubBanner'
+import { clubQuery } from '@queries/homepage/club'
 
 const Home: FC = ({ 
   headerNav,
@@ -42,6 +45,8 @@ const Home: FC = ({
   competitions,
   newsletter,
   newsletterForm,
+  featuredProducts,
+  club,
 }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
@@ -50,8 +55,7 @@ const Home: FC = ({
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav}>
-      <HeadTags seo={pageData.seo} />
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo}>
       <FullPageFeature
         {...pageData.homeFeaturedPost.homeFeaturedPost}
         excerpt={pageData.homeFeaturedPost.homeFeaturedPost.articleAcf.standfirst}
@@ -59,6 +63,7 @@ const Home: FC = ({
       <NewsletterBanner
         backgroundImage={newsletter.image.sourceUrl}
         form={newsletterForm}
+        size={1}
       />
       <Section>
         <Title
@@ -74,6 +79,7 @@ const Home: FC = ({
         <PostGrid priority={false}
           columns={3}
           posts={latestPosts}
+          smCarousel
         />
       </Section>
       <BannerAdvert />
@@ -91,7 +97,24 @@ const Home: FC = ({
         <PostGrid priority={false}
           columns={4}
           posts={coverInterviews.articles.nodes}
+          smCarousel
         />
+      </Section>
+      <ClubBanner
+        content={club.description}
+        card={club.card.sourceUrl}
+      />
+      <Section appearance='tertiary'>
+        <Title
+          title='Shop'
+          links={[
+            {
+              text: 'Visit Shop',
+              url: 'https://shop.thegentlemansjournal.com',
+            }
+          ]}
+        />
+        <ShopGrid products={featuredProducts} />
       </Section>
       <GiftGuideFeature
         meta='Gift Guide'
@@ -101,15 +124,10 @@ const Home: FC = ({
         url='/gift-guide'
         featuredImage={giftGuide.featuredImage.node.sourceUrl}
       />
-      <Section>
-        <Title
-          title='Weekly Highlight'
-        />
-        <WeeklyHighlight
-          excerpt={pageData.homeWeeklyHighlight.homeWeeklyHighlight.articleAcf.standfirst}
-          {...pageData.homeWeeklyHighlight.homeWeeklyHighlight}
-        />
-      </Section>
+      <WeeklyHighlight
+        excerpt={pageData.homeWeeklyHighlight.homeWeeklyHighlight.articleAcf.standfirst}
+        {...pageData.homeWeeklyHighlight.homeWeeklyHighlight}
+      />
       <SessionsFeature
         content={sessionsFeature.page.sessions.sessions.sessionsIntroText}
         post={sessionsFeature.articles.nodes[0]}
@@ -149,7 +167,7 @@ const Home: FC = ({
       <BannerAdvert />
       <Section>
         <Title title={'Editor\'s Pick'} />
-        <PostGrid priority={false} posts={pageData.homeEditorsPick.homeEditorsPick} />
+        <PostGrid priority={false} posts={pageData.homeEditorsPick.homeEditorsPick} smCarousel />
       </Section>
       <Section>
         <Title
@@ -165,8 +183,14 @@ const Home: FC = ({
         <PostGrid priority={false}
           columns={4}
           posts={competitions.articles.nodes}
+          smCarousel
         />
       </Section>
+      <NewsletterBanner
+        backgroundImage={newsletter.imageAlt.sourceUrl}
+        form={newsletterForm}
+        size={2}
+      />
     </PageLayout>
   )
 }
@@ -186,6 +210,8 @@ export async function getStaticProps() {
   const latestVideo = await client.query(latestVideoQuery)
   const competitions = await client.query(categoryQuery('Competitions'))
   const newsletter = await client.query(newsletterModalQuery)
+  const featuredProducts = await client.query(featuredProductsQuery)
+  const club = await client.query(clubQuery)
 
   return {
     props: {
@@ -201,6 +227,8 @@ export async function getStaticProps() {
       competitions: competitions.data,
       newsletter: newsletter.data.gjOptions.newsletterModal.sectionNewsletter,
       newsletterForm: newsletter.data.gfForm,
+      featuredProducts: featuredProducts.data.clubhousePartnersOptions.store.store.brands,
+      club: club.data.page.subscriptionPage.club,
     },
     // revalidate: 60,
   }

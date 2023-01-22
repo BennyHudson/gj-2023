@@ -6,14 +6,13 @@ import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { houseNotesQuery } from '@queries/houseNotes/featured-houseNotes'
 
-import PageLayout from '@components/layout/PageLayout'
-import HouseNotesFeature from '@components/house-notes/HouseNotesFeature'
-import HouseNotesFeed from '@components/grids/HouseNotesFeed'
-import Section from '@components/layout/Section'
-import Title from '@components/typography/Title'
+import PageLayout from '@components/PageLayout'
+import HouseNotesFeature from '@components/HouseNotesFeature'
+import HouseNotesFeed from '@components/HouseNotesFeed'
+import Section from '@components/Section'
+import Title from '@components/Title'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
-import HeadTags from '@components/layout/HeadTags'
 
 const HouseNotes: FC = ({ featuredHouseNotes, headerNav, footerNav }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -23,8 +22,7 @@ const HouseNotes: FC = ({ featuredHouseNotes, headerNav, footerNav }): ReactElem
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav}>
-      <HeadTags seo={featuredHouseNotes.seo} />
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={featuredHouseNotes.seo}>
       <HouseNotesFeature
         introText={featuredHouseNotes.additionalPageData.subtitleText.replace(/<\/?[^>]+(>|$)/g, '')}
         columns={{

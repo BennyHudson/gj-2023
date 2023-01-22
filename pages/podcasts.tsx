@@ -2,20 +2,19 @@ import React, { FC, ReactElement, useEffect, useContext } from 'react'
 
 import client from '@lib/apollo-client'
 
-import { podcastOptionsQuery } from '@queries/podcasts/podcast-options'
-
-import FeatureCarousel from '@components/carousels/FeatureCarousel'
-import BannerAdvert from '@components/layout/BannerAdvert'
-import PodcastIntro from '@components/podcast/PodcastIntro'
-import PodcastList from '@components/grids/PodcastList'
-import PodcastCarousel from '@components/carousels/PodcastCarousel'
-import Divider from '@components/layout/Divider'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
-import HeadTags from '@components/layout/HeadTags'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
-import PageLayout from '@components/layout/PageLayout'
+import { podcastOptionsQuery } from '@queries/podcasts/podcast-options'
+
+import PageLayout from '@components/PageLayout'
+import FeatureCarousel from '@components/FeatureCarousel'
+import BannerAdvert from '@components/BannerAdvert'
+import PodcastIntro from '@components/PodcastIntro'
+import PodcastList from '@components/PodcastList'
+import PodcastCarousel from '@components/PodcastCarousel'
+import Divider from '@components/Divider'
+
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 const Podcasts: FC = ({ podcastOptions, headerNav, footerNav }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -25,8 +24,7 @@ const Podcasts: FC = ({ podcastOptions, headerNav, footerNav }): ReactElement =>
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav}>
-      <HeadTags seo={{ title: 'Podcasts | The Gentleman\'s Journal'  }} />
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Podcasts | The Gentleman\'s Journal'  }}>
       <FeatureCarousel
         height={2}
         title='Podcasts'

@@ -5,10 +5,9 @@ import client from '@lib/apollo-client'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
 
-import PageLayout from '@components/layout/PageLayout'
-import SplitPageTemplate from '@components/layout/SplitPageTemplate'
-
-import SearchForm from '@components/search/SearchForm'
+import PageLayout from '@components/PageLayout'
+import SplitPageTemplate from '@components/SplitPageTemplate'
+import SearchForm from '@components/SearchForm'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
@@ -20,7 +19,7 @@ const SearchPage: FC = ({ headerNav, footerNav }): ReactElement => {
   }, [setActiveNavElement])
   
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Search | The Gentleman\'s Journal'  }}>
       <SplitPageTemplate image='https://www.thegentlemansjournal.com/wp-content/uploads/2022/12/209490030008-2502x1200-c-center.jpg' title='Search'>
         <SearchForm />
       </SplitPageTemplate>

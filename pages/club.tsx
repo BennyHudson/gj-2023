@@ -6,15 +6,15 @@ import { gql } from '@apollo/client'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
 
-import PageLayout from '@components/layout/PageLayout'
-import HeadTags from '@components/layout/HeadTags'
+import PageLayout from '@components/PageLayout'
+import HeadTags from '@components/HeadTags'
 
-import ClubOverview from '@components/club/ClubOverview'
-import ClubAdverts from '@components/club/ClubAdverts'
-import ClubGift from '@components/club/ClubGift'
-import ClubBuy from '@components/club/ClubBuy'
-import ClubPerks from '@components/club/ClubPerks'
-import ClubHero from '@components/club/ClubHero'
+import ClubOverview from '@components/ClubOverview'
+import ClubAdverts from '@components/ClubAdverts'
+import ClubGift from '@components/ClubGift'
+import ClubBuy from '@components/ClubBuy'
+import ClubPerks from '@components/ClubPerks'
+import ClubHero from '@components/ClubHero'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 import { subscriptionProductsQuery } from '@queries/global/subscription-products'
@@ -28,8 +28,7 @@ const ClubPage: FC = ({ pageData, headerNav, footerNav, subscriptionProducts, fr
   }, [setActiveNavElement])
   
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav}>
-      <HeadTags seo={pageData.seo} />
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo}>
       <ClubHero 
         title={pageData.title} 
         subtitle={pageData.subscriptionPage.club.description}

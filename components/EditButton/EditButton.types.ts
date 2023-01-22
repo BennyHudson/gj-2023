@@ -1,4 +1,5 @@
 export interface EditButtonProps {
-  onClick: () => void
+  onClick?: () => void
   text: string
+  href?: string
 }

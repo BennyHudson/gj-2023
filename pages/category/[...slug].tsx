@@ -3,16 +3,16 @@ import { gql } from '@apollo/client'
 
 import client from '@lib/apollo-client'
 
-import BannerAdvert from '@components/layout/BannerAdvert'
-import Section from '@components/layout/Section'
-import Breadcrumbs from '@components/typography/Breadcrumbs'
-import Title from '@components/typography/Title'
-import Feed from '@components/grids/Feed'
+import BannerAdvert from '@components/BannerAdvert'
+import Section from '@components/Section'
+import Breadcrumbs from '@components/Breadcrumbs'
+import Title from '@components/Title'
+import Feed from '@components/Feed'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
-import PageLayout from '@components/layout/PageLayout'
+import PageLayout from '@components/PageLayout'
 import { CategoryBody, categoryBodyQuery } from '@queries/category/category-body'
 import { StaticPaths } from '@typings/StaticPaths.types'
 import { PageData } from '@typings/PageData.types'
@@ -44,7 +44,7 @@ const Category: FC<CategoryData> =  ({ category, headerNav, footerNav }: Categor
   }
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: `${category.name} | The Gentleman's Journal`  }}>
       <BannerAdvert />
       <Section>
         <Breadcrumbs links={category.seo.breadcrumbs!} />

@@ -8,16 +8,16 @@ import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { articleBody, ArticleBody } from '@queries/article/article-body'
 
-import HeroImage from '@components/imagery/HeroImage'
-import BannerAdvert from '@components/layout/BannerAdvert'
-import Masthead from '@components/layout/Masthead'
-import Section from '@components/layout/Section'
-import ContentGrid from '@components/grids/ContentGrid'
-import FurtherReading from '@components/grids/FurtherReading'
-import HeadTags from '@components/layout/HeadTags'
+import HeroImage from '@components/HeroImage'
+import BannerAdvert from '@components/BannerAdvert'
+import Masthead from '@components/Masthead'
+import Section from '@components/Section'
+import ContentGrid from '@components/ContentGrid'
+import FurtherReading from '@components/FurtherReading'
+import HeadTags from '@components/HeadTags'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
-import PageLayout from '@components/layout/PageLayout'
+import PageLayout from '@components/PageLayout'
 import { StaticPaths } from '@typings/StaticPaths.types'
 import { PageData } from '@typings/PageData.types'
 
@@ -50,8 +50,7 @@ const Article: FC<ArticleData> = ({ data, headerNav, footerNav }: ArticleData): 
   }, [setActiveNavElement, articleData])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav}>
-      <HeadTags seo={articleData.seo} />
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={articleData.seo}>
       {articleData.featuredImage && <HeroImage featuredImage={articleData.featuredImage.node.sourceUrl} />}
       <BannerAdvert />
       <Section>

@@ -6,10 +6,11 @@ import { EditButtonProps } from './EditButton.types'
 
 const EditButton: FC<EditButtonProps> = ({
   onClick,
-  text
+  text,
+  href,
 }: EditButtonProps): ReactElement => {
   return (
-    <Styled.EditButton onClick={onClick}>{text}</Styled.EditButton>
+    <Styled.EditButton as={onClick ? 'button' : 'a'} href={href} onClick={onClick}>{text}</Styled.EditButton>
   )
 }
 

@@ -6,12 +6,12 @@ import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { newsletterModalQuery } from '@queries/global/site-options'
 
-import PageLayout from '@components/layout/PageLayout'
-import SplitPageTemplate from '@components/layout/SplitPageTemplate'
+import PageLayout from '@components/PageLayout'
+import SplitPageTemplate from '@components/SplitPageTemplate'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
-import RawHtmlWrapper from '@components/typography/RawHtmlWrapper'
-import Newsletter from '@components/newsletter/Newsletter'
+import RawHtmlWrapper from '@components/RawHtmlWrapper'
+import Newsletter from '@components/Newsletter'
 
 const NewsletterPage: FC = ({ headerNav, footerNav, newsletter, newsletterForm }): ReactElement => {
   const { token, setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -21,7 +21,7 @@ const NewsletterPage: FC = ({ headerNav, footerNav, newsletter, newsletterForm }
   }, [setActiveNavElement])
   
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: `${newsletter.title} | The Gentleman's Journal`  }}>
       <SplitPageTemplate image={newsletter.image.sourceUrl} title={newsletter.title}>
         <RawHtmlWrapper content={newsletter.description} />
         <Newsletter form={newsletterForm} showTitle={false} />

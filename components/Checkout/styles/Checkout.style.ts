@@ -1,8 +1,11 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import { Form } from 'formik'
 
 import { StyledCheckoutProps } from './Checkout.style.types'
+import { Label } from '@components/Label/styles/Label.style'
+import { EditButton } from '@components/EditButton/styles/EditButton.style'
 
-export const Checkout = styled.div((): FlattenSimpleInterpolation => [])
+export const Checkout = styled(Form)((): FlattenSimpleInterpolation => [])
 
 export const CheckoutHeader = styled.div((props: StyledCheckoutProps): FlattenSimpleInterpolation => css`
   display: flex;
@@ -28,7 +31,7 @@ export const CheckoutPanels = styled.div((props: StyledCheckoutProps): FlattenSi
 `)
 
 export const CheckoutPanel = styled.div((props: StyledCheckoutProps): FlattenSimpleInterpolation => css`
-  border-bottom: 1px solid ${props.theme.colours.midGrey};
+  border-bottom: 1px solid ${props.theme.colours.black};
   padding-bottom: ${props.theme.spacing[4]}px;
 
   & > div {
@@ -38,6 +41,19 @@ export const CheckoutPanel = styled.div((props: StyledCheckoutProps): FlattenSim
   &:last-child {
     border-bottom: none;
     padding-bottom: 0;
+  }
+
+  ${Label} {
+    font-family: 'Cera Pro Regular' !important;
+    margin-bottom: ${props.theme.spacing[1]}px !important;
+  }
+
+  ${EditButton} {
+    margin-bottom: ${props.theme.spacing[8]}px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 `)
 
@@ -58,4 +74,29 @@ export const IconButton = styled.button((props: StyledCheckoutProps): FlattenSim
   transition: 0.4s all ease;
   gap: ${props.theme.spacing[1]}px;
   font-family: 'Cera Pro Light', sans-serif;
+`)
+
+export const CartItems = styled.div((props: StyledCheckoutProps): FlattenSimpleInterpolation => css`
+  display: flex;
+  flex-direction: column;
+  gap: ${props.theme.spacing[4]}px;
+  margin-bottom: ${props.theme.spacing[8]}px;
+`)
+
+export const CartItem = styled.div((props: StyledCheckoutProps): FlattenSimpleInterpolation => css`
+  border-bottom: 1px solid ${props.theme.colours.midGrey};
+  padding-bottom: ${props.theme.spacing[4]}px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: ${props.theme.spacing[4]}px;
+
+  & > div {
+    flex-grow: 1;
+  }
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
 `)

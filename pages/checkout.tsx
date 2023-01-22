@@ -5,8 +5,8 @@ import client from '@lib/apollo-client'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
 
-import PageLayout from '@components/layout/PageLayout'
-import SplitPageTemplate from '@components/layout/SplitPageTemplate'
+import PageLayout from '@components/PageLayout'
+import SplitPageTemplate from '@components/SplitPageTemplate'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 import Checkout from '@components/Checkout'
@@ -19,7 +19,7 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
   }, [setActiveNavElement])
   
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Checkout | The Gentleman\'s Journal'  }}>
       <SplitPageTemplate image='https://www.thegentlemansjournal.com/wp-content/uploads/2019/09/ryan-reynolds-gentlemans-journal-aviation-gin-1.jpg' title='Checkout'>
         <Checkout />
       </SplitPageTemplate>

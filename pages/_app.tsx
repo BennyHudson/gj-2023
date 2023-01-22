@@ -1,9 +1,9 @@
-import React, { FC, ReactElement, useState, useEffect } from 'react'
+import React, { FC, ReactElement, useState } from 'react'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 import { ApolloProvider } from '@apollo/client'
 
-import useKeyPress from '@hooks/useKeyPress'
+// import useKeyPress from '@hooks/useKeyPress'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
@@ -18,25 +18,18 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
   const [ token, setToken ] = useState<PageContextProps['token']>()
   const [ activeNavElement, setActiveNavElement ] = useState<PageContextProps['headerHeight']>(-1)
   const [ headerHeight, setHeaderHeight ] = useState<PageContextProps['headerHeight']>(0)
-  const [ showModal, setShowModal ] = useState<PageContextProps['showModal']>()
-  const [ searchTerm, setSearchTerm ] = useState<PageContextProps['searchTerm']>()
-  const [ searchResults, setSearchResults ] = useState<PageContextProps['searchResults']>([])
-  const [ searchPage, setSearchPage ] = useState<PageContextProps['searchPage']>(1)
-  const [ navLoaded, setNavLoaded ] = useState<PageContextProps['navLoaded']>(false)
   const [ customerId, setCustomerId ] = useState<PageContextProps['customerId']>()
   const [ cart, setCart ] = useState([])
 
-  const keyPress = useKeyPress()
+  // const keyPress = useKeyPress()
 
-  useEffect(() => {
-    if (!keyPress) return
+  // useEffect(() => {
+  //   if (!keyPress) return
 
-    if (keyPress.key === 'Escape') {
-      setSearchResults([])
-      setShowModal(null)
-      setSearchTerm('')
-    }
-  }, [keyPress])
+  //   if (keyPress.key === 'Escape') {
+
+  //   }
+  // }, [keyPress])
 
   const cmsUrl = 'https://thegentlemansjournal.com'
 
@@ -52,16 +45,6 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
             setActiveNavElement,
             headerHeight,
             setHeaderHeight,
-            showModal,
-            setShowModal,
-            searchTerm,
-            setSearchTerm,
-            searchResults,
-            setSearchResults,
-            searchPage,
-            setSearchPage,
-            navLoaded, 
-            setNavLoaded,
             token,
             setToken,
             customerId,

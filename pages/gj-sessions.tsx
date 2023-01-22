@@ -7,16 +7,16 @@ import { sessionsFeatureQuery } from '@queries/homepage/sessions-feature'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
-import HeadTags from '@components/layout/HeadTags'
-import TitleAndIntro from '@components/typography/TitleAndIntro'
-import Thumbnail from '@components/imagery/Thumbnail'
+import HeadTags from '@components/HeadTags'
+import TitleAndIntro from '@components/TitleAndIntro'
+import Thumbnail from '@components/Thumbnail'
 import SessionsHeader from '@components/sessions/SessionsHeader'
-import BannerAdvert from '@components/layout/BannerAdvert'
-import SessionsFeed from '@components/grids/SessionsFeed'
+import BannerAdvert from '@components/BannerAdvert'
+import SessionsFeed from '@components/SessionsFeed'
 import SessionsSponsor from '@components/sessions/SessionsSponsor'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
-import PageLayout from '@components/layout/PageLayout'
+import PageLayout from '@components/PageLayout'
 
 const SessionsPage: FC = ({ pageData, featuredArticle, headerNav, footerNav }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -26,8 +26,7 @@ const SessionsPage: FC = ({ pageData, featuredArticle, headerNav, footerNav }): 
   }, [setActiveNavElement])
   
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav}>
-      <HeadTags seo={pageData.seo} />
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo}>
       <SessionsHeader>
         <TitleAndIntro title={pageData.title.toUpperCase()} intro={pageData.sessions.sessions.sessionsIntroText} inverse />
         <Thumbnail 

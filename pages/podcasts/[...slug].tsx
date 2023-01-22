@@ -8,11 +8,10 @@ import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { PodcastBody, podcastBodyQuery } from '@queries/podcasts/podcast-body'
 
-import PageLayout from '@components/layout/PageLayout'
-import HeadTags from '@components/layout/HeadTags'
-import BannerAdvert from '@components/layout/BannerAdvert'
-import PodcastContent from '@components/podcast/PodcastContent'
-import PodcastCarousel from '@components/carousels/PodcastCarousel'
+import PageLayout from '@components/PageLayout'
+import BannerAdvert from '@components/BannerAdvert'
+import PodcastContent from '@components/PodcastContent'
+import PodcastCarousel from '@components/PodcastCarousel'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
@@ -32,8 +31,7 @@ const Podcast: FC<PodcastData> = ({ podcastData, podcastOptions, headerNav, foot
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav}>
-      <HeadTags seo={podcastData.seo} />
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={podcastData.seo}>
       <BannerAdvert />
       <PodcastContent {...podcastData} {...podcastOptions} />
       <PodcastCarousel 

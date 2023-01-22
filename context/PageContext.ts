@@ -1,14 +1,4 @@
-import React, { ReactNode } from 'react'
-
-interface SearchResult {
-  url: string
-  title: string
-}
-
-interface FeaturedImage {
-  featuredImageDatabaseId: number
-  url: string
-}
+import React, { createContext } from 'react'
 
 export interface PageContextProps {
   cmsUrl: string
@@ -17,20 +7,10 @@ export interface PageContextProps {
   setActiveNavElement: (navElement: number) => void
   headerHeight: number
   setHeaderHeight: (headerHeight: number) => void
-  showModal: ReactNode
-  setShowModal: (showSearchModal?: ReactNode) => void
-  searchTerm: string
-  setSearchTerm: (searchTerm: string) => void
-  searchResults: SearchResult[]
-  setSearchResults: (results: SearchResult[]) => void
-  searchPage: number
-  setSearchPage: (searchPage: number) => void
-  navLoaded: boolean
-  setNavLoaded: (navLoaded: boolean) => void
   token: string
   setToken: (token?: string) => void
   customerId: number
   setCustomerId: (customerId?: number) => void
 }
 
-export default React.createContext<Partial<PageContextProps>>({})
+export default createContext<Partial<PageContextProps>>({})

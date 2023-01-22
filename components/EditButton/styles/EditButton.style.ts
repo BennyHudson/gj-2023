@@ -12,4 +12,5 @@ export const EditButton = styled.button((props: StyledEditButtonProps): FlattenS
   color: ${props.theme.colours.black};
   cursor: pointer;
   font-family: 'Cera Pro Semibold';
+  text-decoration: none;
 `)

@@ -2,15 +2,15 @@ import React, { FC, ReactElement, useContext, useEffect } from 'react'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
-import Section from '@components/layout/Section'
-import Breadcrumbs from '@components/typography/Breadcrumbs'
-import Title from '@components/typography/Title'
+import Section from '@components/Section'
+import Breadcrumbs from '@components/Breadcrumbs'
+import Title from '@components/Title'
 
-import Feed from '@components/grids/Feed'
+import Feed from '@components/Feed'
 import client from '@lib/apollo-client'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
-import PageLayout from '@components/layout/PageLayout'
+import PageLayout from '@components/PageLayout'
 
 const LatestPage: FC = ({ headerNav, footerNav }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -31,7 +31,7 @@ const LatestPage: FC = ({ headerNav, footerNav }): ReactElement => {
   ]
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Latest | The Gentleman\'s Journal'  }}>
       <Section>
         <Breadcrumbs links={breadcrumbLinks} />
         <Title title='Latest' />

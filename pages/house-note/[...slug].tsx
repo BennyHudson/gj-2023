@@ -6,16 +6,15 @@ import { getAllPosts } from '@lib/api'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
 
-import BannerAdvert from '@components/layout/BannerAdvert'
+import BannerAdvert from '@components/BannerAdvert'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
-import HeroImage from '@components/imagery/HeroImage'
-import Section from '@components/layout/Section'
-import Masthead from '@components/layout/Masthead'
-import ContentGrid from '@components/grids/ContentGrid'
-import HeadTags from '@components/layout/HeadTags'
+import HeroImage from '@components/HeroImage'
+import Section from '@components/Section'
+import Masthead from '@components/Masthead'
+import ContentGrid from '@components/ContentGrid'
 
-import PageLayout from '@components/layout/PageLayout'
+import PageLayout from '@components/PageLayout'
 import { HouseNoteBody, houseNoteBodyQuery } from '@queries/houseNotes/houseNote-body'
 import { StaticPaths } from '@typings/StaticPaths.types'
 import { PageData } from '@typings/PageData.types'
@@ -34,8 +33,7 @@ const HouseNote: FC<HouseNoteData> = ({ pageData, articleNote, headerNav, footer
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav}>
-      <HeadTags seo={pageData.seo} />
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo}>
       <HeroImage featuredImage={pageData.featuredImage.node.sourceUrl} />
       <BannerAdvert />
       <Section>
