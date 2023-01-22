@@ -5,14 +5,16 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faPenNib } from '@fortawesome/pro-thin-svg-icons'
 
 import Heading from '@components/Heading'
+import Paragraph from '@components/Paragraph'
 import EditButton from '@components/EditButton'
-
-import * as Styled from './styles/Checkout.style'
 import Button from '@components/Button'
 import TextField from '@components/TextField'
 import Select from '@components/Select'
 import NameField from '@components/NameField'
+
 import PageContext, { PageContextProps } from '@context/PageContext'
+
+import * as Styled from './styles/Checkout.style'
 
 import { countries } from './countries'
 
@@ -20,9 +22,6 @@ const Checkout: FC = (): ReactElement => {
   const [ activePanel, setActivePanel ] = useState(4)
 
   const { cart } = useContext(PageContext) as PageContextProps
-
-  console.log(cart)
-  
 
   return (
     <Formik

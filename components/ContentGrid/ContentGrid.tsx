@@ -17,6 +17,7 @@ const ContentGrid: FC<ContentGridProps> = ({
   contentBuilder,
   contentBuilderPrefix,
   articleNote,
+  content
 }: ContentGridProps): ReactElement => {
   return (
     <Styled.ContentGrid>
@@ -25,6 +26,7 @@ const ContentGrid: FC<ContentGridProps> = ({
           <Byline {...byline} />
         </Styled.Sidebar>
       }
+      {content && <Styled.Content><RawHtmlWrapper content={content} /></Styled.Content>}
       <ContentBuilder content={contentBuilder} prefix={contentBuilderPrefix} />
       {articleNote &&
         <Styled.ArticleNote>

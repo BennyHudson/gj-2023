@@ -7,4 +7,5 @@ export interface ContentGridProps {
   contentBuilder?: ContentBuilder[]
   contentBuilderPrefix: string
   articleNote: ArticleNote
+  content?: string
 }

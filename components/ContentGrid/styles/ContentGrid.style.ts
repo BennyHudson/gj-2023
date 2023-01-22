@@ -48,3 +48,7 @@ export const ArticleNoteContent = styled.div((props: StyledContentGridProps): Fl
 export const SecondarySidebar = styled.div((): FlattenSimpleInterpolation => css`
   // grid-column: col-start 8 / span 4;
 `)
+
+export const Content = styled.div((): FlattenSimpleInterpolation => css`
+  grid-column: col-start 3 / span 7;
+`)
