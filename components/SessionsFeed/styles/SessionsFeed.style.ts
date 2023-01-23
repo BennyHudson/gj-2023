@@ -1,6 +1,7 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 
 import { StyledSessionsFeedProps } from './SessionsFeed.style.types'
+import respondTo from '@mixins/respondTo'
 
 export const SessionsFeed = styled.div(
   (props: StyledSessionsFeedProps): FlattenSimpleInterpolation => css`
@@ -14,39 +15,48 @@ export const SessionsFeed = styled.div(
 
 export const Column = styled.div(
   (props: StyledSessionsFeedProps): FlattenSimpleInterpolation => css`
-    grid-column: col-start / span 3;
-    padding: ${props.theme.spacing[8]}px;
+    grid-column: col-start / span 12;
+    padding: ${props.theme.spacing[4]}px 5%;
     position: relative;
 
-    &:nth-child(1) {
-      padding-left: 0;
-
-      &::after {
-        content: '';
-        height: 100%;
-        width: 10000px;
-        background: ${props.theme.colours.black};
-        position: absolute;
-        top: 0;
-        right: 100%;
-      }
-    }
-
     &:nth-child(2) {
-      grid-column: col-start 4 / span 9;
       background: ${props.theme.colours.white};
-      padding-right: 0;
-
-      &::after {
-        content: '';
-        height: 100%;
-        width: 10000px;
-        background: ${props.theme.colours.white};
-        position: absolute;
-        top: 0;
-        left: 100%;
-      }
     }
+
+    ${respondTo.md(css`
+      grid-column: col-start / span 3;
+      padding: ${props.theme.spacing[8]}px;
+
+      &:nth-child(1) {
+        padding-left: 0;
+
+        &::after {
+          content: '';
+          height: 100%;
+          width: 10000px;
+          background: ${props.theme.colours.black};
+          position: absolute;
+          top: 0;
+          right: 100%;
+        }
+      }
+
+      &:nth-child(2) {
+        grid-column: col-start 4 / span 9;
+        padding-right: 0;
+
+        &::after {
+          content: '';
+          height: 100%;
+          width: 10000px;
+          background: ${props.theme.colours.white};
+          position: absolute;
+          top: 0;
+          left: 100%;
+        }
+      }
+
+    `)}
   `,
 )
 

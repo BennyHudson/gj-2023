@@ -4,11 +4,17 @@ import { PostExcerpt } from '@components/PostExcerpt/styles/PostExcerpt.style'
 
 import { StyledSessionsHeaderProps } from './SessionsHeader.style.types'
 import { Section } from '@components/Section/styles/Section.style'
+import respondTo from '@mixins/respondTo'
 
 export const SessionsHeader = styled.div(
   (props: StyledSessionsHeaderProps): FlattenSimpleInterpolation => css`
     ${Section} {
-      padding-top: ${props.headerHeight + props.theme.spacing[8]}px;
+      padding: ${props.headerHeight + props.theme.spacing[4]}px 0 0;
+
+
+      ${respondTo.md(css`
+        padding-top: ${props.headerHeight + props.theme.spacing[8]}px 0 ${props.theme.spacing[8]}px;
+      `)}
     }
   `,
 )
