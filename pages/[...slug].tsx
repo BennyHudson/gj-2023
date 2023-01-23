@@ -35,12 +35,12 @@ const Post: FC<PostData> = ({ data, headerNav, footerNav }: PostData): ReactElem
       return
     }
 
-    if (articleData.categories.nodes.find(category => category.name === 'Video')) {
+    if (articleData.categories.nodes.find((category) => category.name === 'Video')) {
       setActiveNavElement(4)
       return
     }
 
-    if (articleData.categories.nodes.find(category => category.name === 'GJ Sessions')) {
+    if (articleData.categories.nodes.find((category) => category.name === 'GJ Sessions')) {
       setActiveNavElement(7)
       return
     }
@@ -53,11 +53,7 @@ const Post: FC<PostData> = ({ data, headerNav, footerNav }: PostData): ReactElem
       {articleData.featuredImage && <HeroImage featuredImage={articleData.featuredImage.node.sourceUrl} />}
       <BannerAdvert />
       <Section>
-        <Masthead
-          title={articleData.title}
-          breadcrumbs={articleData.seo.breadcrumbs}
-          subtitle={articleData.articleAcf.standfirst}
-        />
+        <Masthead title={articleData.title} breadcrumbs={articleData.seo.breadcrumbs} subtitle={articleData.articleAcf.standfirst} />
         <ContentGrid
           byline={{
             author: articleData.author?.node.name,
@@ -70,14 +66,14 @@ const Post: FC<PostData> = ({ data, headerNav, footerNav }: PostData): ReactElem
           articleNote={articleNote}
           content={articleData.content}
         />
-        {articleData.categories?.nodes.length &&
+        {articleData.categories?.nodes.length && (
           <>
             <FurtherReading
               articleId={articleData.id}
               category={articleData.categories.nodes[articleData.categories.nodes.length - 1].name}
             />
           </>
-        }
+        )}
       </Section>
     </PageLayout>
   )
@@ -94,7 +90,7 @@ export async function getStaticPaths() {
     return {
       params: {
         slug: [article.node.slug],
-      }
+      },
     }
   })
 

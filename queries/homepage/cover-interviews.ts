@@ -11,11 +11,11 @@ export const coverInterviewsQuery = {
         name
         uri
       }
-      articles(first: 4, where: {categoryName: "Cover Interviews"}) {
+      articles(first: 4, where: { categoryName: "Cover Interviews" }) {
         nodes {
           ...ArticleContent
         }
       }
     }
-  `
+  `,
 }

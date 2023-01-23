@@ -4,65 +4,73 @@ import respondTo from '@mixins/respondTo'
 
 import { StyledFullPageFeatureProps } from './FullPageFeature.style.types'
 
-export const Spacer = styled.div((): FlattenSimpleInterpolation => css`
-  height: 100vh;
-  background: none;
-  width: 100%;
-`)
-
-export const Background = styled.div((props: StyledFullPageFeatureProps): FlattenSimpleInterpolation => css`
-  height: 100vh;
-  background: #111;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  position: fixed;
-  z-index: 0;
-  top: 0;
-  left: 0;
-
-  img {
-    object-fit: cover;
-    opacity: ${props.opacity};
-  }
-
-  ${respondTo.md(css`
-    align-items: flex-end;
-  `)}
-`)
-
-export const FullPageFeature = styled.div((props: StyledFullPageFeatureProps): FlattenSimpleInterpolation => css`
-  height: 80vh;
-  padding: 10vh ${props.theme.spacing[2]}px;
-  display: grid;
-  grid-template-columns: repeat(12, [col-start] 1fr);
-  align-items: center;
-  width: 90%;
-  opacity: ${props.opacity};
-  position: relative;
-  margin: 0 auto;
-  max-width: 1600px;
-
-  ${respondTo.md(css`
+export const Spacer = styled.div(
+  (): FlattenSimpleInterpolation => css`
     height: 100vh;
-    padding: ${props.theme.spacing[8]}px 0;
-    align-items: end;
-  `)}
-`)
+    background: none;
+    width: 100%;
+  `,
+)
+
+export const Background = styled.div(
+  (props: StyledFullPageFeatureProps): FlattenSimpleInterpolation => css`
+    height: 100vh;
+    background: #111;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    left: 0;
+
+    img {
+      object-fit: cover;
+      opacity: ${props.opacity};
+    }
+
+    ${respondTo.md(css`
+      align-items: flex-end;
+    `)}
+  `,
+)
+
+export const FullPageFeature = styled.div(
+  (props: StyledFullPageFeatureProps): FlattenSimpleInterpolation => css`
+    height: 80vh;
+    padding: 10vh ${props.theme.spacing[2]}px;
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    align-items: center;
+    width: 90%;
+    opacity: ${props.opacity};
+    position: relative;
+    margin: 0 auto;
+    max-width: 1600px;
+
+    ${respondTo.md(css`
+      height: 100vh;
+      padding: ${props.theme.spacing[8]}px 0;
+      align-items: end;
+    `)}
+  `,
+)
 
 type ContentProps = Pick<StyledFullPageFeatureProps, 'theme'>
-export const Content = styled.div((props: ContentProps): FlattenSimpleInterpolation => css`
-  position: relative;
-  z-index: 2;
-  border-top: 2px solid ${props.theme.colours.white};
-  border-bottom: 2px solid ${props.theme.colours.white};
-  grid-column: col-start / span 12;
-  padding: ${props.theme.spacing[4]}px;
-  text-align: center;
+export const Content = styled.div(
+  (props: ContentProps): FlattenSimpleInterpolation => css`
+    position: relative;
+    z-index: 2;
+    border-top: 2px solid ${props.theme.colours.white};
+    border-bottom: 2px solid ${props.theme.colours.white};
+    grid-column: col-start / span 12;
+    padding: ${props.theme.spacing[4]}px;
+    text-align: center;
 
-  ${respondTo.md(css`
-    text-align: left;
-    grid-column: col-start / span 8;
-    border-bottom: none;
-  `)}
-`)
+    ${respondTo.md(css`
+      text-align: left;
+      grid-column: col-start / span 8;
+      border-bottom: none;
+    `)}
+  `,
+)

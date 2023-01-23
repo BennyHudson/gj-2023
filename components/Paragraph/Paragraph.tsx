@@ -16,7 +16,15 @@ const Paragraph: FC<ParagraphProps> = ({
   noMargin = false,
 }: ParagraphProps): ReactElement => {
   return (
-    <Styled.Paragraph appearance={appearance} $inverse={inverse} size={size} weight={weight} font={font} transform={transform} noMargin={noMargin}>
+    <Styled.Paragraph
+      appearance={appearance}
+      $inverse={inverse}
+      size={size}
+      weight={weight}
+      font={font}
+      transform={transform}
+      noMargin={noMargin}
+    >
       {text || children}
     </Styled.Paragraph>
   )

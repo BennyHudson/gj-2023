@@ -55,12 +55,12 @@ export const headerNavQuery = {
           ...HouseNoteContent
         }
       }
-      videos: articles(where: {categoryName: "Video"}, first: 4) {
+      videos: articles(where: { categoryName: "Video" }, first: 4) {
         nodes {
           ...ArticleContent
         }
       }
-      sessions: articles(where: {categoryName: "GJ Sessions"}, first: 4) {
+      sessions: articles(where: { categoryName: "GJ Sessions" }, first: 4) {
         nodes {
           ...ArticleContent
         }
@@ -68,4 +68,3 @@ export const headerNavQuery = {
     }
   `,
 }
-

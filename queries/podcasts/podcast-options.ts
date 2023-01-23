@@ -48,12 +48,12 @@ export const podcastOptionsQuery = {
             featured {
               featured {
                 ... on Podcast {
-                 ... PodcastContent
+                  ...PodcastContent
                 }
               }
               hero {
                 ... on Podcast {
-                  ... PodcastContent
+                  ...PodcastContent
                 }
               }
             }
@@ -61,5 +61,5 @@ export const podcastOptionsQuery = {
         }
       }
     }
-  `
+  `,
 }

@@ -15,10 +15,7 @@ import * as Styled from './styles/ClubBanner.style'
 
 import { ClubBannerProps } from './ClubBanner.types'
 
-const ClubBanner: FC<ClubBannerProps> = ({
-  content,
-  card,
-}: ClubBannerProps): ReactElement => {
+const ClubBanner: FC<ClubBannerProps> = ({ content, card }: ClubBannerProps): ReactElement => {
   const theme = useTheme() as Theme
   return (
     <Section appearance='secondary'>

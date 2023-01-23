@@ -17,9 +17,8 @@ import { recommendedProductsBlock, RecommendedProductsBlock } from './contentBui
 import { singleAffiliateBlock, SingleAffiliatBlock } from './contentBuilder/singleAffiliateBlock'
 import { videoBlock, VideoBlock } from './contentBuilder/videoBlock'
 
-export type ContentBuilder =
-  AffiliateButtonBlock &
-  AffiliateProductBlock & 
+export type ContentBuilder = AffiliateButtonBlock &
+  AffiliateProductBlock &
   BlockQuoteBlock &
   ButtonInfoBlock &
   CodeSnippetBlock &

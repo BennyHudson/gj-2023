@@ -8,13 +8,7 @@ import * as Styled from './styles/Masthead.style'
 
 import { MastheadProps } from './Masthead.types'
 
-const Masthead: FC<MastheadProps> = ({
-  breadcrumbs,
-  title,
-  subtitle,
-  fullWidth = true,
-  author,
-}: MastheadProps): ReactElement => {
+const Masthead: FC<MastheadProps> = ({ breadcrumbs, title, subtitle, fullWidth = true, author }: MastheadProps): ReactElement => {
   return (
     <Styled.Masthead>
       <Styled.MastheadContent fullWidth={fullWidth}>

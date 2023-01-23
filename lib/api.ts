@@ -21,11 +21,11 @@ const queryPostType = (postType: string, after?: string) => {
           }
         }
       }
-    `
+    `,
   }
 }
 
-export const getAllPosts = async (postType: string): Promise<{cursor: string; node: { slug: string}}[]> => {
+export const getAllPosts = async (postType: string): Promise<{ cursor: string; node: { slug: string } }[]> => {
   const allPosts = []
   // let hasNextPage = true
   let after = ''

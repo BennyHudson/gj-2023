@@ -17,11 +17,11 @@ const NewsletterBanner: FC = ({ form, backgroundImage, size = 1 }): ReactElement
         <Newsletter form={form} />
         {size === 1 && <Image src={featuredImageUrl(backgroundImage)} fill alt='' />}
       </Styled.NewsletterBannerContent>
-      {size === 2 && 
+      {size === 2 && (
         <Styled.BackgroundImage>
           <Image src={featuredImageUrl(backgroundImage)} fill alt='' />
         </Styled.BackgroundImage>
-      }      
+      )}
     </Styled.NewsletterBanner>
   )
 }

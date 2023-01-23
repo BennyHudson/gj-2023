@@ -9,24 +9,19 @@ import PageLayout from '@components/PageLayout'
 import HeroImage from '@components/HeroImage'
 import Section from '@components/Section'
 import Masthead from '@components/Masthead'
+import PageContentBlock from '@components/PageContentBlock'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
-import RawHtmlWrapper from '@components/RawHtmlWrapper'
 
-const TeamPage: FC = ({ 
-  headerNav,
-  footerNav,
-  pageData,
-}): ReactElement => {
-  console.log(pageData)
 
+const TeamPage: FC = ({ headerNav, footerNav, pageData }): ReactElement => {
   const breadcrumbs = [
     {
       text: 'Home',
-      url: '/'
+      url: '/',
     },
     {
-      title: pageData.title,
+      text: pageData.title,
       url: pageData.uri,
     },
   ]
@@ -46,7 +41,7 @@ const TeamPage: FC = ({
           title={pageData.title}
           subtitle={pageData.additionalPageData.subtitleText.replace(/<\/?[^>]+(>|$)/g, '')}
         />
-        <RawHtmlWrapper content={pageData.content} />
+        <PageContentBlock content={pageData.content} />
       </Section>
     </PageLayout>
   )

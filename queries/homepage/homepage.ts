@@ -13,21 +13,21 @@ export const homepageQuery = {
         homeFeaturedPost {
           homeFeaturedPost {
             ... on Article {
-              ... ArticleContent
+              ...ArticleContent
             }
           }
         }
         homeWeeklyHighlight {
           homeWeeklyHighlight {
             ... on Article {
-              ... ArticleContent
+              ...ArticleContent
             }
           }
         }
         homeEditorsPick {
           homeEditorsPick {
             ... on Article {
-              ... ArticleContent
+              ...ArticleContent
             }
           }
         }

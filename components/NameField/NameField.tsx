@@ -16,10 +16,10 @@ const NameField: FC<NameFieldProps> = (props: NameFieldProps): ReactElement => {
           if (input.isHidden) return
 
           if (input.choices) {
-            return (<Select {...input} key={index} databaseId={input.id} labelPlacement={props.labelPlacement} />)
+            return <Select {...input} key={index} databaseId={input.id} labelPlacement={props.labelPlacement} />
           }
 
-          return (<TextField {...input} key={index} databaseId={input.id} labelPlacement={props.labelPlacement} />)
+          return <TextField {...input} key={index} databaseId={input.id} labelPlacement={props.labelPlacement} />
         })}
       </Styled.NameFields>
     </FieldWrapper>

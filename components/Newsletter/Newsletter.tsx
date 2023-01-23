@@ -9,10 +9,7 @@ import * as Styled from './styles/Newsletter.style'
 import Button from '@components/Button'
 
 const Newsletter: FC = ({ form, showTitle = true }): ReactElement => {
-
-  const initialValues = form.formFields.nodes.reduce((acc, curr) => (
-    acc[`input_${curr.id}`] = '', acc), {}
-  )
+  const initialValues = form.formFields.nodes.reduce((acc, curr) => ((acc[`input_${curr.id}`] = ''), acc), {})
 
   return (
     <Formik
@@ -26,13 +23,11 @@ const Newsletter: FC = ({ form, showTitle = true }): ReactElement => {
         {form.formFields.nodes.map((formField, index) => {
           switch (formField.type) {
           case 'NAME': {
-            return (
-              <NameField key={index} {...formField} databaseId={formField.id} />
-            )
+            return <NameField key={index} {...formField} databaseId={formField.id} />
           }
 
           case 'EMAIL': {
-            return (<TextField key={index} {...formField} databaseId={formField.id} />)
+            return <TextField key={index} {...formField} databaseId={formField.id} />
           }
           }
         })}

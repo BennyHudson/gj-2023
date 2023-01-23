@@ -22,6 +22,6 @@ export const latestArticlesQuery = (columns: number) => {
           }
         }
       }
-    `
+    `,
   }
 }

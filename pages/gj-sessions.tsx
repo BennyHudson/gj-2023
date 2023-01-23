@@ -3,19 +3,18 @@ import React, { FC, ReactElement, useEffect, useContext } from 'react'
 import client from '@lib/apollo-client'
 import { gql } from '@apollo/client'
 
+import { headerNavQuery } from '@queries/global/header-nav'
+import { footerNavQuery } from '@queries/global/footer-nav'
 import { sessionsFeatureQuery } from '@queries/homepage/sessions-feature'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
-import HeadTags from '@components/HeadTags'
 import TitleAndIntro from '@components/TitleAndIntro'
 import Thumbnail from '@components/Thumbnail'
 import SessionsHeader from '@components/SessionsHeader'
 import BannerAdvert from '@components/BannerAdvert'
 import SessionsFeed from '@components/SessionsFeed'
 import SessionsSponsor from '@components/SessionsSponsor'
-import { headerNavQuery } from '@queries/global/header-nav'
-import { footerNavQuery } from '@queries/global/footer-nav'
 import PageLayout from '@components/PageLayout'
 
 const SessionsPage: FC = ({ pageData, featuredArticle, headerNav, footerNav }): ReactElement => {
@@ -24,14 +23,14 @@ const SessionsPage: FC = ({ pageData, featuredArticle, headerNav, footerNav }): 
   useEffect(() => {
     setActiveNavElement(7)
   }, [setActiveNavElement])
-  
+
   return (
     <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo}>
       <SessionsHeader>
         <TitleAndIntro title={pageData.title.toUpperCase()} intro={pageData.sessions.sessions.sessionsIntroText} inverse />
-        <Thumbnail 
+        <Thumbnail
           showTitle
-          featuredImage={featuredArticle.articles.nodes[0].featuredImage.node.sourceUrl} 
+          featuredImage={featuredArticle.articles.nodes[0].featuredImage.node.sourceUrl}
           to={featuredArticle.articles.nodes[0].uri}
           title={featuredArticle.articles.nodes[0].title}
           date={featuredArticle.articles.nodes[0].date}
@@ -40,7 +39,7 @@ const SessionsPage: FC = ({ pageData, featuredArticle, headerNav, footerNav }): 
       </SessionsHeader>
       <BannerAdvert />
       <SessionsFeed />
-      <SessionsSponsor 
+      <SessionsSponsor
         sponsor={{
           backgroundImage: pageData.sessions.sessions.sponsorBackgroundImage.sourceUrl,
           buttonText: pageData.sessions.sessions.sponsorButtonText,
@@ -115,7 +114,7 @@ export async function getStaticProps() {
           }
         }
       }
-    `
+    `,
   })
   const sessionFeature = await client.query(sessionsFeatureQuery)
 
@@ -125,6 +124,6 @@ export async function getStaticProps() {
       footerNav: footerNav.data,
       featuredArticle: sessionFeature.data,
       pageData: pageData.data.page,
-    }
+    },
   }
 }

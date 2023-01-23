@@ -8,10 +8,10 @@ export default function useNextLink(ref: RefObject<HTMLDivElement>) {
     const host = new RegExp('^https?://www.thegentlemansjournal.com')
 
     if (ref.current) {
-      (ref.current.querySelectorAll('a')).forEach((a: HTMLAnchorElement) => {
+      ref.current.querySelectorAll('a').forEach((a: HTMLAnchorElement) => {
         const href = a.href
         if (href.match(host)) {
-          a.addEventListener('click', e => {
+          a.addEventListener('click', (e) => {
             e.preventDefault()
             router.push(href.replace(host, ''))
           })

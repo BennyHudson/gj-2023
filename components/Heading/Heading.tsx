@@ -13,7 +13,7 @@ const Heading: FC<HeadingProps> = ({
   weight = 1,
   font = 'Chronicle',
   transform,
-  appearance = 'primary'
+  appearance = 'primary',
 }: HeadingProps): ReactElement => {
   return (
     <Styled.Heading

@@ -12,7 +12,7 @@ import * as Styled from './styles/Thumbnail.style'
 
 import { ThumbnailProps } from './Thumbnail.types'
 
-const Thumbnail: FC<ThumbnailProps> = ({ 
+const Thumbnail: FC<ThumbnailProps> = ({
   type = 'rectangle',
   to,
   size = 4,
@@ -24,7 +24,7 @@ const Thumbnail: FC<ThumbnailProps> = ({
   priority = false,
   href,
   contain = false,
-}: ThumbnailProps): ReactElement => {  
+}: ThumbnailProps): ReactElement => {
   const renderAs = (): string | typeof Link => {
     if (to) return Link
     if (href) return 'a'
@@ -32,15 +32,8 @@ const Thumbnail: FC<ThumbnailProps> = ({
   }
 
   return (
-    <Styled.Thumbnail 
-      type={type} 
-      href={href ? href : to} 
-      as={renderAs()} 
-      size={size}
-      contain={contain}
-      
-    >
-      {showTitle && 
+    <Styled.Thumbnail type={type} href={href ? href : to} as={renderAs()} size={size} contain={contain}>
+      {showTitle && (
         <>
           <Styled.ThumbnailContent>
             <Meta categories={categories} date={date} inverse />
@@ -48,17 +41,17 @@ const Thumbnail: FC<ThumbnailProps> = ({
           </Styled.ThumbnailContent>
           <Overlay />
         </>
-      }
-      {featuredImage && 
-        <Image 
-          src={featuredImageUrl(featuredImage)!} 
-          width={type === 'circle' ? 400 : 900} 
-          height={type === 'circle' ? 400 : 600} 
-          alt='' 
+      )}
+      {featuredImage && (
+        <Image
+          src={featuredImageUrl(featuredImage)!}
+          width={type === 'circle' ? 400 : 900}
+          height={type === 'circle' ? 400 : 600}
+          alt=''
           quality={100}
           priority={priority}
         />
-      }
+      )}
     </Styled.Thumbnail>
   )
 }

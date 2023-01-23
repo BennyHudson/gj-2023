@@ -41,8 +41,7 @@ export const getDocSiteBreakpoints = (sgBreakpoint: string) => ({
 })
 
 // Calls all callbacks
-export const callCallbacks = (): void =>
-  breakpointWatcher.callbacks.forEach((callback) => callback(breakpointWatcher.breakpoints))
+export const callCallbacks = (): void => breakpointWatcher.callbacks.forEach((callback) => callback(breakpointWatcher.breakpoints))
 
 // Debounces callbacks so they are not called twice at a breakpoint boundary
 export const debouncedCallBacks = debounce(callCallbacks)

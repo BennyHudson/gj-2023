@@ -44,6 +44,6 @@ export const postBody = (slug: string) => {
         }
         ${articleNote()}
       }
-    `
+    `,
   }
 }

@@ -7,10 +7,7 @@ import * as Styled from './styles/TeamGrid.style'
 
 import { TeamGridProps } from './TeamGrid.types'
 
-const TeamGrid: FC<TeamGridProps> = ({
-  title,
-  teamMembers,
-}: TeamGridProps): ReactElement => {
+const TeamGrid: FC<TeamGridProps> = ({ title, teamMembers }: TeamGridProps): ReactElement => {
   return (
     <Styled.TeamGridWrapper>
       <Heading text={title} size={2} font='ChronicleCondensed' />

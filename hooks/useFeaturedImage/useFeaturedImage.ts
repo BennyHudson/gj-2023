@@ -2,10 +2,10 @@ import { useEffect, useState, useContext } from 'react'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
-function useFeaturedImage(databaseId: number): { featuredImage: string, loaded: boolean, caption?: string } {
-  const [featuredImage, setFeaturedImage ] = useState('')
-  const [ caption, setCaption ] = useState()
-  const [loaded, setLoaded ] = useState(false)
+function useFeaturedImage(databaseId: number): { featuredImage: string; loaded: boolean; caption?: string } {
+  const [featuredImage, setFeaturedImage] = useState('')
+  const [caption, setCaption] = useState()
+  const [loaded, setLoaded] = useState(false)
 
   const { cmsUrl, apiUrl, featuredImages, setFeaturedImages } = useContext(PageContext) as PageContextProps
 
@@ -17,16 +17,16 @@ function useFeaturedImage(databaseId: number): { featuredImage: string, loaded: 
     const imageUrl = mediaData.source_url?.replace(cmsUrl, 'https://cdn.thegentlemansjournal.com')
     setFeaturedImage(imageUrl)
     setCaption(mediaData.caption.rendered)
-    setFeaturedImages([...featuredImages.map(featuredImage => featuredImage), { featuredImageDatabaseId: databaseId, url: imageUrl }])
+    setFeaturedImages([...featuredImages.map((featuredImage) => featuredImage), { featuredImageDatabaseId: databaseId, url: imageUrl }])
     // if (thumbnail) {
     //   setFeaturedImage(mediaData.media_details.sizes.thumbnail.source_url?.replace(cmsUrl, 'https://cdn.thegentlemansjournal.com'))
     // }
     setLoaded(true)
   }
 
-  useEffect(() => {  
-    const cachedFeaturedImage = (featuredImages.find((featuredImage) => featuredImage.featuredImageDatabaseId === databaseId))  
-    
+  useEffect(() => {
+    const cachedFeaturedImage = featuredImages.find((featuredImage) => featuredImage.featuredImageDatabaseId === databaseId)
+
     if (cachedFeaturedImage) {
       setFeaturedImage(cachedFeaturedImage.url)
       setLoaded(true)

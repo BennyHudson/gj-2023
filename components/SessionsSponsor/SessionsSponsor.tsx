@@ -11,13 +11,13 @@ import { SessionsSponsorProps } from './SessionsSponsor.types'
 import Section from '@components/Section'
 import Button from '@components/Button'
 
-const SessionsSponsor: FC<SessionsSponsorProps> = ({
-  sponsor,
-}: SessionsSponsorProps): ReactElement => {
+const SessionsSponsor: FC<SessionsSponsorProps> = ({ sponsor }: SessionsSponsorProps): ReactElement => {
   return (
     <Styled.SessionsSponsor>
       <Section>
-        <Styled.LogoWrapper><Image src={featuredImageUrl(sponsor.logo)} alt='' width={112} height={40} /></Styled.LogoWrapper>
+        <Styled.LogoWrapper>
+          <Image src={featuredImageUrl(sponsor.logo)} alt='' width={112} height={40} />
+        </Styled.LogoWrapper>
         <Heading text='Listen and Believe' font='Cera' weight={2} size={3} inverse noMargin />
         <Button href={sponsor.sponsorLink} text={sponsor.buttonText} size={1} />
       </Section>

@@ -28,17 +28,23 @@ const GiftGuideFeature: FC<GiftGuideFeatureProps> = ({
       <Styled.Container>
         <Styled.Content>
           <Heading text={meta} size={1} font='Cera' inverse noMargin transform='uppercase' weight={3} />
-          <Heading text={title} size={4} inverse noMargin font='ChronicleCondensed' /> 
-          {subtitle && <Paragraph inverse noMargin>{subtitle}</Paragraph>}
-          <Link to={url} size={2} font='Cera' transform='uppercase' showIcon inverse>Read More</Link>
+          <Heading text={title} size={4} inverse noMargin font='ChronicleCondensed' />
+          {subtitle && (
+            <Paragraph inverse noMargin>
+              {subtitle}
+            </Paragraph>
+          )}
+          <Link to={url} size={2} font='Cera' transform='uppercase' showIcon inverse>
+            Read More
+          </Link>
         </Styled.Content>
       </Styled.Container>
-      {featuredImage && 
+      {featuredImage && (
         <>
           <Overlay />
           <Image src={featuredImageUrl(featuredImage)} fill alt='' />
         </>
-      }
+      )}
     </Styled.GiftGuideFeature>
   )
 }

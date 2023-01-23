@@ -1,0 +1,5 @@
+# Ignore artifacts:
+_templates
+build
+node_modules
+yarn.lock

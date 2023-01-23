@@ -12,11 +12,7 @@ import * as Styled from './styles/ClubHero.style'
 
 import { ClubHeroProps } from './ClubHero.types'
 
-const ClubHero: FC<ClubHeroProps> = ({
-  title,
-  featuredImage,
-  subtitle,
-}: ClubHeroProps): ReactElement => {
+const ClubHero: FC<ClubHeroProps> = ({ title, featuredImage, subtitle }: ClubHeroProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps
 
   return (

@@ -12,5 +12,5 @@ export interface StyledLinkProps {
   font: LinkProps['font']
   transform: LinkProps['transform']
   $showIcon: boolean
-  appearance: LinkProps['appearance'] 
+  appearance: LinkProps['appearance']
 }

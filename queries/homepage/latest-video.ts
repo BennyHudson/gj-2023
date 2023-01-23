@@ -6,11 +6,11 @@ export const latestVideoQuery = {
   query: gql`
     ${articleContent}
     query latestVideoQuery {
-      articles(where: {categoryName: "Video"}, first: 4) {
+      articles(where: { categoryName: "Video" }, first: 4) {
         nodes {
-          ... ArticleContent
+          ...ArticleContent
         }
       }
     }
-  `
+  `,
 }

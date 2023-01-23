@@ -8,9 +8,9 @@ export const latestPostsQuery = {
     query latestPosts {
       articles(first: 6) {
         nodes {
-          ... ArticleContent
+          ...ArticleContent
         }
       }
     }
-  `
+  `,
 }

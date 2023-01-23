@@ -18,7 +18,7 @@ interface PodcastProps extends Podcast {
 }
 
 export interface FeatureCarouselProps {
-  height?: 1 |  2
+  height?: 1 | 2
   title?: string
   links?: {
     text: string

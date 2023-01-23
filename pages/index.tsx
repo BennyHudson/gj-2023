@@ -32,12 +32,12 @@ import ShopGrid from '@components/ShopGrid'
 import ClubBanner from '@components/ClubBanner'
 import { clubQuery } from '@queries/homepage/club'
 
-const Home: FC = ({ 
+const Home: FC = ({
   headerNav,
   footerNav,
-  pageData, 
-  latestPosts, 
-  coverInterviews, 
+  pageData,
+  latestPosts,
+  coverInterviews,
   sessionsFeature,
   giftGuide,
   latestPodcasts,
@@ -60,11 +60,7 @@ const Home: FC = ({
         {...pageData.homeFeaturedPost.homeFeaturedPost}
         excerpt={pageData.homeFeaturedPost.homeFeaturedPost.articleAcf.standfirst}
       />
-      <NewsletterBanner
-        backgroundImage={newsletter.image.sourceUrl}
-        form={newsletterForm}
-        size={1}
-      />
+      <NewsletterBanner backgroundImage={newsletter.image.sourceUrl} form={newsletterForm} size={1} />
       <Section>
         <Title
           title='The Latest'
@@ -73,14 +69,10 @@ const Home: FC = ({
             {
               text: 'View All',
               url: '/latest',
-            }
+            },
           ]}
         />
-        <PostGrid priority={false}
-          columns={3}
-          posts={latestPosts}
-          smCarousel
-        />
+        <PostGrid priority={false} columns={3} posts={latestPosts} smCarousel />
       </Section>
       <BannerAdvert />
       <Section>
@@ -91,19 +83,12 @@ const Home: FC = ({
             {
               text: 'View All',
               url: coverInterviews.category.uri,
-            }
+            },
           ]}
         />
-        <PostGrid priority={false}
-          columns={4}
-          posts={coverInterviews.articles.nodes}
-          smCarousel
-        />
+        <PostGrid priority={false} columns={4} posts={coverInterviews.articles.nodes} smCarousel />
       </Section>
-      <ClubBanner
-        content={club.description}
-        card={club.card.sourceUrl}
-      />
+      <ClubBanner content={club.description} card={club.card.sourceUrl} />
       <Section appearance='tertiary'>
         <Title
           title='Shop'
@@ -111,7 +96,7 @@ const Home: FC = ({
             {
               text: 'Visit Shop',
               url: 'https://shop.thegentlemansjournal.com',
-            }
+            },
           ]}
         />
         <ShopGrid products={featuredProducts} />
@@ -128,20 +113,18 @@ const Home: FC = ({
         excerpt={pageData.homeWeeklyHighlight.homeWeeklyHighlight.articleAcf.standfirst}
         {...pageData.homeWeeklyHighlight.homeWeeklyHighlight}
       />
-      <SessionsFeature
-        content={sessionsFeature.page.sessions.sessions.sessionsIntroText}
-        post={sessionsFeature.articles.nodes[0]}
-      />
+      <SessionsFeature content={sessionsFeature.page.sessions.sessions.sessionsIntroText} post={sessionsFeature.articles.nodes[0]} />
       <Section>
-        <Title title='Podcasts' links={[
-          {
-            text: 'View All',
-            url: '/podcasts',
-          }
-        ]} />
-        <PodcastGrid
-          podcasts={latestPodcasts.podcasts.nodes}
+        <Title
+          title='Podcasts'
+          links={[
+            {
+              text: 'View All',
+              url: '/podcasts',
+            },
+          ]}
         />
+        <PodcastGrid podcasts={latestPodcasts.podcasts.nodes} />
       </Section>
       <FeatureCarousel
         posts={latestVideo.map((video) => {
@@ -159,7 +142,7 @@ const Home: FC = ({
           {
             text: 'View All',
             url: '/category/video/',
-          }
+          },
         ]}
         cta='Watch Now'
         priority={false}
@@ -177,20 +160,12 @@ const Home: FC = ({
             {
               text: 'View All',
               url: competitions.category.uri,
-            }
+            },
           ]}
         />
-        <PostGrid priority={false}
-          columns={4}
-          posts={competitions.articles.nodes}
-          smCarousel
-        />
+        <PostGrid priority={false} columns={4} posts={competitions.articles.nodes} smCarousel />
       </Section>
-      <NewsletterBanner
-        backgroundImage={newsletter.imageAlt.sourceUrl}
-        form={newsletterForm}
-        size={2}
-      />
+      <NewsletterBanner backgroundImage={newsletter.imageAlt.sourceUrl} form={newsletterForm} size={2} />
     </PageLayout>
   )
 }

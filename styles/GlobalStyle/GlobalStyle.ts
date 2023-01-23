@@ -1,8 +1,4 @@
-import {
-  createGlobalStyle,
-  css,
-  FlattenSimpleInterpolation,
-} from 'styled-components'
+import { createGlobalStyle, css, FlattenSimpleInterpolation } from 'styled-components'
 
 import { GlobalStyleProps } from './GlobalStyle.types'
 
@@ -162,7 +158,7 @@ const GlobalStyle = createGlobalStyle(
       transform: scale(1.1);
       transition: opacity 300ms, transform 300ms;
     }
-  `
+  `,
 )
 
 export default GlobalStyle

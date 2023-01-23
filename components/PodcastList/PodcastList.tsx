@@ -27,11 +27,11 @@ const PodcastList: FC = (): ReactElement => {
       setLast(data.podcasts.pageInfo.endCursor)
       setAllPodcasts(data.podcasts.edges)
       setMorePodcasts(data.podcasts.pageInfo.hasNextPage)
-    }
+    },
   })
 
   const getMore = async () => {
-    const more = await fetchMore({ variables: { after: last, }})
+    const more = await fetchMore({ variables: { after: last } })
     if (more.data) {
       setLast(more.data.podcasts.pageInfo.endCursor)
       setAllPodcasts([...allPodcasts, ...more.data.podcasts.edges])
@@ -42,31 +42,33 @@ const PodcastList: FC = (): ReactElement => {
   return (
     <Section appearance='secondary' containerWidth='narrow'>
       <Title inverse title='All Podcasts' />
-      {allPodcasts &&
+      {allPodcasts && (
         <Styled.PodcastList>
           {allPodcasts.map((podcast, index) => {
             let podcastMeta = podcast.node.podcasts.podcastMeta.guest.name
             if (podcast.node.podcasts.podcastMeta.guest.about) {
               podcastMeta = `${podcast.node.podcasts.podcastMeta.guest.name}, ${podcast.node.podcasts.podcastMeta.guest.about}`
-            } 
+            }
             return (
               <Styled.Podcast key={index}>
-                {mdAndAbove && 
+                {mdAndAbove && (
                   <Thumbnail size={2} type='circle' to={podcast.node.uri} featuredImage={podcast.node.featuredImage.node.sourceUrl} />
-                }
+                )}
                 <div>
                   <Meta date={podcast.node.date} inverse />
                   <Heading text={podcast.node.title} size={2} inverse />
                   <Styled.PodcastMeta>
                     <Paragraph size={1} text={podcastMeta} appearance='secondary' inverse font='Cera' noMargin />
-                    <Link to={podcast.node.uri} showIcon font='Cera' size={1} inverse>Listen Now</Link>
+                    <Link to={podcast.node.uri} showIcon font='Cera' size={1} inverse>
+                      Listen Now
+                    </Link>
                   </Styled.PodcastMeta>
                 </div>
               </Styled.Podcast>
             )
           })}
         </Styled.PodcastList>
-      }
+      )}
       {morePodcasts && <LoadMore onClick={getMore} />}
     </Section>
   )

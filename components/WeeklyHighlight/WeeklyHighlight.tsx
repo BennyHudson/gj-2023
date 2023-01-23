@@ -14,14 +14,7 @@ import * as Styled from './styles/WeeklyHighlight.style'
 import { Post } from '@typings/Post.types'
 import { useBreakpoints } from '@hooks/useBreakpoints'
 
-const WeeklyHighlight: FC<Post> = ({
-  title,
-  excerpt,
-  uri,
-  date,
-  categories,
-  featuredImage,
-}: Post): ReactElement => {
+const WeeklyHighlight: FC<Post> = ({ title, excerpt, uri, date, categories, featuredImage }: Post): ReactElement => {
   const { mdAndAbove } = useBreakpoints()
   return (
     <Section>
@@ -32,8 +25,12 @@ const WeeklyHighlight: FC<Post> = ({
           <Link href={uri}>
             <Heading size={mdAndAbove ? 4 : 3} text={title} noMargin font='ChronicleCondensed' />
           </Link>
-          <Paragraph appearance='secondary' size={mdAndAbove ? 3 : 2} weight={1}>{excerpt}</Paragraph>
-          <GJLink to={uri} size={1} weight={3} inverse font='Cera' showIcon>Read More</GJLink>
+          <Paragraph appearance='secondary' size={mdAndAbove ? 3 : 2} weight={1}>
+            {excerpt}
+          </Paragraph>
+          <GJLink to={uri} size={1} weight={3} inverse font='Cera' showIcon>
+            Read More
+          </GJLink>
         </Styled.Content>
         <Thumbnail to={uri} featuredImage={featuredImage.node.sourceUrl} />
       </Styled.WeeklyHighlight>

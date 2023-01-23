@@ -66,6 +66,6 @@ export const formQuery = (formId: number) => {
           }
         }
       }
-    `
+    `,
   }
 }

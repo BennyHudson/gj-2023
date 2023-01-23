@@ -11,14 +11,11 @@ import { QuickSubscribeProps } from './QuickSubscribe.types'
 import PageContext, { PageContextProps } from '@context/PageContext'
 import { useRouter } from 'next/router'
 
-const QuickSubscribe: FC<QuickSubscribeProps> = ({
-  products,
-  freeGift,
-}: QuickSubscribeProps): ReactElement => {
+const QuickSubscribe: FC<QuickSubscribeProps> = ({ products, freeGift }: QuickSubscribeProps): ReactElement => {
   const router = useRouter()
   const { setCart } = useContext(PageContext) as PageContextProps
 
-  const [ selectedProduct, setSelectedProduct ] = useState(products[0])
+  const [selectedProduct, setSelectedProduct] = useState(products[0])
 
   const addToCart = () => {
     setCart([selectedProduct, freeGift])
@@ -28,8 +25,13 @@ const QuickSubscribe: FC<QuickSubscribeProps> = ({
   return (
     <Styled.QuickSubscribe>
       <Heading text='Clubhouse.' font='ChronicleCondensed' size={3} />
-      <Paragraph font='Cera' size={2}>A special kind of private club where members receive offers and experiences from hand-picked, premium brands, as well as invites to exclusive events and the Bookazine delivered directly to their door.</Paragraph>
-      <Link href='/club' font='Cera' showIcon size={2}>Learn more</Link>
+      <Paragraph font='Cera' size={2}>
+        A special kind of private club where members receive offers and experiences from hand-picked, premium brands, as well as invites to
+        exclusive events and the Bookazine delivered directly to their door.
+      </Paragraph>
+      <Link href='/club' font='Cera' showIcon size={2}>
+        Learn more
+      </Link>
       <Styled.ProductList>
         <Heading text='Subscribe now:' font='ChronicleCondensed' size={3} />
         {products.map((product, index) => {
@@ -38,11 +40,13 @@ const QuickSubscribe: FC<QuickSubscribeProps> = ({
               <div>
                 <Heading text={product.name} font='Cera' size={2} weight={3} noMargin />
                 <Paragraph font='Cera'>
-                  {product.onSale ?
-                    <><del>£{product.regularPrice}</del> £{product.price}</>
-                    :
+                  {product.onSale ? (
+                    <>
+                      <del>£{product.regularPrice}</del> £{product.price}
+                    </>
+                  ) : (
                     `£${product.price}`
-                  }
+                  )}
                 </Paragraph>
               </div>
             </Styled.Product>

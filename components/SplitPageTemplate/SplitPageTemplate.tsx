@@ -10,11 +10,7 @@ import * as Styled from './styles/SplitPageTemplate.style'
 import { SplitPageTemplateProps } from './SplitPageTemplate.types'
 import PageContext, { PageContextProps } from '@context/PageContext'
 
-const SplitPageTemplate: FC<SplitPageTemplateProps> = ({
-  title,
-  image,
-  children,
-}: SplitPageTemplateProps): ReactElement => {
+const SplitPageTemplate: FC<SplitPageTemplateProps> = ({ title, image, children }: SplitPageTemplateProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps
 
   return (
@@ -24,7 +20,11 @@ const SplitPageTemplate: FC<SplitPageTemplateProps> = ({
       </Styled.BackgroundImage>
       <Styled.Content>
         <Styled.ContentWrapper>
-          {title && <Styled.Title><Heading size={5} text={title} font='ChronicleCondensed' /></Styled.Title>}
+          {title && (
+            <Styled.Title>
+              <Heading size={5} text={title} font='ChronicleCondensed' />
+            </Styled.Title>
+          )}
           {children}
         </Styled.ContentWrapper>
       </Styled.Content>

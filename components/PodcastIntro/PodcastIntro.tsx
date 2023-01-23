@@ -10,10 +10,7 @@ import * as Styled from './styles/PodcastIntro.style'
 
 import { PodcastIntroProps } from './PodcastIntro.types'
 
-const PodcastIntro: FC<PodcastIntroProps> = ({
-  text,
-  host,
-}: PodcastIntroProps): ReactElement => {
+const PodcastIntro: FC<PodcastIntroProps> = ({ text, host }: PodcastIntroProps): ReactElement => {
   return (
     <Styled.PodcastIntro>
       <Styled.Content>

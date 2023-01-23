@@ -22,16 +22,26 @@ const HouseNoteExcerpt: FC<HouseNoteExcerptProps> = ({
     <Styled.HouseNoteExcerpt>
       {featuredImage && <Thumbnail featuredImage={featuredImage.node.sourceUrl} to={uri} type='square' priority={priority} />}
       <Styled.Body>
-        <Styled.ArticleType><span>{articleType.articleType}</span></Styled.ArticleType>
+        <Styled.ArticleType>
+          <span>{articleType.articleType}</span>
+        </Styled.ArticleType>
         <Heading text={title} size={feature ? 2 : 1} noMargin />
         {articleType.articleTypeLandingPageExcerpt && (
           <>
-            <Paragraph size={2} font='Cera' appearance='secondary'>{articleType.articleTypeLandingPageExcerpt}</Paragraph>
+            <Paragraph size={2} font='Cera' appearance='secondary'>
+              {articleType.articleTypeLandingPageExcerpt}
+            </Paragraph>
           </>
         )}
         <Styled.Footer>
-          {author && <Styled.ArticleType><span>Words: {author.node.name}</span></Styled.ArticleType>}
-          <Link to={uri} size={1} weight={3} font='Cera' transform='uppercase' showIcon>Read More</Link>
+          {author && (
+            <Styled.ArticleType>
+              <span>Words: {author.node.name}</span>
+            </Styled.ArticleType>
+          )}
+          <Link to={uri} size={1} weight={3} font='Cera' transform='uppercase' showIcon>
+            Read More
+          </Link>
         </Styled.Footer>
       </Styled.Body>
     </Styled.HouseNoteExcerpt>

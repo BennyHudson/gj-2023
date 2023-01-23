@@ -37,10 +37,10 @@ const HouseNote: FC<HouseNoteData> = ({ pageData, articleNote, headerNav, footer
       <HeroImage featuredImage={pageData.featuredImage.node.sourceUrl} />
       <BannerAdvert />
       <Section>
-        <Masthead 
-          title={pageData.title} 
-          subtitle={pageData.articleType.articleTypeLandingPageExcerpt} 
-          fullWidth={false} 
+        <Masthead
+          title={pageData.title}
+          subtitle={pageData.articleType.articleTypeLandingPageExcerpt}
+          fullWidth={false}
           author={pageData.author.node.name}
         />
         <ContentGrid
@@ -64,7 +64,7 @@ export async function getStaticPaths() {
     return {
       params: {
         slug: [houseNote.node.slug],
-      }
+      },
     }
   })
 
@@ -80,7 +80,7 @@ export async function getStaticProps({ params }: StaticPaths) {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
   const response = await client.query(houseNoteBodyQuery(slug))
-      
+
   return {
     props: {
       headerNav: headerNav.data,

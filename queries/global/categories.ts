@@ -7,7 +7,7 @@ export const categoryQuery = (categoryName: string, columns: number, count?: num
     query: gql`
       ${articleContent}
       query latestArticlesByCategory($after: String) {
-        articles(first: ${count ? count : (columns === 4 ? 20 : 12)}, after: $after, where: {categoryName: "${categoryName}"}) {
+        articles(first: ${count ? count : columns === 4 ? 20 : 12}, after: $after, where: {categoryName: "${categoryName}"}) {
           pageInfo {
             hasNextPage
             hasPreviousPage
@@ -22,6 +22,6 @@ export const categoryQuery = (categoryName: string, columns: number, count?: num
           }
         }
       }
-    `
+    `,
   }
 }

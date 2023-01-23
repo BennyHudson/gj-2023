@@ -15,11 +15,11 @@ import { gjTheme } from '@themes/gjTheme'
 import client from '@lib/apollo-client'
 
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => {
-  const [ token, setToken ] = useState<PageContextProps['token']>()
-  const [ activeNavElement, setActiveNavElement ] = useState<PageContextProps['headerHeight']>(-1)
-  const [ headerHeight, setHeaderHeight ] = useState<PageContextProps['headerHeight']>(0)
-  const [ customerId, setCustomerId ] = useState<PageContextProps['customerId']>()
-  const [ cart, setCart ] = useState([])
+  const [token, setToken] = useState<PageContextProps['token']>()
+  const [activeNavElement, setActiveNavElement] = useState<PageContextProps['headerHeight']>(-1)
+  const [headerHeight, setHeaderHeight] = useState<PageContextProps['headerHeight']>(0)
+  const [customerId, setCustomerId] = useState<PageContextProps['customerId']>()
+  const [cart, setCart] = useState([])
 
   // const keyPress = useKeyPress()
 
@@ -39,7 +39,7 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
         <GlobalStyle />
         <PageContext.Provider
           value={{
-            cmsUrl, 
+            cmsUrl,
             apiUrl: `${cmsUrl}/wp-json/wp/v2`,
             activeNavElement,
             setActiveNavElement,
@@ -55,7 +55,7 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
         >
           <Component {...pageProps} />
         </PageContext.Provider>
-      </ThemeProvider>    
+      </ThemeProvider>
     </ApolloProvider>
   )
 }

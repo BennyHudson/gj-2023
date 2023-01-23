@@ -14,14 +14,14 @@ import RawHtmlWrapper from '@components/RawHtmlWrapper'
 import Newsletter from '@components/Newsletter'
 
 const NewsletterPage: FC = ({ headerNav, footerNav, newsletter, newsletterForm }): ReactElement => {
-  const { token, setActiveNavElement } = useContext(PageContext) as PageContextProps
+  const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
     setActiveNavElement(-1)
   }, [setActiveNavElement])
-  
+
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: `${newsletter.title} | The Gentleman's Journal`  }}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: `${newsletter.title} | The Gentleman's Journal` }}>
       <SplitPageTemplate image={newsletter.image.sourceUrl} title={newsletter.title}>
         <RawHtmlWrapper content={newsletter.description} />
         <Newsletter form={newsletterForm} showTitle={false} />
@@ -43,6 +43,6 @@ export async function getStaticProps() {
       footerNav: footerNav.data,
       newsletter: newsletter.data.gjOptions.newsletterModal.modalNewsletter,
       newsletterForm: newsletter.data.gfForm,
-    }
+    },
   }
 }

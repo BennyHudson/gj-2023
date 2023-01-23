@@ -8,9 +8,9 @@ export const latestPodcastsQuery = {
     query latestPodcastsQuery {
       podcasts(first: 5) {
         nodes {
-          ... PodcastContent
+          ...PodcastContent
         }
       }
     }
-  `
+  `,
 }

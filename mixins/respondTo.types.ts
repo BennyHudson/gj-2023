@@ -1,17 +1,17 @@
 import { FlattenSimpleInterpolation } from 'styled-components'
 
 export interface MixinRespondToGeneric {
-  (styles: FlattenSimpleInterpolation): FlattenSimpleInterpolation;
+  (styles: FlattenSimpleInterpolation): FlattenSimpleInterpolation
 }
 
 export type MixinRespondTo = {
-  md: MixinRespondToGeneric;
-  lg: MixinRespondToGeneric;
-  xl: MixinRespondToGeneric;
-};
+  md: MixinRespondToGeneric
+  lg: MixinRespondToGeneric
+  xl: MixinRespondToGeneric
+}
 
 declare global {
   interface Window {
-    sgBreakpoint: 'sm' | 'md' | 'lg' | 'xl';
+    sgBreakpoint: 'sm' | 'md' | 'lg' | 'xl'
   }
 }

@@ -1,5 +1,10 @@
-import { ReactNode } from 'react'
-
 export interface MagazineGridProps {
-  children: ReactNode
+  magazines: {
+    node: {
+      name: string
+      image: {
+        sourceUrl: string
+      }
+    }
+  }[]
 }

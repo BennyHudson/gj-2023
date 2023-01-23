@@ -42,20 +42,20 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
+          slidesToScroll: 1,
+        },
+      },
     ],
   }
-  
+
   return (
     <Styled.FeatureCarousel headerHeight={headerHeight} height={height}>
       <Section appearance='secondary' containerWidth='wide'>
         {title && <Title title={title} links={links} inverse />}
-        {sm &&
+        {sm && (
           <>
             <Head>
-              <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' /> 
+              <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' />
             </Head>
             <Styled.Slider>
               <Slider {...sliderSettings}>
@@ -66,7 +66,9 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
                         <Meta date={post.date} categories={post.categories} inverse />
                         {post.meta && <Heading size={1} text={post.meta!} inverse font='Cera' />}
                         <Heading text={post.title} size={4} inverse font='ChronicleCondensed' />
-                        <Link to={post.uri} size={1} weight={3} inverse font='Cera' showIcon>{cta}</Link>
+                        <Link to={post.uri} size={1} weight={3} inverse font='Cera' showIcon>
+                          {cta}
+                        </Link>
                       </Styled.PostTitle>
                       <Overlay />
                       <Image src={featuredImageUrl(post.featuredImage.node.sourceUrl)!} fill alt='' key={index} priority={priority} />
@@ -76,14 +78,16 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
               </Slider>
             </Styled.Slider>
           </>
-        }
-        {mdAndAbove &&
+        )}
+        {mdAndAbove && (
           <>
             <Styled.PostTitle>
               <Meta date={posts[activeIndex].date} categories={posts[activeIndex].categories} inverse />
               {posts[activeIndex].meta && <Heading size={1} text={posts[activeIndex].meta!} inverse font='Cera' />}
               <Heading text={posts[activeIndex].title} size={4} inverse font='ChronicleCondensed' />
-              <Link to={posts[activeIndex].uri} size={1} weight={3} inverse font='Cera' showIcon>{cta}</Link>
+              <Link to={posts[activeIndex].uri} size={1} weight={3} inverse font='Cera' showIcon>
+                {cta}
+              </Link>
             </Styled.PostTitle>
             <Styled.Thumbs activeIndex={activeIndex} count={posts.length}>
               {posts.map((post, index) => {
@@ -91,27 +95,29 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
                   <li key={index}>
                     <Styled.Index $active={index === activeIndex}>{index + 1}</Styled.Index>
                     <Styled.Thumb onClick={() => setActiveIndex(index)}>
-                      <Paragraph font='Cera' size={2} inverse>{post.title}</Paragraph>
-                      <Paragraph font='Cera' size={2} inverse>{post.subtitle}</Paragraph>
+                      <Paragraph font='Cera' size={2} inverse>
+                        {post.title}
+                      </Paragraph>
+                      <Paragraph font='Cera' size={2} inverse>
+                        {post.subtitle}
+                      </Paragraph>
                     </Styled.Thumb>
                   </li>
                 )
               })}
             </Styled.Thumbs>
           </>
-        }
+        )}
       </Section>
-      {mdAndAbove &&
+      {mdAndAbove && (
         <Styled.ImageWrapper>
           <Overlay />
           {posts.map((post, index) => {
             if (index !== activeIndex) return
-            return (
-              <Image src={featuredImageUrl(post.featuredImage.node.sourceUrl)!} fill alt='' key={index} priority={priority} />
-            )
+            return <Image src={featuredImageUrl(post.featuredImage.node.sourceUrl)!} fill alt='' key={index} priority={priority} />
           })}
         </Styled.ImageWrapper>
-      }
+      )}
     </Styled.FeatureCarousel>
   )
 }

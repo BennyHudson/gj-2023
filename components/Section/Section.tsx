@@ -12,9 +12,7 @@ const Section: FC<SectionProps> = ({
 }: SectionProps): ReactElement => {
   return (
     <Styled.Section appearance={appearance} backgroundImage={backgroundImage}>
-      <Styled.Content containerWidth={containerWidth}>
-        {children}
-      </Styled.Content>
+      <Styled.Content containerWidth={containerWidth}>{children}</Styled.Content>
     </Styled.Section>
   )
 }

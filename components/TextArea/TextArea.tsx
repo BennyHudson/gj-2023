@@ -6,14 +6,7 @@ import * as Styled from './styles/TextArea.style'
 
 import { FormFieldProps } from '@typings/FormField.types'
 
-const TextArea: FC<FormFieldProps> = ({
-  target,
-  label,
-  isRequired,
-  id,
-  databaseId,
-  labelPlacement,
-}: FormFieldProps): ReactElement => {
+const TextArea: FC<FormFieldProps> = ({ target, label, isRequired, id, databaseId, labelPlacement }: FormFieldProps): ReactElement => {
   return (
     <FieldWrapper target={target} label={label} required={isRequired} labelPlacement={labelPlacement}>
       <Styled.TextArea name={`input_${id}`} id={`input_${databaseId}_${id}`} as='textarea' rows={4} />

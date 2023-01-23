@@ -3,32 +3,24 @@ import client from '@lib/apollo-client'
 
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
-import { pageQuery } from '@queries/pages/page'
+import { partnerOptionsQuery } from '@queries/partners/partnerOptions'
+import { partnerQuery } from '@queries/partners/partners'
 
 import PageLayout from '@components/PageLayout'
 import HeroImage from '@components/HeroImage'
 import Section from '@components/Section'
 import Masthead from '@components/Masthead'
+import PartnerGrid from '@components/PartnerGrid'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
-import RawHtmlWrapper from '@components/RawHtmlWrapper'
-import JobsList from '@components/JobsList'
-import { partnerOptionsQuery } from '@queries/partners/partnerOptions'
-import PartnerGrid from '@components/PartnerGrid'
-import { partnerQuery } from '@queries/partners/partners'
 
-const TeamPage: FC = ({ 
-  headerNav,
-  footerNav,
-  pageData,
-  partners,
-}): ReactElement => {
+const TeamPage: FC = ({ headerNav, footerNav, pageData, partners }): ReactElement => {
   console.log(pageData)
 
   const breadcrumbs = [
     {
       text: 'Home',
-      url: '/'
+      url: '/',
     },
     {
       title: 'Clubhouse Partners',
@@ -43,14 +35,10 @@ const TeamPage: FC = ({
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Partner Offers | The Gentleman\'s Journal'  }}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Partner Offers | The Gentleman\'s Journal' }}>
       <HeroImage featuredImage={pageData.featuredImage.sourceUrl} height={1} />
       <Section appearance='tertiary'>
-        <Masthead
-          breadcrumbs={breadcrumbs}
-          title='Clubhouse Partners'
-          subtitle={pageData.subTitle}
-        />
+        <Masthead breadcrumbs={breadcrumbs} title='Clubhouse Partners' subtitle={pageData.subTitle} />
         <PartnerGrid partners={partners} />
       </Section>
     </PageLayout>

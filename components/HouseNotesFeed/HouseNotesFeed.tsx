@@ -20,11 +20,11 @@ const HouseNotesFeed: FC = (): ReactElement => {
       setLast(data.houseNotes.pageInfo.endCursor)
       setAllHouseNotes(data.houseNotes.edges)
       setMoreHouseNotes(data.houseNotes.pageInfo.hasNextPage)
-    }
+    },
   })
 
   const getMore = async () => {
-    const more = await fetchMore({ variables: { after: last, }})
+    const more = await fetchMore({ variables: { after: last } })
     if (more.data) {
       setLast(more.data.houseNotes.pageInfo.endCursor)
       setAllHouseNotes([...allHouseNotes, ...more.data.houseNotes.edges])

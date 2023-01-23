@@ -1,5 +1,3 @@
-import { ReactNode } from 'react'
-
 export interface PartnerCardProps {
   featuredImage: {
     node: {
@@ -14,6 +12,6 @@ export interface PartnerCardProps {
       redeem: string
       termsOfUse: string
     }
-  },
+  }
   date: string
 }

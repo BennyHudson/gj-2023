@@ -13,20 +13,14 @@ import TeamGrid from '@components/TeamGrid'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
-const TeamPage: FC = ({ 
-  headerNav,
-  footerNav,
-  pageData,
-}): ReactElement => {
-  console.log(pageData)
-
+const TeamPage: FC = ({ headerNav, footerNav, pageData }): ReactElement => {
   const breadcrumbs = [
     {
       text: 'Home',
-      url: '/'
+      url: '/',
     },
     {
-      title: pageData.title,
+      text: pageData.title,
       url: pageData.uri,
     },
   ]
@@ -47,13 +41,12 @@ const TeamPage: FC = ({
           subtitle={pageData.additionalPageData.subtitleText.replace(/<\/?[^>]+(>|$)/g, '')}
         />
         <TeamGrid
-          title={'Gentleman\'s Journal is a leading men\'s luxury lifestyle publication, with a focus on style, travel, cars, watches, business and property. Here\'s our office:'}
+          title={
+            'Gentleman\'s Journal is a leading men\'s luxury lifestyle publication, with a focus on style, travel, cars, watches, business and property. Here\'s our office:'
+          }
           teamMembers={pageData.membersOfStaff.staffMembers}
         />
-        <TeamGrid
-          title={'Contributors:'}
-          teamMembers={pageData.membersOfStaff.staffEditors}
-        />
+        <TeamGrid title={'Contributors:'} teamMembers={pageData.membersOfStaff.staffEditors} />
       </Section>
     </PageLayout>
   )

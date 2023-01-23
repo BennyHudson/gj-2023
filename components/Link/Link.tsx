@@ -27,8 +27,8 @@ const GJLink: FC<LinkProps> = ({
   }
 
   return (
-    <Styled.Link 
-      $inverse={inverse} 
+    <Styled.Link
+      $inverse={inverse}
       size={size}
       weight={weight}
       font={font}
@@ -37,7 +37,6 @@ const GJLink: FC<LinkProps> = ({
       $showIcon={showIcon}
       as={renderAs()}
       href={href ? href : to}
-      
     >
       {children} {showIcon && <FontAwesomeIcon icon={faAngleRight as IconProp} size='2x' />}
     </Styled.Link>

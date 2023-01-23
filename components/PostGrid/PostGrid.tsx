@@ -27,48 +27,34 @@ const PostGrid: FC<PostGridProps> = ({
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
+          slidesToScroll: 1,
+        },
+      },
     ],
   }
 
   return (
     <>
-      {sm && smCarousel ? 
+      {sm && smCarousel ? (
         <>
           <Head>
-            <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' /> 
+            <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' />
           </Head>
           <Styled.PostCarousel>
             <Slider {...sliderSettings}>
               {posts.map((post, index) => {
-                return (
-                  <PostExcerpt
-                    priority={priority && index < 8}
-                    key={index} 
-                    inverse={inverse} 
-                    {...post}
-                  />
-                )
+                return <PostExcerpt priority={priority && index < 8} key={index} inverse={inverse} {...post} />
               })}
             </Slider>
           </Styled.PostCarousel>
         </>
-        :
+      ) : (
         <Styled.PostGrid columns={columns}>
           {posts.map((post, index) => {
-            return (
-              <PostExcerpt
-                priority={priority && index < 8}
-                key={index} 
-                inverse={inverse} 
-                {...post}
-              />
-            )
+            return <PostExcerpt priority={priority && index < 8} key={index} inverse={inverse} {...post} />
           })}
         </Styled.PostGrid>
-      }
+      )}
     </>
   )
 }

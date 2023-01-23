@@ -7,15 +7,12 @@ import * as Styled from './styles/SkeletonLoader.style'
 
 import { SkeletonLoaderProps } from './SkeletonLoader.types'
 
-const SkeletonLoader: FC<SkeletonLoaderProps> = ({
-  type = 'post',
-  columns = 4
-}: SkeletonLoaderProps): ReactElement => {
+const SkeletonLoader: FC<SkeletonLoaderProps> = ({ type = 'post', columns = 4 }: SkeletonLoaderProps): ReactElement => {
   const postArray = Array.from(Array(columns * 2).keys())
 
   return (
     <Styled.SkeletonLoader>
-      {type === 'post' ?
+      {type === 'post' ? (
         <Styled.PostGrid columns={columns}>
           {postArray.map((index) => {
             return (
@@ -31,9 +28,9 @@ const SkeletonLoader: FC<SkeletonLoaderProps> = ({
             )
           })}
         </Styled.PostGrid>
-        :
+      ) : (
         <>Podcast Loader</>
-      }
+      )}
     </Styled.SkeletonLoader>
   )
 }

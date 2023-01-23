@@ -7,11 +7,7 @@ import * as Styled from './styles/Meta.style'
 
 import { MetaProps } from './Meta.types'
 
-const Meta: FC<MetaProps> = ({
-  categories,
-  date,
-  inverse = false,
-}: MetaProps): ReactElement => {
+const Meta: FC<MetaProps> = ({ categories, date, inverse = false }: MetaProps): ReactElement => {
   dayjs.extend(relativeTime)
   dayjs.extend(updateLocale)
 
@@ -29,22 +25,20 @@ const Meta: FC<MetaProps> = ({
       M: '1 month',
       MM: '%d months',
       y: '1 year',
-      yy: '%d years'
-    }
+      yy: '%d years',
+    },
   })
 
   return (
     <Styled.Meta inverse={inverse}>
-      {categories?.nodes.length ? 
+      {categories?.nodes.length ? (
         <>
           {categories.nodes[0].name}
           {date && <Styled.Date inverse={inverse}> -- {dayjs(date).fromNow()}</Styled.Date>}
         </>
-        :
-        <>
-          {date && <Styled.Date inverse={inverse}>{dayjs(date).format('D MMMM YYYY')}</Styled.Date>}
-        </>
-      }
+      ) : (
+        <>{date && <Styled.Date inverse={inverse}>{dayjs(date).format('D MMMM YYYY')}</Styled.Date>}</>
+      )}
     </Styled.Meta>
   )
 }

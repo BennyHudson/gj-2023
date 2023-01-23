@@ -48,7 +48,10 @@ const PodcastContent: FC<PodcastContentProps> = ({
         <RawHtmlWrapper content={content} />
       </Styled.Content>
       <Styled.PodcastMeta>
-        <Paragraph size={2} font='Cera' noMargin>This episode has been recorded at Mark's Club, {host && `read by ${host.name} and `} produced by {producer}. {sponsor && `Sponsored by ${sponsor}.`}</Paragraph>
+        <Paragraph size={2} font='Cera' noMargin>
+          This episode has been recorded at Mark's Club, {host && `read by ${host.name} and `} produced by {producer}.{' '}
+          {sponsor && `Sponsored by ${sponsor}.`}
+        </Paragraph>
         <Sharers title={title} url={`/${uri}`} />
       </Styled.PodcastMeta>
     </Section>

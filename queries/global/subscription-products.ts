@@ -3,7 +3,7 @@ import { gql } from '@apollo/client'
 export const subscriptionProductsQuery = {
   query: gql`
     query subscriptionProducts {
-      products(where: {type: SUBSCRIPTION}) {
+      products(where: { type: SUBSCRIPTION }) {
         nodes {
           ... on SubscriptionProduct {
             databaseId
@@ -16,6 +16,6 @@ export const subscriptionProductsQuery = {
           }
         }
       }
-    }  
-  `
+    }
+  `,
 }

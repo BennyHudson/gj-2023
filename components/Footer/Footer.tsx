@@ -22,9 +22,9 @@ import { useBreakpoints } from '@hooks/useBreakpoints'
 const Footer: FC<FooterProps> = ({ footerNav }: FooterProps): ReactElement => {
   const { mdAndAbove } = useBreakpoints()
 
-  const scrollToTop = () =>{
+  const scrollToTop = () => {
     window.scrollTo({
-      top: 0, 
+      top: 0,
       behavior: 'smooth',
     })
   }
@@ -34,7 +34,9 @@ const Footer: FC<FooterProps> = ({ footerNav }: FooterProps): ReactElement => {
       <Section appearance='secondary'>
         <Styled.Top>
           <Logo inverse smLogo />
-          <Styled.ScrollUp onClick={scrollToTop}><FontAwesomeIcon icon={faAngleDoubleUp as IconProp} size='2x' /> Back to Top</Styled.ScrollUp>
+          <Styled.ScrollUp onClick={scrollToTop}>
+            <FontAwesomeIcon icon={faAngleDoubleUp as IconProp} size='2x' /> Back to Top
+          </Styled.ScrollUp>
         </Styled.Top>
         <Styled.Main>
           {mdAndAbove && <FooterMainMenu menu={flatListToHierarchical(footerNav.primaryMenu.menuItems.nodes)} />}
@@ -43,7 +45,9 @@ const Footer: FC<FooterProps> = ({ footerNav }: FooterProps): ReactElement => {
               {footerNav.secondaryMenu.menuItems.nodes.map((item, index) => {
                 return (
                   <li key={index}>
-                    <Link to={item.uri} font='Cera' inverse size={1} transform='uppercase'>{item.label}</Link>
+                    <Link to={item.uri} font='Cera' inverse size={1} transform='uppercase'>
+                      {item.label}
+                    </Link>
                   </li>
                 )
               })}
@@ -55,12 +59,16 @@ const Footer: FC<FooterProps> = ({ footerNav }: FooterProps): ReactElement => {
             {footerNav.legalMenu.menuItems.nodes.map((item, index) => {
               return (
                 <li key={index}>
-                  <Link to={item.uri} font='Cera' inverse size={1} transform='uppercase'>{item.label}</Link>
+                  <Link to={item.uri} font='Cera' inverse size={1} transform='uppercase'>
+                    {item.label}
+                  </Link>
                 </li>
               )
             })}
           </Styled.LegalMenu>
-          <Paragraph inverse size={1} font='Cera'>Copyright © 2012-{dayjs().year()} The Gentleman's Journal. All rights reserved</Paragraph>
+          <Paragraph inverse size={1} font='Cera'>
+            Copyright © 2012-{dayjs().year()} The Gentleman's Journal. All rights reserved
+          </Paragraph>
         </Styled.Meta>
       </Section>
     </Styled.Footer>

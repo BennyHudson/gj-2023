@@ -6,9 +6,7 @@ import * as Styled from './styles/LoadMore.style'
 
 import { LoadMoreProps } from './LoadMore.types'
 
-const LoadMore: FC<LoadMoreProps> = ({
-  onClick,
-}: LoadMoreProps): ReactElement => {
+const LoadMore: FC<LoadMoreProps> = ({ onClick }: LoadMoreProps): ReactElement => {
   return (
     <Styled.LoadMore>
       <Button onClick={onClick} text='Load More' />

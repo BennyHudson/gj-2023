@@ -12,9 +12,7 @@ import * as Styled from './styles/PodcastGrid.style'
 import { PodcastGridProps } from './PodcastGrid.types'
 import { useBreakpoints } from '@hooks/useBreakpoints'
 
-const PodcastGrid: FC<PodcastGridProps> = ({
-  podcasts,
-}: PodcastGridProps): ReactElement => {
+const PodcastGrid: FC<PodcastGridProps> = ({ podcasts }: PodcastGridProps): ReactElement => {
   const { sm, mdAndAbove } = useBreakpoints()
 
   const sliderSettings = {
@@ -27,9 +25,9 @@ const PodcastGrid: FC<PodcastGridProps> = ({
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
+          slidesToScroll: 1,
+        },
+      },
     ],
   }
 
@@ -37,26 +35,30 @@ const PodcastGrid: FC<PodcastGridProps> = ({
     <Styled.PodcastGrid>
       <Styled.FeaturedPodcast>
         <Thumbnail to={podcasts[0].uri} featuredImage={podcasts[0].featuredImage.node.sourceUrl} />
-        <Styled.FeatureDetails href={podcasts[0].uri} >
+        <Styled.FeatureDetails href={podcasts[0].uri}>
           <Meta date={podcasts[0].date} />
           <Heading text={podcasts[0].title} size={3} font='ChronicleCondensed' />
-          <Paragraph font='Cera' weight={1} size={2} appearance='secondary'>{podcasts[0].podcasts.podcastMeta.guest.name}, {podcasts[0].podcasts.podcastMeta.guest.about}</Paragraph>
+          <Paragraph font='Cera' weight={1} size={2} appearance='secondary'>
+            {podcasts[0].podcasts.podcastMeta.guest.name}, {podcasts[0].podcasts.podcastMeta.guest.about}
+          </Paragraph>
         </Styled.FeatureDetails>
       </Styled.FeaturedPodcast>
-      {sm && 
+      {sm && (
         <>
           <Head>
-            <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' /> 
+            <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' />
           </Head>
           <Styled.PostCarousel>
             <Slider {...sliderSettings}>
               {podcasts.slice(1).map((podcast, index) => {
                 return (
                   <Styled.Podcast key={index}>
-                    <Styled.PodcastDetails href={podcast.uri} >
+                    <Styled.PodcastDetails href={podcast.uri}>
                       <Meta date={podcasts[0].date} />
                       <Heading size={1} text={podcast.title} font='ChronicleCondensed' />
-                      <Paragraph font='Cera' weight={1} size={1} appearance='secondary'>{podcast.podcasts.podcastMeta.guest.name}, {podcast.podcasts.podcastMeta.guest.about}</Paragraph>
+                      <Paragraph font='Cera' weight={1} size={1} appearance='secondary'>
+                        {podcast.podcasts.podcastMeta.guest.name}, {podcast.podcasts.podcastMeta.guest.about}
+                      </Paragraph>
                     </Styled.PodcastDetails>
                   </Styled.Podcast>
                 )
@@ -64,23 +66,25 @@ const PodcastGrid: FC<PodcastGridProps> = ({
             </Slider>
           </Styled.PostCarousel>
         </>
-      }
-      {mdAndAbove && 
+      )}
+      {mdAndAbove && (
         <Styled.PodcastList>
           {podcasts.slice(1).map((podcast, index) => {
             return (
               <Styled.Podcast key={index}>
                 <Thumbnail type='circle' to={podcast.uri} featuredImage={podcast.featuredImage.node.sourceUrl} />
-                <Styled.PodcastDetails href={podcast.uri} >
+                <Styled.PodcastDetails href={podcast.uri}>
                   <Meta date={podcasts[0].date} />
                   <Heading size={1} text={podcast.title} font='ChronicleCondensed' />
-                  <Paragraph font='Cera' weight={1} size={1} appearance='secondary'>{podcast.podcasts.podcastMeta.guest.name}, {podcast.podcasts.podcastMeta.guest.about}</Paragraph>
+                  <Paragraph font='Cera' weight={1} size={1} appearance='secondary'>
+                    {podcast.podcasts.podcastMeta.guest.name}, {podcast.podcasts.podcastMeta.guest.about}
+                  </Paragraph>
                 </Styled.PodcastDetails>
               </Styled.Podcast>
             )
           })}
         </Styled.PodcastList>
-      }
+      )}
     </Styled.PodcastGrid>
   )
 }

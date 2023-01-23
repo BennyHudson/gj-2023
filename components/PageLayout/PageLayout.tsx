@@ -25,20 +25,15 @@ const PageLayout: FC<PageLayoutProps> = ({ children, headerNav, footerNav, seo }
     if (pathname.includes('gift-guide')) return 'feature'
     return 'standard'
   }
-    
+
   return (
     <Styled.PageLayout>
       <HeadTags seo={seo} />
       <Styled.Background>
         <Image src='/svg/logo-small.svg' width={50} height={50} alt='' />
       </Styled.Background>
-      <Header 
-        headerStyle={useFeatureHeader()} 
-        headerNav={headerNav}
-      />
-      <Styled.Page>
-        {children}
-      </Styled.Page>
+      <Header headerStyle={useFeatureHeader()} headerNav={headerNav} />
+      <Styled.Page>{children}</Styled.Page>
       <Footer footerNav={footerNav} />
     </Styled.PageLayout>
   )

@@ -9,25 +9,20 @@ import PageLayout from '@components/PageLayout'
 import HeroImage from '@components/HeroImage'
 import Section from '@components/Section'
 import Masthead from '@components/Masthead'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
-import RawHtmlWrapper from '@components/RawHtmlWrapper'
 import JobsList from '@components/JobsList'
 
-const TeamPage: FC = ({ 
-  headerNav,
-  footerNav,
-  pageData,
-}): ReactElement => {
+import PageContext, { PageContextProps } from '@context/PageContext'
+
+const TeamPage: FC = ({ headerNav, footerNav, pageData }): ReactElement => {
   console.log(pageData)
 
   const breadcrumbs = [
     {
       text: 'Home',
-      url: '/'
+      url: '/',
     },
     {
-      title: pageData.title,
+      text: pageData.title,
       url: pageData.uri,
     },
   ]
@@ -47,10 +42,7 @@ const TeamPage: FC = ({
           title={pageData.title}
           subtitle={pageData.additionalPageData.subtitleText.replace(/<\/?[^>]+(>|$)/g, '')}
         />
-        <JobsList 
-          content={pageData.content}
-          jobs={pageData.careers.careers.jobs}
-        />
+        <JobsList content={pageData.content} jobs={pageData.careers.careers.jobs} />
       </Section>
     </PageLayout>
   )

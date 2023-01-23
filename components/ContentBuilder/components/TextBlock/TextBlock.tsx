@@ -6,9 +6,7 @@ import * as Styled from './styles/TextBlock.style'
 
 import { TextBlockProps } from './TextBlock.types'
 
-const TextBlock: FC<TextBlockProps> = ({
-  content,
-}: TextBlockProps): ReactElement => {
+const TextBlock: FC<TextBlockProps> = ({ content }: TextBlockProps): ReactElement => {
   return (
     <Styled.TextBlock>
       <RawHtmlWrapper content={content} />

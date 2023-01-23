@@ -43,6 +43,6 @@ export const pageQuery = (pageId: number) => {
           }
         }
       }
-    `
+    `,
   }
 }

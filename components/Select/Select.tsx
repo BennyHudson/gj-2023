@@ -9,22 +9,16 @@ import * as Styled from './styles/Select.style'
 
 import { SelectProps } from './Select.types'
 
-const Select: FC<SelectProps> = ({
-  target,
-  label,
-  isRequired,
-  id,
-  databaseId,
-  choices,
-  labelPlacement,
-}: SelectProps): ReactElement => {
+const Select: FC<SelectProps> = ({ target, label, isRequired, id, databaseId, choices, labelPlacement }: SelectProps): ReactElement => {
   return (
     <FieldWrapper target={target} label={label} required={isRequired} labelPlacement={labelPlacement}>
       <Styled.SelectWrapper>
         <Styled.Select name={`input_${id}`} id={`input_${databaseId}_${id}`} as='select'>
           {choices.map((choice, index) => {
             return (
-              <option key={index} value={choice.value}>{choice.text}</option>
+              <option key={index} value={choice.value}>
+                {choice.text}
+              </option>
             )
           })}
         </Styled.Select>

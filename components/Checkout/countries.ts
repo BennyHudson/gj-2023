@@ -1,5 +1,5 @@
 export const countries = [
-  {  
+  {
     value: 'Afghanistan',
     text: 'Afghanistan',
   },

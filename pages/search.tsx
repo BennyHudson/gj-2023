@@ -12,15 +12,18 @@ import SearchForm from '@components/SearchForm'
 import PageContext, { PageContextProps } from '@context/PageContext'
 
 const SearchPage: FC = ({ headerNav, footerNav }): ReactElement => {
-  const { token, setActiveNavElement } = useContext(PageContext) as PageContextProps
+  const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
     setActiveNavElement(-1)
   }, [setActiveNavElement])
-  
+
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Search | The Gentleman\'s Journal'  }}>
-      <SplitPageTemplate image='https://www.thegentlemansjournal.com/wp-content/uploads/2022/12/209490030008-2502x1200-c-center.jpg' title='Search'>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Search | The Gentleman\'s Journal' }}>
+      <SplitPageTemplate
+        image='https://www.thegentlemansjournal.com/wp-content/uploads/2022/12/209490030008-2502x1200-c-center.jpg'
+        title='Search'
+      >
         <SearchForm />
       </SplitPageTemplate>
     </PageLayout>
@@ -37,6 +40,6 @@ export async function getStaticProps() {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
-    }
+    },
   }
 }

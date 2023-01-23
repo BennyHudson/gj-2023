@@ -5,10 +5,10 @@ import { gql } from '@apollo/client'
 
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
+import { subscriptionProductsQuery } from '@queries/global/subscription-products'
+import { freeGiftQuery } from '@queries/global/free-gift'
 
 import PageLayout from '@components/PageLayout'
-import HeadTags from '@components/HeadTags'
-
 import ClubOverview from '@components/ClubOverview'
 import ClubAdverts from '@components/ClubAdverts'
 import ClubGift from '@components/ClubGift'
@@ -17,8 +17,6 @@ import ClubPerks from '@components/ClubPerks'
 import ClubHero from '@components/ClubHero'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
-import { subscriptionProductsQuery } from '@queries/global/subscription-products'
-import { freeGiftQuery } from '@queries/global/free-gift'
 
 const ClubPage: FC = ({ pageData, headerNav, footerNav, subscriptionProducts, freeGift }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -26,11 +24,11 @@ const ClubPage: FC = ({ pageData, headerNav, footerNav, subscriptionProducts, fr
   useEffect(() => {
     setActiveNavElement(8)
   }, [setActiveNavElement])
-  
+
   return (
     <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo}>
-      <ClubHero 
-        title={pageData.title} 
+      <ClubHero
+        title={pageData.title}
         subtitle={pageData.subscriptionPage.club.description}
         featuredImage={pageData.featuredImage.node.sourceUrl}
       />
@@ -130,7 +128,7 @@ export async function getStaticProps() {
           }
         }
       }
-    `
+    `,
   })
 
   return {
@@ -140,6 +138,6 @@ export async function getStaticProps() {
       pageData: clubPage.data.page,
       subscriptionProducts: subscriptionProducts.data.products.nodes,
       freeGift: freeGift.data.products.nodes[0],
-    }
+    },
   }
 }

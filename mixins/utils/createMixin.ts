@@ -6,7 +6,7 @@ export default (fn: (theme: Theme, ...params: unknown[]) => FlattenSimpleInterpo
   return (...args: unknown[]): FlattenSimpleInterpolation =>
     css`
       ${({ theme }: { theme: Theme }): FlattenSimpleInterpolation => {
-      return fn(theme, ...args)
-    }}
+        return fn(theme, ...args)
+      }}
     ` as FlattenSimpleInterpolation
 }

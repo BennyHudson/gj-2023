@@ -17,10 +17,13 @@ const CartPage: FC = ({ headerNav, footerNav }): ReactElement => {
   useEffect(() => {
     setActiveNavElement(-1)
   }, [setActiveNavElement])
-  
+
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Cart | The Gentleman\'s Journal'  }}>
-      <SplitPageTemplate image='https://www.thegentlemansjournal.com/wp-content/uploads/2022/06/Tom-Hiddleston-Gentlemans-Journal-Cover-Mobile-Header.jpg' title='Cart'>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Cart | The Gentleman\'s Journal' }}>
+      <SplitPageTemplate
+        image='https://www.thegentlemansjournal.com/wp-content/uploads/2022/06/Tom-Hiddleston-Gentlemans-Journal-Cover-Mobile-Header.jpg'
+        title='Cart'
+      >
         <Cart />
       </SplitPageTemplate>
     </PageLayout>
@@ -37,6 +40,6 @@ export async function getStaticProps() {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
-    }
+    },
   }
 }

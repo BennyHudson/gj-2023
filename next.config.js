@@ -22,8 +22,8 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'secure.gravatar.com',
-      }
-    ]
+      },
+    ],
   },
   typescript: {
     // !! WARN !!

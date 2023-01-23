@@ -20,11 +20,11 @@ const Feed: FC<FeedProps> = ({ category, columns = 4, count }: FeedProps): React
       setLast(data.articles.pageInfo.endCursor)
       setAllArticles(data.articles.edges)
       setMorePosts(data.articles.pageInfo.hasNextPage)
-    }
+    },
   })
 
   const getMore = async () => {
-    const more = await fetchMore({ variables: { after: last, }})
+    const more = await fetchMore({ variables: { after: last } })
     if (more.data) {
       setLast(more.data.articles.pageInfo.endCursor)
       setAllArticles([...allArticles, ...more.data.articles.edges])
@@ -34,14 +34,18 @@ const Feed: FC<FeedProps> = ({ category, columns = 4, count }: FeedProps): React
 
   return (
     <>
-      {loading ? 
+      {loading ? (
         <SkeletonLoader columns={columns} />
-        :
+      ) : (
         <>
-          {allArticles && <div><PostGrid posts={allArticles.map((article) => article.node)} columns={columns} /></div>}
+          {allArticles && (
+            <div>
+              <PostGrid posts={allArticles.map((article) => article.node)} columns={columns} />
+            </div>
+          )}
           {morePosts && <LoadMore onClick={getMore} />}
         </>
-      }
+      )}
     </>
   )
 }

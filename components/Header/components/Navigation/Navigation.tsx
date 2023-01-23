@@ -19,21 +19,27 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
   return (
     <Styled.Navigation>
       <Styled.MainMenu $inverse={inverse}>
-        {
-          heirarchalNav.map((item, index) => {
-            if (item.children.length) return (
+        {heirarchalNav.map((item, index) => {
+          if (item.children.length)
+            return (
               <Styled.MenuItem key={index} $inverse={inverse}>
-                <Styled.MenuLink  $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
+                <Styled.MenuLink $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>
+                  {item.label}
+                </Styled.MenuLink>
                 <Styled.SubMenuWrapper>
                   <Styled.SubMenu subListCount={item.children.length}>
                     {item.children.map((child, index) => {
                       return (
                         <li key={index}>
-                          <Styled.SubLink  $inverse={inverse} $feature href={child.uri}>{child.label}</Styled.SubLink>
+                          <Styled.SubLink $inverse={inverse} $feature href={child.uri}>
+                            {child.label}
+                          </Styled.SubLink>
                           <Styled.SubMenuList>
                             {child.children.map((cat, index) => {
                               return (
-                                <Styled.SubLink  $inverse={inverse} href={cat.uri} key={index}>{cat.label}</Styled.SubLink>
+                                <Styled.SubLink $inverse={inverse} href={cat.uri} key={index}>
+                                  {cat.label}
+                                </Styled.SubLink>
                               )
                             })}
                           </Styled.SubMenuList>
@@ -44,101 +50,103 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
                 </Styled.SubMenuWrapper>
               </Styled.MenuItem>
             )
-            
-            if (item.uri === '/podcasts/') {
-              return (
-                <Styled.MenuItem key={index} $inverse={inverse}>
-                  <Styled.MenuLink  $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
-                  <Styled.SubMenuWrapper>
-                    <Title
-                      title='Latest'
-                      links={[
-                        {
-                          text: 'View All',
-                          url: item.uri,
-                        }
-                      ]}
-                    />
-                    <PostGrid inverse={inverse} posts={navigation.podcasts.nodes} />
-                  </Styled.SubMenuWrapper>
-                </Styled.MenuItem>
-              )
-            }
 
-            if (item.uri === '/house-notes/') {
-              return (
-                <Styled.MenuItem key={index} $inverse={inverse}>
-                  <Styled.MenuLink  $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
-                  <Styled.SubMenuWrapper>
-                    <Title
-                      title='Latest'
-                      links={[
-                        {
-                          text: 'View All',
-                          url: item.uri,
-                        }
-                      ]}
-                    />
-                    <PostGrid inverse={inverse} posts={navigation.houseNotes.nodes} />
-                  </Styled.SubMenuWrapper>
-                </Styled.MenuItem>
-              )
-            }
-
-            if (item.uri === '/category/video/') {
-              return (
-                <Styled.MenuItem key={index} $inverse={inverse}>
-                  <Styled.MenuLink  $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
-                  <Styled.SubMenuWrapper>
-                    <Title
-                      title='Latest'
-                      links={[
-                        {
-                          text: 'View All',
-                          url: item.uri,
-                        }
-                      ]}
-                    />
-                    <PostGrid inverse={inverse} posts={navigation.videos.nodes} />
-                  </Styled.SubMenuWrapper>
-                </Styled.MenuItem>
-              )
-            }
-
-            if (item.uri === '/gj-sessions/') {
-              return (
-                <Styled.MenuItem key={index} $inverse={inverse}>
-                  <Styled.MenuLink  $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>{item.label}</Styled.MenuLink>
-                  <Styled.SubMenuWrapper>
-                    <Title
-                      title='Latest'
-                      links={[
-                        {
-                          text: 'View All',
-                          url: item.uri,
-                        }
-                      ]}
-                    />
-                    <PostGrid inverse={inverse} posts={navigation.sessions.nodes} />
-                  </Styled.SubMenuWrapper>
-                </Styled.MenuItem>
-              )
-            }
-
+          if (item.uri === '/podcasts/') {
             return (
               <Styled.MenuItem key={index} $inverse={inverse}>
-                <Styled.MenuLink 
-                   
-                  $isActive={index === activeNavElement} 
-                  as={!item.uri ? 'span' : Link} 
-                  href={item.uri}
-                >
+                <Styled.MenuLink $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>
                   {item.label}
                 </Styled.MenuLink>
+                <Styled.SubMenuWrapper>
+                  <Title
+                    title='Latest'
+                    links={[
+                      {
+                        text: 'View All',
+                        url: item.uri,
+                      },
+                    ]}
+                  />
+                  <PostGrid inverse={inverse} posts={navigation.podcasts.nodes} />
+                </Styled.SubMenuWrapper>
               </Styled.MenuItem>
             )
-          })
-        }
+          }
+
+          if (item.uri === '/house-notes/') {
+            return (
+              <Styled.MenuItem key={index} $inverse={inverse}>
+                <Styled.MenuLink $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>
+                  {item.label}
+                </Styled.MenuLink>
+                <Styled.SubMenuWrapper>
+                  <Title
+                    title='Latest'
+                    links={[
+                      {
+                        text: 'View All',
+                        url: item.uri,
+                      },
+                    ]}
+                  />
+                  <PostGrid inverse={inverse} posts={navigation.houseNotes.nodes} />
+                </Styled.SubMenuWrapper>
+              </Styled.MenuItem>
+            )
+          }
+
+          if (item.uri === '/category/video/') {
+            return (
+              <Styled.MenuItem key={index} $inverse={inverse}>
+                <Styled.MenuLink $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>
+                  {item.label}
+                </Styled.MenuLink>
+                <Styled.SubMenuWrapper>
+                  <Title
+                    title='Latest'
+                    links={[
+                      {
+                        text: 'View All',
+                        url: item.uri,
+                      },
+                    ]}
+                  />
+                  <PostGrid inverse={inverse} posts={navigation.videos.nodes} />
+                </Styled.SubMenuWrapper>
+              </Styled.MenuItem>
+            )
+          }
+
+          if (item.uri === '/gj-sessions/') {
+            return (
+              <Styled.MenuItem key={index} $inverse={inverse}>
+                <Styled.MenuLink $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>
+                  {item.label}
+                </Styled.MenuLink>
+                <Styled.SubMenuWrapper>
+                  <Title
+                    title='Latest'
+                    links={[
+                      {
+                        text: 'View All',
+                        url: item.uri,
+                      },
+                    ]}
+                  />
+                  <PostGrid inverse={inverse} posts={navigation.sessions.nodes} />
+                </Styled.SubMenuWrapper>
+              </Styled.MenuItem>
+            )
+          }
+
+          return (
+            <Styled.MenuItem key={index} $inverse={inverse}>
+              <Styled.MenuLink $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>
+                {item.label}
+              </Styled.MenuLink>
+            </Styled.MenuItem>
+          )
+        })}
       </Styled.MainMenu>
     </Styled.Navigation>
   )

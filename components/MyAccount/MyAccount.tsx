@@ -1,17 +1,16 @@
-import React, { ReactElement, FC, useContext, useState, useEffect } from 'react'
+import React, { ReactElement, FC, useContext } from 'react'
 import useSwr from 'swr'
 
-import featuredImageUrl from '@helpers/featuredImageUrl'
-
-import * as Styled from './styles/MyAccount.style'
 import PageContext, { PageContextProps } from '@context/PageContext'
+
 import Heading from '@components/Heading'
 import Feed from '@components/Feed'
 import Tabs from '@components/Tabs'
 import CustomerDetails from '@components/CustomerDetails'
-import Button from '@components/Button'
-import Thumbnail from '@components/Thumbnail'
 import CustomerSubs from '@components/CustomerSubs'
+import EditButton from '@components/EditButton'
+
+import * as Styled from './styles/MyAccount.style'
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
@@ -30,7 +29,7 @@ const MyAccount: FC = (): ReactElement => {
     },
     {
       title: 'Members Content',
-      content: <Feed category='Members' count={6} columns={3} />
+      content: <Feed category='Members' count={6} columns={3} />,
     },
   ]
 
@@ -41,13 +40,12 @@ const MyAccount: FC = (): ReactElement => {
 
   return (
     <Styled.MyAccount>
-      {data && 
+      {data && (
         <Styled.MyAccountHeader>
-          <Thumbnail featuredImage={featuredImageUrl(data.avatar_url)} type='circle' size={1} />
           <Heading text={`Welcome back, ${data.first_name}`} font='ChronicleCondensed' size={3} noMargin />
-          <Button onClick={logoutHandler} size={1} text='Logout' />
+          <EditButton onClick={logoutHandler} text='Logout' />
         </Styled.MyAccountHeader>
-      }
+      )}
       <Tabs tabs={tabs} />
     </Styled.MyAccount>
   )

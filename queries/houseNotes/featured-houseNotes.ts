@@ -18,35 +18,35 @@ export const houseNotesQuery = {
         houseNotes {
           houseNotesOverheardColumn {
             ... on HouseNote {
-              ... HouseNoteContent
+              ...HouseNoteContent
             }
           }
           houseNotesPodcastColumn {
             ... on HouseNote {
-              ... HouseNoteContent
+              ...HouseNoteContent
             }
           }
           houseNotesWatchColumn {
             ... on HouseNote {
-              ... HouseNoteContent
+              ...HouseNoteContent
             }
           }
           houseNotesScrollColumn {
             ... on HouseNote {
-              ... HouseNoteContent
+              ...HouseNoteContent
             }
           }
           houseNotesReadColumn {
             ... on HouseNote {
-              ... HouseNoteContent
+              ...HouseNoteContent
             }
           }
           houseNotesQuoteColumn {
             ... on HouseNote {
-              ... HouseNoteContent
+              ...HouseNoteContent
             }
           }
-        }  
+        }
         seo {
           breadcrumbs {
             text
@@ -82,8 +82,8 @@ export const houseNotesQuery = {
             sourceUrl
           }
           twitterTitle
-        } 
+        }
       }
     }
-  `
+  `,
 }

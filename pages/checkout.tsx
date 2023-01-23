@@ -17,10 +17,13 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
   useEffect(() => {
     setActiveNavElement(-1)
   }, [setActiveNavElement])
-  
+
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Checkout | The Gentleman\'s Journal'  }}>
-      <SplitPageTemplate image='https://www.thegentlemansjournal.com/wp-content/uploads/2019/09/ryan-reynolds-gentlemans-journal-aviation-gin-1.jpg' title='Checkout'>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Checkout | The Gentleman\'s Journal' }}>
+      <SplitPageTemplate
+        image='https://www.thegentlemansjournal.com/wp-content/uploads/2019/09/ryan-reynolds-gentlemans-journal-aviation-gin-1.jpg'
+        title='Checkout'
+      >
         <Checkout />
       </SplitPageTemplate>
     </PageLayout>
@@ -37,6 +40,6 @@ export async function getStaticProps() {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
-    }
+    },
   }
 }

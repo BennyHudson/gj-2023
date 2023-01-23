@@ -24,7 +24,7 @@ const Podcasts: FC = ({ podcastOptions, headerNav, footerNav }): ReactElement =>
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Podcasts | The Gentleman\'s Journal'  }}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Podcasts | The Gentleman\'s Journal' }}>
       <FeatureCarousel
         height={2}
         title='Podcasts'
@@ -37,15 +37,9 @@ const Podcasts: FC = ({ podcastOptions, headerNav, footerNav }): ReactElement =>
           }
         })}
       />
-      <PodcastIntro 
-        host={podcastOptions.host} 
-        text={podcastOptions.overviewDescription}
-      />
+      <PodcastIntro host={podcastOptions.host} text={podcastOptions.overviewDescription} />
       <BannerAdvert />
-      <PodcastCarousel 
-        title='Featured Podcasts' 
-        podcasts={podcastOptions.featured.featured}
-      />
+      <PodcastCarousel title='Featured Podcasts' podcasts={podcastOptions.featured.featured} />
       <PodcastList />
       <Divider />
     </PageLayout>
@@ -64,6 +58,6 @@ export async function getStaticProps() {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
       podcastOptions: podcastOptions.data.podcastOptions.podcastOptions.podcastGlobal,
-    }
+    },
   }
 }

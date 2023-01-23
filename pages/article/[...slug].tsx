@@ -4,6 +4,9 @@ import client from '@lib/apollo-client'
 
 import { getAllPosts } from '@lib/api'
 
+import { StaticPaths } from '@typings/StaticPaths.types'
+import { PageData } from '@typings/PageData.types'
+
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { articleBody, ArticleBody } from '@queries/article/article-body'
@@ -14,12 +17,9 @@ import Masthead from '@components/Masthead'
 import Section from '@components/Section'
 import ContentGrid from '@components/ContentGrid'
 import FurtherReading from '@components/FurtherReading'
-import HeadTags from '@components/HeadTags'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 import PageLayout from '@components/PageLayout'
-import { StaticPaths } from '@typings/StaticPaths.types'
-import { PageData } from '@typings/PageData.types'
 
 interface ArticleData extends PageData {
   data: ArticleBody
@@ -36,12 +36,12 @@ const Article: FC<ArticleData> = ({ data, headerNav, footerNav }: ArticleData): 
       return
     }
 
-    if (articleData.categories.nodes.find(category => category.name === 'Video')) {
+    if (articleData.categories.nodes.find((category) => category.name === 'Video')) {
       setActiveNavElement(4)
       return
     }
 
-    if (articleData.categories.nodes.find(category => category.name === 'GJ Sessions')) {
+    if (articleData.categories.nodes.find((category) => category.name === 'GJ Sessions')) {
       setActiveNavElement(7)
       return
     }
@@ -54,11 +54,7 @@ const Article: FC<ArticleData> = ({ data, headerNav, footerNav }: ArticleData): 
       {articleData.featuredImage && <HeroImage featuredImage={articleData.featuredImage.node.sourceUrl} />}
       <BannerAdvert />
       <Section>
-        <Masthead
-          title={articleData.title}
-          breadcrumbs={articleData.seo.breadcrumbs}
-          subtitle={articleData.articleAcf.standfirst}
-        />
+        <Masthead title={articleData.title} breadcrumbs={articleData.seo.breadcrumbs} subtitle={articleData.articleAcf.standfirst} />
         <ContentGrid
           byline={{
             author: articleData.author?.node.name,
@@ -70,14 +66,14 @@ const Article: FC<ArticleData> = ({ data, headerNav, footerNav }: ArticleData): 
           contentBuilderPrefix='Article_Articleacf_ContentBuilder'
           articleNote={articleNote}
         />
-        {articleData.categories?.nodes.length &&
+        {articleData.categories?.nodes.length && (
           <>
             <FurtherReading
               articleId={articleData.id}
               category={articleData.categories.nodes[articleData.categories.nodes.length - 1].name}
             />
           </>
-        }
+        )}
       </Section>
     </PageLayout>
   )
@@ -94,7 +90,7 @@ export async function getStaticPaths() {
     return {
       params: {
         slug: [article.node.slug],
-      }
+      },
     }
   })
 

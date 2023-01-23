@@ -25,9 +25,7 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
 
   if (loading) return <div>Loading...</div>
 
-  const initialValues = data && data.gfForm.formFields.nodes.reduce((acc, curr) => (
-    acc[`input_${curr.id}`] = '', acc), {}
-  )
+  const initialValues = data && data.gfForm.formFields.nodes.reduce((acc, curr) => ((acc[`input_${curr.id}`] = ''), acc), {})
 
   // console.log(initialValues)
 
@@ -41,45 +39,34 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
       {() => (
         <Styled.Form>
           {data && <Heading text={data.gfForm.title} size={3} font='ChronicleCondensed' />}
-          {data && data.gfForm.formFields.nodes.map((formField, index) => {
-            switch (formField.type) {
-              case 'TEXT': {
-                return (
-                  <TextField key={index} {...formField} databaseId={data.gfForm.databaseId} />
-                )
-              }
-              
-              case 'TEXTAREA': {
-                return (
-                  <TextArea key={index} {...formField} databaseId={data.gfForm.databaseId} />
-                )   
-              }
+          {data &&
+            data.gfForm.formFields.nodes.map((formField, index) => {
+              switch (formField.type) {
+                case 'TEXT': {
+                  return <TextField key={index} {...formField} databaseId={data.gfForm.databaseId} />
+                }
 
-              case 'SELECT': {
-                return (
-                  <Select key={index} {...formField} databaseId={data.gfForm.databaseId} />
-                )   
-              }
+                case 'TEXTAREA': {
+                  return <TextArea key={index} {...formField} databaseId={data.gfForm.databaseId} />
+                }
 
-              case 'CHECKBOX': {
-                return (
-                  <CheckboxList key={index} {...formField} databaseId={data.gfForm.databaseId} />
-                )
-              }
+                case 'SELECT': {
+                  return <Select key={index} {...formField} databaseId={data.gfForm.databaseId} />
+                }
 
-              case 'RADIO': {
-                return (
-                  <RadioList key={index} {...formField} databaseId={data.gfForm.databaseId} />
-                )
-              }
+                case 'CHECKBOX': {
+                  return <CheckboxList key={index} {...formField} databaseId={data.gfForm.databaseId} />
+                }
 
-              case 'NAME': {
-                return (
-                  <NameField key={index} {...formField} databaseId={data.gfForm.databaseId} />
-                )
+                case 'RADIO': {
+                  return <RadioList key={index} {...formField} databaseId={data.gfForm.databaseId} />
+                }
+
+                case 'NAME': {
+                  return <NameField key={index} {...formField} databaseId={data.gfForm.databaseId} />
+                }
               }
-            }
-          })}
+            })}
           <Button type='submit' text='Submit' />
         </Styled.Form>
       )}

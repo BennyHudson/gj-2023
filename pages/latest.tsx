@@ -22,16 +22,16 @@ const LatestPage: FC = ({ headerNav, footerNav }): ReactElement => {
   const breadcrumbLinks = [
     {
       text: 'Home',
-      url: '/'
+      url: '/',
     },
     {
       text: 'Latest',
-      url: '/latest'
+      url: '/latest',
     },
   ]
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Latest | The Gentleman\'s Journal'  }}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Latest | The Gentleman\'s Journal' }}>
       <Section>
         <Breadcrumbs links={breadcrumbLinks} />
         <Title title='Latest' />
@@ -51,6 +51,6 @@ export async function getStaticProps() {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
-    }
+    },
   }
 }

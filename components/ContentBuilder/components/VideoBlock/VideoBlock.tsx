@@ -4,11 +4,9 @@ import * as Styled from './styles/VideoBlock.style'
 
 import { VideoBlockProps } from './VideoBlock.types'
 
-const VideoBlock: FC<VideoBlockProps> = ({
-  videoUrl,
-}: VideoBlockProps): ReactElement => {
+const VideoBlock: FC<VideoBlockProps> = ({ videoUrl }: VideoBlockProps): ReactElement => {
   let videoId = videoUrl.split('=')[1]
-  if (!videoUrl.includes('=')) { 
+  if (!videoUrl.includes('=')) {
     const videoArray = videoUrl.split('/')
     videoId = videoArray[videoArray.length - 1]
   }

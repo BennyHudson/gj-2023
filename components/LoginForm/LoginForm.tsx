@@ -43,9 +43,9 @@ const LoginForm: FC<LoginFormProps> = (): ReactElement => {
       <>
         <Styled.LoginForm>
           <TextField label='Username/Email Address' id={1} isRequired={false} target={1} />
-          <TextField label='Password' id={2} type='password' isRequired={false} target={2}  />
+          <TextField label='Password' id={2} type='password' isRequired={false} target={2} />
           <Button type='submit' text='Login' />
-        </Styled.LoginForm>        
+        </Styled.LoginForm>
       </>
     </Formik>
   )

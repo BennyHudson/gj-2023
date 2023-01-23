@@ -10,14 +10,7 @@ import * as Styled from './styles/CheckboxList.style'
 
 import { CheckboxListProps } from './CheckboxList.types'
 
-const CheckboxList: FC<CheckboxListProps> = ({
-  target,
-  label,
-  isRequired,
-  hideLabels,
-  choices,
-  id,
-}): ReactElement => {
+const CheckboxList: FC<CheckboxListProps> = ({ target, label, isRequired, hideLabels, choices, id }): ReactElement => {
   return (
     <FieldWrapper target={target} label={label} required={isRequired} hideLabels={hideLabels}>
       <Styled.CheckboxList>

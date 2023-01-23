@@ -8,9 +8,7 @@ import * as Styled from './styles/GiftGrid.style'
 
 import { GiftGridProps } from './GiftGrid.types'
 
-const GiftGrid: FC<GiftGridProps> = ({
-  gifts,
-}: GiftGridProps): ReactElement => {
+const GiftGrid: FC<GiftGridProps> = ({ gifts }: GiftGridProps): ReactElement => {
   return (
     <Styled.GiftGrid>
       {gifts.map((gift, index) => {

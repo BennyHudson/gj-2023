@@ -10,14 +10,16 @@ import PageContext, { PageContextProps } from '@context/PageContext'
 import * as Styled from './styles/PopularPosts.style'
 
 const PopularPosts: FC = (): ReactElement => {
-  const [ dateRange, setDateRange ] = useState('week')
-  const [ popularPosts, setPopularPosts ] = useState([])
+  const [dateRange, setDateRange] = useState('week')
+  const [popularPosts, setPopularPosts] = useState([])
   const ranges = ['week', 'month', 'year']
 
   const { apiUrl, cmsUrl } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
-    const date = dayjs().subtract(1, dateRange as ManipulateType).toISOString()
+    const date = dayjs()
+      .subtract(1, dateRange as ManipulateType)
+      .toISOString()
     const getPosts = async () => {
       const posts = await fetch(`${apiUrl}/articles?per_page=5&after=${date}`)
       const postData = await posts.json()
@@ -34,7 +36,11 @@ const PopularPosts: FC = (): ReactElement => {
         <Styled.Toggles>
           {ranges.map((range, index) => {
             return (
-              <li key={index}><Styled.Toggle $isActive={dateRange === range} onClick={() => setDateRange(range)}>{range}</Styled.Toggle></li>
+              <li key={index}>
+                <Styled.Toggle $isActive={dateRange === range} onClick={() => setDateRange(range)}>
+                  {range}
+                </Styled.Toggle>
+              </li>
             )
           })}
         </Styled.Toggles>
@@ -43,7 +49,9 @@ const PopularPosts: FC = (): ReactElement => {
         {popularPosts.map((post, index) => {
           return (
             <li key={index}>
-              <Link to={post.link.replace(cmsUrl, '')} size={2} weight={1}>{he.decode(post.title.rendered)}</Link>
+              <Link to={post.link.replace(cmsUrl, '')} size={2} weight={1}>
+                {he.decode(post.title.rendered)}
+              </Link>
             </li>
           )
         })}

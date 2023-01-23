@@ -34,10 +34,7 @@ const Podcast: FC<PodcastData> = ({ podcastData, podcastOptions, headerNav, foot
     <PageLayout headerNav={headerNav} footerNav={footerNav} seo={podcastData.seo}>
       <BannerAdvert />
       <PodcastContent {...podcastData} {...podcastOptions} />
-      <PodcastCarousel 
-        title='You might also like'
-        podcasts={podcastOptions.featured.featured}
-      />
+      <PodcastCarousel title='You might also like' podcasts={podcastOptions.featured.featured} />
     </PageLayout>
   )
 }
@@ -53,7 +50,7 @@ export async function getStaticPaths() {
     return {
       params: {
         slug: [podcast.node.slug],
-      }
+      },
     }
   })
 
@@ -65,12 +62,12 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: StaticPaths) {
   const { slug } = params
-  
+
   const headerNav = await client.query(headerNavQuery)
-  const footerNav = await client.query(footerNavQuery) 
+  const footerNav = await client.query(footerNavQuery)
   const podcast = await client.query(podcastBodyQuery(slug))
   const podcastOptions = await client.query(podcastOptionsQuery)
-      
+
   return {
     props: {
       headerNav: headerNav.data,

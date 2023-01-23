@@ -54,22 +54,22 @@ export const giftGuideContentQuery = {
           fieldGroupName
           ctaFirst {
             ... on Article {
-              ... ArticleContent
+              ...ArticleContent
             }
           }
           ctaSecond {
             ... on Article {
-              ... ArticleContent
+              ...ArticleContent
             }
           }
           ctaThird {
             ... on Article {
-              ... ArticleContent
+              ...ArticleContent
             }
           }
           featureGuidesMore {
             ... on Article {
-              ... ArticleContent
+              ...ArticleContent
             }
           }
           featuredBrands {
@@ -81,7 +81,7 @@ export const giftGuideContentQuery = {
           }
           featuredGuides {
             ... on Article {
-              ... ArticleContent
+              ...ArticleContent
             }
           }
           selectedProducts {
@@ -89,7 +89,7 @@ export const giftGuideContentQuery = {
             title
             gifts {
               ... on Gift {
-                ... GiftContent
+                ...GiftContent
               }
             }
           }
@@ -97,12 +97,12 @@ export const giftGuideContentQuery = {
             title
             gifts {
               ... on Gift {
-                ... GiftContent
+                ...GiftContent
               }
             }
           }
         }
       }
     }
-  `
+  `,
 }

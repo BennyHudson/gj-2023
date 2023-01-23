@@ -8,10 +8,7 @@ import * as Styled from './styles/Sharers.style'
 
 import { SharersProps } from './Sharers.types'
 
-const Sharers: FC<SharersProps> = ({
-  title,
-  url,
-}: SharersProps): ReactElement => {
+const Sharers: FC<SharersProps> = ({ title, url }: SharersProps): ReactElement => {
   console.log(title, url)
   return (
     <Styled.Sharers>

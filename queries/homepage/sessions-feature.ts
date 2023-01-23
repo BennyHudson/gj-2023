@@ -13,11 +13,11 @@ export const sessionsFeatureQuery = {
           }
         }
       }
-      articles(where: {categoryName: "GJ Sessions"}, first: 1) {
+      articles(where: { categoryName: "GJ Sessions" }, first: 1) {
         nodes {
-          ... ArticleContent
+          ...ArticleContent
         }
       }
     }
-  `
+  `,
 }

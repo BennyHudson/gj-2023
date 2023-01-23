@@ -12,20 +12,18 @@ import * as Styled from './styles/ClubAdverts.style'
 
 import { ClubAdvertsProps } from './ClubAdverts.types'
 
-const ClubAdverts: FC<ClubAdvertsProps> = ({
-  adverts,
-}: ClubAdvertsProps): ReactElement => {
+const ClubAdverts: FC<ClubAdvertsProps> = ({ adverts }: ClubAdvertsProps): ReactElement => {
   const theme = useTheme() as Theme
   return (
     <Styled.ClubAdverts>
       <Section>
         {adverts.map((adImage, index) => {
           return (
-            <Image 
+            <Image
               key={index}
-              src={featuredImageUrl(adImage.adImage.sourceUrl)} 
+              src={featuredImageUrl(adImage.adImage.sourceUrl)}
               alt=''
-              width={theme.containerWidth / 2} 
+              width={theme.containerWidth / 2}
               height={theme.containerWidth / 2}
             />
           )

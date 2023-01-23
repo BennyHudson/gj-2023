@@ -7,9 +7,7 @@ import * as Styled from './styles/BannerAdvert.style'
 const BannerAdvert: FC = (): ReactElement => {
   return (
     <Section appearance='tertiary'>
-      <Styled.BannerAdvert>
-        Advert
-      </Styled.BannerAdvert>
+      <Styled.BannerAdvert>Advert</Styled.BannerAdvert>
     </Section>
   )
 }

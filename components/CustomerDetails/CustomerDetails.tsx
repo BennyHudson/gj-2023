@@ -8,9 +8,7 @@ import { CustomerDetailsProps } from './CustomerDetails.types'
 import ValueWithLabel from '@components/ValueWithLabel'
 import EditButton from '@components/EditButton'
 
-const CustomerDetails: FC<CustomerDetailsProps> = ({
-  customer,
-}: CustomerDetailsProps): ReactElement => {
+const CustomerDetails: FC<CustomerDetailsProps> = ({ customer }: CustomerDetailsProps): ReactElement => {
   // console.log(customer)
   return (
     <Styled.CustomerDetails>
@@ -20,7 +18,7 @@ const CustomerDetails: FC<CustomerDetailsProps> = ({
         <ValueWithLabel label='Last name' value={customer.last_name} />
         <ValueWithLabel label='Email Address' value={customer.email} />
         <EditButton onClick={() => console.log('hello')} text='Edit these Details' />
-      </Styled.DetailsBlock>  
+      </Styled.DetailsBlock>
 
       <Styled.DetailsBlock>
         <Heading size={2} font='ChronicleCondensed' text='Billing Address' />
@@ -32,7 +30,7 @@ const CustomerDetails: FC<CustomerDetailsProps> = ({
         <ValueWithLabel label='Telephone' value={customer.billing.phone} />
         <EditButton onClick={() => console.log('hello')} text='Edit these Details' />
       </Styled.DetailsBlock>
-      {customer.is_paying_customer &&
+      {customer.is_paying_customer && (
         <>
           <Styled.DetailsBlock>
             <Heading size={2} font='ChronicleCondensed' text='Shipping Address' />
@@ -45,7 +43,7 @@ const CustomerDetails: FC<CustomerDetailsProps> = ({
             <EditButton onClick={() => console.log('hello')} text='Edit these Details' />
           </Styled.DetailsBlock>
         </>
-      }
+      )}
     </Styled.CustomerDetails>
   )
 }

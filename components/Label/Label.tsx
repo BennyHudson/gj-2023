@@ -4,14 +4,11 @@ import * as Styled from './styles/Label.style'
 
 import { LabelProps } from './Label.types'
 
-const Label: FC<LabelProps> = ({
-  target,
-  text,
-  required,
-}: LabelProps): ReactElement => {
+const Label: FC<LabelProps> = ({ target, text, required }: LabelProps): ReactElement => {
   return (
     <Styled.Label htmlFor={target}>
-      {text}{required && <Styled.Required>*</Styled.Required>}
+      {text}
+      {required && <Styled.Required>*</Styled.Required>}
     </Styled.Label>
   )
 }

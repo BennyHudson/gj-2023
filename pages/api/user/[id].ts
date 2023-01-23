@@ -6,11 +6,11 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
   const {
     query: { id },
     method,
-  } = req  
+  } = req
 
   const wooCommerceData = await WooCommerce.get(`customers/${id}`)
   if (wooCommerceData) {
     res.status(200).json(wooCommerceData.data)
     return
-  }  
+  }
 }

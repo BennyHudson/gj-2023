@@ -12,16 +12,13 @@ import * as Styled from './styles/JobsList.style'
 
 import { JobsListProps } from './JobsList.types'
 
-const JobsList: FC<JobsListProps> = ({
-  content,
-  jobs,
-}: JobsListProps): ReactElement => {
+const JobsList: FC<JobsListProps> = ({ content, jobs }: JobsListProps): ReactElement => {
   return (
     <Styled.JobsList>
       <Styled.Content>
         <RawHtmlWrapper content={content} />
       </Styled.Content>
-      {jobs.length && 
+      {jobs.length && (
         <Styled.JobContent>
           <Title title='Available roles' subtitle={`${jobs.length} open position${jobs.length > 1 ? 's' : ''}`} />
           <Styled.Jobs>
@@ -36,7 +33,7 @@ const JobsList: FC<JobsListProps> = ({
             })}
           </Styled.Jobs>
         </Styled.JobContent>
-      }
+      )}
     </Styled.JobsList>
   )
 }

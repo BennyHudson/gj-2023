@@ -17,12 +17,14 @@ const SessionsFeature: FC<SessionsFeatureProps> = ({ content, post }: SessionsFe
         <Styled.Content>
           <Heading inverse text='GJ Sessions' level={2} size={5} noMargin transform='uppercase' />
           <RawHtmlWrapper inverse content={content} />
-          <Link to='/gj-sessions' font='Cera' transform='uppercase' inverse size={1} showIcon>View All</Link>
+          <Link to='/gj-sessions' font='Cera' transform='uppercase' inverse size={1} showIcon>
+            View All
+          </Link>
         </Styled.Content>
         <Styled.Thumbnail>
-          <Thumbnail 
+          <Thumbnail
             showTitle
-            featuredImage={post.featuredImage.node.sourceUrl} 
+            featuredImage={post.featuredImage.node.sourceUrl}
             to={post.uri}
             title={post.title}
             date={post.date}

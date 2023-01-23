@@ -10,11 +10,11 @@ export const giftGuideQuery = {
         pageGifting {
           ctaFirst {
             ... on Article {
-              ... ArticleContent
+              ...ArticleContent
             }
           }
         }
       }
     }
-  `
+  `,
 }

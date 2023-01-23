@@ -21,10 +21,14 @@ const Time: FC<TimeProps> = ({ inverse = false }: TimeProps): ReactElement => {
       setTime(dayjs().format('dddd Do MMMM YYYY HH:mm:ss'))
     }, 1000)
   })
-  
+
   return (
     <Styled.Time>
-      {time && <Paragraph inverse={inverse} size={1} weight={2} font='Cera'>{time}</Paragraph>}
+      {time && (
+        <Paragraph inverse={inverse} size={1} weight={2} font='Cera'>
+          {time}
+        </Paragraph>
+      )}
     </Styled.Time>
   )
 }

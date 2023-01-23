@@ -13,9 +13,7 @@ import Link from '@components/Link'
 import Title from '@components/Title'
 import useNextLink from '@hooks/useNextLink'
 
-const ClubPerks: FC<ClubPerksProps> = ({
-  perks,
-}: ClubPerksProps): ReactElement => {
+const ClubPerks: FC<ClubPerksProps> = ({ perks }: ClubPerksProps): ReactElement => {
   const perksList = useRef<HTMLDivElement>(null)
   useNextLink(perksList)
   return (
@@ -31,7 +29,11 @@ const ClubPerks: FC<ClubPerksProps> = ({
               <Styled.PerkContent>
                 <Heading inverse text={perk.title} size={3} font='ChronicleCondensed' noMargin />
                 <RawHtmlWrapper inverse content={perk.content} font='Cera' />
-                {perk.hasLink && <Link href={perk.link!.url} font='Cera' showIcon inverse size={2}>{perk.link!.title}</Link>}
+                {perk.hasLink && (
+                  <Link href={perk.link!.url} font='Cera' showIcon inverse size={2}>
+                    {perk.link!.title}
+                  </Link>
+                )}
               </Styled.PerkContent>
             </Styled.Perk>
           )

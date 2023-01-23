@@ -54,6 +54,6 @@ export async function getStaticProps() {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
       featuredHouseNotes: featuredHouseNotes.data.page,
-    }
+    },
   }
 }

@@ -8,10 +8,7 @@ import PostGrid from '@components/PostGrid'
 
 import { FurtherReadingProps } from './FurtherReading.types'
 
-const FurtherReading: FC<FurtherReadingProps> = ({
-  articleId,
-  category,
-}: FurtherReadingProps): ReactElement => {
+const FurtherReading: FC<FurtherReadingProps> = ({ articleId, category }: FurtherReadingProps): ReactElement => {
   const { data } = useQuery(gql`
     ${articleContent}
     query furtherReading {
@@ -31,7 +28,7 @@ const FurtherReading: FC<FurtherReadingProps> = ({
   return (
     <>
       <Title title='Further reading' />
-      {data && <PostGrid columns={3} posts={data.categories.nodes[0].articles.nodes}  />}
+      {data && <PostGrid columns={3} posts={data.categories.nodes[0].articles.nodes} />}
     </>
   )
 }

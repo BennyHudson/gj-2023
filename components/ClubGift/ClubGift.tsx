@@ -1,6 +1,5 @@
 import React, { ReactElement, FC } from 'react'
 import Image from 'next/image'
-import { gql, useQuery } from '@apollo/client'
 
 import Section from '@components/Section'
 import Title from '@components/Title'
@@ -11,7 +10,6 @@ import RawHtmlWrapper from '@components/RawHtmlWrapper'
 import * as Styled from './styles/ClubGift.style'
 
 const ClubGift: FC = ({ freeGift }): ReactElement => {
-
   return (
     <Section appearance='tertiary'>
       <Title title='Complimentary Gift' subtitle='While stocks last, included in every new clubhouse membership you will recieve a:' />

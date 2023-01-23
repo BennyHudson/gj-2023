@@ -21,7 +21,7 @@ interface CategoryData extends PageData {
   category: CategoryBody
 }
 
-const Category: FC<CategoryData> =  ({ category, headerNav, footerNav }: CategoryData): ReactElement => {
+const Category: FC<CategoryData> = ({ category, headerNav, footerNav }: CategoryData): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Category: FC<CategoryData> =  ({ category, headerNav, footerNav }: Categor
       setActiveNavElement(1)
     }
   }, [setActiveNavElement, category.name])
-  
+
   const childCategories = () => {
     if (category.children.nodes.length) {
       return category.children.nodes.map((category) => {
@@ -44,7 +44,7 @@ const Category: FC<CategoryData> =  ({ category, headerNav, footerNav }: Categor
   }
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: `${category.name} | The Gentleman's Journal`  }}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: `${category.name} | The Gentleman's Journal` }}>
       <BannerAdvert />
       <Section>
         <Breadcrumbs links={category.seo.breadcrumbs!} />
@@ -67,7 +67,7 @@ export async function getStaticPaths() {
           }
         }
       }
-    `
+    `,
   })
 
   if (!getAllCategories.data) return
@@ -79,7 +79,7 @@ export async function getStaticPaths() {
     return {
       params: {
         slug: trimmedPath.split('/'),
-      }
+      },
     }
   })
 
@@ -95,7 +95,7 @@ export async function getStaticProps({ params }: StaticPaths) {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
   const category = await client.query(categoryBodyQuery(slug[slug.length - 1]))
-  
+
   return {
     props: {
       headerNav: headerNav.data,

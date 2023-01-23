@@ -18,23 +18,19 @@ import * as Styled from './styles/Header.style'
 
 import { HeaderProps, HeaderState } from './Header.types'
 
-
-const Header: FC<HeaderProps> = ({
-  headerStyle = 'standard',
-  headerNav,
-}: HeaderProps): ReactElement => {
+const Header: FC<HeaderProps> = ({ headerStyle = 'standard', headerNav }: HeaderProps): ReactElement => {
   const header = useRef<HTMLDivElement>(null)
   const { setHeaderHeight } = useContext(PageContext) as PageContextProps
 
   const breakpoints = useBreakpoints()
   const { sm, mdAndAbove } = breakpoints
 
-  const [ transparent, setTransparent ] = useState<HeaderState['transparent']>(headerStyle === 'feature') 
-  const [ showMobileNav, setShowMobileNav ] = useState(false)
-  
+  const [transparent, setTransparent] = useState<HeaderState['transparent']>(headerStyle === 'feature')
+  const [showMobileNav, setShowMobileNav] = useState(false)
+
   const onScroll = (e) => {
     const scrollTop = e.target.documentElement.scrollTop
-    if (scrollTop === 0 && (headerStyle === 'feature')) {
+    if (scrollTop === 0 && headerStyle === 'feature') {
       setTransparent(true)
     } else {
       setTransparent(false)
@@ -56,18 +52,18 @@ const Header: FC<HeaderProps> = ({
   return (
     <Styled.Header transparent={transparent} headerStyle={headerStyle} ref={header} fixed={showMobileNav}>
       <Styled.HeaderContents transparent={transparent}>
-        {sm && 
+        {sm && (
           <Styled.MobileTrigger>
             <Styled.MobileNavTrigger onClick={() => setShowMobileNav(!showMobileNav)} $inverse={transparent}>
-              <FontAwesomeIcon icon={showMobileNav ? faTimes as IconProp : faBars as IconProp} />
+              <FontAwesomeIcon icon={showMobileNav ? (faTimes as IconProp) : (faBars as IconProp)} />
             </Styled.MobileNavTrigger>
           </Styled.MobileTrigger>
-        }
+        )}
         {mdAndAbove && <Time inverse={transparent} />}
         <Logo inverse={transparent} />
         <SecondaryNav inverse={transparent} />
       </Styled.HeaderContents>
-      {(sm && showMobileNav) && <MobileNavigation inverse={transparent} navigation={headerNav} />}
+      {sm && showMobileNav && <MobileNavigation inverse={transparent} navigation={headerNav} />}
       {mdAndAbove && <Navigation inverse={transparent} navigation={headerNav} />}
     </Styled.Header>
   )

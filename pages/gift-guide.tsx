@@ -2,6 +2,8 @@ import React, { FC, ReactElement, useEffect, useContext } from 'react'
 
 import client from '@lib/apollo-client'
 
+import { headerNavQuery } from '@queries/global/header-nav'
+import { footerNavQuery } from '@queries/global/footer-nav'
 import { giftGuideContentQuery } from '@queries/giftGuide/giftGuide-content'
 
 import GiftGuideFeature from '@components/GiftGuideFeature'
@@ -12,13 +14,10 @@ import Title from '@components/Title'
 import BrandGrid from '@components/BrandGrid'
 import GiftGrid from '@components/GiftGrid'
 import BannerAdvert from '@components/BannerAdvert'
+import Feed from '@components/Feed'
+import PageLayout from '@components/PageLayout'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
-import Feed from '@components/Feed'
-import HeadTags from '@components/HeadTags'
-import { headerNavQuery } from '@queries/global/header-nav'
-import { footerNavQuery } from '@queries/global/footer-nav'
-import PageLayout from '@components/PageLayout'
 
 const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -26,7 +25,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav }): ReactElemen
   useEffect(() => {
     setActiveNavElement(2)
   }, [setActiveNavElement])
-  
+
   return (
     <PageLayout headerNav={headerNav} footerNav={footerNav} seo={seo}>
       <GiftGuideFeature
@@ -48,12 +47,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav }): ReactElemen
         />
         <VerticalSpacer spacingLevel={4} />
         <PostGrid
-          posts={[
-            pageData.featuredGuides[1],
-            pageData.featuredGuides[2],
-            pageData.featuredGuides[3],
-            pageData.featuredGuides[4],
-          ]}
+          posts={[pageData.featuredGuides[1], pageData.featuredGuides[2], pageData.featuredGuides[3], pageData.featuredGuides[4]]}
         />
       </Section>
       <GiftGuideFeature
@@ -104,6 +98,6 @@ export async function getStaticProps() {
       footerNav: footerNav.data,
       pageData: giftsPage.data.page.pageGifting,
       seo: giftsPage.data.page.seo,
-    }
+    },
   }
 }

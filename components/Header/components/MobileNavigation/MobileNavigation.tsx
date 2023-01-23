@@ -19,44 +19,44 @@ const MobileNavigation: FC<MobileNavigationProps> = ({ inverse = false, navigati
   const { activeNavElement, headerHeight } = useContext(PageContext) as PageContextProps
   const heirarchalNav = flatListToHierarchical(navigation.menu.menuItems.nodes)
 
-  const [ activeNav, setActiveNav ] = useState(null)
-  const [ activeSubNav, setActiveSubNav ] = useState(null)
+  const [activeNav, setActiveNav] = useState(null)
+  const [activeSubNav, setActiveSubNav] = useState(null)
 
   return (
     <>
       <Styled.MobileNavigation headerHeight={headerHeight} $inverse={inverse}>
         <Styled.MainMenu $inverse={inverse}>
-          {
-            heirarchalNav.map((item, index) => {
-              const isActive = activeNav === index
-              if (item.children.length) return (
+          {heirarchalNav.map((item, index) => {
+            const isActive = activeNav === index
+            if (item.children.length)
+              return (
                 <Styled.MenuItem key={index} $inverse={inverse}>
-                  <Styled.MenuLink 
-                    $isActive={index === activeNavElement} 
-                    as='button' 
-                    onClick={() => setActiveNav(isActive ? null : index)}
-                  >
+                  <Styled.MenuLink $isActive={index === activeNavElement} as='button' onClick={() => setActiveNav(isActive ? null : index)}>
                     {item.label}
-                    <FontAwesomeIcon icon={isActive ? faAngleUp as IconProp : faAngleDown as IconProp} />
+                    <FontAwesomeIcon icon={isActive ? (faAngleUp as IconProp) : (faAngleDown as IconProp)} />
                   </Styled.MenuLink>
-                  <AnimateHeight
-                    duration={ 500 }
-                    height={isActive ? 'auto' : 0}
-                  >
+                  <AnimateHeight duration={500} height={isActive ? 'auto' : 0}>
                     <Styled.SubMenu subListCount={item.children.length}>
                       {item.children.map((child, index) => {
                         const isActive = activeSubNav === index
                         return (
                           <li key={index}>
-                            <Styled.SubLink $inverse={inverse} $feature href={child.uri} as='button' onClick={() => setActiveSubNav(isActive ? null : index)}>{child.label} <FontAwesomeIcon icon={isActive ? faAngleUp as IconProp : faAngleDown as IconProp} /></Styled.SubLink>
-                            <AnimateHeight
-                              duration={ 500 }
-                              height={isActive ? 'auto' : 0}
+                            <Styled.SubLink
+                              $inverse={inverse}
+                              $feature
+                              href={child.uri}
+                              as='button'
+                              onClick={() => setActiveSubNav(isActive ? null : index)}
                             >
+                              {child.label} <FontAwesomeIcon icon={isActive ? (faAngleUp as IconProp) : (faAngleDown as IconProp)} />
+                            </Styled.SubLink>
+                            <AnimateHeight duration={500} height={isActive ? 'auto' : 0}>
                               <Styled.SubMenuList>
                                 {child.children.map((cat, index) => {
                                   return (
-                                    <Styled.SubLink  $inverse={inverse} href={cat.uri} key={index}>{cat.label}</Styled.SubLink>
+                                    <Styled.SubLink $inverse={inverse} href={cat.uri} key={index}>
+                                      {cat.label}
+                                    </Styled.SubLink>
                                   )
                                 })}
                               </Styled.SubMenuList>
@@ -69,20 +69,14 @@ const MobileNavigation: FC<MobileNavigationProps> = ({ inverse = false, navigati
                 </Styled.MenuItem>
               )
 
-              return (
-                <Styled.MenuItem key={index} $inverse={inverse}>
-                  <Styled.MenuLink 
-                    
-                    $isActive={index === activeNavElement} 
-                    as={!item.uri ? 'span' : Link} 
-                    href={item.uri}
-                  >
-                    {item.label}
-                  </Styled.MenuLink>
-                </Styled.MenuItem>
-              )
-            })
-          }
+            return (
+              <Styled.MenuItem key={index} $inverse={inverse}>
+                <Styled.MenuLink $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>
+                  {item.label}
+                </Styled.MenuLink>
+              </Styled.MenuItem>
+            )
+          })}
         </Styled.MainMenu>
         <SecondaryNav inverse={inverse} showAll />
       </Styled.MobileNavigation>

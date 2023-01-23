@@ -23,17 +23,21 @@ const PostExcerpt: FC<PostExcerptProps> = ({
   priority = false,
 }: PostExcerptProps): ReactElement => {
   const { token } = useContext(PageContext) as PageContextProps
-  const membersOnly = categories && categories.nodes.find(category => category.name === 'Members')
+  const membersOnly = categories && categories.nodes.find((category) => category.name === 'Members')
   return (
-    <Styled.PostExcerpt href={uri} >
+    <Styled.PostExcerpt href={uri}>
       <Thumbnail priority={priority} featuredImage={featuredImage?.node.sourceUrl} />
       <Styled.Body>
         <Meta categories={categories} date={date} inverse={inverse} />
         <Styled.Title inverse={inverse}>
-          {(!token && membersOnly) && <Styled.IconWrapper><FontAwesomeIcon icon={faLockAlt as IconProp} /></Styled.IconWrapper>}
+          {!token && membersOnly && (
+            <Styled.IconWrapper>
+              <FontAwesomeIcon icon={faLockAlt as IconProp} />
+            </Styled.IconWrapper>
+          )}
           <Heading size={1} text={title} inverse={inverse} />
         </Styled.Title>
-      </Styled.Body>      
+      </Styled.Body>
     </Styled.PostExcerpt>
   )
 }

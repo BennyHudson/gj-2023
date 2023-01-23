@@ -17,29 +17,33 @@ const ContentGrid: FC<ContentGridProps> = ({
   contentBuilder,
   contentBuilderPrefix,
   articleNote,
-  content
+  content,
 }: ContentGridProps): ReactElement => {
   return (
     <Styled.ContentGrid>
-      {byline &&
+      {byline && (
         <Styled.Sidebar>
           <Byline {...byline} />
         </Styled.Sidebar>
-      }
-      {content && <Styled.Content><RawHtmlWrapper content={content} /></Styled.Content>}
+      )}
+      {content && (
+        <Styled.Content>
+          <RawHtmlWrapper content={content} />
+        </Styled.Content>
+      )}
       <ContentBuilder content={contentBuilder} prefix={contentBuilderPrefix} />
-      {articleNote &&
+      {articleNote && (
         <Styled.ArticleNote>
           <Image src={featuredImageUrl(articleNote.image.sourceUrl)} alt='' width={200} height={200} />
           <Styled.ArticleNoteContent>
             <RawHtmlWrapper content={articleNote.content} />
-            <Link href={articleNote.link.url} size={2} font='Cera' transform='uppercase' showIcon>{articleNote.link.title}</Link>
+            <Link href={articleNote.link.url} size={2} font='Cera' transform='uppercase' showIcon>
+              {articleNote.link.title}
+            </Link>
           </Styled.ArticleNoteContent>
         </Styled.ArticleNote>
-      }
-      <Styled.SecondarySidebar>
-
-      </Styled.SecondarySidebar>
+      )}
+      <Styled.SecondarySidebar></Styled.SecondarySidebar>
     </Styled.ContentGrid>
   )
 }

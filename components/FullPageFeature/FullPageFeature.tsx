@@ -12,14 +12,9 @@ import * as Styled from './styles/FullPageFeature.style'
 import { FullPageFeatureProps } from './FullPageFeature.types'
 import Overlay from '@components/Overlay'
 
-const FullPageFeature: FC<FullPageFeatureProps> = ({
-  title,
-  excerpt,
-  uri,
-  featuredImage,
-}: FullPageFeatureProps): ReactElement => {
+const FullPageFeature: FC<FullPageFeatureProps> = ({ title, excerpt, uri, featuredImage }: FullPageFeatureProps): ReactElement => {
   const [opacity, setOpacity] = useState(1)
-  
+
   const onScroll = (e) => {
     const scrollTop = e.target.documentElement.scrollTop
     const viewportHeight = window.innerHeight
@@ -36,7 +31,7 @@ const FullPageFeature: FC<FullPageFeatureProps> = ({
   }, [])
 
   return (
-    <> 
+    <>
       <Styled.Spacer></Styled.Spacer>
       <Styled.Background opacity={opacity}>
         <Styled.FullPageFeature>
@@ -44,7 +39,9 @@ const FullPageFeature: FC<FullPageFeatureProps> = ({
             <Paragraph size={1} weight={3} text='Featured Article' inverse font='Cera' transform='uppercase' />
             <Heading text={title} level={1} size={5} inverse font='ChronicleCondensed' />
             <Paragraph text={excerpt} size={2} inverse font='Cera' />
-            <Link to={uri} size={1} weight={3} inverse font='Cera' transform='uppercase' showIcon>Read More</Link>
+            <Link to={uri} size={1} weight={3} inverse font='Cera' transform='uppercase' showIcon>
+              Read More
+            </Link>
           </Styled.Content>
         </Styled.FullPageFeature>
         <Overlay />

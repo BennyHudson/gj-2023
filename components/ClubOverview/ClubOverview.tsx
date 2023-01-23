@@ -9,9 +9,7 @@ import * as Styled from './styles/ClubOverview.style'
 import { ClubOverviewProps } from './ClubOverview.types'
 import Paragraph from '@components/Paragraph'
 
-const ClubOverview: FC<ClubOverviewProps> = ({
-  overview,
-}: ClubOverviewProps): ReactElement => {
+const ClubOverview: FC<ClubOverviewProps> = ({ overview }: ClubOverviewProps): ReactElement => {
   return (
     <Styled.ClubOverview>
       <Section appearance='tertiary'>

@@ -6,9 +6,7 @@ import * as Styled from './styles/BrandGrid.style'
 
 import { BrandGridProps } from './BrandGrid.types'
 
-const BrandGrid: FC<BrandGridProps> = ({
-  brands,
-}: BrandGridProps): ReactElement => {
+const BrandGrid: FC<BrandGridProps> = ({ brands }: BrandGridProps): ReactElement => {
   return (
     <Styled.BrandGrid>
       {brands.map((brand, index) => {
