@@ -28,7 +28,7 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
   height = 1,
   priority = true,
 }: FeatureCarouselProps): ReactElement => {
-  const { mdAndBelow, lgAndAbove } = useBreakpoints()
+  const { mdAndBelow, lgAndAbove, xl } = useBreakpoints()
   const { headerHeight } = useContext(PageContext) as PageContextProps
   const [activeIndex, setActiveIndex] = useState(0)
 
@@ -98,9 +98,11 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
                       <Paragraph font='Cera' size={2} inverse>
                         {post.title}
                       </Paragraph>
-                      <Paragraph font='Cera' size={2} inverse>
-                        {post.subtitle}
-                      </Paragraph>
+                      {xl &&
+                        <Paragraph font='Cera' size={2} inverse>
+                          {post.subtitle}
+                        </Paragraph>
+                      }
                     </Styled.Thumb>
                   </li>
                 )
