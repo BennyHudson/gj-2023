@@ -6,9 +6,12 @@ import Meta from '@components/Meta'
 import * as Styled from './styles/SkeletonLoader.style'
 
 import { SkeletonLoaderProps } from './SkeletonLoader.types'
+import { useBreakpoints } from '@hooks/useBreakpoints'
 
 const SkeletonLoader: FC<SkeletonLoaderProps> = ({ type = 'post', columns = 4 }: SkeletonLoaderProps): ReactElement => {
-  const postArray = Array.from(Array(columns * 2).keys())
+  const { mdAndAbove } = useBreakpoints()
+
+  const postArray = mdAndAbove ? Array.from(Array(6).keys()) : Array.from(Array(columns * 2).keys())
 
   return (
     <Styled.SkeletonLoader>

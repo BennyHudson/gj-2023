@@ -9,7 +9,7 @@ export const ContentGrid = styled.div(
     grid-template-columns: repeat(12, [col-start] 1fr);
     gap: ${props.theme.spacing[4]}px;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       margin-bottom: ${props.theme.spacing[10]}px;
     `)}
   `,
@@ -21,8 +21,12 @@ export const Sidebar = styled.div(
     padding: 0 5%;
 
     ${respondTo.md(css`
-      grid-column: col-start / span 2;
+      grid-column: col-start 2 / span 10;
       padding: 0;
+    `)}
+
+    ${respondTo.lg(css`
+      grid-column: col-start / span 2;
     `)}
   `,
 )
@@ -38,8 +42,11 @@ export const ArticleNote = styled.div(
     flex-wrap: wrap;
 
     ${respondTo.md(css`
-      grid-column: col-start 2 / span 9;
       flex-wrap: nowrap;
+    `)}
+
+    ${respondTo.lg(css`
+      grid-column: col-start 2 / span 9;      
       padding: ${props.theme.spacing[4]}px;
     `)}
   `,

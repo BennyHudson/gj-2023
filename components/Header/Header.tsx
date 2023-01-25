@@ -23,7 +23,7 @@ const Header: FC<HeaderProps> = ({ headerStyle = 'standard', headerNav }: Header
   const { setHeaderHeight } = useContext(PageContext) as PageContextProps
 
   const breakpoints = useBreakpoints()
-  const { sm, mdAndAbove } = breakpoints
+  const { mdAndBelow, lgAndAbove } = breakpoints
 
   const [transparent, setTransparent] = useState<HeaderState['transparent']>(headerStyle === 'feature')
   const [showMobileNav, setShowMobileNav] = useState(false)
@@ -52,19 +52,19 @@ const Header: FC<HeaderProps> = ({ headerStyle = 'standard', headerNav }: Header
   return (
     <Styled.Header transparent={transparent} headerStyle={headerStyle} ref={header} fixed={showMobileNav}>
       <Styled.HeaderContents transparent={transparent}>
-        {sm && (
+        {mdAndBelow && (
           <Styled.MobileTrigger>
             <Styled.MobileNavTrigger onClick={() => setShowMobileNav(!showMobileNav)} $inverse={transparent}>
               <FontAwesomeIcon icon={showMobileNav ? (faTimes as IconProp) : (faBars as IconProp)} />
             </Styled.MobileNavTrigger>
           </Styled.MobileTrigger>
         )}
-        {mdAndAbove && <Time inverse={transparent} />}
+        {lgAndAbove && <Time inverse={transparent} />}
         <Logo inverse={transparent} />
         <SecondaryNav inverse={transparent} />
       </Styled.HeaderContents>
-      {sm && showMobileNav && <MobileNavigation inverse={transparent} navigation={headerNav} />}
-      {mdAndAbove && <Navigation inverse={transparent} navigation={headerNav} />}
+      {mdAndBelow && showMobileNav && <MobileNavigation inverse={transparent} navigation={headerNav} />}
+      {lgAndAbove && <Navigation inverse={transparent} navigation={headerNav} />}
     </Styled.Header>
   )
 }

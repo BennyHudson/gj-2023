@@ -10,6 +10,10 @@ export const TextBlock = styled.div(
 
     ${respondTo.md(css`
       padding: 0;
+      grid-column: col-start 2 / span 10;
+    `)}
+
+    ${respondTo.lg(css`
       grid-column: col-start 3 / span 7;
     `)}
 

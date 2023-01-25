@@ -2,6 +2,8 @@ import { gql } from '@apollo/client'
 
 import client from '@lib/apollo-client'
 
+import { magazineCategoryQuery } from '@queries/products/magazine-category'
+
 const queryPostType = (postType: string, after?: string) => {
   return {
     query: gql`
@@ -37,6 +39,19 @@ export const getAllPosts = async (postType: string): Promise<{ cursor: string; n
       // hasNextPage = posts.data[`${postType}s`].pageInfo.hasNextPage
       // hasNextPage = false
       after = posts.data[`${postType}s`].pageInfo.endCursor
+    }
+  }
+
+  return allPosts
+}
+
+export const getAllProducts = async (): Promise<{ node: { slug: string } }[]> => {
+  const allPosts = []
+
+  while (allPosts.length < parseInt(process.env.NEXT_PUBLIC_API_REQUEST_VOLUME!)) {
+    const posts = await client.query(magazineCategoryQuery())
+    if (posts) {
+      allPosts.push(...posts.data.productCategory.products.edges)
     }
   }
 

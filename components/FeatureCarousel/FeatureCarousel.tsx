@@ -28,14 +28,14 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
   height = 1,
   priority = true,
 }: FeatureCarouselProps): ReactElement => {
-  const { sm, mdAndAbove } = useBreakpoints()
+  const { mdAndBelow, lgAndAbove } = useBreakpoints()
   const { headerHeight } = useContext(PageContext) as PageContextProps
   const [activeIndex, setActiveIndex] = useState(0)
 
   const sliderSettings = {
     dots: true,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     responsive: [
       {
@@ -52,7 +52,7 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
     <Styled.FeatureCarousel headerHeight={headerHeight} height={height}>
       <Section appearance='secondary' containerWidth='wide'>
         {title && <Title title={title} links={links} inverse />}
-        {sm && (
+        {mdAndBelow && (
           <>
             <Head>
               <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' />
@@ -79,7 +79,7 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
             </Styled.Slider>
           </>
         )}
-        {mdAndAbove && (
+        {lgAndAbove && (
           <>
             <Styled.PostTitle>
               <Meta date={posts[activeIndex].date} categories={posts[activeIndex].categories} inverse />
@@ -109,7 +109,7 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
           </>
         )}
       </Section>
-      {mdAndAbove && (
+      {lgAndAbove && (
         <Styled.ImageWrapper>
           <Overlay />
           {posts.map((post, index) => {

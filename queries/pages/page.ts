@@ -4,7 +4,7 @@ import { seo } from '@queries/fragments/seo'
 export const pageQuery = (pageId: number) => {
   return {
     query: gql`
-      query teamPageQuery {
+      query pageQuery {
         page(id: "${pageId}", idType: DATABASE_ID) {
           title
           uri
@@ -39,6 +39,27 @@ export const pageQuery = (pageId: number) => {
                 position
                 shortDescription
               }
+            }
+          }
+          contactInfo {
+            contactInfo {
+              title
+              info
+            }
+            officeMap {
+              city
+              country
+              countryShort
+              latitude
+              longitude
+              placeId
+              postCode
+              state
+              stateShort
+              streetAddress
+              streetName
+              streetNumber
+              zoom
             }
           }
         }

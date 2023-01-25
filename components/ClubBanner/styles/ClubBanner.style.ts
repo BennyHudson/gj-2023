@@ -13,7 +13,7 @@ export const ClubBanner = styled.div(
     width: 90%;
     margin: 0 auto;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       width: 100%;
       gap: ${props.theme.spacing[8]}px;
     `)}

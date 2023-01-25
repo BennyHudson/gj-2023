@@ -16,7 +16,7 @@ export const ClubHero = styled.div(
       display: flex;
       position: relative;
 
-      ${respondTo.md(css`
+      ${respondTo.lg(css`
         height: 80vh;
       `)}
     }
@@ -26,7 +26,7 @@ export const ClubHero = styled.div(
       align-items: center;
       width: 90%;
 
-      ${respondTo.md(css`
+      ${respondTo.lg(css`
         width: 100%;
       `)}
     }
@@ -35,7 +35,7 @@ export const ClubHero = styled.div(
 
 export const HeroContent = styled.div(
   (): FlattenSimpleInterpolation => css`
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       width: 40%;
     `)}
   `,
@@ -45,7 +45,7 @@ export const BackgroundImage = styled.div(
   (): FlattenSimpleInterpolation => css`
     display: none;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       display: block;
       height: 80vh;
       position: absolute;

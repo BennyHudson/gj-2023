@@ -31,9 +31,13 @@ export const ButtonBlock = styled.div(
     }
 
     ${respondTo.md(css`
-      grid-column: col-start 3 / span 7;
+      grid-column: col-start 2 / span 10;
       padding: ${props.theme.spacing[2]}px;
       flex-wrap: no-wrap;
+    `)}
+
+    ${respondTo.lg(css`
+      grid-column: col-start 3 / span 7;
     `)}
 
     &:last-child {

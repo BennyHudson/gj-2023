@@ -19,13 +19,14 @@ const ClubAdverts: FC<ClubAdvertsProps> = ({ adverts }: ClubAdvertsProps): React
       <Section>
         {adverts.map((adImage, index) => {
           return (
-            <Image
-              key={index}
-              src={featuredImageUrl(adImage.adImage.sourceUrl)}
-              alt=''
-              width={theme.containerWidth / 2}
-              height={theme.containerWidth / 2}
-            />
+            <div key={index}>
+              <Image
+                src={featuredImageUrl(adImage.adImage.sourceUrl)}
+                alt=''
+                width={theme.containerWidth / 2}
+                height={theme.containerWidth / 2}
+              />
+            </div>
           )
         })}
       </Section>

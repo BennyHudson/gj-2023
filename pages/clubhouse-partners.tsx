@@ -15,15 +15,13 @@ import PartnerGrid from '@components/PartnerGrid'
 import PageContext, { PageContextProps } from '@context/PageContext'
 
 const TeamPage: FC = ({ headerNav, footerNav, pageData, partners }): ReactElement => {
-  console.log(pageData)
-
   const breadcrumbs = [
     {
       text: 'Home',
       url: '/',
     },
     {
-      title: 'Clubhouse Partners',
+      text: 'Clubhouse Partners',
       url: '/clubhouse-partners',
     },
   ]

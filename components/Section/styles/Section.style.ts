@@ -50,7 +50,7 @@ export const Content = styled.div(
     position: relative;
     z-index: 1;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       width: 90%;
     `)}
 

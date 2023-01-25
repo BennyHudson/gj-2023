@@ -16,6 +16,7 @@ import PageLayout from '@components/PageLayout'
 import { CategoryBody, categoryBodyQuery } from '@queries/category/category-body'
 import { StaticPaths } from '@typings/StaticPaths.types'
 import { PageData } from '@typings/PageData.types'
+import { useBreakpoints } from '@hooks/useBreakpoints'
 
 interface CategoryData extends PageData {
   category: CategoryBody
@@ -23,6 +24,8 @@ interface CategoryData extends PageData {
 
 const Category: FC<CategoryData> = ({ category, headerNav, footerNav }: CategoryData): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
+
+  const { mdAndBelow } = useBreakpoints()
 
   useEffect(() => {
     if (category.name === 'Video') {
@@ -49,7 +52,7 @@ const Category: FC<CategoryData> = ({ category, headerNav, footerNav }: Category
       <Section>
         <Breadcrumbs links={category.seo.breadcrumbs!} />
         <Title title={category.name} subtitle={category.description} links={childCategories()} />
-        <Feed category={category.name} />
+        <Feed category={category.name} count={mdAndBelow ? 12 : 20} />
       </Section>
     </PageLayout>
   )

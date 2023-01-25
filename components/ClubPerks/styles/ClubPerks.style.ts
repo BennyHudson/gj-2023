@@ -3,6 +3,7 @@ import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { StyledClubPerksProps } from './ClubPerks.style.types'
 import { Title } from '@components/Title/styles/Title.style'
 import respondTo from '@mixins/respondTo'
+import { Link } from '@components/Link/styles/Link.style'
 
 export const ClubPerks = styled.div(
   (props: StyledClubPerksProps): FlattenSimpleInterpolation => css`
@@ -13,13 +14,22 @@ export const ClubPerks = styled.div(
     margin: 0 auto;
 
     ${respondTo.md(css`
+      width: 90%;
+    `)}
+
+    ${respondTo.lg(css`
       width: 100%;
       gap: ${props.theme.spacing[4]}px;
     `)}
 
     ${Title} {
-      grid-column: col-start 2 / span 10;
+      grid-column: col-start / span 12;
       margin-bottom: 0;
+      width: 100%;
+
+      ${respondTo.lg(css`
+        grid-column: col-start 2 / span 10;
+      `)}
     }
   `,
 )
@@ -33,7 +43,7 @@ export const Perk = styled.div(
     line-height: ${props.theme.typography.paragraph[2].lineHeight};
     grid-column: col-start / span 12;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       grid-column: col-start 2 / span 10;
       height: 430px;
       flex-direction: row;
@@ -54,8 +64,22 @@ export const PerkContent = styled.div(
     padding: ${props.theme.spacing[4]}px;
 
     ${respondTo.md(css`
+      text-align: center;
+      width: 60%;
+
+      ${Link} {
+        justify-content: center;
+      }
+    `)}
+
+    ${respondTo.lg(css`
       width: 40%;
       padding: ${props.theme.spacing[8]}px;
+      text-align: left;
+
+      ${Link} {
+        justify-content: flex-start;
+      }
     `)}
     
   `,
@@ -67,7 +91,7 @@ export const ImageWrapper = styled.div(
     height: 240px;
     width: 100%;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       width: 60%;
       height: auto;
     `)}

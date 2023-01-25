@@ -25,6 +25,9 @@ export const ClubAdverts = styled.div(
       ${respondTo.md(css`
         gap: ${props.theme.spacing[4]}px;
         flex-direction: row;
+      `)}
+
+      ${respondTo.lg(css`
         width: 100%;
       `)}
     }

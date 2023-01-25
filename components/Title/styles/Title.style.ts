@@ -14,7 +14,7 @@ export const Title = styled.div(
     width: 90%;
     margin: 0 auto ${props.theme.spacing[2]}px;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       width: 100%;
       margin: 0 auto ${props.theme.spacing[4]}px;
     `)}

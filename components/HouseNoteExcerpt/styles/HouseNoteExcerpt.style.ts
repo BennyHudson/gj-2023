@@ -22,7 +22,7 @@ export const HouseNoteExcerpt = styled.div(
 )
 
 export const ArticleType = styled.div(
-  (props: StyledHouseNoteGridProps): FlattenSimpleInterpolation => css`
+  (props: StyledHouseNoteExcerptProps): FlattenSimpleInterpolation => css`
     font-size: ${props.theme.typography.paragraph[2].fontSize};
     line-height: ${props.theme.typography.paragraph[2].lineHeight};
     font-family: 'Cera Pro Bold';
@@ -52,6 +52,14 @@ export const Footer = styled.div(
     display: flex;
     justify-content: space-between;
     gap: ${props.theme.spacing[2]}px;
+
+    ${respondTo.md(css`
+      flex-direction: column;
+    `)}
+
+    ${respondTo.lg(css`
+      flex-direction: row;
+    `)}
   `,
 )
 

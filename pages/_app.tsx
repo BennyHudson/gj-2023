@@ -14,6 +14,8 @@ import { gjTheme } from '@themes/gjTheme'
 
 import client from '@lib/apollo-client'
 
+import Scripts from '@components/Scripts'
+
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => {
   const [token, setToken] = useState<PageContextProps['token']>()
   const [activeNavElement, setActiveNavElement] = useState<PageContextProps['headerHeight']>(-1)
@@ -34,29 +36,32 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
   const cmsUrl = 'https://thegentlemansjournal.com'
 
   return (
-    <ApolloProvider client={client}>
-      <ThemeProvider theme={gjTheme}>
-        <GlobalStyle />
-        <PageContext.Provider
-          value={{
-            cmsUrl,
-            apiUrl: `${cmsUrl}/wp-json/wp/v2`,
-            activeNavElement,
-            setActiveNavElement,
-            headerHeight,
-            setHeaderHeight,
-            token,
-            setToken,
-            customerId,
-            setCustomerId,
-            cart,
-            setCart,
-          }}
-        >
-          <Component {...pageProps} />
-        </PageContext.Provider>
-      </ThemeProvider>
-    </ApolloProvider>
+    <>
+      <Scripts />
+      <ApolloProvider client={client}>
+        <ThemeProvider theme={gjTheme}>
+          <GlobalStyle />
+          <PageContext.Provider
+            value={{
+              cmsUrl,
+              apiUrl: `${cmsUrl}/wp-json/wp/v2`,
+              activeNavElement,
+              setActiveNavElement,
+              headerHeight,
+              setHeaderHeight,
+              token,
+              setToken,
+              customerId,
+              setCustomerId,
+              cart,
+              setCart,
+            }}
+          >
+            <Component {...pageProps} />
+          </PageContext.Provider>
+        </ThemeProvider>
+      </ApolloProvider>
+    </>
   )
 }
 

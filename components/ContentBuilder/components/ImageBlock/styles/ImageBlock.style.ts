@@ -1,6 +1,7 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 
 import { StyledImageBlockProps } from './ImageBlock.style.types'
+import respondTo from '@mixins/respondTo'
 
 export const ImageBlock = styled.div(
   (props: StyledImageBlockProps): FlattenSimpleInterpolation => css`
@@ -18,7 +19,11 @@ export const ImageBlock = styled.div(
 
     ${(props.imageSize === 'standard--tall' || props.imageSize === 'standard') &&
     css`
-      grid-column: col-start 3 / span 7;
+      grid-column: col-start / span 12;
+
+      ${respondTo.md(css`
+        grid-column: col-start 3 / span 7;
+      `)}
     `}
 
   img {

@@ -8,11 +8,13 @@ export const BrandGrid = styled.div(
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: ${props.theme.spacing[2]}px;
-    margin-bottom: ${props.theme.spacing[8]}px;
+    width: 90%;
+    margin: 0 auto ${props.theme.spacing[4]}px;
 
-    ${respondTo.md(css`
-      grid-template-columns: repeat(2, 1fr);
+    ${respondTo.lg(css`
+      grid-template-columns: repeat(4, 1fr);
       gap: ${props.theme.spacing[4]}px;
+      margin: 0 auto ${props.theme.spacing[8]}px;
     `)}
 
     &:last-child {

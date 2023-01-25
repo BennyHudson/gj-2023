@@ -16,10 +16,12 @@ export const SecondaryNav = styled.div(
       li {
         display: flex;
         aspect-ratio: 1 / 1;
+        width: 68px;
 
         &:last-child {
           aspect-ratio: unset;
           flex-grow: 1;
+          width: auto;
 
           ${respondTo.md(css`
             flex-grow: 0;
@@ -48,6 +50,7 @@ export const IconButton = styled(Link)(
     justify-content: center;
     transition: 0.4s all ease;
     aspect-ratio: 1 / 1;
+    width: 100%;
 
     &:hover {
       background: ${props.theme.colours.lightGrey};
@@ -58,7 +61,7 @@ export const IconButton = styled(Link)(
       color: ${props.theme.colours.white};
 
       &:hover {
-        background: ${props.theme.colours.black};
+        background: ${props.theme.colours.grey};
       }
     `}
 

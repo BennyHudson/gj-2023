@@ -26,15 +26,19 @@ export const MastheadContent = styled.div(
     padding: 0 5%;
 
     ${respondTo.md(css`
-      grid-column: col-start 4 / span 5;
+      grid-column: col-start 2 / span 10;
       text-align: center;
       padding: 0;
 
       ${props.fullWidth &&
       css`
-        grid-column: col-start / span 8;
+        grid-column: col-start 2 / span 10;
         text-align: left;
       `}
+    `)}
+
+    ${respondTo.lg(css`
+      grid-column: col-start 4 / span 5;
     `)}
   `,
 )

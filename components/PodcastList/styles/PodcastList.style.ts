@@ -15,7 +15,7 @@ export const Podcast = styled.li(
     width: 90%;
     margin: 0 auto;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       width: 100%;
     `)}
 

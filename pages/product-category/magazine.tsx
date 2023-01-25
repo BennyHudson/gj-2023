@@ -45,7 +45,7 @@ export default Magazines
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
-  const magazineData = await client.query(magazineCategoryQuery)
+  const magazineData = await client.query(magazineCategoryQuery())
 
   return {
     props: {

@@ -17,7 +17,7 @@ export const Content = styled.div(
     width: 90%;
     max-width: ${props.theme.containerWidth}px;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       display: grid;
       grid-template-columns: repeat(12, [col-start] 1fr);
       align-items: stretch;
@@ -32,7 +32,7 @@ export const Intro = styled.div(
     flex-direction: column;
     padding: ${props.theme.spacing[4]}px 0;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       grid-column: col-start / span 8;
       border-right: 1px solid ${props.theme.colours.midGrey};
       padding: ${props.theme.spacing[8]}px ${props.theme.spacing[8]}px ${props.theme.spacing[8]}px 0;
@@ -55,7 +55,7 @@ export const Host = styled.div(
     gap: ${props.theme.spacing[4]}px;
     text-align: center;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       grid-column: col-start 9 / span 4;
       padding: ${props.theme.spacing[8]}px;
     `)}

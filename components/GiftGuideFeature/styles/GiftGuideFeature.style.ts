@@ -21,12 +21,22 @@ export const GiftGuideFeature = styled.div(
 
       ${props.height === 1 &&
       css`
-        aspect-ratio: 3 / 2;
+        width: 90%;
+        margin: 0 auto;
       `}
 
       ${props.height === 2 &&
       css`
         height: calc(100vh - ${props.headerHeight}px);
+      `}
+    `)}
+
+    ${respondTo.lg(css`
+      width: 100%;
+
+      ${props.height === 1 &&
+      css`
+        aspect-ratio: 3 / 2;
       `}
     `)}
 

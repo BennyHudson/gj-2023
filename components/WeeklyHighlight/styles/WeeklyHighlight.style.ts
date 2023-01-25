@@ -12,7 +12,7 @@ export const WeeklyHighlight = styled.div(
     width: 90%;
     margin: 0 auto;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       grid-template-columns: repeat(2, 1fr);
       width: 100%;
       gap: ${props.theme.spacing[4]}px;
@@ -27,7 +27,7 @@ export const Content = styled.div(
     gap: ${props.theme.spacing[2]}px;
     order: 2;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       order: 0;
       width: unset;
       gap: ${props.theme.spacing[4]}px;

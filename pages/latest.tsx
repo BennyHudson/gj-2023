@@ -11,9 +11,12 @@ import client from '@lib/apollo-client'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import PageLayout from '@components/PageLayout'
+import { useBreakpoints } from '@hooks/useBreakpoints'
 
 const LatestPage: FC = ({ headerNav, footerNav }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
+
+  const { mdAndBelow } = useBreakpoints()
 
   useEffect(() => {
     setActiveNavElement(0)
@@ -35,7 +38,7 @@ const LatestPage: FC = ({ headerNav, footerNav }): ReactElement => {
       <Section>
         <Breadcrumbs links={breadcrumbLinks} />
         <Title title='Latest' />
-        <Feed />
+        <Feed count={mdAndBelow ? 12 : 20} />
       </Section>
     </PageLayout>
   )

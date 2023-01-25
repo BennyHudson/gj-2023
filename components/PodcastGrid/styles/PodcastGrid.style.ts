@@ -9,6 +9,9 @@ export const PodcastGrid = styled.div(
     ${respondTo.md(css`
       display: grid;
       grid-template-columns: repeat(12, [col-start] 1fr);
+    `)}
+
+    ${respondTo.lg(css`
       gap: ${props.theme.spacing[4]}px;
     `)}
   `,
@@ -24,8 +27,16 @@ export const FeaturedPodcast = styled.div(
     margin: 0 auto;
 
     ${respondTo.md(css`
+      grid-column: col-start / span 12;
+      padding-bottom: ${props.theme.spacing[4]}px;
+      border-bottom: 1px solid ${props.theme.colours.midGrey};
+    `)}
+
+    ${respondTo.lg(css`
       width: 100%;
       grid-column: col-start / span 8;
+      padding-bottom: 0;
+      border-bottom: 0;
       padding-right: ${props.theme.spacing[4]}px;
       border-right: 1px solid ${props.theme.colours.midGrey};
     `)}
@@ -46,12 +57,20 @@ export const FeatureDetails = styled(Link)(
 )
 
 export const PodcastList = styled.ul(
-  (): FlattenSimpleInterpolation => css`
-    grid-column: col-start 9 / span 4;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+  (props: StyledPodcastGridProps): FlattenSimpleInterpolation => css`
+    grid-column: col-start / span 12;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 5%;
+    gap: ${props.theme.spacing[2]}px;
+
+    ${respondTo.lg(css`
+      grid-column: col-start 9 / span 4;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    `)}
   `,
 )
 
@@ -71,14 +90,16 @@ export const Podcast = styled.li(
       padding-left: 0;
     `)}
 
-    &:first-child {
-      padding-top: 0;
-    }
+    ${respondTo.lg(css`
+      &:first-child {
+        padding-top: 0;
+      }
 
-    &:last-child {
-      padding-bottom: 0;
-      border-bottom: 0;
-    }
+      &:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+    `)}
   `,
 )
 

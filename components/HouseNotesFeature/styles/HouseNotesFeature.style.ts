@@ -100,6 +100,12 @@ export const HouseNotesFeature = styled.div(
     ${respondTo.md(css`
       grid-template-columns: repeat(12, [col-start] 1fr);
       gap: ${props.theme.spacing[4]}px;
+      width: 90%;
+      margin: 0 auto;
+    `)}
+
+    ${respondTo.lg(css`
+      width: 100%;
     `)}
   `,
 )

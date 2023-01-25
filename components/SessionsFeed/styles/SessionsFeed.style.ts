@@ -2,6 +2,8 @@ import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 
 import { StyledSessionsFeedProps } from './SessionsFeed.style.types'
 import respondTo from '@mixins/respondTo'
+import { Title } from '@components/Title/styles/Title.style'
+import { PostGrid } from '@components/PostGrid/styles/PostGrid.style'
 
 export const SessionsFeed = styled.div(
   (props: StyledSessionsFeedProps): FlattenSimpleInterpolation => css`
@@ -23,7 +25,12 @@ export const Column = styled.div(
       background: ${props.theme.colours.white};
     }
 
-    ${respondTo.md(css`
+    ${Title},
+    ${PostGrid} {
+      width: 100%;
+    }
+
+    ${respondTo.lg(css`
       grid-column: col-start / span 3;
       padding: ${props.theme.spacing[8]}px;
 

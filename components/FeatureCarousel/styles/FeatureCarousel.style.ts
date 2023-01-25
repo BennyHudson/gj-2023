@@ -21,12 +21,12 @@ export const FeatureCarousel = styled.div(
       ${Title} {
         margin-top: ${props.headerHeight}px;
 
-        ${respondTo.md(css`
+        ${respondTo.lg(css`
           margin-top: 0;
         `)}
       }
 
-      ${respondTo.md(css`
+      ${respondTo.lg(css`
         padding-top: ${props.headerHeight}px;
       `)}
     `}
@@ -37,6 +37,11 @@ export const FeatureCarousel = styled.div(
       position: relative;
       z-index: 2;
       background: none;
+      padding: 0;
+
+      ${respondTo.lg(css`
+        padding-top: ${props.theme.spacing[8]}px;
+      `)}
     }
 
     ${Content} {
@@ -75,7 +80,7 @@ export const PostTitle = styled.div(
     position: relative;
     z-index: 10;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       max-width: 40%;
       padding-bottom: ${props.theme.spacing[8]}px;
     `)}
@@ -119,6 +124,11 @@ export const Slider = styled.div(
     left: 0;
     right: 0;
     bottom: -${props.theme.spacing[4]}px;
+
+    ${respondTo.md(css`
+      top: 0;
+      bottom: 0;
+    `)}
 
     .slick-slider,
     .slick-list,

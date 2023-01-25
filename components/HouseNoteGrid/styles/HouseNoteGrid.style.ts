@@ -1,6 +1,7 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 
 import { StyledHouseNoteGridProps } from './HouseNoteGrid.style.types'
+import respondTo from '@mixins/respondTo'
 
 export const HouseNoteExcerpt = styled.div(
   (props: StyledHouseNoteGridProps): FlattenSimpleInterpolation => css`
@@ -32,6 +33,15 @@ export const HouseNoteExcerpt = styled.div(
 
 export const HouseNoteGrid = styled.div(
   (props: StyledHouseNoteGridProps): FlattenSimpleInterpolation => css`
+    ${respondTo.md(css`
+      width: 90%;
+      margin: 0 auto;
+    `)}
+
+    ${respondTo.lg(css`
+      width: 100%;
+    `)}
+
     .my-masonry-grid {
       display: flex;
       margin-left: -${props.theme.spacing[4]}px;

@@ -11,7 +11,7 @@ export const SessionsFeature = styled.div(
     width: 90%;
     margin: 0 auto;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       width: 100%;
       padding: ${props.theme.spacing[4]}px 0;
       gap: ${props.theme.spacing[8]}px;
@@ -24,8 +24,8 @@ export const Content = styled.div(
     grid-column: col-start / span 12;
     gap: ${props.theme.spacing[4]}px;
 
-    ${respondTo.md(css`
-      grid-column: col-start / span 4;
+    ${respondTo.lg(css`
+      grid-column: col-start / span 5;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -39,9 +39,11 @@ export const Content = styled.div(
 export const Thumbnail = styled.div(
   (): FlattenSimpleInterpolation => css`
     grid-column: col-start / span 12;
+    display: flex;
+    align-items: center;
 
-    ${respondTo.md(css`
-      grid-column: col-start 5 / span 8;
+    ${respondTo.lg(css`
+      grid-column: col-start 6 / span 7;
     `)}
   `,
 )

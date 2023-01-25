@@ -9,11 +9,11 @@ import { SecondaryNavProps } from './SecondaryNav.types'
 import { useBreakpoints } from '@hooks/useBreakpoints'
 
 const SecondaryNav: FC<SecondaryNavProps> = ({ inverse, showAll = false }: SecondaryNavProps): ReactElement => {
-  const { mdAndAbove } = useBreakpoints()
+  const { lgAndAbove } = useBreakpoints()
   return (
     <Styled.SecondaryNav>
       <ul>
-        {(showAll || mdAndAbove) && (
+        {(showAll || lgAndAbove) && (
           <>
             <li>
               <Styled.IconButton $inverse={inverse} href='/search'>
@@ -34,7 +34,7 @@ const SecondaryNav: FC<SecondaryNavProps> = ({ inverse, showAll = false }: Secon
         )}
         <li>
           <Styled.Button $inverse={inverse} href='/newsletter'>
-            <FontAwesomeIcon icon={faEnvelope as IconProp} /> {(showAll || mdAndAbove) && 'Newsletter'}
+            <FontAwesomeIcon icon={faEnvelope as IconProp} /> {(showAll || lgAndAbove) && 'Newsletter'}
           </Styled.Button>
         </li>
       </ul>

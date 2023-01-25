@@ -42,7 +42,7 @@ export const SessionsSponsor = styled.div(
 
 export const LogoWrapper = styled.div(
   (): FlattenSimpleInterpolation => css`
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       position: absolute;
       top: 0;
       left: 0;

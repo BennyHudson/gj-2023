@@ -12,8 +12,12 @@ import PodcastCard from '@components/PodcastCard'
 import * as Styled from './styles/PodcastCarousel.style'
 
 import { PodcastCarouselProps } from './PodcastCarousel.types'
+import { useTheme } from 'styled-components'
+import { Theme } from '@themes/gjTheme/gjTheme.types'
 
 const PodcastCarousel: FC<PodcastCarouselProps> = ({ podcasts, title }: PodcastCarouselProps): ReactElement => {
+  const { breakpoints } = useTheme() as Theme
+
   const sliderSettings = {
     dots: false,
     infinite: true,
@@ -28,6 +32,13 @@ const PodcastCarousel: FC<PodcastCarouselProps> = ({ podcasts, title }: PodcastC
           slidesToScroll: 1,
         },
       },
+      {
+        breakpoint: breakpoints.lg,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      }
     ],
     nextArrow: <FontAwesomeIcon icon={faChevronCircleRight as IconProp} />,
     prevArrow: <FontAwesomeIcon icon={faChevronCircleLeft as IconProp} />,

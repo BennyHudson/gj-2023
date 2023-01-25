@@ -16,7 +16,14 @@ export const PostGrid = styled.div(
     margin-bottom: ${props.theme.spacing[4]}px;
 
     ${respondTo.md(css`
+      grid-template-columns: repeat(3, 1fr);
+      width: 90%;
+      margin: 0 auto;
+    `)}
+
+    ${respondTo.lg(css`
       grid-template-columns: repeat(${props.columns}, 1fr);
+      width: 100%;
     `)}
 
     &:last-child {

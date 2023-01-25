@@ -37,9 +37,11 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
                           <Styled.SubMenuList>
                             {child.children.map((cat, index) => {
                               return (
-                                <Styled.SubLink $inverse={inverse} href={cat.uri} key={index}>
-                                  {cat.label}
-                                </Styled.SubLink>
+                                <li>
+                                  <Styled.SubLink $inverse={inverse} href={cat.uri} key={index}>
+                                    {cat.label}
+                                  </Styled.SubLink>
+                                </li>
                               )
                             })}
                           </Styled.SubMenuList>

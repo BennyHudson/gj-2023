@@ -7,6 +7,8 @@ import * as Styled from './styles/PostGrid.style'
 
 import { PostGridProps } from './PostGrid.types'
 import { useBreakpoints } from '@hooks/useBreakpoints'
+import { useTheme } from 'styled-components'
+import { Theme } from '@themes/gjTheme/gjTheme.types'
 
 const PostGrid: FC<PostGridProps> = ({
   posts,
@@ -15,7 +17,9 @@ const PostGrid: FC<PostGridProps> = ({
   priority = true,
   smCarousel = false,
 }: PostGridProps): ReactElement => {
-  const { sm } = useBreakpoints()
+  const { mdAndBelow } = useBreakpoints()
+
+  const { breakpoints } = useTheme() as Theme
 
   const sliderSettings = {
     dots: true,
@@ -30,12 +34,19 @@ const PostGrid: FC<PostGridProps> = ({
           slidesToScroll: 1,
         },
       },
+      {
+        breakpoint: breakpoints.lg,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      }
     ],
   }
 
   return (
     <>
-      {sm && smCarousel ? (
+      {mdAndBelow && smCarousel ? (
         <>
           <Head>
             <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' />

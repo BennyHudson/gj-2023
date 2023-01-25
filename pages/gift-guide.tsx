@@ -18,9 +18,12 @@ import Feed from '@components/Feed'
 import PageLayout from '@components/PageLayout'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import { useBreakpoints } from '@hooks/useBreakpoints'
 
 const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
+
+  const { mdAndBelow } = useBreakpoints()
 
   useEffect(() => {
     setActiveNavElement(2)
@@ -48,6 +51,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav }): ReactElemen
         <VerticalSpacer spacingLevel={4} />
         <PostGrid
           posts={[pageData.featuredGuides[1], pageData.featuredGuides[2], pageData.featuredGuides[3], pageData.featuredGuides[4]]}
+          smCarousel
         />
       </Section>
       <GiftGuideFeature
@@ -61,7 +65,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav }): ReactElemen
         <Title title={pageData.featuredBrandsTitle} />
         <BrandGrid brands={pageData.featuredBrands} />
         <Title title='More Guides' />
-        <PostGrid posts={pageData.featureGuidesMore} columns={3} />
+        <PostGrid posts={pageData.featureGuidesMore} columns={3} smCarousel />
         <Title title={pageData.selectedProducts.title} />
         <GiftGrid gifts={pageData.selectedProducts.gifts} />
       </Section>
@@ -79,7 +83,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav }): ReactElemen
       </Section>
       <Section appearance='tertiary'>
         <Title title='All Guides' />
-        <Feed category='Gift Guide' />
+        <Feed category='Gift Guide' count={mdAndBelow ? 12 : 20} />
       </Section>
     </PageLayout>
   )

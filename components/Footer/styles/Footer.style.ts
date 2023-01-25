@@ -25,7 +25,7 @@ export const Footer = styled.div(
       flex-direction: column;
       gap: ${props.theme.spacing[4]}px;
 
-      ${respondTo.md(css`
+      ${respondTo.lg(css`
         gap: ${props.theme.spacing[6]}px;
       `)}
     }
@@ -40,7 +40,7 @@ export const Top = styled.div(
     width: 90%;
     margin: 0 auto;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       width: 100%;
     `)}
   `,
@@ -79,7 +79,7 @@ export const Main = styled.div(
       grid-column: col-start / span 9;
     }
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       width: 100%;
       padding: ${props.theme.spacing[4]}px 0;
     `)}
@@ -93,9 +93,13 @@ export const SecondaryMenu = styled.div(
     ul {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+
+      ${respondTo.md(css`
+        grid-template-columns: repeat(4, 1fr);
+      `)}
     }
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       display: flex;
       justify-content: flex-end;
       grid-column: col-start 10 / span 3;
@@ -118,7 +122,7 @@ export const Meta = styled.div(
     width: 90%;
     margin: 0 auto;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
@@ -134,6 +138,10 @@ export const LegalMenu = styled.ul(
     width: 100%;
 
     ${respondTo.md(css`
+      grid-template-columns: repeat(4, 1fr);
+    `)}
+
+    ${respondTo.lg(css`
       width: auto;
       display: flex;
       gap: ${props.theme.spacing[4]}px;

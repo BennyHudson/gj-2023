@@ -10,9 +10,13 @@ import * as Styled from './styles/ShopGrid.style'
 import { ShopGridProps } from './ShopGrid.types'
 import Heading from '@components/Heading'
 import { useBreakpoints } from '@hooks/useBreakpoints'
+import { useTheme } from 'styled-components'
+import { Theme } from '@themes/gjTheme/gjTheme.types'
 
 const ShopGrid: FC<ShopGridProps> = ({ products }: ShopGridProps): ReactElement => {
-  const { sm } = useBreakpoints()
+  const { mdAndBelow } = useBreakpoints()
+
+  const { breakpoints } = useTheme() as Theme
 
   const sliderSettings = {
     dots: true,
@@ -27,10 +31,17 @@ const ShopGrid: FC<ShopGridProps> = ({ products }: ShopGridProps): ReactElement 
           slidesToScroll: 1,
         },
       },
+      {
+        breakpoint: breakpoints.lg,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
     ],
   }
 
-  if (sm) {
+  if (mdAndBelow) {
     return (
       <>
         <Head>

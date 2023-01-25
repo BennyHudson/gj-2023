@@ -13,7 +13,7 @@ export const Header = styled.div(
     width: 90%;
     margin: 0 auto ${props.theme.spacing[6]}px;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       width: 100%;
     `)}
   `,
@@ -31,7 +31,7 @@ export const Player = styled.div(
       display: block;
       margin: 0 auto;
 
-      ${respondTo.md(css`
+      ${respondTo.lg(css`
         width: 100%;
       `)}
     }
@@ -43,7 +43,7 @@ export const Content = styled.div(
     width: 90%;
     margin: 0 auto ${props.theme.spacing[6]}px;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       width: 100%;
     `)}
 
@@ -64,7 +64,7 @@ export const PodcastMeta = styled.div(
     border-bottom: 1px solid ${props.theme.colours.midGrey};
     gap: ${props.theme.spacing[4]}px;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       padding: ${props.theme.spacing[4]}px 0;
     `)}
   `,

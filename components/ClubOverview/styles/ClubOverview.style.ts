@@ -22,8 +22,11 @@ export const ClubOverviewGrid = styled.div(
     margin: 0 auto;
 
     ${respondTo.md(css`
-      width: 100%;
       grid-template-columns: repeat(3, 1fr);
+    `)}
+
+    ${respondTo.lg(css`
+      width: 100%;
     `)}
   `,
 )

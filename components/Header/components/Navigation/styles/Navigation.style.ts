@@ -137,17 +137,19 @@ export const MenuItem = styled.li(
       `}
     }
 
-    &:hover {
-      & > ${SubMenuWrapper} {
-        opacity: 1;
-        transform: translateY(0);
-        z-index: 1;
-        pointer-events: auto;
-      }
+    @media (hover: hover) {
+      &:hover {
+        & > ${SubMenuWrapper} {
+          opacity: 1;
+          transform: translateY(0);
+          z-index: 1;
+          pointer-events: auto;
+        }
 
-      & > ${MenuLink} {
-        &::after {
-          transform: translateY(-2px);
+        & > ${MenuLink} {
+          &::after {
+            transform: translateY(-2px);
+          }
         }
       }
     }

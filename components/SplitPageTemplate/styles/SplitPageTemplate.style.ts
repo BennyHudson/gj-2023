@@ -8,7 +8,7 @@ export const SplitPageTemplate = styled.div(
   (props: StyledSplitPageTemplateProps): FlattenSimpleInterpolation => css`
     background: ${props.theme.colours.white};
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       display: grid;
       grid-template-columns: repeat(12, [col-start] 1fr);
       height: calc(100vh - ${props.headerHeight}px);
@@ -26,7 +26,7 @@ export const BackgroundImage = styled.div(
     position: relative;
     aspect-ratio: 3 / 2;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       grid-column: col-start / span 5;
       aspect-ratio: unset;
     `)}
@@ -45,7 +45,7 @@ export const Content = styled.div(
     overflow: auto;
     grid-column: col-start / span 12;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       padding: ${props.theme.spacing[8]}px;
       grid-column: col-start 6 / span 7;
     `)}
@@ -71,7 +71,7 @@ export const Title = styled.div(
   (props: StyledSplitPageTemplateProps): FlattenSimpleInterpolation => css`
     margin-bottom: ${props.theme.spacing[4]}px;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       margin-bottom: ${props.theme.spacing[8]}px;
     `)}
   `,

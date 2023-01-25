@@ -21,9 +21,12 @@ export const NewsletterBanner = styled.div(
     ${props.size === 2 &&
     css`
       ${respondTo.md(css`
-        height: calc(100vh - ${props.headerHeight}px);
         display: flex;
         align-items: center;
+      `)}
+
+      ${respondTo.lg(css`
+        height: calc(100vh - ${props.headerHeight}px);
       `)}
 
       ${Heading} {
@@ -70,8 +73,19 @@ export const NewsletterBannerContent = styled.div(
 
     ${Newsletter} {
       grid-column: col-start / span 12;
+      position: relative;
+      z-index: 1;
 
       ${respondTo.md(css`
+        grid-column: col-start 7 / span 6;
+
+        ${props.size === 2 &&
+        css`
+          grid-column: col-start 6 / span 7;
+        `}
+      `)}
+
+      ${respondTo.lg(css`
         grid-column: col-start 9 / span 4;
 
         ${props.size === 2 &&

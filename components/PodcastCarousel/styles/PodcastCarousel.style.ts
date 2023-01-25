@@ -10,14 +10,14 @@ export const PodcastCarousel = styled.div(
     width: 100%;
     overflow: hidden;
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       margin: 0 -${props.theme.spacing[2]}px;
+      
+      ${PodcastCard} {
+        opacity: 0.2;
+        pointer-events: none;
+      }
     `)}
-
-    ${PodcastCard} {
-      opacity: 0.2;
-      pointer-events: none;
-    }
 
     .slick-arrow {
       background: ${props.theme.colours.white};
@@ -79,7 +79,7 @@ export const PodcastCarousel = styled.div(
       }
     }
 
-    ${respondTo.md(css`
+    ${respondTo.lg(css`
       .slick-current {
         ${PodcastCard} {
           transform: scale(1.05);

@@ -20,7 +20,7 @@ import * as Styled from './styles/Footer.style'
 import { useBreakpoints } from '@hooks/useBreakpoints'
 
 const Footer: FC<FooterProps> = ({ footerNav }: FooterProps): ReactElement => {
-  const { mdAndAbove } = useBreakpoints()
+  const { lgAndAbove } = useBreakpoints()
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -39,7 +39,7 @@ const Footer: FC<FooterProps> = ({ footerNav }: FooterProps): ReactElement => {
           </Styled.ScrollUp>
         </Styled.Top>
         <Styled.Main>
-          {mdAndAbove && <FooterMainMenu menu={flatListToHierarchical(footerNav.primaryMenu.menuItems.nodes)} />}
+          {lgAndAbove && <FooterMainMenu menu={flatListToHierarchical(footerNav.primaryMenu.menuItems.nodes)} />}
           <Styled.SecondaryMenu>
             <ul>
               {footerNav.secondaryMenu.menuItems.nodes.map((item, index) => {
