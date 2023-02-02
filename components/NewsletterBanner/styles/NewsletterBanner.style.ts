@@ -29,7 +29,9 @@ export const NewsletterBanner = styled.div(
         height: calc(100vh - ${props.headerHeight}px);
       `)}
 
-      ${Heading} {
+      color: ${props.theme.colours.white};
+
+      ${Heading}, a {
         color: ${props.theme.colours.white};
       }
     `}

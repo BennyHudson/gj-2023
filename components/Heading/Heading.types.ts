@@ -10,4 +10,5 @@ export interface HeadingProps {
   weight?: WeightKeys
   font?: 'Cera' | 'Chronicle' | 'ChronicleCondensed'
   transform?: 'uppercase'
+  state?: 'error'
 }

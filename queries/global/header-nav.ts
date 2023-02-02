@@ -5,6 +5,13 @@ import { houseNoteContent, HouseNote } from '@queries/fragments/houseNoteContent
 import { podcastContent, Podcast } from '@queries/fragments/podcastContent'
 
 export interface HeaderNav {
+  page: {
+    subscriptionPage: {
+      club: {
+        clubhouseOffer?: string
+      }
+    }
+  }
   menu: {
     menuItems: {
       nodes: {
@@ -35,6 +42,13 @@ export const headerNavQuery = {
     ${houseNoteContent}
     ${podcastContent}
     query mainMenu {
+      page(id: "74300", idType: DATABASE_ID) {
+        subscriptionPage {
+          club {
+            clubhouseOffer
+          }
+        }
+      }
       menu(id: "dGVybTo5MjQx") {
         menuItems(first: 1000) {
           nodes {

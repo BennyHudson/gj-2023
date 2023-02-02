@@ -11,8 +11,9 @@ import SplitPageTemplate from '@components/SplitPageTemplate'
 import PageContext, { PageContextProps } from '@context/PageContext'
 import Cart from '@components/Cart'
 
+
 const CartPage: FC = ({ headerNav, footerNav }): ReactElement => {
-  const { setActiveNavElement } = useContext(PageContext) as PageContextProps
+  const { setActiveNavElement} = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
     setActiveNavElement(-1)

@@ -49,7 +49,7 @@ export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
   const pageData = await client.query(partnerOptionsQuery)
-  const partners = await client.query(partnerQuery)
+  const partners = await client.query(partnerQuery(500))
 
   return {
     props: {

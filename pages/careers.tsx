@@ -14,8 +14,6 @@ import JobsList from '@components/JobsList'
 import PageContext, { PageContextProps } from '@context/PageContext'
 
 const TeamPage: FC = ({ headerNav, footerNav, pageData }): ReactElement => {
-  console.log(pageData)
-
   const breadcrumbs = [
     {
       text: 'Home',

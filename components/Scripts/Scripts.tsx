@@ -17,19 +17,7 @@ const Scripts: FC = (): ReactElement => {
           gtag('config', 'UA-416440-57');
         `}
       </Script>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=AW-10918806122"
-        strategy="afterInteractive"
-      />
-      <Script id='google-tag-manager' strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'AW-10918806122');
-        `}
-      </Script>
+      <Script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></Script>
     </>
   )
 }

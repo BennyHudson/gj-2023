@@ -1,41 +1,43 @@
 import { gql } from '@apollo/client'
 
-export const partnerQuery = {
-  query: gql`
-    query partnerQuery {
-      partners(first: 500) {
-        nodes {
-          title
-          date
-          featuredImage {
-            node {
-              sourceUrl
-            }
-          }
-          clubhousePartners {
-            partnerInformation {
-              website
-              termsOfUse
-              redeem
-              offer
-              logo {
+export const partnerQuery = (count: number) => {
+  return {
+    query: gql`
+      query partnerQuery {
+        partners(first: ${count}) {
+          nodes {
+            title
+            date
+            featuredImage {
+              node {
                 sourceUrl
               }
-              featured
-              address {
-                city
-                country
-                countryShort
-                postCode
-                state
-                streetAddress
-                streetName
-                streetNumber
+            }
+            clubhousePartners {
+              partnerInformation {
+                website
+                termsOfUse
+                redeem
+                offer
+                logo {
+                  sourceUrl
+                }
+                featured
+                address {
+                  city
+                  country
+                  countryShort
+                  postCode
+                  state
+                  streetAddress
+                  streetName
+                  streetNumber
+                }
               }
             }
           }
         }
       }
-    }
-  `,
+    `,
+  }
 }

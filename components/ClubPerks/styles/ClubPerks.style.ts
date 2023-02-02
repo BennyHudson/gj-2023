@@ -42,15 +42,20 @@ export const Perk = styled.div(
     font-size: ${props.theme.typography.paragraph[2].fontSize};
     line-height: ${props.theme.typography.paragraph[2].lineHeight};
     grid-column: col-start / span 12;
+    position: relative;
+
+    img {
+      object-fit: cover;
+    }
 
     ${respondTo.lg(css`
       grid-column: col-start 2 / span 10;
       height: 430px;
       flex-direction: row;
 
-      &:nth-child(even) {
+      ${props.reverse && css`
         flex-direction: row-reverse;
-      }
+      `}
     `)}
   `,
 )
@@ -62,6 +67,8 @@ export const PerkContent = styled.div(
     gap: ${props.theme.spacing[4]}px;
     align-self: center;
     padding: ${props.theme.spacing[4]}px;
+    position: relative;
+
 
     ${respondTo.md(css`
       text-align: center;
@@ -85,19 +92,19 @@ export const PerkContent = styled.div(
   `,
 )
 
-export const ImageWrapper = styled.div(
-  (): FlattenSimpleInterpolation => css`
-    position: relative;
-    height: 240px;
-    width: 100%;
+// export const ImageWrapper = styled.div(
+//   (): FlattenSimpleInterpolation => css`
+//     position: relative;
+//     height: 240px;
+//     width: 100%;
 
-    ${respondTo.lg(css`
-      width: 60%;
-      height: auto;
-    `)}
+//     ${respondTo.lg(css`
+//       width: 60%;
+//       height: auto;
+//     `)}
 
-    img {
-      object-fit: contain;
-    }
-  `,
-)
+//     img {
+//       object-fit: contain;
+//     }
+//   `,
+// )

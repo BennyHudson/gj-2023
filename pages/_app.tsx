@@ -1,9 +1,7 @@
-import React, { FC, ReactElement, useState } from 'react'
+import React, { FC, ReactElement, useEffect, useState } from 'react'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 import { ApolloProvider } from '@apollo/client'
-
-// import useKeyPress from '@hooks/useKeyPress'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
@@ -23,15 +21,17 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
   const [customerId, setCustomerId] = useState<PageContextProps['customerId']>()
   const [cart, setCart] = useState([])
 
-  // const keyPress = useKeyPress()
+  useEffect(() => {
+    const gjToken = localStorage.getItem('gjToken')
+    if (gjToken) {
+      setToken(gjToken)
+    }
 
-  // useEffect(() => {
-  //   if (!keyPress) return
-
-  //   if (keyPress.key === 'Escape') {
-
-  //   }
-  // }, [keyPress])
+    const gjCart = localStorage.getItem('cart')
+    if (gjCart) {
+      setCart(gjCart.split(','))
+    }
+  }, [])
 
   const cmsUrl = 'https://thegentlemansjournal.com'
 

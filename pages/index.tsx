@@ -74,7 +74,7 @@ const Home: FC = ({
         />
         <PostGrid priority={false} columns={3} posts={latestPosts} smCarousel />
       </Section>
-      <BannerAdvert />
+      <BannerAdvert slot='GJ_970x250_001' />
       <Section>
         <Title
           title={coverInterviews.category.name}
@@ -147,7 +147,7 @@ const Home: FC = ({
         cta='Watch Now'
         priority={false}
       />
-      <BannerAdvert />
+      <BannerAdvert slot='GJ_970x250_002' />
       <Section>
         <Title title={'Editor\'s Pick'} />
         <PostGrid priority={false} posts={pageData.homeEditorsPick.homeEditorsPick} smCarousel />

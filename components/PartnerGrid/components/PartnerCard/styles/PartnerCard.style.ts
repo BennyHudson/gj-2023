@@ -25,6 +25,7 @@ export const DetailsPanel = styled.div(
     height: 100%;
     padding: ${props.theme.spacing[4]}px;
     background: ${props.theme.colours.black};
+    border: 1px solid ${props.theme.colours.white};
     z-index: 10;
     display: flex;
     align-items: center;

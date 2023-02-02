@@ -4,7 +4,7 @@ import client from '@lib/apollo-client'
 
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
-import { giftGuideContentQuery } from '@queries/giftGuide/giftGuide-content'
+import { giftGuideContentQuery } from '@queries/pages/gift-guide'
 
 import GiftGuideFeature from '@components/GiftGuideFeature'
 import Section from '@components/Section'
@@ -69,7 +69,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav }): ReactElemen
         <Title title={pageData.selectedProducts.title} />
         <GiftGrid gifts={pageData.selectedProducts.gifts} />
       </Section>
-      <BannerAdvert />
+      <BannerAdvert slot='GJ_970x250_001' />
       <GiftGuideFeature
         meta={pageData.ctaThird.categories.nodes[0].name}
         title={pageData.ctaThird.title}

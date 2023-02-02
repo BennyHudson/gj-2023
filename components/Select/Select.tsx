@@ -2,6 +2,7 @@ import React, { ReactElement, FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faAngleDown } from '@fortawesome/pro-light-svg-icons'
+import { Field } from 'formik'
 
 import FieldWrapper from '../FieldWrapper'
 
@@ -13,7 +14,8 @@ const Select: FC<SelectProps> = ({ target, label, isRequired, id, databaseId, ch
   return (
     <FieldWrapper target={target} label={label} required={isRequired} labelPlacement={labelPlacement}>
       <Styled.SelectWrapper>
-        <Styled.Select name={`input_${id}`} id={`input_${databaseId}_${id}`} as='select'>
+        <Field className='styled-select' as='select' name={typeof id === 'number' ? `input_${id}` : id}>
+          <option value='' />
           {choices.map((choice, index) => {
             return (
               <option key={index} value={choice.value}>
@@ -21,7 +23,7 @@ const Select: FC<SelectProps> = ({ target, label, isRequired, id, databaseId, ch
               </option>
             )
           })}
-        </Styled.Select>
+        </Field>
         <Styled.IconWrapper>
           <FontAwesomeIcon icon={faAngleDown as IconProp} />
         </Styled.IconWrapper>

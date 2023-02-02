@@ -38,7 +38,7 @@ const Podcasts: FC = ({ podcastOptions, headerNav, footerNav }): ReactElement =>
         })}
       />
       <PodcastIntro host={podcastOptions.host} text={podcastOptions.overviewDescription} />
-      <BannerAdvert />
+      <BannerAdvert slot={4165079905} />
       <PodcastCarousel title='Featured Podcasts' podcasts={podcastOptions.featured.featured} />
       <PodcastList />
       <Divider />

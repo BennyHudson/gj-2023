@@ -13,6 +13,7 @@ export const FieldWrapper = styled.div(
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    position: relative;
 
     ${props.labelPlacement === 'INHERIT' &&
     css`
@@ -20,11 +21,11 @@ export const FieldWrapper = styled.div(
     `}
 
     ${TextField},
-  ${Select} {
+  .styled-select {
       min-height: 56px;
     }
 
-    ${TextArea},
+    .styled-textarea,
     ${TextField} {
       border: 1px solid #ccc;
       padding: ${props.theme.spacing[1]}px ${props.theme.spacing[2]}px;
@@ -44,7 +45,7 @@ export const FieldWrapper = styled.div(
       }
     }
 
-    ${Select} {
+    .styled-select {
       border: 1px solid #ccc;
       padding: ${props.theme.spacing[1]}px ${props.theme.spacing[4]}px ${props.theme.spacing[1]}px ${props.theme.spacing[2]}px;
       font-size: ${props.theme.typography.heading[1].fontSize};
@@ -81,5 +82,25 @@ export const FieldWrapper = styled.div(
         padding: ${props.theme.spacing[1] / 2}px ${props.theme.spacing[2]}px 0;
       `}
     }
+
+    ${props.validationMessage && css`
+      background: ${props.theme.colours.lightGrey};
+      padding: ${props.theme.spacing[2]}px;
+      .styled-textarea,
+      ${TextField},
+      .styled-select {
+        border: 2px solid ${props.theme.colours.red};
+      }
+    `}
   `,
 )
+
+export const ValidationMessage = styled.div((props: StyledFieldWrapperProps): FlattenSimpleInterpolation => css`
+  font-family: 'Cera Pro Regular';
+  color: ${props.theme.colours.red};
+  font-size: ${props.theme.typography.paragraph[2].fontSize};
+  display: flex;
+  align-items: center;
+  gap: ${props.theme.spacing[1]}px;
+  margin-bottom: ${props.theme.spacing[1]}px;
+`)

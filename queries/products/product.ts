@@ -1,21 +1,30 @@
 import { gql } from '@apollo/client'
-import { seo } from '@queries/fragments/seo'
 
-export const productQuery = (slug: string) => {
+export const productQuery = (productId: number) => {
   return {
     query: gql`
       query productQuery {
-        externalProduct(id: "${slug}", idType: SLUG) {
-          additionalIssueContent {
-            issueCoverStar
-            shortDescription
+        product(id: "${productId}", idType: DATABASE_ID) {
+          ... on SimpleProduct {
+            name
+            stockQuantity
+            description
+            databaseId
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
           }
-          name
-          shortDescription
-          image {
-            sourceUrl
+          ... on SubscriptionProduct {
+            databaseId
+            name
+            regularPrice(format: RAW)
+            signUpFee
+            price(context: RAW)
+            onSale
+            salePrice(format: RAW)
           }
-          ${seo()}
         }
       }
     `

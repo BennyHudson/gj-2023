@@ -1,4 +1,5 @@
-import React, { ReactElement, FC, useContext } from 'react'
+import React, { ReactElement, FC, useContext, useEffect, useState } from 'react'
+import jwt_decode from 'jwt-decode'
 import useSwr from 'swr'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
@@ -15,8 +16,10 @@ import * as Styled from './styles/MyAccount.style'
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
 const MyAccount: FC = (): ReactElement => {
-  const { customerId, setCustomerId, setToken } = useContext(PageContext) as PageContextProps
-  const { data } = useSwr(`/api/user/${customerId}`, fetcher)
+  const { setToken, token } = useContext(PageContext) as PageContextProps
+
+  const decodedToken = jwt_decode(token)
+  const { data } = useSwr(token ? `/api/user/${decodedToken.data.user.id}` : null, fetcher)
 
   const tabs = [
     {
@@ -34,8 +37,8 @@ const MyAccount: FC = (): ReactElement => {
   ]
 
   const logoutHandler = () => {
-    setCustomerId()
     setToken()
+    localStorage.removeItem('gjToken')
   }
 
   return (

@@ -15,6 +15,7 @@ export const BrandGrid = styled.div(
       grid-template-columns: repeat(4, 1fr);
       gap: ${props.theme.spacing[4]}px;
       margin: 0 auto ${props.theme.spacing[8]}px;
+      width: 100%;
     `)}
 
     &:last-child {

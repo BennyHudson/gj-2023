@@ -11,13 +11,19 @@ export const ClubHero = styled.div(
     padding-top: ${props.headerHeight}px;
     position: relative;
 
+    ${respondTo.lg(css`
+      padding-top: 0;
+    `)}
+
     ${Section} {
       background: none;
       display: flex;
       position: relative;
+      z-index: 10;
 
       ${respondTo.lg(css`
-        height: 80vh;
+        height: 100vh;
+        padding-top: ${props.headerHeight + props.theme.spacing[8]}px;
       `)}
     }
 
@@ -43,11 +49,15 @@ export const HeroContent = styled.div(
 
 export const BackgroundImage = styled.div(
   (): FlattenSimpleInterpolation => css`
-    display: none;
+    // display: none;
+
+    img {
+      object-fit: cover;
+    }
 
     ${respondTo.lg(css`
       display: block;
-      height: 80vh;
+      height: 100vh;
       position: absolute;
       bottom: 0;
       left: 0;

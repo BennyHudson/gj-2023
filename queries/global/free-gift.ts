@@ -9,6 +9,7 @@ export const freeGiftQuery = {
             name
             stockQuantity
             description
+            databaseId
             featuredImage {
               node {
                 sourceUrl

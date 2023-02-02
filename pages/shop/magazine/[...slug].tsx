@@ -7,7 +7,7 @@ import { footerNavQuery } from '@queries/global/footer-nav'
 
 import { StaticPaths } from '@typings/StaticPaths.types'
 import PageLayout from '@components/PageLayout'
-import { productQuery } from '@queries/products/product'
+import { magazineQuery } from '@queries/products/external-product'
 import ProductFeature from '@components/ProductFeature'
 import { magazineCategoryQuery } from '@queries/products/magazine-category'
 import Section from '@components/Section'
@@ -60,7 +60,7 @@ export async function getStaticProps({ params }: StaticPaths) {
 
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
-  const product = await client.query(productQuery(slug))
+  const product = await client.query(magazineQuery(slug))
   const magazines = await client.query(magazineCategoryQuery(10))
 
   return {

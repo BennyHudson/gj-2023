@@ -11,6 +11,8 @@ export interface PageContextProps {
   setToken: (token?: string) => void
   customerId: number
   setCustomerId: (customerId?: number) => void
+  cart: number[]
+  setCart: (cart: number[]) => void
 }
 
 export default createContext<Partial<PageContextProps>>({})

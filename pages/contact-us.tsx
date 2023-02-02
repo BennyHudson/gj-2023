@@ -6,16 +6,13 @@ import { footerNavQuery } from '@queries/global/footer-nav'
 import { pageQuery } from '@queries/pages/page'
 
 import PageLayout from '@components/PageLayout'
-import HeroImage from '@components/HeroImage'
 import Section from '@components/Section'
 import Masthead from '@components/Masthead'
-import TeamGrid from '@components/TeamGrid'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 import ContactDetails from '@components/ContactDetails'
 
 const ContactPage: FC = ({ headerNav, footerNav, pageData }): ReactElement => {
-  console.log(pageData)
   const breadcrumbs = [
     {
       text: 'Home',

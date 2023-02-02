@@ -11,9 +11,8 @@ export const SessionsHeader = styled.div(
     ${Section} {
       padding: ${props.headerHeight + props.theme.spacing[4]}px 0 0;
 
-
       ${respondTo.md(css`
-        padding-top: ${props.headerHeight + props.theme.spacing[8]}px 0 ${props.theme.spacing[8]}px;
+        padding: ${props.headerHeight + props.theme.spacing[8]}px 0 ${props.theme.spacing[8]}px;
       `)}
     }
   `,

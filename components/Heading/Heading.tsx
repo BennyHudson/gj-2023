@@ -14,6 +14,7 @@ const Heading: FC<HeadingProps> = ({
   font = 'Chronicle',
   transform,
   appearance = 'primary',
+  state,
 }: HeadingProps): ReactElement => {
   return (
     <Styled.Heading
@@ -25,6 +26,7 @@ const Heading: FC<HeadingProps> = ({
       font={font}
       transform={transform}
       appearance={appearance}
+      state={state}
     >
       {text}
     </Styled.Heading>

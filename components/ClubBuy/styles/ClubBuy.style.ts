@@ -56,7 +56,6 @@ export const Product = styled.div(
       border-top: none;
       border-right: 1px solid ${props.theme.colours.grey};
       padding: ${props.theme.spacing[1]}px ${props.theme.spacing[4]}px;
-      gap: ${props.theme.spacing[8]}px;
 
       &:first-child {
         padding-left: 0;

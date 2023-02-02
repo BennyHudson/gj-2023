@@ -51,7 +51,7 @@ const Post: FC<PostData> = ({ data, headerNav, footerNav }: PostData): ReactElem
   return (
     <PageLayout headerNav={headerNav} footerNav={footerNav} seo={articleData.seo}>
       {articleData.featuredImage && <HeroImage featuredImage={articleData.featuredImage.node.sourceUrl} />}
-      <BannerAdvert />
+      <BannerAdvert slot={4165079905} />
       <Section>
         <Masthead title={articleData.title} breadcrumbs={articleData.seo.breadcrumbs} subtitle={articleData.articleAcf.standfirst} />
         <ContentGrid

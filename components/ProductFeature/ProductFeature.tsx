@@ -16,8 +16,7 @@ const ProductFeature: FC<ProductFeatureProps> = ({
   product,
 }: ProductFeatureProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps
-
-  console.log(product)
+  
   return (
     <Styled.ProductFeature headerHeight={headerHeight}>
       <Styled.ProductImage>

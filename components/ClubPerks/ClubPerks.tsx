@@ -13,33 +13,29 @@ import Link from '@components/Link'
 import Title from '@components/Title'
 import useNextLink from '@hooks/useNextLink'
 
-const ClubPerks: FC<ClubPerksProps> = ({ perks }: ClubPerksProps): ReactElement => {
+const ClubPerks: FC<ClubPerksProps> = ({ perks, title, subtitle }: ClubPerksProps): ReactElement => {
   const perksList = useRef<HTMLDivElement>(null)
   useNextLink(perksList)
   return (
-    <Section>
-      <Styled.ClubPerks ref={perksList}>
-        <Title title='Join the club.' subtitle='Scroll to see the perks' />
-        {perks.map((perk, index) => {
-          return (
-            <Styled.Perk key={index}>
-              <Styled.ImageWrapper>
-                <Image src={featuredImageUrl(perk.backgroundImage.sourceUrl)} fill alt={perk.title} quality={100} />
-              </Styled.ImageWrapper>
-              <Styled.PerkContent>
-                <Heading inverse text={perk.title} size={3} font='ChronicleCondensed' noMargin />
-                <RawHtmlWrapper inverse content={perk.content} font='Cera' />
-                {perk.hasLink && (
-                  <Link href={perk.link!.url} font='Cera' showIcon inverse size={2}>
-                    {perk.link!.title}
-                  </Link>
-                )}
-              </Styled.PerkContent>
-            </Styled.Perk>
-          )
-        })}
-      </Styled.ClubPerks>
-    </Section>
+    <Styled.ClubPerks ref={perksList}>
+      {title && <Title title={title} subtitle={subtitle} />}
+      {perks.map((perk, index) => {
+        return (
+          <Styled.Perk key={index} reverse={perk.textAlignement === 'Right'}>
+            <Image src={featuredImageUrl(perk.backgroundImage.sourceUrl)} fill alt={perk.title} quality={100} />
+            <Styled.PerkContent>
+              <Heading inverse={perk.textColor === 'Light'} text={perk.title} size={3} font='ChronicleCondensed' noMargin />
+              <RawHtmlWrapper inverse={perk.textColor === 'Light'} content={perk.content} font='Cera' />
+              {perk.hasLink && (
+                <Link href={perk.link!.url} font='Cera' showIcon inverse={perk.textColor === 'Light'} size={2}>
+                  {perk.link!.title}
+                </Link>
+              )}
+            </Styled.PerkContent>
+          </Styled.Perk>
+        )
+      })}
+    </Styled.ClubPerks>
   )
 }
 

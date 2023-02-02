@@ -20,6 +20,7 @@ import { HeaderProps, HeaderState } from './Header.types'
 
 const Header: FC<HeaderProps> = ({ headerStyle = 'standard', headerNav }: HeaderProps): ReactElement => {
   const header = useRef<HTMLDivElement>(null)
+  const announcement = useRef<HTMLDivElement>(null)
   const { setHeaderHeight } = useContext(PageContext) as PageContextProps
 
   const breakpoints = useBreakpoints()
@@ -27,6 +28,10 @@ const Header: FC<HeaderProps> = ({ headerStyle = 'standard', headerNav }: Header
 
   const [transparent, setTransparent] = useState<HeaderState['transparent']>(headerStyle === 'feature')
   const [showMobileNav, setShowMobileNav] = useState(false)
+  const [topPosition, setTopPosition] = useState(0)
+
+  const announcementBar = headerNav.page.subscriptionPage.club.clubhouseOffer
+  const showAnnouncementBar = !!announcementBar
 
   const onScroll = (e) => {
     const scrollTop = e.target.documentElement.scrollTop
@@ -35,9 +40,22 @@ const Header: FC<HeaderProps> = ({ headerStyle = 'standard', headerNav }: Header
     } else {
       setTransparent(false)
     }
+
+    if (showAnnouncementBar && headerStyle === 'feature' && announcement.current) {
+      if (scrollTop >= announcement.current.clientHeight) {
+        setTopPosition(0)
+      }
+      
+      if (scrollTop < announcement.current.clientHeight) {
+        setTopPosition(announcement.current.clientHeight - scrollTop)
+      }
+    }
   }
 
   useEffect(() => {
+    if (announcement.current) {
+      setTopPosition(announcement.current.clientHeight)
+    }
     if (header.current) {
       setHeaderHeight(header.current?.clientHeight)
     }
@@ -50,22 +68,25 @@ const Header: FC<HeaderProps> = ({ headerStyle = 'standard', headerNav }: Header
   }, [headerStyle])
 
   return (
-    <Styled.Header transparent={transparent} headerStyle={headerStyle} ref={header} fixed={showMobileNav}>
-      <Styled.HeaderContents transparent={transparent}>
-        {mdAndBelow && (
-          <Styled.MobileTrigger>
-            <Styled.MobileNavTrigger onClick={() => setShowMobileNav(!showMobileNav)} $inverse={transparent}>
-              <FontAwesomeIcon icon={showMobileNav ? (faTimes as IconProp) : (faBars as IconProp)} />
-            </Styled.MobileNavTrigger>
-          </Styled.MobileTrigger>
-        )}
-        {lgAndAbove && <Time inverse={transparent} />}
-        <Logo inverse={transparent} />
-        <SecondaryNav inverse={transparent} />
-      </Styled.HeaderContents>
-      {mdAndBelow && showMobileNav && <MobileNavigation inverse={transparent} navigation={headerNav} />}
-      {lgAndAbove && <Navigation inverse={transparent} navigation={headerNav} />}
-    </Styled.Header>
+    <>
+      {showAnnouncementBar && <Styled.AnnouncementBar ref={announcement}>{announcementBar}</Styled.AnnouncementBar>}
+      <Styled.Header transparent={transparent} headerStyle={headerStyle} ref={header} fixed={showMobileNav} topPosition={topPosition}>
+        <Styled.HeaderContents transparent={transparent}>
+          {mdAndBelow && (
+            <Styled.MobileTrigger>
+              <Styled.MobileNavTrigger onClick={() => setShowMobileNav(!showMobileNav)} $inverse={transparent}>
+                <FontAwesomeIcon icon={showMobileNav ? (faTimes as IconProp) : (faBars as IconProp)} />
+              </Styled.MobileNavTrigger>
+            </Styled.MobileTrigger>
+          )}
+          {lgAndAbove && <Time inverse={transparent} />}
+          <Logo inverse={transparent} />
+          <SecondaryNav inverse={transparent} />
+        </Styled.HeaderContents>
+        {mdAndBelow && showMobileNav && <MobileNavigation inverse={transparent} navigation={headerNav} />}
+        {lgAndAbove && <Navigation inverse={transparent} navigation={headerNav} />}
+      </Styled.Header>
+    </>
   )
 }
 

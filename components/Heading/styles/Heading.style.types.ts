@@ -12,4 +12,5 @@ export interface StyledHeadingProps {
   font: HeadingProps['font']
   transform: HeadingProps['transform']
   appearance: HeadingProps['appearance']
+  state: HeadingProps['state']
 }

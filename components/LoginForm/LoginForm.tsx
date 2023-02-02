@@ -10,7 +10,7 @@ import Button from '@components/Button'
 import PageContext, { PageContextProps } from '@context/PageContext'
 
 const LoginForm: FC<LoginFormProps> = (): ReactElement => {
-  const { setToken, setCustomerId } = useContext(PageContext) as PageContextProps
+  const { setToken } = useContext(PageContext) as PageContextProps
 
   return (
     <Formik
@@ -36,7 +36,7 @@ const LoginForm: FC<LoginFormProps> = (): ReactElement => {
 
         if (customer.data) {
           setToken(customer.data.token)
-          setCustomerId(customer.data.id)
+          localStorage.setItem('gjToken', customer.data.token)
         }
       }}
     >

@@ -86,5 +86,9 @@ export const Heading = styled.h2(
   &:last-child {
       margin-bottom: 0;
     }
+
+  ${props.state === 'error' && css`
+    color: ${props.theme.colours.red} !important;
+  `}
   `,
 )

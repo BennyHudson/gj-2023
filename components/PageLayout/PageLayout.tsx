@@ -17,13 +17,11 @@ const PageLayout: FC<PageLayoutProps> = ({ children, headerNav, footerNav, seo }
   const { pathname } = useRouter()
 
   const useFeatureHeader = (): HeaderProps['headerStyle'] => {
-    if (pathname === '/') return 'feature'
-    if (pathname === '/podcasts') return 'feature'
-    if (pathname === '/gj-sessions') return 'feature'
-    if (pathname === '/club') return 'feature'
-    if (pathname.includes('article')) return 'feature'
-    if (pathname.includes('gift-guide')) return 'feature'
-    return 'standard'
+    if (pathname === '/latest') return 'standard'
+    if (pathname === '/house-notes') return 'standard'
+    if (pathname.includes('category')) return 'standard'
+    if (pathname.includes('/podcasts/')) return 'standard'
+    return 'feature'
   }
 
   return (

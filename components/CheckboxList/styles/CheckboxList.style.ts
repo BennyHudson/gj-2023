@@ -14,10 +14,12 @@ export const Checkbox = styled.div(
     align-items: center;
     justify-content: center;
     transition: 0.4s all ease;
+    background: ${props.theme.colours.white};
 
     svg {
       width: ${props.theme.spacing[2]}px;
       color: ${props.theme.colours.white};
+      opacity: 0;
     }
   `,
 )
@@ -47,6 +49,10 @@ export const CheckboxLabel = styled.label(
 
       &:checked ~ ${Checkbox} {
         background: ${props.theme.colours.green};
+
+        svg {
+          opacity: 1;
+        }
       }
     }
   `,

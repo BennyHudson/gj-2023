@@ -1,56 +1,170 @@
-import React, { ReactElement, FC, useState, useContext } from 'react'
+import React, { ReactElement, FC, useState, useContext, useEffect } from 'react'
 import { Formik } from 'formik'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faPenNib } from '@fortawesome/pro-thin-svg-icons'
+import {
+  PaymentElement,
+  useStripe,
+  useElements
+} from '@stripe/react-stripe-js'
 
 import Heading from '@components/Heading'
-import Paragraph from '@components/Paragraph'
 import EditButton from '@components/EditButton'
 import Button from '@components/Button'
 import TextField from '@components/TextField'
 import Select from '@components/Select'
 import NameField from '@components/NameField'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
+import Cart from '@components/Cart'
 
 import * as Styled from './styles/Checkout.style'
 
 import { countries } from './countries'
+import PageContext, { PageContextProps } from '@context/PageContext'
+import { useRouter } from 'next/router'
 
 const Checkout: FC = (): ReactElement => {
-  const [activePanel, setActivePanel] = useState(4)
+  const { setCustomerId, customerId, cart } = useContext(PageContext) as PageContextProps
 
-  const { cart } = useContext(PageContext) as PageContextProps
+  const [activePanel, setActivePanel] = useState(1)
+  const [billingAddress, setBillingAddress] = useState({})
+  const [shippingAddress, setShippingAddress] = useState({})
+  const [message, setMessage] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
+  const stripe = useStripe()
+  const elements = useElements()
+
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!stripe) {
+      return
+    }
+
+    const clientSecret = new URLSearchParams(window.location.search).get(
+      'payment_intent_client_secret'
+    )
+
+    if (!clientSecret) {
+      return
+    }
+
+    stripe.retrievePaymentIntent(clientSecret).then(async ({ paymentIntent }) => {
+      const { payment_method, status } = paymentIntent
+      
+      const paymentMethod = await fetch('/api/checkout/save-payment-method', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payment_method),
+      })
+
+      const stripeCustomerId = await paymentMethod.json()
+      
+      if (status === 'succeeded') {
+        setMessage('Payment succeeded!')
+
+        const subscription = await fetch('/api/subscription/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            customerId,
+            stripeCustomerId: stripeCustomerId.customerId,
+            paymentMethod: payment_method,
+            billingAddress,
+            shippingAddress,
+            cart,
+          })
+        })
+
+        if (subscription) {
+          // AUTO LOGIN HERE
+          router.push('/clubhouse')
+        }
+      }
+
+      // switch (status) {
+      // case 'succeeded':
+        
+
+      //   break
+      // case 'processing':
+      //   setMessage('Your payment is processing.')
+      //   break
+      // case 'requires_payment_method':
+      //   setMessage('Your payment was not successful, please try again.')
+      //   break
+      // default:
+      //   setMessage('Something went wrong.')
+      //   break
+      // }
+    })
+  }, [stripe])
+
+  const paymentElementOptions = {
+    layout: 'tabs',
+  }
+
+  if (message) {
+    return (
+      <>{message}</>
+    )
+  }
 
   return (
     <Formik
       initialValues={{
         billing: {
-          first_name: '',
-          last_name: '',
-          address_1: '',
+          first_name: 'Ben',
+          last_name: 'Hudson',
+          address_1: '3 Brookly Gardens',
           address_2: '',
-          city: '',
-          state: '',
-          postcode: '',
-          country: '',
-          email: '',
-          phone: '',
+          city: 'Fleet',
+          state: 'Hants',
+          postcode: 'Gu51 3LL',
+          country: 'United Kingdom',
+          email: 'ben.hudson20687@gmail.com',
+          phone: '0757342833',
         },
         shipping: {
-          first_name: '',
-          last_name: '',
-          address_1: '',
+          first_name: 'Ben',
+          last_name: 'Hudson',
+          address_1: '3 Brookly Gardens',
           address_2: '',
-          city: '',
-          state: '',
-          postcode: '',
-          country: '',
+          city: 'Fleet',
+          state: 'Hants',
+          postcode: 'Gu51 3LL',
+          country: 'United Kingdom',
         },
       }}
       onSubmit={async (values) => {
-        console.log(values)
+        if (!stripe || !elements) {
+          // Stripe.js has not yet loaded.
+          // Make sure to disable form submission until Stripe.js has loaded.
+          return
+        }
+
+        setBillingAddress(values.billing)
+        setShippingAddress(values.shipping)
+
+        // Create Customer
+        // const createCustomer = await fetch('/api/user/create', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify(values),
+        // })
+
+        // if (createCustomer.status !== 200) return
+        
+        // const customer = await createCustomer.json()
+        // setCustomerId(customer.id)
+        const { error } = await stripe.confirmPayment({
+          elements,
+          confirmParams: {
+            // Make sure to change this to your payment completion page
+            return_url: 'http://localhost:8080/checkout',
+          },
+        })
       }}
     >
       {(props) => (
@@ -152,18 +266,7 @@ const Checkout: FC = (): ReactElement => {
               </Styled.CheckoutHeader>
               {activePanel === 4 && (
                 <>
-                  <Styled.CartItems>
-                    {cart.map((cartItem, index) => {
-                      return (
-                        <Styled.CartItem key={index}>
-                          <Heading size={2} font='ChronicleCondensed' text={cartItem.name} />
-                          <Paragraph size={2} font='Cera'>
-                            £{cartItem.price ? cartItem.price : '0.00 - A free gift from us to you.'}
-                          </Paragraph>
-                        </Styled.CartItem>
-                      )
-                    })}
-                  </Styled.CartItems>
+                  <Cart viewOnly />
                   <EditButton text='Continue' onClick={() => setActivePanel(activePanel + 1)} />
                 </>
               )}
@@ -172,7 +275,7 @@ const Checkout: FC = (): ReactElement => {
               <Styled.CheckoutHeader>
                 <Heading size={2} font='ChronicleCondensed' text='5. Payment' noMargin />
               </Styled.CheckoutHeader>
-              {activePanel === 5 && <div>Payment</div>}
+              {activePanel === 5 && <PaymentElement id='payment-element' options={paymentElementOptions} />}
             </Styled.CheckoutPanel>
           </Styled.CheckoutPanels>
           <Button type='submit' text='Checkout Now' size={1} />

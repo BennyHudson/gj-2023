@@ -10,9 +10,8 @@ export const subscriptionProductsQuery = {
             name
             regularPrice(format: RAW)
             signUpFee
-            price(context: RAW)
-            onSale
-            salePrice(format: RAW)
+            subscriptionPeriod: price(context: DEFAULT, exclude: [SIGN_UP_FEE,SUBSCRIPTION_LENGTH,SUBSCRIPTION_PRICE,TRAIL_LENGTH])
+            subscriptionPrice: price(context: DEFAULT, exclude: [SIGN_UP_FEE,SUBSCRIPTION_LENGTH,SUBSCRIPTION_PERIOD,TRAIL_LENGTH])
           }
         }
       }

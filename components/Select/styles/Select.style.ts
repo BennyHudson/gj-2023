@@ -6,6 +6,14 @@ import { StyledSelectProps } from './Select.style.types'
 export const SelectWrapper = styled.div(
   (): FlattenSimpleInterpolation => css`
     position: relative;
+
+    .styled-select {
+      appearance: none;
+
+      &::-ms-expand {
+        display: none;
+      }
+    }
   `,
 )
 

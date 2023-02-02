@@ -11,6 +11,7 @@ import Heading from '@components/Heading'
 import * as Styled from './styles/ClubHero.style'
 
 import { ClubHeroProps } from './ClubHero.types'
+import Overlay from '@components/Overlay'
 
 const ClubHero: FC<ClubHeroProps> = ({ title, featuredImage, subtitle }: ClubHeroProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps
@@ -23,6 +24,7 @@ const ClubHero: FC<ClubHeroProps> = ({ title, featuredImage, subtitle }: ClubHer
           <Heading size={1} font='Cera' text={subtitle} inverse />
         </Styled.HeroContent>
       </Section>
+      <Overlay />
       <Styled.BackgroundImage>
         <Image src={featuredImageUrl(featuredImage)} fill alt='' priority quality={100} />
       </Styled.BackgroundImage>

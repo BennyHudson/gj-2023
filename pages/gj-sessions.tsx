@@ -1,7 +1,6 @@
 import React, { FC, ReactElement, useEffect, useContext } from 'react'
 
 import client from '@lib/apollo-client'
-import { gql } from '@apollo/client'
 
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
@@ -16,6 +15,7 @@ import BannerAdvert from '@components/BannerAdvert'
 import SessionsFeed from '@components/SessionsFeed'
 import SessionsSponsor from '@components/SessionsSponsor'
 import PageLayout from '@components/PageLayout'
+import { sessionsQuery } from '@queries/pages/sessions'
 
 const SessionsPage: FC = ({ pageData, featuredArticle, headerNav, footerNav }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -37,7 +37,7 @@ const SessionsPage: FC = ({ pageData, featuredArticle, headerNav, footerNav }): 
           categories={featuredArticle.articles.nodes[0].categories}
         />
       </SessionsHeader>
-      <BannerAdvert />
+      <BannerAdvert slot='GJ_970x250_001' />
       <SessionsFeed />
       <SessionsSponsor
         sponsor={{
@@ -57,65 +57,7 @@ export default SessionsPage
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
-  const pageData = await client.query({
-    query: gql`
-      query sessionsPage {
-        page(id: 388179, idType: DATABASE_ID) {
-          title
-          seo {
-            breadcrumbs {
-              text
-              url
-            }
-            canonical
-            cornerstone
-            focuskw
-            metaDesc
-            metaKeywords
-            metaRobotsNofollow
-            metaRobotsNoindex
-            opengraphAuthor
-            opengraphDescription
-            opengraphImage {
-              sourceUrl
-            }
-            opengraphModifiedTime
-            opengraphPublishedTime
-            opengraphPublisher
-            opengraphSiteName
-            opengraphTitle
-            opengraphType
-            opengraphUrl
-            readingTime
-            schema {
-              articleType
-              pageType
-            }
-            title
-            twitterDescription
-            twitterImage {
-              sourceUrl
-            }
-            twitterTitle
-          }
-          sessions {
-            sessions {
-              sessionsIntroText
-              sponsorBackgroundImage {
-                sourceUrl
-              }
-              sponsorButtonText
-              sponsorContent
-              sponsorLink
-              sponsorLogoAlt {
-                sourceUrl
-              }
-            }
-          }
-        }
-      }
-    `,
-  })
+  const pageData = await client.query(sessionsQuery)
   const sessionFeature = await client.query(sessionsFeatureQuery)
 
   return {

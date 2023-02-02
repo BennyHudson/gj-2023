@@ -10,15 +10,16 @@ import { freeGiftQuery } from '@queries/global/free-gift'
 
 import PageLayout from '@components/PageLayout'
 import ClubOverview from '@components/ClubOverview'
-import ClubAdverts from '@components/ClubAdverts'
 import ClubGift from '@components/ClubGift'
 import ClubBuy from '@components/ClubBuy'
 import ClubPerks from '@components/ClubPerks'
 import ClubHero from '@components/ClubHero'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import { clubQuery } from '@queries/pages/club'
+import Section from '@components/Section'
 
-const ClubPage: FC = ({ pageData, headerNav, footerNav, subscriptionProducts, freeGift }): ReactElement => {
+const ClubPage: FC = ({ pageData, headerNav, footerNav, subscriptionProducts, freeGift, subscriptionOverview }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -32,12 +33,13 @@ const ClubPage: FC = ({ pageData, headerNav, footerNav, subscriptionProducts, fr
         subtitle={pageData.subscriptionPage.club.description}
         featuredImage={pageData.featuredImage.node.sourceUrl}
       />
-      <ClubAdverts adverts={pageData.subscriptionPage.club.adImages} />
-      <ClubOverview overview={pageData.subscriptionPage.club.subscriptionOverview} />
+      <ClubOverview overview={subscriptionOverview} />
       <ClubGift freeGift={freeGift} />
-      <ClubBuy products={subscriptionProducts} freeGift={freeGift} />
-      <ClubPerks perks={pageData.subscriptionPage.club.subscriptionPerks} />
-      <ClubBuy products={subscriptionProducts} />
+      <ClubBuy products={subscriptionProducts} freeGift={freeGift} offerCode={pageData.subscriptionPage.club.clubhouseOffer} />
+      <Section>
+        <ClubPerks perks={pageData.subscriptionPage.club.subscriptionPerks} title='Join the club.' subtitle='Scroll to see the perks' />
+      </Section>
+      <ClubBuy products={subscriptionProducts} offerCode={pageData.subscriptionPage.club.clubhouseOffer} />
     </PageLayout>
   )
 }
@@ -49,87 +51,7 @@ export async function getStaticProps() {
   const footerNav = await client.query(footerNavQuery)
   const subscriptionProducts = await client.query(subscriptionProductsQuery)
   const freeGift = await client.query(freeGiftQuery)
-  const clubPage = await client.query({
-    query: gql`
-      query clubQuery {
-        page(id: "74300", idType: DATABASE_ID) {
-          title
-          featuredImage {
-            node {
-              sourceUrl
-            }
-          }
-          seo {
-            breadcrumbs {
-              text
-              url
-            }
-            canonical
-            cornerstone
-            focuskw
-            metaDesc
-            metaKeywords
-            metaRobotsNofollow
-            metaRobotsNoindex
-            opengraphAuthor
-            opengraphDescription
-            opengraphImage {
-              sourceUrl
-            }
-            opengraphModifiedTime
-            opengraphPublishedTime
-            opengraphPublisher
-            opengraphSiteName
-            opengraphTitle
-            opengraphType
-            opengraphUrl
-            readingTime
-            schema {
-              articleType
-              pageType
-            }
-            title
-            twitterDescription
-            twitterImage {
-              sourceUrl
-            }
-            twitterTitle
-          }
-          subscriptionPage {
-            club {
-              adImages {
-                adImage {
-                  sourceUrl
-                }
-              }
-              subtitle
-              description
-              subscriptionOverview {
-                item {
-                  description
-                  title
-                }
-              }
-              subscriptionPerks {
-                backgroundImage {
-                  sourceUrl
-                }
-                content
-                hasLink
-                link {
-                  title
-                  url
-                }
-                textAlignement
-                textColor
-                title
-              }
-            }
-          }
-        }
-      }
-    `,
-  })
+  const clubPage = await client.query(clubQuery)
 
   return {
     props: {
@@ -138,6 +60,7 @@ export async function getStaticProps() {
       pageData: clubPage.data.page,
       subscriptionProducts: subscriptionProducts.data.products.nodes,
       freeGift: freeGift.data.products.nodes[0],
+      subscriptionOverview: clubPage.data.product.subscriptionPerks.subscriptionPerks
     },
   }
 }

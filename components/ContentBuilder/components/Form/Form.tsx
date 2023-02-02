@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import React, { ReactElement, FC } from 'react'
+import React, { ReactElement, FC, useState } from 'react'
 import { useQuery } from '@apollo/client'
 import { Formik } from 'formik'
 
@@ -21,19 +21,46 @@ import NameField from '@components/NameField'
 const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
   const { loading, data } = useQuery(formQuery(formId).query)
 
-  // console.log(data)
-
-  if (loading) return <div>Loading...</div>
-
   const initialValues = data && data.gfForm.formFields.nodes.reduce((acc, curr) => ((acc[`input_${curr.id}`] = ''), acc), {})
 
-  // console.log(initialValues)
+  const [ confirmationMessage, setConfirmationMessage ] = useState()
+  const [ validationMessages, setValidationMessages ] = useState({})
+  const [ isValid, setIsValid ] = useState(true)
+  const [ isSubmitting, setIsSubmitting ] = useState(false)
 
+  if (loading) return <div>Loading...</div>
+  
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values) => {
+      onSubmit={async (values) => {
+        // setIsSubmitting(true)
+
+        // const checkValues = Object.keys(values).forEach((key) => {
+        //   if (values[key] instanceof Array) {
+        //     console.log(values[key])
+        //   }
+        // })
+
         console.log(values)
+
+        const formResponse = await fetch(`/api/forms/${formId}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(values)
+        })
+
+        // const response = await formResponse.json()
+
+        // setIsSubmitting(false)
+        // setIsValid(response.is_valid)
+
+        // if (response.status === 200) {
+        //   setConfirmationMessage(response.confirmation_message)
+        //   return
+        // }
+
+        // setValidationMessages(response.validation_messages)
       }}
     >
       {() => (

@@ -10,16 +10,16 @@ import FieldWrapper from '@components/FieldWrapper'
 
 const NameField: FC<NameFieldProps> = (props: NameFieldProps): ReactElement => {
   return (
-    <FieldWrapper label={props.label} labelPlacement={props.labelPlacement}>
+    <FieldWrapper label={props.label} labelPlacement={props.labelPlacement} validationMessage={props.validationMessage}>
       <Styled.NameFields>
         {props.inputs.map((input, index) => {
           if (input.isHidden) return
 
           if (input.choices) {
-            return <Select {...input} key={index} databaseId={input.id} labelPlacement={props.labelPlacement} />
+            return <Select {...input} key={index} labelPlacement={props.labelPlacement} />
           }
 
-          return <TextField {...input} key={index} databaseId={input.id} labelPlacement={props.labelPlacement} />
+          return <TextField {...input} key={index} labelPlacement={props.labelPlacement} />
         })}
       </Styled.NameFields>
     </FieldWrapper>
