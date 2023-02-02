@@ -33,7 +33,7 @@ const LandingPage: FC = ({ pageData, headerNav, footerNav, partners, clubContent
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: `${pageData.title} | The Gentleman\'s Journal` }}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: `${pageData.title} | The Gentleman's Journal` }}>
       <ClubHero
         title={pageData.title}
         subtitle={pageData.landingPageContent.subtitle}

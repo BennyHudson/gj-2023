@@ -11,7 +11,7 @@ const formHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   myHeaders.append('Authorization', `Basic ${auth}`)
 
   
-  let formResponses = req.body
+  const formResponses = req.body
 
 
 
