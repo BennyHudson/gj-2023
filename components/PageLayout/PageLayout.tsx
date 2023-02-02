@@ -19,6 +19,10 @@ const PageLayout: FC<PageLayoutProps> = ({ children, headerNav, footerNav, seo }
   const useFeatureHeader = (): HeaderProps['headerStyle'] => {
     if (pathname === '/latest') return 'standard'
     if (pathname === '/house-notes') return 'standard'
+    if (pathname === '/checkout') return 'standard'
+    if (pathname === '/search') return 'standard'
+    if (pathname === '/clubhouse') return 'standard'
+    if (pathname === '/newsletter') return 'standard'
     if (pathname.includes('category')) return 'standard'
     if (pathname.includes('/podcasts/')) return 'standard'
     return 'feature'
