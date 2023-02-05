@@ -36,6 +36,7 @@ const ClubBuy: FC = ({ products, freeGift, offerCode }): ReactElement => {
         <Styled.Products>
           {products.map((product, index) => {
             const subscriptionLength = product.subscriptionPeriod.match(/\d/g)
+            const onSale = parseFloat(product.salePrice) > parseFloat(product.signUpFee)
             return (
               <Styled.Product key={index}>
                 <div>
@@ -44,7 +45,7 @@ const ClubBuy: FC = ({ products, freeGift, offerCode }): ReactElement => {
                   <Paragraph inverse font='Cera'>
                     {product.signUpFee ? 
                       <>
-                        <del>£{product.subscriptionPrice.trim()}</del> £{product.signUpFee} for the first year
+                        {product.salePrice && <del>£{onSale ? product.subscriptionPrice.trim() : product.regularPrice}</del>} £{product.signUpFee} {onSale ? 'for the first year' : product.subscriptionPeriod}
                       </>
                       : 
                       `£${product.subscriptionPrice} ${product.subscriptionPeriod}`

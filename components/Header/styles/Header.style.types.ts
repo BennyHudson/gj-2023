@@ -9,4 +9,5 @@ export interface StyledHeaderProps {
   overrideHeaderStyle: boolean
   searchResults: boolean
   fixed: boolean
+  topPosition: number
 }

@@ -64,23 +64,10 @@ const Checkout: FC = (): ReactElement => {
       if (status === 'succeeded') {
         setMessage('Payment succeeded!')
 
-        const subscription = await fetch('/api/subscription/create', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            customerId,
-            stripeCustomerId: stripeCustomerId.customerId,
-            paymentMethod: payment_method,
-            billingAddress,
-            shippingAddress,
-            cart,
-          })
-        })
-
-        if (subscription) {
-          // AUTO LOGIN HERE
-          router.push('/clubhouse')
-        }
+        // if (subscription) {
+        //   // AUTO LOGIN HERE
+        //   // router.push('/clubhouse')
+        // }
       }
 
       // switch (status) {
@@ -144,20 +131,39 @@ const Checkout: FC = (): ReactElement => {
           return
         }
 
-        setBillingAddress(values.billing)
-        setShippingAddress(values.shipping)
-
         // Create Customer
-        // const createCustomer = await fetch('/api/user/create', {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify(values),
-        // })
+        const createCustomer = await fetch('/api/user/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(values),
+        })
 
-        // if (createCustomer.status !== 200) return
+        const customer = await createCustomer.json()
+        if (createCustomer.status !== 200) return
         
-        // const customer = await createCustomer.json()
-        // setCustomerId(customer.id)
+        // Create Subscription
+        const subscription = await fetch('/api/subscription/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            customerId: customer.id,
+            billingAddress: values.billing, 
+            shippingAddress: values.shipping,
+            cart,
+          })
+        })
+
+        // Create Order
+        const order = await fetch('/api/order/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            billingAddress: values.billing, 
+            shippingAddress: values.shipping,
+            cart,
+          })
+        })
+
         const { error } = await stripe.confirmPayment({
           elements,
           confirmParams: {

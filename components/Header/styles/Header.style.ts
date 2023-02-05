@@ -65,6 +65,8 @@ export const AnnouncementBar = styled.div((props: StyledHeaderProps): FlattenSim
   color: ${props.theme.colours.white};
   font-size: ${props.theme.typography.paragraph[1].fontSize};
   font-family: 'Cera Pro Semibold';
+  position: relative;
+  z-index: 10;
 `)
 
 type HeaderContentsProps = Pick<StyledHeaderProps, 'theme' | 'transparent'>

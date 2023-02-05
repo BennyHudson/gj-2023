@@ -14,8 +14,9 @@ export const Cart = styled.div((props: StyledCartProps): FlattenSimpleInterpolat
   `}
 `)
 
+type CartItemsProps = Pick<StyledCartProps, 'theme'>
 export const CartItems = styled.div(
-  (props: StyledCartProps): FlattenSimpleInterpolation => css`
+  (props: CartItemsProps): FlattenSimpleInterpolation => css`
     display: flex;
     flex-direction: column;
     gap: ${props.theme.spacing[4]}px;

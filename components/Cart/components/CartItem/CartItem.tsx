@@ -24,6 +24,14 @@ const CartItem: FC<CartItemProps> = ({
     localStorage.removeItem('cart')
   }
 
+  console.log(data)
+
+  const getProductPrice = (productData) => {
+    const { signUpFee, regularPrice, salePrice, subscriptionPeriod, subscriptionPrice } = productData.product
+    const onSale = parseFloat(salePrice) > parseFloat(signUpFee)
+    if (signUpFee) return `${parseFloat(signUpFee)} ${onSale ? 'for the first year' : subscriptionPeriod}`
+  }
+
   return (
     <Styled.CartItem>
       {data &&
@@ -31,8 +39,9 @@ const CartItem: FC<CartItemProps> = ({
           <div>
             <Heading size={2} font='ChronicleCondensed' text={data.product.name} />
             <Paragraph size={2} font='Cera'>
-              £{data.product.price ? data.product.price : '0.00 - A free gift from us to you.'}
+              £{data.product.regularPrice ? getProductPrice(data) : '0.00 - A free gift from us to you.'}
             </Paragraph>
+            {data.product.regularPrice && <Paragraph text={`Renews ${data.product.subscriptionPeriod} at £${data.product.subscriptionPrice} until cancelled.`} size={1} font='Cera' />}
           </div>
           {removeable && <EditButton onClick={clearCart} text='Remove' />}
         </>

@@ -2,7 +2,6 @@
 import { WooCommerce } from '../WooCommerce'
 
 export default async function handler(req, res) {
-  // This is your test secret API key.
   const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
   const customer = await stripe.customers.create()
@@ -16,11 +15,11 @@ export default async function handler(req, res) {
       const itemDetails = await WooCommerce.get(`products/${cartItem}`)
       const subscriptionFee = itemDetails.data.meta_data.find((meta) => meta.key === '_subscription_sign_up_fee')
       if (subscriptionFee) {
-        amount = amount + parseInt(subscriptionFee.value)
+        amount = amount + parseFloat(subscriptionFee.value)
         return
       }
 
-      amount = amount + parseInt(itemDetails.data.price)
+      amount = amount + parseFloat(itemDetails.data.price)
     }))
 
     return amount
@@ -32,7 +31,7 @@ export default async function handler(req, res) {
   const paymentIntent = await stripe.paymentIntents.create({
     customer: customer.id,
     setup_future_usage: 'off_session',
-    amount: 30,
+    amount: 40,
     currency: 'gbp',
     automatic_payment_methods: {
       enabled: true,

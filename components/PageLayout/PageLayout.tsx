@@ -23,6 +23,7 @@ const PageLayout: FC<PageLayoutProps> = ({ children, headerNav, footerNav, seo }
     if (pathname === '/search') return 'standard'
     if (pathname === '/clubhouse') return 'standard'
     if (pathname === '/newsletter') return 'standard'
+    if (pathname === '/cart') return 'standard'
     if (pathname.includes('category')) return 'standard'
     if (pathname.includes('/podcasts/')) return 'standard'
     return 'feature'

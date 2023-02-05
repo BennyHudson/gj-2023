@@ -3,38 +3,27 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { WooCommerce } from '../WooCommerce'
 
 export default async function userHandler(req: NextApiRequest, res: NextApiResponse) {
+  const {billing, shipping} = req.body
+
   const customerData = {
-    email: req.body.billing.email,
-    first_name: req.body.billing.first_name,
-    last_name: req.body.billing.last_name,
-    username: `${req.body.billing.first_name}.${req.body.billing.last_name}`,
-    billing: {
-      first_name: req.body.billing.first_name,
-      last_name: req.body.billing.last_name,
-      company: req.body.billing.company,
-      address_1: req.body.billing.address_1,
-      address_2: req.body.billing.address_2,
-      city: req.body.billing.city,
-      state: req.body.billing.state,
-      postcode: req.body.billing.postcode,
-      country: req.body.billing.country,
-      email: req.body.billing.email,
-      phone: req.body.billing.phone,
-    },
+    email: billing.email,
+    first_name: billing.first_name,
+    last_name: billing.last_name,
+    username: billing.email,
+    billing,
     shipping: {
-      first_name: req.body.billing.first_name,
-      last_name: req.body.billing.last_name,
-      company: req.body.billing.company,
-      address_1: req.body.shipping.address_1,
-      address_2: req.body.shipping.address_2,
-      city: req.body.shipping.city,
-      state: req.body.shipping.state,
-      postcode: req.body.shipping.postcode,
-      country: req.body.shipping.country,
+      first_name: billing.first_name,
+      last_name: billing.last_name,
+      ...shipping,
     }
   }
 
-  const wooCommerceData = await WooCommerce.post('customers', customerData)  
-  res.status(200).json(wooCommerceData.data)
+  WooCommerce.post('customers', customerData)
+    .then((response) => {
+      res.status(200).json(response.data)
+    })
+    .catch((error) => {
+      res.status(error.response.data.data.status).json(error.response.data)
+    })
 
 }

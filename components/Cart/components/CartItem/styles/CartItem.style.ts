@@ -7,7 +7,7 @@ export const CartItem = styled.div(
     border-bottom: 1px solid ${props.theme.colours.midGrey};
     padding-bottom: ${props.theme.spacing[4]}px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     gap: ${props.theme.spacing[4]}px;
 
