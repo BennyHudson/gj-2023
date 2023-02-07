@@ -9,7 +9,7 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: 'Basic dGdqOlByZXNzbGFicyMx',
+      // authorization: 'Basic dGdqOlByZXNzbGFicyMx',
     },
   }
 })

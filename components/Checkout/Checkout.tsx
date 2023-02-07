@@ -8,6 +8,8 @@ import {
   useStripe,
   useElements
 } from '@stripe/react-stripe-js'
+import jwt_decode from 'jwt-decode'
+import useSwr from 'swr'
 
 import Heading from '@components/Heading'
 import EditButton from '@components/EditButton'
@@ -23,19 +25,21 @@ import { countries } from './countries'
 import PageContext, { PageContextProps } from '@context/PageContext'
 import { useRouter } from 'next/router'
 
+const fetcher = (url: string) => fetch(url).then((res) => res.json())
+
 const Checkout: FC = (): ReactElement => {
-  const { setCustomerId, customerId, cart } = useContext(PageContext) as PageContextProps
+  const { setCustomerId, customerId, cart, setToken, setCart, token } = useContext(PageContext) as PageContextProps
 
   const [activePanel, setActivePanel] = useState(1)
-  const [billingAddress, setBillingAddress] = useState({})
-  const [shippingAddress, setShippingAddress] = useState({})
   const [message, setMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
   const stripe = useStripe()
   const elements = useElements()
-
   const router = useRouter()
+
+  const decodedToken = jwt_decode(token)
+  const { data } = useSwr(token ? `/api/user/${decodedToken.data.user.id}` : null, fetcher)
 
   useEffect(() => {
     if (!stripe) {
@@ -62,29 +66,23 @@ const Checkout: FC = (): ReactElement => {
       const stripeCustomerId = await paymentMethod.json()
       
       if (status === 'succeeded') {
-        setMessage('Payment succeeded!')
-
-        // if (subscription) {
-        //   // AUTO LOGIN HERE
-        //   // router.push('/clubhouse')
-        // }
+        setMessage('Your purchase was successful, you are being redirected to the Clubhouse')
+        router.push('/clubhouse')
+        setCart([])
+        return
       }
 
-      // switch (status) {
-      // case 'succeeded':
-        
-
-      //   break
-      // case 'processing':
-      //   setMessage('Your payment is processing.')
-      //   break
-      // case 'requires_payment_method':
-      //   setMessage('Your payment was not successful, please try again.')
-      //   break
-      // default:
-      //   setMessage('Something went wrong.')
-      //   break
-      // }
+      switch (status) {
+      case 'processing':
+        setMessage('Your payment is processing.')
+        break
+      case 'requires_payment_method':
+        setMessage('Your payment was not successful, please try again.')
+        break
+      default:
+        setMessage('Something went wrong.')
+        break
+      }
     })
   }, [stripe])
 
@@ -94,35 +92,41 @@ const Checkout: FC = (): ReactElement => {
 
   if (message) {
     return (
-      <>{message}</>
+      <>
+        {message}
+      </>
     )
   }
+
+  console.log(data)
 
   return (
     <Formik
       initialValues={{
         billing: {
-          first_name: 'Ben',
-          last_name: 'Hudson',
-          address_1: '3 Brookly Gardens',
+          first_name: '',
+          last_name: '',
+          address_1: '',
           address_2: '',
-          city: 'Fleet',
-          state: 'Hants',
-          postcode: 'Gu51 3LL',
-          country: 'United Kingdom',
-          email: 'ben.hudson20687@gmail.com',
-          phone: '0757342833',
+          city: '',
+          state: '',
+          postcode: '',
+          country: '',
+          email: '',
+          phone: '',
         },
         shipping: {
-          first_name: 'Ben',
-          last_name: 'Hudson',
-          address_1: '3 Brookly Gardens',
+          first_name: '',
+          last_name: '',
+          address_1: '',
           address_2: '',
-          city: 'Fleet',
-          state: 'Hants',
-          postcode: 'Gu51 3LL',
-          country: 'United Kingdom',
+          city: '',
+          state: '',
+          postcode: '',
+          country: '',
         },
+        password: '',
+        confirmPassword: '',
       }}
       onSubmit={async (values) => {
         if (!stripe || !elements) {
@@ -139,10 +143,29 @@ const Checkout: FC = (): ReactElement => {
         })
 
         const customer = await createCustomer.json()
-        if (createCustomer.status !== 200) return
+        // if (createCustomer.status !== 200) return
+
+        setCustomerId(customer.id)
+
+        const formData = new FormData()
+
+        formData.append('username', values.billing.email)
+        formData.append('password', values.password)
+
+        const tokenData = await fetch('https://dev.thegentlemansjournal.com/wp-json/jwt-auth/v1/token', {
+          method: 'POST',
+          body: formData,
+          redirect: 'follow',
+        })
+
+        const login = await tokenData.json()
+        if (login.data) {
+          setToken(login.data.token)
+          localStorage.setItem('gjToken', login.data.token)
+        }
         
         // Create Subscription
-        const subscription = await fetch('/api/subscription/create', {
+        await fetch('/api/subscription/create', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -154,13 +177,14 @@ const Checkout: FC = (): ReactElement => {
         })
 
         // Create Order
-        const order = await fetch('/api/order/create', {
+        fetch('/api/order/create', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             billingAddress: values.billing, 
             shippingAddress: values.shipping,
             cart,
+            customer_id: customer.id,
           })
         })
 
@@ -279,9 +303,26 @@ const Checkout: FC = (): ReactElement => {
             </Styled.CheckoutPanel>
             <Styled.CheckoutPanel>
               <Styled.CheckoutHeader>
-                <Heading size={2} font='ChronicleCondensed' text='5. Payment' noMargin />
+                <Heading size={2} font='ChronicleCondensed' text='5. Create a Password' noMargin />
+                {activePanel > 5 && (
+                  <Styled.IconButton onClick={() => setActivePanel(5)}>
+                    <FontAwesomeIcon icon={faPenNib as IconProp} /> Edit
+                  </Styled.IconButton>
+                )}
               </Styled.CheckoutHeader>
-              {activePanel === 5 && <PaymentElement id='payment-element' options={paymentElementOptions} />}
+              {activePanel === 5 && (
+                <>
+                  <TextField isRequired label='Password' id='password' target='password' type='password' />
+                  <TextField isRequired label='Confirm Password' id='confirmPassword' target='confirmPassword' type='password' />
+                  <EditButton text='Continue' onClick={() => setActivePanel(activePanel + 1)} />
+                </>
+              )}
+            </Styled.CheckoutPanel>
+            <Styled.CheckoutPanel>
+              <Styled.CheckoutHeader>
+                <Heading size={2} font='ChronicleCondensed' text='6. Payment' noMargin />
+              </Styled.CheckoutHeader>
+              {activePanel === 6 && <PaymentElement id='payment-element' options={paymentElementOptions} />}
             </Styled.CheckoutPanel>
           </Styled.CheckoutPanels>
           <Button type='submit' text='Checkout Now' size={1} />
@@ -292,3 +333,4 @@ const Checkout: FC = (): ReactElement => {
 }
 
 export default Checkout
+

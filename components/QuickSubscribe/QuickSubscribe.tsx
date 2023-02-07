@@ -19,6 +19,7 @@ const QuickSubscribe: FC<QuickSubscribeProps> = ({ products, freeGift }: QuickSu
 
   const addToCart = () => {
     setCart([selectedProduct, freeGift])
+    localStorage.setItem('cart', `${selectedProduct.databaseId},${freeGift.databaseId}`)
     router.push('/cart')
   }
 

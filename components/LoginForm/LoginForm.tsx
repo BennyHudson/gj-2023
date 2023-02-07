@@ -19,7 +19,6 @@ const LoginForm: FC<LoginFormProps> = (): ReactElement => {
         input_2: '',
       }}
       onSubmit={async (values) => {
-        const myHeaders = new Headers()
         const formData = new FormData()
 
         formData.append('username', values.input_1)
@@ -27,7 +26,6 @@ const LoginForm: FC<LoginFormProps> = (): ReactElement => {
 
         const tokenData = await fetch('https://dev.thegentlemansjournal.com/wp-json/jwt-auth/v1/token', {
           method: 'POST',
-          headers: myHeaders,
           body: formData,
           redirect: 'follow',
         })

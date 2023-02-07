@@ -12,6 +12,10 @@ export const ValueWithLabel = styled.div(
     font-size: ${props.theme.typography.paragraph[2].fontSize};
     line-height: ${props.theme.typography.paragraph[2].lineHeight};
 
+    ${props.valueType === 'password' && css`
+      letter-spacing: 4px;
+    `}
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -22,5 +26,6 @@ export const Label = styled.span(
   (): FlattenSimpleInterpolation => css`
     font-family: 'Cera Pro Semibold';
     font-weight: 600;
+    letter-spacing: normal;
   `,
 )
