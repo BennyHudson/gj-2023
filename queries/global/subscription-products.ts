@@ -13,6 +13,7 @@ export const subscriptionProductsQuery = {
             signUpFee
             subscriptionPeriod: price(context: DEFAULT, exclude: [SIGN_UP_FEE,SUBSCRIPTION_LENGTH,SUBSCRIPTION_PRICE,TRAIL_LENGTH])
             subscriptionPrice: price(context: DEFAULT, exclude: [SIGN_UP_FEE,SUBSCRIPTION_LENGTH,SUBSCRIPTION_PERIOD,TRAIL_LENGTH])
+            shippingClassId
           }
         }
       }

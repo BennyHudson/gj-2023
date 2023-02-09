@@ -17,6 +17,7 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
   const { setActiveNavElement, cart } = useContext(PageContext) as PageContextProps
 
   const [clientSecret, setClientSecret] = useState('')
+  const [paymentIntentId, setPaymentIntentId] = useState('')
 
   const stripePromise = loadStripe('pk_test_8iwfeNCkfxOmOZkWESHhGYwe')
 
@@ -29,6 +30,7 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
 
     const response = await paymentIntent.json()
     setClientSecret(response.clientSecret)
+    setPaymentIntentId(response.id)
   }
 
   useEffect(() => {
@@ -36,8 +38,9 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
   }, [setActiveNavElement])
 
   useEffect(() => {
-    cart && createPaymentIntent()
-  }, [])
+    if (!cart) return
+    createPaymentIntent()
+  }, [cart])
 
   const appearance = {
     theme: 'stripe',
@@ -56,7 +59,7 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
       >
         {clientSecret &&
           <Elements options={options} stripe={stripePromise}>
-            <Checkout />
+            <Checkout paymentIntent={paymentIntentId} />
           </Elements>
         }
       </SplitPageTemplate>

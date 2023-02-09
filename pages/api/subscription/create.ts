@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
 import { WooCommerce } from '../WooCommerce'
 
 export default async function userHandler(req: NextApiRequest, res: NextApiResponse) {
-  const { customerId, stripeCustomerId, paymentMethod, billingAddress, shippingAddress, cart } = req.body
+  const { customerId, stripeCustomerId, paymentMethod, billingAddress, shippingAddress, cart, shippingRate } = req.body
 
   const customerPayload = {
     payment_method: 'stripe',
@@ -23,12 +23,7 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
       const subscription = await WooCommerce.post('subscriptions', {
         ...customerPayload,
         customer_id: customerId,
-        // payment_details: {
-        //   post_meta: {
-        //     _stripe_customer_id: stripeCustomerId,
-        //     _stripe_source_id: paymentMethod,
-        //   }
-        // },
+        paymentMethod: 'stripe',
         billing_period: 'year',
         billing_interval: parseInt(billingInterval.value),
         start_date: dayjs().format('YYYY-MM-DD HH:mm:ss'),
@@ -36,7 +31,14 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
         line_items: [{
           product_id: cartItem,
           quantity: 1,
-        }]
+        }],
+        shipping_lines: [
+          {
+            method_id: shippingRate.id,
+            method_title: shippingRate.title,
+            total: `${shippingRate.cost}`
+          }
+        ],
       })
 
       res.status(subscription.status).json(subscription.data)

@@ -4,16 +4,10 @@ import { WooCommerce } from '../WooCommerce'
 export default async function handler(req, res) {
   const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
-  const customer = await stripe.customers.create()
-
-  const cart = req.body as string[]
-
-  console.log(cart)
-
   const getProductTotal = async () => {
     let amount = 0
 
-    await Promise.all(cart.map(async (cartItem) => {
+    await Promise.all(req.body.cart.map(async (cartItem) => {
       const itemDetails = await WooCommerce.get(`products/${cartItem}`)
       const subscriptionFee = itemDetails.data.meta_data.find((meta) => meta.key === '_subscription_sign_up_fee')
       if (subscriptionFee) {
@@ -27,21 +21,13 @@ export default async function handler(req, res) {
     return amount
   }
 
-  const total = await getProductTotal()
+  const subTotal = await getProductTotal()
 
-  // Create a PaymentIntent with the order amount and currency
-  const paymentIntent = await stripe.paymentIntents.create({
-    customer: customer.id,
-    setup_future_usage: 'off_session',
+  const total = subTotal + req.body.shippingRate.cost
+
+  await stripe.paymentIntents.update(req.body.paymentIntent, {
     amount: total * 100,
-    currency: 'gbp',
-    automatic_payment_methods: {
-      enabled: true,
-    },
   })
 
-  res.send({
-    id: paymentIntent.id,
-    clientSecret: paymentIntent.client_secret,
-  }) 
+  res.status(200)
 };

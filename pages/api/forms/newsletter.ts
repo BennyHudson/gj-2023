@@ -18,7 +18,7 @@ const newsletterHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     }),
   }
 
-  const result = await fetch('https://dev.thegentlemansjournal.com/wp-json/gf/v2/forms/342/submissions', requestOptions)
+  const result = await fetch('https://cms.thegentlemansjournal.com/wp-json/gf/v2/forms/342/submissions', requestOptions)
   const response = await result.json()
   
   res.status(result.status)

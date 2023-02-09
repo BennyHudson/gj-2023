@@ -24,7 +24,7 @@ const LoginForm: FC<LoginFormProps> = (): ReactElement => {
         formData.append('username', values.input_1)
         formData.append('password', values.input_2)
 
-        const tokenData = await fetch('https://dev.thegentlemansjournal.com/wp-json/jwt-auth/v1/token', {
+        const tokenData = await fetch('https://cms.thegentlemansjournal.com/wp-json/jwt-auth/v1/token', {
           method: 'POST',
           body: formData,
           redirect: 'follow',

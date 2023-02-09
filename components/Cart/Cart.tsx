@@ -4,6 +4,7 @@ import PageContext, { PageContextProps } from '@context/PageContext'
 
 import Paragraph from '@components/Paragraph'
 import Button from '@components/Button'
+import Heading from '@components/Heading'
 
 import CartItem from './components/CartItem'
 

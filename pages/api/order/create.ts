@@ -21,7 +21,6 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
     }),
   }
 
-  WooCommerce.post('orders', orderData)
-
-  res.status(200)
+  const order = await WooCommerce.post('orders', orderData)
+  res.status(200).json(order.data)
 }

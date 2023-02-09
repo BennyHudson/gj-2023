@@ -20,6 +20,7 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
   const [headerHeight, setHeaderHeight] = useState<PageContextProps['headerHeight']>(0)
   const [customerId, setCustomerId] = useState<PageContextProps['customerId']>()
   const [cart, setCart] = useState([])
+  const [shippingRate, setShippingRate] = useState()
 
   useEffect(() => {
     const gjToken = localStorage.getItem('gjToken')
@@ -55,6 +56,8 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
               setCustomerId,
               cart,
               setCart,
+              shippingRate,
+              setShippingRate,
             }}
           >
             <Component {...pageProps} />
