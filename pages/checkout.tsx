@@ -12,12 +12,15 @@ import SplitPageTemplate from '@components/SplitPageTemplate'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 import Checkout from '@components/Checkout'
+import { useRouter } from 'next/router'
 
 const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
   const { setActiveNavElement, cart } = useContext(PageContext) as PageContextProps
 
   const [clientSecret, setClientSecret] = useState('')
   const [paymentIntentId, setPaymentIntentId] = useState('')
+
+  const router = useRouter()
 
   const stripePromise = loadStripe('pk_test_8iwfeNCkfxOmOZkWESHhGYwe')
 
@@ -41,6 +44,12 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
     if (!cart) return
     createPaymentIntent()
   }, [cart])
+
+  useEffect(() => {
+    if (!cart.length) {
+      router.push('/cart')
+    }
+  }, [])
 
   const appearance = {
     theme: 'stripe',

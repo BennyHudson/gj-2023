@@ -15,7 +15,7 @@ import PageContext, { PageContextProps } from '@context/PageContext'
 import { freeGiftQuery } from '@queries/global/free-gift'
 
 const ClubPage: FC = ({ headerNav, footerNav, subscriptionProducts, freeGift }): ReactElement => {
-  const { token, setActiveNavElement } = useContext(PageContext) as PageContextProps
+  const { token, setActiveNavElement, customer } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
     setActiveNavElement(-1)
@@ -24,7 +24,7 @@ const ClubPage: FC = ({ headerNav, footerNav, subscriptionProducts, freeGift }):
   return (
     <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }}>
       <SplitPageTemplate image='https://www.thegentlemansjournal.com/wp-content/uploads/2022/12/John-Boyega-5-1.jpg'>
-        {token ? <MyAccount /> : <ClubhouseGateway products={subscriptionProducts} freeGift={freeGift} />}
+        {(token && customer) ? <MyAccount /> : <ClubhouseGateway products={subscriptionProducts} freeGift={freeGift} />}
       </SplitPageTemplate>
     </PageLayout>
   )

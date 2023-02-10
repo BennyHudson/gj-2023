@@ -14,6 +14,8 @@ import * as Styled from './styles/MyAccount.style'
 const MyAccount: FC = (): ReactElement => {
   const { setToken, customer, setCustomer } = useContext(PageContext) as PageContextProps
 
+  console.log(customer)
+
   const tabs = [
     {
       title: 'Your Details',
@@ -38,7 +40,7 @@ const MyAccount: FC = (): ReactElement => {
   return (
     <Styled.MyAccount>
       <Styled.MyAccountHeader>
-        <Heading text={`Welcome back, ${customer.first_name}`} font='ChronicleCondensed' size={3} noMargin />
+        <Heading text={`Welcome back, ${customer?.first_name}`} font='ChronicleCondensed' size={3} noMargin />
         <EditButton onClick={logoutHandler} text='Logout' />
       </Styled.MyAccountHeader>
       <Tabs tabs={tabs} />

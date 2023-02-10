@@ -20,9 +20,9 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
   const [activeNavElement, setActiveNavElement] = useState<PageContextProps['headerHeight']>(-1)
   const [headerHeight, setHeaderHeight] = useState<PageContextProps['headerHeight']>(0)
   const [customerId, setCustomerId] = useState<PageContextProps['customerId']>()
-  const [cart, setCart] = useState([])
-  const [shippingRate, setShippingRate] = useState()
-  const [customer, setCustomer] = useState()
+  const [cart, setCart] = useState<PageContextProps['cart']>([])
+  const [shippingRate, setShippingRate] = useState<PageContextProps['shippingRate']>()
+  const [customer, setCustomer] = useState<PageContextProps['customer']>()
   const [subscription, setSubscription] = useState()
 
   const getCustomerData = async (id: number) => {

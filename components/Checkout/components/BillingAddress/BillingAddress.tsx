@@ -1,15 +1,13 @@
 import React, { ReactElement, FC, useContext } from 'react'
-import { Formik, Form } from 'formik'
+import { Formik } from 'formik'
 
-import TextField from '@components/TextField'
-import Select from '@components/Select'
-import EditButton from '@components/EditButton'
+import BillingForm from '@components/BillingForm'
 
-import { countries } from '../../countries'
+import PageContext, { PageContextProps } from '@context/PageContext'
+
+import CheckoutPanel from '../CheckoutPanel'
 
 import { BillingAddressProps } from './BillingAddress.types'
-import CheckoutPanel from '../CheckoutPanel'
-import PageContext, { PageContextProps } from '@context/PageContext'
 
 const BillingAddress: FC<BillingAddressProps> = ({
   panelIndex,
@@ -19,8 +17,6 @@ const BillingAddress: FC<BillingAddressProps> = ({
   setCheckoutForm,
 }: BillingAddressProps): ReactElement => {
   const { customerId, customer } = useContext(PageContext) as PageContextProps
-
-  console.log(customer)
 
   return (
     <CheckoutPanel panelIndex={panelIndex} activePanel={activePanel} setActivePanel={setActivePanel} title='Billing Address'>
@@ -50,18 +46,9 @@ const BillingAddress: FC<BillingAddressProps> = ({
               setCheckoutForm(values)
               setActivePanel(activePanel + 1)
             }
-
           }}
         >
-          <Form>
-            <TextField isRequired label='Address Line 1' id='billing.address_1' target='billing.address_1' />
-            <TextField label='Address Line 2' id='billing.address_2' target='billing.address_2' />
-            <TextField isRequired label='Town' id='billing.city' target='billing.city' />
-            <TextField label='County' id='billing.state' target='billing.state' />
-            <TextField isRequired label='Postcode' id='billing.postcode' target='billing.postcode' />
-            <Select label='Country' choices={countries} isRequired id='billing.country' target='billing.country' />
-            <EditButton text='Continue' type='submit' />
-          </Form>
+          <BillingForm />
         </Formik>
       }
     </CheckoutPanel>
