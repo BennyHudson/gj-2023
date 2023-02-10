@@ -1,5 +1,5 @@
 import { Theme } from '@themes/gjTheme/gjTheme.types'
 
-export interface StyledPasswordProps {
+export interface StyledPaywallProps {
   theme: Theme
 }

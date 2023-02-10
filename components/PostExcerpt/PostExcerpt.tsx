@@ -22,7 +22,7 @@ const PostExcerpt: FC<PostExcerptProps> = ({
   featuredImage,
   priority = false,
 }: PostExcerptProps): ReactElement => {
-  const { token } = useContext(PageContext) as PageContextProps
+  const { subscription } = useContext(PageContext) as PageContextProps
   const membersOnly = categories && categories.nodes.find((category) => category.name === 'Members')
   return (
     <Styled.PostExcerpt href={uri}>
@@ -30,7 +30,7 @@ const PostExcerpt: FC<PostExcerptProps> = ({
       <Styled.Body>
         <Meta categories={categories} date={date} inverse={inverse} />
         <Styled.Title inverse={inverse}>
-          {!token && membersOnly && (
+          {(subscription?.status !== 'active' && membersOnly) && (
             <Styled.IconWrapper>
               <FontAwesomeIcon icon={faLockAlt as IconProp} />
             </Styled.IconWrapper>

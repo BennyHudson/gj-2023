@@ -18,7 +18,9 @@ const BillingAddress: FC<BillingAddressProps> = ({
   checkoutForm,
   setCheckoutForm,
 }: BillingAddressProps): ReactElement => {
-  const { customerId } = useContext(PageContext) as PageContextProps
+  const { customerId, customer } = useContext(PageContext) as PageContextProps
+
+  console.log(customer)
 
   return (
     <CheckoutPanel panelIndex={panelIndex} activePanel={activePanel} setActivePanel={setActivePanel} title='Billing Address'>
@@ -26,17 +28,17 @@ const BillingAddress: FC<BillingAddressProps> = ({
         <Formik
           initialValues={{
             billing: {
-              ...checkoutForm.billing,
-              address_1: '',
-              address_2: '',
-              city: '',
-              state: '',
-              postcode: '',
-              country: '',
+              ...checkoutForm?.billing,
+              address_1: customer?.billing?.address_1,
+              address_2: customer?.billing?.address_2,
+              city: customer?.billing?.city,
+              state: customer?.billing?.state,
+              postcode: customer?.billing?.postcode,
+              country: customer?.billing?.country,
             }
           }}
           onSubmit={async (values) => {
-            const updateUser = await fetch(`/api/user/update/${customerId}`, {
+            const updateUser = await fetch(`/api/user/update/${customer?.id || customerId}`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({

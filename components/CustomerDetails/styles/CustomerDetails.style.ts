@@ -21,3 +21,11 @@ export const DetailsBlock = styled.div(
     }
   `,
 )
+
+export const DetailsHeading = styled.div((props: StyledCustomerDetailsProps): FlattenSimpleInterpolation => css`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: ${props.theme.spacing[4]}px;
+  gap: ${props.theme.spacing[4]}px;
+`)

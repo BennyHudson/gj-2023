@@ -1,36 +1,16 @@
 import React, { ReactElement, FC, useState, useContext, useEffect } from 'react'
-import { Formik } from 'formik'
+import { useRouter } from 'next/router'
+import { useStripe } from '@stripe/react-stripe-js'
 
-import {
-  PaymentElement,
-  useStripe,
-  useElements
-} from '@stripe/react-stripe-js'
-import jwt_decode from 'jwt-decode'
-import useSwr from 'swr'
-
-import Heading from '@components/Heading'
-import EditButton from '@components/EditButton'
-import Button from '@components/Button'
-import TextField from '@components/TextField'
-import Select from '@components/Select'
-import NameField from '@components/NameField'
-import Cart from '@components/Cart'
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 import CustomerDetails from './components/CustomerDetails'
-
-import * as Styled from './styles/Checkout.style'
-
-import { countries } from './countries'
-import PageContext, { PageContextProps } from '@context/PageContext'
-import { useRouter } from 'next/router'
 import BillingAddress from './components/BillingAddress'
 import ShippingAddress from './components/ShippingAddress'
 import OrderSummary from './components/OrderSummary'
-import Password from './components/Password'
 import Payment from './components/Payment'
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json())
+import * as Styled from './styles/Checkout.style'
 
 const Checkout: FC = ({ paymentIntent }): ReactElement => {
   const { setCart } = useContext(PageContext) as PageContextProps

@@ -8,6 +8,8 @@ import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { Form, Formik } from 'formik'
 import PageContext, { PageContextProps } from '@context/PageContext'
 
+import * as Styled from './styles/Payment.style'
+
 const Payment: FC<PaymentProps> = ({
   panelIndex,
   activePanel,
@@ -94,7 +96,9 @@ const Payment: FC<PaymentProps> = ({
         }}
       >
         <Form>
-          <PaymentElement id='payment-element' options={paymentElementOptions} />
+          <Styled.PaymentWrapper>
+            <PaymentElement id='payment-element' options={paymentElementOptions} />
+          </Styled.PaymentWrapper>
           <Button type='submit' text='Checkout Now' size={1} />
         </Form>
       </Formik>

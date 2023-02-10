@@ -18,7 +18,7 @@ const ShippingAddress: FC<ShippingAddressProps> = ({
   checkoutForm,
   setCheckoutForm,
 }: ShippingAddressProps): ReactElement => {
-  const { customerId, cart, setShippingRate } = useContext(PageContext) as PageContextProps
+  const { customerId, cart, setShippingRate, customer } = useContext(PageContext) as PageContextProps
   return (
     <CheckoutPanel panelIndex={panelIndex} activePanel={activePanel} setActivePanel={setActivePanel} title='Shipping Address'> 
       {activePanel === panelIndex && 
@@ -27,16 +27,16 @@ const ShippingAddress: FC<ShippingAddressProps> = ({
             shipping: {
               first_name: checkoutForm.billing?.first_name,
               last_name: checkoutForm.billing?.last_name,
-              address_1: '',
-              address_2: '',
-              city: '',
-              state: '',
-              postcode: '',
-              country: '',
+              address_1: customer?.shipping?.address_1,
+              address_2: customer?.shipping?.address_2,
+              city: customer?.shipping?.city,
+              state: customer?.shipping?.state,
+              postcode: customer?.shipping?.postcode,
+              country: customer?.shipping?.country,
             },
           }}
           onSubmit={async (values) => {
-            const updateUser = await fetch(`/api/user/update/${customerId}`, {
+            const updateUser = await fetch(`/api/user/update/${customer?.id || customerId}`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({

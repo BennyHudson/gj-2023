@@ -1,6 +1,4 @@
-import React, { ReactElement, FC, useContext, useEffect, useState } from 'react'
-import jwt_decode from 'jwt-decode'
-import useSwr from 'swr'
+import React, { ReactElement, FC, useContext } from 'react'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
@@ -13,22 +11,17 @@ import EditButton from '@components/EditButton'
 
 import * as Styled from './styles/MyAccount.style'
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json())
-
 const MyAccount: FC = (): ReactElement => {
-  const { setToken, token } = useContext(PageContext) as PageContextProps
-
-  const decodedToken = jwt_decode(token)
-  const { data } = useSwr(token ? `/api/user/${decodedToken.data.user.id}` : null, fetcher)
+  const { setToken, customer, setCustomer } = useContext(PageContext) as PageContextProps
 
   const tabs = [
     {
       title: 'Your Details',
-      content: data && <CustomerDetails customer={data} />,
+      content: <CustomerDetails />,
     },
     {
       title: 'Subscriptions',
-      content: data && <CustomerSubs customer={data} />,
+      content: <CustomerSubs />,
     },
     {
       title: 'Members Content',
@@ -37,18 +30,17 @@ const MyAccount: FC = (): ReactElement => {
   ]
 
   const logoutHandler = () => {
+    setCustomer()
     setToken()
     localStorage.removeItem('gjToken')
   }
 
   return (
     <Styled.MyAccount>
-      {data && (
-        <Styled.MyAccountHeader>
-          <Heading text={`Welcome back, ${data.first_name}`} font='ChronicleCondensed' size={3} noMargin />
-          <EditButton onClick={logoutHandler} text='Logout' />
-        </Styled.MyAccountHeader>
-      )}
+      <Styled.MyAccountHeader>
+        <Heading text={`Welcome back, ${customer.first_name}`} font='ChronicleCondensed' size={3} noMargin />
+        <EditButton onClick={logoutHandler} text='Logout' />
+      </Styled.MyAccountHeader>
       <Tabs tabs={tabs} />
     </Styled.MyAccount>
   )

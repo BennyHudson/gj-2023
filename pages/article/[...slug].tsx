@@ -62,7 +62,10 @@ const Article: FC<ArticleData> = ({ data, headerNav, footerNav }: ArticleData): 
             additionalBylines: articleData.byLineAdditional?.otherByLines,
             sponsoredPost: articleData.sponsoredPost,
           }}
-          contentBuilder={articleData.articleAcf.contentBuilder}
+          contentBuilder={{
+            content: articleData.articleAcf.contentBuilder,
+            membersOnly: articleData.categories && articleData.categories.nodes.find((category) => category.name === 'Members'),
+          }}
           contentBuilderPrefix='Article_Articleacf_ContentBuilder'
           articleNote={articleNote}
         />

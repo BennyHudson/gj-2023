@@ -10,7 +10,7 @@ import Button from '@components/Button'
 import PageContext, { PageContextProps } from '@context/PageContext'
 
 const LoginForm: FC<LoginFormProps> = (): ReactElement => {
-  const { setToken } = useContext(PageContext) as PageContextProps
+  const { setToken, setCustomer, setCustomerId } = useContext(PageContext) as PageContextProps
 
   return (
     <Formik
@@ -33,6 +33,10 @@ const LoginForm: FC<LoginFormProps> = (): ReactElement => {
         const customer = await tokenData.json()
 
         if (customer.data) {
+          const customerDetails = await fetch(`/api/user/${customer.data.id}`)
+          const customerData = await customerDetails.json()
+          setCustomer(customerData)
+          setCustomerId(customerData.id)
           setToken(customer.data.token)
           localStorage.setItem('gjToken', customer.data.token)
         }
