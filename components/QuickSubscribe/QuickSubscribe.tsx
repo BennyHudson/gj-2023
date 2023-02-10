@@ -36,19 +36,22 @@ const QuickSubscribe: FC<QuickSubscribeProps> = ({ products, freeGift }: QuickSu
       <Styled.ProductList>
         <Heading text='Subscribe now:' font='ChronicleCondensed' size={3} />
         {products.map((product, index) => {
+          const subscriptionLength = product.subscriptionPeriod.match(/\d/g)
+          const onSale = parseFloat(product.salePrice) > parseFloat(product.signUpFee)
           return (
             <Styled.Product key={index} onClick={() => setSelectedProduct(product)} $active={product.name === selectedProduct.name}>
               <div>
                 <Heading text={product.name} font='Cera' size={2} weight={3} noMargin />
-                <Paragraph font='Cera'>
-                  {product.onSale ? (
+                <Paragraph font='Cera' noMargin>
+                  {product.signUpFee ? 
                     <>
-                      <del>£{product.regularPrice}</del> £{product.price}
+                      {product.salePrice && <del>£{onSale ? product.subscriptionPrice.trim() : product.regularPrice}</del>} £{product.signUpFee} {onSale ? 'for the first year' : product.subscriptionPeriod}
                     </>
-                  ) : (
-                    `£${product.price}`
-                  )}
+                    : 
+                    `£${product.subscriptionPrice} ${product.subscriptionPeriod}`
+                  }
                 </Paragraph>
+                <Paragraph size={1} text={`Renews ${product.subscriptionPeriod} at £${product.subscriptionPrice} until cancelled.`} font='Cera' />
               </div>
             </Styled.Product>
           )

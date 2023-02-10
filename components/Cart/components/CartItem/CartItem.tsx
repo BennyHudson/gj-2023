@@ -10,6 +10,9 @@ import { CartItemProps } from './CartItem.types'
 import PageContext, { PageContextProps } from '@context/PageContext'
 import { useQuery } from '@apollo/client'
 import { productQuery } from '@queries/products/product'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/pro-light-svg-icons'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 const CartItem: FC<CartItemProps> = ({
   productId,
@@ -62,6 +65,12 @@ const CartItem: FC<CartItemProps> = ({
       </>
     )
   }
+
+  return (
+    <Styled.CartItem>
+      <FontAwesomeIcon icon={faSpinner as IconProp} spin />
+    </Styled.CartItem>
+  )
 }
 
 export default CartItem

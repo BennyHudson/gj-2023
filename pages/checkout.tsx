@@ -22,6 +22,12 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
 
   const router = useRouter()
 
+  useEffect(() => {
+    if (!cart.length) {
+      router.push('/cart')
+    }
+  }, [])
+
   const stripePromise = loadStripe('pk_test_8iwfeNCkfxOmOZkWESHhGYwe')
 
   const createPaymentIntent = async () => {
@@ -44,12 +50,6 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
     if (!cart) return
     createPaymentIntent()
   }, [cart])
-
-  useEffect(() => {
-    if (!cart.length) {
-      router.push('/cart')
-    }
-  }, [])
 
   const appearance = {
     theme: 'stripe',
