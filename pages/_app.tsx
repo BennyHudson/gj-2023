@@ -31,12 +31,9 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
     setCustomer(customerData)
 
     if (customerData) {
-      console.log('hello')
       const subscriptionId = customerData.meta_data.find((meta) => meta.key === '_wcs_subscription_ids_cache')
-      console.log(subscriptionId.value[0])
       const subscription = await fetch(`/api/subscription/${subscriptionId.value[0]}`)
       const subData = await subscription.json()
-      console.log(subData)
       setSubscription(subData)
     }
   }
@@ -51,7 +48,6 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
   useEffect(() => {
     const gjToken = localStorage.getItem('gjToken')
     if (gjToken) {
-      console.log('hello')
       setToken(gjToken)
       const decodedToken: number = jwt_decode(gjToken)
       getCustomerData(decodedToken.data.user.id)
