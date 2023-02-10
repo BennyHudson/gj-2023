@@ -59,7 +59,7 @@ export const Thumbnail = styled.div(
     img {
       width: 100%;
       height: 100%;
-      object-fit: ${props.contain ? 'contain' : 'cover'};
+      object-fit: ${props.$contain ? 'contain' : 'cover'};
       transition: 1s all ease;
     }
 

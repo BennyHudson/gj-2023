@@ -49,7 +49,7 @@ const Newsletter: FC = ({ form, showTitle = true }): ReactElement => {
         setValidationMessages(response.validation_messages)
       }}
     >
-      <Styled.Newsletter isSubmitting={isSubmitting} isValid={isValid}>
+      <Styled.Newsletter $isSubmitting={isSubmitting} $isValid={isValid}>
         {confirmationMessage ? 
           <RawHtmlWrapper content={confirmationMessage} />
           :

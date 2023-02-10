@@ -16,7 +16,7 @@ export const Newsletter = styled(Form)(
       margin-bottom: 0;
     }
 
-    ${props.isSubmitting && css`
+    ${props.$isSubmitting && css`
       &::after {
         content: '';
         display: block;

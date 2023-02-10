@@ -32,7 +32,7 @@ const Thumbnail: FC<ThumbnailProps> = ({
   }
 
   return (
-    <Styled.Thumbnail type={type} href={href ? href : to} as={renderAs()} size={size} contain={contain}>
+    <Styled.Thumbnail type={type} href={href ? href : to} as={renderAs()} size={size} $contain={contain}>
       {showTitle && (
         <>
           <Styled.ThumbnailContent>

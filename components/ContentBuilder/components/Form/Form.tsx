@@ -23,10 +23,10 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
 
   const initialValues = data && data.gfForm.formFields.nodes.reduce((acc, curr) => ((acc[`input_${curr.id}`] = ''), acc), {})
 
-  const [ confirmationMessage, setConfirmationMessage ] = useState()
-  const [ validationMessages, setValidationMessages ] = useState({})
-  const [ isValid, setIsValid ] = useState(true)
-  const [ isSubmitting, setIsSubmitting ] = useState(false)
+  // const [ confirmationMessage, setConfirmationMessage ] = useState()
+  // const [ validationMessages, setValidationMessages ] = useState({})
+  // const [ isValid, setIsValid ] = useState(true)
+  // const [ isSubmitting, setIsSubmitting ] = useState(false)
 
   if (loading) return <div>Loading...</div>
   

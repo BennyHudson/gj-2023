@@ -26,6 +26,7 @@ interface ArticleData extends PageData {
 }
 
 const Article: FC<ArticleData> = ({ data, headerNav, footerNav }: ArticleData): ReactElement => {
+  console.log(data.article.title)
   const articleData = data.article
   const { articleNote } = data.gjOptions
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps

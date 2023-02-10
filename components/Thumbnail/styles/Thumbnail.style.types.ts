@@ -7,5 +7,5 @@ export interface StyledThumbnailProps {
   type: ThumbnailProps['type']
   size: ThumbnailProps['size']
   href?: string
-  contain: boolean
+  $contain: boolean
 }
