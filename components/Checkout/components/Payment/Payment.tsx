@@ -90,7 +90,7 @@ const Payment: FC<PaymentProps> = ({
             elements,
             confirmParams: {
               // Make sure to change this to your payment completion page
-              return_url: 'http://localhost:8080/checkout',
+              return_url: `${process.env.NEXT_PUBLIC_CHECKOUT_RETURN_URL}`,
             },
           })
         }}
