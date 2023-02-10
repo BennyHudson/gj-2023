@@ -61,7 +61,10 @@ const Post: FC<PostData> = ({ data, headerNav, footerNav }: PostData): ReactElem
             additionalBylines: articleData.byLineAdditional?.otherByLines,
             sponsoredPost: articleData.sponsoredPost,
           }}
-          contentBuilder={articleData.articleAcf.contentBuilder}
+          contentBuilder={{
+            content: articleData.articleAcf.contentBuilder,
+            membersOnly: articleData.categories && articleData.categories.nodes.find((category) => category.name === 'Members')
+          }}
           contentBuilderPrefix='Post_Articleacf_ContentBuilder'
           articleNote={articleNote}
           content={articleData.content}

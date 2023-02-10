@@ -44,7 +44,7 @@ const HouseNote: FC<HouseNoteData> = ({ pageData, articleNote, headerNav, footer
           author={pageData.author.node.name}
         />
         <ContentGrid
-          contentBuilder={pageData.articleAcf.contentBuilder}
+          contentBuilder={{ content: pageData.articleAcf.contentBuilder, membersOnly: false }}
           contentBuilderPrefix='HouseNote_Articleacf_ContentBuilder'
           articleNote={articleNote}
         />
