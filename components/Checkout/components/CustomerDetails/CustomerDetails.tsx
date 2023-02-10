@@ -44,7 +44,7 @@ const CustomerDetails: FC<CustomerDetailsProps> = ({
           <EditButton text='Not you?' onClick={logoutHandler} />
           <EditButton text='Continue' onClick={() => setLoggedInDetails()} />
         </> 
-      :
+        :
         <Tabs tabs={[
           {
             title: 'Create a new account',
