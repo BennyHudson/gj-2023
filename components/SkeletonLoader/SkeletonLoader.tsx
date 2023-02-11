@@ -11,7 +11,7 @@ import { useBreakpoints } from '@hooks/useBreakpoints'
 const SkeletonLoader: FC<SkeletonLoaderProps> = ({ type = 'post', columns = 4 }: SkeletonLoaderProps): ReactElement => {
   const { mdAndAbove } = useBreakpoints()
 
-  const postArray = mdAndAbove ? Array.from(Array(6).keys()) : Array.from(Array(columns * 2).keys())
+  const postArray = mdAndAbove ? Array.from(Array(columns * 2).keys()) : Array.from(Array(6).keys())
 
   return (
     <Styled.SkeletonLoader>
