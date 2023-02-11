@@ -24,7 +24,7 @@ const Feed: FC<FeedProps> = ({ category, columns = 4, count }: FeedProps): React
   })
 
   const getMore = async () => {
-    const more = await fetchMore({ variables: { after: last } })
+    const more = await fetchMore({ variables: { after: last, first: 20 } })
     if (more.data) {
       setLast(more.data.articles.pageInfo.endCursor)
       setAllArticles([...allArticles, ...more.data.articles.edges])
@@ -40,7 +40,7 @@ const Feed: FC<FeedProps> = ({ category, columns = 4, count }: FeedProps): React
         <>
           {allArticles && (
             <div>
-              <PostGrid posts={allArticles.map((article) => article.node)} columns={columns} />
+              <PostGrid posts={allArticles.map((article) => article.node)} columns={columns} showAdvert />
             </div>
           )}
           {morePosts && <LoadMore onClick={getMore} />}

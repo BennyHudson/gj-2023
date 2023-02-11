@@ -11,8 +11,10 @@ import * as Styled from './styles/FullPageFeature.style'
 
 import { FullPageFeatureProps } from './FullPageFeature.types'
 import Overlay from '@components/Overlay'
+import { useBreakpoints } from '@hooks/useBreakpoints'
 
 const FullPageFeature: FC<FullPageFeatureProps> = ({ title, excerpt, uri, featuredImage }: FullPageFeatureProps): ReactElement => {
+  const { mdAndAbove } = useBreakpoints()
   const [opacity, setOpacity] = useState(1)
 
   const onScroll = (e) => {
@@ -38,7 +40,7 @@ const FullPageFeature: FC<FullPageFeatureProps> = ({ title, excerpt, uri, featur
           <Styled.Content>
             <Paragraph size={1} weight={3} text='Featured Article' inverse font='Cera' transform='uppercase' />
             <Heading text={title} level={1} size={5} inverse font='ChronicleCondensed' />
-            <Paragraph text={excerpt} size={2} inverse font='Cera' />
+            {mdAndAbove && <Paragraph text={excerpt} size={2} inverse font='Cera' />}
             <Link to={uri} size={1} weight={3} inverse font='Cera' transform='uppercase' showIcon>
               Read More
             </Link>

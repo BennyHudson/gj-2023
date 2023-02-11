@@ -52,7 +52,7 @@ const Category: FC<CategoryData> = ({ category, headerNav, footerNav }: Category
       <Section>
         <Breadcrumbs links={category.seo.breadcrumbs!} />
         <Title title={category.name} subtitle={category.description} links={childCategories()} />
-        <Feed category={category.name} count={mdAndBelow ? 12 : 20} />
+        <Feed category={category.name} count={mdAndBelow ? 12 : 18} />
       </Section>
     </PageLayout>
   )

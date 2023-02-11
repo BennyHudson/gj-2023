@@ -7,3 +7,7 @@ export const BannerAdvert = styled.div(
     justify-content: center;
   `,
 )
+
+export const Advert = styled.div((): FlattenSimpleInterpolation => css`
+  
+`)

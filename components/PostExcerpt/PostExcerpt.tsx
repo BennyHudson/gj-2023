@@ -24,8 +24,6 @@ const PostExcerpt: FC<PostExcerptProps> = ({
 }: PostExcerptProps): ReactElement => {
   const { subscription } = useContext(PageContext) as PageContextProps
 
-  console.log(subscription)
-
   const membersOnly = categories && categories.nodes.find((category) => category.name === 'Members')
   return (
     <Styled.PostExcerpt href={uri}>

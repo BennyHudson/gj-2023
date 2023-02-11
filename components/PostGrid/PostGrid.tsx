@@ -9,6 +9,7 @@ import { PostGridProps } from './PostGrid.types'
 import { useBreakpoints } from '@hooks/useBreakpoints'
 import { useTheme } from 'styled-components'
 import { Theme } from '@themes/gjTheme/gjTheme.types'
+import TowerAdvert from '@components/TowerAdvert'
 
 const PostGrid: FC<PostGridProps> = ({
   posts,
@@ -16,6 +17,7 @@ const PostGrid: FC<PostGridProps> = ({
   inverse = false,
   priority = true,
   smCarousel = false,
+  showAdvert = false,
 }: PostGridProps): ReactElement => {
   const { mdAndBelow } = useBreakpoints()
 
@@ -62,6 +64,16 @@ const PostGrid: FC<PostGridProps> = ({
       ) : (
         <Styled.PostGrid columns={columns}>
           {posts.map((post, index) => {
+            if (index === 3 && showAdvert) {
+              return (
+                <>
+                  <Styled.TowerAdvert>
+                    <TowerAdvert slot='GJ_300x600_001' />
+                  </Styled.TowerAdvert>
+                  <PostExcerpt priority={priority && index < 8} key={index} inverse={inverse} {...post} />
+                </>
+              )
+            }
             return <PostExcerpt priority={priority && index < 8} key={index} inverse={inverse} {...post} />
           })}
         </Styled.PostGrid>

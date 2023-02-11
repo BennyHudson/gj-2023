@@ -28,7 +28,7 @@ const HeroImage: FC<HeroImageProps> = ({ featuredImage, height = 2, featuredVide
         <Styled.VideoWrapper height={height} headerHeight={headerHeight}>
           <Styled.Video headerHeight={headerHeight}>
             <YouTube
-              videoId='Ocz8_0GDkUI'
+              videoId={featuredVideo}
               opts={videoOptions}
               className='video-wrapper'
             />

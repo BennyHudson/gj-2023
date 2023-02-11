@@ -12,6 +12,7 @@ import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import PageLayout from '@components/PageLayout'
 import { useBreakpoints } from '@hooks/useBreakpoints'
+import BannerAdvert from '@components/BannerAdvert'
 
 const LatestPage: FC = ({ headerNav, footerNav }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -35,6 +36,7 @@ const LatestPage: FC = ({ headerNav, footerNav }): ReactElement => {
 
   return (
     <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Latest | The Gentleman\'s Journal' }}>
+      <BannerAdvert slot='GJ_970x250_001' />
       <Section>
         <Breadcrumbs links={breadcrumbLinks} />
         <Title title='Latest' />

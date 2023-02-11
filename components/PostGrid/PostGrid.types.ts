@@ -7,4 +7,5 @@ export interface PostGridProps {
   inverse?: boolean
   priority?: boolean
   smCarousel?: boolean
+  showAdvert?: boolean
 }
