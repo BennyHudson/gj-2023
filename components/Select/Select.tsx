@@ -15,7 +15,6 @@ const Select: FC<SelectProps> = ({ target, label, isRequired, id, databaseId, ch
     <FieldWrapper target={target} label={label} required={isRequired} labelPlacement={labelPlacement}>
       <Styled.SelectWrapper>
         <Field className='styled-select' as='select' name={typeof id === 'number' ? `input_${id}` : id}>
-          <option value='' />
           {choices.map((choice, index) => {
             return (
               <option key={index} value={choice.value}>

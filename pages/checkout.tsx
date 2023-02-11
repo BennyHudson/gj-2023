@@ -20,13 +20,13 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
   const [clientSecret, setClientSecret] = useState('')
   const [paymentIntentId, setPaymentIntentId] = useState('')
 
-  const router = useRouter()
+  // const router = useRouter()
 
-  useEffect(() => {
-    if (!cart.length) {
-      router.push('/cart')
-    }
-  }, [])
+  // // useEffect(() => {
+  // //   if (!cart.length) {
+  // //     router.push('/cart')
+  // //   }
+  // // }, [])
 
   const stripePromise = loadStripe('pk_test_8iwfeNCkfxOmOZkWESHhGYwe')
 

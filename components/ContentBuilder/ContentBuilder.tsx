@@ -10,6 +10,7 @@ import HeadingBlock from './components/HeadingBlock'
 import ImageSlider from './components/ImageSlider'
 import Form from './components/Form'
 import CodeBlock from './components/CodeBlock'
+import AffiliateProductBlock from './components/AffiliateProductBlock'
 
 import { ContentBuilderProps } from './ContentBuilder.types'
 import PageContext, { PageContextProps } from '@context/PageContext'
@@ -52,6 +53,9 @@ const ContentBuilder: FC<ContentBuilderProps> = ({ content, prefix, membersOnly 
 
     case `${prefix}_CompetitionForm`:
       return <Form key={index} formId={block.gravityForm} />
+    
+    case `${prefix}_AffiliateProducts`:
+      return <AffiliateProductBlock key={index} {...block} />
     }
   }
 
@@ -64,6 +68,7 @@ const ContentBuilder: FC<ContentBuilderProps> = ({ content, prefix, membersOnly 
         </>
       ) : (
         content.map((block, index) => {
+          console.log(block)
           return contentBlocks(block, index)
         })
       )}

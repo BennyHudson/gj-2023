@@ -26,6 +26,7 @@ const PageLayout: FC<PageLayoutProps> = ({ children, headerNav, footerNav, seo }
     if (pathname === '/cart') return 'standard'
     if (pathname.includes('category')) return 'standard'
     if (pathname.includes('/podcasts/')) return 'standard'
+    if (pathname.includes('shop/magazine')) return 'standard'
     return 'feature'
   }
 

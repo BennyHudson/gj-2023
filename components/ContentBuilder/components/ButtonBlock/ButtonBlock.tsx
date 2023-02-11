@@ -5,6 +5,7 @@ import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import Heading from '@components/Heading'
 import Paragraph from '@components/Paragraph'
+import Button from '@components/Button'
 
 import * as Styled from './styles/ButtonBlock.style'
 
@@ -18,7 +19,7 @@ const ButtonBlock: FC<ButtonBlockProps> = ({ title, callToAction, link, price, i
         <Heading text={title} weight={3} level={2} font='Cera' size={1} noMargin />
         {price && <Paragraph appearance='secondary'>£{price?.toFixed(2)}</Paragraph>}
       </div>
-      <Styled.Button href={link}>{callToAction ? callToAction : 'Learn More'}</Styled.Button>
+      <Button size={1} href={link} text={callToAction || 'Learn More'} />
     </Styled.ButtonBlock>
   )
 }

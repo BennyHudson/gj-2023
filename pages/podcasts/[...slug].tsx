@@ -32,7 +32,7 @@ const Podcast: FC<PodcastData> = ({ podcastData, podcastOptions, headerNav, foot
 
   return (
     <PageLayout headerNav={headerNav} footerNav={footerNav} seo={podcastData.seo}>
-      <BannerAdvert slot={4165079905} />
+      <BannerAdvert slot='GJ_970x250_001' />
       <PodcastContent {...podcastData} {...podcastOptions} />
       <PodcastCarousel title='You might also like' podcasts={podcastOptions.featured.featured} />
     </PageLayout>

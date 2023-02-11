@@ -26,7 +26,6 @@ interface ArticleData extends PageData {
 }
 
 const Article: FC<ArticleData> = ({ data, headerNav, footerNav }: ArticleData): ReactElement => {
-  console.log(data.article.title)
   const articleData = data.article
   const { articleNote } = data.gjOptions
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -51,9 +50,9 @@ const Article: FC<ArticleData> = ({ data, headerNav, footerNav }: ArticleData): 
   }, [setActiveNavElement, articleData])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={articleData.seo}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={articleData?.seo}>
       {articleData.featuredImage && <HeroImage featuredImage={articleData.featuredImage.node.sourceUrl} featuredVideo={articleData.articleAcf.featuredVideo} />}
-      <BannerAdvert slot={4165079905} />
+      <BannerAdvert slot='GJ_970x250_001' />
       <Section>
         <Masthead title={articleData.title} breadcrumbs={articleData.seo.breadcrumbs} subtitle={articleData.articleAcf.standfirst} />
         <ContentGrid

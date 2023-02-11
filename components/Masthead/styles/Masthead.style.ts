@@ -42,7 +42,7 @@ export const MastheadContent = styled.div(
 
       ${props.fullWidth &&
       css`
-        grid-column: col-start / span 12;
+        grid-column: col-start / span 9;
         text-align: left;
       `}
     `)}
