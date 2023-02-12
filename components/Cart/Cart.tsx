@@ -10,6 +10,7 @@ import CartItem from './components/CartItem'
 import * as Styled from './styles/Cart.style'
 
 import { CartProps } from './Cart.types'
+import EditButton from '@components/EditButton'
 
 const Cart: FC<CartProps> = ({ viewOnly = false}: CartProps): ReactElement => {
   const { cart } = useContext(PageContext) as PageContextProps
@@ -28,9 +29,10 @@ const Cart: FC<CartProps> = ({ viewOnly = false}: CartProps): ReactElement => {
           {!viewOnly && <Button href='/checkout' text='Checkout now' size={1} />}
         </>
       ) : (
-        <Paragraph size={2} font='Cera'>
-          Your cart is empty
-        </Paragraph>
+        <>
+          <Paragraph size={2} font='Cera'>Your cart is empty</Paragraph>
+          <EditButton href='/club' text='Sign Up' />
+        </>
       )}
     </Styled.Cart>
   )

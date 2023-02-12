@@ -14,6 +14,6 @@ export const EditButton = styled.button(
     cursor: pointer;
     font-family: 'Cera Pro Semibold';
     text-decoration: none;
-    display: block;;
+    display: inline-block;
   `,
 )

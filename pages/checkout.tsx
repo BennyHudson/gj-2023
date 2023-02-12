@@ -13,6 +13,8 @@ import SplitPageTemplate from '@components/SplitPageTemplate'
 import PageContext, { PageContextProps } from '@context/PageContext'
 import Checkout from '@components/Checkout'
 import { useRouter } from 'next/router'
+import Paragraph from '@components/Paragraph'
+import EditButton from '@components/EditButton'
 
 const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
   const { setActiveNavElement, cart } = useContext(PageContext) as PageContextProps
@@ -66,6 +68,12 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
         image='https://www.thegentlemansjournal.com/wp-content/uploads/2019/09/ryan-reynolds-gentlemans-journal-aviation-gin-1.jpg'
         title='Checkout'
       >
+        {!cart.length &&
+          <>
+            <Paragraph size={2} font='Cera'>Your cart is empty</Paragraph>
+            <EditButton href='/club' text='Sign Up' />
+          </>
+        }
         {clientSecret &&
           <Elements options={options} stripe={stripePromise}>
             <Checkout paymentIntent={paymentIntentId} />
