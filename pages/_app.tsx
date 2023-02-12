@@ -23,7 +23,7 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
   const [cart, setCart] = useState<PageContextProps['cart']>([])
   const [shippingRate, setShippingRate] = useState<PageContextProps['shippingRate']>()
   const [customer, setCustomer] = useState<PageContextProps['customer']>()
-  const [subscription, setSubscription] = useState()
+  const [subscriptions, setSubscriptions] = useState()
 
   const getCustomerData = async (id: number) => {
     const customerDetails = await fetch(`/api/user/${id}`)
@@ -31,10 +31,17 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
     setCustomer(customerData)
 
     if (customerData) {
-      const subscriptionId = customerData.meta_data.find((meta) => meta.key === '_wcs_subscription_ids_cache')
-      const subscription = await fetch(`/api/subscription/${subscriptionId.value[0]}`)
-      const subData = await subscription.json()
-      setSubscription(subData)
+      const subscriptionIds = customerData.meta_data.find((meta) => meta.key === '_wcs_subscription_ids_cache')
+
+      const subs = []
+
+      await Promise.all(subscriptionIds.value.map(async (subscriptionId: number) => {
+        const subscription = await fetch(`/api/subscription/${subscriptionId}`)
+        const sub = await subscription.json()
+        subs.push(sub)
+      }))
+
+      setSubscriptions(subs)
     }
   }
 
@@ -80,7 +87,7 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
               setShippingRate,
               customer,
               setCustomer,
-              subscription,
+              subscriptions,
             }}
           >
             <Component {...pageProps} />

@@ -1,35 +1,15 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 
-import { Content, Section } from '@components/Section/styles/Section.style'
+import { Content } from '@components/Section/styles/Section.style'
 
-import { StyledClubHeroProps } from './ClubHero.style.types'
 import respondTo from '@mixins/respondTo'
 
 export const ClubHero = styled.div(
-  (props: StyledClubHeroProps): FlattenSimpleInterpolation => css`
-    background: #202020;
-    padding-top: ${props.headerHeight}px;
-    position: relative;
-
-    ${respondTo.lg(css`
-      padding-top: 0;
-    `)}
-
-    ${Section} {
-      background: none;
-      display: flex;
-      position: relative;
-      z-index: 10;
-
-      ${respondTo.lg(css`
-        height: 100vh;
-        padding-top: ${props.headerHeight + props.theme.spacing[8]}px;
-      `)}
-    }
-
+  (): FlattenSimpleInterpolation => css`
     ${Content} {
       display: flex;
       align-items: center;
+      justify-content: center;
       width: 90%;
 
       ${respondTo.lg(css`
@@ -41,6 +21,8 @@ export const ClubHero = styled.div(
 
 export const HeroContent = styled.div(
   (): FlattenSimpleInterpolation => css`
+    text-align: center;
+
     ${respondTo.lg(css`
       width: 40%;
     `)}

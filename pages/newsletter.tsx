@@ -21,7 +21,7 @@ const NewsletterPage: FC = ({ headerNav, footerNav, newsletter, newsletterForm }
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: `${newsletter.title} | The Gentleman's Journal` }}>
+    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: `${newsletter.title} | The Gentleman's Journal` }}>
       <SplitPageTemplate image={newsletter.image.sourceUrl} title={newsletter.title}>
         <RawHtmlWrapper content={newsletter.description} />
         <Newsletter form={newsletterForm} showTitle={false} />

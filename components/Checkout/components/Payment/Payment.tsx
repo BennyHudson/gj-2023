@@ -17,7 +17,9 @@ const Payment: FC<PaymentProps> = ({
   checkoutForm,
   paymentIntent,
 }: PaymentProps): ReactElement => {
-  const { cart, shippingRate, customerId } = useContext(PageContext) as PageContextProps
+  const { cart, shippingRate, customerId, customer } = useContext(PageContext) as PageContextProps
+
+  console.log(customerId)
 
   const stripe = useStripe()
   const elements = useElements()
@@ -59,7 +61,7 @@ const Payment: FC<PaymentProps> = ({
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              customerId,
+              customerId: customer?.id || customerId,
               billingAddress: values.billing, 
               shippingAddress: values.shipping,
               cart,
@@ -78,7 +80,7 @@ const Payment: FC<PaymentProps> = ({
               billingAddress: values.billing, 
               shippingAddress: values.shipping,
               cart,
-              customer_id: customerId,
+              customer_id: customer?.id || customerId,
               shippingRate,
             })
           })

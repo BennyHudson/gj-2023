@@ -14,8 +14,6 @@ import * as Styled from './styles/MyAccount.style'
 const MyAccount: FC = (): ReactElement => {
   const { setToken, customer, setCustomer } = useContext(PageContext) as PageContextProps
 
-  console.log(customer)
-
   const tabs = [
     {
       title: 'Your Details',
@@ -27,7 +25,7 @@ const MyAccount: FC = (): ReactElement => {
     },
     {
       title: 'Members Content',
-      content: <Feed category='Members' count={6} columns={3} />,
+      content: <Feed category='Members' count={6} columns={3} showAdvert={false} />,
     },
   ]
 

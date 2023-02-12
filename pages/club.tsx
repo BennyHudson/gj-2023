@@ -18,6 +18,7 @@ import ClubHero from '@components/ClubHero'
 import PageContext, { PageContextProps } from '@context/PageContext'
 import { clubQuery } from '@queries/pages/club'
 import Section from '@components/Section'
+import ClubVideo from '@components/ClubVideo'
 
 const ClubPage: FC = ({ pageData, headerNav, footerNav, subscriptionProducts, freeGift, subscriptionOverview }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -27,7 +28,8 @@ const ClubPage: FC = ({ pageData, headerNav, footerNav, subscriptionProducts, fr
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo}>
+    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={pageData.seo}>
+      <ClubVideo video={pageData.subscriptionPage.club.video.url} poster={pageData.featuredImage.node.sourceUrl} />
       <ClubHero
         title={pageData.title}
         subtitle={pageData.subscriptionPage.club.description}

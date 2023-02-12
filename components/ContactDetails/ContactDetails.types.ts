@@ -1,5 +1,12 @@
-import { ReactNode } from 'react'
-
 export interface ContactDetailsProps {
-  children: ReactNode
+  contactDetails: {
+    officeMap: {
+      latitude: number
+      longitude: number
+    }
+    contactInfo: {
+      info: string
+      title: string
+    }[]
+  }
 }

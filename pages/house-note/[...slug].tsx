@@ -81,6 +81,12 @@ export async function getStaticProps({ params }: StaticPaths) {
   const footerNav = await client.query(footerNavQuery)
   const response = await client.query(houseNoteBodyQuery(slug))
 
+  if (!response.data.houseNote) {
+    return {
+      notFound: true,
+    }
+  }
+
   return {
     props: {
       headerNav: headerNav.data,

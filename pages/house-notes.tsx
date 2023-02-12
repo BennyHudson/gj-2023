@@ -22,7 +22,7 @@ const HouseNotes: FC = ({ featuredHouseNotes, headerNav, footerNav }): ReactElem
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={featuredHouseNotes.seo}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={featuredHouseNotes.seo} headerStyle='standard'>
       <HouseNotesFeature
         introText={featuredHouseNotes.additionalPageData.subtitleText.replace(/<\/?[^>]+(>|$)/g, '')}
         columns={{

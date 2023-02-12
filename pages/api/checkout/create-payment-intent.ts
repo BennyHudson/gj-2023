@@ -8,15 +8,13 @@ export default async function handler(req, res) {
 
   const cart = req.body as string[]
 
-  console.log(cart)
-
   const getProductTotal = async () => {
     let amount = 0
 
     await Promise.all(cart.map(async (cartItem) => {
       const itemDetails = await WooCommerce.get(`products/${cartItem}`)
       const subscriptionFee = itemDetails.data.meta_data.find((meta) => meta.key === '_subscription_sign_up_fee')
-      if (subscriptionFee) {
+      if (subscriptionFee?.value) {
         amount = amount + parseFloat(subscriptionFee.value)
         return
       }
@@ -27,21 +25,25 @@ export default async function handler(req, res) {
     return amount
   }
 
+
+
   const total = await getProductTotal()
 
-  // Create a PaymentIntent with the order amount and currency
-  const paymentIntent = await stripe.paymentIntents.create({
-    customer: customer.id,
-    setup_future_usage: 'off_session',
-    amount: total * 100,
-    currency: 'gbp',
-    automatic_payment_methods: {
-      enabled: true,
-    },
-  })
+  if (total) {
+    // Create a PaymentIntent with the order amount and currency
+    const paymentIntent = await stripe.paymentIntents.create({
+      customer: customer.id,
+      setup_future_usage: 'off_session',
+      amount: Math.round(total * 100),
+      currency: 'gbp',
+      automatic_payment_methods: {
+        enabled: true,
+      },
+    })
 
-  res.send({
-    id: paymentIntent.id,
-    clientSecret: paymentIntent.client_secret,
-  }) 
+    res.send({
+      id: paymentIntent.id,
+      clientSecret: paymentIntent.client_secret,
+    }) 
+  }
 };

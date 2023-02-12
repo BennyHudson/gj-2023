@@ -4,6 +4,8 @@ import { StyledCustomerSubsProps } from './CustomerSubs.style.types'
 
 export const CustomerSubs = styled.div(
   (props: StyledCustomerSubsProps): FlattenSimpleInterpolation => css`
-    color: ${props.theme.colours.primary};
+    display: flex;
+    flex-direction: column;
+    gap: ${props.theme.spacing[4]}px;
   `,
 )

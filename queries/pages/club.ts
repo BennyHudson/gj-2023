@@ -38,6 +38,11 @@ export const clubQuery = {
               textColor
               title
             }
+            video {
+              url
+              title
+              subtitle
+            }
           }
         }
         ${seo()}

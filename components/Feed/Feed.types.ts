@@ -4,6 +4,7 @@ export interface FeedProps {
   category?: string
   columns?: 3 | 4
   count?: number
+  showAdvert?: boolean
 }
 
 export interface FeedState {

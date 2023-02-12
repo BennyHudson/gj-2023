@@ -16,6 +16,7 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
       }
     },
   })
+  
   if (wooCommerceData) {
     res.status(200).json(wooCommerceData.data)
     return

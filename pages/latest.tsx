@@ -35,7 +35,7 @@ const LatestPage: FC = ({ headerNav, footerNav }): ReactElement => {
   ]
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Latest | The Gentleman\'s Journal' }}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} headerStyle='standard' seo={{ title: 'Latest | The Gentleman\'s Journal' }}>
       <BannerAdvert slot='GJ_970x250_001' />
       <Section>
         <Breadcrumbs links={breadcrumbLinks} />

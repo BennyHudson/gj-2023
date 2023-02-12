@@ -6,12 +6,12 @@ import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
 
 import PageLayout from '@components/PageLayout'
-import SplitPageTemplate from '@components/SplitPageTemplate'
-import SearchForm from '@components/SearchForm'
+import ErrorPageTemplate from '@components/ErrorPageTemplate'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import { page404Query } from '@queries/global/404-page'
 
-const SearchPage: FC = ({ headerNav, footerNav }): ReactElement => {
+const SearchPage: FC = ({ headerNav, footerNav, backgroundImage }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -19,13 +19,8 @@ const SearchPage: FC = ({ headerNav, footerNav }): ReactElement => {
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} headerStyle='standard' footerNav={footerNav} seo={{ title: 'Search | The Gentleman\'s Journal' }}>
-      <SplitPageTemplate
-        image='https://www.thegentlemansjournal.com/wp-content/uploads/2022/12/209490030008-2502x1200-c-center.jpg'
-        title='Search'
-      >
-        <SearchForm />
-      </SplitPageTemplate>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: '404 | The Gentleman\'s Journal' }}>
+      <ErrorPageTemplate backgroundImage={backgroundImage} />
     </PageLayout>
   )
 }
@@ -35,11 +30,13 @@ export default SearchPage
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const errorPageData = await client.query(page404Query)
 
   return {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      backgroundImage: errorPageData.data.gjOptions.error404.errorBackgroundImage.sourceUrl,
     },
   }
 }

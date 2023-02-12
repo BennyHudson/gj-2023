@@ -16,7 +16,7 @@ import MagazineGrid from '@components/MagazineGrid'
 
 const ProductPage: FC = ({ headerNav, footerNav, product, magazines }): ReactElement => {
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={product.seo}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={product.seo} headerStyle='standard'>
       <ProductFeature product={product} />
       <Section>
         <Title 
@@ -62,6 +62,12 @@ export async function getStaticProps({ params }: StaticPaths) {
   const footerNav = await client.query(footerNavQuery)
   const product = await client.query(magazineQuery(slug))
   const magazines = await client.query(magazineCategoryQuery(10))
+
+  if (!magazines.data.productCategory) {
+    return {
+      notFound: true,
+    }
+  }
 
   return {
     props: {

@@ -31,7 +31,7 @@ const Podcast: FC<PodcastData> = ({ podcastData, podcastOptions, headerNav, foot
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={podcastData.seo}>
+    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={podcastData.seo}>
       <BannerAdvert slot='GJ_970x250_001' />
       <PodcastContent {...podcastData} {...podcastOptions} />
       <PodcastCarousel title='You might also like' podcasts={podcastOptions.featured.featured} />
@@ -67,6 +67,12 @@ export async function getStaticProps({ params }: StaticPaths) {
   const footerNav = await client.query(footerNavQuery)
   const podcast = await client.query(podcastBodyQuery(slug))
   const podcastOptions = await client.query(podcastOptionsQuery)
+
+  if (!podcast.data.podcast) {
+    return {
+      notFound: true,
+    }
+  }
 
   return {
     props: {

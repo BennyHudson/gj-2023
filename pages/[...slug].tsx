@@ -110,6 +110,12 @@ export async function getStaticProps({ params }: StaticPaths) {
   const footerNav = await client.query(footerNavQuery)
   const article = await client.query(postBody(slug))
 
+  if (!article.data.post) {
+    return {
+      notFound: true,
+    }
+  }
+
   return {
     props: {
       headerNav: headerNav.data,

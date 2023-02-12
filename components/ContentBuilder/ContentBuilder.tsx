@@ -17,7 +17,7 @@ import PageContext, { PageContextProps } from '@context/PageContext'
 import Paywall from '@components/Paywall'
 
 const ContentBuilder: FC<ContentBuilderProps> = ({ content, prefix, membersOnly = false }: ContentBuilderProps): ReactElement => {
-  const { subscription } = useContext(PageContext) as PageContextProps
+  const { subscriptions } = useContext(PageContext) as PageContextProps
 
   const contentBlocks = (block, index) => {
     switch (block.fieldGroupName) {
@@ -61,14 +61,13 @@ const ContentBuilder: FC<ContentBuilderProps> = ({ content, prefix, membersOnly 
 
   return (
     <>
-      {(subscription?.status !== 'active' && membersOnly) ? (
+      {(subscriptions?.every((subscription) => subscription.status !== 'active') && membersOnly) ? (
         <>
           {contentBlocks(content[0], 0)}
           <Paywall />
         </>
       ) : (
         content.map((block, index) => {
-          console.log(block)
           return contentBlocks(block, index)
         })
       )}

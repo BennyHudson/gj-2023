@@ -7,4 +7,5 @@ export interface PageLayoutProps {
   children: ReactNode
   headerNav: HeaderNav
   footerNav: FooterNav
+  headerStyle: 'feature' | 'standard'
 }

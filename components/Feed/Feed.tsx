@@ -10,7 +10,7 @@ import SkeletonLoader from '@components/SkeletonLoader'
 
 import { FeedProps, FeedState } from './Feed.types'
 
-const Feed: FC<FeedProps> = ({ category, columns = 4, count }: FeedProps): ReactElement => {
+const Feed: FC<FeedProps> = ({ category, columns = 4, count, showAdvert = true }: FeedProps): ReactElement => {
   const [last, setLast] = useState<FeedState['last']>()
   const [allArticles, setAllArticles] = useState<FeedState['allArticles']>([])
   const [morePosts, setMorePosts] = useState<FeedState['morePosts']>(true)
@@ -40,7 +40,7 @@ const Feed: FC<FeedProps> = ({ category, columns = 4, count }: FeedProps): React
         <>
           {allArticles && (
             <div>
-              <PostGrid posts={allArticles.map((article) => article.node)} columns={columns} showAdvert />
+              <PostGrid posts={allArticles.map((article) => article.node)} columns={columns} showAdvert={showAdvert} />
             </div>
           )}
           {morePosts && <LoadMore onClick={getMore} />}

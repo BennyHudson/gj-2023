@@ -22,7 +22,7 @@ const ClubPage: FC = ({ headerNav, footerNav, subscriptionProducts, freeGift }):
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }}>
+    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }}>
       <SplitPageTemplate image='https://www.thegentlemansjournal.com/wp-content/uploads/2022/12/John-Boyega-5-1.jpg'>
         {(token && customer) ? <MyAccount /> : <ClubhouseGateway products={subscriptionProducts} freeGift={freeGift} />}
       </SplitPageTemplate>

@@ -10,6 +10,6 @@ export interface ParagraphProps {
   weight?: WeightKeys
   inverse?: boolean
   font?: 'Cera' | 'Chronicle'
-  transform?: 'uppercase'
+  transform?: 'uppercase' | 'capitalize'
   noMargin?: boolean
 }
