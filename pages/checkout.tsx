@@ -49,7 +49,7 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
   }, [setActiveNavElement])
 
   useEffect(() => {
-    if (!cart) return
+    if (!cart.length) return
     createPaymentIntent()
   }, [cart])
 
