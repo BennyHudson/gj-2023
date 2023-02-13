@@ -46,33 +46,35 @@ const SessionsFeed: FC = (): ReactElement => {
   const sundayPlaylist = data && data.page.sessions.sessions.editorsPickInterview
 
   return (
-    <Styled.SessionsFeed>
-      <Styled.Column>
-        {data && (
-          <Styled.SundayPlaylist>
-            <Thumbnail featuredImage={sundayPlaylist.featuredImage.node.sourceUrl} to={sundayPlaylist.uri} type='circle' size={2} />
-            <div>
-              <Heading text={sundayPlaylist.title} inverse size={2} />
-              <Paragraph text={sundayPlaylist.articleAcf.standfirst} inverse size={1} font='Cera' />
-            </div>
-            <iframe
-              src={`https://open.spotify.com/embed/playlist/${spotifyPlaylist}`}
-              frameBorder={0}
-              width='100%'
-              height='380'
-              allow='encrypted-media'
-            />
-            <Link to={sundayPlaylist.uri} showIcon font='Cera' inverse size={1}>
-              Read Interview
-            </Link>
-          </Styled.SundayPlaylist>
-        )}
-      </Styled.Column>
-      <Styled.Column>
-        <Title title='Artist Interviews' />
-        <Feed category='GJ Sessions' columns={3} />
-      </Styled.Column>
-    </Styled.SessionsFeed>
+    <Styled.FeedWrapper>
+      <Styled.SessionsFeed>
+        <Styled.Column>
+          {data && (
+            <Styled.SundayPlaylist>
+              <Thumbnail featuredImage={sundayPlaylist.featuredImage.node.sourceUrl} to={sundayPlaylist.uri} type='circle' size={2} />
+              <div>
+                <Heading text={sundayPlaylist.title} inverse size={2} />
+                <Paragraph text={sundayPlaylist.articleAcf.standfirst} inverse size={1} font='Cera' />
+              </div>
+              <iframe
+                src={`https://open.spotify.com/embed/playlist/${spotifyPlaylist}`}
+                frameBorder={0}
+                width='100%'
+                height='380'
+                allow='encrypted-media'
+              />
+              <Link to={sundayPlaylist.uri} showIcon font='Cera' inverse size={1}>
+                Read Interview
+              </Link>
+            </Styled.SundayPlaylist>
+          )}
+        </Styled.Column>
+        <Styled.Column>
+          <Title title='Artist Interviews' />
+          <Feed category='GJ Sessions' columns={3} showAdvert={false} />
+        </Styled.Column>
+      </Styled.SessionsFeed>
+    </Styled.FeedWrapper>
   )
 }
 

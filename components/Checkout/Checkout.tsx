@@ -11,14 +11,16 @@ import OrderSummary from './components/OrderSummary'
 import Payment from './components/Payment'
 
 import * as Styled from './styles/Checkout.style'
+import Notification from '@components/Notification'
 
 const Checkout: FC = ({ paymentIntent }): ReactElement => {
-  const { setCart } = useContext(PageContext) as PageContextProps
+  const { setCart, getCustomerData, customer } = useContext(PageContext) as PageContextProps
 
   const [activePanel, setActivePanel] = useState(1)
   const [message, setMessage] = useState('')
   const [checkoutForm, setCheckoutForm] = useState()
   const [isLoading, setIsLoading] = useState(false)
+  const [notificationState, setNotificationState] = useState('error')
 
   const stripe = useStripe()
   const router = useRouter()
@@ -48,6 +50,7 @@ const Checkout: FC = ({ paymentIntent }): ReactElement => {
       const stripeCustomerId = await paymentMethod.json()
       
       if (status === 'succeeded') {
+        setNotificationState('success')
         setMessage('Your purchase was successful, you are being redirected to the Clubhouse')
 
         const subscriptionId = sessionStorage.getItem('subscriptionId')
@@ -68,11 +71,13 @@ const Checkout: FC = ({ paymentIntent }): ReactElement => {
         if (completedSubscription.status === 'active' && completeOrderData.status === 'completed') {
           sessionStorage.removeItem('orderId')
           sessionStorage.removeItem('subscriptionId')
-  
-          setCart([])
-          localStorage.removeItem('cart')
 
-          router.push('/clubhouse')
+          getCustomerData(customer!.id)
+
+          router.push('/clubhouse').then(() => {
+            setCart([])
+            localStorage.removeItem('cart')
+          })
         }
 
         return
@@ -94,53 +99,50 @@ const Checkout: FC = ({ paymentIntent }): ReactElement => {
 
   if (message) {
     return (
-      <>
-        {message}
-      </>
+      <Notification state={notificationState} text={message} />
     )
   }
 
   return (
-    <>
-      <Styled.CheckoutPanels>
-        <CustomerDetails
-          activePanel={activePanel}
-          panelIndex={1}
-          setActivePanel={setActivePanel}
-          checkoutForm={checkoutForm}
-          setCheckoutForm={setCheckoutForm}
-        />
-        <BillingAddress
-          activePanel={activePanel}
-          panelIndex={2}
-          setActivePanel={setActivePanel}
-          checkoutForm={checkoutForm}
-          setCheckoutForm={setCheckoutForm}
-        />
-        <ShippingAddress
-          activePanel={activePanel}
-          panelIndex={3}
-          setActivePanel={setActivePanel}
-          checkoutForm={checkoutForm}
-          setCheckoutForm={setCheckoutForm}
-        />
-        <OrderSummary
-          activePanel={activePanel}
-          panelIndex={4}
-          setActivePanel={setActivePanel}
-          checkoutForm={checkoutForm}
-          setCheckoutForm={setCheckoutForm}
-        />
-        <Payment
-          activePanel={activePanel}
-          panelIndex={5}
-          setActivePanel={setActivePanel}
-          checkoutForm={checkoutForm}
-          setCheckoutForm={setCheckoutForm}
-          paymentIntent={paymentIntent}
-        />
-      </Styled.CheckoutPanels>
-    </>
+    <Styled.CheckoutPanels isLoading={isLoading}>
+      <CustomerDetails
+        activePanel={activePanel}
+        panelIndex={1}
+        setActivePanel={setActivePanel}
+        checkoutForm={checkoutForm}
+        setCheckoutForm={setCheckoutForm}
+      />
+      <BillingAddress
+        activePanel={activePanel}
+        panelIndex={2}
+        setActivePanel={setActivePanel}
+        checkoutForm={checkoutForm}
+        setCheckoutForm={setCheckoutForm}
+      />
+      <ShippingAddress
+        activePanel={activePanel}
+        panelIndex={3}
+        setActivePanel={setActivePanel}
+        checkoutForm={checkoutForm}
+        setCheckoutForm={setCheckoutForm}
+      />
+      <OrderSummary
+        activePanel={activePanel}
+        panelIndex={4}
+        setActivePanel={setActivePanel}
+        checkoutForm={checkoutForm}
+        setCheckoutForm={setCheckoutForm}
+      />
+      <Payment
+        activePanel={activePanel}
+        panelIndex={5}
+        setActivePanel={setActivePanel}
+        checkoutForm={checkoutForm}
+        setCheckoutForm={setCheckoutForm}
+        paymentIntent={paymentIntent}
+        setIsLoading={setIsLoading}
+      />
+    </Styled.CheckoutPanels>
   )
 }
 

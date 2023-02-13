@@ -1,5 +1,5 @@
 import React, { ReactElement, FC, useContext } from 'react'
-import { Formik } from 'formik'
+import { Form, Formik } from 'formik'
 
 import BillingForm from '@components/BillingForm'
 
@@ -8,6 +8,7 @@ import PageContext, { PageContextProps } from '@context/PageContext'
 import CheckoutPanel from '../CheckoutPanel'
 
 import { BillingAddressProps } from './BillingAddress.types'
+import { billingValidation } from '@components/BillingForm/BillingForm'
 
 const BillingAddress: FC<BillingAddressProps> = ({
   panelIndex,
@@ -22,6 +23,9 @@ const BillingAddress: FC<BillingAddressProps> = ({
     <CheckoutPanel panelIndex={panelIndex} activePanel={activePanel} setActivePanel={setActivePanel} title='Billing Address'>
       {activePanel === panelIndex && 
         <Formik
+          validationSchema={billingValidation}
+          validateOnBlur={false}
+          validateOnChange={false}
           initialValues={{
             billing: {
               ...checkoutForm?.billing,
@@ -48,7 +52,9 @@ const BillingAddress: FC<BillingAddressProps> = ({
             }
           }}
         >
-          <BillingForm />
+          {(props) => (
+            <BillingForm {...props} />
+          )}
         </Formik>
       }
     </CheckoutPanel>

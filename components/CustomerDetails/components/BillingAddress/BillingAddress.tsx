@@ -8,10 +8,15 @@ import BillingForm from '@components/BillingForm'
 
 import * as Styled from '../../styles/CustomerDetails.style'
 import PageContext, { PageContextProps } from '@context/PageContext'
+import { billingValidation } from '@components/BillingForm/BillingForm'
+import Notification from '@components/Notification'
 
-const BillingAddress: FC = (): ReactElement => {
+const BillingAddress: FC = (): ReactElement | null => {
   const { customer } = useContext(PageContext) as PageContextProps
   const [editMode, setEditMode] = useState(false)
+  const [showPostEditMessage, setShowPostEditMessage] = useState(false)
+
+  if (!customer) return null
 
   return (
     <Styled.DetailsBlock>
@@ -21,6 +26,9 @@ const BillingAddress: FC = (): ReactElement => {
       </Styled.DetailsHeading>
       {editMode ? 
         <Formik
+          validationSchema={billingValidation}
+          validateOnBlur={false}
+          validateOnChange={false}
           initialValues={{
             billing: {
               address_1: customer.billing?.address_1,
@@ -42,19 +50,26 @@ const BillingAddress: FC = (): ReactElement => {
 
             if (updateUser.status === 200) {
               setEditMode(false)
+              setShowPostEditMessage(true)
+              setTimeout(() => {
+                setShowPostEditMessage(false)
+              }, 5000)
             }
           }}
         >
-          <BillingForm />
+          {(props) => (
+            <BillingForm {...props} />
+          )}
         </Formik>
         :
         <>
-          {customer.billing.address_1 && <ValueWithLabel label='Address Line 1' value={customer.billing.address_1} />}
-          {customer.billing.address_2 && <ValueWithLabel label='Address Line 2' value={customer.billing.address_2} />}
-          {customer.billing.city && <ValueWithLabel label='City' value={customer.billing.city} />}
-          {customer.billing.state && <ValueWithLabel label='State' value={customer.billing.state} />}
-          {customer.billing.postcode && <ValueWithLabel label='Postcode' value={customer.billing.postcode} />}
-          {customer.billing.country && <ValueWithLabel label='Country' value={customer.billing.country} />}
+          {showPostEditMessage && <Notification text='Billing address updated successfully' state='success'  />}
+          {customer.billing?.address_1 && <ValueWithLabel label='Address Line 1' value={customer.billing.address_1} />}
+          {customer.billing?.address_2 && <ValueWithLabel label='Address Line 2' value={customer.billing.address_2} />}
+          {customer.billing?.city && <ValueWithLabel label='City' value={customer.billing.city} />}
+          {customer.billing?.state && <ValueWithLabel label='State' value={customer.billing.state} />}
+          {customer.billing?.postcode && <ValueWithLabel label='Postcode' value={customer.billing.postcode} />}
+          {customer.billing?.country && <ValueWithLabel label='Country' value={customer.billing.country} />}
           <EditButton onClick={() => setEditMode(true)} text='Edit these Details' />
         </>
       }

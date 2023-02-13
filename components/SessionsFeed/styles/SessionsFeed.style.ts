@@ -5,6 +5,11 @@ import respondTo from '@mixins/respondTo'
 import { Title } from '@components/Title/styles/Title.style'
 import { PostGrid } from '@components/PostGrid/styles/PostGrid.style'
 
+export const FeedWrapper = styled.div((): FlattenSimpleInterpolation => css`
+  width: 100%;
+  overflow: hidden;
+`)
+
 export const SessionsFeed = styled.div(
   (props: StyledSessionsFeedProps): FlattenSimpleInterpolation => css`
     display: grid;

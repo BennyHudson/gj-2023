@@ -57,3 +57,10 @@ export const CheckboxLabel = styled.label(
     }
   `,
 )
+
+export const Terms = styled.div((props: StyledCheckboxListProps): FlattenSimpleInterpolation => css`
+  font-family: 'Cera Pro Regular';
+  font-size: ${props.theme.typography.paragraph[1].fontSize};
+  line-height: ${props.theme.typography.paragraph[1].lineHeight};
+  margin-bottom: ${props.theme.spacing[4]}px;
+`)

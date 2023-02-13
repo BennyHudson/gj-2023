@@ -21,41 +21,41 @@ const ContentBuilder: FC<ContentBuilderProps> = ({ content, prefix, membersOnly 
 
   const contentBlocks = (block, index) => {
     switch (block.fieldGroupName) {
-    case `${prefix}_Paragraph`:
-      return <TextBlock key={index} content={block.paragraph} />
+    // case `${prefix}_Paragraph`:
+    //   return <TextBlock key={index} content={block.paragraph} />
 
-    case `${prefix}_Heading`:
-      return <HeadingBlock key={index} text={block.heading} />
+    // case `${prefix}_Heading`:
+    //   return <HeadingBlock key={index} text={block.heading} />
 
-    case `${prefix}_VideoEmbed`:
-      return <VideoBlock key={index} videoUrl={block.videoEmbed} />
+    // case `${prefix}_VideoEmbed`:
+    //   return <VideoBlock key={index} videoUrl={block.videoEmbed} />
 
-    case `${prefix}_Image`:
-      return <ImageBlock key={index} {...block} />
+    // case `${prefix}_Image`:
+    //   return <ImageBlock key={index} {...block} />
 
-    case `${prefix}_ImageGallery`:
-      return <GalleryBlock key={index} gallery={block.gallery} />
+    // case `${prefix}_ImageGallery`:
+    //   return <GalleryBlock key={index} gallery={block.gallery} />
 
-    case `${prefix}_ButtonInfoBlock`:
-      return <ButtonBlock key={index} {...block} />
+    // case `${prefix}_ButtonInfoBlock`:
+    //   return <ButtonBlock key={index} {...block} />
 
-    case `${prefix}_Blockquote`:
-      return <QuoteBlock key={index} text={block.text} />
+    // case `${prefix}_Blockquote`:
+    //   return <QuoteBlock key={index} text={block.text} />
 
-    case `${prefix}_SingleAffiliate`:
-      return <ButtonBlock key={index} {...block} callToAction='Buy Now' />
+    // case `${prefix}_SingleAffiliate`:
+    //   return <ButtonBlock key={index} {...block} callToAction='Buy Now' />
 
-    case `${prefix}_ImageSlider`:
-      return <ImageSlider key={index} slides={block.slider} />
+    // case `${prefix}_ImageSlider`:
+    //   return <ImageSlider key={index} slides={block.slider} />
 
-    case `${prefix}_CodeSnippet`:
-      return <CodeBlock key={index} adCode={block.adCode} />
+    // case `${prefix}_CodeSnippet`:
+    //   return <CodeBlock key={index} adCode={block.adCode} />
 
     case `${prefix}_CompetitionForm`:
       return <Form key={index} formId={block.gravityForm} />
     
-    case `${prefix}_AffiliateProducts`:
-      return <AffiliateProductBlock key={index} {...block} />
+    // case `${prefix}_AffiliateProducts`:
+    //   return <AffiliateProductBlock key={index} {...block} />
     }
   }
 

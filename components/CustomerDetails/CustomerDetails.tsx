@@ -6,6 +6,7 @@ import BillingAddress from './components/BillingAddress'
 import ShippingAddress from './components/ShippingAddress'
 import Password from './components/Password'
 import Customer from './components/Customer/Customer'
+import CardDetails from './components/CardDetails'
 
 const CustomerDetails: FC = (): ReactElement => {
   return (
@@ -13,7 +14,8 @@ const CustomerDetails: FC = (): ReactElement => {
       <Customer />      
       <Password />
       <BillingAddress />
-      <ShippingAddress />      
+      <ShippingAddress /> 
+      <CardDetails />     
     </Styled.CustomerDetails>
   )
 }

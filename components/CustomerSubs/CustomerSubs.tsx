@@ -1,4 +1,4 @@
-import React, { ReactElement, FC, useState, useContext } from 'react'
+import React, { ReactElement, FC, useState, useContext, useEffect } from 'react'
 import dayjs from 'dayjs'
 
 import * as Styled from './styles/CustomerSubs.style'
@@ -10,12 +10,15 @@ import EditButton from '@components/EditButton'
 import PageContext, { PageContextProps } from '@context/PageContext'
 
 const CustomerSubs: FC = (): ReactElement => {
-  const { subscriptions } = useContext(PageContext) as PageContextProps
+  const { subscriptions, getCustomerData } = useContext(PageContext) as PageContextProps
 
-  const [confirmationMessage, setConfirmationMessage] = useState(false)
+  const [confirmationMessage, setConfirmationMessage] = useState(null)
+  const [showPostEditMessage, setShowPostEditMessage] = useState(false)
 
   const cancelSubscription = async (id: number) => {
-    await fetch(`/api/subscription/delete/${id}`)
+    const deleteSub = await fetch(`/api/subscription/delete/${id}`)
+    console.log(deleteSub)
+    getCustomerData(customer.id)
   }
 
   return (
@@ -30,14 +33,14 @@ const CustomerSubs: FC = (): ReactElement => {
               {subscription.total}
             </Paragraph>
             <ValueWithLabel label='Next renewal date' value={dayjs(subscription.next_payment_date_gmt).format('Do MMMM YYYY')} />
-            {confirmationMessage ? 
+            {confirmationMessage === subscription.id ? 
               <>
                 <Paragraph size={2} font='Cera'>
-                  Are you sure you want to cancel this subscription? <EditButton onClick={() => cancelSubscription(subscription.id)} text='Yes' /> | <EditButton onClick={() => setConfirmationMessage(false)} text='No' />  
+                  Are you sure you want to cancel this subscription? <EditButton onClick={() => cancelSubscription(subscription.id)} text='Yes' /> | <EditButton onClick={() => setConfirmationMessage(null)} text='No' />  
                 </Paragraph>
               </>
               :
-              <EditButton onClick={() => setConfirmationMessage(true)} text='Cancel' />
+              <EditButton onClick={() => setConfirmationMessage(subscription.id)} text='Cancel' />
             }
           </div>
         )

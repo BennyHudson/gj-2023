@@ -9,24 +9,17 @@ import { footerNavQuery } from '@queries/global/footer-nav'
 
 import PageLayout from '@components/PageLayout'
 import SplitPageTemplate from '@components/SplitPageTemplate'
+import Checkout from '@components/Checkout'
+import Paragraph from '@components/Paragraph'
+import EditButton from '@components/EditButton'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
-import Checkout from '@components/Checkout'
-import { useRouter } from 'next/router'
 
 const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
   const { setActiveNavElement, cart } = useContext(PageContext) as PageContextProps
 
   const [clientSecret, setClientSecret] = useState('')
   const [paymentIntentId, setPaymentIntentId] = useState('')
-
-  // const router = useRouter()
-
-  // // useEffect(() => {
-  // //   if (!cart.length) {
-  // //     router.push('/cart')
-  // //   }
-  // // }, [])
 
   const stripePromise = loadStripe('pk_test_8iwfeNCkfxOmOZkWESHhGYwe')
 
@@ -47,7 +40,7 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
   }, [setActiveNavElement])
 
   useEffect(() => {
-    if (!cart) return
+    if (!cart.length) return
     createPaymentIntent()
   }, [cart])
 
@@ -66,6 +59,12 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
         image='https://www.thegentlemansjournal.com/wp-content/uploads/2019/09/ryan-reynolds-gentlemans-journal-aviation-gin-1.jpg'
         title='Checkout'
       >
+        {!cart.length &&
+          <>
+            <Paragraph size={2} font='Cera'>Your cart is empty</Paragraph>
+            <EditButton href='/club' text='Sign Up' />
+          </>
+        }
         {clientSecret &&
           <Elements options={options} stripe={stripePromise}>
             <Checkout paymentIntent={paymentIntentId} />

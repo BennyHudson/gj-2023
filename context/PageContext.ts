@@ -4,6 +4,7 @@ interface Customer {
   id: number
   first_name: string
   last_name: string
+  email: string
   billing?: {
     address_1?: string
     address_2?: string

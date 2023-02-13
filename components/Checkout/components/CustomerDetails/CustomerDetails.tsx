@@ -21,10 +21,11 @@ const CustomerDetails: FC<CustomerDetailsProps> = ({
   setCheckoutForm,
 }: CustomerDetailsProps): ReactElement => {
   const { setCustomerId, setToken, customer, setCustomer } = useContext(PageContext) as PageContextProps
-  // const { showLoginForm, setShowLoginForm } = useState(false)
+
+  const [ validationMessage, setValidationMessage ] = useState()
 
   const setLoggedInDetails = () => {
-    setCheckoutForm({ billing: customer.billing })
+    setCheckoutForm({ billing: customer?.billing })
     setActivePanel(activePanel + 1)
   }
 
@@ -33,6 +34,19 @@ const CustomerDetails: FC<CustomerDetailsProps> = ({
     setToken()
     localStorage.removeItem('gjToken')
   }
+
+  const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+
+  const validation = Yup.object().shape({
+    billing: Yup.object().shape({
+      first_name: Yup.string().required('Required field'),
+      last_name: Yup.string().required('Required field'),
+      email: Yup.string().email('Please enter a valid email address').required('Required field'),
+      phone: Yup.string().matches(phoneRegExp, 'Please enter a valid telephone number'),
+    }),
+    password: Yup.string().required('Required field'),
+    confirmPassword: Yup.string().required('Required field').oneOf([Yup.ref('password'), null], 'Passwords must match')
+  })
 
   return (
     <CheckoutPanel panelIndex={panelIndex} activePanel={activePanel} setActivePanel={setActivePanel} title='Your Details'> 
@@ -49,6 +63,9 @@ const CustomerDetails: FC<CustomerDetailsProps> = ({
           {
             title: 'Create a new account',
             content: <Formik
+              validationSchema={validation}
+              validateOnBlur={false}
+              validateOnChange={false}
               initialValues={{
                 billing: {
                   first_name: '',
@@ -89,34 +106,39 @@ const CustomerDetails: FC<CustomerDetailsProps> = ({
                   setCheckoutForm({ billing: values.billing })
                   setActivePanel(activePanel + 1)
                 } else {
-                  console.log(createCustomer)
+                  if (customer.code === 'registration-error-email-exists') {
+                    setValidationMessage('An account is already registered with this email address, please login above.')
+                  }
                   // setShowLoginForm(true)
                 }
               }}
             >
-              <Form>
-                <NameField
-                  inputs={[
-                    {
-                      isRequired: true,
-                      label: 'First Name',
-                      id: 'billing.first_name',
-                      name: 'billing.first_name',
-                    },
-                    {
-                      isRequired: true,
-                      label: 'Last Name',
-                      id: 'billing.last_name',
-                      name: 'billing.last_name',
-                    },
-                  ]}
-                />
-                <TextField isRequired label='Email Address' id='billing.email' target='billing.email' type='email' />
-                <TextField label='Telephone Number' id='billing.phone' target='billing.phone' type='telephone' />
-                <TextField isRequired label='Create a Password' id='password' target='password' type='password' />
-                <TextField isRequired label='Confirm Password' id='confirmPassword' target='confirmPassword' type='password' />
-                <EditButton type='submit' text='Continue' />
-              </Form>
+              {(props) => (
+                <Form>
+                  <NameField
+                    inputs={[
+                      {
+                        isRequired: true,
+                        label: 'First Name',
+                        id: 'billing.first_name',
+                        name: 'billing.first_name',
+                      },
+                      {
+                        isRequired: true,
+                        label: 'Last Name',
+                        id: 'billing.last_name',
+                        name: 'billing.last_name',
+                      },
+                    ]}
+                    validationMessage={props.errors.billing?.first_name || props.errors.billing?.last_name}
+                  />
+                  <TextField isRequired label='Email Address' id='billing.email' target='billing.email' type='email' validationMessage={props.errors.billing?.email || validationMessage} />
+                  <TextField label='Telephone Number' id='billing.phone' target='billing.phone' type='telephone' validationMessage={props.errors.billing?.phone} />
+                  <TextField isRequired label='Create a Password' id='password' target='password' type='password' validationMessage={props.errors.password} />
+                  <TextField isRequired label='Confirm Password' id='confirmPassword' target='confirmPassword' type='password' validationMessage={props.errors.confirmPassword} />
+                  <EditButton type='submit' text='Continue' />
+                </Form>
+              )}
             </Formik>
           },
           {

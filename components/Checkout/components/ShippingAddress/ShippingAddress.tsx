@@ -11,6 +11,7 @@ import { ShippingAddressProps } from './ShippingAddress.types'
 import CheckoutPanel from '../CheckoutPanel'
 import PageContext, { PageContextProps } from '@context/PageContext'
 import ShippingForm from '@components/ShippingForm'
+import { shippingValidation } from '@components/ShippingForm/ShippingForm'
 
 const ShippingAddress: FC<ShippingAddressProps> = ({
   panelIndex,
@@ -24,6 +25,9 @@ const ShippingAddress: FC<ShippingAddressProps> = ({
     <CheckoutPanel panelIndex={panelIndex} activePanel={activePanel} setActivePanel={setActivePanel} title='Shipping Address'> 
       {activePanel === panelIndex && 
         <Formik
+          validationSchema={shippingValidation}
+          validateOnBlur={false}
+          validateOnChange={false}
           initialValues={{
             shipping: {
               first_name: checkoutForm.billing?.first_name,
@@ -63,21 +67,7 @@ const ShippingAddress: FC<ShippingAddressProps> = ({
           }}
         >
           {props => (
-            <Form>
-              <EditButton
-                type='button'
-                onClick={() => {
-                  props.setFieldValue('shipping.address_1', checkoutForm.billing.address_1)
-                  props.setFieldValue('shipping.address_2', checkoutForm.billing.address_2)
-                  props.setFieldValue('shipping.city', checkoutForm.billing.city)
-                  props.setFieldValue('shipping.state', checkoutForm.billing.state)
-                  props.setFieldValue('shipping.postcode', checkoutForm.billing.postcode)
-                  props.setFieldValue('shipping.country', checkoutForm.billing.country)
-                }}
-                text='Copy from billing address'
-              />
-              <ShippingForm />
-            </Form>
+            <ShippingForm {...props} />
           )}
         </Formik>
       }

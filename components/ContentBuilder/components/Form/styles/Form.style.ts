@@ -42,3 +42,17 @@ export const Submit = styled.button(
     `}
   `,
 )
+
+export const ConfirmationMessage = styled.div(
+  (props: FormProps): FlattenSimpleInterpolation => css`
+    grid-column: col-start 2 / span 9;
+    border-top: 1px solid ${props.theme.colours.grey};
+    border-bottom: 1px solid ${props.theme.colours.grey};
+    padding: ${props.theme.spacing[8]}px ${props.theme.spacing[4]}px;
+    margin: ${props.theme.spacing[4]}px 0;
+
+    ${Heading} {
+      margin-bottom: ${props.theme.spacing[6]}px;
+    }
+  `,
+)

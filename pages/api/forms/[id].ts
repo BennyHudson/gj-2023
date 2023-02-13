@@ -10,25 +10,19 @@ const formHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   myHeaders.append('Content-Type', 'application/json')
   myHeaders.append('Authorization', `Basic ${auth}`)
 
-  
-  const formResponses = req.body
+  let formResponses = req.body
 
-
-
-  // Object.keys(req.body).forEach((key) => {
-  //   if (req.body[key] instanceof Array) {
-  //     req.body[key].forEach((value, index) => {
-  //       // console.log(value)
-  //       // formResponses = {
-  //       //   ...formResponses,
-  //       //   [`${key}_${index + 1}`]: value,
-  //       // }
-  //     })
-  //     delete formResponses[key]
-  //   }
-  // })
-
-  console.log(formResponses)
+  Object.keys(req.body).forEach((key) => {
+    if (req.body[key] instanceof Array) {
+      req.body[key].forEach((value, index) => {
+        formResponses = {
+          ...formResponses,
+          [`${key}_${req.body[key].length > 1 ? index : index + 1}`]: value,
+        }
+      })
+      delete formResponses[key]
+    }
+  })
 
   const requestOptions = {
     method: 'POST',

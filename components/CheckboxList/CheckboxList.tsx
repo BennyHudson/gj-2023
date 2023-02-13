@@ -11,23 +11,26 @@ import * as Styled from './styles/CheckboxList.style'
 import { CheckboxListProps } from './CheckboxList.types'
 import RawHtmlWrapper from '@components/RawHtmlWrapper'
 
-const CheckboxList: FC<CheckboxListProps> = ({ target, label, isRequired, hideLabels, choices, id, labelPlacement, validationMessage }): ReactElement => {
+const CheckboxList: FC<CheckboxListProps> = ({ target, label, isRequired, hideLabels, choices, id, labelPlacement, validationMessage, description }): ReactElement => {
   return (
-    <FieldWrapper target={target} label={label} required={isRequired} hideLabels={hideLabels} labelPlacement={labelPlacement} validationMessage={validationMessage}>
-      <Styled.CheckboxList>
-        {choices.map((choice, index) => {
-          return (
-            <Styled.CheckboxLabel key={index}>
-              <Field type='checkbox' value={choice.value} name={`input_${id}`} />
-              <Styled.Checkbox>
-                <FontAwesomeIcon icon={faCheck as IconProp} />
-              </Styled.Checkbox>
-              <RawHtmlWrapper content={choice.text} />
-            </Styled.CheckboxLabel>
-          )
-        })}
-      </Styled.CheckboxList>
-    </FieldWrapper>
+    <>
+      <FieldWrapper target={target} label={label} required={isRequired} hideLabels={hideLabels} labelPlacement={labelPlacement} validationMessage={validationMessage}>
+        <Styled.CheckboxList>
+          {choices.map((choice, index) => {
+            return (
+              <Styled.CheckboxLabel key={index}>
+                <Field type='checkbox' value={choice.value} name={`input_${id}`} />
+                <Styled.Checkbox>
+                  <FontAwesomeIcon icon={faCheck as IconProp} />
+                </Styled.Checkbox>
+                <RawHtmlWrapper content={choice.text} />
+              </Styled.CheckboxLabel>
+            )
+          })}
+        </Styled.CheckboxList>
+      </FieldWrapper>
+      {description && <Styled.Terms>{description}</Styled.Terms>}
+    </>
   )
 }
 

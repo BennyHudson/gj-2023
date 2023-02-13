@@ -17,6 +17,11 @@ export const formQuery = (formId: number) => {
                 placeholder
                 isPasswordInput
               }
+              ... on EmailField {
+                label
+                isRequired
+                placeholder
+              }
               ... on TextAreaField {
                 label
                 isRequired
@@ -61,6 +66,10 @@ export const formQuery = (formId: number) => {
                   placeholder
                   isHidden
                 }
+              }
+              ... on ConsentField {
+                checkboxLabel
+                description
               }
             }
           }

@@ -28,7 +28,7 @@ const CartItem: FC<CartItemProps> = ({
   }
 
   const getProductPrice = (productData) => {
-    const { signUpFee, regularPrice, salePrice, subscriptionPeriod, subscriptionPrice } = productData.product
+    const { signUpFee, salePrice, subscriptionPeriod, subscriptionPrice } = productData.product
     const onSale = parseFloat(salePrice) > parseFloat(signUpFee)
     if (signUpFee) return `${parseFloat(signUpFee)} ${onSale ? 'for the first year' : subscriptionPeriod}`
     return subscriptionPrice

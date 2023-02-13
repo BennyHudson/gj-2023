@@ -1,5 +1,11 @@
-import { ReactNode } from 'react'
-
 export interface BillingFormProps {
-  children: ReactNode
+  errors?: {
+    billing?: {
+      address_1?: string
+      city?: string
+      state?: string
+      postcode?: string
+      country?: string
+    }
+  }
 }

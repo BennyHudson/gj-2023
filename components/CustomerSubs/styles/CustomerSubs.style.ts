@@ -6,6 +6,7 @@ export const CustomerSubs = styled.div(
   (props: StyledCustomerSubsProps): FlattenSimpleInterpolation => css`
     display: flex;
     flex-direction: column;
-    gap: ${props.theme.spacing[4]}px;
+    gap: ${props.theme.spacing[8]}px;
+    align-items: flex-start;
   `,
 )

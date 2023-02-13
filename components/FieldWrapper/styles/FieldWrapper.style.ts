@@ -1,8 +1,6 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 
-import { TextArea } from '../../TextArea/styles/TextArea.style'
 import { TextField } from '../../TextField/styles/TextField.style'
-import { Select } from '../../Select/styles/Select.style'
 import { Label } from '@components/Label/styles/Label.style'
 
 import { StyledFieldWrapperProps } from './FieldWrapper.style.types'
@@ -15,7 +13,7 @@ export const FieldWrapper = styled.div(
     flex-direction: column;
     position: relative;
 
-    ${props.labelPlacement === 'INHERIT' &&
+    ${props.labelPlacement === 'BOTTOM' &&
     css`
       flex-direction: column-reverse;
     `}
@@ -74,12 +72,12 @@ export const FieldWrapper = styled.div(
       font-size: 18px;
       line-height: 26px;
 
-      ${props.labelPlacement === 'INHERIT' &&
+      ${props.labelPlacement === 'BOTTOM' &&
       css`
         font-family: 'Cera Pro Regular';
         font-size: 16px;
         line-height: 24px;
-        padding: ${props.theme.spacing[1] / 2}px ${props.theme.spacing[2]}px 0;
+        padding: ${props.theme.spacing[1] / 2}px 0 0;
       `}
     }
 

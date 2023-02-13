@@ -1,5 +1,12 @@
-import { ReactNode } from 'react'
-
 export interface ShippingFormProps {
-  children: ReactNode
+  setFieldValue: (target: string, value?: string) => void
+  errors?: {
+    shipping?: {
+      address_1?: string
+      city?: string
+      state?: string
+      postcode?: string
+      country?: string
+    }
+  }
 }

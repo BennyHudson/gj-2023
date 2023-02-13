@@ -16,10 +16,9 @@ const Payment: FC<PaymentProps> = ({
   setActivePanel,
   checkoutForm,
   paymentIntent,
+  setIsLoading,
 }: PaymentProps): ReactElement => {
   const { cart, shippingRate, customerId, customer } = useContext(PageContext) as PageContextProps
-
-  console.log(customerId)
 
   const stripe = useStripe()
   const elements = useElements()
@@ -50,6 +49,7 @@ const Payment: FC<PaymentProps> = ({
       <Formik 
         initialValues={checkoutForm} 
         onSubmit={async (values) => {
+          setIsLoading(true)
           if (!stripe || !elements) {
             // Stripe.js has not yet loaded.
             // Make sure to disable form submission until Stripe.js has loaded.
@@ -95,6 +95,8 @@ const Payment: FC<PaymentProps> = ({
               return_url: `${process.env.NEXT_PUBLIC_CHECKOUT_RETURN_URL}`,
             },
           })
+
+          setIsLoading(false)
         }}
       >
         <Form>

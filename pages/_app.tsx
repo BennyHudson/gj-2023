@@ -88,6 +88,7 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
               customer,
               setCustomer,
               subscriptions,
+              getCustomerData,
             }}
           >
             <Component {...pageProps} />

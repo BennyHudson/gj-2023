@@ -11,9 +11,9 @@ import PageContext, { PageContextProps } from '@context/PageContext'
 import TextField from '@components/TextField'
 import Notification from '@components/Notification'
 
-const Password: FC = (): ReactElement | null => {
+const CardDetails: FC = (): ReactElement | null => {
   const [editMode, setEditMode] = useState(false)
-  const [passwordMessage, setPasswordMessage] = useState()
+  const [passwordMessage, setCardDetailsMessage] = useState()
   const [showPostEditMessage, setShowPostEditMessage] = useState(false)
   const { customer } = useContext(PageContext) as PageContextProps
 
@@ -21,13 +21,13 @@ const Password: FC = (): ReactElement | null => {
 
   const passwordValidation = Yup.object().shape({
     password: Yup.string().required('Required field'),
-    confirmPassword: Yup.string().required('Required field').oneOf([Yup.ref('password'), null], 'Passwords must match')
+    confirmCardDetails: Yup.string().required('Required field').oneOf([Yup.ref('password'), null], 'CardDetailss must match')
   })
 
   return (
     <Styled.DetailsBlock>
       <Styled.DetailsHeading>
-        <Heading size={2} font='ChronicleCondensed' text='Password' noMargin />
+        <Heading size={2} font='ChronicleCondensed' text='Payment Details' noMargin />
         {editMode && <EditButton text='Cancel' onClick={() => setEditMode(false)} />}
       </Styled.DetailsHeading>
       {editMode ?
@@ -36,15 +36,15 @@ const Password: FC = (): ReactElement | null => {
           validateOnBlur={false}
           validateOnChange={false}
           initialValues={{
-            currentPassword: '',
+            currentCardDetails: '',
             password: '',
-            confirmPassword: '',
+            confirmCardDetails: '',
           }}  
           onSubmit={async (values) => {
             const formData = new FormData()
 
             formData.append('username', customer.email)
-            formData.append('password', values.currentPassword)
+            formData.append('password', values.currentCardDetails)
 
             const tokenData = await fetch('https://cms.thegentlemansjournal.com/wp-json/jwt-auth/v1/token', {
               method: 'POST',
@@ -72,23 +72,23 @@ const Password: FC = (): ReactElement | null => {
               }
               return
             }
-            setPasswordMessage('The password you have entered is incorrect.')
+            setCardDetailsMessage('The password you have entered is incorrect.')
           }}
         >
           {(props) => (
             <Form>
-              <TextField isRequired type='password' label='Current password' id='currentPassword' target='currentPassword' validationMessage={passwordMessage} />
+              <TextField isRequired type='password' label='Current password' id='currentCardDetails' target='currentCardDetails' validationMessage={passwordMessage} />
               <TextField isRequired type='password' label='New password' id='password' target='password' validationMessage={props.errors.password} />
-              <TextField isRequired type='password' label='Confirm new password' id='confirmPassword' target='confirmPassword' validationMessage={props.errors.confirmPassword} />
+              <TextField isRequired type='password' label='Confirm new password' id='confirmCardDetails' target='confirmCardDetails' validationMessage={props.errors.confirmCardDetails} />
               <EditButton type='submit' text='Confirm' />
             </Form>
           )}
         </Formik>
         :
         <>
-          {showPostEditMessage && <Notification text='Password updated successfully' state='success'  />}
-          <ValueWithLabel label='Password' value='••••••' valueType='password' />
-          <EditButton onClick={() => setEditMode(true)} text='Change your password' />
+          {showPostEditMessage && <Notification text='Card details updated successfully' state='success'  />}
+          <ValueWithLabel label='Card Details' value='••••••' valueType='password' />
+          <EditButton onClick={() => setEditMode(true)} text='Update card details' />
         </>
       }
       
@@ -96,4 +96,4 @@ const Password: FC = (): ReactElement | null => {
   )
 }
 
-export default Password
+export default CardDetails

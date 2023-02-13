@@ -7,4 +7,5 @@ export interface FormFieldProps {
   placeholder?: string
   hideLabels?: boolean
   type?: 'password' | 'email' | 'telephone' | 'number'
+  validationMessage?: string
 }

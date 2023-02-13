@@ -6,7 +6,7 @@ import { EditButton } from '@components/EditButton/styles/EditButton.style'
 import { StyledCheckoutPanelProps } from './CheckoutPanel.style.types'
 
 export const CheckoutHeader = styled.div(
-  (props: StyledCheckoutProps): FlattenSimpleInterpolation => css`
+  (props: StyledCheckoutPanelProps): FlattenSimpleInterpolation => css`
     display: flex;
     gap: ${props.theme.spacing[4]}px;
     margin-bottom: ${props.theme.spacing[4]}px;
@@ -44,6 +44,7 @@ export const CheckoutPanel = styled.div(
 
     ${EditButton} {
       margin-bottom: ${props.theme.spacing[8]}px;
+      display: block;
 
       &:last-child {
         margin-bottom: 0;

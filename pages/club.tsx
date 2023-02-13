@@ -1,12 +1,12 @@
 import React, { FC, ReactElement, useEffect, useContext } from 'react'
 
 import client from '@lib/apollo-client'
-import { gql } from '@apollo/client'
 
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { subscriptionProductsQuery } from '@queries/global/subscription-products'
 import { freeGiftQuery } from '@queries/global/free-gift'
+import { clubQuery } from '@queries/pages/club'
 
 import PageLayout from '@components/PageLayout'
 import ClubOverview from '@components/ClubOverview'
@@ -14,11 +14,10 @@ import ClubGift from '@components/ClubGift'
 import ClubBuy from '@components/ClubBuy'
 import ClubPerks from '@components/ClubPerks'
 import ClubHero from '@components/ClubHero'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
-import { clubQuery } from '@queries/pages/club'
 import Section from '@components/Section'
 import ClubVideo from '@components/ClubVideo'
+
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 const ClubPage: FC = ({ pageData, headerNav, footerNav, subscriptionProducts, freeGift, subscriptionOverview }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
