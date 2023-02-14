@@ -1,5 +1,6 @@
 import React, { ReactElement, FC, useContext } from 'react'
 import Image from 'next/image'
+import Head from 'next/head'
 import YouTube from 'react-youtube'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
@@ -23,20 +24,29 @@ const HeroImage: FC<HeroImageProps> = ({ featuredImage, height = 2, featuredVide
   }
 
   return (
-    <Styled.HeroImage height={height}>
-      {featuredVideo &&
-        <Styled.VideoWrapper height={height} headerHeight={headerHeight}>
-          <Styled.Video headerHeight={headerHeight}>
-            <YouTube
-              videoId={featuredVideo}
-              opts={videoOptions}
-              className='video-wrapper'
-            />
-          </Styled.Video>
-        </Styled.VideoWrapper>
-      }
-      {featuredImage && <Image src={featuredImageUrl(featuredImage)} key={featuredImage} fill alt='' quality={100} priority />}
-    </Styled.HeroImage>
+    <>
+      <Head>
+        <link
+          rel="preload"
+          href={featuredImageUrl(featuredImage)}
+          as="image"
+        />
+      </Head>
+      <Styled.HeroImage height={height}>
+        {featuredVideo &&
+          <Styled.VideoWrapper height={height} headerHeight={headerHeight}>
+            <Styled.Video headerHeight={headerHeight}>
+              <YouTube
+                videoId={featuredVideo}
+                opts={videoOptions}
+                className='video-wrapper'
+              />
+            </Styled.Video>
+          </Styled.VideoWrapper>
+        }
+        {featuredImage && <Image src={featuredImageUrl(featuredImage)} key={featuredImage} fill alt='' quality={100} priority />}
+      </Styled.HeroImage>
+    </>
   )
 }
 
