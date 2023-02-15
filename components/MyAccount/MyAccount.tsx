@@ -15,10 +15,10 @@ const MyAccount: FC = (): ReactElement => {
   const { setToken, customer, setCustomer, subscriptions } = useContext(PageContext) as PageContextProps
 
   const tabs = [
-    // {
-    //   title: 'Your Details',
-    //   content: <CustomerDetails />,
-    // },
+    {
+      title: 'Your Details',
+      content: <CustomerDetails />,
+    },
     {
       title: 'Subscriptions',
       content: <CustomerSubs />,

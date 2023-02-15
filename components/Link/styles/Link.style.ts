@@ -17,6 +17,8 @@ export const Link = styled.div(
     overflow: hidden;
     position: relative;
     cursor: pointer;
+    transition: 0.4s all ease;
+    overflow: visible;
 
     &::after {
       content: '';
@@ -83,6 +85,12 @@ export const Link = styled.div(
       &::after {
         content: none;
       }
+
+      &:hover {
+        svg {
+          transform: translateX(5px);
+        }
+      }
     `}
 
   &:last-child {
@@ -97,6 +105,7 @@ export const Link = styled.div(
 
     svg {
       width: 12px;
+      transition: 0.4s all ease;
     }
   `,
 )

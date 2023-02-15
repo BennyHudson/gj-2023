@@ -32,12 +32,12 @@ const ShippingForm: FC<ShippingFormProps> = (props: ShippingFormProps): ReactEle
         <EditButton
           type='button'
           onClick={() => {
-            props.setFieldValue('shipping.address_1', customer?.billing?.address_1)
-            props.setFieldValue('shipping.address_2', customer?.billing?.address_2)
-            props.setFieldValue('shipping.city', customer?.billing?.city)
-            props.setFieldValue('shipping.state', customer?.billing?.state)
-            props.setFieldValue('shipping.postcode', customer?.billing?.postcode)
-            props.setFieldValue('shipping.country', customer?.billing?.country)
+            props.setFieldValue('shipping.address_1', customer?.billing?.address_1 || props.billingAddress.address_1)
+            props.setFieldValue('shipping.address_2', customer?.billing?.address_2 || props.billingAddress.address_2)
+            props.setFieldValue('shipping.city', customer?.billing?.city || props.billingAddress.city)
+            props.setFieldValue('shipping.state', customer?.billing?.state || props.billingAddress.state)
+            props.setFieldValue('shipping.postcode', customer?.billing?.postcode || props.billingAddress.postcode)
+            props.setFieldValue('shipping.country', customer?.billing?.country || props.billingAddress.country)
           }}
           text='Copy from billing address'
         />

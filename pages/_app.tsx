@@ -28,6 +28,9 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
   const getCustomerData = async (id: number) => {
     const customerDetails = await fetch(`/api/user/${id}`)
     const customerData = await customerDetails.json()
+
+    console.log(customerData)
+
     setCustomer(customerData)
 
     if (customerData) {
@@ -40,8 +43,6 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
         const sub = await subscription.json()
         subs.push(sub)
       }))
-
-      console.log('I have been called', subs)
 
       setSubscriptions(subs)
     }

@@ -20,7 +20,10 @@ const ShippingAddress: FC<ShippingAddressProps> = ({
   checkoutForm,
   setCheckoutForm,
 }: ShippingAddressProps): ReactElement => {
-  const { customerId, cart, setShippingRate, customer } = useContext(PageContext) as PageContextProps
+  const { customer, customerId, cart, setShippingRate, getCustomerData } = useContext(PageContext) as PageContextProps
+
+  console.log(checkoutForm)
+
   return (
     <CheckoutPanel panelIndex={panelIndex} activePanel={activePanel} setActivePanel={setActivePanel} title='Shipping Address'> 
       {activePanel === panelIndex && 
@@ -62,12 +65,13 @@ const ShippingAddress: FC<ShippingAddressProps> = ({
               const shippingRate = await shippingCalculator.json()
               setShippingRate(shippingRate)
               setCheckoutForm({...checkoutForm, shipping: { ...values.shipping }})
+              getCustomerData(customer.id)
               setActivePanel(activePanel + 1)
             }
           }}
         >
           {props => (
-            <ShippingForm {...props} />
+            <ShippingForm {...props} billingAddress={checkoutForm.billing} />
           )}
         </Formik>
       }

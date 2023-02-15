@@ -13,7 +13,6 @@ export const ShopGrid = styled.div(
 type ShopCardProps = Pick<StyledShopGridProps, 'theme'>
 export const ShopCard = styled.a(
   (props: ShopCardProps): FlattenSimpleInterpolation => css`
-    background: ${props.theme.colours.white};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,7 +22,6 @@ export const ShopCard = styled.a(
     gap: ${props.theme.spacing[2]}px;
     color: ${props.theme.colours.black};
     text-decoration: none;
-    border-bottom: 1px solid ${props.theme.colours.midGrey};
   `,
 )
 

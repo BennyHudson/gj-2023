@@ -20,7 +20,7 @@ const CustomerDetails: FC<CustomerDetailsProps> = ({
   setActivePanel,
   setCheckoutForm,
 }: CustomerDetailsProps): ReactElement => {
-  const { setCustomerId, setToken, customer, setCustomer } = useContext(PageContext) as PageContextProps
+  const { setCustomerId, setToken, customer, setCustomer, getCustomerData } = useContext(PageContext) as PageContextProps
 
   const [ validationMessage, setValidationMessage ] = useState()
 
@@ -102,6 +102,8 @@ const CustomerDetails: FC<CustomerDetailsProps> = ({
                     setToken(login.data.token)
                     localStorage.setItem('gjToken', login.data.token)
                   }
+
+                  getCustomerData(customer.id)
 
                   setCheckoutForm({ billing: values.billing })
                   setActivePanel(activePanel + 1)

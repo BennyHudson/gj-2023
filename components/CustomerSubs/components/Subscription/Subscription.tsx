@@ -26,7 +26,8 @@ const Subscription: FC<SubscriptionProps> = ({
   const paymentMethod = subscription.meta_data.find((data) => data.key === '_stripe_source_id')
 
   const cancelSubscription = async (id: number) => {
-    await fetch(`/api/subscription/delete/${id}`)
+    const deleteSub = await fetch(`/api/subscription/delete/${id}`)
+    getCustomerData(customer.id)
   }
 
   const getCardDetails = async () => {

@@ -195,7 +195,7 @@ export const MainMenu = styled.ul(
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: ${props.theme.spacing[6]}px;
+    gap: ${props.theme.spacing[4]}px;
     font-family: 'Cera Pro Semibold', sans-serif;
     font-weight: 600;
     font-size: ${props.theme.typography.paragraph[1].fontSize};

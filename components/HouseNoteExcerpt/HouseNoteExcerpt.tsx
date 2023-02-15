@@ -35,9 +35,7 @@ const HouseNoteExcerpt: FC<HouseNoteExcerptProps> = ({
         )}
         <Styled.Footer>
           {author && (
-            <Styled.ArticleType>
-              <span>Words: {author.node.name}</span>
-            </Styled.ArticleType>
+            <Paragraph size={1} weight={3} font='Cera' noMargin>Words: {author.node.name}</Paragraph>
           )}
           <Link to={uri} size={1} weight={3} font='Cera' transform='uppercase' showIcon>
             Read More
