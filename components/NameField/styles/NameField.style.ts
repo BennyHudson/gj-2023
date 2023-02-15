@@ -5,11 +5,17 @@ import { FieldWrapper } from '@components/FieldWrapper/styles/FieldWrapper.style
 
 export const NameFields = styled.div(
   (props: StyledNameFieldProps): FlattenSimpleInterpolation => css`
-    display: flex;
+    display: grid;
+    grid-template-columns: ${props.split === '2/1' ? '2fr 1fr' : `repeat(${props.columnCount}, 1fr)`};
     gap: ${props.theme.spacing[2]}px;
     width: 100%;
 
     ${FieldWrapper} {
+      margin-bottom: 0;
+      width: 100%;
+    }
+
+    label {
       margin-bottom: 0;
     }
   `,

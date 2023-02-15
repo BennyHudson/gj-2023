@@ -2,7 +2,7 @@ import React, { ReactElement, FC, useState } from 'react'
 import { useQuery } from '@apollo/client'
 
 import { latestArticlesQuery } from '@queries/global/latest-articles'
-import { categoryQuery } from '@queries/global/categories'
+import { articleCategoryQuery, postCategoryQuery } from '@queries/global/categories'
 
 import PostGrid from '@components/PostGrid'
 import LoadMore from '@components/LoadMore'
@@ -11,39 +11,62 @@ import SkeletonLoader from '@components/SkeletonLoader'
 import { FeedProps, FeedState } from './Feed.types'
 
 const Feed: FC<FeedProps> = ({ category, columns = 4, count, showAdvert = true }: FeedProps): ReactElement => {
-  const [last, setLast] = useState<FeedState['last']>()
-  const [allArticles, setAllArticles] = useState<FeedState['allArticles']>([])
-  const [morePosts, setMorePosts] = useState<FeedState['morePosts']>(true)
+  const [lastArticle, setLastArticle] = useState<FeedState['last']>()
+  const [lastPost, setLastPost] = useState<FeedState['last']>()
+  const [moreArticles, setMoreArticles] = useState<FeedState['moreArticles']>(true)
+  const [morePosts, setMorePosts] = useState<FeedState['moreArticles']>(true)
 
-  const { loading, fetchMore } = useQuery(category ? categoryQuery(category, columns, count).query : latestArticlesQuery(columns).query, {
+  const [allFeedElements, setAllFeedElements] = useState<FeedState['allFeedElements']>([])
+
+  const articleQuery = useQuery(category ? articleCategoryQuery(category, columns, count).query : latestArticlesQuery(columns).query, {
     onCompleted: (data) => {
-      setLast(data.articles.pageInfo.endCursor)
-      setAllArticles(data.articles.edges)
-      setMorePosts(data.articles.pageInfo.hasNextPage)
+      setLastArticle(data.articles.pageInfo.endCursor)
+      setAllFeedElements(data.articles.edges)
+      setMoreArticles(data.articles.pageInfo.hasNextPage)
     },
   })
 
-  const getMore = async () => {
-    const more = await fetchMore({ variables: { after: last, first: 20 } })
+  const postQuery = useQuery(category ? postCategoryQuery(category, columns, count).query : latestArticlesQuery(columns).query, {
+    onCompleted: (data) => {
+      setLastPost(data.posts.pageInfo.endCursor)
+      setMorePosts(data.posts.pageInfo.hasNextPage)
+    },
+  })
+
+  const getMoreArticles = async () => {
+    const more = await articleQuery.fetchMore({ variables: { after: lastArticle, first: 20 } })
     if (more.data) {
-      setLast(more.data.articles.pageInfo.endCursor)
-      setAllArticles([...allArticles, ...more.data.articles.edges])
-      setMorePosts(more.data.articles.pageInfo.hasNextPage)
+      setLastArticle(more.data.articles.pageInfo.endCursor)
+      setAllFeedElements([...allFeedElements, ...more.data.articles.edges])
+      setMoreArticles(more.data.articles.pageInfo.hasNextPage)
+
+      if (!more.data.articles.pageInfo.hasNextPage) {
+        setAllFeedElements([...allFeedElements, ...postQuery.data.posts.edges])
+      }
+    }
+  }
+
+  const getMorePosts = async () => {
+    const more = await postQuery.fetchMore({ variables: { after: lastPost, first: 20 } })
+    if (more.data) {
+      setLastPost(more.data.posts.pageInfo.endCursor)
+      setAllFeedElements([...allFeedElements, ...more.data.posts.edges])
+      setMorePosts(more.data.posts.pageInfo.hasNextPage)
     }
   }
 
   return (
     <>
-      {loading ? (
+      {articleQuery.loading ? (
         <SkeletonLoader columns={columns} />
       ) : (
         <>
-          {allArticles && (
+          {allFeedElements && (
             <div>
-              <PostGrid posts={allArticles.map((article) => article.node)} columns={columns} showAdvert={showAdvert} />
+              <PostGrid posts={allFeedElements.map((article) => article.node)} columns={columns} showAdvert={showAdvert} />
             </div>
           )}
-          {morePosts && <LoadMore onClick={getMore} />}
+          {(moreArticles || morePosts) && <LoadMore onClick={moreArticles ? getMoreArticles : getMorePosts} />}
         </>
       )}
     </>

@@ -12,20 +12,20 @@ import EditButton from '@components/EditButton'
 import * as Styled from './styles/MyAccount.style'
 
 const MyAccount: FC = (): ReactElement => {
-  const { setToken, customer, setCustomer } = useContext(PageContext) as PageContextProps
+  const { setToken, customer, setCustomer, subscriptions } = useContext(PageContext) as PageContextProps
 
   const tabs = [
-    {
-      title: 'Your Details',
-      content: <CustomerDetails />,
-    },
+    // {
+    //   title: 'Your Details',
+    //   content: <CustomerDetails />,
+    // },
     {
       title: 'Subscriptions',
       content: <CustomerSubs />,
     },
     {
       title: 'Members Content',
-      content: <Feed category='Members' count={6} columns={3} showAdvert={false} />,
+      content: <Feed category={9415} count={6} columns={3} showAdvert={false} />,
     },
   ]
 
@@ -34,6 +34,8 @@ const MyAccount: FC = (): ReactElement => {
     setToken()
     localStorage.removeItem('gjToken')
   }
+
+  console.log(subscriptions)
 
   return (
     <Styled.MyAccount>

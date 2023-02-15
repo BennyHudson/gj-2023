@@ -71,7 +71,7 @@ const SessionsFeed: FC = (): ReactElement => {
         </Styled.Column>
         <Styled.Column>
           <Title title='Artist Interviews' />
-          <Feed category='GJ Sessions' columns={3} showAdvert={false} />
+          <Feed category={9682} columns={3} showAdvert={false} />
         </Styled.Column>
       </Styled.SessionsFeed>
     </Styled.FeedWrapper>

@@ -11,6 +11,7 @@ export const ValueWithLabel = styled.div(
     font-family: 'Cera Pro Regular';
     font-size: ${props.theme.typography.paragraph[2].fontSize};
     line-height: ${props.theme.typography.paragraph[2].lineHeight};
+    text-transform: ${props.transform ? props.transform : 'none'};
 
     ${props.valueType === 'password' && css`
       letter-spacing: 4px;

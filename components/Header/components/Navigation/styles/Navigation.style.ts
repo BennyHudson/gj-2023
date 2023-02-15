@@ -108,10 +108,6 @@ export const SubMenuWrapper = styled.div(
 
       ${Thumbnail} {
         margin-bottom: ${props.theme.spacing[2]}px;
-
-        img {
-          filter: grayscale(100%);
-        }
       }
     }
   `,

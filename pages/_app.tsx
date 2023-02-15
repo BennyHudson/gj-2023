@@ -41,6 +41,8 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
         subs.push(sub)
       }))
 
+      console.log('I have been called', subs)
+
       setSubscriptions(subs)
     }
   }

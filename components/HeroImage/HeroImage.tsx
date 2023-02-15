@@ -32,7 +32,7 @@ const HeroImage: FC<HeroImageProps> = ({ featuredImage, height = 2, featuredVide
           as="image"
         />
       </Head>
-      <Styled.HeroImage height={height}>
+      <Styled.HeroImage height={height} backgroundImage={featuredImageUrl(featuredImage)}>
         {featuredVideo &&
           <Styled.VideoWrapper height={height} headerHeight={headerHeight}>
             <Styled.Video headerHeight={headerHeight}>
@@ -44,7 +44,7 @@ const HeroImage: FC<HeroImageProps> = ({ featuredImage, height = 2, featuredVide
             </Styled.Video>
           </Styled.VideoWrapper>
         }
-        {featuredImage && <Image src={featuredImageUrl(featuredImage)} key={featuredImage} fill alt='' quality={100} priority />}
+        {/* {featuredImage && <Image src={featuredImageUrl(featuredImage)} key={featuredImage} fill alt='' quality={100} priority />} */}
       </Styled.HeroImage>
     </>
   )

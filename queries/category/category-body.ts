@@ -21,8 +21,9 @@ export interface CategoryBody {
 export const categoryBodyQuery = (slug: string) => {
   return {
     query: gql`
-      query categoryQuery {
+      query articleCategoryQuery {
         category(id: "${slug}", idType: SLUG) {
+          databaseId
           name
           description
           uri

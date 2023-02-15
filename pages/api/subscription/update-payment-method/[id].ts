@@ -9,12 +9,16 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
 
   const wooCommerceData = await WooCommerce.put(`subscriptions/${id}`, {
     status: 'active',
-    payment_details: {
-      post_meta: {
-        _stripe_customer_id: req.body.stripeCustomerId.customerId,
-        _stripe_source_id: req.body.payment_method,
-      }
-    },
+    meta_data: [
+      {
+        'key': '_stripe_customer_id',
+        'value': req.body.stripeCustomerId.customerId,
+      },
+      {
+        'key': '_stripe_source_id',
+        'value': req.body.payment_method,
+      },
+    ],
   })
   
   if (wooCommerceData) {

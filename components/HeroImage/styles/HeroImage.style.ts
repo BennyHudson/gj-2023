@@ -10,6 +10,8 @@ export const HeroImage = styled.div(
     align-items: center;
     justify-content: center;
     position: relative;
+    background: url('${props.backgroundImage}') center center no-repeat;
+    background-size: cover;
 
     ${respondTo.lg(css`
       height: ${props.height === 2 ? '100vh' : '80vh'};

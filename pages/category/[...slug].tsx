@@ -46,13 +46,15 @@ const Category: FC<CategoryData> = ({ category, headerNav, footerNav }: Category
     }
   }
 
+  console.log(category)
+
   return (
     <PageLayout headerNav={headerNav} headerStyle='standard' footerNav={footerNav} seo={{ title: `${category.name} | The Gentleman's Journal` }}>
       <BannerAdvert slot='GJ_970x250_001' />
       <Section>
         <Breadcrumbs links={category.seo.breadcrumbs!} />
         <Title title={category.name} subtitle={category.description} links={childCategories()} />
-        <Feed category={category.name} count={mdAndBelow ? 12 : 18} />
+        <Feed category={category.databaseId} count={mdAndBelow ? 12 : 18} />
       </Section>
     </PageLayout>
   )

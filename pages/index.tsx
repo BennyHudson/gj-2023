@@ -10,7 +10,7 @@ import { sessionsFeatureQuery } from '@queries/homepage/sessions-feature'
 import { latestPodcastsQuery } from '@queries/homepage/latest-podcasts'
 import { giftGuideQuery } from '@queries/homepage/gift-guide'
 import { latestVideoQuery } from '@queries/homepage/latest-video'
-import { categoryQuery } from '@queries/homepage/category'
+import { articleCategoryQuery } from '@queries/homepage/category'
 
 import FullPageFeature from '@components/FullPageFeature'
 import Section from '@components/Section'
@@ -178,12 +178,12 @@ export async function getStaticProps() {
 
   const homepage = await client.query(homepageQuery)
   const latestPosts = await client.query(latestPostsQuery)
-  const coverInterviews = await client.query(categoryQuery('Cover Interviews'))
+  const coverInterviews = await client.query(articleCategoryQuery('Cover Interviews'))
   const sessionFeature = await client.query(sessionsFeatureQuery)
   const giftGuide = await client.query(giftGuideQuery)
   const latestPodcasts = await client.query(latestPodcastsQuery)
   const latestVideo = await client.query(latestVideoQuery)
-  const competitions = await client.query(categoryQuery('Competitions'))
+  const competitions = await client.query(articleCategoryQuery('Competitions'))
   const newsletter = await client.query(newsletterModalQuery)
   const featuredProducts = await client.query(featuredProductsQuery)
   const club = await client.query(clubQuery)

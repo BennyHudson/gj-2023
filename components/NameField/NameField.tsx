@@ -9,9 +9,12 @@ import { NameFieldProps } from './NameField.types'
 import FieldWrapper from '@components/FieldWrapper'
 
 const NameField: FC<NameFieldProps> = (props: NameFieldProps): ReactElement => {
+  const visibleColumns = props.inputs.filter((input) => !input.isHidden)
+  
+
   return (
     <FieldWrapper label={props.label} labelPlacement='TOP' validationMessage={props.validationMessage}>
-      <Styled.NameFields>
+      <Styled.NameFields columnCount={visibleColumns.length} split={props.split}>
         {props.inputs.map((input, index) => {
           if (input.isHidden) return
 

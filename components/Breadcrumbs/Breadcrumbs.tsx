@@ -18,7 +18,7 @@ const Breadcrumbs: FC<BreadcrumbsProps> = ({ links }: BreadcrumbsProps): ReactEl
       {sm && (
         <>
           <Styled.Breadcrumb>
-            <Link to={links[0].url.replace('https://www.thegentlemansjournal.com/', '/')} font='Cera'>
+            <Link to={links[0].url.replace('https://cms.thegentlemansjournal.com/', '/')} font='Cera'>
               {links[0].text}
             </Link>
             <FontAwesomeIcon icon={faAngleRight as IconProp} />
@@ -34,7 +34,7 @@ const Breadcrumbs: FC<BreadcrumbsProps> = ({ links }: BreadcrumbsProps): ReactEl
             <Styled.Breadcrumb key={index}>
               {index !== links.length - 1 ? (
                 <>
-                  <Link to={link.url.replace('https://www.thegentlemansjournal.com/', '/')} font='Cera'>
+                  <Link to={link.url.replace('https://cms.thegentlemansjournal.com/', '/')} font='Cera'>
                     {link.text}
                   </Link>
                   <FontAwesomeIcon icon={faAngleRight as IconProp} />

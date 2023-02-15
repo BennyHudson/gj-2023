@@ -1,7 +1,7 @@
 import { Post } from '@typings/Post.types'
 
 export interface FeedProps {
-  category?: string
+  category?: number
   columns?: 3 | 4
   count?: number
   showAdvert?: boolean
@@ -9,8 +9,8 @@ export interface FeedProps {
 
 export interface FeedState {
   last?: string
-  allArticles: {
+  allFeedElements: {
     node: Post
   }[]
-  morePosts: boolean
+  moreArticles: boolean
 }
