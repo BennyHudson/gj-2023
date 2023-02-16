@@ -52,7 +52,7 @@ const Article: FC<ArticleData> = ({ data, headerNav, footerNav }: ArticleData): 
   return (
     <PageLayout headerNav={headerNav} footerNav={footerNav} seo={articleData?.seo}>
       {articleData.featuredImage && <HeroImage featuredImage={articleData.featuredImage.node.sourceUrl} featuredVideo={articleData.articleAcf.featuredVideo} />}
-      <BannerAdvert slot='GJ_970x250_001' />
+      <BannerAdvert parent='gj_970x250' slot='GJ_970x250_001' />
       <Section>
         <Masthead title={articleData.title} breadcrumbs={articleData.seo.breadcrumbs} subtitle={articleData.articleAcf.standfirst} />
         <ContentGrid

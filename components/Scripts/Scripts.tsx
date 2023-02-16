@@ -1,6 +1,8 @@
 import React, { ReactElement, FC } from 'react'
 import Script from 'next/script'
 
+import { googleAds } from './helpers/googleAds'
+
 const Scripts: FC = (): ReactElement => {
   return (
     <>
@@ -18,6 +20,42 @@ const Scripts: FC = (): ReactElement => {
         `}
       </Script>
       <Script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></Script>
+      {googleAds.map((adBlock, index) => {
+        return (
+          <>
+            <Script id={`gdp-${adBlock.parentId}-main`} key={index}>
+              {`
+                window.googletag = window.googletag || {cmd: []};
+                googletag.cmd.push(function() {
+                  
+                  googletag.defineSlot('/113638206/${adBlock.parentId}', ${adBlock.sizes}, 'gdp-${adBlock.parentId}')
+                    .addService(googletag.pubads());
+                  
+                  googletag.pubads().enableSingleRequest();
+                  googletag.enableServices();
+                });
+              `}
+            </Script>
+            {adBlock.children && adBlock.children.map((child, index) => {
+              return (
+                <Script id={`gdp-${adBlock.parentId}-${child}-main`} key={`${child}-${index}`}>
+                  {`
+                    window.googletag = window.googletag || {cmd: []};
+                    googletag.cmd.push(function() {
+                      
+                      googletag.defineSlot('/113638206/${adBlock.parentId}/${child}', ${adBlock.sizes}, 'gdp-${adBlock.parentId}-${child}')
+                        .addService(googletag.pubads());
+                      
+                      googletag.pubads().enableSingleRequest();
+                      googletag.enableServices();
+                    });
+                  `}
+                </Script>
+              )
+            })}
+          </>
+        )
+      })}
     </>
   )
 }

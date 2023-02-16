@@ -68,7 +68,7 @@ const PostGrid: FC<PostGridProps> = ({
               return (
                 <>
                   <Styled.TowerAdvert>
-                    <TowerAdvert slot='GJ_300x600_001' />
+                    <TowerAdvert parent='GJ_300x600' slot='GJ_300x600_001' />
                   </Styled.TowerAdvert>
                   <PostExcerpt priority={priority && index < 8} key={index} inverse={inverse} {...post} />
                 </>

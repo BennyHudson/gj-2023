@@ -37,7 +37,7 @@ const SessionsPage: FC = ({ pageData, featuredArticle, headerNav, footerNav }): 
           categories={featuredArticle.articles.nodes[0].categories}
         />
       </SessionsHeader>
-      <BannerAdvert slot='GJ_970x250_001' />
+      <BannerAdvert parent='gj_970x250' slot='GJ_970x250_001' />
       <SessionsFeed />
       <SessionsSponsor
         sponsor={{

@@ -50,7 +50,7 @@ const Category: FC<CategoryData> = ({ category, headerNav, footerNav }: Category
 
   return (
     <PageLayout headerNav={headerNav} headerStyle='standard' footerNav={footerNav} seo={{ title: `${category.name} | The Gentleman's Journal` }}>
-      <BannerAdvert slot='GJ_970x250_001' />
+      <BannerAdvert parent='gj_970x250' slot='GJ_970x250_001' />
       <Section>
         <Breadcrumbs links={category.seo.breadcrumbs!} />
         <Title title={category.name} subtitle={category.description} links={childCategories()} />

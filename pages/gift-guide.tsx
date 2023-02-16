@@ -69,7 +69,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav }): ReactElemen
         <Title title={pageData.selectedProducts.title} />
         <GiftGrid gifts={pageData.selectedProducts.gifts} />
       </Section>
-      <BannerAdvert slot='GJ_970x250_001' />
+      <BannerAdvert parent='gj_970x250' slot='GJ_970x250_001' />
       <GiftGuideFeature
         meta={pageData.ctaThird.categories.nodes[0].name}
         title={pageData.ctaThird.title}

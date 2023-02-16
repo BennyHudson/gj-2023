@@ -29,8 +29,6 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
     const customerDetails = await fetch(`/api/user/${id}`)
     const customerData = await customerDetails.json()
 
-    console.log(customerData)
-
     setCustomer(customerData)
 
     if (customerData) {
