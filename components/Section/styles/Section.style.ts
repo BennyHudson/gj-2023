@@ -11,7 +11,7 @@ export const Section = styled.div(
     width: 100%;
 
     ${respondTo.md(css`
-      padding: ${props.theme.spacing[8]}px 0;
+      padding: ${props.theme.spacing[props.paddingLevel === 2 ? 8 : 4]}px 0;
     `)}
 
     ${props.appearance === 'secondary' &&

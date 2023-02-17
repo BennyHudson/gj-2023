@@ -1,4 +1,4 @@
 export interface TowerAdvertProps {
-  slot: string
+  slot?: string
   parent: string
 }

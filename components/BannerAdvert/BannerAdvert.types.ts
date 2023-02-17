@@ -1,4 +1,5 @@
 export interface BannerAdProps {
-  slot: string
+  slot?: string
   parent: string
+  paddingLevel?: 1 | 2
 }

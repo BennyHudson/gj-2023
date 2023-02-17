@@ -13,7 +13,7 @@ import { BannerAdProps } from './BannerAdvert.types'
 import * as Styled from './styles/BannerAdvert.style'
 import { useRouter } from 'next/router'
 
-const BannerAdvert: FC<BannerAdProps> = ({ parent, slot }: BannerAdProps): ReactElement => {
+const BannerAdvert: FC<BannerAdProps> = ({ parent, slot, paddingLevel = 2 }: BannerAdProps): ReactElement => {
   const router = useRouter()
   
   useEffect(() => {
@@ -24,11 +24,11 @@ const BannerAdvert: FC<BannerAdProps> = ({ parent, slot }: BannerAdProps): React
   }, [router])
 
   return (
-    <Section appearance='tertiary'>
+    <Section appearance='tertiary' paddingLevel={paddingLevel}>
       <Styled.BannerAdvert>
-        <div id={`gdp-${parent}-${slot}`}>
-          <Script id={`gdp-${parent}-${slot}-script`}>
-            {`googletag.cmd.push(function() { googletag.display('gdp-${parent}-${slot}'); });`}
+        <div id={`gdp-${parent}${slot ? `-${slot}` : ''}`}>
+          <Script id={`gdp-${parent}${slot ? `-${slot}` : ''}-script`}>
+            {`googletag.cmd.push(function() { googletag.display('gdp-${parent}${slot ? `-${slot}` : ''}'); });`}
           </Script>
         </div>
       </Styled.BannerAdvert>

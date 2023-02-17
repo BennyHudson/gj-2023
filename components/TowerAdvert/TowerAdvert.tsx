@@ -21,9 +21,9 @@ const TowerAdvert: FC<TowerAdvertProps> = ({
 
   return (
     <Styled.TowerAdvert>
-      <div id={`gdp-${parent}-${slot}`}>
-        <Script id={`gdp-${parent}-${slot}-script`}>
-          {`googletag.cmd.push(function() { googletag.display('gdp-${parent}-${slot}'); });`}
+      <div id={`gdp-${parent}${slot ? `-${slot}` : ''}`}>
+        <Script id={`gdp-${parent}${slot ? `-${slot}` : ''}-script`}>
+          {`googletag.cmd.push(function() { googletag.display('gdp-${parent}${slot ? `-${slot}` : ''}'); });`}
         </Script>
       </div>
     </Styled.TowerAdvert>

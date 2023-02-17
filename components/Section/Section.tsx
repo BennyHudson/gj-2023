@@ -9,9 +9,10 @@ const Section: FC<SectionProps> = ({
   appearance = 'primary',
   containerWidth = 'regular',
   backgroundImage,
+  paddingLevel = 2,
 }: SectionProps): ReactElement => {
   return (
-    <Styled.Section appearance={appearance} backgroundImage={backgroundImage}>
+    <Styled.Section appearance={appearance} backgroundImage={backgroundImage} paddingLevel={paddingLevel}>
       <Styled.Content containerWidth={containerWidth}>{children}</Styled.Content>
     </Styled.Section>
   )

@@ -5,4 +5,5 @@ export interface SectionProps {
   appearance?: 'primary' | 'secondary' | 'tertiary'
   containerWidth?: 'regular' | 'narrow' | 'wide'
   backgroundImage?: string
+  paddingLevel?: 1 | 2
 }

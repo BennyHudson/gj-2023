@@ -18,6 +18,11 @@ export const googleAds = [
       'GJ_970x250_007',
     ],
     sizes: '[[970, 250], [300, 250], [728, 210]]',
+    mappings: {
+      lg: '[970, 250]',
+      md: '[728, 210]',
+      sm: '[300, 250]',
+    }
   },
   {
     parentId: 'GJ_300x250',
@@ -35,11 +40,12 @@ export const googleAds = [
     sizes: '[300, 600]',
   },
   {
-    parentId: 'GJ_728x90',
-    children: [
-      'GJ_728x90_001',
-    ],
+    parentId: 'GJ_728x90_001_0',
     sizes: '[[728, 90], [300, 250]]',
+    mappings: {
+      md: '[728, 90]',
+      sm: '[300, 250]',
+    }
   },
   // {
   //   parentId: 'GJ_INT',
@@ -48,11 +54,11 @@ export const googleAds = [
   //   ]
   // },
   {
-    parentId: 'GJ_SESSIONS-MPU-001',
+    parentId: 'gpt-GJ_SESSIONS-MPU-001',
     sizes: '[300, 250]',
   },
   {
     parentId: 'GJ_SESSIONS-LEADERBOARD-001',
-    sizes: '[[970, 250], [1000, 250]]',
+    sizes: '[1000, 250]',
   },
 ]

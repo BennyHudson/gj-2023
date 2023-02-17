@@ -4,6 +4,8 @@ import { StyledSessionsFeedProps } from './SessionsFeed.style.types'
 import respondTo from '@mixins/respondTo'
 import { Title } from '@components/Title/styles/Title.style'
 import { PostGrid } from '@components/PostGrid/styles/PostGrid.style'
+import { TowerAdvert } from '@components/TowerAdvert/styles/TowerAdvert.style'
+import { Link } from '@components/Link/styles/Link.style'
 
 export const FeedWrapper = styled.div((): FlattenSimpleInterpolation => css`
   width: 100%;
@@ -17,6 +19,7 @@ export const SessionsFeed = styled.div(
     max-width: ${props.theme.containerWidth}px;
     margin: 0 auto;
     background: ${props.theme.colours.black};
+    width: 90%;
   `,
 )
 
@@ -37,7 +40,7 @@ export const Column = styled.div(
 
     ${respondTo.lg(css`
       grid-column: col-start / span 3;
-      padding: ${props.theme.spacing[8]}px;
+      padding: ${props.theme.spacing[4]}px;
 
       &:nth-child(1) {
         padding-left: 0;
@@ -79,7 +82,14 @@ export const SundayPlaylist = styled.div(
     align-items: center;
     text-align: center;
     gap: ${props.theme.spacing[4]}px;
-    padding-bottom: ${props.theme.spacing[2]}px;
-    border-bottom: 1px solid ${props.theme.colours.white};
+
+    ${Link} {
+      margin-bottom: 0;
+    }
+
+    ${TowerAdvert} {
+      padding-top: ${props.theme.spacing[4]}px;
+      border-top: 1px solid ${props.theme.colours.white};
+    }
   `,
 )

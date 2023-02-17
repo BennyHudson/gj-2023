@@ -2,6 +2,7 @@ import React, { ReactElement, FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faAngleRight } from '@fortawesome/pro-thin-svg-icons'
+import he from 'he'
 
 import Link from '@components/Link'
 
@@ -19,7 +20,7 @@ const Breadcrumbs: FC<BreadcrumbsProps> = ({ links }: BreadcrumbsProps): ReactEl
         <>
           <Styled.Breadcrumb>
             <Link to={links[0].url.replace('https://cms.thegentlemansjournal.com/', '/')} font='Cera'>
-              {links[0].text}
+              {he.decode(links[0].text)}
             </Link>
             <FontAwesomeIcon icon={faAngleRight as IconProp} />
           </Styled.Breadcrumb>
@@ -35,12 +36,12 @@ const Breadcrumbs: FC<BreadcrumbsProps> = ({ links }: BreadcrumbsProps): ReactEl
               {index !== links.length - 1 ? (
                 <>
                   <Link to={link.url.replace('https://cms.thegentlemansjournal.com/', '/')} font='Cera'>
-                    {link.text}
+                    {he.decode(link.text)}
                   </Link>
                   <FontAwesomeIcon icon={faAngleRight as IconProp} />
                 </>
               ) : (
-                <span>{link.text}</span>
+                <span>{he.decode(link.text)}</span>
               )}
             </Styled.Breadcrumb>
           )

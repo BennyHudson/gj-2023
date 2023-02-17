@@ -1,9 +1,14 @@
 import React, { ReactElement, FC } from 'react'
 import Script from 'next/script'
+import { useTheme } from 'styled-components'
+
+import { Theme } from '@themes/gjTheme/gjTheme.types'
 
 import { googleAds } from './helpers/googleAds'
 
 const Scripts: FC = (): ReactElement => {
+  const { breakpoints } = useTheme() as Theme
+
   return (
     <>
       <Script
@@ -27,8 +32,17 @@ const Scripts: FC = (): ReactElement => {
               {`
                 window.googletag = window.googletag || {cmd: []};
                 googletag.cmd.push(function() {
+
+                  ${adBlock.mappings && `
+                    const sizeMappings = googletag.sizeMapping()
+                      ${adBlock.mappings.lg ? `.addSize([${breakpoints.lg}, 0], ${adBlock.mappings.lg})` : ''}
+                      ${adBlock.mappings.md ? `.addSize([${breakpoints.md}, 0], ${adBlock.mappings.md})` : ''}
+                      .addSize([0, 0], ${adBlock.mappings.sm})
+                      .build();
+                  `}
                   
                   googletag.defineSlot('/113638206/${adBlock.parentId}', ${adBlock.sizes}, 'gdp-${adBlock.parentId}')
+                    ${adBlock.mappings ? '.defineSizeMapping(sizeMappings)' : ''}
                     .addService(googletag.pubads());
                   
                   googletag.pubads().enableSingleRequest();
@@ -42,8 +56,17 @@ const Scripts: FC = (): ReactElement => {
                   {`
                     window.googletag = window.googletag || {cmd: []};
                     googletag.cmd.push(function() {
+
+                      ${adBlock.mappings && `
+                        const childMappings = googletag.sizeMapping()
+                          ${adBlock.mappings.lg ? `.addSize([${breakpoints.lg}, 0], ${adBlock.mappings.lg})` : ''}
+                          ${adBlock.mappings.md ? `.addSize([${breakpoints.md}, 0], ${adBlock.mappings.md})` : ''}
+                          .addSize([0, 0], ${adBlock.mappings.sm})
+                          .build();
+                      `}
                       
                       googletag.defineSlot('/113638206/${adBlock.parentId}/${child}', ${adBlock.sizes}, 'gdp-${adBlock.parentId}-${child}')
+                        ${adBlock.mappings ? '.defineSizeMapping(childMappings)' : ''}
                         .addService(googletag.pubads());
                       
                       googletag.pubads().enableSingleRequest();

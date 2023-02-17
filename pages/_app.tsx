@@ -66,10 +66,10 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
 
   return (
     <>
-      <Scripts />
       <ApolloProvider client={client}>
         <ThemeProvider theme={gjTheme}>
           <GlobalStyle />
+          <Scripts />
           <PageContext.Provider
             value={{
               cmsUrl,

@@ -11,6 +11,7 @@ import Link from '@components/Link'
 import Thumbnail from '@components/Thumbnail'
 
 import * as Styled from './styles/SessionsFeed.style'
+import TowerAdvert from '@components/TowerAdvert'
 
 const SessionsFeed: FC = (): ReactElement => {
   const [spotifyPlaylist, setSpotifyPlaylist] = useState('')
@@ -66,6 +67,7 @@ const SessionsFeed: FC = (): ReactElement => {
               <Link to={sundayPlaylist.uri} showIcon font='Cera' inverse size={1}>
                 Read Interview
               </Link>
+              <TowerAdvert parent='gpt-GJ_SESSIONS-MPU-001' />
             </Styled.SundayPlaylist>
           )}
         </Styled.Column>
