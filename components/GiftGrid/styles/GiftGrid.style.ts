@@ -3,12 +3,14 @@ import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { StyledGiftGridProps } from './GiftGrid.style.types'
 import respondTo from '@mixins/respondTo'
 import { Thumbnail } from '@components/Thumbnail/styles/Thumbnail.style'
+import { Meta } from '@components/Meta/styles/Meta.style'
 
 export const GiftGrid = styled.div(
   (props: StyledGiftGridProps): FlattenSimpleInterpolation => css`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: ${props.theme.spacing[2]}px;
+    row-gap: ${props.theme.spacing[6]}px;
     width: 90%;
     margin: 0 auto ${props.theme.spacing[4]}px;
 
@@ -33,6 +35,10 @@ export const GiftItem = styled.a(
     color: ${props.theme.colours.black};
     text-decoration: none;
     padding: 0 ${props.theme.spacing[2]}px;
+
+    ${Meta} {
+      padding: 0;
+    }
 
     ${Thumbnail} {
       margin: 0 -${props.theme.spacing[2]}px;

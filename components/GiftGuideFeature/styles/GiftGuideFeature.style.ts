@@ -10,6 +10,7 @@ export const GiftGuideFeature = styled.div(
     position: relative;
     background: ${props.theme.colours.black};
     display: flex;
+    height: calc(100vh - ${props.headerHeight}px);
 
     ${props.height === 3 &&
     css`

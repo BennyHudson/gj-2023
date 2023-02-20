@@ -57,8 +57,7 @@ export const Content = styled.div(
 export const PodcastMeta = styled.div(
   (props: StyledPodcastContentProps): FlattenSimpleInterpolation => css`
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     padding: ${props.theme.spacing[4]}px 5%;
     border-top: 1px solid ${props.theme.colours.midGrey};
     border-bottom: 1px solid ${props.theme.colours.midGrey};
@@ -66,6 +65,9 @@ export const PodcastMeta = styled.div(
 
     ${respondTo.lg(css`
       padding: ${props.theme.spacing[4]}px 0;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
     `)}
   `,
 )

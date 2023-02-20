@@ -40,13 +40,13 @@ const typography = {
     },
     4: {
       fontSizeMobile: '32px',
-      lineHeightMobile: '1.5',
+      lineHeightMobile: '36px',
       fontSize: '48px',
       lineHeight: '56px',
     },
     5: {
       fontSizeMobile: '36px',
-      lineHeightMobile: '1.5',
+      lineHeightMobile: '44px',
       fontSize: '60px',
       lineHeight: '68px',
     },

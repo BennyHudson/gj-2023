@@ -15,18 +15,20 @@ import PodcastCarousel from '@components/PodcastCarousel'
 import Divider from '@components/Divider'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import { useBreakpoints } from '@hooks/useBreakpoints'
 
 const Podcasts: FC = ({ podcastOptions, headerNav, footerNav }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
+  const { sm } = useBreakpoints()
 
   useEffect(() => {
     setActiveNavElement(3)
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Podcasts | The Gentleman\'s Journal' }}>
+    <PageLayout headerStyle={sm ? 'standard' : 'feature'} headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Podcasts | The Gentleman\'s Journal' }}>
       <FeatureCarousel
-        height={2}
+        height={sm ? 1 : 2}
         title='Podcasts'
         cta='Listen Now'
         posts={podcastOptions.featured.hero.map((podcast) => {

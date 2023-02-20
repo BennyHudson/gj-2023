@@ -19,7 +19,11 @@ export const SessionsFeed = styled.div(
     max-width: ${props.theme.containerWidth}px;
     margin: 0 auto;
     background: ${props.theme.colours.black};
-    width: 90%;
+    width: 100%;
+
+    ${respondTo.lg(css`
+      width: 90%;
+    `)}
   `,
 )
 

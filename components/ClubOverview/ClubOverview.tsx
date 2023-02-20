@@ -7,11 +7,13 @@ import Heading from '@components/Heading'
 import * as Styled from './styles/ClubOverview.style'
 
 import { ClubOverviewProps } from './ClubOverview.types'
+import { useBreakpoints } from '@hooks/useBreakpoints'
 
 const ClubOverview: FC<ClubOverviewProps> = ({ overview }: ClubOverviewProps): ReactElement => {
+  const { sm } = useBreakpoints()
   return (
     <Styled.ClubOverview>
-      <Section appearance='tertiary'>
+      <Section appearance={sm ? 'primary' : 'tertiary'}>
         <Title title='Membership Overview' subtitle='Membership includes:' />
         <Styled.ClubOverviewGrid>
           {overview.map((overviewItem, index) => {

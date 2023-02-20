@@ -22,6 +22,8 @@ const SearchResults: FC<SearchResultsProps> = ({ searchResults, searchTerm, setS
     setSearchPage(searchPage + 1)
   }
 
+  console.log(searchResults)
+
   return (
     <>
       {searchResults.length ? (

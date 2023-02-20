@@ -37,8 +37,8 @@ export const Background = styled.div(
 
 export const FullPageFeature = styled.div(
   (props: StyledFullPageFeatureProps): FlattenSimpleInterpolation => css`
-    height: 80vh;
-    padding: 10vh ${props.theme.spacing[2]}px;
+    height: calc(100vh - ${props.headerHeight * 2}px);
+    padding: ${props.headerHeight}px ${props.theme.spacing[2]}px;
     display: grid;
     grid-template-columns: repeat(12, [col-start] 1fr);
     align-items: center;
@@ -64,13 +64,14 @@ export const Content = styled.div(
     border-top: 2px solid ${props.theme.colours.white};
     border-bottom: 2px solid ${props.theme.colours.white};
     grid-column: col-start / span 12;
-    padding: ${props.theme.spacing[4]}px;
+    padding: ${props.theme.spacing[4]}px 0;
     text-align: center;
 
     ${respondTo.md(css`
       text-align: left;
       grid-column: col-start / span 8;
       border-bottom: none;
+      padding: ${props.theme.spacing[4]}px;
     `)}
   `,
 )

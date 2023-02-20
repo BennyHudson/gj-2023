@@ -1,4 +1,4 @@
-import React, { ReactElement, FC, useEffect, useState } from 'react'
+import React, { ReactElement, FC, useEffect, useState, useContext } from 'react'
 import Image from 'next/image'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
@@ -12,10 +12,12 @@ import * as Styled from './styles/FullPageFeature.style'
 import { FullPageFeatureProps } from './FullPageFeature.types'
 import Overlay from '@components/Overlay'
 import { useBreakpoints } from '@hooks/useBreakpoints'
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 const FullPageFeature: FC<FullPageFeatureProps> = ({ title, excerpt, uri, featuredImage }: FullPageFeatureProps): ReactElement => {
   const { mdAndAbove } = useBreakpoints()
   const [opacity, setOpacity] = useState(1)
+  const { headerHeight } = useContext(PageContext) as PageContextProps
 
   const onScroll = (e) => {
     const scrollTop = e.target.documentElement.scrollTop
@@ -36,7 +38,7 @@ const FullPageFeature: FC<FullPageFeatureProps> = ({ title, excerpt, uri, featur
     <>
       <Styled.Spacer></Styled.Spacer>
       <Styled.Background opacity={opacity}>
-        <Styled.FullPageFeature>
+        <Styled.FullPageFeature headerHeight={headerHeight}>
           <Styled.Content>
             <Paragraph size={1} weight={3} text='Featured Article' inverse font='Cera' transform='uppercase' />
             <Heading text={title} level={1} size={5} inverse font='ChronicleCondensed' />

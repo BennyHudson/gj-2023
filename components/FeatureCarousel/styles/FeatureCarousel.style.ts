@@ -48,6 +48,7 @@ export const FeatureCarousel = styled.div(
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      padding: ${props.theme.spacing[4]}px 0;
     }
 
     ${Title} {
@@ -120,10 +121,10 @@ export const Thumbs = styled.ul(
 export const Slider = styled.div(
   (props: StyledFeatureCarouselProps): FlattenSimpleInterpolation => css`
     position: absolute;
-    top: -${props.theme.spacing[4]}px;
+    top: 0;
     left: 0;
     right: 0;
-    bottom: -${props.theme.spacing[4]}px;
+    bottom: 0;
 
     ${respondTo.md(css`
       top: 0;
@@ -217,7 +218,19 @@ export const Thumb = styled.button(
     color: ${props.theme.colours.white};
     font-family: inherit;
     text-align: left;
-    padding-right: ${props.theme.spacing[2]}px;
     cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+
+    &:hover {
+      ${Index} {
+        background: ${props.theme.colours.white};
+        color: ${props.theme.colours.black};
+      }
+    }
   `,
 )
+
+export const ThumbContent = styled.div((props: ThemeProps): FlattenSimpleInterpolation => css` 
+  padding-right: ${props.theme.spacing[2]}px;
+`)

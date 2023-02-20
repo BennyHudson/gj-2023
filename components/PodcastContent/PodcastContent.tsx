@@ -7,7 +7,7 @@ import Thumbnail from '@components/Thumbnail'
 import Heading from '@components/Heading'
 import RawHtmlWrapper from '@components/RawHtmlWrapper'
 import Paragraph from '@components/Paragraph'
-import Sharers from '@components/Sharers'
+// import Sharers from '@components/Sharers'
 
 import * as Styled from './styles/PodcastContent.style'
 
@@ -18,7 +18,7 @@ const PodcastContent: FC<PodcastContentProps> = ({
   content,
   title,
   podcasts,
-  uri,
+  // uri,
   host,
   producer,
   sponsor,
@@ -52,7 +52,7 @@ const PodcastContent: FC<PodcastContentProps> = ({
           This episode has been recorded at Mark's Club, {host && `read by ${host.name} and `} produced by {producer}.{' '}
           {sponsor && `Sponsored by ${sponsor}.`}
         </Paragraph>
-        <Sharers title={title} url={`/${uri}`} />
+        {/* <Sharers title={title} url={`/${uri}`} /> */}
       </Styled.PodcastMeta>
     </Section>
   )

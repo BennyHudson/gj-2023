@@ -71,6 +71,9 @@ export const PostCarousel = styled.div(
 )
 
 export const TowerAdvert = styled.div((): FlattenSimpleInterpolation => css`
+  display: flex;
+  justify-content: center;
+  
   ${respondTo.lg(css`
     grid-row: 1 / span 2;
     grid-column: 4;

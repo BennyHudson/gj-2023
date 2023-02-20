@@ -46,7 +46,12 @@ export const ButtonBlock = styled.div(
     }
 
     ${Button} {
-      margin-left: auto;
+      width: 100%;
+      
+      ${respondTo.md(css`
+        width: auto;
+        margin-left: auto;
+      `)}
     }
   `,
 )

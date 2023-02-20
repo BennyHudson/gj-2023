@@ -13,6 +13,7 @@ import PageContext, { PageContextProps } from '@context/PageContext'
 import * as Styled from './styles/GiftGuideFeature.style'
 
 import { GiftGuideFeatureProps } from './GiftGuideFeature.types'
+import { useBreakpoints } from '@hooks/useBreakpoints'
 
 const GiftGuideFeature: FC<GiftGuideFeatureProps> = ({
   title,
@@ -23,12 +24,13 @@ const GiftGuideFeature: FC<GiftGuideFeatureProps> = ({
   height = 2,
 }: GiftGuideFeatureProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps
+  const { mdAndAbove } = useBreakpoints()
   return (
     <Styled.GiftGuideFeature headerHeight={headerHeight} height={height}>
       <Styled.Container>
         <Styled.Content>
           <Heading text={meta} size={1} font='Cera' inverse noMargin transform='uppercase' weight={3} />
-          <Heading text={title} size={4} inverse noMargin font='ChronicleCondensed' />
+          <Heading text={title} size={4} inverse noMargin font='ChronicleCondensed' weight={mdAndAbove ? 1 : 2} />
           {subtitle && (
             <Paragraph inverse noMargin>
               {subtitle}

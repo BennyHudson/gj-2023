@@ -28,6 +28,9 @@ export const clubQuery = {
               backgroundImage {
                 sourceUrl
               }
+              backgroundImageMobile {
+                sourceUrl
+              }
               content
               hasLink
               link {

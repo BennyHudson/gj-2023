@@ -7,6 +7,9 @@ export interface ClubPerksProps {
     backgroundImage: {
       sourceUrl: string
     }
+    backgroundImageMobile: {
+      sourceUrl: string
+    }
     title: string
     content: string
     hasLink: boolean
