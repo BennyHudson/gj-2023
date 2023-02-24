@@ -49,6 +49,8 @@ const Article: FC<ArticleData> = ({ data, headerNav, footerNav }: ArticleData): 
     setActiveNavElement(1)
   }, [setActiveNavElement, articleData])
 
+  console.log(articleData.categories)
+
   return (
     <PageLayout headerNav={headerNav} footerNav={footerNav} seo={articleData?.seo}>
       {articleData.featuredImage && <HeroImage featuredImage={articleData.featuredImage.node.sourceUrl} featuredVideo={articleData.articleAcf.featuredVideo} />}
@@ -64,7 +66,7 @@ const Article: FC<ArticleData> = ({ data, headerNav, footerNav }: ArticleData): 
           }}
           contentBuilder={{
             content: articleData.articleAcf.contentBuilder,
-            membersOnly: articleData.categories && articleData.categories.nodes.find((category) => category.name === 'Members'),
+            membersOnly: !!(articleData.categories && articleData.categories.nodes.find((category) => category.name === 'Members')),
           }}
           contentBuilderPrefix='Article_Articleacf_ContentBuilder'
           articleNote={articleNote}

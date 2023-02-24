@@ -25,13 +25,14 @@ const PostExcerpt: FC<PostExcerptProps> = ({
   const { subscriptions } = useContext(PageContext) as PageContextProps
 
   const membersOnly = categories && categories.nodes.find((category) => category.name === 'Members')
+
   return (
     <Styled.PostExcerpt href={uri}>
       <Thumbnail priority={priority} featuredImage={featuredImage?.node.sourceUrl} />
       <Styled.Body>
         <Meta categories={categories} date={date} inverse={inverse} />
         <Styled.Title inverse={inverse}>
-          {(subscriptions?.every((subscription) => subscription.status !== 'active') && membersOnly) && (
+          {((!subscriptions || subscriptions?.every((subscription) => subscription.status !== 'active')) && membersOnly) && (
             <Styled.IconWrapper>
               <FontAwesomeIcon icon={faLockAlt as IconProp} />
             </Styled.IconWrapper>
