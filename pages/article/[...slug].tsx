@@ -49,8 +49,6 @@ const Article: FC<ArticleData> = ({ data, headerNav, footerNav }: ArticleData): 
     setActiveNavElement(1)
   }, [setActiveNavElement, articleData])
 
-  console.log(articleData.categories)
-
   return (
     <PageLayout headerNav={headerNav} footerNav={footerNav} seo={articleData?.seo}>
       {articleData.featuredImage && <HeroImage featuredImage={articleData.featuredImage.node.sourceUrl} featuredVideo={articleData.articleAcf.featuredVideo} />}

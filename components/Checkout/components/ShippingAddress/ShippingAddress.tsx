@@ -16,8 +16,6 @@ const ShippingAddress: FC<ShippingAddressProps> = ({
 }: ShippingAddressProps): ReactElement => {
   const { customer, customerId, cart, setShippingRate, getCustomerData } = useContext(PageContext) as PageContextProps
 
-  console.log(checkoutForm)
-
   return (
     <CheckoutPanel panelIndex={panelIndex} activePanel={activePanel} setActivePanel={setActivePanel} title='Shipping Address'> 
       {activePanel === panelIndex && 

@@ -40,7 +40,7 @@ const PaymentDetails: FC<PaymentDetailsProps> = ({
 
               const paymentMethodId = await newPaymentMethod.text()
 
-              const attachPaymentMethod = await fetch('/api/subscription/attach-payment-method', {
+              await fetch('/api/subscription/attach-payment-method', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -49,8 +49,6 @@ const PaymentDetails: FC<PaymentDetailsProps> = ({
                   subscriptionId,
                 }),
               })
-
-              console.log(attachPaymentMethod)
 
               getCustomerData(customer!.id)
               setEditMode(false) 

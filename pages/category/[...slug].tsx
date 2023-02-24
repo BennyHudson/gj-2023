@@ -46,8 +46,6 @@ const Category: FC<CategoryData> = ({ category, headerNav, footerNav }: Category
     }
   }
 
-  console.log(category)
-
   return (
     <PageLayout headerNav={headerNav} headerStyle='standard' footerNav={footerNav} seo={{ title: `${category.name} | The Gentleman's Journal` }}>
       <BannerAdvert parent='gj_970x250' slot='GJ_970x250_001' />

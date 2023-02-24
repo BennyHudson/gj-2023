@@ -35,8 +35,6 @@ const MyAccount: FC = (): ReactElement => {
     localStorage.removeItem('gjToken')
   }
 
-  console.log(subscriptions)
-
   return (
     <Styled.MyAccount>
       <Styled.MyAccountHeader>
