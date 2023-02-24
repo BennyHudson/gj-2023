@@ -36,7 +36,6 @@ const QuickSubscribe: FC<QuickSubscribeProps> = ({ products, freeGift }: QuickSu
       <Styled.ProductList>
         <Heading text='Subscribe now:' font='ChronicleCondensed' size={3} />
         {products.map((product, index) => {
-          const subscriptionLength = product.subscriptionPeriod.match(/\d/g)
           const onSale = parseFloat(product.salePrice) > parseFloat(product.signUpFee)
           return (
             <Styled.Product key={index} onClick={() => setSelectedProduct(product)} $active={product.name === selectedProduct.name}>

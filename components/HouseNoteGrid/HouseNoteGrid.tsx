@@ -6,7 +6,6 @@ import HouseNoteExcerpt from '@components/HouseNoteExcerpt'
 import * as Styled from './styles/HouseNoteGrid.style'
 
 import { HouseNoteGridProps } from './HouseNoteGrid.types'
-import { useBreakpoints } from '@hooks/useBreakpoints'
 
 const HouseNoteGrid: FC<HouseNoteGridProps> = ({ posts }: HouseNoteGridProps): ReactElement => {
   const breakpointColumnsObj = {

@@ -1,5 +1,5 @@
 import React, { ReactElement, FC, useContext } from 'react'
-import { Form, Formik } from 'formik'
+import { Formik } from 'formik'
 
 import BillingForm from '@components/BillingForm'
 

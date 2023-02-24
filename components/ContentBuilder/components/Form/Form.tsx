@@ -37,7 +37,6 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
         <RawHtmlWrapper content={confirmationMessage} />
       </Styled.ConfirmationMessage>
     )
-    console.log(confirmationMessage)
   }
 
   return (
@@ -56,8 +55,6 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
 
         setIsSubmitting(false)
         setIsValid(response.is_valid)
-
-        console.log(response)
 
         if (response.status === 200) {
           setConfirmationMessage(response.confirmation_message)

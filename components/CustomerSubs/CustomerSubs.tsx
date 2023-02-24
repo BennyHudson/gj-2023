@@ -1,10 +1,8 @@
-import React, { ReactElement, FC, useState, useContext, useEffect } from 'react'
+import React, { ReactElement, FC, useContext } from 'react'
 
 import * as Styled from './styles/CustomerSubs.style'
 
-import Heading from '@components/Heading'
 import Paragraph from '@components/Paragraph'
-import ValueWithLabel from '@components/ValueWithLabel'
 import EditButton from '@components/EditButton'
 import PageContext, { PageContextProps } from '@context/PageContext'
 

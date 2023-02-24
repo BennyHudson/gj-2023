@@ -12,7 +12,7 @@ import * as Styled from './styles/ClubGift.style'
 const ClubGift: FC = ({ freeGift }): ReactElement => {
   return (
     <Section appearance='tertiary'>
-      <Title title='Complimentary Gift' subtitle='While stocks last, included in every new clubhouse membership you will recieve a:' />
+      <Title title='Complimentary Gift' subtitle='While stocks last, included in every new clubhouse membership you will receive a:' />
       <Styled.ClubGift>
         <Styled.GiftImage>
           <Image src={featuredImageUrl(freeGift.featuredImage.node.sourceUrl)} alt={freeGift.name} fill />

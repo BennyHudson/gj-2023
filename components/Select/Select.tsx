@@ -10,7 +10,7 @@ import * as Styled from './styles/Select.style'
 
 import { SelectProps } from './Select.types'
 
-const Select: FC<SelectProps> = ({ target, label, isRequired, id, databaseId, choices, labelPlacement }: SelectProps): ReactElement => {
+const Select: FC<SelectProps> = ({ target, label, isRequired, id, choices, labelPlacement }: SelectProps): ReactElement => {
   return (
     <FieldWrapper target={target} label={label} required={isRequired} labelPlacement={labelPlacement}>
       <Styled.SelectWrapper>

@@ -83,7 +83,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav }): ReactElemen
       </Section>
       <Section appearance='tertiary'>
         <Title title='All Guides' />
-        <Feed category={2646} count={mdAndBelow ? 12 : 20} />
+        <Feed category={2646} count={mdAndBelow ? 12 : 20} showAdvert={false} />
       </Section>
     </PageLayout>
   )

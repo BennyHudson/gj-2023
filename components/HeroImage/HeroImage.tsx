@@ -1,5 +1,4 @@
 import React, { ReactElement, FC, useContext } from 'react'
-import Image from 'next/image'
 import Head from 'next/head'
 import YouTube from 'react-youtube'
 
@@ -18,7 +17,6 @@ const HeroImage: FC<HeroImageProps> = ({ featuredImage, height = 2, featuredVide
     height: '390',
     width: '640',
     playerVars: {
-      // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
     },
   }

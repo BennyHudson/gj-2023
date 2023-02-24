@@ -1,6 +1,5 @@
 import React, { ReactElement, FC } from 'react'
 import Masonry from 'react-masonry-css'
-import dayjs from 'dayjs'
 
 import * as Styled from './styles/PartnerGrid.style'
 

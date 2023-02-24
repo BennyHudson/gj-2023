@@ -3,7 +3,6 @@ import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { StyledPostGridProps } from './PostGrid.style.types'
 import respondTo from '@mixins/respondTo'
 import { PostExcerpt } from '@components/PostExcerpt/styles/PostExcerpt.style'
-import { Section } from '@components/Section/styles/Section.style'
 
 export const PostGrid = styled.div(
   (props: StyledPostGridProps): FlattenSimpleInterpolation => css`

@@ -1,10 +1,5 @@
 import React, { ReactElement, FC, useEffect } from 'react'
 import Script from 'next/script'
-import { useTheme } from 'styled-components'
-
-import { useBreakpoints } from '@hooks/useBreakpoints'
-
-import { Theme } from '@themes/gjTheme/gjTheme.types'
 
 import Section from '@components/Section'
 

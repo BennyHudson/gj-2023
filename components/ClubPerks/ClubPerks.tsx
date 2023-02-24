@@ -6,7 +6,6 @@ import featuredImageUrl from '@helpers/featuredImageUrl'
 import * as Styled from './styles/ClubPerks.style'
 
 import { ClubPerksProps } from './ClubPerks.types'
-import Section from '@components/Section'
 import Heading from '@components/Heading'
 import RawHtmlWrapper from '@components/RawHtmlWrapper'
 import Link from '@components/Link'

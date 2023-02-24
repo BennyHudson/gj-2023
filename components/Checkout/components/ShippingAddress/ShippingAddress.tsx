@@ -1,11 +1,5 @@
 import React, { ReactElement, FC, useContext } from 'react'
-import { Formik, Form } from 'formik'
-
-import TextField from '@components/TextField'
-import Select from '@components/Select'
-import EditButton from '@components/EditButton'
-
-import { countries } from '../../../../helpers/countries'
+import { Formik } from 'formik'
 
 import { ShippingAddressProps } from './ShippingAddress.types'
 import CheckoutPanel from '../CheckoutPanel'

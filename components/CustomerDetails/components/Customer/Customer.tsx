@@ -79,10 +79,10 @@ const Customer: FC = (): ReactElement | null => {
                     name: 'last_name',
                   },
                 ]}
-                validationMessage={props.errors.first_name || props.errors.last_name}
+                validationMessage={props.errors?.first_name || props.errors?.last_name}
               />
               <TextField isRequired label='Email Address' id='email' target='email' type='email' validationMessage={props.errors?.email} />
-              <TextField label='Telephone Number' id='billing.phone' target='billing.phone' type='telephone' validationMessage={props.errors.billing?.phone} />
+              <TextField label='Telephone Number' id='billing.phone' target='billing.phone' type='telephone' validationMessage={props.errors?.billing?.phone} />
               <EditButton type='submit' text='Continue' />
             </Form>
           )}

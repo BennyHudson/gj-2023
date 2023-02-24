@@ -9,7 +9,6 @@ import CheckboxList from '@components/CheckboxList'
 import * as Styled from './styles/Newsletter.style'
 import Button from '@components/Button'
 import RawHtmlWrapper from '@components/RawHtmlWrapper'
-import Heading from '@components/Heading'
 import FormErrorMessage from '@components/FormErrorMessage'
 
 const Newsletter: FC = ({ form, showTitle = true }): ReactElement => {

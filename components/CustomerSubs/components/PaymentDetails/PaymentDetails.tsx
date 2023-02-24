@@ -1,4 +1,4 @@
-import React, { ReactElement, FC, useState, useContext } from 'react'
+import React, { ReactElement, FC, useContext } from 'react'
 import { Formik, Form } from 'formik'
 import dayjs from 'dayjs'
 
@@ -9,7 +9,6 @@ import EditButton from '@components/EditButton'
 import * as Styled from './styles/PaymentDetails.style'
 
 import { PaymentDetailsProps } from './PaymentDetails.types'
-import TextField from '@components/TextField'
 import NameField from '@components/NameField'
 import PageContext, { PageContextProps } from '@context/PageContext'
 
