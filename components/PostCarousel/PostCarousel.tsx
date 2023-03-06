@@ -1,19 +1,30 @@
-import React, { ReactElement, FC } from 'react'
+import React, { ReactElement, FC, useEffect, useState, useContext } from 'react'
 import Head from 'next/head'
 import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/pro-thin-svg-icons'
 
-import Thumbnail from '@components/Thumbnail'
-import Paragraph from '@components/Paragraph'
-
 import * as Styled from './styles/PostCarousel.style'
 
-import { PostCarouselProps } from './PostCarousel.types'
+import PageContext, { PageContextProps } from '@context/PageContext'
+import CarouselPost from './components/CarouselPost/CarouselPost'
 
-const PostCarousel: FC<PostCarouselProps> = ({ posts }: PostCarouselProps): ReactElement => {
+const PostCarousel: FC = (): ReactElement => {
+  const { cmsUrl } = useContext(PageContext) as PageContextProps
+  const [posts, setPosts] = useState([])
+
+  const getPosts = async () => {
+    const page = Math.floor(Math.random() * 101)
+    const postRequest = await fetch(`${cmsUrl}//wp-json/wp/v2/articles?page=${page}`)
+    const postResponse = await postRequest.json()
+    setPosts(postResponse)
+  }
+
+  useEffect(() => {
+    getPosts()
+  }, [])
+
   const sliderSettings = {
     dots: false,
     infinite: true,
@@ -31,6 +42,7 @@ const PostCarousel: FC<PostCarouselProps> = ({ posts }: PostCarouselProps): Reac
     nextArrow: <FontAwesomeIcon icon={faChevronCircleRight as IconProp} />,
     prevArrow: <FontAwesomeIcon icon={faChevronCircleLeft as IconProp} />,
   }
+
   return (
     <Styled.PostCarousel>
       <Head>
@@ -41,10 +53,12 @@ const PostCarousel: FC<PostCarouselProps> = ({ posts }: PostCarouselProps): Reac
         <Slider {...sliderSettings}>
           {posts.map((post, index) => {
             return (
-              <Styled.Post href={post.node.uri} key={index}>
-                <Thumbnail type='circle' size={1} featuredImageDatabaseId={post.node.featuredImageDatabaseId} />
-                <Paragraph text={post.node.title} size={2} font='Cera' />
-              </Styled.Post>
+              <CarouselPost
+                key={index}
+                featuredImageId={post.featured_media}
+                slug={post.slug}
+                title={post.title.rendered}
+              />
             )
           })}
         </Slider>

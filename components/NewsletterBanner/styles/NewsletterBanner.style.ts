@@ -57,7 +57,7 @@ export const NewsletterBannerContent = styled.div(
     `}
 
     ${respondTo.md(css`
-      padding: ${props.theme.spacing[8]}px 0;
+      padding: ${props.theme.spacing[4]}px 0;
     `)}
 
   img {
@@ -94,6 +94,12 @@ export const NewsletterBannerContent = styled.div(
         css`
           grid-column: col-start 8 / span 5;
         `}
+      `)}
+    }
+
+    ${Title} {
+      ${respondTo.md(css`
+        margin-bottom: 0;
       `)}
     }
   `,

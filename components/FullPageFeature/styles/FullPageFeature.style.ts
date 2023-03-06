@@ -7,7 +7,7 @@ import { StyledFullPageFeatureProps } from './FullPageFeature.style.types'
 export const Spacer = styled.div(
   (): FlattenSimpleInterpolation => css`
     height: 100vh;
-    background: none;
+    background: #111;
     width: 100%;
   `,
 )
@@ -15,7 +15,6 @@ export const Spacer = styled.div(
 export const Background = styled.div(
   (props: StyledFullPageFeatureProps): FlattenSimpleInterpolation => css`
     height: 100vh;
-    background: #111;
     display: flex;
     align-items: center;
     width: 100%;
@@ -24,10 +23,19 @@ export const Background = styled.div(
     top: 0;
     left: 0;
 
-    img {
-      object-fit: cover;
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('${props.backgroundImage}') center center no-repeat #111;
+      background-size: cover;
       opacity: ${props.opacity};
     }
+
 
     ${respondTo.md(css`
       align-items: flex-end;

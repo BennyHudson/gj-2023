@@ -1,5 +1,4 @@
 import React, { ReactElement, FC, useEffect, useState, useContext } from 'react'
-import Image from 'next/image'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
@@ -37,7 +36,7 @@ const FullPageFeature: FC<FullPageFeatureProps> = ({ title, excerpt, uri, featur
   return (
     <>
       <Styled.Spacer></Styled.Spacer>
-      <Styled.Background opacity={opacity}>
+      <Styled.Background opacity={opacity} backgroundImage={featuredImageUrl(featuredImage.node.sourceUrl)}>
         <Styled.FullPageFeature headerHeight={headerHeight}>
           <Styled.Content>
             <Paragraph size={1} weight={3} text='Featured Article' inverse font='Cera' transform='uppercase' />
@@ -49,7 +48,6 @@ const FullPageFeature: FC<FullPageFeatureProps> = ({ title, excerpt, uri, featur
           </Styled.Content>
         </Styled.FullPageFeature>
         <Overlay />
-        <Image src={featuredImageUrl(featuredImage.node.sourceUrl)} alt='' fill priority />
       </Styled.Background>
     </>
   )

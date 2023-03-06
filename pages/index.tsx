@@ -13,6 +13,7 @@ import { latestVideoQuery } from '@queries/homepage/latest-video'
 import { articleCategoryQuery } from '@queries/homepage/category'
 
 import FullPageFeature from '@components/FullPageFeature'
+import PostCarousel from '@components/PostCarousel'
 import Section from '@components/Section'
 import Title from '@components/Title'
 import PostGrid from '@components/PostGrid'
@@ -60,6 +61,7 @@ const Home: FC = ({
         {...pageData.homeFeaturedPost.homeFeaturedPost}
         excerpt={pageData.homeFeaturedPost.homeFeaturedPost.articleAcf.standfirst}
       />
+      <PostCarousel />
       <NewsletterBanner backgroundImage={newsletter.image.sourceUrl} form={newsletterForm} size={1} />
       <Section>
         <Title

@@ -38,15 +38,15 @@ const HeadTags: FC<HeadTagsProps> = ({ seo }: HeadTagsProps): ReactElement => {
       <meta name='apple-mobile-web-app-status-barstyle' content='black-translucent' />
       <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
       <title>{he.decode(seo.title)}</title>
-      <meta name='description' content={seo.metaDesc} />
-      <link rel='canonical' href={seo.canonical}></link>
+      {seo.metaDesc && <meta name='description' content={he.decode(seo.metaDesc)} />}
+      {seo.canonical && <link rel='canonical' href={seo.canonical}></link>}
       <meta property='og:locale' content='en_GB' />
-      <meta property='og:type' content={seo.opengraphType} />
-      <meta property='og:title' content={seo.opengraphTitle} />
-      <meta property='og:description' content={seo.opengraphDescription} />
-      <meta property='og:url' content={seo.opengraphUrl} />
-      <meta property='og:site_name' content={seo.opengraphSiteName} />
-      <meta property='article:publisher' content={seo.opengraphPublisher} />
+      {seo.opengraphType && <meta property='og:type' content={seo.opengraphType} />}
+      {seo.opengraphTitle && <meta property='og:title' content={he.decode(seo.opengraphTitle)} />}
+      {seo.opengraphDescription && <meta property='og:description' content={he.decode(seo.opengraphDescription)} />}
+      {seo.opengraphUrl && <meta property='og:url' content={seo.opengraphUrl} />}
+      {seo.opengraphSiteName && <meta property='og:site_name' content={he.decode(seo.opengraphSiteName)} />}
+      {seo.opengraphPublisher && <meta property='article:publisher' content={he.decode(seo.opengraphPublisher)} />}
       {seo.opengraphImage && <meta property='og:image' content={featuredImageUrl(seo.opengraphImage.sourceUrl)} />}
       <meta property='og:image:width' content='2560' />
       <meta property='og:image:height' content='1076' />

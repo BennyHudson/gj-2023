@@ -7,7 +7,7 @@ function useFeaturedImage(databaseId: number): { featuredImage: string; loaded: 
   const [caption, setCaption] = useState()
   const [loaded, setLoaded] = useState(false)
 
-  const { cmsUrl, apiUrl, featuredImages, setFeaturedImages } = useContext(PageContext) as PageContextProps
+  const { cmsUrl, apiUrl } = useContext(PageContext) as PageContextProps
 
   const getPostData = async () => {
     if (!databaseId) return
@@ -17,7 +17,7 @@ function useFeaturedImage(databaseId: number): { featuredImage: string; loaded: 
     const imageUrl = mediaData.source_url?.replace(cmsUrl, 'https://cdn.thegentlemansjournal.com')
     setFeaturedImage(imageUrl)
     setCaption(mediaData.caption.rendered)
-    setFeaturedImages([...featuredImages.map((featuredImage) => featuredImage), { featuredImageDatabaseId: databaseId, url: imageUrl }])
+    // setFeaturedImages([...featuredImages.map((featuredImage) => featuredImage), { featuredImageDatabaseId: databaseId, url: imageUrl }])
     // if (thumbnail) {
     //   setFeaturedImage(mediaData.media_details.sizes.thumbnail.source_url?.replace(cmsUrl, 'https://cdn.thegentlemansjournal.com'))
     // }
@@ -25,14 +25,6 @@ function useFeaturedImage(databaseId: number): { featuredImage: string; loaded: 
   }
 
   useEffect(() => {
-    const cachedFeaturedImage = featuredImages.find((featuredImage) => featuredImage.featuredImageDatabaseId === databaseId)
-
-    if (cachedFeaturedImage) {
-      setFeaturedImage(cachedFeaturedImage.url)
-      setLoaded(true)
-      return
-    }
-
     getPostData()
   }, [databaseId])
 
