@@ -1,5 +1,6 @@
 import React, { ReactElement, FC, useContext, useState, useEffect } from 'react'
 import { Formik } from 'formik'
+import * as Yup from 'yup'
 
 import useResetPassword from '@hooks/useResetPassword'
 
@@ -17,10 +18,17 @@ import { LoginFormProps } from './LoginForm.types'
 const LoginForm: FC<LoginFormProps> = (): ReactElement => {
   const { setToken, setCustomer, setCustomerId } = useContext(PageContext) as PageContextProps
   const [forgotPassword, setForgotPassword] = useState(false)
+  const [loginError, setLoginError] = useState()
+  const [loading, setLoading] = useState(false)
 
   const [success, setSuccess] = useState(false)
 
   const resetPassword = useResetPassword()
+
+  const passwordValidation = Yup.object().shape({
+    username: Yup.string().email('Please enter a valid email address').required('Required field'),
+    password: Yup.string().required('Required field'),    
+  })
 
   useEffect(() => {
     if (resetPassword.status === 'resolved' && !resetPassword.error) {
@@ -56,11 +64,15 @@ const LoginForm: FC<LoginFormProps> = (): ReactElement => {
 
   return (
     <Formik
+      validationSchema={passwordValidation}
+      validateOnBlur={false}
+      validateOnChange={false}
       initialValues={{
         username: '',
         password: '',
       }}
       onSubmit={async (values) => {
+        setLoading(true)
         const formData = new FormData()
 
         formData.append('username', values.username)
@@ -72,6 +84,13 @@ const LoginForm: FC<LoginFormProps> = (): ReactElement => {
           redirect: 'follow',
         })
 
+        if(tokenData.status !== 200) {
+          setLoginError('We had a problem logging you in, we have emailed you details to reset your password')
+          resetPassword.sendResetPasswordEmail(values.username)
+          setLoading(false)
+          return
+        }
+
         const customer = await tokenData.json()
 
         if (customer.data) {
@@ -82,18 +101,21 @@ const LoginForm: FC<LoginFormProps> = (): ReactElement => {
           setToken(customer.data.token)
           localStorage.setItem('gjToken', customer.data.token)
         }
+
+        setLoading(false)
       }}
     >
-      <>
-        <Styled.LoginForm>
-          <TextField label='Email Address' id='username' isRequired={false} target='username' />
-          <TextField label='Password' id='password' type='password' isRequired={false} target='password' />
+      {(props) => (
+        <Styled.LoginForm isLoading={loading}>
+          {loginError && <Notification state='error' text={loginError} />}
+          <TextField label='Email Address' id='username' isRequired={false} target='username' validationMessage={props.errors?.username} />
+          <TextField label='Password' id='password' type='password' isRequired={false} target='password' validationMessage={props.errors?.password} />
           <Styled.LoginFooter>
             <Button type='submit' text='Login' />
             <EditButton text='Forgot Password?' onClick={() => setForgotPassword(true)} />
           </Styled.LoginFooter>
         </Styled.LoginForm>
-      </>
+      )}
     </Formik>
   )
 }

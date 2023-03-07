@@ -4,9 +4,24 @@ import { Form } from 'formik'
 import { StyledLoginFormProps } from './LoginForm.style.types'
 
 export const LoginForm = styled(Form)(
-  (): FlattenSimpleInterpolation => css`
+  (props: StyledLoginFormProps): FlattenSimpleInterpolation => css`
     max-width: 600px;
     margin: 0 auto;
+    position: relative;
+
+    ${props.isLoading &&
+    css`
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: '';
+        background: ${props.theme.colours.white};
+        opacity: 0.6;
+      }
+    `}
   `,
 )
 
