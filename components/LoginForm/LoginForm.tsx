@@ -47,11 +47,12 @@ const LoginForm: FC<LoginFormProps> = (): ReactElement => {
           username: '',
         }}
         onSubmit={async (values) => {
+          setLoading(true)
           resetPassword.sendResetPasswordEmail(values.username)
         }}
       >
         <>
-          <Styled.LoginForm>
+          <Styled.LoginForm isLoading={loading}>
             <TextField label='Email Address' id='username' isRequired={false} target='username' />
             <Styled.LoginFooter>
               <Button type='submit' text='Reset my password' />
