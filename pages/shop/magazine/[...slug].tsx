@@ -19,7 +19,7 @@ const ProductPage: FC = ({ headerNav, footerNav, product, magazines }): ReactEle
     <PageLayout headerNav={headerNav} footerNav={footerNav} seo={product.seo} headerStyle='standard'>
       <ProductFeature product={product} />
       <Section>
-        <Title 
+        <Title
           title='Other Magazines'
           links={[
             {

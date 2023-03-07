@@ -9,7 +9,13 @@ import * as Styled from './styles/PageLayout.style'
 
 import { PageLayoutProps } from './PageLayout.types'
 
-const PageLayout: FC<PageLayoutProps> = ({ children, headerNav, footerNav, seo, headerStyle = 'feature' }: PageLayoutProps): ReactElement => {
+const PageLayout: FC<PageLayoutProps> = ({
+  children,
+  headerNav,
+  footerNav,
+  seo,
+  headerStyle = 'feature',
+}: PageLayoutProps): ReactElement => {
   return (
     <Styled.PageLayout>
       <HeadTags seo={seo} />

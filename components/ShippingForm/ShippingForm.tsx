@@ -20,7 +20,7 @@ export const shippingValidation = Yup.object().shape({
     state: Yup.string().required('Required field'),
     postcode: Yup.string().required('Required field'),
     country: Yup.string().required('Required field'),
-  })
+  }),
 })
 
 const ShippingForm: FC<ShippingFormProps> = (props: ShippingFormProps): ReactElement => {
@@ -41,12 +41,31 @@ const ShippingForm: FC<ShippingFormProps> = (props: ShippingFormProps): ReactEle
           }}
           text='Copy from billing address'
         />
-        <TextField isRequired label='Address Line 1' id='shipping.address_1' target='shipping.address_1' validationMessage={props.errors?.shipping?.address_1} />
+        <TextField
+          isRequired
+          label='Address Line 1'
+          id='shipping.address_1'
+          target='shipping.address_1'
+          validationMessage={props.errors?.shipping?.address_1}
+        />
         <TextField label='Address Line 2' id='shipping.address_2' target='shipping.address_2' />
         <TextField isRequired label='Town' id='shipping.city' target='shipping.city' validationMessage={props.errors?.shipping?.city} />
         <TextField label='County' id='shipping.state' target='shipping.state' validationMessage={props.errors?.shipping?.state} />
-        <TextField isRequired label='Postcode' id='shipping.postcode' target='shipping.postcode' validationMessage={props.errors?.shipping?.postcode} />
-        <Select label='Country' choices={countries} isRequired id='shipping.country' target='shipping.country' validationMessage={props.errors?.shipping?.country} />
+        <TextField
+          isRequired
+          label='Postcode'
+          id='shipping.postcode'
+          target='shipping.postcode'
+          validationMessage={props.errors?.shipping?.postcode}
+        />
+        <Select
+          label='Country'
+          choices={countries}
+          isRequired
+          id='shipping.country'
+          target='shipping.country'
+          validationMessage={props.errors?.shipping?.country}
+        />
         <EditButton text='Continue' type='submit' />
       </Styled.ShippingForm>
     </Form>

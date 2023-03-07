@@ -35,7 +35,7 @@ const Customer: FC = (): ReactElement | null => {
         <Heading size={2} font='ChronicleCondensed' text='You' noMargin />
         {editMode && <EditButton text='Cancel' onClick={() => setEditMode(false)} />}
       </Styled.DetailsHeading>
-      {editMode ? 
+      {editMode ? (
         <Formik
           validationSchema={validation}
           validateOnBlur={false}
@@ -50,7 +50,7 @@ const Customer: FC = (): ReactElement | null => {
             const updateUser = await fetch(`/api/user/update/${customer?.id}`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(values)
+              body: JSON.stringify(values),
             })
 
             if (updateUser.status === 200) {
@@ -82,22 +82,27 @@ const Customer: FC = (): ReactElement | null => {
                 validationMessage={props.errors?.first_name || props.errors?.last_name}
               />
               <TextField isRequired label='Email Address' id='email' target='email' type='email' validationMessage={props.errors?.email} />
-              <TextField label='Telephone Number' id='billing.phone' target='billing.phone' type='telephone' validationMessage={props.errors?.billing?.phone} />
+              <TextField
+                label='Telephone Number'
+                id='billing.phone'
+                target='billing.phone'
+                type='telephone'
+                validationMessage={props.errors?.billing?.phone}
+              />
               <EditButton type='submit' text='Continue' />
             </Form>
           )}
         </Formik>
-        :
+      ) : (
         <>
-          {showPostEditMessage && <Notification text='Personal details updated successfully' state='success'  />}
+          {showPostEditMessage && <Notification text='Personal details updated successfully' state='success' />}
           <ValueWithLabel label='First name' value={customer.first_name} />
           <ValueWithLabel label='Last name' value={customer.last_name} />
           <ValueWithLabel label='Email Address' value={customer.email} />
           {customer.billing?.phone && <ValueWithLabel label='Telephone' value={customer.billing.phone} />}
           <EditButton onClick={() => setEditMode(true)} text='Edit these Details' />
         </>
-      }
-      
+      )}
     </Styled.DetailsBlock>
   )
 }

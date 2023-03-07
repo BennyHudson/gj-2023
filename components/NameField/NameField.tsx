@@ -10,7 +10,6 @@ import FieldWrapper from '@components/FieldWrapper'
 
 const NameField: FC<NameFieldProps> = (props: NameFieldProps): ReactElement => {
   const visibleColumns = props.inputs.filter((input) => !input.isHidden)
-  
 
   return (
     <FieldWrapper label={props.label} labelPlacement='TOP' validationMessage={props.validationMessage}>

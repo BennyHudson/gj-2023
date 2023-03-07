@@ -4,7 +4,7 @@ import { WooCommerce } from '../WooCommerce'
 
 export default async function userHandler(req: NextApiRequest, res: NextApiResponse) {
   const { billing, shipping, password } = req.body
-  
+
   const customerData = {
     email: billing.email,
     first_name: billing.first_name,
@@ -27,5 +27,4 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
     .catch((error) => {
       res.status(error.response.data.data.status).json(error.response.data)
     })
-
 }

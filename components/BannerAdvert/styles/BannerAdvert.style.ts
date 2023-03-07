@@ -8,6 +8,4 @@ export const BannerAdvert = styled.div(
   `,
 )
 
-export const Advert = styled.div((): FlattenSimpleInterpolation => css`
-  
-`)
+export const Advert = styled.div((): FlattenSimpleInterpolation => css``)

@@ -4,19 +4,21 @@ import respondTo from '@mixins/respondTo'
 
 import { StyledProductFeatureProps } from './ProductFeature.style.types'
 
-export const ProductFeature = styled.div((props: StyledProductFeatureProps): FlattenSimpleInterpolation => css`
-  background: ${props.theme.colours.lightGrey};
+export const ProductFeature = styled.div(
+  (props: StyledProductFeatureProps): FlattenSimpleInterpolation => css`
+    background: ${props.theme.colours.lightGrey};
 
-  ${respondTo.md(css`
-    display: grid;
-    grid-template-columns: repeat(12, [col-start] 1fr);
-    height: calc(100vh - ${props.headerHeight}px);
-    width: 100%;
-    margin: 0 auto;
-    align-items: stretch;
-    align-self: stretch;
-  `)}
-`)
+    ${respondTo.md(css`
+      display: grid;
+      grid-template-columns: repeat(12, [col-start] 1fr);
+      height: calc(100vh - ${props.headerHeight}px);
+      width: 100%;
+      margin: 0 auto;
+      align-items: stretch;
+      align-self: stretch;
+    `)}
+  `,
+)
 
 export const ProductImage = styled.div(
   (props: StyledProductFeatureProps): FlattenSimpleInterpolation => css`

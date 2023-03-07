@@ -21,7 +21,9 @@ const Password: FC = (): ReactElement | null => {
 
   const passwordValidation = Yup.object().shape({
     password: Yup.string().required('Required field'),
-    confirmPassword: Yup.string().required('Required field').oneOf([Yup.ref('password'), null], 'Passwords must match')
+    confirmPassword: Yup.string()
+      .required('Required field')
+      .oneOf([Yup.ref('password'), null], 'Passwords must match'),
   })
 
   return (
@@ -30,7 +32,7 @@ const Password: FC = (): ReactElement | null => {
         <Heading size={2} font='ChronicleCondensed' text='Password' noMargin />
         {editMode && <EditButton text='Cancel' onClick={() => setEditMode(false)} />}
       </Styled.DetailsHeading>
-      {editMode ?
+      {editMode ? (
         <Formik
           validationSchema={passwordValidation}
           validateOnBlur={false}
@@ -39,7 +41,7 @@ const Password: FC = (): ReactElement | null => {
             currentPassword: '',
             password: '',
             confirmPassword: '',
-          }}  
+          }}
           onSubmit={async (values) => {
             const formData = new FormData()
 
@@ -60,9 +62,9 @@ const Password: FC = (): ReactElement | null => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                   password: values.password,
-                })
+                }),
               })
-  
+
               if (updateUser.status === 200) {
                 setEditMode(false)
                 setShowPostEditMessage(true)
@@ -77,21 +79,41 @@ const Password: FC = (): ReactElement | null => {
         >
           {(props) => (
             <Form>
-              <TextField isRequired type='password' label='Current password' id='currentPassword' target='currentPassword' validationMessage={passwordMessage} />
-              <TextField isRequired type='password' label='New password' id='password' target='password' validationMessage={props.errors.password} />
-              <TextField isRequired type='password' label='Confirm new password' id='confirmPassword' target='confirmPassword' validationMessage={props.errors.confirmPassword} />
+              <TextField
+                isRequired
+                type='password'
+                label='Current password'
+                id='currentPassword'
+                target='currentPassword'
+                validationMessage={passwordMessage}
+              />
+              <TextField
+                isRequired
+                type='password'
+                label='New password'
+                id='password'
+                target='password'
+                validationMessage={props.errors.password}
+              />
+              <TextField
+                isRequired
+                type='password'
+                label='Confirm new password'
+                id='confirmPassword'
+                target='confirmPassword'
+                validationMessage={props.errors.confirmPassword}
+              />
               <EditButton type='submit' text='Confirm' />
             </Form>
           )}
         </Formik>
-        :
+      ) : (
         <>
-          {showPostEditMessage && <Notification text='Password updated successfully' state='success'  />}
+          {showPostEditMessage && <Notification text='Password updated successfully' state='success' />}
           <ValueWithLabel label='Password' value='••••••' valueType='password' />
           <EditButton onClick={() => setEditMode(true)} text='Change your password' />
         </>
-      }
-      
+      )}
     </Styled.DetailsBlock>
   )
 }

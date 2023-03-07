@@ -41,19 +41,31 @@ const ClubBuy: FC = ({ products, freeGift, offerCode }): ReactElement => {
               <Styled.Product key={index}>
                 <div>
                   <Heading inverse text='The Clubhouse' font='Cera' size={2} weight={3} noMargin />
-                  <Heading inverse text={subscriptionLength ? `${subscriptionLength[0]} Year Membership` : 'Annual Membership'} font='Cera' size={1} weight={3} />
+                  <Heading
+                    inverse
+                    text={subscriptionLength ? `${subscriptionLength[0]} Year Membership` : 'Annual Membership'}
+                    font='Cera'
+                    size={1}
+                    weight={3}
+                  />
                   <Paragraph inverse font='Cera'>
-                    {product.signUpFee ? 
+                    {product.signUpFee ? (
                       <>
-                        {product.salePrice && <del>£{onSale ? product.subscriptionPrice.trim() : product.regularPrice}</del>} £{product.signUpFee} {onSale ? 'for the first year' : product.subscriptionPeriod}
+                        {product.salePrice && <del>£{onSale ? product.subscriptionPrice.trim() : product.regularPrice}</del>} £
+                        {product.signUpFee} {onSale ? 'for the first year' : product.subscriptionPeriod}
                       </>
-                      : 
+                    ) : (
                       `£${product.subscriptionPrice} ${product.subscriptionPeriod}`
-                    }
+                    )}
                   </Paragraph>
                 </div>
                 <Button onClick={() => addToCart(product)} text='Select' />
-                <Paragraph inverse size={1} text={`Renews ${product.subscriptionPeriod} at £${product.subscriptionPrice} until cancelled.`} font='Cera' />
+                <Paragraph
+                  inverse
+                  size={1}
+                  text={`Renews ${product.subscriptionPeriod} at £${product.subscriptionPrice} until cancelled.`}
+                  font='Cera'
+                />
               </Styled.Product>
             )
           })}

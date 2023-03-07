@@ -18,6 +18,6 @@ export const magazineQuery = (slug: string) => {
           ${seo()}
         }
       }
-    `
+    `,
   }
 }

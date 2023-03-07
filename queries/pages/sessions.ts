@@ -1,5 +1,5 @@
-import { gql } from "@apollo/client";
-import { seo } from "@queries/fragments/seo";
+import { gql } from '@apollo/client'
+import { seo } from '@queries/fragments/seo'
 
 export const sessionsQuery = {
   query: gql`

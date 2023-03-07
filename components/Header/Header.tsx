@@ -45,7 +45,7 @@ const Header: FC<HeaderProps> = ({ headerStyle = 'standard', headerNav }: Header
       if (scrollTop >= announcement.current.clientHeight) {
         setTopPosition(0)
       }
-      
+
       if (scrollTop < announcement.current.clientHeight) {
         setTopPosition(announcement.current.clientHeight - scrollTop)
       }

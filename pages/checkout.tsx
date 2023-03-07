@@ -59,17 +59,19 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
         image='https://www.thegentlemansjournal.com/wp-content/uploads/2019/09/ryan-reynolds-gentlemans-journal-aviation-gin-1.jpg'
         title='Checkout'
       >
-        {!cart.length &&
+        {!cart.length && (
           <>
-            <Paragraph size={2} font='Cera'>Your cart is empty</Paragraph>
+            <Paragraph size={2} font='Cera'>
+              Your cart is empty
+            </Paragraph>
             <EditButton href='/club' text='Sign Up' />
           </>
-        }
-        {clientSecret &&
+        )}
+        {clientSecret && (
           <Elements options={options} stripe={stripePromise}>
             <Checkout paymentIntent={paymentIntentId} />
           </Elements>
-        }
+        )}
       </SplitPageTemplate>
     </PageLayout>
   )

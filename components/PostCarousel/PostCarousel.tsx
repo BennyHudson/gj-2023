@@ -52,14 +52,7 @@ const PostCarousel: FC = (): ReactElement => {
       <Styled.Container>
         <Slider {...sliderSettings}>
           {posts.map((post, index) => {
-            return (
-              <CarouselPost
-                key={index}
-                featuredImageId={post.featured_media}
-                slug={post.slug}
-                title={post.title.rendered}
-              />
-            )
+            return <CarouselPost key={index} featuredImageId={post.featured_media} slug={post.slug} title={post.title.rendered} />
           })}
         </Slider>
       </Styled.Container>

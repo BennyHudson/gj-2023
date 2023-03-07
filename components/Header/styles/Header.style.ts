@@ -21,7 +21,8 @@ export const Header = styled.div(
       position: fixed;
     `}
 
-    ${props.headerStyle === 'feature' && css`
+    ${props.headerStyle === 'feature' &&
+    css`
       top: ${props.topPosition}px;
     `}
 
@@ -58,16 +59,18 @@ export const Header = styled.div(
   `,
 )
 
-export const AnnouncementBar = styled.div((props: StyledHeaderProps): FlattenSimpleInterpolation => css`
-  background: ${props.theme.colours.black};
-  padding: ${props.theme.spacing[1] / 2}px 0;
-  text-align: center;
-  color: ${props.theme.colours.white};
-  font-size: ${props.theme.typography.paragraph[1].fontSize};
-  font-family: 'Cera Pro Semibold';
-  position: relative;
-  z-index: 10;
-`)
+export const AnnouncementBar = styled.div(
+  (props: StyledHeaderProps): FlattenSimpleInterpolation => css`
+    background: ${props.theme.colours.black};
+    padding: ${props.theme.spacing[1] / 2}px 0;
+    text-align: center;
+    color: ${props.theme.colours.white};
+    font-size: ${props.theme.typography.paragraph[1].fontSize};
+    font-family: 'Cera Pro Semibold';
+    position: relative;
+    z-index: 10;
+  `,
+)
 
 type HeaderContentsProps = Pick<StyledHeaderProps, 'theme' | 'transparent'>
 export const HeaderContents = styled.div(

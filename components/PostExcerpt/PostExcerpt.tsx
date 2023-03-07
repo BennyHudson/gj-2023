@@ -32,7 +32,7 @@ const PostExcerpt: FC<PostExcerptProps> = ({
       <Styled.Body>
         <Meta categories={categories} date={date} inverse={inverse} />
         <Styled.Title inverse={inverse}>
-          {((!subscriptions || subscriptions?.every((subscription) => subscription.status !== 'active')) && membersOnly) && (
+          {(!subscriptions || subscriptions?.every((subscription) => subscription.status !== 'active')) && membersOnly && (
             <Styled.IconWrapper>
               <FontAwesomeIcon icon={faLockAlt as IconProp} />
             </Styled.IconWrapper>

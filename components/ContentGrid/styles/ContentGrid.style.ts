@@ -46,7 +46,7 @@ export const ArticleNote = styled.div(
     `)}
 
     ${respondTo.lg(css`
-      grid-column: col-start 2 / span 9;      
+      grid-column: col-start 2 / span 9;
       padding: ${props.theme.spacing[4]}px;
     `)}
   `,

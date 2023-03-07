@@ -17,25 +17,29 @@ export const ContactDetails = styled.div(
   `,
 )
 
-export const Map = styled.div((): FlattenSimpleInterpolation => css`
-  grid-column: col-start / span 12;
-  display: flex;
-  aspect-ratio:  16 / 9;
+export const Map = styled.div(
+  (): FlattenSimpleInterpolation => css`
+    grid-column: col-start / span 12;
+    display: flex;
+    aspect-ratio: 16 / 9;
 
-  ${respondTo.md(css`
-    grid-column: col-start / span 8;
-  `)}
-`)
+    ${respondTo.md(css`
+      grid-column: col-start / span 8;
+    `)}
+  `,
+)
 
-export const ContactList = styled.div((props: StyledContactDetailsProps): FlattenSimpleInterpolation => css`
-  grid-column: col-start / span 12;
-  display: flex;
-  flex-direction: column;
-  gap: ${props.theme.spacing[2]}px;
-  font-size: ${props.theme.typography.paragraph[2].fontSize};
-  line-height: ${props.theme.typography.paragraph[2].lineHeight};
+export const ContactList = styled.div(
+  (props: StyledContactDetailsProps): FlattenSimpleInterpolation => css`
+    grid-column: col-start / span 12;
+    display: flex;
+    flex-direction: column;
+    gap: ${props.theme.spacing[2]}px;
+    font-size: ${props.theme.typography.paragraph[2].fontSize};
+    line-height: ${props.theme.typography.paragraph[2].lineHeight};
 
-  ${respondTo.md(css`
-    grid-column: col-start 9 / span 4;
-  `)}
-`)
+    ${respondTo.md(css`
+      grid-column: col-start 9 / span 4;
+    `)}
+  `,
+)

@@ -10,8 +10,10 @@ export const LoginForm = styled(Form)(
   `,
 )
 
-export const LoginFooter = styled.div((props: StyledLoginFormProps): FlattenSimpleInterpolation => css`
-  display: flex;
-  align-items: center;
-  gap: ${props.theme.spacing[4]}px;
-`)
+export const LoginFooter = styled.div(
+  (props: StyledLoginFormProps): FlattenSimpleInterpolation => css`
+    display: flex;
+    align-items: center;
+    gap: ${props.theme.spacing[4]}px;
+  `,
+)

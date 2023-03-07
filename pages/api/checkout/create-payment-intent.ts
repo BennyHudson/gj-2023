@@ -11,21 +11,21 @@ export default async function handler(req, res) {
   const getProductTotal = async () => {
     let amount = 0
 
-    await Promise.all(cart.map(async (cartItem) => {
-      const itemDetails = await WooCommerce.get(`products/${cartItem}`)
-      const subscriptionFee = itemDetails.data.meta_data.find((meta) => meta.key === '_subscription_sign_up_fee')
-      if (subscriptionFee?.value) {
-        amount = amount + parseFloat(subscriptionFee.value)
-        return
-      }
+    await Promise.all(
+      cart.map(async (cartItem) => {
+        const itemDetails = await WooCommerce.get(`products/${cartItem}`)
+        const subscriptionFee = itemDetails.data.meta_data.find((meta) => meta.key === '_subscription_sign_up_fee')
+        if (subscriptionFee?.value) {
+          amount = amount + parseFloat(subscriptionFee.value)
+          return
+        }
 
-      amount = amount + parseFloat(itemDetails.data.price)
-    }))
+        amount = amount + parseFloat(itemDetails.data.price)
+      }),
+    )
 
     return amount
   }
-
-
 
   const total = await getProductTotal()
 
@@ -44,6 +44,6 @@ export default async function handler(req, res) {
     res.send({
       id: paymentIntent.id,
       clientSecret: paymentIntent.client_secret,
-    }) 
+    })
   }
-};
+}

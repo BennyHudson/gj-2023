@@ -53,7 +53,7 @@ const ContentBuilder: FC<ContentBuilderProps> = ({ content, prefix, membersOnly 
 
     case `${prefix}_CompetitionForm`:
       return <Form key={index} formId={block.gravityForm} />
-    
+
     case `${prefix}_AffiliateProducts`:
       return <AffiliateProductBlock key={index} {...block} />
     }
@@ -61,7 +61,7 @@ const ContentBuilder: FC<ContentBuilderProps> = ({ content, prefix, membersOnly 
 
   return (
     <>
-      {((!subscriptions || subscriptions?.every((subscription) => subscription.status !== 'active')) && membersOnly) ? (
+      {(!subscriptions || subscriptions?.every((subscription) => subscription.status !== 'active')) && membersOnly ? (
         <>
           {contentBlocks(content[0], 0)}
           <Paywall />
@@ -70,7 +70,7 @@ const ContentBuilder: FC<ContentBuilderProps> = ({ content, prefix, membersOnly 
         content.map((block, index) => {
           return contentBlocks(block, index)
         })
-      )} 
+      )}
     </>
   )
 }

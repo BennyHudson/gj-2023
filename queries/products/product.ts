@@ -27,6 +27,6 @@ export const productQuery = (productId: number) => {
           }
         }
       }
-    `
+    `,
   }
 }

@@ -7,7 +7,7 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
     query: { id },
   } = req
 
-  WooCommerce.delete(`subscriptions/${id}?force=true`)  
+  WooCommerce.delete(`subscriptions/${id}?force=true`)
 
   res.status(200).send('Subscription cancelled')
 }

@@ -26,7 +26,7 @@ const CheckoutPanel: FC<CheckoutPanelProps> = ({
           </Styled.IconButton>
         )}
       </Styled.CheckoutHeader>
-      {(activePanel === panelIndex) && children}
+      {activePanel === panelIndex && children}
     </Styled.CheckoutPanel>
   )
 }

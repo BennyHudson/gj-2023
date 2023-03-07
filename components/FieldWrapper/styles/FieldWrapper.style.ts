@@ -81,24 +81,26 @@ export const FieldWrapper = styled.div(
       `}
     }
 
-    ${props.validationMessage && css`
+    ${props.validationMessage &&
+    css`
       background: ${props.theme.colours.lightGrey};
       padding: ${props.theme.spacing[2]}px;
       .styled-textarea,
-      ${TextField},
-      .styled-select {
+      ${TextField}, .styled-select {
         border: 2px solid ${props.theme.colours.red};
       }
     `}
   `,
 )
 
-export const ValidationMessage = styled.div((props: StyledFieldWrapperProps): FlattenSimpleInterpolation => css`
-  font-family: 'Cera Pro Regular';
-  color: ${props.theme.colours.red};
-  font-size: ${props.theme.typography.paragraph[2].fontSize};
-  display: flex;
-  align-items: center;
-  gap: ${props.theme.spacing[1]}px;
-  margin-bottom: ${props.theme.spacing[1]}px;
-`)
+export const ValidationMessage = styled.div(
+  (props: StyledFieldWrapperProps): FlattenSimpleInterpolation => css`
+    font-family: 'Cera Pro Regular';
+    color: ${props.theme.colours.red};
+    font-size: ${props.theme.typography.paragraph[2].fontSize};
+    display: flex;
+    align-items: center;
+    gap: ${props.theme.spacing[1]}px;
+    margin-bottom: ${props.theme.spacing[1]}px;
+  `,
+)

@@ -17,8 +17,8 @@ const ShippingAddress: FC<ShippingAddressProps> = ({
   const { customer, customerId, cart, setShippingRate, getCustomerData } = useContext(PageContext) as PageContextProps
 
   return (
-    <CheckoutPanel panelIndex={panelIndex} activePanel={activePanel} setActivePanel={setActivePanel} title='Shipping Address'> 
-      {activePanel === panelIndex && 
+    <CheckoutPanel panelIndex={panelIndex} activePanel={activePanel} setActivePanel={setActivePanel} title='Shipping Address'>
+      {activePanel === panelIndex && (
         <Formik
           validationSchema={shippingValidation}
           validateOnBlur={false}
@@ -41,7 +41,7 @@ const ShippingAddress: FC<ShippingAddressProps> = ({
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 shipping: values.shipping,
-              })
+              }),
             })
 
             if (updateUser.status === 200) {
@@ -51,22 +51,20 @@ const ShippingAddress: FC<ShippingAddressProps> = ({
                 body: JSON.stringify({
                   shippingAddress: values.shipping,
                   cart,
-                })
+                }),
               })
-      
+
               const shippingRate = await shippingCalculator.json()
               setShippingRate(shippingRate)
-              setCheckoutForm({...checkoutForm, shipping: { ...values.shipping }})
+              setCheckoutForm({ ...checkoutForm, shipping: { ...values.shipping } })
               getCustomerData(customer.id)
               setActivePanel(activePanel + 1)
             }
           }}
         >
-          {props => (
-            <ShippingForm {...props} billingAddress={checkoutForm.billing} />
-          )}
+          {(props) => <ShippingForm {...props} billingAddress={checkoutForm.billing} />}
         </Formik>
-      }
+      )}
     </CheckoutPanel>
   )
 }

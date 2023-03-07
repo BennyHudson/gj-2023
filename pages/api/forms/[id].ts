@@ -32,7 +32,7 @@ const formHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const result = await fetch(`${process.env.API_URL}/wp-json/gf/v2/forms/${id}/submissions`, requestOptions)
   const response = await result.json()
-  
+
   res.status(result.status)
   res.send({ status: result.status, ...response })
 }

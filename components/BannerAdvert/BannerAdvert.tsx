@@ -10,11 +10,13 @@ import { useRouter } from 'next/router'
 
 const BannerAdvert: FC<BannerAdProps> = ({ parent, slot, paddingLevel = 2 }: BannerAdProps): ReactElement => {
   const router = useRouter()
-  
+
   useEffect(() => {
     const googletag = window.googletag || {}
     if (router.isReady) {
-      googletag.cmd.push(function() { googletag.pubads().refresh() })
+      googletag.cmd.push(function () {
+        googletag.pubads().refresh()
+      })
     }
   }, [router])
 

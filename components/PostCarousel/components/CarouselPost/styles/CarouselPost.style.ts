@@ -3,20 +3,22 @@ import Link from 'next/link'
 
 import { StyledCarouselPostProps } from './CarouselPost.style.types'
 
-export const CarouselPost = styled(Link)((props: StyledCarouselPostProps): FlattenSimpleInterpolation => css`
-  border-right: 1px solid ${props.theme.colours.midGrey};
-  padding: ${props.theme.spacing[2]}px;
-  opacity: 20%;
-  display: flex !important;
-  align-items: center;
-  justify-content: flex-start;
-  gap: ${props.theme.spacing[2]}px;
-  color: inherit;
-  text-decoration: none;
-  transition: 0.4s all ease;
-  pointer-events: none;
+export const CarouselPost = styled(Link)(
+  (props: StyledCarouselPostProps): FlattenSimpleInterpolation => css`
+    border-right: 1px solid ${props.theme.colours.midGrey};
+    padding: ${props.theme.spacing[2]}px;
+    opacity: 20%;
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    gap: ${props.theme.spacing[2]}px;
+    color: inherit;
+    text-decoration: none;
+    transition: 0.4s all ease;
+    pointer-events: none;
 
-  &:hover {
-    background: ${props.theme.colours.midGrey};
-  }
-`)
+    &:hover {
+      background: ${props.theme.colours.midGrey};
+    }
+  `,
+)

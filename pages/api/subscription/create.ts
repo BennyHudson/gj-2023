@@ -30,16 +30,18 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
         billing_interval: parseInt(billingInterval.value),
         start_date: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         next_payment_date: dayjs().add(parseInt(billingInterval.value), 'year').format('YYYY-MM-DD HH:mm:ss'),
-        line_items: [{
-          product_id: cartItem,
-          quantity: 1,
-        }],
+        line_items: [
+          {
+            product_id: cartItem,
+            quantity: 1,
+          },
+        ],
         shipping_lines: [
           {
             method_id: shippingRate.id,
             method_title: shippingRate.title,
-            total: `${shippingRate.cost}`
-          }
+            total: `${shippingRate.cost}`,
+          },
         ],
       })
 

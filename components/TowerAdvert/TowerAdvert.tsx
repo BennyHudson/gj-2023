@@ -6,16 +6,15 @@ import { TowerAdvertProps } from './TowerAdvert.types'
 import Script from 'next/script'
 import { useRouter } from 'next/router'
 
-const TowerAdvert: FC<TowerAdvertProps> = ({
-  parent,
-  slot,
-}: TowerAdvertProps): ReactElement => {
+const TowerAdvert: FC<TowerAdvertProps> = ({ parent, slot }: TowerAdvertProps): ReactElement => {
   const router = useRouter()
-  
+
   useEffect(() => {
     const googletag = window.googletag || {}
     if (router.isReady) {
-      googletag.cmd.push(function() { googletag.pubads().refresh() })
+      googletag.cmd.push(function () {
+        googletag.pubads().refresh()
+      })
     }
   }, [router])
 

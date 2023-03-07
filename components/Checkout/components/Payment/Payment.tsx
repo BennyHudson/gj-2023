@@ -43,11 +43,11 @@ const Payment: FC<PaymentProps> = ({
     if (panelIndex !== activePanel) return
     updatePaymentIntent()
   }, [activePanel])
-  
+
   return (
     <CheckoutPanel panelIndex={panelIndex} activePanel={activePanel} setActivePanel={setActivePanel} title='Payment'>
-      <Formik 
-        initialValues={checkoutForm} 
+      <Formik
+        initialValues={checkoutForm}
         onSubmit={async (values) => {
           setIsLoading(true)
           if (!stripe || !elements) {
@@ -62,13 +62,13 @@ const Payment: FC<PaymentProps> = ({
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               customerId: customer?.id || customerId,
-              billingAddress: values.billing, 
+              billingAddress: values.billing,
               shippingAddress: values.shipping,
               cart,
               shippingRate,
-            })
+            }),
           })
-          
+
           const subscriptionData = await subsciption.json()
           sessionStorage.setItem('subscriptionId', subscriptionData.id)
 
@@ -77,12 +77,12 @@ const Payment: FC<PaymentProps> = ({
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              billingAddress: values.billing, 
+              billingAddress: values.billing,
               shippingAddress: values.shipping,
               cart,
               customer_id: customer?.id || customerId,
               shippingRate,
-            })
+            }),
           })
 
           const orderData = await order.json()
@@ -106,7 +106,6 @@ const Payment: FC<PaymentProps> = ({
           <Button type='submit' text='Checkout Now' size={1} />
         </Form>
       </Formik>
-      
     </CheckoutPanel>
   )
 }

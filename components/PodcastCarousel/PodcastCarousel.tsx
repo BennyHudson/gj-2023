@@ -38,7 +38,7 @@ const PodcastCarousel: FC<PodcastCarouselProps> = ({ podcasts, title }: PodcastC
           slidesToShow: 2,
           slidesToScroll: 1,
         },
-      }
+      },
     ],
     nextArrow: <FontAwesomeIcon icon={faChevronCircleRight as IconProp} />,
     prevArrow: <FontAwesomeIcon icon={faChevronCircleLeft as IconProp} />,

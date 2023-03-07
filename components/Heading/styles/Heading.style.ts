@@ -87,8 +87,9 @@ export const Heading = styled.h2(
       margin-bottom: 0;
     }
 
-  ${props.state === 'error' && css`
-    color: ${props.theme.colours.red} !important;
-  `}
+    ${props.state === 'error' &&
+    css`
+      color: ${props.theme.colours.red} !important;
+    `}
   `,
 )

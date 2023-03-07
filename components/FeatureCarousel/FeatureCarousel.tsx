@@ -99,11 +99,11 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
                         <Paragraph font='Cera' size={2} inverse>
                           {post.title}
                         </Paragraph>
-                        {xl &&
+                        {xl && (
                           <Paragraph font='Cera' size={2} inverse>
                             {post.subtitle}
                           </Paragraph>
-                        }
+                        )}
                       </Styled.ThumbContent>
                     </Styled.Thumb>
                   </li>

@@ -42,7 +42,7 @@ const PostGrid: FC<PostGridProps> = ({
           slidesToShow: 2,
           slidesToScroll: 1,
         },
-      }
+      },
     ],
   }
 

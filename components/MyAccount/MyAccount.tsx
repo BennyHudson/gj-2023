@@ -12,7 +12,7 @@ import EditButton from '@components/EditButton'
 import * as Styled from './styles/MyAccount.style'
 
 const MyAccount: FC = (): ReactElement => {
-  const { setToken, customer, setCustomer, subscriptions } = useContext(PageContext) as PageContextProps
+  const { setToken, customer, setCustomer } = useContext(PageContext) as PageContextProps
 
   const tabs = [
     {

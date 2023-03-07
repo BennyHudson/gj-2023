@@ -13,7 +13,8 @@ export const CheckoutPanels = styled.div(
     margin-bottom: ${props.theme.spacing[8]}px;
     position: relative;
 
-    ${props.isLoading && css`
+    ${props.isLoading &&
+    css`
       &::after {
         position: absolute;
         top: 0;

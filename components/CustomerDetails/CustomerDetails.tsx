@@ -10,10 +10,10 @@ import Customer from './components/Customer/Customer'
 const CustomerDetails: FC = (): ReactElement => {
   return (
     <Styled.CustomerDetails>
-      <Customer />      
+      <Customer />
       <Password />
       <BillingAddress />
-      <ShippingAddress /> 
+      <ShippingAddress />
     </Styled.CustomerDetails>
   )
 }

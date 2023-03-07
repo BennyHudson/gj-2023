@@ -26,7 +26,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'cms.thegentlemansjournal.com',
-      }
+      },
     ],
   },
   typescript: {

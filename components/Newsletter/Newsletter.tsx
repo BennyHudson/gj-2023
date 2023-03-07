@@ -12,20 +12,20 @@ import RawHtmlWrapper from '@components/RawHtmlWrapper'
 import FormErrorMessage from '@components/FormErrorMessage'
 
 const Newsletter: FC = ({ form, showTitle = true }): ReactElement => {
-  const [ confirmationMessage, setConfirmationMessage ] = useState()
-  const [ validationMessages, setValidationMessages ] = useState({ 3: undefined, 4: undefined, 5: undefined})
-  const [ isValid, setIsValid ] = useState(true)
-  const [ isSubmitting, setIsSubmitting ] = useState(false)
+  const [confirmationMessage, setConfirmationMessage] = useState()
+  const [validationMessages, setValidationMessages] = useState({ 3: undefined, 4: undefined, 5: undefined })
+  const [isValid, setIsValid] = useState(true)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   return (
     <Formik
       initialValues={{
-        'input_3': {
+        input_3: {
           2: '',
           3: '',
           6: '',
         },
-        'input_4': '',
+        input_4: '',
       }}
       onSubmit={async (values) => {
         setIsSubmitting(true)
@@ -33,7 +33,7 @@ const Newsletter: FC = ({ form, showTitle = true }): ReactElement => {
         const formResponse = await fetch('api/forms/newsletter', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(values)
+          body: JSON.stringify(values),
         })
         const response = await formResponse.json()
 
@@ -49,9 +49,9 @@ const Newsletter: FC = ({ form, showTitle = true }): ReactElement => {
       }}
     >
       <Styled.Newsletter $isSubmitting={isSubmitting} $isValid={isValid}>
-        {confirmationMessage ? 
+        {confirmationMessage ? (
           <RawHtmlWrapper content={confirmationMessage} />
-          :
+        ) : (
           <>
             {showTitle && <Title title={form.title} />}
             {!isValid && <FormErrorMessage />}
@@ -66,18 +66,25 @@ const Newsletter: FC = ({ form, showTitle = true }): ReactElement => {
               }
 
               case 'CONSENT': {
-                return <CheckboxList key={index} {...formField} choices={[
-                  {
-                    value: '1',
-                    text: formField.checkboxLabel,
-                  }
-                ]} validationMessage={validationMessages[5]} />
+                return (
+                  <CheckboxList
+                    key={index}
+                    {...formField}
+                    choices={[
+                      {
+                        value: '1',
+                        text: formField.checkboxLabel,
+                      },
+                    ]}
+                    validationMessage={validationMessages[5]}
+                  />
+                )
               }
               }
             })}
             <Button type='submit' text={form.submitButton.text} />
           </>
-        }
+        )}
       </Styled.Newsletter>
     </Formik>
   )

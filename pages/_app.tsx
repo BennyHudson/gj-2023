@@ -36,11 +36,13 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
 
       const subs = []
 
-      await Promise.all(subscriptionIds.value.map(async (subscriptionId: number) => {
-        const subscription = await fetch(`/api/subscription/${subscriptionId}`)
-        const sub = await subscription.json()
-        subs.push(sub)
-      }))
+      await Promise.all(
+        subscriptionIds.value.map(async (subscriptionId: number) => {
+          const subscription = await fetch(`/api/subscription/${subscriptionId}`)
+          const sub = await subscription.json()
+          subs.push(sub)
+        }),
+      )
 
       setSubscriptions(subs)
     }

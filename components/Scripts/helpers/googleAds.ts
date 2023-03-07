@@ -1,9 +1,7 @@
 export const googleAds = [
   {
     parentId: 'GJ_1x1',
-    children: [
-      'GJ_1x1_001',
-    ],
+    children: ['GJ_1x1_001'],
     sizes: '[1, 1]',
   },
   {
@@ -22,21 +20,16 @@ export const googleAds = [
       lg: '[970, 250]',
       md: '[728, 210]',
       sm: '[300, 250]',
-    }
+    },
   },
   {
     parentId: 'GJ_300x250',
-    children: [
-      'GJ_300x250_001',
-    ],
+    children: ['GJ_300x250_001'],
     sizes: '[300, 250]',
   },
   {
     parentId: 'GJ_300x600',
-    children: [
-      'GJ_300x600_001',
-      'GJ_300x600_002',
-    ],
+    children: ['GJ_300x600_001', 'GJ_300x600_002'],
     sizes: '[300, 600]',
   },
   {
@@ -45,7 +38,7 @@ export const googleAds = [
     mappings: {
       md: '[728, 90]',
       sm: '[300, 250]',
-    }
+    },
   },
   // {
   //   parentId: 'GJ_INT',

@@ -7,10 +7,12 @@ import { PostGrid } from '@components/PostGrid/styles/PostGrid.style'
 import { TowerAdvert } from '@components/TowerAdvert/styles/TowerAdvert.style'
 import { Link } from '@components/Link/styles/Link.style'
 
-export const FeedWrapper = styled.div((): FlattenSimpleInterpolation => css`
-  width: 100%;
-  overflow: hidden;
-`)
+export const FeedWrapper = styled.div(
+  (): FlattenSimpleInterpolation => css`
+    width: 100%;
+    overflow: hidden;
+  `,
+)
 
 export const SessionsFeed = styled.div(
   (props: StyledSessionsFeedProps): FlattenSimpleInterpolation => css`
@@ -74,7 +76,6 @@ export const Column = styled.div(
           left: 100%;
         }
       }
-
     `)}
   `,
 )

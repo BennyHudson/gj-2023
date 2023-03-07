@@ -30,9 +30,7 @@ const Checkout: FC = ({ paymentIntent }): ReactElement => {
       return
     }
 
-    const clientSecret = new URLSearchParams(window.location.search).get(
-      'payment_intent_client_secret'
-    )
+    const clientSecret = new URLSearchParams(window.location.search).get('payment_intent_client_secret')
 
     if (!clientSecret) {
       return
@@ -40,7 +38,7 @@ const Checkout: FC = ({ paymentIntent }): ReactElement => {
 
     stripe.retrievePaymentIntent(clientSecret).then(async ({ paymentIntent }) => {
       const { payment_method, status } = paymentIntent
-      
+
       const paymentMethod = await fetch('/api/checkout/save-payment-method', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -48,7 +46,7 @@ const Checkout: FC = ({ paymentIntent }): ReactElement => {
       })
 
       const stripeCustomerId = await paymentMethod.json()
-      
+
       if (status === 'succeeded') {
         setNotificationState('success')
         setMessage('Your purchase was successful, you are being redirected to the Clubhouse')
@@ -60,7 +58,7 @@ const Checkout: FC = ({ paymentIntent }): ReactElement => {
           body: JSON.stringify({
             stripeCustomerId,
             payment_method,
-          })
+          }),
         })
         const completedSubscription = await addSubscriptionPaymentMethod.json()
 
@@ -98,9 +96,7 @@ const Checkout: FC = ({ paymentIntent }): ReactElement => {
   }, [stripe])
 
   if (message) {
-    return (
-      <Notification state={notificationState} text={message} />
-    )
+    return <Notification state={notificationState} text={message} />
   }
 
   return (
@@ -147,4 +143,3 @@ const Checkout: FC = ({ paymentIntent }): ReactElement => {
 }
 
 export default Checkout
-

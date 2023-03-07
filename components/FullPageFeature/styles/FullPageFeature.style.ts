@@ -36,7 +36,6 @@ export const Background = styled.div(
       opacity: ${props.opacity};
     }
 
-
     ${respondTo.md(css`
       align-items: flex-end;
     `)}

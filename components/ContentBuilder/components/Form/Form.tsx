@@ -24,13 +24,13 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
 
   const initialValues = data && data.gfForm.formFields.nodes.reduce((acc, curr) => ((acc[`input_${curr.id}`] = ''), acc), {})
 
-  const [ confirmationMessage, setConfirmationMessage ] = useState()
-  const [ validationMessages, setValidationMessages ] = useState({})
-  const [ isValid, setIsValid ] = useState(true)
-  const [ isSubmitting, setIsSubmitting ] = useState(false)
+  const [confirmationMessage, setConfirmationMessage] = useState()
+  const [validationMessages, setValidationMessages] = useState({})
+  const [isValid, setIsValid] = useState(true)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   if (loading) return <div>Loading...</div>
-  
+
   if (confirmationMessage) {
     return (
       <Styled.ConfirmationMessage>
@@ -48,7 +48,7 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
         const formResponse = await fetch(`/api/forms/${formId}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(values)
+          body: JSON.stringify(values),
         })
 
         const response = await formResponse.json()
@@ -71,40 +71,97 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
             data.gfForm.formFields.nodes.map((formField, index) => {
               switch (formField.type) {
                 case 'TEXT': {
-                  return <TextField key={index} {...formField} databaseId={data.gfForm.databaseId} validationMessage={validationMessages?.[index + 1]} />
+                  return (
+                    <TextField
+                      key={index}
+                      {...formField}
+                      databaseId={data.gfForm.databaseId}
+                      validationMessage={validationMessages?.[index + 1]}
+                    />
+                  )
                 }
 
                 case 'EMAIL': {
-                  return <TextField key={index} {...formField} databaseId={data.gfForm.databaseId} type='email' validationMessage={validationMessages?.[index + 1]} />
+                  return (
+                    <TextField
+                      key={index}
+                      {...formField}
+                      databaseId={data.gfForm.databaseId}
+                      type='email'
+                      validationMessage={validationMessages?.[index + 1]}
+                    />
+                  )
                 }
 
                 case 'TEXTAREA': {
-                  return <TextArea key={index} {...formField} databaseId={data.gfForm.databaseId} validationMessage={validationMessages?.[index + 1]} />
+                  return (
+                    <TextArea
+                      key={index}
+                      {...formField}
+                      databaseId={data.gfForm.databaseId}
+                      validationMessage={validationMessages?.[index + 1]}
+                    />
+                  )
                 }
 
                 case 'SELECT': {
-                  return <Select key={index} {...formField} databaseId={data.gfForm.databaseId} validationMessage={validationMessages?.[index + 1]} />
+                  return (
+                    <Select
+                      key={index}
+                      {...formField}
+                      databaseId={data.gfForm.databaseId}
+                      validationMessage={validationMessages?.[index + 1]}
+                    />
+                  )
                 }
 
                 case 'CHECKBOX': {
-                  return <CheckboxList key={index} {...formField} databaseId={data.gfForm.databaseId} validationMessage={validationMessages?.[index + 1]} />
+                  return (
+                    <CheckboxList
+                      key={index}
+                      {...formField}
+                      databaseId={data.gfForm.databaseId}
+                      validationMessage={validationMessages?.[index + 1]}
+                    />
+                  )
                 }
 
                 case 'RADIO': {
-                  return <RadioList key={index} {...formField} databaseId={data.gfForm.databaseId} validationMessage={validationMessages?.[index + 1]} />
+                  return (
+                    <RadioList
+                      key={index}
+                      {...formField}
+                      databaseId={data.gfForm.databaseId}
+                      validationMessage={validationMessages?.[index + 1]}
+                    />
+                  )
                 }
 
                 case 'NAME': {
-                  return <NameField key={index} {...formField} databaseId={data.gfForm.databaseId} validationMessage={validationMessages?.[index + 1]} />
+                  return (
+                    <NameField
+                      key={index}
+                      {...formField}
+                      databaseId={data.gfForm.databaseId}
+                      validationMessage={validationMessages?.[index + 1]}
+                    />
+                  )
                 }
 
                 case 'CONSENT': {
-                  return <CheckboxList key={index} {...formField} choices={[
-                    {
-                      value: '1',
-                      text: formField.checkboxLabel,
-                    }
-                  ]} validationMessage={validationMessages?.[index + 1]} />
+                  return (
+                    <CheckboxList
+                      key={index}
+                      {...formField}
+                      choices={[
+                        {
+                          value: '1',
+                          text: formField.checkboxLabel,
+                        },
+                      ]}
+                      validationMessage={validationMessages?.[index + 1]}
+                    />
+                  )
                 }
               }
             })}

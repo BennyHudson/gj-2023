@@ -22,9 +22,9 @@ const PaymentDetails: FC<PaymentDetailsProps> = ({
   const { customer, getCustomerData } = useContext(PageContext) as PageContextProps
   return (
     <Styled.PaymentDetails>
-      {editMode ?
+      {editMode ? (
         <Styled.PaymentForm>
-          <Formik 
+          <Formik
             initialValues={{
               cardNumber: '',
               expiryMonth: dayjs().format('M'),
@@ -51,11 +51,11 @@ const PaymentDetails: FC<PaymentDetailsProps> = ({
               })
 
               getCustomerData(customer!.id)
-              setEditMode(false) 
+              setEditMode(false)
             }}
           >
             <Form>
-              <NameField 
+              <NameField
                 label='Card Details'
                 split='2/1'
                 inputs={[
@@ -130,7 +130,7 @@ const PaymentDetails: FC<PaymentDetailsProps> = ({
                         value: 12,
                         text: 'December',
                       },
-                    ]
+                    ],
                   },
                   {
                     isRequired: true,
@@ -144,7 +144,7 @@ const PaymentDetails: FC<PaymentDetailsProps> = ({
             </Form>
           </Formik>
         </Styled.PaymentForm>
-        :
+      ) : (
         <>
           <Heading size={1} font='Cera' weight={2} text='Payment Details' noMargin />
           <ValueWithLabel label='Card type' value={cardDetails.brand} transform='capitalize' />
@@ -152,7 +152,7 @@ const PaymentDetails: FC<PaymentDetailsProps> = ({
           <ValueWithLabel label='Expiry date' value={`${cardDetails.exp_month} / ${cardDetails.exp_year}`} />
           <EditButton onClick={() => setEditMode(true)} text='Update payment details' />
         </>
-      }
+      )}
     </Styled.PaymentDetails>
   )
 }

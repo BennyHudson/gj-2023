@@ -231,6 +231,8 @@ export const Thumb = styled.button(
   `,
 )
 
-export const ThumbContent = styled.div((props: ThemeProps): FlattenSimpleInterpolation => css` 
-  padding-right: ${props.theme.spacing[2]}px;
-`)
+export const ThumbContent = styled.div(
+  (props: ThemeProps): FlattenSimpleInterpolation => css`
+    padding-right: ${props.theme.spacing[2]}px;
+  `,
+)

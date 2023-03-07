@@ -13,7 +13,6 @@ import PageContentBlock from '@components/PageContentBlock'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
-
 const TeamPage: FC = ({ headerNav, footerNav, pageData }): ReactElement => {
   const breadcrumbs = [
     {

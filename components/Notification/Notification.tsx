@@ -7,13 +7,10 @@ import * as Styled from './styles/Notification.style'
 
 import { NotificationProps } from './Notification.types'
 
-const Notification: FC<NotificationProps> = ({
-  text,
-  state,
-}: NotificationProps): ReactElement => {
+const Notification: FC<NotificationProps> = ({ text, state }: NotificationProps): ReactElement => {
   return (
     <Styled.Notification state={state}>
-      <FontAwesomeIcon icon={state === 'success' ? faCheckCircle as IconProp : faExclamationCircle as IconProp} />
+      <FontAwesomeIcon icon={state === 'success' ? (faCheckCircle as IconProp) : (faExclamationCircle as IconProp)} />
       <span>{text}</span>
     </Styled.Notification>
   )

@@ -14,10 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/pro-light-svg-icons'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
-const CartItem: FC<CartItemProps> = ({
-  productId,
-  removeable,
-}: CartItemProps): ReactElement => {
+const CartItem: FC<CartItemProps> = ({ productId, removeable }: CartItemProps): ReactElement => {
   const { setCart, shippingRate } = useContext(PageContext) as PageContextProps
 
   const { data } = useQuery(productQuery(productId).query)
@@ -44,12 +41,18 @@ const CartItem: FC<CartItemProps> = ({
               <Paragraph size={2} font='Cera'>
                 £{data.product.regularPrice ? getProductPrice(data) : '0.00 - A free gift from us to you.'}
               </Paragraph>
-              {data.product.regularPrice && <Paragraph text={`Renews ${data.product.subscriptionPeriod} at £${data.product.subscriptionPrice} until cancelled.`} size={1} font='Cera' />}
+              {data.product.regularPrice && (
+                <Paragraph
+                  text={`Renews ${data.product.subscriptionPeriod} at £${data.product.subscriptionPrice} until cancelled.`}
+                  size={1}
+                  font='Cera'
+                />
+              )}
             </div>
             {removeable && <EditButton onClick={clearCart} text='Remove' />}
           </>
         </Styled.CartItem>
-        {(data.product.subscriptionPeriod && shippingRate) &&
+        {data.product.subscriptionPeriod && shippingRate && (
           <Styled.CartItem>
             <>
               <div>
@@ -57,12 +60,14 @@ const CartItem: FC<CartItemProps> = ({
                 <Paragraph size={2} font='Cera'>
                   £{shippingRate.cost.toFixed(2)}
                 </Paragraph>
-                {shippingRate.cost > 0 && <Paragraph text={`Charged ${data.product.subscriptionPeriod} until cancelled.`} size={1} font='Cera' />}
+                {shippingRate.cost > 0 && (
+                  <Paragraph text={`Charged ${data.product.subscriptionPeriod} until cancelled.`} size={1} font='Cera' />
+                )}
               </div>
               {removeable && <EditButton onClick={clearCart} text='Remove' />}
             </>
           </Styled.CartItem>
-        }
+        )}
       </>
     )
   }

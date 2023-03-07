@@ -6,4 +6,5 @@ export interface SectionProps {
   containerWidth?: 'regular' | 'narrow' | 'wide'
   backgroundImage?: string
   paddingLevel?: 1 | 2
+  textAlign?: 'left' | 'center'
 }

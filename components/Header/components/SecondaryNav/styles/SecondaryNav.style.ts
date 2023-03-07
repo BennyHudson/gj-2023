@@ -119,27 +119,29 @@ export const Button = styled(Link)(
   `,
 )
 
-export const NumberBadge = styled.span((props: StyledSecondaryNavProps): FlattenSimpleInterpolation => css`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-family: 'Cera Pro Regular';
-  font-size: 10px;
-  line-height: 14px;
-  width: 14px;
-  height: 14px;
-  text-align: center;
-  border-radius: 50%;
-  transform: translateY(-100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+export const NumberBadge = styled.span(
+  (props: StyledSecondaryNavProps): FlattenSimpleInterpolation => css`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-family: 'Cera Pro Regular';
+    font-size: 10px;
+    line-height: 14px;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    border-radius: 50%;
+    transform: translateY(-100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  span {
-    display: block;
-    padding: 0 0 0 1px;
-  }
+    span {
+      display: block;
+      padding: 0 0 0 1px;
+    }
 
-  color: ${props.$inverse ? props.theme.colours.black : props.theme.colours.white};
-  background: ${props.$inverse ? props.theme.colours.white : props.theme.colours.black};
-`)
+    color: ${props.$inverse ? props.theme.colours.black : props.theme.colours.white};
+    background: ${props.$inverse ? props.theme.colours.white : props.theme.colours.black};
+  `,
+)

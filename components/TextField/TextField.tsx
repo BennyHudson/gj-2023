@@ -17,7 +17,13 @@ const TextField: FC<FormFieldProps> = ({
   validationMessage,
 }: FormFieldProps): ReactElement => {
   return (
-    <FieldWrapper target={typeof id === 'number' ? `input_${id}` : id} label={label} required={isRequired} labelPlacement={labelPlacement} validationMessage={validationMessage}>
+    <FieldWrapper
+      target={typeof id === 'number' ? `input_${id}` : id}
+      label={label}
+      required={isRequired}
+      labelPlacement={labelPlacement}
+      validationMessage={validationMessage}
+    >
       <Styled.TextField
         name={typeof id === 'number' ? `input_${id}` : id}
         id={databaseId ? `input_${databaseId}_${id}` : `input_${id}`}

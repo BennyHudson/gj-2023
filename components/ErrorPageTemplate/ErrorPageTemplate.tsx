@@ -10,9 +10,7 @@ import Heading from '@components/Heading'
 import Paragraph from '@components/Paragraph'
 import Button from '@components/Button'
 
-const ErrorPageTemplate: FC<ErrorPageTemplateProps> = ({
-  backgroundImage,
-}: ErrorPageTemplateProps): ReactElement => {
+const ErrorPageTemplate: FC<ErrorPageTemplateProps> = ({ backgroundImage }: ErrorPageTemplateProps): ReactElement => {
   return (
     <Styled.ErrorPageTemplate>
       <Styled.Content>

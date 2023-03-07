@@ -42,15 +42,20 @@ const QuickSubscribe: FC<QuickSubscribeProps> = ({ products, freeGift }: QuickSu
               <div>
                 <Heading text={product.name} font='Cera' size={2} weight={3} noMargin />
                 <Paragraph font='Cera' noMargin>
-                  {product.signUpFee ? 
+                  {product.signUpFee ? (
                     <>
-                      {product.salePrice && <del>£{onSale ? product.subscriptionPrice.trim() : product.regularPrice}</del>} £{product.signUpFee} {onSale ? 'for the first year' : product.subscriptionPeriod}
+                      {product.salePrice && <del>£{onSale ? product.subscriptionPrice.trim() : product.regularPrice}</del>} £
+                      {product.signUpFee} {onSale ? 'for the first year' : product.subscriptionPeriod}
                     </>
-                    : 
+                  ) : (
                     `£${product.subscriptionPrice} ${product.subscriptionPeriod}`
-                  }
+                  )}
                 </Paragraph>
-                <Paragraph size={1} text={`Renews ${product.subscriptionPeriod} at £${product.subscriptionPrice} until cancelled.`} font='Cera' />
+                <Paragraph
+                  size={1}
+                  text={`Renews ${product.subscriptionPeriod} at £${product.subscriptionPrice} until cancelled.`}
+                  font='Cera'
+                />
               </div>
             </Styled.Product>
           )

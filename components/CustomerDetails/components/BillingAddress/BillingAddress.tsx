@@ -24,7 +24,7 @@ const BillingAddress: FC = (): ReactElement | null => {
         <Heading size={2} font='ChronicleCondensed' text='Billing Address' noMargin />
         {editMode && <EditButton text='Cancel' onClick={() => setEditMode(false)} />}
       </Styled.DetailsHeading>
-      {editMode ? 
+      {editMode ? (
         <Formik
           validationSchema={billingValidation}
           validateOnBlur={false}
@@ -37,7 +37,7 @@ const BillingAddress: FC = (): ReactElement | null => {
               state: customer.billing?.state,
               postcode: customer.billing?.postcode,
               country: customer.billing?.country,
-            }
+            },
           }}
           onSubmit={async (values) => {
             const updateUser = await fetch(`/api/user/update/${customer?.id}`, {
@@ -45,7 +45,7 @@ const BillingAddress: FC = (): ReactElement | null => {
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 billing: values.billing,
-              })
+              }),
             })
 
             if (updateUser.status === 200) {
@@ -57,13 +57,11 @@ const BillingAddress: FC = (): ReactElement | null => {
             }
           }}
         >
-          {(props) => (
-            <BillingForm {...props} />
-          )}
+          {(props) => <BillingForm {...props} />}
         </Formik>
-        :
+      ) : (
         <>
-          {showPostEditMessage && <Notification text='Billing address updated successfully' state='success'  />}
+          {showPostEditMessage && <Notification text='Billing address updated successfully' state='success' />}
           {customer.billing?.address_1 && <ValueWithLabel label='Address Line 1' value={customer.billing.address_1} />}
           {customer.billing?.address_2 && <ValueWithLabel label='Address Line 2' value={customer.billing.address_2} />}
           {customer.billing?.city && <ValueWithLabel label='City' value={customer.billing.city} />}
@@ -72,7 +70,7 @@ const BillingAddress: FC = (): ReactElement | null => {
           {customer.billing?.country && <ValueWithLabel label='Country' value={customer.billing.country} />}
           <EditButton onClick={() => setEditMode(true)} text='Edit these Details' />
         </>
-      }
+      )}
     </Styled.DetailsBlock>
   )
 }

@@ -23,14 +23,14 @@ const ClubPerks: FC<ClubPerksProps> = ({ perks, title, subtitle }: ClubPerksProp
       {perks.map((perk, index) => {
         return (
           <Styled.Perk key={index} reverse={perk.textAlignement === 'Right'}>
-            {mdAndAbove ?
+            {mdAndAbove ? (
               <Image src={featuredImageUrl(perk.backgroundImage.sourceUrl)} fill alt={perk.title} quality={100} />
-              :
+            ) : (
               <Image src={featuredImageUrl(perk.backgroundImageMobile.sourceUrl)} alt={perk.title} quality={100} width={480} height={360} />
-            }
+            )}
             <Styled.PerkContent>
               <Heading inverse={sm ? true : perk.textColor === 'Light'} text={perk.title} size={3} font='ChronicleCondensed' noMargin />
-              <RawHtmlWrapper inverse={sm ? true :perk.textColor === 'Light'} content={perk.content} font='Cera' />
+              <RawHtmlWrapper inverse={sm ? true : perk.textColor === 'Light'} content={perk.content} font='Cera' />
               {perk.hasLink && (
                 <Link href={perk.link!.url} font='Cera' showIcon inverse={sm ? true : perk.textColor === 'Light'} size={2}>
                   {perk.link!.title}

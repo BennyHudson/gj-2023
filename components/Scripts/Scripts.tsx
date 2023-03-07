@@ -11,11 +11,8 @@ const Scripts: FC = (): ReactElement => {
 
   return (
     <>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=UA-416440-57"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script src='https://www.googletagmanager.com/gtag/js?id=UA-416440-57' strategy='afterInteractive' />
+      <Script id='google-analytics' strategy='afterInteractive'>
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
@@ -24,7 +21,7 @@ const Scripts: FC = (): ReactElement => {
           gtag('config', 'UA-416440-57');
         `}
       </Script>
-      <Script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></Script>
+      <Script async src='https://securepubads.g.doubleclick.net/tag/js/gpt.js'></Script>
       {googleAds.map((adBlock, index) => {
         return (
           <>
@@ -33,13 +30,16 @@ const Scripts: FC = (): ReactElement => {
                 window.googletag = window.googletag || {cmd: []};
                 googletag.cmd.push(function() {
 
-                  ${adBlock.mappings && `
+                  ${
+          adBlock.mappings &&
+                    `
                     const sizeMappings = googletag.sizeMapping()
                       ${adBlock.mappings.lg ? `.addSize([${breakpoints.lg}, 0], ${adBlock.mappings.lg})` : ''}
                       ${adBlock.mappings.md ? `.addSize([${breakpoints.md}, 0], ${adBlock.mappings.md})` : ''}
                       .addSize([0, 0], ${adBlock.mappings.sm})
                       .build();
-                  `}
+                  `
+          }
                   
                   googletag.defineSlot('/113638206/${adBlock.parentId}', ${adBlock.sizes}, 'gdp-${adBlock.parentId}')
                     ${adBlock.mappings ? '.defineSizeMapping(sizeMappings)' : ''}
@@ -50,20 +50,24 @@ const Scripts: FC = (): ReactElement => {
                 });
               `}
             </Script>
-            {adBlock.children && adBlock.children.map((child, index) => {
-              return (
-                <Script id={`gdp-${adBlock.parentId}-${child}-main`} key={`${child}-${index}`}>
-                  {`
+            {adBlock.children &&
+              adBlock.children.map((child, index) => {
+                return (
+                  <Script id={`gdp-${adBlock.parentId}-${child}-main`} key={`${child}-${index}`}>
+                    {`
                     window.googletag = window.googletag || {cmd: []};
                     googletag.cmd.push(function() {
 
-                      ${adBlock.mappings && `
+                      ${
+                  adBlock.mappings &&
+                        `
                         const childMappings = googletag.sizeMapping()
                           ${adBlock.mappings.lg ? `.addSize([${breakpoints.lg}, 0], ${adBlock.mappings.lg})` : ''}
                           ${adBlock.mappings.md ? `.addSize([${breakpoints.md}, 0], ${adBlock.mappings.md})` : ''}
                           .addSize([0, 0], ${adBlock.mappings.sm})
                           .build();
-                      `}
+                      `
+                  }
                       
                       googletag.defineSlot('/113638206/${adBlock.parentId}/${child}', ${adBlock.sizes}, 'gdp-${adBlock.parentId}-${child}')
                         ${adBlock.mappings ? '.defineSizeMapping(childMappings)' : ''}
@@ -73,9 +77,9 @@ const Scripts: FC = (): ReactElement => {
                       googletag.enableServices();
                     });
                   `}
-                </Script>
-              )
-            })}
+                  </Script>
+                )
+              })}
           </>
         )
       })}

@@ -57,24 +57,26 @@ export default async function shippingCalculator(req: NextApiRequest, res: NextA
   const { country } = shippingAddress
 
   if (country === 'GB') {
-    res.status(200).send({ 
+    res.status(200).send({
       title: 'Free Shipping',
       cost: 0,
-      id: 'free_shipping', 
+      id: 'free_shipping',
     })
     return
   }
 
   let shippingClass
 
-  await Promise.all(cart.map(async (cartItem) => {
-    const itemDetails = await WooCommerce.get(`products/${cartItem}`)
-    if (itemDetails.data.shipping_class_id > 0) {
-      shippingClass = itemDetails.data.shipping_class_id
-    }
-  }))
+  await Promise.all(
+    cart.map(async (cartItem) => {
+      const itemDetails = await WooCommerce.get(`products/${cartItem}`)
+      if (itemDetails.data.shipping_class_id > 0) {
+        shippingClass = itemDetails.data.shipping_class_id
+      }
+    }),
+  )
 
-  let shippingZone = 0  
+  let shippingZone = 0
   if (europeanCountries.includes(country)) {
     shippingZone = 2
   }
@@ -88,7 +90,7 @@ export default async function shippingCalculator(req: NextApiRequest, res: NextA
   const cost = parseInt(value.replace('*[qty]', ''))
 
   if (value) {
-    res.status(200).send({ 
+    res.status(200).send({
       title: 'Flat Rate',
       cost,
       id: 'flat_rate',

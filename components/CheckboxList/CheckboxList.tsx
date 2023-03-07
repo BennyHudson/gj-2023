@@ -11,10 +11,27 @@ import * as Styled from './styles/CheckboxList.style'
 import { CheckboxListProps } from './CheckboxList.types'
 import RawHtmlWrapper from '@components/RawHtmlWrapper'
 
-const CheckboxList: FC<CheckboxListProps> = ({ target, label, isRequired, hideLabels, choices, id, labelPlacement, validationMessage, description }): ReactElement => {
+const CheckboxList: FC<CheckboxListProps> = ({
+  target,
+  label,
+  isRequired,
+  hideLabels,
+  choices,
+  id,
+  labelPlacement,
+  validationMessage,
+  description,
+}): ReactElement => {
   return (
     <>
-      <FieldWrapper target={target} label={label} required={isRequired} hideLabels={hideLabels} labelPlacement={labelPlacement} validationMessage={validationMessage}>
+      <FieldWrapper
+        target={target}
+        label={label}
+        required={isRequired}
+        hideLabels={hideLabels}
+        labelPlacement={labelPlacement}
+        validationMessage={validationMessage}
+      >
         <Styled.CheckboxList>
           {choices.map((choice, index) => {
             return (

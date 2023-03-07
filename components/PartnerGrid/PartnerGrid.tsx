@@ -13,7 +13,7 @@ const PartnerGrid: FC<PartnerGridProps> = ({ partners }: PartnerGridProps): Reac
     700: 2,
     500: 1,
   }
-  
+
   return (
     <Styled.PartnerGrid>
       <Masonry breakpointCols={breakpointColumnsObj} className='my-masonry-grid' columnClassName='my-masonry-grid_column'>

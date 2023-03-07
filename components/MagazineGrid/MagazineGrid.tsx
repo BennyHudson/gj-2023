@@ -20,7 +20,9 @@ const MagazineGrid: FC<MagazineGridProps> = ({ magazines }: MagazineGridProps): 
         const { name, image, slug } = magazine.node
         return (
           <Styled.MagazineCard key={index}>
-            <Link href={`/shop/magazine/${slug}`}><Image src={featuredImageUrl(image.sourceUrl)} width='240' height='280' alt={name} /></Link>
+            <Link href={`/shop/magazine/${slug}`}>
+              <Image src={featuredImageUrl(image.sourceUrl)} width='240' height='280' alt={name} />
+            </Link>
             <Heading size={mdAndAbove ? 2 : 1} font='ChronicleCondensed' text={name} noMargin />
             <Button text='Subscribe Now' href='/club' size={1} />
             <EditButton href={`/shop/magazine/${slug}`} text='Preview' />

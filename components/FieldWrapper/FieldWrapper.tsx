@@ -19,7 +19,12 @@ const FieldWrapper: FC<FieldWrapperProps> = ({
 }: FieldWrapperProps): ReactElement => {
   return (
     <Styled.FieldWrapper labelPlacement={labelPlacement} validationMessage={!!validationMessage}>
-      {validationMessage && <Styled.ValidationMessage><FontAwesomeIcon icon={faWarning as IconProp} /><span>{validationMessage}</span></Styled.ValidationMessage>}
+      {validationMessage && (
+        <Styled.ValidationMessage>
+          <FontAwesomeIcon icon={faWarning as IconProp} />
+          <span>{validationMessage}</span>
+        </Styled.ValidationMessage>
+      )}
       {labelPlacement !== 'HIDDEN' && <Label target={target} text={label} required={required} />}
       {children}
     </Styled.FieldWrapper>

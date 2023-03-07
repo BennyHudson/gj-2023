@@ -11,11 +11,7 @@ import * as Styled from './styles/CarouselPost.style'
 
 import { CarouselPostProps } from './CarouselPost.types'
 
-const CarouselPost: FC<CarouselPostProps> = ({
-  featuredImageId, 
-  slug,
-  title,
-}): ReactElement => {
+const CarouselPost: FC<CarouselPostProps> = ({ featuredImageId, slug, title }): ReactElement => {
   const { featuredImage } = useFeaturedImage(featuredImageId)
 
   return (

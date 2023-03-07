@@ -10,10 +10,13 @@ const Section: FC<SectionProps> = ({
   containerWidth = 'regular',
   backgroundImage,
   paddingLevel = 2,
+  textAlign = 'left',
 }: SectionProps): ReactElement => {
   return (
     <Styled.Section appearance={appearance} backgroundImage={backgroundImage} paddingLevel={paddingLevel}>
-      <Styled.Content containerWidth={containerWidth}>{children}</Styled.Content>
+      <Styled.Content containerWidth={containerWidth} textAlign={textAlign}>
+        {children}
+      </Styled.Content>
     </Styled.Section>
   )
 }

@@ -26,7 +26,12 @@ const Podcasts: FC = ({ podcastOptions, headerNav, footerNav }): ReactElement =>
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerStyle={sm ? 'standard' : 'feature'} headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Podcasts | The Gentleman\'s Journal' }}>
+    <PageLayout
+      headerStyle={sm ? 'standard' : 'feature'}
+      headerNav={headerNav}
+      footerNav={footerNav}
+      seo={{ title: 'Podcasts | The Gentleman\'s Journal' }}
+    >
       <FeatureCarousel
         height={sm ? 1 : 2}
         title='Podcasts'

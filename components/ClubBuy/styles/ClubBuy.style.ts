@@ -19,7 +19,7 @@ export const ClubBuy = styled.div(
 
     ${Content} {
       width: 90%;
-      
+
       ${respondTo.md(css`
         width: 100%;
       `)}

@@ -6,7 +6,7 @@ export interface ContentGridProps {
   byline?: BylineProps
   contentBuilder?: {
     content: ContentBuilder[]
-    membersOnly: boolean 
+    membersOnly: boolean
   }
   contentBuilderPrefix: string
   articleNote: ArticleNote

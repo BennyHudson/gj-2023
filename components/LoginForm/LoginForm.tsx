@@ -1,35 +1,35 @@
 import React, { ReactElement, FC, useContext, useState, useEffect } from 'react'
 import { Formik } from 'formik'
 
+import useResetPassword from '@hooks/useResetPassword'
+
+import Button from '@components/Button'
 import TextField from '@components/TextField'
+import EditButton from '@components/EditButton'
+import Notification from '@components/Notification'
+
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 import * as Styled from './styles/LoginForm.style'
 
 import { LoginFormProps } from './LoginForm.types'
-import Button from '@components/Button'
-import PageContext, { PageContextProps } from '@context/PageContext'
-import EditButton from '@components/EditButton'
-import useResetPassword from '@hooks/useResetPassword'
-import Notification from '@components/Notification'
 
 const LoginForm: FC<LoginFormProps> = (): ReactElement => {
   const { setToken, setCustomer, setCustomerId } = useContext(PageContext) as PageContextProps
   const [forgotPassword, setForgotPassword] = useState(false)
 
-  const [ success, setSuccess ] = useState(false)
+  const [success, setSuccess] = useState(false)
 
   const resetPassword = useResetPassword()
 
   useEffect(() => {
-    if (resetPassword.status === 'resolved' && ! resetPassword.error) {
+    if (resetPassword.status === 'resolved' && !resetPassword.error) {
       setSuccess(true)
     }
   }, [resetPassword])
 
   if (success) {
-    return (
-      <Notification state='success' text='An email with reset instructions has been sent to your inbox' />
-    )
+    return <Notification state='success' text='An email with reset instructions has been sent to your inbox' />
   }
 
   if (forgotPassword) {

@@ -13,17 +13,16 @@ const CustomerSubs: FC = (): ReactElement => {
 
   return (
     <Styled.CustomerSubs>
-      {subscriptions?.length > 0 ? subscriptions.map((subscription, index) => {
-        return (
-          <Subscription key={index} subscription={subscription} />
-        )
-      })
-        :
+      {subscriptions?.length > 0 ? (
+        subscriptions.map((subscription, index) => {
+          return <Subscription key={index} subscription={subscription} />
+        })
+      ) : (
         <>
           <Paragraph size={2} font='Cera' text='You currently have no active subscriptions' />
           <EditButton text='Sign up' href='/club' />
         </>
-      }
+      )}
     </Styled.CustomerSubs>
   )
 }

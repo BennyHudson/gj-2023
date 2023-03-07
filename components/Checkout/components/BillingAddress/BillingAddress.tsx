@@ -21,7 +21,7 @@ const BillingAddress: FC<BillingAddressProps> = ({
 
   return (
     <CheckoutPanel panelIndex={panelIndex} activePanel={activePanel} setActivePanel={setActivePanel} title='Billing Address'>
-      {activePanel === panelIndex && 
+      {activePanel === panelIndex && (
         <Formik
           validationSchema={billingValidation}
           validateOnBlur={false}
@@ -35,7 +35,7 @@ const BillingAddress: FC<BillingAddressProps> = ({
               state: customer?.billing?.state,
               postcode: customer?.billing?.postcode,
               country: customer?.billing?.country,
-            }
+            },
           }}
           onSubmit={async (values) => {
             const updateUser = await fetch(`/api/user/update/${customer?.id || customerId}`, {
@@ -43,7 +43,7 @@ const BillingAddress: FC<BillingAddressProps> = ({
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 billing: values.billing,
-              })
+              }),
             })
 
             if (updateUser.status === 200) {
@@ -52,11 +52,9 @@ const BillingAddress: FC<BillingAddressProps> = ({
             }
           }}
         >
-          {(props) => (
-            <BillingForm {...props} />
-          )}
+          {(props) => <BillingForm {...props} />}
         </Formik>
-      }
+      )}
     </CheckoutPanel>
   )
 }

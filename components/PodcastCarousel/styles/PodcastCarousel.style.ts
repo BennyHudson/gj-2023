@@ -12,7 +12,7 @@ export const PodcastCarousel = styled.div(
 
     ${respondTo.lg(css`
       // margin: 0 -${props.theme.spacing[2]}px;
-      
+
       ${PodcastCard} {
         opacity: 0.2;
         pointer-events: none;

@@ -24,24 +24,16 @@ const HeroImage: FC<HeroImageProps> = ({ featuredImage, height = 2, featuredVide
   return (
     <>
       <Head>
-        <link
-          rel="preload"
-          href={featuredImageUrl(featuredImage)}
-          as="image"
-        />
+        <link rel='preload' href={featuredImageUrl(featuredImage)} as='image' />
       </Head>
       <Styled.HeroImage height={height} backgroundImage={featuredImageUrl(featuredImage)}>
-        {featuredVideo &&
+        {featuredVideo && (
           <Styled.VideoWrapper height={height} headerHeight={headerHeight}>
             <Styled.Video headerHeight={headerHeight}>
-              <YouTube
-                videoId={featuredVideo}
-                opts={videoOptions}
-                className='video-wrapper'
-              />
+              <YouTube videoId={featuredVideo} opts={videoOptions} className='video-wrapper' />
             </Styled.Video>
           </Styled.VideoWrapper>
-        }
+        )}
         {/* {featuredImage && <Image src={featuredImageUrl(featuredImage)} key={featuredImage} fill alt='' quality={100} priority />} */}
       </Styled.HeroImage>
     </>

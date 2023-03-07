@@ -61,7 +61,7 @@ export async function getStaticProps() {
       pageData: clubPage.data.page,
       subscriptionProducts: subscriptionProducts.data.products.nodes,
       freeGift: freeGift.data.products.nodes[0],
-      subscriptionOverview: clubPage.data.product.subscriptionPerks.subscriptionPerks
+      subscriptionOverview: clubPage.data.product.subscriptionPerks.subscriptionPerks,
     },
   }
 }

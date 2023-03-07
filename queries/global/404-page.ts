@@ -11,5 +11,5 @@ export const page404Query = {
         }
       }
     }
-  `
+  `,
 }

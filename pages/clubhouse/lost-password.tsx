@@ -22,7 +22,7 @@ import Notification from '@components/Notification'
 const ClubPage: FC = ({ headerNav, footerNav }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
-  const [ success, setSuccess ] = useState(false)
+  const [success, setSuccess] = useState(false)
 
   const router = useRouter()
   const resetPassword = useResetPassword()
@@ -32,7 +32,7 @@ const ClubPage: FC = ({ headerNav, footerNav }): ReactElement => {
   }, [setActiveNavElement])
 
   useEffect(() => {
-    if (resetPassword.status === 'resolved' && ! resetPassword.error) {
+    if (resetPassword.status === 'resolved' && !resetPassword.error) {
       setSuccess(true)
       localStorage.removeItem('resetKey')
       localStorage.removeItem('customerId')
@@ -45,13 +45,18 @@ const ClubPage: FC = ({ headerNav, footerNav }): ReactElement => {
 
   const passwordValidation = Yup.object().shape({
     password: Yup.string().required('Required field'),
-    confirmPassword: Yup.string().required('Required field').oneOf([Yup.ref('password'), null], 'Passwords must match')
+    confirmPassword: Yup.string()
+      .required('Required field')
+      .oneOf([Yup.ref('password'), null], 'Passwords must match'),
   })
 
   if (success) {
     return (
       <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }}>
-        <SplitPageTemplate image='https://www.thegentlemansjournal.com/wp-content/uploads/2022/12/John-Boyega-5-1.jpg' title='Reset your password'>
+        <SplitPageTemplate
+          image='https://www.thegentlemansjournal.com/wp-content/uploads/2022/12/John-Boyega-5-1.jpg'
+          title='Reset your password'
+        >
           <Notification state='success' text='Password reset successfully, you are being redirected to The Clubhouse' />
         </SplitPageTemplate>
       </PageLayout>
@@ -60,7 +65,10 @@ const ClubPage: FC = ({ headerNav, footerNav }): ReactElement => {
 
   return (
     <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }}>
-      <SplitPageTemplate image='https://www.thegentlemansjournal.com/wp-content/uploads/2022/12/John-Boyega-5-1.jpg' title='Reset your password'>
+      <SplitPageTemplate
+        image='https://www.thegentlemansjournal.com/wp-content/uploads/2022/12/John-Boyega-5-1.jpg'
+        title='Reset your password'
+      >
         <Formik
           validationSchema={passwordValidation}
           validateOnBlur={false}
@@ -68,20 +76,34 @@ const ClubPage: FC = ({ headerNav, footerNav }): ReactElement => {
           initialValues={{
             password: '',
             confirmPassword: '',
-          }}  
+          }}
           onSubmit={(values) => {
             const resetKey = router.query.key
             const resetLogin = router.query.email
 
             if (resetKey && resetLogin) {
-              resetPassword.resetUserPassword( resetKey, resetLogin, values.password )
+              resetPassword.resetUserPassword(resetKey, resetLogin, values.password)
             }
           }}
         >
           {(props) => (
             <Form>
-              <TextField isRequired type='password' label='New password' id='password' target='password' validationMessage={props.errors.password} />
-              <TextField isRequired type='password' label='Confirm new password' id='confirmPassword' target='confirmPassword' validationMessage={props.errors.confirmPassword} />
+              <TextField
+                isRequired
+                type='password'
+                label='New password'
+                id='password'
+                target='password'
+                validationMessage={props.errors.password}
+              />
+              <TextField
+                isRequired
+                type='password'
+                label='Confirm new password'
+                id='confirmPassword'
+                target='confirmPassword'
+                validationMessage={props.errors.confirmPassword}
+              />
               <Button type='submit' text='Confirm' size={1} />
             </Form>
           )}

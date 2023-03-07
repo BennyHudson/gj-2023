@@ -49,6 +49,7 @@ export const Content = styled.div(
     max-width: ${props.theme.containerWidth}px;
     position: relative;
     z-index: 1;
+    text-align: ${props.textAlign};
 
     ${respondTo.lg(css`
       width: 90%;

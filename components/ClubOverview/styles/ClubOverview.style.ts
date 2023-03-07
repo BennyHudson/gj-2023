@@ -36,54 +36,58 @@ export const ClubOverviewGrid = styled.div(
   `,
 )
 
-export const Item = styled.div((props: StyledClubOverviewProps): FlattenSimpleInterpolation => css`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  text-align: center;
-  padding: 0 ${props.theme.spacing[4]}px ${props.theme.spacing[2]}px;
-  flex-direction: column;
-  gap: ${props.theme.spacing[2]}px;
-  border-bottom: 1px dashed ${props.theme.colours.grey};
+export const Item = styled.div(
+  (props: StyledClubOverviewProps): FlattenSimpleInterpolation => css`
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 0 ${props.theme.spacing[4]}px ${props.theme.spacing[2]}px;
+    flex-direction: column;
+    gap: ${props.theme.spacing[2]}px;
+    border-bottom: 1px dashed ${props.theme.colours.grey};
 
-  &:last-child {
-    border-bottom: none;
-  }
-
-  ${respondTo.md(css`
-    border-bottom: none;
-    border-right: 1px solid ${props.theme.colours.midGrey};
-    border-top: 1px solid ${props.theme.colours.midGrey};
-    padding: ${props.theme.spacing[2]}px;
-    gap: ${props.theme.spacing[4]}px;
-
-    &:nth-child(1),
-    &:nth-child(2),
-    &:nth-child(3) {
-      border-top: none;
+    &:last-child {
+      border-bottom: none;
     }
 
-    &:nth-child(3n) {
-      border-right: none;
-    }
-  `)}
+    ${respondTo.md(css`
+      border-bottom: none;
+      border-right: 1px solid ${props.theme.colours.midGrey};
+      border-top: 1px solid ${props.theme.colours.midGrey};
+      padding: ${props.theme.spacing[2]}px;
+      gap: ${props.theme.spacing[4]}px;
 
-  ${respondTo.lg(css`
-    padding: ${props.theme.spacing[4]}px;
-  `)}
-`)
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3) {
+        border-top: none;
+      }
 
-export const Index = styled.div((props: StyledClubOverviewProps): FlattenSimpleInterpolation => css`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: ${props.theme.spacing[1]}px;
-  border: 1px solid ${props.theme.colours.black};
-  border-radius: 50%;
-  font-size: ${props.theme.typography.heading[1].fontSize};
-  line-height: ${props.theme.typography.heading[1].lineHeight};
-  width: 44px;
-  height: 44px;
-  font-family: 'Cera Pro Regular';
-`)
+      &:nth-child(3n) {
+        border-right: none;
+      }
+    `)}
+
+    ${respondTo.lg(css`
+      padding: ${props.theme.spacing[4]}px;
+    `)}
+  `,
+)
+
+export const Index = styled.div(
+  (props: StyledClubOverviewProps): FlattenSimpleInterpolation => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: ${props.theme.spacing[1]}px;
+    border: 1px solid ${props.theme.colours.black};
+    border-radius: 50%;
+    font-size: ${props.theme.typography.heading[1].fontSize};
+    line-height: ${props.theme.typography.heading[1].lineHeight};
+    width: 44px;
+    height: 44px;
+    font-family: 'Cera Pro Regular';
+  `,
+)

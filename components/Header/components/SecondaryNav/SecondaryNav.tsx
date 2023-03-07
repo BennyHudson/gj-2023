@@ -29,7 +29,11 @@ const SecondaryNav: FC<SecondaryNavProps> = ({ inverse, showAll = false }: Secon
             </li>
             <li>
               <Styled.IconButton $inverse={inverse} href='/cart'>
-                {cart.length > 0 && <Styled.NumberBadge $inverse={inverse}><span>{cart.length}</span></Styled.NumberBadge>}
+                {cart.length > 0 && (
+                  <Styled.NumberBadge $inverse={inverse}>
+                    <span>{cart.length}</span>
+                  </Styled.NumberBadge>
+                )}
                 <FontAwesomeIcon icon={faShoppingBag as IconProp} />
               </Styled.IconButton>
             </li>

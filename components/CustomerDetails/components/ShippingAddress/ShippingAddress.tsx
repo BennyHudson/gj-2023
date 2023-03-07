@@ -1,5 +1,5 @@
 import React, { FC, ReactElement, useContext, useState } from 'react'
-import { Formik, Form } from 'formik'
+import { Formik } from 'formik'
 
 import Heading from '@components/Heading'
 import EditButton from '@components/EditButton'
@@ -24,7 +24,7 @@ const ShippingAddress: FC = (): ReactElement | null => {
         <Heading size={2} font='ChronicleCondensed' text='Shipping Address' noMargin />
         {editMode && <EditButton text='Cancel' onClick={() => setEditMode(false)} />}
       </Styled.DetailsHeading>
-      {editMode ?
+      {editMode ? (
         <Formik
           validationSchema={shippingValidation}
           validateOnBlur={false}
@@ -45,9 +45,9 @@ const ShippingAddress: FC = (): ReactElement | null => {
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 shipping: values.shipping,
-              })
+              }),
             })
-            
+
             if (updateUser.status === 200) {
               setEditMode(false)
               setShowPostEditMessage(true)
@@ -57,11 +57,9 @@ const ShippingAddress: FC = (): ReactElement | null => {
             }
           }}
         >
-          {(props) => (
-            <ShippingForm {...props} />
-          )}
+          {(props) => <ShippingForm {...props} />}
         </Formik>
-        :
+      ) : (
         <>
           {showPostEditMessage && <Notification text='Shipping address updated successfully' state='success' />}
           {customer.shipping?.address_1 && <ValueWithLabel label='Address Line 1' value={customer.shipping.address_1} />}
@@ -72,7 +70,7 @@ const ShippingAddress: FC = (): ReactElement | null => {
           {customer.shipping?.country && <ValueWithLabel label='Country' value={customer.shipping.country} />}
           <EditButton onClick={() => setEditMode(true)} text='Edit these Details' />
         </>
-      }
+      )}
     </Styled.DetailsBlock>
   )
 }

@@ -53,7 +53,8 @@ export const Perk = styled.div(
       height: 430px;
       flex-direction: row;
 
-      ${props.reverse && css`
+      ${props.reverse &&
+      css`
         flex-direction: row-reverse;
       `}
     `)}
@@ -68,7 +69,6 @@ export const PerkContent = styled.div(
     align-self: center;
     padding: ${props.theme.spacing[4]}px;
     position: relative;
-
 
     ${respondTo.md(css`
       text-align: center;
@@ -88,7 +88,6 @@ export const PerkContent = styled.div(
         justify-content: flex-start;
       }
     `)}
-    
   `,
 )
 

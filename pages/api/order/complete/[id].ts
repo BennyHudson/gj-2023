@@ -8,7 +8,7 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
   } = req
 
   const data = {
-    status: 'completed'
+    status: 'completed',
   }
 
   const completedOrder = await WooCommerce.put(`orders/${id}`, data)

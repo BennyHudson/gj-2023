@@ -7,4 +7,5 @@ export interface StyledSectionProps {
   appearance: SectionProps['appearance']
   containerWidth: SectionProps['containerWidth']
   backgroundImage: string
+  textAlign: SectionProps['textAlign']
 }
