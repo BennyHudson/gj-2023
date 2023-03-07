@@ -84,23 +84,20 @@ const LoginForm: FC<LoginFormProps> = (): ReactElement => {
           redirect: 'follow',
         })
 
-        if(tokenData.status !== 200) {
-          setLoginError('We had a problem logging you in, we have emailed you details to reset your password')
-          resetPassword.sendResetPasswordEmail(values.username)
+        const customer = await tokenData.json()
+
+        if(customer.statusCode !== 200) {
+          setLoginError(customer.message)
           setLoading(false)
           return
         }
 
-        const customer = await tokenData.json()
-
-        if (customer.data) {
-          const customerDetails = await fetch(`/api/user/${customer.data.id}`)
-          const customerData = await customerDetails.json()
-          setCustomer(customerData)
-          setCustomerId(customerData.id)
-          setToken(customer.data.token)
-          localStorage.setItem('gjToken', customer.data.token)
-        }
+        const customerDetails = await fetch(`/api/user/${customer.data.id}`)
+        const customerData = await customerDetails.json()
+        setCustomer(customerData)
+        setCustomerId(customerData.id)
+        setToken(customer.data.token)
+        localStorage.setItem('gjToken', customer.data.token)
 
         setLoading(false)
       }}
