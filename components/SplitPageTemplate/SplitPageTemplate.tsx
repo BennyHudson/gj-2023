@@ -1,5 +1,4 @@
 import React, { ReactElement, FC, useContext } from 'react'
-import Image from 'next/image'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
@@ -16,8 +15,6 @@ const SplitPageTemplate: FC<SplitPageTemplateProps> = ({ title, image, children 
   return (
     <Styled.SplitPageTemplate headerHeight={headerHeight}>
       <Styled.BackgroundImage backgroundImage={featuredImageUrl(image)} />
-        {/* <Image src={featuredImageUrl(image)} fill alt='' priority /> */}
-      {/* </Styled.BackgroundImage> */}
       <Styled.Content>
         <Styled.ContentWrapper>
           {title && (
