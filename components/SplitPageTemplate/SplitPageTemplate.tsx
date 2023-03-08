@@ -15,9 +15,9 @@ const SplitPageTemplate: FC<SplitPageTemplateProps> = ({ title, image, children 
 
   return (
     <Styled.SplitPageTemplate headerHeight={headerHeight}>
-      <Styled.BackgroundImage>
-        <Image src={featuredImageUrl(image)} fill alt='' priority />
-      </Styled.BackgroundImage>
+      <Styled.BackgroundImage backgroundImage={featuredImageUrl(image)} />
+        {/* <Image src={featuredImageUrl(image)} fill alt='' priority /> */}
+      {/* </Styled.BackgroundImage> */}
       <Styled.Content>
         <Styled.ContentWrapper>
           {title && (

@@ -21,10 +21,12 @@ export const SplitPageTemplate = styled.div(
 )
 
 export const BackgroundImage = styled.div(
-  (): FlattenSimpleInterpolation => css`
+  (props: StyledSplitPageTemplateProps): FlattenSimpleInterpolation => css`
     grid-column: col-start / span 12;
     position: relative;
     aspect-ratio: 3 / 2;
+    background: url('${props.backgroundImage}') center center no-repeat;
+    background-size: cover;
 
     ${respondTo.lg(css`
       grid-column: col-start / span 5;

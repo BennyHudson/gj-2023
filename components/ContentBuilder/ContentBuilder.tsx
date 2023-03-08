@@ -15,6 +15,7 @@ import AffiliateProductBlock from './components/AffiliateProductBlock'
 import { ContentBuilderProps } from './ContentBuilder.types'
 import PageContext, { PageContextProps } from '@context/PageContext'
 import Paywall from '@components/Paywall'
+import Heading from '@components/Heading/Heading'
 
 const ContentBuilder: FC<ContentBuilderProps> = ({ content, prefix, membersOnly = false }: ContentBuilderProps): ReactElement => {
   const { subscriptions } = useContext(PageContext) as PageContextProps
@@ -52,7 +53,15 @@ const ContentBuilder: FC<ContentBuilderProps> = ({ content, prefix, membersOnly 
       return <CodeBlock key={index} adCode={block.adCode} />
 
     case `${prefix}_CompetitionForm`:
-      return <Form key={index} formId={block.gravityForm} />
+      return (
+        <> 
+          {block.gravityForm ?
+            <Form key={index} formId={block.gravityForm} />
+            :
+            <HeadingBlock text='This competition is now closed' />
+          }
+        </>
+      )
 
     case `${prefix}_AffiliateProducts`:
       return <AffiliateProductBlock key={index} {...block} />

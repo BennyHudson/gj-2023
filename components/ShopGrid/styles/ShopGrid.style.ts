@@ -18,7 +18,6 @@ export const ShopCard = styled.a(
     align-items: center;
     flex-direction: column;
     text-align: center;
-    padding: ${props.theme.spacing[2]}px;
     gap: ${props.theme.spacing[2]}px;
     color: ${props.theme.colours.black};
     text-decoration: none;

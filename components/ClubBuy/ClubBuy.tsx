@@ -24,7 +24,7 @@ const ClubBuy: FC = ({ products, freeGift, offerCode }): ReactElement => {
 
   return (
     <Styled.ClubBuy>
-      <Section appearance='secondary' containerWidth='narrow'>
+      <Section appearance='secondary' containerWidth='narrow' textAlign='center'>
         <Heading size={5} text='Select Your Plan' font='ChronicleCondensed' inverse />
         {offerCode && <Paragraph inverse size={2} font='Cera' text={offerCode} />}
         <Paragraph inverse size={2} font='Cera'>

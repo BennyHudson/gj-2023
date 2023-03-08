@@ -6,7 +6,6 @@ import { Content, Section } from '@components/Section/styles/Section.style'
 
 export const ClubBuy = styled.div(
   (props: StyledClubBuyProps): FlattenSimpleInterpolation => css`
-    text-align: center;
     border-bottom: 1px solid ${props.theme.colours.grey};
 
     ${Section} {
