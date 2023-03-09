@@ -21,7 +21,7 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
   const [clientSecret, setClientSecret] = useState('')
   const [paymentIntentId, setPaymentIntentId] = useState('')
 
-  const stripePromise = loadStripe('pk_test_8iwfeNCkfxOmOZkWESHhGYwe')
+  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
   const createPaymentIntent = async () => {
     const paymentIntent = await fetch('/api/checkout/create-payment-intent', {
