@@ -78,6 +78,7 @@ export const Content = styled.div(
       text-align: left;
       grid-column: col-start / span 8;
       border-bottom: none;
+      border-top: none;
       padding: ${props.theme.spacing[4]}px;
     `)}
   `,

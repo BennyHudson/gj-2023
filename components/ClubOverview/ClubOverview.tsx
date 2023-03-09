@@ -1,4 +1,7 @@
 import React, { ReactElement, FC } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { faAngleRight } from '@fortawesome/pro-thin-svg-icons'
 
 import Section from '@components/Section'
 import Title from '@components/Title'
@@ -19,8 +22,8 @@ const ClubOverview: FC<ClubOverviewProps> = ({ overview }: ClubOverviewProps): R
           {overview.map((overviewItem, index) => {
             return (
               <Styled.Item key={index}>
-                <Styled.Index>{index + 1}</Styled.Index>
-                <Heading text={overviewItem.subscriptionPerk} size={1} />
+                <Styled.Index><FontAwesomeIcon icon={faAngleRight as IconProp} /></Styled.Index>
+                <Heading text={overviewItem.subscriptionPerk} size={2} font='ChronicleCondensed' />
                 {/* <Paragraph text={overviewItem.subscriptionPerk} font='Cera' size={1} /> */}
               </Styled.Item>
             )
