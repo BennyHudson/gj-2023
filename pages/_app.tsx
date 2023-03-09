@@ -64,7 +64,7 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
     }
   }, [])
 
-  const cmsUrl = 'https://thegentlemansjournal.com'
+  const cmsUrl = 'https://cms.thegentlemansjournal.com'
 
   return (
     <>
