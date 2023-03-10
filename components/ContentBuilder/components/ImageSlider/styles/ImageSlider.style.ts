@@ -1,10 +1,14 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 
 import { StyledImageSliderProps } from './ImageSlider.style.types'
+import respondTo from '@mixins/respondTo'
 
 export const Slide = styled.div(
   (props: StyledImageSliderProps): FlattenSimpleInterpolation => css`
-    padding: 0 ${props.theme.spacing[1]}px;
+    ${respondTo.md(css`
+      padding: 0 ${props.theme.spacing[1]}px;
+    `)}
+
     transition: 0.4s all ease;
   `,
 )
@@ -32,43 +36,75 @@ export const ImageSlider = styled.div(
     }
 
     .slick-arrow {
-      background: ${props.theme.colours.white};
-      border-radius: 50%;
-      color: ${props.theme.colours.black};
-      z-index: 10;
-      transition: 0.4s all ease;
-      transform-origin: center;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: ${props.theme.spacing[3]}px;
-      height: ${props.theme.spacing[3]}px;
-      cursor: pointer;
+      display: none !important;
+    }
 
-      &:hover {
-        color: ${props.theme.colours.white};
-        background: ${props.theme.colours.black};
-        transform: translate(-17.5%, -50%);
-        width: ${props.theme.spacing[4]}px;
-        height: ${props.theme.spacing[4]}px;
+    .slick-dots {
+      display: flex !important;
+      width: 100%;
+      justify-content: center;
+      gap: ${props.theme.spacing[1]}px;
+      padding: ${props.theme.spacing[4]}px 0 0;
+
+      button {
+        display: none !important;
       }
 
-      &.slick-next {
-        left: calc(100% + ${props.theme.spacing[4]}px);
-      }
+      li {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: ${props.theme.colours.midGrey};
 
-      &.slick-prev {
-        right: calc(100% + ${props.theme.spacing[4]}px);
-
-        &:hover {
-          transform: translate(17.5%, -50%);
+        &.slick-active {
+          background: ${props.theme.colours.black};
         }
       }
     }
 
-    .slick-list {
-      overflow: visible !important;
-    }
+    ${respondTo.md(css`
+      .slick-arrow {
+        display: block !important;
+        background: ${props.theme.colours.white};
+        border-radius: 50%;
+        color: ${props.theme.colours.black};
+        z-index: 10;
+        transition: 0.4s all ease;
+        transform-origin: center;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: ${props.theme.spacing[3]}px;
+        height: ${props.theme.spacing[3]}px;
+        cursor: pointer;
+
+        &:hover {
+          color: ${props.theme.colours.white};
+          background: ${props.theme.colours.black};
+          transform: translate(-17.5%, -50%);
+          width: ${props.theme.spacing[4]}px;
+          height: ${props.theme.spacing[4]}px;
+        }
+
+        &.slick-next {
+          left: calc(100% + ${props.theme.spacing[4]}px);
+        }
+
+        &.slick-prev {
+          right: calc(100% + ${props.theme.spacing[4]}px);
+
+          &:hover {
+            transform: translate(17.5%, -50%);
+          }
+        }
+      }
+    `)}
+
+    ${respondTo.md(css`
+      .slick-list {
+        overflow: visible !important;
+      }
+    `)}
 
     .slick-track {
       display: flex !important;
@@ -88,6 +124,10 @@ export const ImageSlider = styled.div(
     .slick-slide {
       height: inherit !important;
       display: flex !important;
+
+      img {
+        width: 100%;
+      }
 
       & > div {
         display: flex;

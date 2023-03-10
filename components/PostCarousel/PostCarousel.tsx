@@ -17,6 +17,9 @@ const PostCarousel: FC = (): ReactElement => {
   const getPosts = async () => {
     const page = Math.floor(Math.random() * 101)
     const postRequest = await fetch(`${cmsUrl}/wp-json/wp/v2/articles?page=${page}`)
+    
+    if (!postRequest) return 
+
     const postResponse = await postRequest.json()
     setPosts(postResponse)
   }

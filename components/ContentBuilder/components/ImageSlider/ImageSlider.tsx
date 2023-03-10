@@ -24,6 +24,7 @@ const ImageSlider: FC<ImageSliderProps> = ({ slides }: ImageSliderProps): ReactE
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          dots: true,
         },
       },
     ],
