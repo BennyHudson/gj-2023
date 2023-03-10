@@ -45,9 +45,6 @@ export const VideoWrapper = styled.div(
 
 export const Video = styled.div(
   (props: StyledHeroImageProps): FlattenSimpleInterpolation => css`
-    border: 1px solid ${props.theme.colours.white};
-    background: ${props.theme.colours.black};
-    padding: ${props.theme.spacing[2]}px;
     width: 90%;
     max-width: ${props.theme.containerWidth}px;
     max-height: 100%;
