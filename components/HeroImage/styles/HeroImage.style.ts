@@ -15,6 +15,10 @@ export const HeroImage = styled.div(
 
     ${respondTo.lg(css`
       height: ${props.height === 2 ? '100vh' : '80vh'};
+
+      ${props.hasVideo && css`
+        height: calc(80vh - ${props.headerHeight}px);
+      `}
     `)}
 
     img {
@@ -30,15 +34,15 @@ export const VideoWrapper = styled.div(
     left: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(20px);
+    background: ${props.theme.colours.black};
     z-index: 1;
-    padding: ${props.headerHeight + props.theme.spacing[4]}px 0 ${props.theme.spacing[4]}px;
+    padding: ${props.theme.spacing[4]}px 0;
     display: flex;
     align-items: center;
     justify-content: center;
 
     ${respondTo.md(css`
-      padding: ${props.headerHeight + props.theme.spacing[8]}px 0 ${props.theme.spacing[8]}px;
+      padding: ${props.theme.spacing[8]}px 0;
     `)}
   `,
 )

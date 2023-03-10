@@ -2,7 +2,7 @@ import { Colours } from './colours.types'
 
 const colours: Colours = {
   black: '#222222',
-  grey: '#999999',
+  grey: '#707070',
   lightGrey: '#f8f8f8',
   midGrey: '#eaeaea',
   white: '#ffffff',

@@ -28,7 +28,7 @@ const HeadTags: FC<HeadTagsProps> = ({ seo }: HeadTagsProps): ReactElement => {
       />
       <meta charSet='UTF-8' />
       <meta httpEquiv='x-ua-compatible' content='ie=edge,chrome=1' />
-      <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1' />
+      <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=1' />
       <meta name='author' content={'The Gentleman\'s Journal'} />
       <meta name='web_author' content='wedo.digital | wedo.digital' />
       <meta name='format-detection' content='telephone=no' />

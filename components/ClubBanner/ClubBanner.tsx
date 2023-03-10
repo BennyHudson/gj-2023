@@ -26,7 +26,7 @@ const ClubBanner: FC<ClubBannerProps> = ({ content, card }: ClubBannerProps): Re
         <Styled.Content>
           <Paragraph size={2} inverse text='Introducing' transform='uppercase' font='Cera' noMargin appearance='secondary' />
           <Heading text='Clubhouse' inverse font='ChronicleCondensed' size={5} />
-          <Paragraph text={content} inverse weight={1} noMargin appearance='secondary' font='Cera' size={2} />
+          <Paragraph text={content} inverse weight={1} noMargin font='Cera' size={2} />
           <Styled.ButtonGroup>
             <Button href='/club' text='Join the Club' size={1} />
             <Button href='/clubhouse-partners' text='Member Experiences' size={1} />

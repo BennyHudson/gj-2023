@@ -26,7 +26,7 @@ const HeroImage: FC<HeroImageProps> = ({ featuredImage, height = 2, featuredVide
       <Head>
         <link rel='preload' href={featuredImageUrl(featuredImage)} as='image' />
       </Head>
-      <Styled.HeroImage height={height} backgroundImage={featuredImageUrl(featuredImage)}>
+      <Styled.HeroImage height={height} backgroundImage={featuredImageUrl(featuredImage)} headerHeight={headerHeight} hasVideo={!!featuredVideo}>
         {featuredVideo && (
           <Styled.VideoWrapper height={height} headerHeight={headerHeight}>
             <Styled.Video headerHeight={headerHeight}>

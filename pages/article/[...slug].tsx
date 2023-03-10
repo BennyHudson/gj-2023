@@ -50,7 +50,7 @@ const Article: FC<ArticleData> = ({ data, headerNav, footerNav }: ArticleData): 
   }, [setActiveNavElement, articleData])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={articleData?.seo}>
+    <PageLayout headerStyle={articleData.categories?.nodes.find((category) => category.name === 'Video') ? 'standard' : 'feature'} headerNav={headerNav} footerNav={footerNav} seo={articleData?.seo}>
       {articleData.featuredImage && (
         <HeroImage featuredImage={articleData.featuredImage.node.sourceUrl} featuredVideo={articleData.articleAcf.featuredVideo} />
       )}

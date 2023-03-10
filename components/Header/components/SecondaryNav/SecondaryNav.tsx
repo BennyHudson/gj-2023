@@ -18,17 +18,17 @@ const SecondaryNav: FC<SecondaryNavProps> = ({ inverse, showAll = false }: Secon
         {(showAll || lgAndAbove) && (
           <>
             <li>
-              <Styled.IconButton $inverse={inverse} href='/search'>
+              <Styled.IconButton $inverse={inverse} href='/search' title='Search'>
                 <FontAwesomeIcon icon={faSearch as IconProp} />
               </Styled.IconButton>
             </li>
             <li>
-              <Styled.IconButton $inverse={inverse} href='/clubhouse'>
+              <Styled.IconButton $inverse={inverse} href='/clubhouse' title='Clubhouse'>
                 <FontAwesomeIcon icon={faUser as IconProp} />
               </Styled.IconButton>
             </li>
             <li>
-              <Styled.IconButton $inverse={inverse} href='/cart'>
+              <Styled.IconButton $inverse={inverse} href='/cart' title='Cart'>
                 {cart.length > 0 && (
                   <Styled.NumberBadge $inverse={inverse}>
                     <span>{cart.length}</span>
