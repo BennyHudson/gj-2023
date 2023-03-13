@@ -56,7 +56,7 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
   return (
     <PageLayout headerNav={headerNav} footerNav={footerNav} headerStyle='standard' seo={{ title: 'Checkout | The Gentleman\'s Journal' }}>
       <SplitPageTemplate
-        image='https://www.thegentlemansjournal.com/wp-content/uploads/2019/09/ryan-reynolds-gentlemans-journal-aviation-gin-1.jpg'
+        image='https://cdn.cms.thegentlemansjournal.com/wp-content/uploads/2019/09/ryan-reynolds-gentlemans-journal-aviation-gin-1.jpg'
         title='Checkout'
       >
         {!cart.length && (

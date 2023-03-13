@@ -21,7 +21,7 @@ const SearchPage: FC = ({ headerNav, footerNav }): ReactElement => {
   return (
     <PageLayout headerNav={headerNav} headerStyle='standard' footerNav={footerNav} seo={{ title: 'Search | The Gentleman\'s Journal' }}>
       <SplitPageTemplate
-        image='https://www.thegentlemansjournal.com/wp-content/uploads/2022/12/209490030008-2502x1200-c-center.jpg'
+        image='https://cdn.cms.thegentlemansjournal.com/wp-content/uploads/2022/12/209490030008-2502x1200-c-center.jpg'
         title='Search'
       >
         <SearchForm />

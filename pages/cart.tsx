@@ -21,7 +21,7 @@ const CartPage: FC = ({ headerNav, footerNav }): ReactElement => {
   return (
     <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Cart | The Gentleman\'s Journal' }}>
       <SplitPageTemplate
-        image='https://www.thegentlemansjournal.com/wp-content/uploads/2022/06/Tom-Hiddleston-Gentlemans-Journal-Cover-Mobile-Header.jpg'
+        image='https://cdn.cms.thegentlemansjournal.com/wp-content/uploads/2022/06/Tom-Hiddleston-Gentlemans-Journal-Cover-Mobile-Header.jpg'
         title='Cart'
       >
         <Cart />
