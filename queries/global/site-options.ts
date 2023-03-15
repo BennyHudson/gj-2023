@@ -1,9 +1,26 @@
 import { gql } from '@apollo/client'
 
-export const newsletterModalQuery = {
+export const siteOptionsQuery = {
   query: gql`
-    query newsletterModal {
+    query siteOptions {
       gjOptions {
+        splitPageImages {
+          accountPage {
+            sourceUrl
+          }
+          cartPage {
+            sourceUrl
+          }
+          checkoutPage {
+            sourceUrl
+          }
+          newsletterPage {
+            sourceUrl
+          }
+          searchPage {
+            sourceUrl
+          }
+        }
         newsletterModal {
           modalNewsletter {
             title

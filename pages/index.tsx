@@ -26,7 +26,7 @@ import FeatureCarousel from '@components/FeatureCarousel'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 import PageLayout from '@components/PageLayout'
-import { newsletterModalQuery } from '@queries/global/site-options'
+import { siteOptionsQuery } from '@queries/global/site-options'
 import NewsletterBanner from '@components/NewsletterBanner'
 import { featuredProductsQuery } from '@queries/homepage/featured-products'
 import ShopGrid from '@components/ShopGrid'
@@ -186,7 +186,7 @@ export async function getStaticProps() {
   const latestPodcasts = await client.query(latestPodcastsQuery)
   const latestVideo = await client.query(latestVideoQuery)
   const competitions = await client.query(articleCategoryQuery('Competitions'))
-  const newsletter = await client.query(newsletterModalQuery)
+  const newsletter = await client.query(siteOptionsQuery)
   const featuredProducts = await client.query(featuredProductsQuery)
   const club = await client.query(clubQuery)
 

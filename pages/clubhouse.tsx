@@ -13,8 +13,10 @@ import MyAccount from '@components/MyAccount'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 import { freeGiftQuery } from '@queries/global/free-gift'
+import featuredImageUrl from '@helpers/featuredImageUrl'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
-const ClubPage: FC = ({ headerNav, footerNav, subscriptionProducts, freeGift }): ReactElement => {
+const ClubPage: FC = ({ headerNav, footerNav, subscriptionProducts, freeGift, siteOptions }): ReactElement => {
   const { token, setActiveNavElement, customer } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -23,7 +25,7 @@ const ClubPage: FC = ({ headerNav, footerNav, subscriptionProducts, freeGift }):
 
   return (
     <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }}>
-      <SplitPageTemplate image='https://cdn.cms.thegentlemansjournal.com/wp-content/uploads/2022/12/John-Boyega-5-1.jpg'>
+      <SplitPageTemplate image={featuredImageUrl(siteOptions.splitPageImages.accountPage.sourceUrl)}>
         {token && customer ? <MyAccount /> : <ClubhouseGateway products={subscriptionProducts} freeGift={freeGift} />}
       </SplitPageTemplate>
     </PageLayout>
@@ -37,6 +39,7 @@ export async function getStaticProps() {
   const footerNav = await client.query(footerNavQuery)
   const subscriptionProducts = await client.query(subscriptionProductsQuery)
   const freeGift = await client.query(freeGiftQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
 
   return {
     props: {
@@ -44,6 +47,7 @@ export async function getStaticProps() {
       footerNav: footerNav.data,
       subscriptionProducts: subscriptionProducts.data.products.nodes,
       freeGift: freeGift.data.products.nodes[0],
+      siteOptions: siteOptions.data.gjOptions,
     },
   }
 }

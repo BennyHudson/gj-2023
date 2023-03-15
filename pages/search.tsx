@@ -10,18 +10,22 @@ import SplitPageTemplate from '@components/SplitPageTemplate'
 import SearchForm from '@components/SearchForm'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import { siteOptionsQuery } from '@queries/global/site-options'
+import featuredImageUrl from '@helpers/featuredImageUrl'
 
-const SearchPage: FC = ({ headerNav, footerNav }): ReactElement => {
+const SearchPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
     setActiveNavElement(-1)
   }, [setActiveNavElement])
 
+  console.log(siteOptions)
+
   return (
     <PageLayout headerNav={headerNav} headerStyle='standard' footerNav={footerNav} seo={{ title: 'Search | The Gentleman\'s Journal' }}>
       <SplitPageTemplate
-        image='https://cdn.cms.thegentlemansjournal.com/wp-content/uploads/2022/12/209490030008-2502x1200-c-center.jpg'
+        image={featuredImageUrl(siteOptions.splitPageImages.searchPage.sourceUrl)}
         title='Search'
       >
         <SearchForm />
@@ -35,11 +39,13 @@ export default SearchPage
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
 
   return {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data.gjOptions,
     },
   }
 }

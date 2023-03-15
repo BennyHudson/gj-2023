@@ -10,8 +10,10 @@ import SplitPageTemplate from '@components/SplitPageTemplate'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 import Cart from '@components/Cart'
+import { siteOptionsQuery } from '@queries/global/site-options'
+import featuredImageUrl from '@helpers/featuredImageUrl'
 
-const CartPage: FC = ({ headerNav, footerNav }): ReactElement => {
+const CartPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -21,7 +23,7 @@ const CartPage: FC = ({ headerNav, footerNav }): ReactElement => {
   return (
     <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Cart | The Gentleman\'s Journal' }}>
       <SplitPageTemplate
-        image='https://cdn.cms.thegentlemansjournal.com/wp-content/uploads/2022/06/Tom-Hiddleston-Gentlemans-Journal-Cover-Mobile-Header.jpg'
+        image={featuredImageUrl(siteOptions.splitPageImages.cartPage.sourceUrl)}
         title='Cart'
       >
         <Cart />
@@ -35,11 +37,13 @@ export default CartPage
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
 
   return {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data.gjOptions
     },
   }
 }

@@ -14,8 +14,10 @@ import Paragraph from '@components/Paragraph'
 import EditButton from '@components/EditButton'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import featuredImageUrl from '@helpers/featuredImageUrl'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
-const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
+const CheckoutPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement, cart } = useContext(PageContext) as PageContextProps
 
   const [clientSecret, setClientSecret] = useState('')
@@ -56,7 +58,7 @@ const CheckoutPage: FC = ({ headerNav, footerNav }): ReactElement => {
   return (
     <PageLayout headerNav={headerNav} footerNav={footerNav} headerStyle='standard' seo={{ title: 'Checkout | The Gentleman\'s Journal' }}>
       <SplitPageTemplate
-        image='https://cdn.cms.thegentlemansjournal.com/wp-content/uploads/2019/09/ryan-reynolds-gentlemans-journal-aviation-gin-1.jpg'
+        image={featuredImageUrl(siteOptions.splitPageImages.checkoutPage.sourceUrl)}
         title='Checkout'
       >
         {!cart.length && (
@@ -82,11 +84,13 @@ export default CheckoutPage
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
 
   return {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data.gjOptions,
     },
   }
 }

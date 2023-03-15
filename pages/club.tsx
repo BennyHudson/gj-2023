@@ -40,7 +40,7 @@ const ClubPage: FC = ({ pageData, headerNav, footerNav, subscriptionProducts, fr
       <Section>
         <ClubPerks perks={pageData.subscriptionPage.club.subscriptionPerks} title='Join the club.' subtitle='Scroll to see the perks' />
       </Section>
-      <ClubBuy products={subscriptionProducts} offerCode={pageData.subscriptionPage.club.clubhouseOffer} />
+      <ClubBuy products={subscriptionProducts} freeGift={freeGift} offerCode={pageData.subscriptionPage.club.clubhouseOffer} />
     </PageLayout>
   )
 }
