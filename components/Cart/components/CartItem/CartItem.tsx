@@ -4,7 +4,7 @@ import Heading from '@components/Heading'
 import Paragraph from '@components/Paragraph'
 import EditButton from '@components/EditButton'
 
-import * as Styled from './styles/CartItem.style'
+import * as Styled from '../../styles/Cart.style'
 
 import { CartItemProps } from './CartItem.types'
 import PageContext, { PageContextProps } from '@context/PageContext'
@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/pro-light-svg-icons'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
-const CartItem: FC<CartItemProps> = ({ productId, removeable }: CartItemProps): ReactElement => {
+const CartItem: FC<CartItemProps> = ({ productId, removeable, voucher }: CartItemProps): ReactElement => {
   const { setCart, shippingRate } = useContext(PageContext) as PageContextProps
 
   const { data } = useQuery(productQuery(productId).query)
@@ -24,10 +24,35 @@ const CartItem: FC<CartItemProps> = ({ productId, removeable }: CartItemProps): 
     localStorage.removeItem('cart')
   }
 
+  const calculateVoucherDiscount = (subscriptionPrice): string => {
+    const price = parseFloat(subscriptionPrice)
+
+    if (voucher.discount_type === 'percent') {
+      const percentageDiscount = Math.trunc(voucher.amount)
+      return `${(price - (price * (percentageDiscount / 100))).toFixed(2)} for the first year - Voucher Code: ${voucher.code}`
+    }
+
+    return `${(price - parseFloat(voucher.amount)).toFixed(2)} for the first year - Voucher Code: ${voucher.code}`
+  }
+
   const getProductPrice = (productData) => {
     const { signUpFee, salePrice, subscriptionPeriod, subscriptionPrice } = productData.product
     const onSale = parseFloat(salePrice) > parseFloat(signUpFee)
+
+    if (voucher) {
+      if (voucher.product_ids?.find(validProduct => validProduct === productData.product.databaseId)) {
+        return calculateVoucherDiscount(subscriptionPrice)
+      }
+
+      if (voucher.product_ids.length && !voucher.product_ids?.find(validProduct => validProduct === productData.product.databaseId)) {
+        return subscriptionPrice
+      }
+
+      return calculateVoucherDiscount(subscriptionPrice)
+    }
+
     if (signUpFee) return `${parseFloat(signUpFee)} ${onSale ? 'for the first year' : subscriptionPeriod}`
+
     return subscriptionPrice
   }
 

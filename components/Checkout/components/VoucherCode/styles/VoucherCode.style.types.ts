@@ -1,5 +1,5 @@
 import { Theme } from '@themes/gjTheme/gjTheme.types'
 
-export interface StyledCartItemProps {
+export interface StyledVoucherCodeProps {
   theme: Theme
 }

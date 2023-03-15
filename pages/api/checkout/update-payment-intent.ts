@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+import { NextApiRequest, NextApiResponse } from 'next'
 import { WooCommerce } from '../WooCommerce'
 
-export default async function handler(req, res) {
+export default async function updatePaymentIntent(req: NextApiRequest, res: NextApiResponse) {
   const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
-  const getProductTotal = async () => {
+  const getProductTotal = async (): Promise<number> => {
     let amount = 0
 
     await Promise.all(
@@ -23,9 +24,24 @@ export default async function handler(req, res) {
     return amount
   }
 
-  const subTotal = await getProductTotal()
+  const voucherDiscount = (basketTotal: number): number => {
+    const { voucher } = req.body.checkoutForm
 
-  const total = subTotal + req.body.shippingRate.cost
+    if (!voucher) return basketTotal
+
+    if (voucher.discount_type === 'percent') {
+      const percentageDiscount = Math.trunc(voucher.amount)
+      return basketTotal - (basketTotal * (percentageDiscount / 100))
+    }
+
+    return basketTotal - parseFloat(voucher.amount)
+  }
+
+  let subTotal = await getProductTotal()
+
+  subTotal = voucherDiscount(subTotal)
+
+  const total = Math.round(((subTotal + req.body.shippingRate.cost + Number.EPSILON) * 100) / 100)
 
   await stripe.paymentIntents.update(req.body.paymentIntent, {
     amount: total * 100,

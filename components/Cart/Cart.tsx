@@ -11,8 +11,9 @@ import * as Styled from './styles/Cart.style'
 
 import { CartProps } from './Cart.types'
 import EditButton from '@components/EditButton'
+import Heading from '@components/Heading/Heading'
 
-const Cart: FC<CartProps> = ({ viewOnly = false }: CartProps): ReactElement => {
+const Cart: FC<CartProps> = ({ viewOnly = false, voucher }: CartProps): ReactElement => {
   const { cart } = useContext(PageContext) as PageContextProps
 
   return (
@@ -21,7 +22,7 @@ const Cart: FC<CartProps> = ({ viewOnly = false }: CartProps): ReactElement => {
         <>
           <Styled.CartItems>
             {cart.map((cartItem, index) => {
-              return <CartItem productId={cartItem} removeable={index === 0 && !viewOnly} key={index} />
+              return <CartItem productId={cartItem} removeable={index === 0 && !viewOnly} key={index} voucher={voucher} />
             })}
           </Styled.CartItems>
           {!viewOnly && <Button href='/checkout' text='Checkout now' size={1} />}

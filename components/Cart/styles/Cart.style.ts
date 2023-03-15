@@ -30,3 +30,23 @@ export const CartItems = styled.div(
     }
   `,
 )
+
+export const CartItem = styled.div(
+  (props: StyledCartProps): FlattenSimpleInterpolation => css`
+    border-bottom: 1px solid ${props.theme.colours.midGrey};
+    padding-bottom: ${props.theme.spacing[4]}px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: ${props.theme.spacing[4]}px;
+
+    & > div {
+      flex-grow: 1;
+    }
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  `,
+)

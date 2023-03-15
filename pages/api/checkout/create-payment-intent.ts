@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+import { NextApiRequest, NextApiResponse } from 'next'
 import { WooCommerce } from '../WooCommerce'
 
-export default async function handler(req, res) {
+export default async function createPaymentIntent(req: NextApiRequest, res: NextApiResponse) {
   const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
   const customer = await stripe.customers.create()

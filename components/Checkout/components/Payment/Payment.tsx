@@ -28,6 +28,7 @@ const Payment: FC<PaymentProps> = ({
   }
 
   const updatePaymentIntent = async () => {
+    console.log(checkoutForm)
     await fetch('/api/checkout/update-payment-intent', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -35,6 +36,7 @@ const Payment: FC<PaymentProps> = ({
         cart,
         shippingRate,
         paymentIntent,
+        checkoutForm,
       }),
     })
   }
@@ -79,6 +81,7 @@ const Payment: FC<PaymentProps> = ({
             body: JSON.stringify({
               billingAddress: values.billing,
               shippingAddress: values.shipping,
+              voucher: checkoutForm.voucher,
               cart,
               customer_id: customer?.id || customerId,
               shippingRate,

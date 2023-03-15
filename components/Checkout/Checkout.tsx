@@ -7,6 +7,7 @@ import PageContext, { PageContextProps } from '@context/PageContext'
 import CustomerDetails from './components/CustomerDetails'
 import BillingAddress from './components/BillingAddress'
 import ShippingAddress from './components/ShippingAddress'
+import VoucherCode from './components/VoucherCode'
 import OrderSummary from './components/OrderSummary'
 import Payment from './components/Payment'
 
@@ -122,16 +123,23 @@ const Checkout: FC = ({ paymentIntent }): ReactElement => {
         checkoutForm={checkoutForm}
         setCheckoutForm={setCheckoutForm}
       />
-      <OrderSummary
+      <VoucherCode
         activePanel={activePanel}
         panelIndex={4}
         setActivePanel={setActivePanel}
         checkoutForm={checkoutForm}
         setCheckoutForm={setCheckoutForm}
       />
-      <Payment
+      <OrderSummary
         activePanel={activePanel}
         panelIndex={5}
+        setActivePanel={setActivePanel}
+        checkoutForm={checkoutForm}
+        setCheckoutForm={setCheckoutForm}
+      />
+      <Payment
+        activePanel={activePanel}
+        panelIndex={6}
         setActivePanel={setActivePanel}
         checkoutForm={checkoutForm}
         setCheckoutForm={setCheckoutForm}
