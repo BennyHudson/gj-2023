@@ -11,6 +11,17 @@ const Scripts: FC = (): ReactElement => {
 
   return (
     <>
+      <Script strategy='afterInteractive' src="https://www.googletagmanager.com/gtag/js?id=UA-416440-57" />
+      <Script id='googleAnalytics'>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-416440-57');
+        `}
+      </Script>
+
       <Script src='https://www.googletagmanager.com/gtag/js?id=UA-416440-57' strategy='afterInteractive' />
       <Script id='google-analytics' strategy='afterInteractive'>
         {`
