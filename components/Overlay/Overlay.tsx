@@ -2,8 +2,10 @@ import React, { ReactElement, FC } from 'react'
 
 import * as Styled from './styles/Overlay.style'
 
-const Overlay: FC = (): ReactElement => {
-  return <Styled.Overlay />
+import { OverlayProps } from './Overlay.types'
+
+const Overlay: FC<OverlayProps> = ({ appearance = 'primary', onClick }: OverlayProps): ReactElement => {
+  return <Styled.Overlay appearance={appearance} onClick={onClick} />
 }
 
 export default Overlay

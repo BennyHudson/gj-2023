@@ -19,13 +19,14 @@ import { HouseNoteBody, houseNoteBodyQuery } from '@queries/houseNotes/houseNote
 import { StaticPaths } from '@typings/StaticPaths.types'
 import { PageData } from '@typings/PageData.types'
 import { ArticleNote } from '@queries/fragments/articleNote'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
 interface HouseNoteData extends PageData {
   pageData: HouseNoteBody
   articleNote: ArticleNote
 }
 
-const HouseNote: FC<HouseNoteData> = ({ pageData, articleNote, headerNav, footerNav }: HouseNoteData): ReactElement => {
+const HouseNote: FC<HouseNoteData> = ({ pageData, articleNote, headerNav, footerNav, siteOptions }: HouseNoteData): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -33,7 +34,7 @@ const HouseNote: FC<HouseNoteData> = ({ pageData, articleNote, headerNav, footer
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions}>
       <HeroImage featuredImage={pageData.featuredImage.node.sourceUrl} />
       <BannerAdvert parent='GJ_728x90_001_0' paddingLevel={1} />
       <Section>
@@ -79,6 +80,7 @@ export async function getStaticProps({ params }: StaticPaths) {
 
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
   const response = await client.query(houseNoteBodyQuery(slug))
 
   if (!response.data.houseNote) {
@@ -91,6 +93,7 @@ export async function getStaticProps({ params }: StaticPaths) {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data,
       pageData: response.data.houseNote,
       articleNote: response.data.gjOptions.articleNote,
     },

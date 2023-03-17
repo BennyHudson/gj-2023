@@ -12,7 +12,7 @@ import MagazineGrid from '@components/MagazineGrid'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
-const Magazines: FC = ({ headerNav, footerNav, magazineData }): ReactElement => {
+const Magazines: FC = ({ headerNav, footerNav, magazineData, siteOptions }): ReactElement => {
   const breadcrumbs = [
     {
       text: 'Home',
@@ -31,7 +31,7 @@ const Magazines: FC = ({ headerNav, footerNav, magazineData }): ReactElement => 
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: `${magazineData.name} | The Gentleman's Journal` }}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: `${magazineData.name} | The Gentleman's Journal` }} siteOptions={siteOptions}>
       <Section appearance='tertiary'>
         <Masthead breadcrumbs={breadcrumbs} title={magazineData.name} />
         <MagazineGrid magazines={magazineData.products.edges} />
@@ -45,12 +45,14 @@ export default Magazines
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
   const magazineData = await client.query(magazineCategoryQuery())
 
   return {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data,
       magazineData: magazineData.data.productCategory,
     },
     // revalidate: 60,

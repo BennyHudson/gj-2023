@@ -18,8 +18,9 @@ import TextField from '@components/TextField/TextField'
 import Button from '@components/Button/Button'
 import useResetPassword from '@hooks/useResetPassword'
 import Notification from '@components/Notification'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
-const ClubPage: FC = ({ headerNav, footerNav }): ReactElement => {
+const ClubPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   const [success, setSuccess] = useState(false)
@@ -52,7 +53,7 @@ const ClubPage: FC = ({ headerNav, footerNav }): ReactElement => {
 
   if (success) {
     return (
-      <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }}>
+      <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
         <SplitPageTemplate
           image='https://cdn.cms.thegentlemansjournal.com/wp-content/uploads/2022/12/John-Boyega-5-1.jpg'
           title='Reset your password'
@@ -118,6 +119,7 @@ export default ClubPage
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
   const subscriptionProducts = await client.query(subscriptionProductsQuery)
   const freeGift = await client.query(freeGiftQuery)
 
@@ -125,6 +127,7 @@ export async function getStaticProps() {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data,
       subscriptionProducts: subscriptionProducts.data.products.nodes,
       freeGift: freeGift.data.products.nodes[0],
     },

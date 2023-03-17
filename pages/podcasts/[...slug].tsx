@@ -17,13 +17,14 @@ import PageContext, { PageContextProps } from '@context/PageContext'
 
 import { StaticPaths } from '@typings/StaticPaths.types'
 import { PageData } from '@typings/PageData.types'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
 interface PodcastData extends PageData {
   podcastData: PodcastBody
   podcastOptions: PodcastOptions
 }
 
-const Podcast: FC<PodcastData> = ({ podcastData, podcastOptions, headerNav, footerNav }: PodcastData): ReactElement => {
+const Podcast: FC<PodcastData> = ({ podcastData, podcastOptions, headerNav, footerNav, siteOptions }: PodcastData): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -31,7 +32,7 @@ const Podcast: FC<PodcastData> = ({ podcastData, podcastOptions, headerNav, foot
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={podcastData.seo}>
+    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={podcastData.seo} siteOptions={siteOptions}>
       <BannerAdvert parent='GJ_728x90_001_0' paddingLevel={1} />
       <PodcastContent {...podcastData} {...podcastOptions} />
       <PodcastCarousel title='You might also like' podcasts={podcastOptions.featured.featured} />
@@ -65,6 +66,7 @@ export async function getStaticProps({ params }: StaticPaths) {
 
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
   const podcast = await client.query(podcastBodyQuery(slug))
   const podcastOptions = await client.query(podcastOptionsQuery)
 
@@ -78,6 +80,7 @@ export async function getStaticProps({ params }: StaticPaths) {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data,
       podcastData: podcast.data.podcast,
       podcastOptions: podcastOptions.data.podcastOptions.podcastOptions.podcastGlobal,
     },

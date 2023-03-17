@@ -12,8 +12,9 @@ import Masthead from '@components/Masthead'
 import TeamGrid from '@components/TeamGrid'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
-const TeamPage: FC = ({ headerNav, footerNav, pageData }): ReactElement => {
+const TeamPage: FC = ({ headerNav, footerNav, pageData, siteOptions }): ReactElement => {
   const breadcrumbs = [
     {
       text: 'Home',
@@ -32,7 +33,7 @@ const TeamPage: FC = ({ headerNav, footerNav, pageData }): ReactElement => {
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions}>
       <HeroImage featuredImage={pageData.featuredImage.node.sourceUrl} height={1} />
       <Section>
         <Masthead
@@ -57,12 +58,14 @@ export default TeamPage
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
   const pageData = await client.query(pageQuery(165103))
 
   return {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data,
       pageData: pageData.data.page,
     },
     // revalidate: 60,

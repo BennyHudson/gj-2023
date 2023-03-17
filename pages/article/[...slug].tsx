@@ -20,12 +20,13 @@ import FurtherReading from '@components/FurtherReading'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 import PageLayout from '@components/PageLayout'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
 interface ArticleData extends PageData {
   data: ArticleBody
 }
 
-const Article: FC<ArticleData> = ({ data, headerNav, footerNav }: ArticleData): ReactElement => {
+const Article: FC<ArticleData> = ({ data, headerNav, footerNav, siteOptions }: ArticleData): ReactElement => {
   const articleData = data.article
   const { articleNote } = data.gjOptions
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -50,7 +51,7 @@ const Article: FC<ArticleData> = ({ data, headerNav, footerNav }: ArticleData): 
   }, [setActiveNavElement, articleData])
 
   return (
-    <PageLayout headerStyle={articleData.categories?.nodes.find((category) => category.name === 'Video') ? 'standard' : 'feature'} headerNav={headerNav} footerNav={footerNav} seo={articleData?.seo}>
+    <PageLayout headerStyle={articleData.categories?.nodes.find((category) => category.name === 'Video') ? 'standard' : 'feature'} headerNav={headerNav} footerNav={footerNav} seo={articleData?.seo} siteOptions={siteOptions}>
       {articleData.featuredImage && (
         <HeroImage featuredImage={articleData.featuredImage.node.sourceUrl} featuredVideo={articleData.articleAcf.featuredVideo} />
       )}
@@ -110,6 +111,7 @@ export async function getStaticProps({ params }: StaticPaths) {
 
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
   const article = await client.query(articleBody(slug))
 
   if (!article.data.article) {
@@ -123,6 +125,7 @@ export async function getStaticProps({ params }: StaticPaths) {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
       data: article.data,
+      siteOptions: siteOptions.data,
     },
     // revalidate: 60,
   }

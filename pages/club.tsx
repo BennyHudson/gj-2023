@@ -18,8 +18,9 @@ import Section from '@components/Section'
 import ClubVideo from '@components/ClubVideo'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
-const ClubPage: FC = ({ pageData, headerNav, footerNav, subscriptionProducts, freeGift, subscriptionOverview }): ReactElement => {
+const ClubPage: FC = ({ pageData, headerNav, footerNav, subscriptionProducts, freeGift, subscriptionOverview, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const ClubPage: FC = ({ pageData, headerNav, footerNav, subscriptionProducts, fr
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={pageData.seo}>
+    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions}>
       <ClubVideo video={pageData.subscriptionPage.club.video.url} poster={pageData.featuredImage.node.sourceUrl} />
       <ClubHero
         title={pageData.title}
@@ -50,6 +51,7 @@ export default ClubPage
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
   const subscriptionProducts = await client.query(subscriptionProductsQuery)
   const freeGift = await client.query(freeGiftQuery)
   const clubPage = await client.query(clubQuery)
@@ -58,6 +60,7 @@ export async function getStaticProps() {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data,
       pageData: clubPage.data.page,
       subscriptionProducts: subscriptionProducts.data.products.nodes,
       freeGift: freeGift.data.products.nodes[0],

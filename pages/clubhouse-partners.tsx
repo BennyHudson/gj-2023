@@ -13,8 +13,9 @@ import Masthead from '@components/Masthead'
 import PartnerGrid from '@components/PartnerGrid'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
-const TeamPage: FC = ({ headerNav, footerNav, pageData, partners }): ReactElement => {
+const TeamPage: FC = ({ headerNav, footerNav, pageData, partners, siteOptions }): ReactElement => {
   const breadcrumbs = [
     {
       text: 'Home',
@@ -33,7 +34,7 @@ const TeamPage: FC = ({ headerNav, footerNav, pageData, partners }): ReactElemen
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Partner Offers | The Gentleman\'s Journal' }}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Partner Offers | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
       <HeroImage featuredImage={pageData.featuredImage.sourceUrl} height={1} />
       <Section appearance='tertiary'>
         <Masthead breadcrumbs={breadcrumbs} title='Clubhouse Partners' subtitle={pageData.subTitle} />
@@ -48,6 +49,7 @@ export default TeamPage
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
   const pageData = await client.query(partnerOptionsQuery)
   const partners = await client.query(partnerQuery(500))
 
@@ -55,6 +57,7 @@ export async function getStaticProps() {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data,
       pageData: pageData.data.clubhousePartnersOptions.clubhousePartnersOptions.clubhousePartnerArchive,
       partners: partners.data.partners.nodes,
     },

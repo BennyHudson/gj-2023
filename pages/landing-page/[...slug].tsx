@@ -22,8 +22,9 @@ import ClubBuy from '@components/ClubBuy/ClubBuy'
 import { freeGiftQuery } from '@queries/global/free-gift'
 import Heading from '@components/Heading/Heading'
 import Paragraph from '@components/Paragraph'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
-const LandingPage: FC = ({ headerNav, footerNav, landingPageContent, partners, club, subscriptionProducts, freeGift }): ReactElement => {
+const LandingPage: FC = ({ headerNav, footerNav, landingPageContent, partners, club, subscriptionProducts, freeGift, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -31,7 +32,7 @@ const LandingPage: FC = ({ headerNav, footerNav, landingPageContent, partners, c
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: `${landingPageContent.title} | The Gentleman's Journal` }}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: `${landingPageContent.title} | The Gentleman's Journal` }} siteOptions={siteOptions}>
       <HeroImage featuredImage={featuredImageUrl(landingPageContent.featuredImage.node.sourceUrl)} height={1} />
       <Section appearance='secondary' containerWidth='narrow' textAlign='center'>
         <Heading text={landingPageContent.title} inverse size={5} font='ChronicleCondensed' />
@@ -74,6 +75,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
   const landingPageContent = await client.query(landingPageContentQuery(params.slug))
   const partners = await client.query(partnerQuery(12))
   const clubPage = await client.query(clubQuery)
@@ -84,6 +86,7 @@ export async function getStaticProps({ params }) {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data,
       landingPageContent: landingPageContent.data.landingPage,
       partners: partners.data.partners.nodes,
       club: clubPage.data.page.subscriptionPage.club,

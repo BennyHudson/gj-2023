@@ -11,8 +11,9 @@ import Masthead from '@components/Masthead'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 import ContactDetails from '@components/ContactDetails'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
-const ContactPage: FC = ({ headerNav, footerNav, pageData }): ReactElement => {
+const ContactPage: FC = ({ headerNav, footerNav, pageData, siteOptions }): ReactElement => {
   const breadcrumbs = [
     {
       text: 'Home',
@@ -31,7 +32,7 @@ const ContactPage: FC = ({ headerNav, footerNav, pageData }): ReactElement => {
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={pageData.seo}>
+    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions}>
       <Section>
         <Masthead
           breadcrumbs={breadcrumbs}
@@ -49,12 +50,14 @@ export default ContactPage
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
   const pageData = await client.query(pageQuery(2))
 
   return {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data,
       pageData: pageData.data.page,
     },
     // revalidate: 60,

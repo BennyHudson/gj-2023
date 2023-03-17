@@ -13,8 +13,9 @@ import { footerNavQuery } from '@queries/global/footer-nav'
 import PageLayout from '@components/PageLayout'
 import { useBreakpoints } from '@hooks/useBreakpoints'
 import BannerAdvert from '@components/BannerAdvert'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
-const LatestPage: FC = ({ headerNav, footerNav }): ReactElement => {
+const LatestPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   const { mdAndBelow } = useBreakpoints()
@@ -35,7 +36,7 @@ const LatestPage: FC = ({ headerNav, footerNav }): ReactElement => {
   ]
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} headerStyle='standard' seo={{ title: 'Latest | The Gentleman\'s Journal' }}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} headerStyle='standard' seo={{ title: 'Latest | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
       <BannerAdvert parent='gj_970x250' slot='GJ_970x250_001' />
       <Section>
         <Breadcrumbs links={breadcrumbLinks} />
@@ -51,11 +52,13 @@ export default LatestPage
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
 
   return {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data,
     },
   }
 }
