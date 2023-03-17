@@ -17,12 +17,13 @@ import { CategoryBody, categoryBodyQuery } from '@queries/category/category-body
 import { StaticPaths } from '@typings/StaticPaths.types'
 import { PageData } from '@typings/PageData.types'
 import { useBreakpoints } from '@hooks/useBreakpoints'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
 interface CategoryData extends PageData {
   category: CategoryBody
 }
 
-const Category: FC<CategoryData> = ({ category, headerNav, footerNav }: CategoryData): ReactElement => {
+const Category: FC<CategoryData> = ({ category, headerNav, footerNav, siteOptions }: CategoryData): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   const { mdAndBelow } = useBreakpoints()
@@ -52,6 +53,7 @@ const Category: FC<CategoryData> = ({ category, headerNav, footerNav }: Category
       headerStyle='standard'
       footerNav={footerNav}
       seo={{ title: `${category.name} | The Gentleman's Journal` }}
+      siteOptions={siteOptions}
     >
       <BannerAdvert parent='gj_970x250' slot='GJ_970x250_001' />
       <Section>
@@ -102,6 +104,7 @@ export async function getStaticProps({ params }: StaticPaths) {
 
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
   const category = await client.query(categoryBodyQuery(slug[slug.length - 1]))
 
   return {
@@ -109,6 +112,7 @@ export async function getStaticProps({ params }: StaticPaths) {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
       category: category.data.category,
+      siteOptions: siteOptions.data,
     },
     // revalidate: 60
   }

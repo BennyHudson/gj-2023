@@ -13,8 +13,9 @@ import Section from '@components/Section'
 import Title from '@components/Title'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
-const HouseNotes: FC = ({ featuredHouseNotes, headerNav, footerNav }): ReactElement => {
+const HouseNotes: FC = ({ featuredHouseNotes, headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const HouseNotes: FC = ({ featuredHouseNotes, headerNav, footerNav }): ReactElem
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={featuredHouseNotes.seo} headerStyle='standard'>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={featuredHouseNotes.seo} headerStyle='standard' siteOptions={siteOptions}>
       <HouseNotesFeature
         introText={featuredHouseNotes.additionalPageData.subtitleText.replace(/<\/?[^>]+(>|$)/g, '')}
         columns={{
@@ -47,12 +48,14 @@ export default HouseNotes
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
   const featuredHouseNotes = await client.query(houseNotesQuery)
 
   return {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data,
       featuredHouseNotes: featuredHouseNotes.data.page,
     },
   }

@@ -24,7 +24,7 @@ interface PostData extends PageData {
   data: PostBody
 }
 
-const Post: FC<PostData> = ({ data, headerNav, footerNav }: PostData): ReactElement => {
+const Post: FC<PostData> = ({ data, headerNav, footerNav, siteOptions }: PostData): ReactElement => {
   const articleData = data.post
   const { articleNote } = data.gjOptions
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -49,7 +49,7 @@ const Post: FC<PostData> = ({ data, headerNav, footerNav }: PostData): ReactElem
   }, [setActiveNavElement, articleData])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={articleData.seo}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={articleData.seo} siteOptions={siteOptions}>
       {articleData.featuredImage && <HeroImage featuredImage={articleData.featuredImage.node.sourceUrl} />}
       <BannerAdvert parent='gj_970x250' slot='GJ_970x250_001' />
       <Section>
@@ -108,6 +108,7 @@ export async function getStaticProps({ params }: StaticPaths) {
 
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
   const article = await client.query(postBody(slug))
 
   if (!article.data.post) {
@@ -120,6 +121,7 @@ export async function getStaticProps({ params }: StaticPaths) {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data,
       data: article.data,
     },
     // revalidate: 60,

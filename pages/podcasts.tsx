@@ -16,8 +16,9 @@ import Divider from '@components/Divider'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 import { useBreakpoints } from '@hooks/useBreakpoints'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
-const Podcasts: FC = ({ podcastOptions, headerNav, footerNav }): ReactElement => {
+const Podcasts: FC = ({ podcastOptions, headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
   const { sm } = useBreakpoints()
 
@@ -31,6 +32,7 @@ const Podcasts: FC = ({ podcastOptions, headerNav, footerNav }): ReactElement =>
       headerNav={headerNav}
       footerNav={footerNav}
       seo={{ title: 'Podcasts | The Gentleman\'s Journal' }}
+      siteOptions={siteOptions}
     >
       <FeatureCarousel
         height={sm ? 1 : 2}
@@ -58,12 +60,14 @@ export default Podcasts
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
   const podcastOptions = await client.query(podcastOptionsQuery)
 
   return {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data,
       podcastOptions: podcastOptions.data.podcastOptions.podcastOptions.podcastGlobal,
     },
   }

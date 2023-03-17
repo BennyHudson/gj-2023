@@ -16,8 +16,9 @@ import SessionsFeed from '@components/SessionsFeed'
 import SessionsSponsor from '@components/SessionsSponsor'
 import PageLayout from '@components/PageLayout'
 import { sessionsQuery } from '@queries/pages/sessions'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
-const SessionsPage: FC = ({ pageData, featuredArticle, headerNav, footerNav }): ReactElement => {
+const SessionsPage: FC = ({ pageData, featuredArticle, headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const SessionsPage: FC = ({ pageData, featuredArticle, headerNav, footerNav }): 
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions}>
       <SessionsHeader>
         <TitleAndIntro title={pageData.title.toUpperCase()} intro={pageData.sessions.sessions.sessionsIntroText} inverse />
         <Thumbnail
@@ -57,6 +58,7 @@ export default SessionsPage
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
   const pageData = await client.query(sessionsQuery)
   const sessionFeature = await client.query(sessionsFeatureQuery)
 
@@ -64,6 +66,7 @@ export async function getStaticProps() {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data,
       featuredArticle: sessionFeature.data,
       pageData: pageData.data.page,
     },

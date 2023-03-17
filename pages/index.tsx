@@ -36,6 +36,7 @@ import { clubQuery } from '@queries/homepage/club'
 const Home: FC = ({
   headerNav,
   footerNav,
+  siteOptions, 
   pageData,
   latestPosts,
   coverInterviews,
@@ -44,7 +45,6 @@ const Home: FC = ({
   latestPodcasts,
   latestVideo,
   competitions,
-  newsletter,
   newsletterForm,
   featuredProducts,
   club,
@@ -56,13 +56,13 @@ const Home: FC = ({
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions}>
       <FullPageFeature
         {...pageData.homeFeaturedPost.homeFeaturedPost}
         excerpt={pageData.homeFeaturedPost.homeFeaturedPost.articleAcf.standfirst}
       />
-      <PostCarousel />
-      <NewsletterBanner backgroundImage={newsletter.image.sourceUrl} form={newsletterForm} size={1} />
+      {/* <PostCarousel /> */}
+      <NewsletterBanner backgroundImage={siteOptions.gjOptions.newsletterModal.sectionNewsletter.image.sourceUrl} form={newsletterForm} size={1} />
       <Section>
         <Title
           title='The Latest'
@@ -167,7 +167,7 @@ const Home: FC = ({
         />
         <PostGrid priority={false} columns={4} posts={competitions.articles.nodes} smCarousel />
       </Section>
-      <NewsletterBanner backgroundImage={newsletter.imageAlt.sourceUrl} form={newsletterForm} size={2} />
+      <NewsletterBanner backgroundImage={siteOptions.gjOptions.newsletterModal.sectionNewsletter.imageAlt.sourceUrl} form={newsletterForm} size={2} />
     </PageLayout>
   )
 }
@@ -177,6 +177,7 @@ export default Home
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
 
   const homepage = await client.query(homepageQuery)
   const latestPosts = await client.query(latestPostsQuery)
@@ -194,6 +195,7 @@ export async function getStaticProps() {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data,
       pageData: homepage.data.page,
       latestPosts: latestPosts.data.articles.nodes,
       coverInterviews: coverInterviews.data,
@@ -202,7 +204,6 @@ export async function getStaticProps() {
       latestPodcasts: latestPodcasts.data,
       latestVideo: latestVideo.data.articles.nodes,
       competitions: competitions.data,
-      newsletter: newsletter.data.gjOptions.newsletterModal.sectionNewsletter,
       newsletterForm: newsletter.data.gfForm,
       featuredProducts: featuredProducts.data.clubhousePartnersOptions.store.store.brands,
       club: club.data.page.subscriptionPage.club,

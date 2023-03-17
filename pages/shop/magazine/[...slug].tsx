@@ -14,9 +14,9 @@ import Section from '@components/Section'
 import Title from '@components/Title'
 import MagazineGrid from '@components/MagazineGrid'
 
-const ProductPage: FC = ({ headerNav, footerNav, product, magazines }): ReactElement => {
+const ProductPage: FC = ({ headerNav, footerNav, product, magazines, siteOptions }): ReactElement => {
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={product.seo} headerStyle='standard'>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={product.seo} headerStyle='standard' siteOptions={siteOptions}>
       <ProductFeature product={product} />
       <Section>
         <Title
@@ -60,6 +60,7 @@ export async function getStaticProps({ params }: StaticPaths) {
 
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
   const product = await client.query(magazineQuery(slug))
   const magazines = await client.query(magazineCategoryQuery(10))
 
@@ -73,6 +74,7 @@ export async function getStaticProps({ params }: StaticPaths) {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data,
       product: product.data.externalProduct,
       magazines: magazines.data.productCategory.products.edges,
       // data: article.data,

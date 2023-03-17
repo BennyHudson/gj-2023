@@ -19,8 +19,9 @@ import PageLayout from '@components/PageLayout'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 import { useBreakpoints } from '@hooks/useBreakpoints'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
-const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav }): ReactElement => {
+const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   const { mdAndBelow } = useBreakpoints()
@@ -30,7 +31,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav }): ReactElemen
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={seo}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={seo} siteOptions={siteOptions}>
       <GiftGuideFeature
         height={3}
         meta={pageData.ctaFirst.categories.nodes[0].name}
@@ -94,12 +95,14 @@ export default GiftGuidePage
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
   const giftsPage = await client.query(giftGuideContentQuery)
 
   return {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
+      siteOptions: siteOptions.data,
       pageData: giftsPage.data.page.pageGifting,
       seo: giftsPage.data.page.seo,
     },
