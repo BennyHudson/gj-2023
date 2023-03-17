@@ -11,14 +11,14 @@ const Scripts: FC = (): ReactElement => {
 
   return (
     <>
-      <Script strategy='afterInteractive' src="https://www.googletagmanager.com/gtag/js?id=UA-416440-57" />
+      <Script strategy='afterInteractive' src="https://www.googletagmanager.com/gtag/js?id=G-YVYM9T292G" />
       <Script id='googleAnalytics'>
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-
-          gtag('config', 'UA-416440-57');
+        
+          gtag('config', 'G-YVYM9T292G');
         `}
       </Script>
       <Script async src='https://securepubads.g.doubleclick.net/tag/js/gpt.js'></Script>
