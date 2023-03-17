@@ -1,6 +1,13 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import styled, { css, FlattenSimpleInterpolation, createGlobalStyle } from 'styled-components'
 
 import { StyledNewsletterModalProps } from './NewsletterModal.style.types'
+
+export const HideOverflow = createGlobalStyle((): FlattenSimpleInterpolation => css`
+  html,
+  body {
+    overflow: hidden;
+  }
+`)
 
 export const NewsletterModal = styled.div((props: StyledNewsletterModalProps): FlattenSimpleInterpolation => css`
   position: fixed;
