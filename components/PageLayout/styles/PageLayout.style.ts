@@ -19,19 +19,3 @@ export const Page = styled.div(
     z-index: 1;
   `,
 )
-
-export const Background = styled.div(
-  (props: StyledPageLayoutProps): FlattenSimpleInterpolation => css`
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: ${props.theme.colours.white};
-    width: 100px;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-  `,
-)
