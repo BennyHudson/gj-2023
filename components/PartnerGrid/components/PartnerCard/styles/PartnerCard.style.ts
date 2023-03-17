@@ -1,18 +1,22 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 
 import { StyledPartnerCardProps } from './PartnerCard.style.types'
+import { Button } from '@components/Button/styles/Button.style'
 
 export const PartnerCard = styled.div(
   (props: StyledPartnerCardProps): FlattenSimpleInterpolation => css`
     background: ${props.theme.colours.white};
     padding: ${props.theme.spacing[2]}px;
-    margin-bottom: ${props.theme.spacing[4]}px;
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: ${props.theme.spacing[2]}px;
     text-align: center;
     position: relative;
+
+    ${Button} {
+      margin-top: auto;
+    }
   `,
 )
 

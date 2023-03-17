@@ -19,6 +19,7 @@ import PageContext, { PageContextProps } from '@context/PageContext'
 import PageLayout from '@components/PageLayout'
 import { StaticPaths } from '@typings/StaticPaths.types'
 import { PageData } from '@typings/PageData.types'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
 interface PostData extends PageData {
   data: PostBody

@@ -16,11 +16,9 @@ const PartnerGrid: FC<PartnerGridProps> = ({ partners }: PartnerGridProps): Reac
 
   return (
     <Styled.PartnerGrid>
-      <Masonry breakpointCols={breakpointColumnsObj} className='my-masonry-grid' columnClassName='my-masonry-grid_column'>
-        {partners.map((partner, index) => {
-          return <PartnerCard key={index} {...partner} />
-        })}
-      </Masonry>
+      {partners.map((partner, index) => {
+        return <PartnerCard key={index} {...partner} />
+      })}
     </Styled.PartnerGrid>
   )
 }

@@ -61,7 +61,7 @@ const Home: FC = ({
         {...pageData.homeFeaturedPost.homeFeaturedPost}
         excerpt={pageData.homeFeaturedPost.homeFeaturedPost.articleAcf.standfirst}
       />
-      {/* <PostCarousel /> */}
+      <PostCarousel />
       <NewsletterBanner backgroundImage={siteOptions.gjOptions.newsletterModal.sectionNewsletter.image.sourceUrl} form={newsletterForm} size={1} />
       <Section>
         <Title
@@ -180,7 +180,7 @@ export async function getStaticProps() {
   const siteOptions = await client.query(siteOptionsQuery)
 
   const homepage = await client.query(homepageQuery)
-  const latestPosts = await client.query(latestPostsQuery)
+  const latestPosts = await client.query(latestPostsQuery(homepage.data.page.homeFeaturedPost.homeFeaturedPost.id))
   const coverInterviews = await client.query(articleCategoryQuery('Cover Interviews'))
   const sessionFeature = await client.query(sessionsFeatureQuery)
   const giftGuide = await client.query(giftGuideQuery)

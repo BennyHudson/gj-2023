@@ -13,6 +13,7 @@ import { magazineCategoryQuery } from '@queries/products/magazine-category'
 import Section from '@components/Section'
 import Title from '@components/Title'
 import MagazineGrid from '@components/MagazineGrid'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
 const ProductPage: FC = ({ headerNav, footerNav, product, magazines, siteOptions }): ReactElement => {
   return (

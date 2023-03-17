@@ -11,6 +11,7 @@ import Masthead from '@components/Masthead'
 import MagazineGrid from '@components/MagazineGrid'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
 const Magazines: FC = ({ headerNav, footerNav, magazineData, siteOptions }): ReactElement => {
   const breadcrumbs = [
