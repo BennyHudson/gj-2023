@@ -32,8 +32,9 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
     setCustomer(customerData)
 
     if (customerData) {
-      const subscriptionIds = customerData.meta_data.find((meta) => meta.key === '_wcs_subscription_ids_cache')
-
+      const subscriptionIds = customerData.meta_data?.find((meta) => meta.key === '_wcs_subscription_ids_cache')
+      if (!subscriptionIds) return 
+      
       const subs = []
 
       await Promise.all(

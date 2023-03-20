@@ -23,13 +23,13 @@ export interface ArticleBody {
   }
 }
 
-export const articleBody = (slug: string) => {
+export const articleBody = (slug: string, preview: boolean) => {
   return {
     query: gql`
       ${articleContent}
       ${bylineContent}
       query articleQuery {
-        article(id: "${slug}", idType: SLUG) {
+        article(id: "${slug}", idType: SLUG, asPreview: ${preview}) {
           ... ArticleContent
           ... BylineContent
           articleAcf {

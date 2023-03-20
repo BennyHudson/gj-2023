@@ -17,7 +17,7 @@ const nextConfig = {
       },
       {
         protocol: 'http',
-        hostname: 'thegentlemansjournal.local',
+        hostname: 'gentlemans-journal.local',
       },
       {
         protocol: 'https',

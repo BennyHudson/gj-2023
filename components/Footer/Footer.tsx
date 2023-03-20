@@ -39,10 +39,10 @@ const Footer: FC<FooterProps> = ({ footerNav }: FooterProps): ReactElement => {
           </Styled.ScrollUp>
         </Styled.Top>
         <Styled.Main>
-          {lgAndAbove && <FooterMainMenu menu={flatListToHierarchical(footerNav.primaryMenu.menuItems.nodes)} />}
+          {lgAndAbove && <FooterMainMenu menu={flatListToHierarchical(footerNav.primaryMenu?.menuItems.nodes)} />}
           <Styled.SecondaryMenu>
             <ul>
-              {footerNav.secondaryMenu.menuItems.nodes.map((item, index) => {
+              {footerNav.secondaryMenu?.menuItems.nodes.map((item, index) => {
                 return (
                   <li key={index}>
                     <Link to={item.uri} font='Cera' inverse size={1} transform='uppercase'>
@@ -56,7 +56,7 @@ const Footer: FC<FooterProps> = ({ footerNav }: FooterProps): ReactElement => {
         </Styled.Main>
         <Styled.Meta>
           <Styled.LegalMenu>
-            {footerNav.legalMenu.menuItems.nodes.map((item, index) => {
+            {footerNav.legalMenu?.menuItems.nodes.map((item, index) => {
               return (
                 <li key={index}>
                   <Link to={item.uri} font='Cera' inverse size={1} transform='uppercase'>
