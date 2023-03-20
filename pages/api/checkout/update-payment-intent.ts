@@ -41,10 +41,10 @@ export default async function updatePaymentIntent(req: NextApiRequest, res: Next
 
   subTotal = voucherDiscount(subTotal)
 
-  const total = Math.round(((subTotal + req.body.shippingRate.cost + Number.EPSILON) * 100) / 100)
+  const total = subTotal + req.body.shippingRate.cost
 
   await stripe.paymentIntents.update(req.body.paymentIntent, {
-    amount: total * 100,
+    amount: Math.trunc(total * 100),
   })
 
   res.status(200)
