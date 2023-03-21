@@ -9,12 +9,12 @@ export interface PodcastBody extends Podcast {
   content: string
 }
 
-export const podcastBodyQuery = (slug: string) => {
+export const podcastBodyQuery = (slug: string, preview: boolean) => {
   return {
     query: gql`
       ${podcastContent}
       query podcastQuery {
-        podcast(id: "${slug}", idType: SLUG) {
+        podcast(id: "${slug}", idType: SLUG, asPreview: ${preview}) {
           ... PodcastContent
           content
           ${seo()}

@@ -61,13 +61,13 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }: StaticPaths) {
+export async function getStaticProps({ preview = false, params }: StaticPaths) {
   const { slug } = params
 
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
   const siteOptions = await client.query(siteOptionsQuery)
-  const podcast = await client.query(podcastBodyQuery(slug))
+  const podcast = await client.query(podcastBodyQuery(slug, preview))
   const podcastOptions = await client.query(podcastOptionsQuery)
 
   if (!podcast.data.podcast) {

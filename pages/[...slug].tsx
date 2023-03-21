@@ -104,13 +104,13 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }: StaticPaths) {
+export async function getStaticProps({ preview = false, params }: StaticPaths) {
   const { slug } = params
 
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
   const siteOptions = await client.query(siteOptionsQuery)
-  const article = await client.query(postBody(slug))
+  const article = await client.query(postBody(slug, preview))
 
   if (!article.data.post) {
     return {

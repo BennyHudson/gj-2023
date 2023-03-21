@@ -12,13 +12,13 @@ export interface HouseNoteBody extends HouseNote {
   }
 }
 
-export const houseNoteBodyQuery = (slug: string) => {
+export const houseNoteBodyQuery = (slug: string, preview: boolean) => {
   return {
     query: gql`
       ${houseNoteContent}
       query houseNoteQuery {
         ${articleNote()}
-        houseNote(id: "${slug}", idType: SLUG) {
+        houseNote(id: "${slug}", idType: SLUG, asPreview: ${preview}) {
           ... HouseNoteContent
           ${seo()}
           articleAcf {

@@ -72,11 +72,11 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ preview = false, params }) {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
   const siteOptions = await client.query(siteOptionsQuery)
-  const landingPageContent = await client.query(landingPageContentQuery(params.slug))
+  const landingPageContent = await client.query(landingPageContentQuery(params.slug, preview))
   const partners = await client.query(partnerQuery(12))
   const clubPage = await client.query(clubQuery)
   const subscriptionProducts = await client.query(subscriptionProductsQuery)

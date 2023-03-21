@@ -24,13 +24,13 @@ export interface PostBody {
   }
 }
 
-export const postBody = (slug: string) => {
+export const postBody = (slug: string, preview: boolean) => {
   return {
     query: gql`
       ${postContent}
       ${bylineContent}
       query postQuery {
-        post(id: "${slug}", idType: SLUG) {
+        post(id: "${slug}", idType: SLUG, asPreview: ${preview}) {
           ... PostContent
           ... BylineContent
           content
