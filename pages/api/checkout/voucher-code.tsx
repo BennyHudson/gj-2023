@@ -5,7 +5,7 @@ import { WooCommerce } from '../WooCommerce'
 
 export default async function voucherCode(req: NextApiRequest, res: NextApiResponse) {
   const allVoucherCodes = await WooCommerce.get('coupons?per_page=100')
-  const currentCode = allVoucherCodes.data.find((voucher) => voucher.code === req.body.voucherCode)
+  const currentCode = allVoucherCodes.data.find((voucher) => voucher.code.toLowerCase() === req.body.voucherCode.toLowerCase())
   
   if (currentCode) {
     const now = dayjs().toISOString()
