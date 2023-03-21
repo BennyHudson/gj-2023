@@ -30,7 +30,12 @@ export const Link = styled.a((props: StyledToolbarProps): FlattenSimpleInterpola
   text-decoration: none;
   transition: 0.4s all ease;
 
+  &:first-child {
+    border-radius: 6px 0 0 0;
+  }
+
   &:last-child {
+    border-radius: 0 6px 0 0;
     border-right: none;
   }
 
