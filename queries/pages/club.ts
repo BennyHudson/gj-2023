@@ -15,6 +15,7 @@ export const clubQuery = {
       }
       page(id: "74300", idType: DATABASE_ID) {
         title
+        databaseId
         featuredImage {
           node {
             sourceUrl

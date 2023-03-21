@@ -33,7 +33,7 @@ const TeamPage: FC = ({ headerNav, footerNav, pageData, siteOptions }): ReactEle
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions} databaseId={7}>
       <HeroImage featuredImage={pageData.featuredImage.node.sourceUrl} height={1} />
       <Section containerWidth='narrow'>
         <Masthead

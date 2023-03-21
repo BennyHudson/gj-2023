@@ -32,7 +32,7 @@ const LandingPage: FC = ({ headerNav, footerNav, landingPageContent, partners, c
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: `${landingPageContent.title} | The Gentleman's Journal` }} siteOptions={siteOptions}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: `${landingPageContent.title} | The Gentleman's Journal` }} siteOptions={siteOptions} databaseId={landingPageContent.databaseId}>
       <HeroImage featuredImage={featuredImageUrl(landingPageContent.featuredImage.node.sourceUrl)} height={1} />
       <Section appearance='secondary' containerWidth='narrow' textAlign='center'>
         <Heading text={landingPageContent.title} inverse size={5} font='ChronicleCondensed' />

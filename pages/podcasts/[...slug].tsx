@@ -32,7 +32,7 @@ const Podcast: FC<PodcastData> = ({ podcastData, podcastOptions, headerNav, foot
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={podcastData.seo} siteOptions={siteOptions}>
+    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={podcastData.seo} siteOptions={siteOptions} databaseId={podcastData.databaseId}>
       <BannerAdvert parent='GJ_728x90_001_0' paddingLevel={1} />
       <PodcastContent {...podcastData} {...podcastOptions} />
       <PodcastCarousel title='You might also like' podcasts={podcastOptions.featured.featured} />

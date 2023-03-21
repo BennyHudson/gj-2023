@@ -3,6 +3,7 @@ import { disableFragmentWarnings } from 'graphql-tag'
 
 import { articleContent } from '@queries/fragments/articleContent'
 import { giftContent } from '@queries/fragments/giftContent'
+import { seo } from '@queries/fragments/seo'
 
 disableFragmentWarnings()
 
@@ -12,42 +13,8 @@ export const giftGuideContentQuery = {
     ${giftContent}
     query giftGuideContentQuery {
       page(id: "388680", idType: DATABASE_ID) {
-        seo {
-          breadcrumbs {
-            text
-            url
-          }
-          canonical
-          cornerstone
-          focuskw
-          metaDesc
-          metaKeywords
-          metaRobotsNofollow
-          metaRobotsNoindex
-          opengraphAuthor
-          opengraphDescription
-          opengraphImage {
-            sourceUrl
-          }
-          opengraphModifiedTime
-          opengraphPublishedTime
-          opengraphPublisher
-          opengraphSiteName
-          opengraphTitle
-          opengraphType
-          opengraphUrl
-          readingTime
-          schema {
-            articleType
-            pageType
-          }
-          title
-          twitterDescription
-          twitterImage {
-            sourceUrl
-          }
-          twitterTitle
-        }
+        databaseId
+        ${seo()}
         pageGifting {
           featuredBrandsLink
           featuredBrandsTitle

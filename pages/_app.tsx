@@ -24,10 +24,15 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
   const [shippingRate, setShippingRate] = useState<PageContextProps['shippingRate']>()
   const [customer, setCustomer] = useState<PageContextProps['customer']>()
   const [subscriptions, setSubscriptions] = useState()
+  const [showToolbar, setShowToolbar] = useState(false)
 
   const getCustomerData = async (id: number) => {
     const customerDetails = await fetch(`/api/user/${id}`)
     const customerData = await customerDetails.json()
+
+    if (customerData.role === 'administrator' || customerData.role === 'editor') {
+      setShowToolbar(true)
+    }
 
     setCustomer(customerData)
 
@@ -93,6 +98,7 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
               setCustomer,
               subscriptions,
               getCustomerData,
+              showToolbar,
             }}
           >
             <Component {...pageProps} />

@@ -6,6 +6,7 @@ export const sessionsQuery = {
     query sessionsPage {
       page(id: 388179, idType: DATABASE_ID) {
         title
+        databaseId
         sessions {
           sessions {
             sessionsIntroText

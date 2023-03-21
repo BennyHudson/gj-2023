@@ -50,6 +50,7 @@ export interface PageContextProps {
   setCustomer: (customer?: Customer) => void
   shippingRate: number
   setShippingRate: (shippingRate: number) => void
+  showToolbar: boolean
 }
 
 export default createContext<Partial<PageContextProps>>({})

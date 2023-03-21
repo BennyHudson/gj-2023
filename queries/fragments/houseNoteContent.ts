@@ -23,6 +23,7 @@ export const houseNoteContent = gql`
   fragment HouseNoteContent on HouseNote {
     title
     uri
+    databaseId
     articleType {
       articleType
       articleTypeLandingPageExcerpt

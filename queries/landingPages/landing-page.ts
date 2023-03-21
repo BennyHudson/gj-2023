@@ -7,6 +7,7 @@ export const landingPageContentQuery = (slug: string, preview: boolean) => {
       query landingPageContentQuery {
         landingPage(id: "${slug}", idType: ${slugIsString ? 'SLUG' : 'DATABASE_ID'}, asPreview: ${preview}) {
           title
+          databaseId
           landingPageContent {
             redemptionTerms
             redemptionDetails

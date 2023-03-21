@@ -8,4 +8,5 @@ export interface PageLayoutProps {
   headerNav: HeaderNav
   footerNav: FooterNav
   headerStyle: 'feature' | 'standard'
+  databaseId?: number
 }

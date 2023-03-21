@@ -1,13 +1,15 @@
-import React, { FC, ReactElement, useEffect, useState } from 'react'
+import React, { FC, ReactElement, useContext, useEffect, useState } from 'react'
 
 import Header from '@components/Header'
 import Footer from '@components/Footer'
 import HeadTags from '@components/HeadTags'
 import NewsletterModal from '@components/NewsletterModal'
+import Toolbar from '@components/Toolbar'
 
 import * as Styled from './styles/PageLayout.style'
 
 import { PageLayoutProps } from './PageLayout.types'
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 const PageLayout: FC<PageLayoutProps> = ({
   children,
@@ -16,7 +18,10 @@ const PageLayout: FC<PageLayoutProps> = ({
   seo,
   headerStyle = 'feature',
   siteOptions,
+  databaseId,
 }: PageLayoutProps): ReactElement => {
+  const { showToolbar } = useContext(PageContext) as PageContextProps
+
   const [ showNewsletterModal, setShowNewsletterModal ] = useState(false)
 
   const loadModal = () => {
@@ -37,6 +42,7 @@ const PageLayout: FC<PageLayoutProps> = ({
       <HeadTags seo={seo} />
       {(showNewsletterModal && siteOptions) && <NewsletterModal newsletterForm={siteOptions.gfForm} backgroundImage={siteOptions.gjOptions.newsletterModal.modalNewsletter.image.sourceUrl} setShowNewsletterModal={setShowNewsletterModal} />}
       <Header headerStyle={headerStyle} headerNav={headerNav} />
+      {showToolbar && <Toolbar databaseId={databaseId} />}
       <Styled.Page>{children}</Styled.Page>
       <Footer footerNav={footerNav} />
     </Styled.PageLayout>

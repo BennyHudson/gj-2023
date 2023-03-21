@@ -34,7 +34,7 @@ const HouseNote: FC<HouseNoteData> = ({ pageData, articleNote, headerNav, footer
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions} databaseId={pageData.databaseId}>
       <HeroImage featuredImage={pageData.featuredImage.node.sourceUrl} />
       <BannerAdvert parent='GJ_728x90_001_0' paddingLevel={1} />
       <Section>

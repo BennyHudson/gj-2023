@@ -2,6 +2,7 @@ import { gql } from '@apollo/client'
 import { disableFragmentWarnings } from 'graphql-tag'
 
 import { articleContent } from '@queries/fragments/articleContent'
+import { seo } from '@queries/fragments/seo'
 
 disableFragmentWarnings()
 
@@ -10,6 +11,7 @@ export const homepageQuery = {
     ${articleContent}
     query homepageQuery {
       page(id: "cG9zdDo3NDE3NA==") {
+        databaseId
         homeFeaturedPost {
           homeFeaturedPost {
             ... on Article {
@@ -31,42 +33,7 @@ export const homepageQuery = {
             }
           }
         }
-        seo {
-          breadcrumbs {
-            text
-            url
-          }
-          canonical
-          cornerstone
-          focuskw
-          metaDesc
-          metaKeywords
-          metaRobotsNofollow
-          metaRobotsNoindex
-          opengraphAuthor
-          opengraphDescription
-          opengraphImage {
-            sourceUrl
-          }
-          opengraphModifiedTime
-          opengraphPublishedTime
-          opengraphPublisher
-          opengraphSiteName
-          opengraphTitle
-          opengraphType
-          opengraphUrl
-          readingTime
-          schema {
-            articleType
-            pageType
-          }
-          title
-          twitterDescription
-          twitterImage {
-            sourceUrl
-          }
-          twitterTitle
-        }
+        ${seo()}
       }
     }
   `,

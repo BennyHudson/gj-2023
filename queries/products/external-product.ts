@@ -6,6 +6,7 @@ export const magazineQuery = (slug: string) => {
     query: gql`
       query magazineQuery {
         externalProduct(id: "${slug}", idType: SLUG) {
+          databaseId
           additionalIssueContent {
             issueCoverStar
             shortDescription

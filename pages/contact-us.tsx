@@ -32,7 +32,7 @@ const ContactPage: FC = ({ headerNav, footerNav, pageData, siteOptions }): React
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions}>
+    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions} databaseId={2}>
       <Section>
         <Masthead
           breadcrumbs={breadcrumbs}

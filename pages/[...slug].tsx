@@ -50,7 +50,7 @@ const Post: FC<PostData> = ({ data, headerNav, footerNav, siteOptions }: PostDat
   }, [setActiveNavElement, articleData])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={articleData.seo} siteOptions={siteOptions}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={articleData.seo} siteOptions={siteOptions} databaseId={articleData.databaseId}>
       {articleData.featuredImage && <HeroImage featuredImage={articleData.featuredImage.node.sourceUrl} />}
       <BannerAdvert parent='gj_970x250' slot='GJ_970x250_001' />
       <Section>

@@ -17,7 +17,7 @@ import { siteOptionsQuery } from '@queries/global/site-options'
 
 const ProductPage: FC = ({ headerNav, footerNav, product, magazines, siteOptions }): ReactElement => {
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={product.seo} headerStyle='standard' siteOptions={siteOptions}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={product.seo} headerStyle='standard' siteOptions={siteOptions} databaseId={product.databaseId}>
       <ProductFeature product={product} />
       <Section>
         <Title
