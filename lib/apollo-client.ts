@@ -6,10 +6,12 @@ const httpLink = createHttpLink({
 })
 
 const authLink = setContext((_, { headers }) => {
+  const previewToken = process.env.NEXT_PUBLIC_PREVIEW_TOKEN
+
   return {
     headers: {
       ...headers,
-      // authorization: 'Basic dGdqOlByZXNzbGFicyMx',
+      authorization: previewToken ? `Bearer ${previewToken}` : '',
     },
   }
 })
