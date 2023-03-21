@@ -1,12 +1,15 @@
 import React, { ReactElement, FC, useContext, useEffect } from 'react'
+import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
+import { Form, Formik } from 'formik'
 
 import Button from '@components/Button'
+import Paragraph from '@components/Paragraph'
+import Link from '@components/Link'
+
+import PageContext, { PageContextProps } from '@context/PageContext'
 
 import { PaymentProps } from './Payment.types'
 import CheckoutPanel from '../CheckoutPanel'
-import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
-import { Form, Formik } from 'formik'
-import PageContext, { PageContextProps } from '@context/PageContext'
 
 import * as Styled from './styles/Payment.style'
 
@@ -105,6 +108,7 @@ const Payment: FC<PaymentProps> = ({
           <Styled.PaymentWrapper>
             <PaymentElement id='payment-element' options={paymentElementOptions} />
           </Styled.PaymentWrapper>
+          <Paragraph size={1} font='Cera'>By clicking Checkout Now, you agree with our <Link size={1} font='Cera' href='/terms-and-conditions'>Terms and Conditions</Link> and <Link size={1} font='Cera' href='/privacy-policy'>Privacy Policy</Link></Paragraph>
           <Button type='submit' text='Checkout Now' size={1} />
         </Form>
       </Formik>
