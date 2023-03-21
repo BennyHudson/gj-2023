@@ -10,11 +10,12 @@ export interface PodcastBody extends Podcast {
 }
 
 export const podcastBodyQuery = (slug: string, preview: boolean) => {
+  const slugIsString = isNaN(parseInt(slug))
   return {
     query: gql`
       ${podcastContent}
       query podcastQuery {
-        podcast(id: "${slug}", idType: SLUG, asPreview: ${preview}) {
+        podcast(id: "${slug}", idType: ${slugIsString ? 'SLUG' : 'DATABASE_ID'}, asPreview: ${preview}) {
           ... PodcastContent
           content
           ${seo()}

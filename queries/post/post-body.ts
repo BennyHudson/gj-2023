@@ -25,12 +25,13 @@ export interface PostBody {
 }
 
 export const postBody = (slug: string, preview: boolean) => {
+  const slugIsString = isNaN(parseInt(slug))
   return {
     query: gql`
       ${postContent}
       ${bylineContent}
       query postQuery {
-        post(id: "${slug}", idType: SLUG, asPreview: ${preview}) {
+        post(id: "${slug}", idType: ${slugIsString ? 'SLUG' : 'DATABASE_ID'}, asPreview: ${preview}) {
           ... PostContent
           ... BylineContent
           content

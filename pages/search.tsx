@@ -20,8 +20,6 @@ const SearchPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => 
     setActiveNavElement(-1)
   }, [setActiveNavElement])
 
-  console.log(siteOptions)
-
   return (
     <PageLayout headerNav={headerNav} headerStyle='standard' footerNav={footerNav} seo={{ title: 'Search | The Gentleman\'s Journal' }}>
       <SplitPageTemplate

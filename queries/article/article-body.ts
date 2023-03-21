@@ -24,12 +24,13 @@ export interface ArticleBody {
 }
 
 export const articleBody = (slug: string, preview: boolean) => {
+  const slugIsString = isNaN(parseInt(slug))
   return {
     query: gql`
       ${articleContent}
       ${bylineContent}
       query articleQuery {
-        article(id: "${slug}", idType: SLUG, asPreview: ${preview}) {
+        article(id: "${slug}", idType: ${slugIsString ? 'SLUG' : 'DATABASE_ID'}, asPreview: ${preview}) {
           ... ArticleContent
           ... BylineContent
           articleAcf {

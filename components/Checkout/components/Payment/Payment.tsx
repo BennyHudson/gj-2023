@@ -28,7 +28,6 @@ const Payment: FC<PaymentProps> = ({
   }
 
   const updatePaymentIntent = async () => {
-    console.log(checkoutForm)
     await fetch('/api/checkout/update-payment-intent', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

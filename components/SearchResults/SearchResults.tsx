@@ -15,8 +15,6 @@ const SearchResults: FC<SearchResultsProps> = ({ searchResults, searchTerm, setS
   const [searchPage, setSearchPage] = useState(1)
   const { cmsUrl, apiUrl } = useContext(PageContext) as PageContextProps
 
-  console.log(searchResults)
-
   const moreResults = async () => {
     const search = await fetch(`${apiUrl}/search?search=${searchTerm}&page=${searchPage + 1}`)
     const results = await search.json()

@@ -13,12 +13,13 @@ export interface HouseNoteBody extends HouseNote {
 }
 
 export const houseNoteBodyQuery = (slug: string, preview: boolean) => {
+  const slugIsString = isNaN(parseInt(slug))
   return {
     query: gql`
       ${houseNoteContent}
       query houseNoteQuery {
         ${articleNote()}
-        houseNote(id: "${slug}", idType: SLUG, asPreview: ${preview}) {
+        houseNote(id: "${slug}", idType: ${slugIsString ? 'SLUG' : 'DATABASE_ID'}, asPreview: ${preview}) {
           ... HouseNoteContent
           ${seo()}
           articleAcf {
