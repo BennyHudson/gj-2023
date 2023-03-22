@@ -44,7 +44,7 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
   if (data && !data.gfForm.isActive) {
     return (
       <Styled.ConfirmationMessage>
-        <RawHtmlWrapper content={`<p>This competition is now closed.</p>`} />
+        <RawHtmlWrapper content={'<p>This competition is now closed.</p>'} />
       </Styled.ConfirmationMessage>
     )
   }
