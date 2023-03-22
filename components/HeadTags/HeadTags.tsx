@@ -7,7 +7,6 @@ import featuredImageUrl from '@helpers/featuredImageUrl'
 import { HeadTagsProps } from './HeadTags.types'
 
 const HeadTags: FC<HeadTagsProps> = ({ seo, siteOptions }: HeadTagsProps): ReactElement => {
-  console.log(siteOptions)
   const { favicons } = siteOptions.gjOptions.faviconImages
   return (
     <Head>

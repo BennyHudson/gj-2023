@@ -25,7 +25,7 @@ const ClubPage: FC = ({ headerNav, footerNav, subscriptionProducts, freeGift, si
 
   return (
     <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
-      <SplitPageTemplate image={featuredImageUrl(siteOptions.splitPageImages.accountPage.sourceUrl)}>
+      <SplitPageTemplate image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.accountPage.sourceUrl)}>
         {token && customer ? <MyAccount /> : <ClubhouseGateway products={subscriptionProducts} freeGift={freeGift} />}
       </SplitPageTemplate>
     </PageLayout>
@@ -47,7 +47,7 @@ export async function getStaticProps() {
       footerNav: footerNav.data,
       subscriptionProducts: subscriptionProducts.data.products.nodes,
       freeGift: freeGift.data.products.nodes[0],
-      siteOptions: siteOptions.data.gjOptions,
+      siteOptions: siteOptions.data,
     },
   }
 }

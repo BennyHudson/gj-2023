@@ -23,7 +23,7 @@ const SearchPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => 
   return (
     <PageLayout headerNav={headerNav} headerStyle='standard' footerNav={footerNav} seo={{ title: 'Search | The Gentleman\'s Journal' }}>
       <SplitPageTemplate
-        image={featuredImageUrl(siteOptions.splitPageImages.searchPage.sourceUrl)}
+        image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.searchPage.sourceUrl)}
         title='Search'
       >
         <SearchForm />
@@ -43,7 +43,7 @@ export async function getStaticProps() {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
-      siteOptions: siteOptions.data.gjOptions,
+      siteOptions: siteOptions.data,
     },
   }
 }

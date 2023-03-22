@@ -29,7 +29,7 @@ const NewsletterPage: FC = ({ headerNav, footerNav, newsletter, newsletterForm, 
       seo={{ title: `${newsletter.title} | The Gentleman's Journal` }}
       siteOptions={siteOptions}
     >
-      <SplitPageTemplate image={featuredImageUrl(siteOptions.splitPageImages.newsletterPage.sourceUrl)} title={newsletter.title}>
+      <SplitPageTemplate image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.newsletterPage.sourceUrl)} title={newsletter.title}>
         <RawHtmlWrapper content={newsletter.description} />
         <Newsletter form={newsletterForm} showTitle={false} />
       </SplitPageTemplate>
@@ -48,7 +48,7 @@ export async function getStaticProps() {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
-      siteOptions: siteOptions.data.gjOptions,
+      siteOptions: siteOptions.data,
       newsletter: siteOptions.data.gjOptions.newsletterModal.modalNewsletter,
       newsletterForm: siteOptions.data.gfForm,
     },

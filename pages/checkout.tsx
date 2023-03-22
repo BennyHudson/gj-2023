@@ -58,7 +58,7 @@ const CheckoutPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement =
   return (
     <PageLayout headerNav={headerNav} footerNav={footerNav} headerStyle='standard' seo={{ title: 'Checkout | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
       <SplitPageTemplate
-        image={featuredImageUrl(siteOptions.splitPageImages.checkoutPage.sourceUrl)}
+        image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.checkoutPage.sourceUrl)}
         title='Checkout'
       >
         {!cart.length && (
@@ -90,7 +90,7 @@ export async function getStaticProps() {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
-      siteOptions: siteOptions.data.gjOptions,
+      siteOptions: siteOptions.data,
     },
   }
 }

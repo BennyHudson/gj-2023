@@ -23,7 +23,7 @@ const CartPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
   return (
     <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Cart | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
       <SplitPageTemplate
-        image={featuredImageUrl(siteOptions.splitPageImages.cartPage.sourceUrl)}
+        image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.cartPage.sourceUrl)}
         title='Cart'
       >
         <Cart />
@@ -43,7 +43,7 @@ export async function getStaticProps() {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
-      siteOptions: siteOptions.data.gjOptions
+      siteOptions: siteOptions.data
     },
   }
 }
