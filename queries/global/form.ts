@@ -7,6 +7,7 @@ export const formQuery = (formId: number) => {
         gfForm(id: "${formId}", idType: DATABASE_ID) {
           databaseId
           title
+          isActive
           formFields {
             nodes {
               type

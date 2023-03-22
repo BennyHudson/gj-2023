@@ -29,12 +29,22 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
   const [isValid, setIsValid] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
+  console.log(data)
+
   if (loading) return <div>Loading...</div>
 
   if (confirmationMessage) {
     return (
       <Styled.ConfirmationMessage>
         <RawHtmlWrapper content={confirmationMessage} />
+      </Styled.ConfirmationMessage>
+    )
+  }
+
+  if (data && !data.gfForm.isActive) {
+    return (
+      <Styled.ConfirmationMessage>
+        <RawHtmlWrapper content={`<p>This competition is now closed.</p>`} />
       </Styled.ConfirmationMessage>
     )
   }
