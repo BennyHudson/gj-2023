@@ -6,25 +6,27 @@ import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import { HeadTagsProps } from './HeadTags.types'
 
-const HeadTags: FC<HeadTagsProps> = ({ seo }: HeadTagsProps): ReactElement => {
+const HeadTags: FC<HeadTagsProps> = ({ seo, siteOptions }: HeadTagsProps): ReactElement => {
+  console.log(siteOptions)
+  const { favicons } = siteOptions.gjOptions.faviconImages
   return (
     <Head>
       <link
         rel='apple-touch-icon'
         sizes='180x180'
-        href='https://cdn.cms.thegentlemansjournal.com/wp-content/themes/lydia/assets/favicons/apple-touch-icon.png'
+        href={featuredImageUrl(favicons.faviconLarge.sourceUrl)}
       />
       <link
         rel='icon'
         type='image/png'
         sizes='32x32'
-        href='https://cdn.cms.thegentlemansjournal.com/wp-content/themes/lydia/assets/favicons/favicon-32x32.png'
+        href={featuredImageUrl(favicons.faviconMedium.sourceUrl)}
       />
       <link
         rel='icon'
         type='image/png'
         sizes='16x16'
-        href='https://cdn.cms.thegentlemansjournal.com/wp-content/themes/lydia/assets/favicons/favicon-16x16.png'
+        href={featuredImageUrl(favicons.faviconSmall.sourceUrl)}
       />
       <meta charSet='UTF-8' />
       <meta httpEquiv='x-ua-compatible' content='ie=edge,chrome=1' />

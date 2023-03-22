@@ -5,6 +5,7 @@ import client from '@lib/apollo-client'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { podcastOptionsQuery } from '@queries/podcasts/podcast-options'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
 import PageLayout from '@components/PageLayout'
 import FeatureCarousel from '@components/FeatureCarousel'
@@ -16,7 +17,6 @@ import Divider from '@components/Divider'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 import { useBreakpoints } from '@hooks/useBreakpoints'
-import { siteOptionsQuery } from '@queries/global/site-options'
 
 const Podcasts: FC = ({ podcastOptions, headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps

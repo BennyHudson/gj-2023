@@ -24,7 +24,7 @@ const ClubPage: FC = ({ headerNav, footerNav, subscriptionProducts, freeGift, si
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }}>
+    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
       <SplitPageTemplate image={featuredImageUrl(siteOptions.splitPageImages.accountPage.sourceUrl)}>
         {token && customer ? <MyAccount /> : <ClubhouseGateway products={subscriptionProducts} freeGift={freeGift} />}
       </SplitPageTemplate>

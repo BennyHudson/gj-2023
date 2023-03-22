@@ -39,7 +39,7 @@ const PageLayout: FC<PageLayoutProps> = ({
 
   return (
     <Styled.PageLayout>
-      <HeadTags seo={seo} />
+      <HeadTags seo={seo} siteOptions={siteOptions} />
       {(showNewsletterModal && siteOptions) && <NewsletterModal newsletterForm={siteOptions.gfForm} backgroundImage={siteOptions.gjOptions.newsletterModal.modalNewsletter.image.sourceUrl} setShowNewsletterModal={setShowNewsletterModal} />}
       <Header headerStyle={headerStyle} headerNav={headerNav} />
       {showToolbar && <Toolbar databaseId={databaseId} />}

@@ -21,7 +21,7 @@ const CartPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Cart | The Gentleman\'s Journal' }}>
+    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Cart | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
       <SplitPageTemplate
         image={featuredImageUrl(siteOptions.splitPageImages.cartPage.sourceUrl)}
         title='Cart'

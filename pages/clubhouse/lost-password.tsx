@@ -7,6 +7,7 @@ import client from '@lib/apollo-client'
 import { subscriptionProductsQuery } from '@queries/global/subscription-products'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
 import PageLayout from '@components/PageLayout'
 import SplitPageTemplate from '@components/SplitPageTemplate'
@@ -18,8 +19,9 @@ import TextField from '@components/TextField/TextField'
 import Button from '@components/Button/Button'
 import useResetPassword from '@hooks/useResetPassword'
 import Notification from '@components/Notification'
+import featuredImageUrl from '@helpers/featuredImageUrl'
 
-const ClubPage: FC = ({ headerNav, footerNav }): ReactElement => {
+const ClubPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   const [success, setSuccess] = useState(false)
@@ -52,9 +54,9 @@ const ClubPage: FC = ({ headerNav, footerNav }): ReactElement => {
 
   if (success) {
     return (
-      <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }}>
+      <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
         <SplitPageTemplate
-          image='https://cdn.cms.thegentlemansjournal.com/wp-content/uploads/2022/12/John-Boyega-5-1.jpg'
+          image={featuredImageUrl(siteOptions.splitPageImages.accountPage.sourceUrl)}
           title='Reset your password'
         >
           <Notification state='success' text='Password reset successfully, you are being redirected to The Clubhouse' />
@@ -64,9 +66,9 @@ const ClubPage: FC = ({ headerNav, footerNav }): ReactElement => {
   }
 
   return (
-    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }}>
+    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
       <SplitPageTemplate
-        image='https://cdn.cms.thegentlemansjournal.com/wp-content/uploads/2022/12/John-Boyega-5-1.jpg'
+        image={featuredImageUrl(siteOptions.splitPageImages.accountPage.sourceUrl)}
         title='Reset your password'
       >
         <Formik
@@ -120,6 +122,7 @@ export async function getStaticProps() {
   const footerNav = await client.query(footerNavQuery)
   const subscriptionProducts = await client.query(subscriptionProductsQuery)
   const freeGift = await client.query(freeGiftQuery)
+  const siteOptions = await client.query(siteOptionsQuery)
 
   return {
     props: {
@@ -127,6 +130,7 @@ export async function getStaticProps() {
       footerNav: footerNav.data,
       subscriptionProducts: subscriptionProducts.data.products.nodes,
       freeGift: freeGift.data.products.nodes[0],
+      siteOptions: siteOptions.data,
     },
   }
 }

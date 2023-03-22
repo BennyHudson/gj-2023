@@ -27,6 +27,7 @@ const NewsletterPage: FC = ({ headerNav, footerNav, newsletter, newsletterForm, 
       headerNav={headerNav}
       footerNav={footerNav}
       seo={{ title: `${newsletter.title} | The Gentleman's Journal` }}
+      siteOptions={siteOptions}
     >
       <SplitPageTemplate image={featuredImageUrl(siteOptions.splitPageImages.newsletterPage.sourceUrl)} title={newsletter.title}>
         <RawHtmlWrapper content={newsletter.description} />

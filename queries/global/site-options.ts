@@ -4,6 +4,19 @@ export const siteOptionsQuery = {
   query: gql`
     query siteOptions {
       gjOptions {
+        faviconImages {
+          favicons {
+            faviconLarge {
+              sourceUrl
+            }
+            faviconMedium {
+              sourceUrl
+            }
+            faviconSmall {
+              sourceUrl
+            }
+          }
+        }
         splitPageImages {
           accountPage {
             sourceUrl

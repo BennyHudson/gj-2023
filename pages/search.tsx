@@ -4,13 +4,13 @@ import client from '@lib/apollo-client'
 
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
 import PageLayout from '@components/PageLayout'
 import SplitPageTemplate from '@components/SplitPageTemplate'
 import SearchForm from '@components/SearchForm'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
-import { siteOptionsQuery } from '@queries/global/site-options'
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
 const SearchPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {

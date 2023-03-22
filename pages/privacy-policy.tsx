@@ -4,6 +4,7 @@ import client from '@lib/apollo-client'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { pageQuery } from '@queries/pages/page'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
 import PageLayout from '@components/PageLayout'
 import HeroImage from '@components/HeroImage'
@@ -12,7 +13,6 @@ import Masthead from '@components/Masthead'
 import PageContentBlock from '@components/PageContentBlock'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
-import { siteOptionsQuery } from '@queries/global/site-options'
 
 const TeamPage: FC = ({ headerNav, footerNav, pageData, siteOptions }): ReactElement => {
   const breadcrumbs = [

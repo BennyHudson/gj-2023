@@ -56,7 +56,7 @@ const CheckoutPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement =
   }
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} headerStyle='standard' seo={{ title: 'Checkout | The Gentleman\'s Journal' }}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} headerStyle='standard' seo={{ title: 'Checkout | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
       <SplitPageTemplate
         image={featuredImageUrl(siteOptions.splitPageImages.checkoutPage.sourceUrl)}
         title='Checkout'
