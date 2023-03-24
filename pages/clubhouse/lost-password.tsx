@@ -24,6 +24,8 @@ import featuredImageUrl from '@helpers/featuredImageUrl'
 const ClubPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
+  console.log(siteOptions)
+
   const [success, setSuccess] = useState(false)
 
   const router = useRouter()
@@ -56,7 +58,7 @@ const ClubPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
     return (
       <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
         <SplitPageTemplate
-          image={featuredImageUrl(siteOptions.splitPageImages.accountPage.sourceUrl)}
+          image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.accountPage.sourceUrl)}
           title='Reset your password'
         >
           <Notification state='success' text='Password reset successfully, you are being redirected to The Clubhouse' />
@@ -68,7 +70,7 @@ const ClubPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
   return (
     <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
       <SplitPageTemplate
-        image={featuredImageUrl(siteOptions.splitPageImages.accountPage.sourceUrl)}
+        image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.accountPage.sourceUrl)}
         title='Reset your password'
       >
         <Formik
