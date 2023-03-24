@@ -21,7 +21,7 @@ const SearchPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => 
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} headerStyle='standard' footerNav={footerNav} seo={{ title: 'Search | The Gentleman\'s Journal' }}>
+    <PageLayout headerNav={headerNav} headerStyle='standard' footerNav={footerNav} seo={{ title: 'Search | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
       <SplitPageTemplate
         image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.searchPage.sourceUrl)}
         title='Search'
