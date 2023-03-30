@@ -20,7 +20,7 @@ const HouseNoteExcerpt: FC<HouseNoteExcerptProps> = ({
 }: HouseNoteExcerptProps): ReactElement => {
   return (
     <Styled.HouseNoteExcerpt>
-      {featuredImage && <Thumbnail featuredImage={featuredImage.node.sourceUrl} to={uri} type='square' priority={priority} />}
+      {featuredImage && <Thumbnail featuredImage={featuredImage.node.squareThumb} to={uri} type='square' priority={priority} />}
       <Styled.Body>
         <Styled.ArticleType>
           <span>{articleType.articleType}</span>

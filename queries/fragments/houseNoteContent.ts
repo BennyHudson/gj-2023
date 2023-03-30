@@ -30,7 +30,9 @@ export const houseNoteContent = gql`
     }
     featuredImage {
       node {
-        sourceUrl
+        fullSize: sourceUrl
+        postThumb: sourceUrl(size: POST_THUMB)
+        squareThumb: sourceUrl(size: POST_SQUARE)
       }
     }
     author {

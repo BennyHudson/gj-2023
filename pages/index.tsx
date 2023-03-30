@@ -109,7 +109,7 @@ const Home: FC = ({
         title={`Introducing the Gentleman's Journal Gift Guide`}
         subtitle='Perfect presents for everyone in your life as chosen by our experts'
         url='/gift-guide'
-        featuredImage={giftGuide.featuredImage.node.sourceUrl}
+        featuredImage={giftGuide.featuredImage.node.fullSize}
       />
       <WeeklyHighlight
         excerpt={pageData.homeWeeklyHighlight.homeWeeklyHighlight.articleAcf.standfirst}

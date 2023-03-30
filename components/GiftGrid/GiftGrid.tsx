@@ -15,7 +15,7 @@ const GiftGrid: FC<GiftGridProps> = ({ gifts }: GiftGridProps): ReactElement => 
         return (
           <Styled.GiftItem key={index} href={gift.gift.giftLink}>
             <Meta categories={{ nodes: [{ name: gift.gift.giftBrand }] }} />
-            <Thumbnail type='square' featuredImage={gift.featuredImage.node.sourceUrl} contain />
+            <Thumbnail type='square' featuredImage={gift.featuredImage.node.squareThumb} contain />
             <div>
               <Heading size={1} text={gift.title} noMargin />
               <Meta categories={{ nodes: [{ name: `£${gift.gift.giftPrice}` }] }} />

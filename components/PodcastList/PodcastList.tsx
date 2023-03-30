@@ -52,7 +52,7 @@ const PodcastList: FC = (): ReactElement => {
             return (
               <Styled.Podcast key={index}>
                 {mdAndAbove && (
-                  <Thumbnail size={2} type='circle' to={podcast.node.uri} featuredImage={podcast.node.featuredImage.node.sourceUrl} />
+                  <Thumbnail size={2} type='circle' to={podcast.node.uri} featuredImage={podcast.node.featuredImage.node.squareThumb} />
                 )}
                 <div>
                   <Meta date={podcast.node.date} inverse />

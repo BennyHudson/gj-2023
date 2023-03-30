@@ -36,7 +36,7 @@ const FullPageFeature: FC<FullPageFeatureProps> = ({ title, excerpt, uri, featur
   return (
     <>
       <Styled.Spacer></Styled.Spacer>
-      <Styled.Background opacity={opacity} backgroundImage={featuredImageUrl(featuredImage.node.sourceUrl)}>
+      <Styled.Background opacity={opacity} backgroundImage={featuredImageUrl(featuredImage.node.fullSize)}>
         <Styled.FullPageFeature headerHeight={headerHeight}>
           <Styled.Content>
             <Paragraph size={1} weight={3} text='Featured Article' inverse font='Cera' transform='uppercase' />

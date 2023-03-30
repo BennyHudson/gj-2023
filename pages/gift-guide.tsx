@@ -38,7 +38,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav, siteOptions, d
         title={pageData.ctaFirst.title}
         subtitle={pageData.ctaFirst.articleAcf.standfirst}
         url={pageData.ctaFirst.uri}
-        featuredImage={pageData.ctaFirst.featuredImage.node.sourceUrl}
+        featuredImage={pageData.ctaFirst.featuredImage.node.fullSize}
       />
       <Section>
         <GiftGuideFeature
@@ -46,7 +46,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav, siteOptions, d
           title={pageData.featuredGuides[0].title}
           subtitle={pageData.featuredGuides[0].articleAcf.standfirst}
           url={pageData.featuredGuides[0].uri}
-          featuredImage={pageData.featuredGuides[0].featuredImage.node.sourceUrl}
+          featuredImage={pageData.featuredGuides[0].featuredImage.node.fullSize}
           height={1}
         />
         <VerticalSpacer spacingLevel={4} />
@@ -60,7 +60,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav, siteOptions, d
         title={pageData.ctaSecond.title}
         subtitle={pageData.ctaSecond.articleAcf.standfirst}
         url={pageData.ctaSecond.uri}
-        featuredImage={pageData.ctaSecond.featuredImage.node.sourceUrl}
+        featuredImage={pageData.ctaSecond.featuredImage.node.fullSize}
       />
       <Section>
         <Title title={pageData.featuredBrandsTitle} />
@@ -76,7 +76,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav, siteOptions, d
         title={pageData.ctaThird.title}
         subtitle={pageData.ctaThird.articleAcf.standfirst}
         url={pageData.ctaThird.uri}
-        featuredImage={pageData.ctaThird.featuredImage.node.sourceUrl}
+        featuredImage={pageData.ctaThird.featuredImage.node.fullSize}
       />
       <Section>
         <Title title={pageData.selectedProductsSecond.title} />

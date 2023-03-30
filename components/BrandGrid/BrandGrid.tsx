@@ -12,7 +12,7 @@ const BrandGrid: FC<BrandGridProps> = ({ brands }: BrandGridProps): ReactElement
       {brands.map((brand, index) => {
         return (
           <Styled.BrandItem key={index}>
-            <Thumbnail type='square' featuredImage={brand.image.sourceUrl} href={brand.link} showTitle title={brand.name} />
+            <Thumbnail type='square' featuredImage={brand.image.squareThumb} href={brand.link} showTitle title={brand.name} />
           </Styled.BrandItem>
         )
       })}

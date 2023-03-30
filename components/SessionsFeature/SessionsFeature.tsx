@@ -24,7 +24,7 @@ const SessionsFeature: FC<SessionsFeatureProps> = ({ content, post }: SessionsFe
         <Styled.Thumbnail>
           <Thumbnail
             showTitle
-            featuredImage={post.featuredImage.node.sourceUrl}
+            featuredImage={post.featuredImage.node.postThumb}
             to={post.uri}
             title={post.title}
             date={post.date}
