@@ -13,6 +13,7 @@ import Payment from './components/Payment'
 
 import * as Styled from './styles/Checkout.style'
 import Notification from '@components/Notification'
+import Script from 'next/script'
 
 const Checkout: FC = ({ paymentIntent }): ReactElement => {
   const { setCart, getCustomerData, customer } = useContext(PageContext) as PageContextProps
@@ -97,7 +98,23 @@ const Checkout: FC = ({ paymentIntent }): ReactElement => {
   }, [stripe])
 
   if (message) {
-    return <Notification state={notificationState} text={message} />
+    return (
+      <>
+        {notificationState === 'success' &&
+          <Script id='google-conversion'>
+            {`
+              gtag('event', 'conversion', {
+                'send_to': 'AW-10918806122/4eoqCOWNncEDEOqEv9Yo',
+                'value': 59.95,
+                'currency': 'GBP',
+                'transaction_id': ''
+              });
+            `}
+          </Script>
+        }
+        <Notification state={notificationState} text={message} />
+      </>
+    )
   }
 
   return (

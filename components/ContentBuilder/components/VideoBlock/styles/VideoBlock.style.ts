@@ -1,6 +1,7 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 
 import { StyledVideoBlockProps } from './VideoBlock.style.types'
+import respondTo from '@mixins/respondTo'
 
 export const VideoBlock = styled.div(
   (props: StyledVideoBlockProps): FlattenSimpleInterpolation => css`
@@ -8,7 +9,15 @@ export const VideoBlock = styled.div(
     width: 100%;
     position: relative;
     margin-bottom: ${props.theme.spacing[4]}px;
-    grid-column: col-start 3 / span 7;
+    grid-column: col-start / span 12;
+
+    ${respondTo.md(css`
+      grid-column: col-start 2 / span 10;
+    `)}
+
+    ${respondTo.lg(css`
+      grid-column: col-start 3 / span 7;
+    `)}
 
     iframe {
       position: absolute;
