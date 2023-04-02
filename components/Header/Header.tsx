@@ -24,11 +24,12 @@ const Header: FC<HeaderProps> = ({ headerStyle = 'standard', headerNav }: Header
   const { setHeaderHeight } = useContext(PageContext) as PageContextProps
 
   const breakpoints = useBreakpoints()
-  const { mdAndBelow, lgAndAbove } = breakpoints
+  const { sm, mdAndBelow, lgAndAbove } = breakpoints
 
   const [transparent, setTransparent] = useState<HeaderState['transparent']>(headerStyle === 'feature')
   const [showMobileNav, setShowMobileNav] = useState(false)
   const [topPosition, setTopPosition] = useState(0)
+  const [gLogo, setGLogo] = useState(false)
 
   const announcementBar = headerNav.page.subscriptionPage.club.clubhouseOffer
   const showAnnouncementBar = !!announcementBar
@@ -50,6 +51,12 @@ const Header: FC<HeaderProps> = ({ headerStyle = 'standard', headerNav }: Header
         setTopPosition(announcement.current.clientHeight - scrollTop)
       }
     }
+
+    if (sm && scrollTop > 0) {
+      setGLogo(true)
+    } else {
+      setGLogo(false)
+    }
   }
 
   useEffect(() => {
@@ -65,7 +72,7 @@ const Header: FC<HeaderProps> = ({ headerStyle = 'standard', headerNav }: Header
     setTransparent(headerStyle === 'feature')
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
-  }, [headerStyle])
+  }, [headerStyle, breakpoints])
 
   return (
     <>
@@ -80,7 +87,7 @@ const Header: FC<HeaderProps> = ({ headerStyle = 'standard', headerNav }: Header
             </Styled.MobileTrigger>
           )}
           {lgAndAbove && <Time inverse={transparent} />}
-          <Logo inverse={transparent} />
+          <Logo inverse={transparent} gLogo={gLogo} />
           <SecondaryNav inverse={transparent} />
         </Styled.HeaderContents>
         {mdAndBelow && showMobileNav && <MobileNavigation inverse={transparent} navigation={headerNav} />}

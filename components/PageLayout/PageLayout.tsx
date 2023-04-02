@@ -16,7 +16,7 @@ const PageLayout: FC<PageLayoutProps> = ({
   headerNav,
   footerNav,
   seo,
-  headerStyle = 'feature',
+  headerStyle = 'standard',
   siteOptions,
   databaseId,
 }: PageLayoutProps): ReactElement => {

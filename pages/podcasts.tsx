@@ -28,14 +28,13 @@ const Podcasts: FC = ({ podcastOptions, headerNav, footerNav, siteOptions }): Re
 
   return (
     <PageLayout
-      headerStyle={sm ? 'standard' : 'feature'}
       headerNav={headerNav}
       footerNav={footerNav}
       seo={{ title: 'Podcasts | The Gentleman\'s Journal' }}
       siteOptions={siteOptions}
     >
       <FeatureCarousel
-        height={sm ? 1 : 2}
+        height={1}
         title='Podcasts'
         cta='Listen Now'
         posts={podcastOptions.featured.hero.map((podcast) => {

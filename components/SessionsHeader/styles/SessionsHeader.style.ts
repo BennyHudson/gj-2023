@@ -9,10 +9,10 @@ import respondTo from '@mixins/respondTo'
 export const SessionsHeader = styled.div(
   (props: StyledSessionsHeaderProps): FlattenSimpleInterpolation => css`
     ${Section} {
-      padding: ${props.headerHeight + props.theme.spacing[4]}px 0 0;
+      padding: ${props.theme.spacing[4]}px 0 0;
 
       ${respondTo.md(css`
-        padding: ${props.headerHeight + props.theme.spacing[8]}px 0 ${props.theme.spacing[8]}px;
+        padding: ${props.theme.spacing[8]}px 0 ${props.theme.spacing[8]}px;
       `)}
     }
   `,

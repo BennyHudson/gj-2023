@@ -19,8 +19,6 @@ const ShippingAddress: FC<ShippingAddressProps> = ({
   const [errorMessage, setErrorMessage] = useState()
   const { customer, customerId, cart, setShippingRate, getCustomerData } = useContext(PageContext) as PageContextProps
 
-  console.log(checkoutForm)
-
   return (
     <CheckoutPanel panelIndex={panelIndex} activePanel={activePanel} setActivePanel={setActivePanel} title='Voucher Code'>
       {activePanel === panelIndex && (

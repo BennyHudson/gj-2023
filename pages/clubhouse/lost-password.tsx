@@ -24,8 +24,6 @@ import featuredImageUrl from '@helpers/featuredImageUrl'
 const ClubPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
-  console.log(siteOptions)
-
   const [success, setSuccess] = useState(false)
 
   const router = useRouter()

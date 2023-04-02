@@ -33,7 +33,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav, siteOptions, d
   return (
     <PageLayout headerNav={headerNav} footerNav={footerNav} seo={seo} siteOptions={siteOptions} databaseId={databaseId}>
       <GiftGuideFeature
-        height={3}
+        height={2}
         meta={pageData.ctaFirst.categories.nodes[0].name}
         title={pageData.ctaFirst.title}
         subtitle={pageData.ctaFirst.articleAcf.standfirst}

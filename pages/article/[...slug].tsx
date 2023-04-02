@@ -52,7 +52,6 @@ const Article: FC<ArticleData> = ({ data, headerNav, footerNav, siteOptions }: A
 
   return (
     <PageLayout 
-      headerStyle={articleData.categories?.nodes.find((category) => category.name === 'Video') ? 'standard' : 'feature'} 
       headerNav={headerNav} 
       footerNav={footerNav} 
       seo={articleData?.seo} 
