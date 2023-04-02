@@ -56,7 +56,7 @@ const Home: FC = ({
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions} databaseId={pageData.databaseId}>
+    <PageLayout headerStyle='feature' headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions} databaseId={pageData.databaseId}>
       <FullPageFeature
         {...pageData.homeFeaturedPost.homeFeaturedPost}
         excerpt={pageData.homeFeaturedPost.homeFeaturedPost.articleAcf.standfirst}
