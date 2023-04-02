@@ -17,7 +17,7 @@ export const HeroImage = styled.div(
       height: ${props.height === 2 ? `calc(100vh - ${props.headerHeight}px)` : '80vh'};
 
       ${props.hasVideo && css`
-        height: calc(80vh - ${props.headerHeight}px);
+        height: calc(100vh - ${props.headerHeight}px);
       `}
     `)}
 
