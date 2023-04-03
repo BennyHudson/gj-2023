@@ -71,7 +71,7 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
                         </Link>
                       </Styled.PostTitle>
                       <Overlay />
-                      <Image src={featuredImageUrl(post.featuredImage.node.sourceUrl)!} fill alt='' key={index} priority={priority} />
+                      <Image src={featuredImageUrl(post.featuredImage.node.fullSize)!} fill alt='' key={index} priority={priority} />
                     </Styled.Slide>
                   )
                 })}
@@ -118,7 +118,7 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
           <Overlay />
           {posts.map((post, index) => {
             if (index !== activeIndex) return
-            return <Image src={featuredImageUrl(post.featuredImage.node.sourceUrl)!} fill alt='' key={index} priority={priority} />
+            return <Image src={featuredImageUrl(post.featuredImage.node.fullSize)!} fill alt='' key={index} priority={priority} />
           })}
         </Styled.ImageWrapper>
       )}

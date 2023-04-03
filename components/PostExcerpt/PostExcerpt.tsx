@@ -28,7 +28,7 @@ const PostExcerpt: FC<PostExcerptProps> = ({
 
   return (
     <Styled.PostExcerpt href={uri}>
-      <Thumbnail priority={priority} featuredImage={featuredImage?.node.sourceUrl} />
+      <Thumbnail priority={priority} featuredImage={featuredImage?.node.postThumb} />
       <Styled.Body>
         <Meta categories={categories} date={date} inverse={inverse} />
         <Styled.Title inverse={inverse}>

@@ -1,5 +1,7 @@
 import { gql } from '@apollo/client'
 
+import { media } from './media'
+
 export interface Article {
   id: string
   title: string
@@ -8,7 +10,9 @@ export interface Article {
   databaseId: number
   featuredImage?: {
     node: {
-      sourceUrl: string
+      fullSize: string
+      postThumb: string
+      squareThumb: string
     }
   }
   categories?: {
@@ -31,7 +35,7 @@ export const articleContent = gql`
     databaseId
     featuredImage {
       node {
-        sourceUrl
+        ${media()}
       }
     }
     categories {
