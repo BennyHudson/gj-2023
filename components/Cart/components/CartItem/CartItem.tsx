@@ -13,6 +13,7 @@ import { productQuery } from '@queries/products/product'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/pro-light-svg-icons'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { ProductData } from '@typings/ProductData.types'
 
 const CartItem: FC<CartItemProps> = ({ productId, removeable, voucher }: CartItemProps): ReactElement => {
   const { setCart, shippingRate } = useContext(PageContext) as PageContextProps
@@ -24,18 +25,18 @@ const CartItem: FC<CartItemProps> = ({ productId, removeable, voucher }: CartIte
     localStorage.removeItem('cart')
   }
 
-  const calculateVoucherDiscount = (subscriptionPrice): string => {
+  const calculateVoucherDiscount = (subscriptionPrice: string): string => {
     const price = parseFloat(subscriptionPrice)
 
-    if (voucher.discount_type === 'percent') {
+    if (voucher && voucher.discount_type === 'percent') {
       const percentageDiscount = Math.trunc(voucher.amount)
       return `${(price - (price * (percentageDiscount / 100))).toFixed(2)} for the first year - Voucher Code: ${voucher.code}`
     }
 
-    return `${(price - parseFloat(voucher.amount)).toFixed(2)} for the first year - Voucher Code: ${voucher.code}`
+    return `${(price - parseFloat(voucher!.amount as unknown as string)).toFixed(2)} for the first year - Voucher Code: ${voucher!.code}`
   }
 
-  const getProductPrice = (productData) => {
+  const getProductPrice = (productData: ProductData) => {
     const { signUpFee, salePrice, subscriptionPeriod, subscriptionPrice } = productData.product
     const onSale = parseFloat(salePrice) > parseFloat(signUpFee)
 
@@ -44,7 +45,7 @@ const CartItem: FC<CartItemProps> = ({ productId, removeable, voucher }: CartIte
         return calculateVoucherDiscount(subscriptionPrice)
       }
 
-      if (voucher.product_ids.length && !voucher.product_ids?.find(validProduct => validProduct === productData.product.databaseId)) {
+      if (voucher.product_ids?.length && !voucher.product_ids?.find(validProduct => validProduct === productData.product.databaseId)) {
         return subscriptionPrice
       }
 

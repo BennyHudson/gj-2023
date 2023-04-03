@@ -5,11 +5,11 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faCheck } from '@fortawesome/pro-thin-svg-icons'
 
 import FieldWrapper from '@components/FieldWrapper'
+import RawHtmlWrapper from '@components/RawHtmlWrapper'
 
 import * as Styled from './styles/CheckboxList.style'
 
 import { CheckboxListProps } from './CheckboxList.types'
-import RawHtmlWrapper from '@components/RawHtmlWrapper'
 
 const CheckboxList: FC<CheckboxListProps> = ({
   target,
@@ -25,6 +25,7 @@ const CheckboxList: FC<CheckboxListProps> = ({
   return (
     <>
       <FieldWrapper
+        id={id}
         target={target}
         label={label}
         required={isRequired}

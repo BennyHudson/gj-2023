@@ -31,8 +31,9 @@ export const CartItems = styled.div(
   `,
 )
 
+type CartItemProps = Pick<StyledCartProps, 'theme'>
 export const CartItem = styled.div(
-  (props: StyledCartProps): FlattenSimpleInterpolation => css`
+  (props: CartItemProps): FlattenSimpleInterpolation => css`
     border-bottom: 1px solid ${props.theme.colours.midGrey};
     padding-bottom: ${props.theme.spacing[4]}px;
     display: flex;

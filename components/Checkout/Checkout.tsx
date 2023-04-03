@@ -1,8 +1,11 @@
 import React, { ReactElement, FC, useState, useContext, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useStripe } from '@stripe/react-stripe-js'
+import Script from 'next/script'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
+
+import Notification from '@components/Notification'
 
 import CustomerDetails from './components/CustomerDetails'
 import BillingAddress from './components/BillingAddress'
@@ -12,17 +15,17 @@ import OrderSummary from './components/OrderSummary'
 import Payment from './components/Payment'
 
 import * as Styled from './styles/Checkout.style'
-import Notification from '@components/Notification'
-import Script from 'next/script'
 
-const Checkout: FC = ({ paymentIntent }): ReactElement => {
+import { CheckoutProps, CheckoutState } from './Checkout.types'
+
+const Checkout: FC<CheckoutProps> = ({ paymentIntent }: CheckoutProps): ReactElement => {
   const { setCart, getCustomerData, customer } = useContext(PageContext) as PageContextProps
 
-  const [activePanel, setActivePanel] = useState(1)
-  const [message, setMessage] = useState('')
-  const [checkoutForm, setCheckoutForm] = useState()
-  const [isLoading, setIsLoading] = useState(false)
-  const [notificationState, setNotificationState] = useState('error')
+  const [activePanel, setActivePanel] = useState<CheckoutState['activePanel']>(1)
+  const [message, setMessage] = useState<CheckoutState['message']>('')
+  const [checkoutForm, setCheckoutForm] = useState<CheckoutState['checkoutForm']>()
+  const [isLoading, setIsLoading] = useState<CheckoutState['isLoading']>(false)
+  const [notificationState, setNotificationState] = useState<CheckoutState['notificationState']>('error')
 
   const stripe = useStripe()
   const router = useRouter()
@@ -39,6 +42,8 @@ const Checkout: FC = ({ paymentIntent }): ReactElement => {
     }
 
     stripe.retrievePaymentIntent(clientSecret).then(async ({ paymentIntent }) => {
+      if (!paymentIntent) return 
+
       const { payment_method, status } = paymentIntent
 
       const paymentMethod = await fetch('/api/checkout/save-payment-method', {
@@ -123,7 +128,6 @@ const Checkout: FC = ({ paymentIntent }): ReactElement => {
         activePanel={activePanel}
         panelIndex={1}
         setActivePanel={setActivePanel}
-        checkoutForm={checkoutForm}
         setCheckoutForm={setCheckoutForm}
       />
       <BillingAddress

@@ -1,10 +1,7 @@
+import { FormFieldProps } from '@typings/FormField.types'
 import { ReactNode } from 'react'
 
-export interface FieldWrapperProps {
+export interface FieldWrapperProps extends FormFieldProps {
   children: ReactNode
-  target: string
-  label: string
-  required: boolean
-  hideLabels?: boolean
-  labelPlacement?: 'TOP' | 'BOTTOM'
+  required?: boolean
 }

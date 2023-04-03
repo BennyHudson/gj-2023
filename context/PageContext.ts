@@ -1,4 +1,6 @@
-import React, { createContext } from 'react'
+import { createContext } from 'react'
+
+import { Shipping } from '@typings/Shipping.types'
 
 interface Customer {
   id: number
@@ -48,9 +50,10 @@ export interface PageContextProps {
   setCart: (cart: number[]) => void
   customer: Customer | null
   setCustomer: (customer?: Customer) => void
-  shippingRate: number
+  shippingRate: Shipping
   setShippingRate: (shippingRate: number) => void
   showToolbar: boolean
+  getCustomerData: (id: number) => void
 }
 
 export default createContext<Partial<PageContextProps>>({})

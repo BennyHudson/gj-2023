@@ -1,5 +1,7 @@
-import { ReactNode } from 'react'
-
 export interface BillingAddressProps {
-  children: ReactNode
+  panelIndex: number
+  activePanel: number
+  setActivePanel: (activePanel: number) => void
+  setCheckoutForm: (checkoutForm: unknown) => void
+  checkoutForm: unknown
 }

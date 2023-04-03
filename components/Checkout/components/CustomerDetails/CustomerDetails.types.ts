@@ -1,5 +1,6 @@
-import { ReactNode } from 'react'
-
 export interface CustomerDetailsProps {
-  children: ReactNode
+  panelIndex: number
+  activePanel: number
+  setActivePanel: (activePanel: number) => void
+  setCheckoutForm: (checkoutForm: unknown) => void
 }

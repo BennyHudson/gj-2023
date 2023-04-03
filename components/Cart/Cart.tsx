@@ -11,7 +11,6 @@ import * as Styled from './styles/Cart.style'
 
 import { CartProps } from './Cart.types'
 import EditButton from '@components/EditButton'
-import Heading from '@components/Heading/Heading'
 
 const Cart: FC<CartProps> = ({ viewOnly = false, voucher }: CartProps): ReactElement => {
   const { cart } = useContext(PageContext) as PageContextProps
