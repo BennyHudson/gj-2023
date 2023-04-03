@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client'
+import { media } from './media'
 
 export interface HouseNote {
   title: string
@@ -30,7 +31,7 @@ export const houseNoteContent = gql`
     }
     featuredImage {
       node {
-        sourceUrl
+        ${media()}
       }
     }
     author {

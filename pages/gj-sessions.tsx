@@ -31,7 +31,7 @@ const SessionsPage: FC = ({ pageData, featuredArticle, headerNav, footerNav, sit
         <TitleAndIntro title={pageData.title.toUpperCase()} intro={pageData.sessions.sessions.sessionsIntroText} inverse />
         <Thumbnail
           showTitle
-          featuredImage={featuredArticle.articles.nodes[0].featuredImage.node.sourceUrl}
+          featuredImage={featuredArticle.articles.nodes[0].featuredImage.node.large}
           to={featuredArticle.articles.nodes[0].uri}
           title={featuredArticle.articles.nodes[0].title}
           date={featuredArticle.articles.nodes[0].date}

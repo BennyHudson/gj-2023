@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client'
+import { media } from './media'
 
 export interface Post {
   id: string
@@ -31,7 +32,7 @@ export const postContent = gql`
     databaseId
     featuredImage {
       node {
-        sourceUrl
+        ${media()}
       }
     }
     categories {

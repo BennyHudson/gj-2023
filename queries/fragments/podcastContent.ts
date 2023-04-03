@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client'
+import { media } from './media'
 
 export interface Podcast {
   uri: string
@@ -31,7 +32,7 @@ export const podcastContent = gql`
     date
     featuredImage {
       node {
-        sourceUrl
+        ${media()}
       }
     }
     podcasts {

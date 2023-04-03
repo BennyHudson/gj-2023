@@ -34,7 +34,7 @@ const PodcastGrid: FC<PodcastGridProps> = ({ podcasts }: PodcastGridProps): Reac
   return (
     <Styled.PodcastGrid>
       <Styled.FeaturedPodcast>
-        <Thumbnail to={podcasts[0].uri} featuredImage={podcasts[0].featuredImage.node.sourceUrl} />
+        <Thumbnail to={podcasts[0].uri} featuredImage={podcasts[0].featuredImage.node.medium} />
         <Styled.FeatureDetails href={podcasts[0].uri}>
           <Meta date={podcasts[0].date} />
           <Heading text={podcasts[0].title} size={3} font='ChronicleCondensed' />
@@ -72,7 +72,7 @@ const PodcastGrid: FC<PodcastGridProps> = ({ podcasts }: PodcastGridProps): Reac
           {podcasts.slice(1).map((podcast, index) => {
             return (
               <Styled.Podcast key={index}>
-                <Thumbnail type='circle' to={podcast.uri} featuredImage={podcast.featuredImage.node.sourceUrl} />
+                <Thumbnail type='circle' to={podcast.uri} featuredImage={podcast.featuredImage.node.squareThumb} />
                 <Styled.PodcastDetails href={podcast.uri}>
                   <Meta date={podcasts[0].date} />
                   <Heading size={1} text={podcast.title} font='ChronicleCondensed' />

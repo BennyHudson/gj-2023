@@ -52,7 +52,7 @@ const SessionsFeed: FC = (): ReactElement => {
         <Styled.Column>
           {data && (
             <Styled.SundayPlaylist>
-              <Thumbnail featuredImage={sundayPlaylist.featuredImage.node.sourceUrl} to={sundayPlaylist.uri} type='circle' size={2} />
+              <Thumbnail featuredImage={sundayPlaylist.featuredImage.node.squareThumb} to={sundayPlaylist.uri} type='circle' size={2} />
               <div>
                 <Heading text={sundayPlaylist.title} inverse size={2} />
                 <Paragraph text={sundayPlaylist.articleAcf.standfirst} inverse size={1} font='Cera' />

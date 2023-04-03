@@ -33,7 +33,7 @@ const PodcastContent: FC<PodcastContentProps> = ({
     <Section containerWidth='narrow'>
       <Styled.Header>
         <Meta date={date} />
-        {featuredImage && <Thumbnail featuredImage={featuredImage.node.sourceUrl} type='circle' size={3} />}
+        {featuredImage && <Thumbnail featuredImage={featuredImage.node.squareThumb} type='circle' size={3} />}
         <div>
           <Heading size={5} text={title} font='ChronicleCondensed' />
           <Heading size={1} appearance='secondary' font='Cera' transform='uppercase' text={podcastMeta} />
