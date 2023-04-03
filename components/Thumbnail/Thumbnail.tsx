@@ -1,6 +1,6 @@
 import React, { ReactElement, FC } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
+// import Image from 'next/image'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
@@ -43,13 +43,13 @@ const Thumbnail: FC<ThumbnailProps> = ({
         </>
       )}
       {featuredImage && (
-        <Image
+        <img
           src={featuredImageUrl(featuredImage)!}
           width={type === 'circle' ? 400 : 900}
           height={type === 'circle' ? 400 : 600}
           alt=''
-          quality={100}
-          priority={priority}
+          // quality={100}
+          // priority={priority}
         />
       )}
     </Styled.Thumbnail>
