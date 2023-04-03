@@ -59,7 +59,7 @@ const Article: FC<ArticleData> = ({ data, headerNav, footerNav, siteOptions }: A
       databaseId={articleData.databaseId}
     >
       {articleData.featuredImage && (
-        <HeroImage featuredImage={articleData.featuredImage.node.sourceUrl} featuredVideo={articleData.articleAcf.featuredVideo} />
+        <HeroImage featuredImage={articleData.featuredImage.node.fullSize} featuredVideo={articleData.articleAcf.featuredVideo} />
       )}
       <BannerAdvert parent='GJ_728x90_001_0' paddingLevel={1} />
       <Section>
