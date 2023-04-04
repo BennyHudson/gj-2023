@@ -16,7 +16,7 @@ import * as Styled from './styles/LoginForm.style'
 import { LoginFormProps } from './LoginForm.types'
 
 const LoginForm: FC<LoginFormProps> = (): ReactElement => {
-  const { setToken, setCustomer, setCustomerId } = useContext(PageContext) as PageContextProps
+  const { setToken, setCustomer, setCustomerId, getCustomerData } = useContext(PageContext) as PageContextProps
   const [forgotPassword, setForgotPassword] = useState(false)
   const [loginError, setLoginError] = useState()
   const [loading, setLoading] = useState(false)
@@ -98,6 +98,7 @@ const LoginForm: FC<LoginFormProps> = (): ReactElement => {
         setCustomer(customerData)
         setCustomerId(customerData.id)
         setToken(customer.data.token)
+        getCustomerData(customerData.id)
         localStorage.setItem('gjToken', customer.data.token)
 
         setLoading(false)

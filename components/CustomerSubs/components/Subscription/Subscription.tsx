@@ -28,6 +28,8 @@ const Subscription: FC<SubscriptionProps> = ({ subscription }: SubscriptionProps
   }
 
   const getCardDetails = async () => {
+    if (!stripeCustomerId || !paymentMethod) return
+    
     const paymentDetails = await fetch('/api/subscription/get-card-details', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
