@@ -81,7 +81,7 @@ export async function getStaticProps({ preview = false, params }: StaticPaths) {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
   const siteOptions = await client.query(siteOptionsQuery)
-  const response = await client.query(houseNoteBodyQuery(slug, preview))
+  const response = await client.query(houseNoteBodyQuery(slug[0], preview))
 
   if (!response.data.houseNote) {
     return {
