@@ -97,8 +97,8 @@ export async function getStaticPaths() {
   const allArticles = await getAllPosts('article')
 
   const paths = allArticles.map((article) => {
-    if (!article) return
-    if (!article.node) return
+    // if (!article) return
+    // if (!article.node) return
     return {
       params: {
         slug: [article.node.slug],
@@ -118,7 +118,9 @@ export async function getStaticProps({ preview = false, params }: StaticPaths) {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
   const siteOptions = await client.query(siteOptionsQuery)
-  const article = await client.query(articleBody(slug, preview))
+  const article = await client.query(articleBody(slug[0], preview))
+
+  console.log(slug[0])
 
   if (!article.data.article) {
     return {
