@@ -40,12 +40,12 @@ const HeadTags: FC<HeadTagsProps> = ({ seo, siteOptions }: HeadTagsProps): React
       <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
       <title>{he.decode(seo.title)}</title>
       {seo.metaDesc && <meta name='description' content={he.decode(seo.metaDesc)} />}
-      {seo.canonical && <link rel='canonical' href={seo.canonical}></link>}
+      {seo.canonical && <link rel='canonical' href={seo.canonical.replace('cms.', '')}></link>}
       <meta property='og:locale' content='en_GB' />
       {seo.opengraphType && <meta property='og:type' content={seo.opengraphType} />}
       {seo.opengraphTitle && <meta property='og:title' content={he.decode(seo.opengraphTitle)} />}
       {seo.opengraphDescription && <meta property='og:description' content={he.decode(seo.opengraphDescription)} />}
-      {seo.opengraphUrl && <meta property='og:url' content={seo.opengraphUrl} />}
+      {seo.opengraphUrl && <meta property='og:url' content={seo.opengraphUrl.replace('cms.', '')} />}
       {seo.opengraphSiteName && <meta property='og:site_name' content={he.decode(seo.opengraphSiteName)} />}
       {seo.opengraphPublisher && <meta property='article:publisher' content={he.decode(seo.opengraphPublisher)} />}
       {seo.opengraphImage && <meta property='og:image' content={featuredImageUrl(seo.opengraphImage.sourceUrl)} />}
