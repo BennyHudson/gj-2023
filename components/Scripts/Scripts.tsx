@@ -27,11 +27,14 @@ const Scripts: FC = (): ReactElement => {
         `}
       </Script>
       <noscript>
-        <img height="1" width="1" style="display:none"
-          src="https://www.facebook.com/tr?id=467180983664563&ev=PageView&noscript=1"
+        <img 
+          height='1' 
+          width='1' 
+          style={{ display: 'none' }}
+          src='https://www.facebook.com/tr?id=467180983664563&ev=PageView&noscript=1'
         />
       </noscript>
-      <Script strategy='afterInteractive' src="https://www.googletagmanager.com/gtag/js?id=AW-10918806122" />
+      <Script strategy='afterInteractive' src='https://www.googletagmanager.com/gtag/js?id=AW-10918806122' />
       <Script id='googlePixel'>
         {`
           window.dataLayer = window.dataLayer || [];
@@ -40,7 +43,7 @@ const Scripts: FC = (): ReactElement => {
           gtag('config', 'AW-10918806122');
         `}
       </Script>
-      <Script strategy='afterInteractive' src="https://www.googletagmanager.com/gtag/js?id=G-YVYM9T292G" />
+      <Script strategy='afterInteractive' src='https://www.googletagmanager.com/gtag/js?id=G-YVYM9T292G' />
       <Script id='googleAnalytics'>
         {`
           window.dataLayer = window.dataLayer || [];
