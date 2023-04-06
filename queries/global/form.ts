@@ -39,6 +39,7 @@ export const formQuery = (formId: number) => {
               ... on CheckboxField {
                 label
                 isRequired
+                description
                 choices {
                   text
                   value
