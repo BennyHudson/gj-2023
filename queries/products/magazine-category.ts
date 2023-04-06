@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 
-export const magazineCategoryQuery = (count = 500) => {
+export const magazineCategoryQuery = (count = 1) => {
   return {
     query: gql`
       query magazineCategoryQuery {
