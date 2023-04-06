@@ -91,7 +91,7 @@ export async function getStaticProps({ preview = false, params }) {
       partners: partners.data.partners.nodes,
       club: clubPage.data.page.subscriptionPage.club,
       subscriptionProducts: subscriptionProducts.data.products.nodes,
-      freeGift: freeGift.data.products.nodes[0],
+      freeGift: freeGift.data.products.nodes.length > 0 && freeGift.data.products.nodes[0],
     },
     // revalidate: 60,
   }

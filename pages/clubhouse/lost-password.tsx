@@ -129,7 +129,7 @@ export async function getStaticProps() {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
       subscriptionProducts: subscriptionProducts.data.products.nodes,
-      freeGift: freeGift.data.products.nodes[0],
+      freeGift: freeGift.data.products.nodes.length > 0 && freeGift.data.products.nodes[0],
       siteOptions: siteOptions.data,
     },
   }
