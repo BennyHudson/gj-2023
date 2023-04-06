@@ -32,7 +32,7 @@ export const getAllPosts = async (postType: string): Promise<{ cursor: string; n
   // let hasNextPage = true
   let after = ''
 
-  while (allPosts.length < 1) {
+  while (allPosts.length < parseInt(process.env.NEXT_PUBLIC_API_REQUEST_VOLUME!)) {
     const posts = await client.query(queryPostType(postType, after))
     if (posts) {
       allPosts.push(...posts.data[`${postType}s`].edges)
@@ -48,7 +48,7 @@ export const getAllPosts = async (postType: string): Promise<{ cursor: string; n
 export const getAllProducts = async (): Promise<{ node: { slug: string } }[]> => {
   const allPosts = []
 
-  while (allPosts.length < 1) {
+  while (allPosts.length < parseInt(process.env.NEXT_PUBLIC_API_REQUEST_VOLUME!)) {
     const posts = await client.query(magazineCategoryQuery())
     if (posts) {
       allPosts.push(...posts.data.productCategory.products.edges)
