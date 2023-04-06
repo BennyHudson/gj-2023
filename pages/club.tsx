@@ -36,7 +36,7 @@ const ClubPage: FC = ({ pageData, headerNav, footerNav, subscriptionProducts, fr
         featuredImage={pageData.featuredImage.node.sourceUrl}
       />
       <ClubOverview overview={subscriptionOverview} />
-      <ClubGift freeGift={freeGift} />
+      {freeGift && <ClubGift freeGift={freeGift} />}
       <ClubBuy products={subscriptionProducts} freeGift={freeGift} offerCode={pageData.subscriptionPage.club.clubhouseOffer} />
       <Section>
         <ClubPerks perks={pageData.subscriptionPage.club.subscriptionPerks} title='Join the club.' subtitle='Scroll to see the perks' />
@@ -63,7 +63,7 @@ export async function getStaticProps() {
       siteOptions: siteOptions.data,
       pageData: clubPage.data.page,
       subscriptionProducts: subscriptionProducts.data.products.nodes,
-      freeGift: freeGift.data.products.nodes[0],
+      freeGift: freeGift.data.products.nodes.length > 0 && freeGift.data.products.nodes[0],
       subscriptionOverview: clubPage.data.product.subscriptionPerks.subscriptionPerks,
     },
   }

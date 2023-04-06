@@ -17,8 +17,13 @@ const ClubBuy: FC = ({ products, freeGift, offerCode }): ReactElement => {
   const { setCart } = useContext(PageContext) as PageContextProps
 
   const addToCart = (selectedProduct) => {
-    setCart([selectedProduct.databaseId, freeGift.databaseId])
-    localStorage.setItem('cart', `${selectedProduct.databaseId},${freeGift.databaseId}`)
+    if (freeGift) {
+      setCart([selectedProduct.databaseId, freeGift.databaseId])
+      localStorage.setItem('cart', `${selectedProduct.databaseId},${freeGift.databaseId}`)
+    } else {
+      setCart([selectedProduct.databaseId])
+      localStorage.setItem('cart', `${selectedProduct.databaseId}`)
+    }
     router.push('/cart')
   }
 
