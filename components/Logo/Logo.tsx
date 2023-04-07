@@ -7,7 +7,7 @@ import { LogoProps } from './Logo.types'
 
 const Logo: FC<LogoProps> = ({ inverse = false, gLogo = false }: LogoProps): ReactElement => {
   return (
-    <Styled.Logo gLogo={gLogo}>
+    <Styled.Logo>
       <Styled.LogoLink href='/' $inverse={inverse} $gLogo={gLogo} />
     </Styled.Logo>
   )
