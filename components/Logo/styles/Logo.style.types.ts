@@ -1,3 +1,4 @@
 export interface StyledLogoProps {
-  gLogo: boolean
+  $gLogo: boolean
+  $inverse: boolean
 }

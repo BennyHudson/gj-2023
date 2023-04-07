@@ -32,7 +32,7 @@ const WeeklyHighlight: FC<Post> = ({ title, excerpt, uri, date, categories, feat
             Read More
           </GJLink>
         </Styled.Content>
-        <Thumbnail to={uri} featuredImage={featuredImage.node.medium} />
+        <Thumbnail to={uri} featuredImage={featuredImage.node.large} />
       </Styled.WeeklyHighlight>
     </Section>
   )
