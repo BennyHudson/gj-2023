@@ -1,7 +1,5 @@
 import styled, { FlattenSimpleInterpolation, css } from 'styled-components'
 
-import { StyledPageLayoutProps } from './PageLayout.style.types'
-
 export const PageLayout = styled.main(
   (): FlattenSimpleInterpolation => css`
     display: flex;

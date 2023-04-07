@@ -101,6 +101,8 @@ const Payment: FC<PaymentProps> = ({
             },
           })
 
+          console.log(error)
+
           setIsLoading(false)
         }}
       >

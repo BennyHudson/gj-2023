@@ -1,5 +1,4 @@
 import React, { ReactElement, FC } from 'react'
-import Image from 'next/image'
 
 import * as Styled from './styles/Logo.style'
 

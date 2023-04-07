@@ -26,8 +26,8 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
 
   const [confirmationMessage, setConfirmationMessage] = useState()
   const [validationMessages, setValidationMessages] = useState({})
-  const [isValid, setIsValid] = useState(true)
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  // const [isValid, setIsValid] = useState(true)
+  // const [isSubmitting, setIsSubmitting] = useState(false)
 
   if (loading) return <div>Loading...</div>
 
@@ -51,7 +51,7 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
     <Formik
       initialValues={initialValues}
       onSubmit={async (values) => {
-        setIsSubmitting(true)
+        // setIsSubmitting(true)
 
         const formResponse = await fetch(`/api/forms/${formId}`, {
           method: 'POST',
@@ -61,8 +61,8 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
 
         const response = await formResponse.json()
 
-        setIsSubmitting(false)
-        setIsValid(response.is_valid)
+        // setIsSubmitting(false)
+        // setIsValid(response.is_valid)
 
         if (response.status === 200) {
           setConfirmationMessage(response.confirmation_message)

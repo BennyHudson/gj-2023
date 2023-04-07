@@ -11,7 +11,7 @@ export const HideOverflow = createGlobalStyle((): FlattenSimpleInterpolation => 
   }
 `)
 
-export const NewsletterModal = styled.div((props: StyledNewsletterModalProps): FlattenSimpleInterpolation => css`
+export const NewsletterModal = styled.div((): FlattenSimpleInterpolation => css`
   position: fixed;
   top: 0;
   left: 0;

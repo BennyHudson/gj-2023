@@ -1,23 +1,19 @@
-import React, { ReactElement, FC, useContext, useState } from 'react'
+import React, { ReactElement, FC, useState } from 'react'
 import { Form, Formik } from 'formik'
 
-import { ShippingAddressProps } from './ShippingAddress.types'
+import { VoucherCodeProps } from './VoucherCode.types'
 import CheckoutPanel from '../CheckoutPanel'
-import PageContext, { PageContextProps } from '@context/PageContext'
-import ShippingForm from '@components/ShippingForm'
-import { shippingValidation } from '@components/ShippingForm/ShippingForm'
 import TextField from '@components/TextField'
 import EditButton from '@components/EditButton'
 
-const ShippingAddress: FC<ShippingAddressProps> = ({
+const VoucherCode: FC<VoucherCodeProps> = ({
   panelIndex,
   activePanel,
   setActivePanel,
   checkoutForm,
   setCheckoutForm,
-}: ShippingAddressProps): ReactElement => {
+}: VoucherCodeProps): ReactElement => {
   const [errorMessage, setErrorMessage] = useState()
-  const { customer, customerId, cart, setShippingRate, getCustomerData } = useContext(PageContext) as PageContextProps
 
   return (
     <CheckoutPanel panelIndex={panelIndex} activePanel={activePanel} setActivePanel={setActivePanel} title='Voucher Code'>
@@ -55,7 +51,7 @@ const ShippingAddress: FC<ShippingAddressProps> = ({
             setActivePanel(activePanel + 1)
           }}
         >
-          {(props) => (
+          {() => (
             <Form>
               <TextField label='Got a voucher code? Enter it here:' id='voucherCode' target='voucherCode' validationMessage={errorMessage} />
               <EditButton text='Continue' type='submit' />
@@ -67,4 +63,4 @@ const ShippingAddress: FC<ShippingAddressProps> = ({
   )
 }
 
-export default ShippingAddress
+export default VoucherCode

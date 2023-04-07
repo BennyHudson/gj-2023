@@ -16,11 +16,9 @@ import PodcastCarousel from '@components/PodcastCarousel'
 import Divider from '@components/Divider'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
-import { useBreakpoints } from '@hooks/useBreakpoints'
 
 const Podcasts: FC = ({ podcastOptions, headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
-  const { sm } = useBreakpoints()
 
   useEffect(() => {
     setActiveNavElement(3)

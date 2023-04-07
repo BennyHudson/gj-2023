@@ -15,7 +15,6 @@ import AffiliateProductBlock from './components/AffiliateProductBlock'
 import { ContentBuilderProps } from './ContentBuilder.types'
 import PageContext, { PageContextProps } from '@context/PageContext'
 import Paywall from '@components/Paywall'
-import Heading from '@components/Heading/Heading'
 
 const ContentBuilder: FC<ContentBuilderProps> = ({ content, prefix, membersOnly = false }: ContentBuilderProps): ReactElement => {
   const { subscriptions } = useContext(PageContext) as PageContextProps
