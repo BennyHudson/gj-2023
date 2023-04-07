@@ -8,7 +8,7 @@ const queryPostType = (postType: string, after?: string) => {
   return {
     query: gql`
       query getAll {
-        ${postType}s(first: 100, after: "${after}") {
+        ${postType}s(first: 1, after: "${after}") {
           pageInfo {
             hasNextPage
             hasPreviousPage

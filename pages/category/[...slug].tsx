@@ -71,7 +71,7 @@ export async function getStaticPaths() {
   const getAllCategories = await client.query({
     query: gql`
       query allCats {
-        categories(first: 100) {
+        categories(first: 1) {
           nodes {
             uri
           }
