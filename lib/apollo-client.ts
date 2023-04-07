@@ -13,6 +13,7 @@ const authLink = setContext((_, { headers }) => {
       ...headers,
       authorization: previewToken ? `Basic ${previewToken}` : '',
     },
+    // useGETForQueries: true,
   }
 })
 
