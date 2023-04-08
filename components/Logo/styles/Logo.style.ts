@@ -19,7 +19,6 @@ export const LogoLink = styled(Link)(
     align-items: center;
     max-width: 230px;
     height: 28px;
-    background-size: contain;
     width: 100%;
 
     ${respondTo.md(css`
@@ -31,5 +30,7 @@ export const LogoLink = styled(Link)(
     ` : css`
       background: url('${props.$inverse ? '/svg/logo-inverse.svg' : '/svg/logo.svg'}') center center no-repeat;
     `}
+
+    background-size: contain;
   `,
 )
