@@ -8,6 +8,6 @@ export interface FormFieldProps {
   hideLabels?: boolean
   type?: 'password' | 'email' | 'telephone' | 'number'
   validationMessage?: string
-  labelPlacement?: 'TOP' | 'HIDDEN'
+  labelPlacement?: 'TOP' | 'HIDDEN' | 'BOTTOM'
   description?: string
 }

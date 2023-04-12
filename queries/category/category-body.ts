@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client'
 
 import { categorySeo } from '@queries/fragments/categorySeo'
-import { Seo } from '@queries/fragments/seo'
+import type { Seo } from '@queries/fragments/seo'
 
 export interface CategoryBody {
   name: string
