@@ -48,7 +48,7 @@ export const clubQuery = {
               title
               subtitle
             }
-            brands {
+            clubhouseBrands {
               title
               logo {
                 sourceUrl
