@@ -6,7 +6,7 @@ import BillingForm, { billingValidation } from '@components/BillingForm'
 import type { PageContextProps } from '@context/PageContext'
 import PageContext from '@context/PageContext'
 
-import { BillingAddress } from '@typings/BillingAddress.types'
+import { BillingAddressProps as BAProps } from '@typings/BillingAddress.types'
 
 import type { BillingAddressProps } from './BillingAddress.types'
 import CheckoutPanel from '../CheckoutPanel'
@@ -39,7 +39,7 @@ const BillingAddress: FC<BillingAddressProps> = ({
               country: customer?.billing?.country || '',
             },
           }}
-          onSubmit={async (values: { billing: BillingAddress}) => {
+          onSubmit={async (values: { billing: BAProps}) => {
             const updateUser = await fetch(`/api/user/update/${customer?.id || customerId}`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },

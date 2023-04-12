@@ -1,4 +1,4 @@
-export interface BillingAddress {
+export interface BillingAddressProps {
   first_name?: string
   last_name?: string
   email?: string
