@@ -6,7 +6,7 @@ import BillingForm, { billingValidation } from '@components/BillingForm'
 import type { PageContextProps } from '@context/PageContext'
 import PageContext from '@context/PageContext'
 
-import { BillingAddressProps as BAProps } from '@typings/BillingAddress.types'
+import type { BillingAddressProps as BAProps } from '@typings/BillingAddress.types'
 
 import type { BillingAddressProps } from './BillingAddress.types'
 import CheckoutPanel from '../CheckoutPanel'
