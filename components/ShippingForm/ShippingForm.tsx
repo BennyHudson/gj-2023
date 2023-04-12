@@ -23,7 +23,11 @@ export const shippingValidation = Yup.object().shape({
   }),
 })
 
-const ShippingForm: FC<ShippingFormProps> = (props: ShippingFormProps): ReactElement => {
+const ShippingForm: FC<ShippingFormProps> = ({
+  billingAddress,
+  setFieldValue,
+  errors,
+}): ReactElement => {
   const { customer } = useContext(PageContext) as PageContextProps
 
   return (
@@ -32,12 +36,12 @@ const ShippingForm: FC<ShippingFormProps> = (props: ShippingFormProps): ReactEle
         <EditButton
           type='button'
           onClick={() => {
-            props.setFieldValue('shipping.address_1', customer?.billing?.address_1 || props.billingAddress.address_1)
-            props.setFieldValue('shipping.address_2', customer?.billing?.address_2 || props.billingAddress.address_2)
-            props.setFieldValue('shipping.city', customer?.billing?.city || props.billingAddress.city)
-            props.setFieldValue('shipping.state', customer?.billing?.state || props.billingAddress.state)
-            props.setFieldValue('shipping.postcode', customer?.billing?.postcode || props.billingAddress.postcode)
-            props.setFieldValue('shipping.country', customer?.billing?.country || props.billingAddress.country)
+            setFieldValue('shipping.address_1', customer?.billing?.address_1 || billingAddress.address_1)
+            setFieldValue('shipping.address_2', customer?.billing?.address_2 || billingAddress.address_2)
+            setFieldValue('shipping.city', customer?.billing?.city || billingAddress.city)
+            setFieldValue('shipping.state', customer?.billing?.state || billingAddress.state)
+            setFieldValue('shipping.postcode', customer?.billing?.postcode || billingAddress.postcode)
+            setFieldValue('shipping.country', customer?.billing?.country || billingAddress.country)
           }}
           text='Copy from billing address'
         />
@@ -46,17 +50,17 @@ const ShippingForm: FC<ShippingFormProps> = (props: ShippingFormProps): ReactEle
           label='Address Line 1'
           id='shipping.address_1'
           target='shipping.address_1'
-          validationMessage={props.errors?.shipping?.address_1}
+          validationMessage={errors?.shipping?.address_1}
         />
         <TextField label='Address Line 2' id='shipping.address_2' target='shipping.address_2' />
-        <TextField isRequired label='Town' id='shipping.city' target='shipping.city' validationMessage={props.errors?.shipping?.city} />
-        <TextField label='County' id='shipping.state' target='shipping.state' validationMessage={props.errors?.shipping?.state} />
+        <TextField isRequired label='Town' id='shipping.city' target='shipping.city' validationMessage={errors?.shipping?.city} />
+        <TextField label='County' id='shipping.state' target='shipping.state' validationMessage={errors?.shipping?.state} />
         <TextField
           isRequired
           label='Postcode'
           id='shipping.postcode'
           target='shipping.postcode'
-          validationMessage={props.errors?.shipping?.postcode}
+          validationMessage={errors?.shipping?.postcode}
         />
         <Select
           label='Country'
@@ -64,7 +68,7 @@ const ShippingForm: FC<ShippingFormProps> = (props: ShippingFormProps): ReactEle
           isRequired
           id='shipping.country'
           target='shipping.country'
-          validationMessage={props.errors?.shipping?.country}
+          validationMessage={errors?.shipping?.country}
         />
         <EditButton text='Continue' type='submit' />
       </Styled.ShippingForm>

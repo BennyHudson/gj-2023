@@ -6,11 +6,11 @@ import { faAngleDown, faAngleUp } from '@fortawesome/pro-light-svg-icons'
 
 import * as Styled from './styles/Tabs.style'
 
-import { TabsProps } from './Tabs.types'
+import { TabsProps, TabsState } from './Tabs.types'
 import { useBreakpoints } from '@hooks/useBreakpoints'
 
 const Tabs: FC<TabsProps> = ({ tabs }: TabsProps): ReactElement => {
-  const [activeTab, setActiveTab] = useState(0)
+  const [activeTab, setActiveTab] = useState<TabsState['activeTab'] | null>(0)
 
   const { sm } = useBreakpoints()
 

@@ -23,7 +23,24 @@ const Checkout: FC<CheckoutProps> = ({ paymentIntent }: CheckoutProps): ReactEle
 
   const [activePanel, setActivePanel] = useState<CheckoutState['activePanel']>(1)
   const [message, setMessage] = useState<CheckoutState['message']>('')
-  const [checkoutForm, setCheckoutForm] = useState<CheckoutState['checkoutForm']>()
+  const [checkoutForm, setCheckoutForm] = useState<CheckoutState['checkoutForm']>({
+    billing: {
+      first_name: '',
+      last_name: '',
+      address_1: '',
+      city: '',
+      state: '',
+      postcode: '',
+      country: '',
+    },
+    shipping: {
+      address_1: '',
+      city: '',
+      state: '',
+      postcode: '',
+      country: '',
+    }
+  })
   const [isLoading, setIsLoading] = useState<CheckoutState['isLoading']>(false)
   const [notificationState, setNotificationState] = useState<CheckoutState['notificationState']>('error')
 

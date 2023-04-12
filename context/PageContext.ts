@@ -1,38 +1,16 @@
 import { createContext } from 'react'
 
 import { Shipping } from '@typings/Shipping.types'
+import { BillingAddress } from '@typings/BillingAddress.types'
+import { ShippingAddress } from '@typings/ShippingAddress.types'
 
 interface Customer {
   id: number
   first_name: string
   last_name: string
   email: string
-  billing?: {
-    address_1?: string
-    address_2?: string
-    city?: string
-    company?: string
-    country?: string
-    email?: string
-    first_name?: string
-    last_name?: string
-    phone?: string
-    postcode?: string
-    state?: string
-  }
-  shipping?: {
-    address_1?: string
-    address_2?: string
-    city?: string
-    company?: string
-    country?: string
-    email?: string
-    first_name?: string
-    last_name?: string
-    phone?: string
-    postcode?: string
-    state?: string
-  }
+  billing?: BillingAddress
+  shipping?: ShippingAddress
 }
 
 export interface PageContextProps {

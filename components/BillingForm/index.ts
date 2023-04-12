@@ -1,1 +1,1 @@
-export { default } from './BillingForm'
+export { default, billingValidation } from './BillingForm'

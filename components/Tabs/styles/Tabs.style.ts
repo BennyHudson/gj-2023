@@ -2,8 +2,9 @@ import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 
 import { StyledTabsProps } from './Tabs.style.types'
 
+type TabsProps = Pick<StyledTabsProps, 'theme' | 'tabCount'>
 export const Tabs = styled.div(
-  (props: StyledTabsProps): FlattenSimpleInterpolation => css`
+  (props: TabsProps): FlattenSimpleInterpolation => css`
     display: grid;
     grid-template-columns: repeat(${props.tabCount}, 1fr);
     margin-bottom: ${props.theme.spacing[8]}px;
@@ -12,8 +13,9 @@ export const Tabs = styled.div(
   `,
 )
 
+type TabProps = Pick<StyledTabsProps, 'theme' | '$active'>
 export const Tab = styled.button(
-  (props: StyledTabsProps): FlattenSimpleInterpolation => css`
+  (props: TabProps): FlattenSimpleInterpolation => css`
     background: none;
     font-family: 'Cera Pro Semibold';
     padding: ${props.theme.spacing[2]}px ${props.theme.spacing[4]}px;
@@ -30,8 +32,9 @@ export const Tab = styled.button(
   `,
 )
 
+type AccordionProps = Pick<StyledTabsProps, 'theme'>
 export const Accordion = styled.div(
-  (props: StyledTabsProps): FlattenSimpleInterpolation => css`
+  (props: AccordionProps): FlattenSimpleInterpolation => css`
     margin-bottom: ${props.theme.spacing[2]}px;
 
     &:last-child {
@@ -41,7 +44,7 @@ export const Accordion = styled.div(
 )
 
 export const AccordionTitle = styled.button(
-  (props: StyledTabsProps): FlattenSimpleInterpolation => css`
+  (props: AccordionProps): FlattenSimpleInterpolation => css`
     background: none;
     padding: ${props.theme.spacing[1]}px 0;
     border: none;

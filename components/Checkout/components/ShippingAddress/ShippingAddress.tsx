@@ -1,11 +1,14 @@
 import React, { ReactElement, FC, useContext } from 'react'
 import { Formik } from 'formik'
 
-import { ShippingAddressProps } from './ShippingAddress.types'
-import CheckoutPanel from '../CheckoutPanel'
 import PageContext, { PageContextProps } from '@context/PageContext'
-import ShippingForm from '@components/ShippingForm'
-import { shippingValidation } from '@components/ShippingForm/ShippingForm'
+
+import ShippingForm, { shippingValidation } from '@components/ShippingForm'
+
+import CheckoutPanel from '../CheckoutPanel'
+
+import { ShippingAddressProps } from './ShippingAddress.types'
+import { CheckoutState } from '@components/Checkout/Checkout.types'
 
 const ShippingAddress: FC<ShippingAddressProps> = ({
   panelIndex,
@@ -27,15 +30,15 @@ const ShippingAddress: FC<ShippingAddressProps> = ({
             shipping: {
               first_name: checkoutForm.billing?.first_name,
               last_name: checkoutForm.billing?.last_name,
-              address_1: customer?.shipping?.address_1,
-              address_2: customer?.shipping?.address_2,
-              city: customer?.shipping?.city,
-              state: customer?.shipping?.state,
-              postcode: customer?.shipping?.postcode,
-              country: customer?.shipping?.country,
+              address_1: customer?.shipping?.address_1 || '',
+              address_2: customer?.shipping?.address_2 || '',
+              city: customer?.shipping?.city || '',
+              state: customer?.shipping?.state || '',
+              postcode: customer?.shipping?.postcode || '',
+              country: customer?.shipping?.country || '',
             },
           }}
-          onSubmit={async (values) => {
+          onSubmit={async (values: CheckoutState['checkoutForm']) => {
             const updateUser = await fetch(`/api/user/update/${customer?.id || customerId}`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },

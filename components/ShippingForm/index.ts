@@ -1,1 +1,1 @@
-export { default } from './ShippingForm'
+export { default, shippingValidation } from './ShippingForm'

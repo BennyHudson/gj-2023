@@ -1,5 +1,12 @@
 import { ReactNode } from 'react'
 
 export interface TabsProps {
-  children: ReactNode
+  tabs: {
+    title: string
+    content: ReactNode
+  }[]
+}
+
+export interface TabsState {
+  activeTab: number
 }

@@ -10,7 +10,7 @@ import ValueWithLabel from '@components/ValueWithLabel'
 import Tabs from '@components/Tabs'
 import LoginForm from '@components/LoginForm'
 
-import { CustomerDetailsProps } from './CustomerDetails.types'
+import { CustomerDetailsProps, CustomerDetailsState } from './CustomerDetails.types'
 import CheckoutPanel from '../CheckoutPanel'
 import PageContext, { PageContextProps } from '@context/PageContext'
 
@@ -22,7 +22,7 @@ const CustomerDetails: FC<CustomerDetailsProps> = ({
 }: CustomerDetailsProps): ReactElement => {
   const { setCustomerId, setToken, customer, setCustomer, getCustomerData } = useContext(PageContext) as PageContextProps
 
-  const [validationMessage, setValidationMessage] = useState()
+  const [validationMessage, setValidationMessage] = useState<CustomerDetailsState['validationMessage']>()
 
   const setLoggedInDetails = () => {
     setCheckoutForm({ billing: customer?.billing })

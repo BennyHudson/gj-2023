@@ -1,5 +1,6 @@
 import React, { ReactElement, FC, useContext, useEffect } from 'react'
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
+import { StripePaymentElementOptions } from '@stripe/stripe-js'
 import { Form, Formik } from 'formik'
 
 import Button from '@components/Button'
@@ -26,7 +27,7 @@ const Payment: FC<PaymentProps> = ({
   const stripe = useStripe()
   const elements = useElements()
 
-  const paymentElementOptions = {
+  const paymentElementOptions: StripePaymentElementOptions = {
     layout: 'tabs',
   }
 

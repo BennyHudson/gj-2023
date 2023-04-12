@@ -1,10 +1,12 @@
 import React, { ReactElement, FC, useState } from 'react'
 import { Form, Formik } from 'formik'
 
-import { VoucherCodeProps } from './VoucherCode.types'
-import CheckoutPanel from '../CheckoutPanel'
 import TextField from '@components/TextField'
 import EditButton from '@components/EditButton'
+
+import CheckoutPanel from '../CheckoutPanel'
+
+import { VoucherCodeProps, VoucherCodeState } from './VoucherCode.types'
 
 const VoucherCode: FC<VoucherCodeProps> = ({
   panelIndex,
@@ -13,7 +15,7 @@ const VoucherCode: FC<VoucherCodeProps> = ({
   checkoutForm,
   setCheckoutForm,
 }: VoucherCodeProps): ReactElement => {
-  const [errorMessage, setErrorMessage] = useState()
+  const [errorMessage, setErrorMessage] = useState<VoucherCodeState['errorMessage']>()
 
   return (
     <CheckoutPanel panelIndex={panelIndex} activePanel={activePanel} setActivePanel={setActivePanel} title='Voucher Code'>
@@ -37,7 +39,7 @@ const VoucherCode: FC<VoucherCodeProps> = ({
 
               if (voucherCodeRes.status === 200) {
                 const voucher = await voucherCodeRes.json() 
-                setErrorMessage()             
+                setErrorMessage('')             
                 setCheckoutForm({...checkoutForm, voucher})
                 setActivePanel(activePanel + 1)
                 return

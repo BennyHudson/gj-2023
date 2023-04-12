@@ -1,14 +1,14 @@
 import React, { ReactElement, FC, useContext } from 'react'
 import { Formik } from 'formik'
 
-import BillingForm from '@components/BillingForm'
+import BillingForm, { billingValidation } from '@components/BillingForm'
+import { BillingAddress } from '@typings/BillingAddress.types'
 
 import PageContext, { PageContextProps } from '@context/PageContext'
 
 import CheckoutPanel from '../CheckoutPanel'
 
 import { BillingAddressProps } from './BillingAddress.types'
-import { billingValidation } from '@components/BillingForm/BillingForm'
 
 const BillingAddress: FC<BillingAddressProps> = ({
   panelIndex,
@@ -28,16 +28,17 @@ const BillingAddress: FC<BillingAddressProps> = ({
           validateOnChange={false}
           initialValues={{
             billing: {
-              ...checkoutForm?.billing,
-              address_1: customer?.billing?.address_1,
-              address_2: customer?.billing?.address_2,
-              city: customer?.billing?.city,
-              state: customer?.billing?.state,
-              postcode: customer?.billing?.postcode,
-              country: customer?.billing?.country,
+              first_name: checkoutForm?.billing?.first_name || '',
+              last_name: checkoutForm?.billing?.last_name || '',
+              address_1: customer?.billing?.address_1 || '',
+              address_2: customer?.billing?.address_2 || '',
+              city: customer?.billing?.city || '',
+              state: customer?.billing?.state || '',
+              postcode: customer?.billing?.postcode || '',
+              country: customer?.billing?.country || '',
             },
           }}
-          onSubmit={async (values) => {
+          onSubmit={async (values: { billing: BillingAddress}) => {
             const updateUser = await fetch(`/api/user/update/${customer?.id || customerId}`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
