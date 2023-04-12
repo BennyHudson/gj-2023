@@ -10,12 +10,11 @@ export interface PodcastBody extends Podcast {
 }
 
 export const podcastBodyQuery = (slug: string, preview: boolean) => {
-  const slugIsNumber = Boolean(slug.match(/^[0-9]*$/))
   return {
     query: gql`
       ${podcastContent}
       query podcastQuery {
-        podcast(id: "${slug}", idType: ${slugIsNumber ? 'DATABASE_ID' : 'SLUG'}, asPreview: ${preview}) {
+        podcast(id: "${slug}", idType: ${preview ? 'DATABASE_ID' : 'SLUG'}, asPreview: ${preview}) {
           ... PodcastContent
           content
           ${seo()}

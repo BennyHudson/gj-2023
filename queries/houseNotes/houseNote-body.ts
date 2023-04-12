@@ -13,13 +13,12 @@ export interface HouseNoteBody extends HouseNote {
 }
 
 export const houseNoteBodyQuery = (slug: string, preview: boolean) => {
-  const slugIsNumber = Boolean(slug.match(/^[0-9]*$/))
   return {
     query: gql`
       ${houseNoteContent}
       query houseNoteQuery {
         ${articleNote()}
-        houseNote(id: "${slug}", idType: ${slugIsNumber ? 'DATABASE_ID' : 'SLUG'}, asPreview: ${preview}) {
+        houseNote(id: "${slug}", idType: ${preview ? 'DATABASE_ID' : 'SLUG'}, asPreview: ${preview}) {
           ... HouseNoteContent
           ${seo()}
           articleAcf {

@@ -24,14 +24,12 @@ export interface ArticleBody {
 }
 
 export const articleBody = (slug: string, preview: boolean) => {
-  const slugIsNumber = Boolean(slug.match(/^[0-9]*$/))
-
   return {
     query: gql`
       ${articleContent}
       ${bylineContent}
       query articleQuery {
-        article(id: "${slug}", idType: ${slugIsNumber ? 'DATABASE_ID' : 'SLUG'}, asPreview: ${preview}) {
+        article(id: "${slug}", idType: ${preview ? 'DATABASE_ID' : 'SLUG'}, asPreview: ${preview}) {
           ... ArticleContent
           ... BylineContent
           articleAcf {

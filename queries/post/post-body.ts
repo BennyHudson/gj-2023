@@ -25,13 +25,12 @@ export interface PostBody {
 }
 
 export const postBody = (slug: string, preview: boolean) => {
-  const slugIsNumber = Boolean(slug.match(/^[0-9]*$/))
   return {
     query: gql`
       ${postContent}
       ${bylineContent}
       query postQuery {
-        post(id: "${slug}", idType: ${slugIsNumber ? 'DATABASE_ID' : 'SLUG'}, asPreview: ${preview}) {
+        post(id: "${slug}", idType: ${preview ? 'DATABASE_ID' : 'SLUG'}, asPreview: ${preview}) {
           ... PostContent
           ... BylineContent
           content

@@ -1,11 +1,10 @@
 import { gql } from '@apollo/client'
 
 export const landingPageContentQuery = (slug: string, preview: boolean) => {
-  const slugIsNumber = Boolean(slug.match(/^[0-9]*$/))
   return {
     query: gql`
       query landingPageContentQuery {
-        landingPage(id: "${slug}", idType: ${slugIsNumber ? 'DATABASE_ID' : 'SLUG'}, asPreview: ${preview}) {
+        landingPage(id: "${slug}", idType: ${preview ? 'DATABASE_ID' : 'SLUG'}, asPreview: ${preview}) {
           title
           databaseId
           landingPageContent {
