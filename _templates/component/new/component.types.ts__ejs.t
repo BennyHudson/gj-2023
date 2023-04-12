@@ -1,7 +1,7 @@
 ---
 to: components/<%= name %>/<%= name %>.types.ts
 ---
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 export interface <%=name%>Props {
   children: ReactNode

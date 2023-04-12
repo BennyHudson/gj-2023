@@ -25,6 +25,8 @@ const PodcastCarousel: FC<PodcastCarouselProps> = ({ podcasts, title }: PodcastC
     slidesToShow: 3,
     slidesToScroll: 1,
     centerMode: true,
+    nextArrow: <FontAwesomeIcon icon={faChevronCircleRight as IconProp} />,
+    prevArrow: <FontAwesomeIcon icon={faChevronCircleLeft as IconProp} />,
     responsive: [
       {
         breakpoint: 480,
@@ -41,8 +43,6 @@ const PodcastCarousel: FC<PodcastCarouselProps> = ({ podcasts, title }: PodcastC
         },
       },
     ],
-    nextArrow: <FontAwesomeIcon icon={faChevronCircleRight as IconProp} />,
-    prevArrow: <FontAwesomeIcon icon={faChevronCircleLeft as IconProp} />,
   }
 
   return (

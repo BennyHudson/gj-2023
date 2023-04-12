@@ -48,6 +48,12 @@ export const clubQuery = {
               title
               subtitle
             }
+            brands {
+              title
+              logo {
+                sourceUrl
+              }
+            }
           }
         }
         ${seo()}
