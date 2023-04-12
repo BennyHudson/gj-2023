@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
 import { WooCommerce } from '../WooCommerce'
 
 export default async function userHandler(req: NextApiRequest, res: NextApiResponse) {
-  const { customerId, billingAddress, shippingAddress, cart, shippingRate } = req.body
+  const { customerId, billingAddress, shippingAddress, cart, shippingRate, parentOrder } = req.body
 
   const customerPayload = {
     payment_method: 'stripe',
@@ -25,6 +25,7 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
       const subscriptionData = await WooCommerce.post('subscriptions', {
         ...customerPayload,
         customer_id: customerId,
+        parent_id: parentOrder,
         paymentMethod: 'stripe',
         billing_period: 'year',
         billing_interval: parseInt(billingInterval.value),

@@ -60,22 +60,6 @@ const Payment: FC<PaymentProps> = ({
             return
           }
 
-          // Create Subscription
-          const subsciption = await fetch('/api/subscription/create', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              customerId: customer?.id || customerId,
-              billingAddress: values.billing,
-              shippingAddress: values.shipping,
-              cart,
-              shippingRate,
-            }),
-          })
-
-          const subscriptionData = await subsciption.json()
-          sessionStorage.setItem('subscriptionId', subscriptionData.id)
-
           // Create Order
           const order = await fetch('/api/order/create', {
             method: 'POST',
@@ -92,6 +76,23 @@ const Payment: FC<PaymentProps> = ({
 
           const orderData = await order.json()
           sessionStorage.setItem('orderId', orderData.id)
+
+          // Create Subscription
+          const subsciption = await fetch('/api/subscription/create', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              customerId: customer?.id || customerId,
+              billingAddress: values.billing,
+              shippingAddress: values.shipping,
+              parentOrder: orderData.id,
+              cart,
+              shippingRate,
+            }),
+          })
+
+          const subscriptionData = await subsciption.json()
+          sessionStorage.setItem('subscriptionId', subscriptionData.id)
 
           const { error } = await stripe.confirmPayment({
             elements,
