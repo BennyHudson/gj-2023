@@ -1,16 +1,18 @@
-import React, { ReactElement, FC, useContext } from 'react'
-import { Formik, Form } from 'formik'
 import dayjs from 'dayjs'
+import { Form, Formik } from 'formik'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
 
-import Heading from '@components/Heading'
-import ValueWithLabel from '@components/ValueWithLabel'
 import EditButton from '@components/EditButton'
-
-import * as Styled from './styles/PaymentDetails.style'
-
-import { PaymentDetailsProps } from './PaymentDetails.types'
+import Heading from '@components/Heading'
 import NameField from '@components/NameField'
-import PageContext, { PageContextProps } from '@context/PageContext'
+import ValueWithLabel from '@components/ValueWithLabel'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import type { PaymentDetailsProps } from './PaymentDetails.types'
+import * as Styled from './styles/PaymentDetails.style'
 
 const PaymentDetails: FC<PaymentDetailsProps> = ({
   cardDetails,

@@ -1,25 +1,28 @@
-import React, { FC, ReactElement, useEffect, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
+
+import BannerAdvert from '@components/BannerAdvert'
+import BrandGrid from '@components/BrandGrid'
+import Feed from '@components/Feed'
+import GiftGrid from '@components/GiftGrid'
+import GiftGuideFeature from '@components/GiftGuideFeature'
+import PageLayout from '@components/PageLayout'
+import PostGrid from '@components/PostGrid'
+import Section from '@components/Section'
+import Title from '@components/Title'
+import VerticalSpacer from '@components/VerticalSpacer'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import { useBreakpoints } from '@hooks/useBreakpoints'
 
 import client from '@lib/apollo-client'
 
-import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
-import { giftGuideContentQuery } from '@queries/pages/gift-guide'
-
-import GiftGuideFeature from '@components/GiftGuideFeature'
-import Section from '@components/Section'
-import VerticalSpacer from '@components/VerticalSpacer'
-import PostGrid from '@components/PostGrid'
-import Title from '@components/Title'
-import BrandGrid from '@components/BrandGrid'
-import GiftGrid from '@components/GiftGrid'
-import BannerAdvert from '@components/BannerAdvert'
-import Feed from '@components/Feed'
-import PageLayout from '@components/PageLayout'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
-import { useBreakpoints } from '@hooks/useBreakpoints'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import { giftGuideContentQuery } from '@queries/pages/gift-guide'
 
 const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav, siteOptions, databaseId }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps

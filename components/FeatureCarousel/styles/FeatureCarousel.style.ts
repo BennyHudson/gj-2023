@@ -1,10 +1,12 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { Section, Content } from '@components/Section/styles/Section.style'
+import { Content, Section } from '@components/Section/styles/Section.style'
 import { Title } from '@components/Title/styles/Title.style'
 
-import { StyledFeatureCarouselProps } from './FeatureCarousel.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledFeatureCarouselProps } from './FeatureCarousel.style.types'
 
 type ThemeProps = Pick<StyledFeatureCarouselProps, 'theme'>
 

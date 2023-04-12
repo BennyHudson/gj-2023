@@ -1,10 +1,10 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import Heading from '@components/Heading'
 
 import * as Styled from './styles/TitleAndIntro.style'
-
-import { TitleAndIntroProps } from './TitleAndIntro.types'
+import type { TitleAndIntroProps } from './TitleAndIntro.types'
 
 const TitleAndIntro: FC<TitleAndIntroProps> = ({ title, intro, inverse = false }: TitleAndIntroProps): ReactElement => {
   return (

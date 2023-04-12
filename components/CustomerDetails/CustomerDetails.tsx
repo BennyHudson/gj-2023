@@ -1,11 +1,11 @@
-import React, { ReactElement, FC } from 'react'
-
-import * as Styled from './styles/CustomerDetails.style'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import BillingAddress from './components/BillingAddress'
-import ShippingAddress from './components/ShippingAddress'
-import Password from './components/Password'
 import Customer from './components/Customer/Customer'
+import Password from './components/Password'
+import ShippingAddress from './components/ShippingAddress'
+import * as Styled from './styles/CustomerDetails.style'
 
 const CustomerDetails: FC = (): ReactElement => {
   return (

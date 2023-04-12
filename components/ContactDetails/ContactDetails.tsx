@@ -1,13 +1,13 @@
-import React, { ReactElement, FC } from 'react'
-import { GoogleMap, Marker, LoadScript } from '@react-google-maps/api'
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import Heading from '@components/Heading'
 import RawHtmlWrapper from '@components/RawHtmlWrapper'
 
-import * as Styled from './styles/ContactDetails.style'
-
-import { ContactDetailsProps } from './ContactDetails.types'
+import type { ContactDetailsProps } from './ContactDetails.types'
 import { mapStyles } from './mapStyles'
+import * as Styled from './styles/ContactDetails.style'
 
 const ContactDetails: FC<ContactDetailsProps> = ({ contactDetails }: ContactDetailsProps): ReactElement => {
   return (

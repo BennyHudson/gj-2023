@@ -1,3 +1,7 @@
+import type { NextApiRequest, NextApiResponse } from 'next'
+
+import { WooCommerce } from '../WooCommerce'
+
 const europeanCountries = [
   'AL',
   'AD',
@@ -47,10 +51,6 @@ const europeanCountries = [
   'TR',
   'UA',
 ]
-
-import { NextApiRequest, NextApiResponse } from 'next'
-
-import { WooCommerce } from '../WooCommerce'
 
 export default async function shippingCalculator(req: NextApiRequest, res: NextApiResponse) {
   const { shippingAddress, cart } = req.body

@@ -1,8 +1,11 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledJobsListProps } from './JobsList.style.types'
-import respondTo from '@mixins/respondTo'
 import { Title } from '@components/Title/styles/Title.style'
+
+import respondTo from '@mixins/respondTo'
+
+import type { StyledJobsListProps } from './JobsList.style.types'
 
 export const JobsList = styled.div(
   (props: StyledJobsListProps): FlattenSimpleInterpolation => css`

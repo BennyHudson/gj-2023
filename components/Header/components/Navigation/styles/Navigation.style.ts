@@ -1,13 +1,14 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import Link from 'next/link'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { PostGrid } from '@components/PostGrid/styles/PostGrid.style'
 import { Heading } from '@components/Heading/styles/Heading.style'
 import { Meta } from '@components/Meta/styles/Meta.style'
+import { PostGrid } from '@components/PostGrid/styles/PostGrid.style'
 import { Thumbnail } from '@components/Thumbnail/styles/Thumbnail.style'
 import { Title } from '@components/Title/styles/Title.style'
 
-import { StyledNavigationProps } from './Navigation.style.types'
+import type { StyledNavigationProps } from './Navigation.style.types'
 
 export const Navigation = styled.nav(
   (): FlattenSimpleInterpolation => css`

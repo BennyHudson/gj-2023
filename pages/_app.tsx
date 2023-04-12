@@ -1,19 +1,22 @@
-import React, { FC, ReactElement, useEffect, useState } from 'react'
-import type { AppProps } from 'next/app'
-import { ThemeProvider } from 'styled-components'
 import { ApolloProvider } from '@apollo/client'
 import jwt_decode from 'jwt-decode'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
+import type { AppProps } from 'next/app'
+import type { FC, ReactElement} from 'react'
+import React, { useEffect, useState } from 'react'
+import { ThemeProvider } from 'styled-components'
 
 import '@assets/styles/fonts.css'
 
-import GlobalStyle from '@styles/GlobalStyle'
-import { gjTheme } from '@themes/gjTheme'
+import Scripts from '@components/Scripts'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
 
-import Scripts from '@components/Scripts'
+import GlobalStyle from '@styles/GlobalStyle'
+
+import { gjTheme } from '@themes/gjTheme'
 
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => {
   const [token, setToken] = useState<PageContextProps['token']>()
@@ -38,8 +41,8 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
 
     if (customerData) {
       const subscriptionIds = customerData.meta_data?.find((meta) => meta.key === '_wcs_subscription_ids_cache')
-      if (!subscriptionIds) return 
-      
+      if (!subscriptionIds) return
+
       const subs = []
 
       await Promise.all(

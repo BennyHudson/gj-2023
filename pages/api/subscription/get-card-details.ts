@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 export default async function getCardDetails(req: NextApiRequest, res: NextApiResponse) {

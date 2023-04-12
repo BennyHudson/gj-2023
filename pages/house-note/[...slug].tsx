@@ -1,25 +1,28 @@
-import React, { FC, ReactElement, useEffect, useContext } from 'react'
-
-import client from '@lib/apollo-client'
-import { getAllPosts } from '@lib/api'
-
-import { headerNavQuery } from '@queries/global/header-nav'
-import { footerNavQuery } from '@queries/global/footer-nav'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
 
 import BannerAdvert from '@components/BannerAdvert'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
-import HeroImage from '@components/HeroImage'
-import Section from '@components/Section'
-import Masthead from '@components/Masthead'
 import ContentGrid from '@components/ContentGrid'
-
+import HeroImage from '@components/HeroImage'
+import Masthead from '@components/Masthead'
 import PageLayout from '@components/PageLayout'
-import { HouseNoteBody, houseNoteBodyQuery } from '@queries/houseNotes/houseNote-body'
-import { StaticPaths } from '@typings/StaticPaths.types'
-import { PageData } from '@typings/PageData.types'
-import { ArticleNote } from '@queries/fragments/articleNote'
+import Section from '@components/Section'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import { getAllPosts } from '@lib/api'
+import client from '@lib/apollo-client'
+
+
+import type { ArticleNote } from '@queries/fragments/articleNote'
+import { footerNavQuery } from '@queries/global/footer-nav'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import type { HouseNoteBody} from '@queries/houseNotes/houseNote-body'
+import { houseNoteBodyQuery } from '@queries/houseNotes/houseNote-body'
+import type { PageData } from '@typings/PageData.types'
+import type { StaticPaths } from '@typings/StaticPaths.types'
 
 interface HouseNoteData extends PageData {
   pageData: HouseNoteBody

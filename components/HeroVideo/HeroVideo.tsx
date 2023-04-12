@@ -1,10 +1,11 @@
-import React, { ReactElement, FC, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
+import type { HeroVideoProps } from './HeroVideo.types'
 import * as Styled from './styles/HeroVideo.style'
-
-import { HeroVideoProps } from './HeroVideo.types'
 
 const HeroVideo: FC<HeroVideoProps> = ({ video }: HeroVideoProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps

@@ -1,10 +1,10 @@
-import React, { ReactElement, FC, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import Script from 'next/script'
+import type { FC, ReactElement} from 'react'
+import React, { useEffect } from 'react'
 
 import * as Styled from './styles/TowerAdvert.style'
-
-import { TowerAdvertProps } from './TowerAdvert.types'
-import Script from 'next/script'
-import { useRouter } from 'next/router'
+import type { TowerAdvertProps } from './TowerAdvert.types'
 
 const TowerAdvert: FC<TowerAdvertProps> = ({ parent, slot }: TowerAdvertProps): ReactElement => {
   const router = useRouter()

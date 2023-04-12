@@ -1,12 +1,12 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import LoginForm from '@components/LoginForm'
-import Tabs from '@components/Tabs'
 import QuickSubscribe from '@components/QuickSubscribe'
+import Tabs from '@components/Tabs'
 
+import type { ClubhouseGatewayProps } from './ClubhouseGateway.types'
 import * as Styled from './styles/ClubhouseGateway.style'
-
-import { ClubhouseGatewayProps } from './ClubhouseGateway.types'
 
 const ClubhouseGateway: FC<ClubhouseGatewayProps> = ({ products, freeGift }: ClubhouseGatewayProps): ReactElement => {
   const tabs = [

@@ -1,8 +1,11 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledClubAdvertsProps } from './ClubAdverts.style.types'
 import { Content, Section } from '@components/Section/styles/Section.style'
+
 import respondTo from '@mixins/respondTo'
+
+import type { StyledClubAdvertsProps } from './ClubAdverts.style.types'
 
 export const ClubAdverts = styled.div(
   (props: StyledClubAdvertsProps): FlattenSimpleInterpolation => css`

@@ -1,5 +1,6 @@
-import { Theme } from '@themes/gjTheme/gjTheme.types'
-import { FieldWrapperProps } from '../FieldWrapper.types'
+import type { Theme } from '@themes/gjTheme/gjTheme.types'
+
+import type { FieldWrapperProps } from '../FieldWrapper.types'
 
 export interface StyledFieldWrapperProps {
   theme: Theme

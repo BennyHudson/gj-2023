@@ -1,9 +1,10 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
-import * as Styled from './styles/PageContentBlock.style'
-
-import { PageContentBlockProps } from './PageContentBlock.types'
 import RawHtmlWrapper from '@components/RawHtmlWrapper'
+
+import type { PageContentBlockProps } from './PageContentBlock.types'
+import * as Styled from './styles/PageContentBlock.style'
 
 const PageContentBlock: FC<PageContentBlockProps> = ({ content }: PageContentBlockProps): ReactElement => {
   return (

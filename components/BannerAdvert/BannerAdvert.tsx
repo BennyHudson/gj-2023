@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { ReactElement, FC, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Script from 'next/script'
+import type { FC, ReactElement} from 'react'
+import React, { useEffect } from 'react'
 
 import Section from '@components/Section'
 
-import { BannerAdProps } from './BannerAdvert.types'
-
+import type { BannerAdProps } from './BannerAdvert.types'
 import * as Styled from './styles/BannerAdvert.style'
-import { useRouter } from 'next/router'
 
 declare global {
   interface Window {
-      googletag: any
+    googletag: any
   }
 }
 

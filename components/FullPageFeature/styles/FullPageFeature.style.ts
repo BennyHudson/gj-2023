@@ -1,8 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import respondTo from '@mixins/respondTo'
 
-import { StyledFullPageFeatureProps } from './FullPageFeature.style.types'
+import type { StyledFullPageFeatureProps } from './FullPageFeature.style.types'
 
 export const Spacer = styled.div(
   (): FlattenSimpleInterpolation => css`

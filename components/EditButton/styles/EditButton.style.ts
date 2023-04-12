@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledEditButtonProps } from './EditButton.style.types'
+import type { StyledEditButtonProps } from './EditButton.style.types'
 
 export const EditButton = styled.button(
   (props: StyledEditButtonProps): FlattenSimpleInterpolation => css`

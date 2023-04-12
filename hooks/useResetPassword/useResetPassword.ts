@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import useSendPasswordResetEmailMutation from './mutations/useSendPasswordResetEmailMutation'
 import useResetUserPasswordMutation from './mutations/useResetUserPasswordMutation'
+import useSendPasswordResetEmailMutation from './mutations/useSendPasswordResetEmailMutation'
 
 const errorCodes = {}
 

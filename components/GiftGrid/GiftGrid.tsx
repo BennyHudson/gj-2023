@@ -1,12 +1,12 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
-import Thumbnail from '@components/Thumbnail'
-import Meta from '@components/Meta'
 import Heading from '@components/Heading'
+import Meta from '@components/Meta'
+import Thumbnail from '@components/Thumbnail'
 
+import type { GiftGridProps } from './GiftGrid.types'
 import * as Styled from './styles/GiftGrid.style'
-
-import { GiftGridProps } from './GiftGrid.types'
 
 const GiftGrid: FC<GiftGridProps> = ({ gifts }: GiftGridProps): ReactElement => {
   return (

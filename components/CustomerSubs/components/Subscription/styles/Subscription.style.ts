@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledSubscriptionProps } from './Subscription.style.types'
 import { ValueWithLabel } from '@components/ValueWithLabel/styles/ValueWithLabel.style'
+
+import type { StyledSubscriptionProps } from './Subscription.style.types'
 
 export const Subscription = styled.div(
   (props: StyledSubscriptionProps): FlattenSimpleInterpolation => css`

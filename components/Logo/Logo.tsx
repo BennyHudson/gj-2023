@@ -1,8 +1,8 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
+import type { LogoProps } from './Logo.types'
 import * as Styled from './styles/Logo.style'
-
-import { LogoProps } from './Logo.types'
 
 const Logo: FC<LogoProps> = ({ inverse = false, gLogo = false }: LogoProps): ReactElement => {
   return (

@@ -1,6 +1,6 @@
-import { Theme } from '@themes/gjTheme/gjTheme.types'
+import type { Theme } from '@themes/gjTheme/gjTheme.types'
 
-import { SectionProps } from '../Section.types'
+import type { SectionProps } from '../Section.types'
 
 export interface StyledSectionProps {
   theme: Theme

@@ -1,11 +1,14 @@
-import React, { ReactElement, FC, useState, useEffect, useContext } from 'react'
-import dayjs, { ManipulateType } from 'dayjs'
+import type { ManipulateType } from 'dayjs'
+import dayjs from 'dayjs'
 import he from 'he'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import Heading from '@components/Heading'
 import Link from '@components/Link'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import * as Styled from './styles/PopularPosts.style'
 

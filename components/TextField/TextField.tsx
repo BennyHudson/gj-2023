@@ -1,10 +1,10 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
-import FieldWrapper from '../FieldWrapper'
+import type { FormFieldProps } from '@typings/FormField.types'
 
 import * as Styled from './styles/TextField.style'
-
-import { FormFieldProps } from '@typings/FormField.types'
+import FieldWrapper from '../FieldWrapper'
 
 const TextField: FC<FormFieldProps> = ({
   label,

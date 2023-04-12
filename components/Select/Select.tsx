@@ -1,14 +1,13 @@
-import React, { ReactElement, FC } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faAngleDown } from '@fortawesome/pro-light-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Field } from 'formik'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
-import FieldWrapper from '../FieldWrapper'
-
+import type { SelectProps } from './Select.types'
 import * as Styled from './styles/Select.style'
-
-import { SelectProps } from './Select.types'
+import FieldWrapper from '../FieldWrapper'
 
 const Select: FC<SelectProps> = ({ target, label, isRequired, id, choices, labelPlacement }: SelectProps): ReactElement => {
   return (

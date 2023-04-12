@@ -1,18 +1,19 @@
-import React, { ReactElement, FC, useContext, useEffect } from 'react'
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
-import { StripePaymentElementOptions } from '@stripe/stripe-js'
+import type { StripePaymentElementOptions } from '@stripe/stripe-js'
 import { Form, Formik } from 'formik'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
 
 import Button from '@components/Button'
-import Paragraph from '@components/Paragraph'
 import Link from '@components/Link'
+import Paragraph from '@components/Paragraph'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
-import { PaymentProps } from './Payment.types'
-import CheckoutPanel from '../CheckoutPanel'
-
+import type { PaymentProps } from './Payment.types'
 import * as Styled from './styles/Payment.style'
+import CheckoutPanel from '../CheckoutPanel'
 
 const Payment: FC<PaymentProps> = ({
   panelIndex,
@@ -112,7 +113,16 @@ const Payment: FC<PaymentProps> = ({
           <Styled.PaymentWrapper>
             <PaymentElement id='payment-element' options={paymentElementOptions} />
           </Styled.PaymentWrapper>
-          <Paragraph size={1} font='Cera'>By clicking Checkout Now, you agree with our <Link size={1} font='Cera' href='/terms-and-conditions'>Terms and Conditions</Link> and <Link size={1} font='Cera' href='/privacy-policy'>Privacy Policy</Link></Paragraph>
+          <Paragraph size={1} font='Cera'>
+            By clicking Checkout Now, you agree with our{' '}
+            <Link size={1} font='Cera' href='/terms-and-conditions'>
+              Terms and Conditions
+            </Link>{' '}
+            and{' '}
+            <Link size={1} font='Cera' href='/privacy-policy'>
+              Privacy Policy
+            </Link>
+          </Paragraph>
           <Button type='submit' text='Checkout Now' size={1} />
         </Form>
       </Formik>

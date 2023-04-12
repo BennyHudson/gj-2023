@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledCheckboxListProps } from './CheckboxList.style.types'
+import type { StyledCheckboxListProps } from './CheckboxList.style.types'
 
 export const Checkbox = styled.div(
   (props: StyledCheckboxListProps): FlattenSimpleInterpolation => css`

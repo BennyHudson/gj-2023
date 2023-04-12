@@ -1,12 +1,12 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import Breadcrumbs from '@components/Breadcrumbs'
-import Heading from '@components/Heading'
 import Byline from '@components/Byline'
+import Heading from '@components/Heading'
 
+import type { MastheadProps } from './Masthead.types'
 import * as Styled from './styles/Masthead.style'
-
-import { MastheadProps } from './Masthead.types'
 
 const Masthead: FC<MastheadProps> = ({ breadcrumbs, title, subtitle, fullWidth = true, author }: MastheadProps): ReactElement => {
   return (

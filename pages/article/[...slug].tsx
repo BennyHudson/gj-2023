@@ -1,26 +1,28 @@
-import { FC, ReactElement, useContext, useEffect } from 'react'
+import type { FC, ReactElement} from 'react'
+import { useContext, useEffect } from 'react'
 
-import client from '@lib/apollo-client'
-
-import { getAllPosts } from '@lib/api'
-
-import { StaticPaths } from '@typings/StaticPaths.types'
-import { PageData } from '@typings/PageData.types'
-
-import { headerNavQuery } from '@queries/global/header-nav'
-import { footerNavQuery } from '@queries/global/footer-nav'
-import { articleBody, ArticleBody } from '@queries/article/article-body'
-
-import HeroImage from '@components/HeroImage'
 import BannerAdvert from '@components/BannerAdvert'
-import Masthead from '@components/Masthead'
-import Section from '@components/Section'
 import ContentGrid from '@components/ContentGrid'
 import FurtherReading from '@components/FurtherReading'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
+import HeroImage from '@components/HeroImage'
+import Masthead from '@components/Masthead'
 import PageLayout from '@components/PageLayout'
+import Section from '@components/Section'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import { getAllPosts } from '@lib/api'
+import client from '@lib/apollo-client'
+
+import type { ArticleBody} from '@queries/article/article-body'
+import { articleBody } from '@queries/article/article-body'
+import { footerNavQuery } from '@queries/global/footer-nav'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+
+import type { PageData } from '@typings/PageData.types'
+import type { StaticPaths } from '@typings/StaticPaths.types'
 
 interface ArticleData extends PageData {
   data: ArticleBody
@@ -51,10 +53,10 @@ const Article: FC<ArticleData> = ({ data, headerNav, footerNav, siteOptions }: A
   }, [setActiveNavElement, articleData])
 
   return (
-    <PageLayout 
-      headerNav={headerNav} 
-      footerNav={footerNav} 
-      seo={articleData?.seo} 
+    <PageLayout
+      headerNav={headerNav}
+      footerNav={footerNav}
+      seo={articleData?.seo}
       siteOptions={siteOptions}
       databaseId={articleData.databaseId}
     >

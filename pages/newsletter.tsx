@@ -1,18 +1,21 @@
-import React, { FC, ReactElement, useEffect, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
+
+import Newsletter from '@components/Newsletter'
+import PageLayout from '@components/PageLayout'
+import RawHtmlWrapper from '@components/RawHtmlWrapper'
+import SplitPageTemplate from '@components/SplitPageTemplate'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import client from '@lib/apollo-client'
 
-import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
-
-import PageLayout from '@components/PageLayout'
-import SplitPageTemplate from '@components/SplitPageTemplate'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
-import RawHtmlWrapper from '@components/RawHtmlWrapper'
-import Newsletter from '@components/Newsletter'
-import featuredImageUrl from '@helpers/featuredImageUrl'
 
 const NewsletterPage: FC = ({ headerNav, footerNav, newsletter, newsletterForm, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps

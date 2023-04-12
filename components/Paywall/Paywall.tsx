@@ -1,16 +1,18 @@
-import React, { ReactElement, FC } from 'react'
-
-import * as Styled from './styles/Paywall.style'
-
-import { PaywallProps } from './Paywall.types'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLockAlt } from '@fortawesome/pro-light-svg-icons'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import Heading from '@components/Heading'
-import Button from '@components/Button'
 import { useQuery } from '@apollo/client'
-import { clubQuery } from '@queries/pages/club'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { faLockAlt } from '@fortawesome/pro-light-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
+
+import Button from '@components/Button'
 import ClubOverview from '@components/ClubOverview'
+import Heading from '@components/Heading'
+
+import { clubQuery } from '@queries/pages/club'
+
+import type { PaywallProps } from './Paywall.types'
+import * as Styled from './styles/Paywall.style'
 
 const Paywall: FC<PaywallProps> = (): ReactElement => {
   const { data } = useQuery(clubQuery.query)

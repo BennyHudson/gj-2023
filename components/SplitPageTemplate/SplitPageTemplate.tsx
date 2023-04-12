@@ -1,13 +1,15 @@
-import React, { ReactElement, FC, useContext } from 'react'
-
-import featuredImageUrl from '@helpers/featuredImageUrl'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
 
 import Heading from '@components/Heading'
 
-import * as Styled from './styles/SplitPageTemplate.style'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
-import { SplitPageTemplateProps } from './SplitPageTemplate.types'
-import PageContext, { PageContextProps } from '@context/PageContext'
+import featuredImageUrl from '@helpers/featuredImageUrl'
+
+import type { SplitPageTemplateProps } from './SplitPageTemplate.types'
+import * as Styled from './styles/SplitPageTemplate.style'
 
 const SplitPageTemplate: FC<SplitPageTemplateProps> = ({ title, image, children }: SplitPageTemplateProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps

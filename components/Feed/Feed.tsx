@@ -1,14 +1,15 @@
-import React, { ReactElement, FC, useState } from 'react'
 import { useQuery } from '@apollo/client'
+import type { FC, ReactElement} from 'react'
+import React, { useState } from 'react'
 
-import { latestArticlesQuery } from '@queries/global/latest-articles'
-import { articleCategoryQuery, postCategoryQuery } from '@queries/global/categories'
-
-import PostGrid from '@components/PostGrid'
 import LoadMore from '@components/LoadMore'
+import PostGrid from '@components/PostGrid'
 import SkeletonLoader from '@components/SkeletonLoader'
 
-import { FeedProps, FeedState } from './Feed.types'
+import { articleCategoryQuery, postCategoryQuery } from '@queries/global/categories'
+import { latestArticlesQuery } from '@queries/global/latest-articles'
+
+import type { FeedProps, FeedState } from './Feed.types'
 
 const Feed: FC<FeedProps> = ({ category, columns = 4, count, showAdvert = true }: FeedProps): ReactElement => {
   const [lastArticle, setLastArticle] = useState<FeedState['last']>()

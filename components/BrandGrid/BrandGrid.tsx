@@ -1,10 +1,10 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import Thumbnail from '@components/Thumbnail'
 
+import type { BrandGridProps } from './BrandGrid.types'
 import * as Styled from './styles/BrandGrid.style'
-
-import { BrandGridProps } from './BrandGrid.types'
 
 const BrandGrid: FC<BrandGridProps> = ({ brands }: BrandGridProps): ReactElement => {
   return (

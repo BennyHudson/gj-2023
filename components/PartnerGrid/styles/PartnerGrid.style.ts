@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledPartnerGridProps } from './PartnerGrid.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledPartnerGridProps } from './PartnerGrid.style.types'
 
 export const PartnerGrid = styled.div(
   (props: StyledPartnerGridProps): FlattenSimpleInterpolation => css`

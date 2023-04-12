@@ -1,5 +1,5 @@
-import { Post } from '@typings/Post.types'
-import { Podcast } from '@typings/Podcast.types'
+import type { Podcast } from '@typings/Podcast.types'
+import type { Post } from '@typings/Post.types'
 
 interface PostProps extends Post {
   subtitle?: string

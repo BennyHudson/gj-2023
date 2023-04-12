@@ -1,15 +1,16 @@
-import React, { ReactElement, FC } from 'react'
 import he from 'he'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
-import useFeaturedImage from '@hooks/useFeaturedImage/useFeaturedImage'
+import Paragraph from '@components/Paragraph/Paragraph'
+import Thumbnail from '@components/Thumbnail'
+
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import Thumbnail from '@components/Thumbnail'
-import Paragraph from '@components/Paragraph/Paragraph'
+import useFeaturedImage from '@hooks/useFeaturedImage/useFeaturedImage'
 
+import type { CarouselPostProps } from './CarouselPost.types'
 import * as Styled from './styles/CarouselPost.style'
-
-import { CarouselPostProps } from './CarouselPost.types'
 
 const CarouselPost: FC<CarouselPostProps> = ({ featuredImageId, slug, title }): ReactElement => {
   const { featuredImage } = useFeaturedImage(featuredImageId)

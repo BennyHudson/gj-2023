@@ -1,4 +1,4 @@
-import { Theme, SpacingKeys } from '@themes/gjTheme/gjTheme.types'
+import type { SpacingKeys, Theme } from '@themes/gjTheme/gjTheme.types'
 
 export interface StyledVerticalSpacerProps {
   theme: Theme

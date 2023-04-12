@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledTextBlockProps } from './TextBlock.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledTextBlockProps } from './TextBlock.style.types'
 
 export const TextBlock = styled.div(
   (props: StyledTextBlockProps): FlattenSimpleInterpolation => css`

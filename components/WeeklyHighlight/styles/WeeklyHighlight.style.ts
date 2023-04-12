@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledWeeklyHighlightProps } from './WeeklyHighlight.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledWeeklyHighlightProps } from './WeeklyHighlight.style.types'
 
 export const WeeklyHighlight = styled.div(
   (props: StyledWeeklyHighlightProps): FlattenSimpleInterpolation => css`

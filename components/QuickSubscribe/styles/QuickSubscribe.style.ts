@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledQuickSubscribeProps } from './QuickSubscribe.style.types'
+import type { StyledQuickSubscribeProps } from './QuickSubscribe.style.types'
 
 export const QuickSubscribe = styled.div(
   (): FlattenSimpleInterpolation => css`

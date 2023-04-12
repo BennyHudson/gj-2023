@@ -1,24 +1,26 @@
-import React, { ReactElement, FC, useState, useContext } from 'react'
-import Image from 'next/image'
-import Slider from 'react-slick'
 import Head from 'next/head'
+import Image from 'next/image'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useState } from 'react'
+import Slider from 'react-slick'
+
+import Heading from '@components/Heading'
+import Link from '@components/Link'
+import Meta from '@components/Meta'
+import Overlay from '@components/Overlay'
+import Paragraph from '@components/Paragraph'
+import Section from '@components/Section'
+import Title from '@components/Title'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import Section from '@components/Section'
-import Title from '@components/Title'
-import Heading from '@components/Heading'
-import Paragraph from '@components/Paragraph'
-import Meta from '@components/Meta'
-import Link from '@components/Link'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
-
-import * as Styled from './styles/FeatureCarousel.style'
-
-import { FeatureCarouselProps } from './FeatureCarousel.types'
-import Overlay from '@components/Overlay'
 import { useBreakpoints } from '@hooks/useBreakpoints'
+
+import type { FeatureCarouselProps } from './FeatureCarousel.types'
+import * as Styled from './styles/FeatureCarousel.style'
 
 const FeatureCarousel: FC<FeatureCarouselProps> = ({
   title,

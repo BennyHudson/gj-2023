@@ -1,18 +1,21 @@
-import React, { FC, ReactElement, useEffect, useContext } from 'react'
-import client from '@lib/apollo-client'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
 
-import { headerNavQuery } from '@queries/global/header-nav'
-import { footerNavQuery } from '@queries/global/footer-nav'
-import { pageQuery } from '@queries/pages/page'
-
-import PageLayout from '@components/PageLayout'
 import HeroImage from '@components/HeroImage'
-import Section from '@components/Section'
 import Masthead from '@components/Masthead'
+import PageLayout from '@components/PageLayout'
+import Section from '@components/Section'
 import TeamGrid from '@components/TeamGrid'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import client from '@lib/apollo-client'
+
+import { footerNavQuery } from '@queries/global/footer-nav'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import { pageQuery } from '@queries/pages/page'
 
 const TeamPage: FC = ({ headerNav, footerNav, pageData, siteOptions }): ReactElement => {
   const breadcrumbs = [

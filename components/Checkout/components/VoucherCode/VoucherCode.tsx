@@ -1,12 +1,12 @@
-import React, { ReactElement, FC, useState } from 'react'
 import { Form, Formik } from 'formik'
+import type { FC, ReactElement} from 'react'
+import React, { useState } from 'react'
 
-import TextField from '@components/TextField'
 import EditButton from '@components/EditButton'
+import TextField from '@components/TextField'
 
+import type { VoucherCodeProps, VoucherCodeState } from './VoucherCode.types'
 import CheckoutPanel from '../CheckoutPanel'
-
-import { VoucherCodeProps, VoucherCodeState } from './VoucherCode.types'
 
 const VoucherCode: FC<VoucherCodeProps> = ({
   panelIndex,
@@ -38,15 +38,15 @@ const VoucherCode: FC<VoucherCodeProps> = ({
               })
 
               if (voucherCodeRes.status === 200) {
-                const voucher = await voucherCodeRes.json() 
-                setErrorMessage('')             
-                setCheckoutForm({...checkoutForm, voucher})
+                const voucher = await voucherCodeRes.json()
+                setErrorMessage('')
+                setCheckoutForm({ ...checkoutForm, voucher })
                 setActivePanel(activePanel + 1)
                 return
               }
 
               setErrorMessage('Please enter a valid voucher code')
-                            
+
               return
             }
 
@@ -55,7 +55,12 @@ const VoucherCode: FC<VoucherCodeProps> = ({
         >
           {() => (
             <Form>
-              <TextField label='Got a voucher code? Enter it here:' id='voucherCode' target='voucherCode' validationMessage={errorMessage} />
+              <TextField
+                label='Got a voucher code? Enter it here:'
+                id='voucherCode'
+                target='voucherCode'
+                validationMessage={errorMessage}
+              />
               <EditButton text='Continue' type='submit' />
             </Form>
           )}

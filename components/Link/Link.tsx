@@ -1,12 +1,12 @@
-import React, { ReactElement, FC } from 'react'
-import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faAngleRight } from '@fortawesome/pro-thin-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Link from 'next/link'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
+import type { LinkProps } from './Link.types'
 import * as Styled from './styles/Link.style'
-
-import { LinkProps } from './Link.types'
 
 const GJLink: FC<LinkProps> = ({
   appearance = 'primary',

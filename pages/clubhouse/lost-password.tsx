@@ -1,25 +1,29 @@
-import React, { FC, ReactElement, useEffect, useContext, useState } from 'react'
-import { Formik, Form } from 'formik'
+import { Form, Formik } from 'formik'
+import { useRouter } from 'next/router'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import * as Yup from 'yup'
+
+import Button from '@components/Button/Button'
+import Notification from '@components/Notification'
+import PageLayout from '@components/PageLayout'
+import SplitPageTemplate from '@components/SplitPageTemplate'
+import TextField from '@components/TextField/TextField'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import featuredImageUrl from '@helpers/featuredImageUrl'
+
+import useResetPassword from '@hooks/useResetPassword'
 
 import client from '@lib/apollo-client'
 
-import { subscriptionProductsQuery } from '@queries/global/subscription-products'
-import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
-import { siteOptionsQuery } from '@queries/global/site-options'
-
-import PageLayout from '@components/PageLayout'
-import SplitPageTemplate from '@components/SplitPageTemplate'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
 import { freeGiftQuery } from '@queries/global/free-gift'
-import { useRouter } from 'next/router'
-import TextField from '@components/TextField/TextField'
-import Button from '@components/Button/Button'
-import useResetPassword from '@hooks/useResetPassword'
-import Notification from '@components/Notification'
-import featuredImageUrl from '@helpers/featuredImageUrl'
+import { headerNavQuery } from '@queries/global/header-nav'
+import { siteOptionsQuery } from '@queries/global/site-options'
+import { subscriptionProductsQuery } from '@queries/global/subscription-products'
 
 const ClubPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -54,7 +58,13 @@ const ClubPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
 
   if (success) {
     return (
-      <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
+      <PageLayout
+        headerStyle='standard'
+        headerNav={headerNav}
+        footerNav={footerNav}
+        seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }}
+        siteOptions={siteOptions}
+      >
         <SplitPageTemplate
           image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.accountPage.sourceUrl)}
           title='Reset your password'
@@ -66,11 +76,14 @@ const ClubPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
   }
 
   return (
-    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
-      <SplitPageTemplate
-        image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.accountPage.sourceUrl)}
-        title='Reset your password'
-      >
+    <PageLayout
+      headerStyle='standard'
+      headerNav={headerNav}
+      footerNav={footerNav}
+      seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }}
+      siteOptions={siteOptions}
+    >
+      <SplitPageTemplate image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.accountPage.sourceUrl)} title='Reset your password'>
         <Formik
           validationSchema={passwordValidation}
           validateOnBlur={false}

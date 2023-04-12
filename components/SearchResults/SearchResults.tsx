@@ -1,15 +1,16 @@
-import React, { ReactElement, FC, useContext, useState } from 'react'
 import he from 'he'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useState } from 'react'
 
+import Heading from '@components/Heading'
 import Link from '@components/Link'
 import LoadMore from '@components/LoadMore'
-import Heading from '@components/Heading'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
+import type { SearchResultsProps } from './SearchResults.types'
 import * as Styled from './styles/SearchResults.style'
-
-import { SearchResultsProps } from './SearchResults.types'
 
 const SearchResults: FC<SearchResultsProps> = ({ searchResults, searchTerm, setSearchResults }: SearchResultsProps): ReactElement => {
   const [searchPage, setSearchPage] = useState(1)

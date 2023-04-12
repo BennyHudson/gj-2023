@@ -1,17 +1,19 @@
-import React, { ReactElement, FC, useContext } from 'react'
+import { Form } from 'formik'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
 import * as Yup from 'yup'
 
-import TextField from '@components/TextField'
-import Select from '@components/Select'
 import EditButton from '@components/EditButton'
+import Select from '@components/Select'
+import TextField from '@components/TextField'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import { countries } from '@helpers/countries'
-import { Form } from 'formik'
-import PageContext, { PageContextProps } from '@context/PageContext'
 
+import type { ShippingFormProps } from './ShippingForm.types'
 import * as Styled from './styles/ShippingForm.style'
-
-import { ShippingFormProps } from './ShippingForm.types'
 
 export const shippingValidation = Yup.object().shape({
   shipping: Yup.object().shape({
@@ -23,11 +25,7 @@ export const shippingValidation = Yup.object().shape({
   }),
 })
 
-const ShippingForm: FC<ShippingFormProps> = ({
-  billingAddress,
-  setFieldValue,
-  errors,
-}): ReactElement => {
+const ShippingForm: FC<ShippingFormProps> = ({ billingAddress, setFieldValue, errors }): ReactElement => {
   const { customer } = useContext(PageContext) as PageContextProps
 
   return (

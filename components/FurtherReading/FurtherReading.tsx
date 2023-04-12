@@ -1,12 +1,13 @@
-import React, { ReactElement, FC } from 'react'
-import { useQuery, gql } from '@apollo/client'
+import { gql, useQuery } from '@apollo/client'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
+
+import PostGrid from '@components/PostGrid'
+import Title from '@components/Title'
 
 import { articleContent } from '@queries/fragments/articleContent'
 
-import Title from '@components/Title'
-import PostGrid from '@components/PostGrid'
-
-import { FurtherReadingProps } from './FurtherReading.types'
+import type { FurtherReadingProps } from './FurtherReading.types'
 
 const FurtherReading: FC<FurtherReadingProps> = ({ articleId, category }: FurtherReadingProps): ReactElement => {
   const { data } = useQuery(gql`

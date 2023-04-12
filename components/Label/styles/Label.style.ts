@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledLabelProps } from './Label.style.types'
+import type { StyledLabelProps } from './Label.style.types'
 
 export const Label = styled.label(
   (props: StyledLabelProps): FlattenSimpleInterpolation => css`

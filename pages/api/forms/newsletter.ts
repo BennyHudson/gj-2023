@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 const newsletterHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const myHeaders = new Headers()

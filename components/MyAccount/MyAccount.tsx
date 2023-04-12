@@ -1,13 +1,15 @@
-import React, { ReactElement, FC, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
-
-import Heading from '@components/Heading'
-import Feed from '@components/Feed'
-import Tabs from '@components/Tabs'
 import CustomerDetails from '@components/CustomerDetails'
 import CustomerSubs from '@components/CustomerSubs'
 import EditButton from '@components/EditButton'
+import Feed from '@components/Feed'
+import Heading from '@components/Heading'
+import Tabs from '@components/Tabs'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import * as Styled from './styles/MyAccount.style'
 

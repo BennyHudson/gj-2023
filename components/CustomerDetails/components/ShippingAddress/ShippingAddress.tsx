@@ -1,15 +1,18 @@
-import React, { FC, ReactElement, useContext, useState } from 'react'
 import { Formik } from 'formik'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useState } from 'react'
 
-import Heading from '@components/Heading'
 import EditButton from '@components/EditButton'
-import ValueWithLabel from '@components/ValueWithLabel'
+import Heading from '@components/Heading'
+import Notification from '@components/Notification'
 import ShippingForm from '@components/ShippingForm'
+import { shippingValidation } from '@components/ShippingForm/ShippingForm'
+import ValueWithLabel from '@components/ValueWithLabel'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import * as Styled from '../../styles/CustomerDetails.style'
-import PageContext, { PageContextProps } from '@context/PageContext'
-import { shippingValidation } from '@components/ShippingForm/ShippingForm'
-import Notification from '@components/Notification'
 
 const ShippingAddress: FC = (): ReactElement | null => {
   const { customer } = useContext(PageContext) as PageContextProps

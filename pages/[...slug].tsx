@@ -1,25 +1,28 @@
-import { FC, ReactElement, useContext, useEffect } from 'react'
+import type { FC, ReactElement} from 'react'
+import { useContext, useEffect } from 'react'
 
-import client from '@lib/apollo-client'
-
-import { getAllPosts } from '@lib/api'
-
-import { headerNavQuery } from '@queries/global/header-nav'
-import { footerNavQuery } from '@queries/global/footer-nav'
-import { postBody, PostBody } from '@queries/post/post-body'
-
-import HeroImage from '@components/HeroImage'
 import BannerAdvert from '@components/BannerAdvert'
-import Masthead from '@components/Masthead'
-import Section from '@components/Section'
 import ContentGrid from '@components/ContentGrid'
 import FurtherReading from '@components/FurtherReading'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
+import HeroImage from '@components/HeroImage'
+import Masthead from '@components/Masthead'
 import PageLayout from '@components/PageLayout'
-import { StaticPaths } from '@typings/StaticPaths.types'
-import { PageData } from '@typings/PageData.types'
+import Section from '@components/Section'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import { getAllPosts } from '@lib/api'
+import client from '@lib/apollo-client'
+
+import { footerNavQuery } from '@queries/global/footer-nav'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import type { PostBody} from '@queries/post/post-body'
+import { postBody } from '@queries/post/post-body'
+
+import type { PageData } from '@typings/PageData.types'
+import type { StaticPaths } from '@typings/StaticPaths.types'
 
 interface PostData extends PageData {
   data: PostBody
@@ -50,7 +53,13 @@ const Post: FC<PostData> = ({ data, headerNav, footerNav, siteOptions }: PostDat
   }, [setActiveNavElement, articleData])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={articleData.seo} siteOptions={siteOptions} databaseId={articleData.databaseId}>
+    <PageLayout
+      headerNav={headerNav}
+      footerNav={footerNav}
+      seo={articleData.seo}
+      siteOptions={siteOptions}
+      databaseId={articleData.databaseId}
+    >
       {articleData.featuredImage && <HeroImage featuredImage={articleData.featuredImage.node.fullSize} />}
       <BannerAdvert parent='gj_970x250' slot='GJ_970x250_001' />
       <Section>

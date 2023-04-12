@@ -1,10 +1,10 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import Link from '@components/Link'
 
+import type { FooterMainMenuProps } from './FooterMainMenu.types'
 import * as Styled from './styles/FooterMainMenu.style'
-
-import { FooterMainMenuProps } from './FooterMainMenu.types'
 
 const FooterMainMenu: FC<FooterMainMenuProps> = ({ menu }: FooterMainMenuProps): ReactElement => {
   return (

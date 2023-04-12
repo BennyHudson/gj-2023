@@ -1,19 +1,19 @@
-import React, { ReactElement, FC, useContext, useState } from 'react'
-import Link from 'next/link'
-import AnimateHeight from 'react-animate-height'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faAngleDown, faAngleUp } from '@fortawesome/pro-light-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Link from 'next/link'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useState } from 'react'
+import AnimateHeight from 'react-animate-height'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import flatListToHierarchical from '@helpers/flatListToHierarchical'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
-
-import SecondaryNav from '../SecondaryNav'
-
+import type { MobileNavigationProps } from './MobileNavigation.types'
 import * as Styled from './styles/MobileNavigation.style'
-
-import { MobileNavigationProps } from './MobileNavigation.types'
+import SecondaryNav from '../SecondaryNav'
 
 const MobileNavigation: FC<MobileNavigationProps> = ({ inverse = false, navigation }: MobileNavigationProps): ReactElement => {
   const { activeNavElement, headerHeight } = useContext(PageContext) as PageContextProps

@@ -1,9 +1,12 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledGiftGridProps } from './GiftGrid.style.types'
-import respondTo from '@mixins/respondTo'
-import { Thumbnail } from '@components/Thumbnail/styles/Thumbnail.style'
 import { Meta } from '@components/Meta/styles/Meta.style'
+import { Thumbnail } from '@components/Thumbnail/styles/Thumbnail.style'
+
+import respondTo from '@mixins/respondTo'
+
+import type { StyledGiftGridProps } from './GiftGrid.style.types'
 
 export const GiftGrid = styled.div(
   (props: StyledGiftGridProps): FlattenSimpleInterpolation => css`

@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledCodeBlockProps } from './CodeBlock.style.types'
+import type { StyledCodeBlockProps } from './CodeBlock.style.types'
 
 export const CodeBlock = styled.div(
   (props: StyledCodeBlockProps): FlattenSimpleInterpolation => css`

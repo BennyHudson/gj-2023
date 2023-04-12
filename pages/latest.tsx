@@ -1,18 +1,22 @@
-import React, { FC, ReactElement, useContext, useEffect } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
-
-import Section from '@components/Section'
+import BannerAdvert from '@components/BannerAdvert'
 import Breadcrumbs from '@components/Breadcrumbs'
+import Feed from '@components/Feed'
+import PageLayout from '@components/PageLayout'
+import Section from '@components/Section'
 import Title from '@components/Title'
 
-import Feed from '@components/Feed'
-import client from '@lib/apollo-client'
-import { headerNavQuery } from '@queries/global/header-nav'
-import { footerNavQuery } from '@queries/global/footer-nav'
-import PageLayout from '@components/PageLayout'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
 import { useBreakpoints } from '@hooks/useBreakpoints'
-import BannerAdvert from '@components/BannerAdvert'
+
+import client from '@lib/apollo-client'
+
+import { footerNavQuery } from '@queries/global/footer-nav'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
 
 const LatestPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
@@ -36,7 +40,13 @@ const LatestPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => 
   ]
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} headerStyle='standard' seo={{ title: 'Latest | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
+    <PageLayout
+      headerNav={headerNav}
+      footerNav={footerNav}
+      headerStyle='standard'
+      seo={{ title: 'Latest | The Gentleman\'s Journal' }}
+      siteOptions={siteOptions}
+    >
       <BannerAdvert parent='gj_970x250' slot='GJ_970x250_001' />
       <Section>
         <Breadcrumbs links={breadcrumbLinks} />

@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element, jsx-a11y/alt-text */
-import React, { ReactElement, FC } from 'react'
 import Script from 'next/script'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 import { useTheme } from 'styled-components'
 
-import { Theme } from '@themes/gjTheme/gjTheme.types'
+import type { Theme } from '@themes/gjTheme/gjTheme.types'
 
 import { googleAds } from './helpers/googleAds'
 
@@ -27,12 +28,7 @@ const Scripts: FC = (): ReactElement => {
         `}
       </Script>
       <noscript>
-        <img 
-          height='1' 
-          width='1' 
-          style={{ display: 'none' }}
-          src='https://www.facebook.com/tr?id=467180983664563&ev=PageView&noscript=1'
-        />
+        <img height='1' width='1' style={{ display: 'none' }} src='https://www.facebook.com/tr?id=467180983664563&ev=PageView&noscript=1' />
       </noscript>
       <Script strategy='afterInteractive' src='https://www.googletagmanager.com/gtag/js?id=AW-10918806122' />
       <Script id='googlePixel'>

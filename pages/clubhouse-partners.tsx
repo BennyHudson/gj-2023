@@ -1,19 +1,22 @@
-import React, { FC, ReactElement, useEffect, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
+
+import HeroImage from '@components/HeroImage'
+import Masthead from '@components/Masthead'
+import PageLayout from '@components/PageLayout'
+import PartnerGrid from '@components/PartnerGrid'
+import Section from '@components/Section'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
 import client from '@lib/apollo-client'
 
-import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
+import { headerNavQuery } from '@queries/global/header-nav'
+import { siteOptionsQuery } from '@queries/global/site-options'
 import { partnerOptionsQuery } from '@queries/partners/partnerOptions'
 import { partnerQuery } from '@queries/partners/partners'
-
-import PageLayout from '@components/PageLayout'
-import HeroImage from '@components/HeroImage'
-import Section from '@components/Section'
-import Masthead from '@components/Masthead'
-import PartnerGrid from '@components/PartnerGrid'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
-import { siteOptionsQuery } from '@queries/global/site-options'
 
 const TeamPage: FC = ({ headerNav, footerNav, pageData, partners, siteOptions }): ReactElement => {
   const breadcrumbs = [
@@ -34,7 +37,12 @@ const TeamPage: FC = ({ headerNav, footerNav, pageData, partners, siteOptions })
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Partner Offers | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
+    <PageLayout
+      headerNav={headerNav}
+      footerNav={footerNav}
+      seo={{ title: 'Partner Offers | The Gentleman\'s Journal' }}
+      siteOptions={siteOptions}
+    >
       <HeroImage featuredImage={pageData.featuredImage.sourceUrl} height={1} />
       <Section appearance='tertiary'>
         <Masthead breadcrumbs={breadcrumbs} title='Clubhouse Partners' subtitle={pageData.subTitle} />

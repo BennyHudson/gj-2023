@@ -1,8 +1,11 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledSplitPageTemplateProps } from './SplitPageTemplate.style.types'
 import { Newsletter } from '@components/Newsletter/styles/Newsletter.style'
+
 import respondTo from '@mixins/respondTo'
+
+import type { StyledSplitPageTemplateProps } from './SplitPageTemplate.style.types'
 
 export const SplitPageTemplate = styled.div(
   (props: StyledSplitPageTemplateProps): FlattenSimpleInterpolation => css`

@@ -1,15 +1,17 @@
-import React, { ReactElement, FC, useState, useContext } from 'react'
-
-import Heading from '@components/Heading'
-import Paragraph from '@components/Paragraph'
-import Link from '@components/Link'
-import Button from '@components/Button'
-
-import * as Styled from './styles/QuickSubscribe.style'
-
-import { QuickSubscribeProps } from './QuickSubscribe.types'
-import PageContext, { PageContextProps } from '@context/PageContext'
 import { useRouter } from 'next/router'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useState } from 'react'
+
+import Button from '@components/Button'
+import Heading from '@components/Heading'
+import Link from '@components/Link'
+import Paragraph from '@components/Paragraph'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import type { QuickSubscribeProps } from './QuickSubscribe.types'
+import * as Styled from './styles/QuickSubscribe.style'
 
 const QuickSubscribe: FC<QuickSubscribeProps> = ({ products, freeGift }: QuickSubscribeProps): ReactElement => {
   const router = useRouter()

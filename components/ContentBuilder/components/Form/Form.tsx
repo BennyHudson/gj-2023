@@ -1,23 +1,23 @@
 /* eslint-disable indent */
-import React, { ReactElement, FC, useState } from 'react'
 import { useQuery } from '@apollo/client'
 import { Formik } from 'formik'
+import type { FC, ReactElement} from 'react'
+import React, { useState } from 'react'
+
+import Button from '@components/Button'
+import CheckboxList from '@components/CheckboxList'
+import Heading from '@components/Heading'
+import NameField from '@components/NameField'
+import RadioList from '@components/RadioList'
+import RawHtmlWrapper from '@components/RawHtmlWrapper'
+import Select from '@components/Select'
+import TextArea from '@components/TextArea'
+import TextField from '@components/TextField'
 
 import { formQuery } from '@queries/global/form'
 
-import Heading from '@components/Heading'
-import Button from '@components/Button'
-import CheckboxList from '@components/CheckboxList'
-import Select from '@components/Select'
-import TextField from '@components/TextField'
-import TextArea from '@components/TextArea'
-
+import type { FormProps } from './Form.types'
 import * as Styled from './styles/Form.style'
-
-import { FormProps } from './Form.types'
-import RadioList from '@components/RadioList'
-import NameField from '@components/NameField'
-import RawHtmlWrapper from '@components/RawHtmlWrapper'
 
 const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
   const { loading, data } = useQuery(formQuery(formId).query)

@@ -1,16 +1,17 @@
-import React, { ReactElement, FC } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faAngleRight } from '@fortawesome/pro-thin-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
+import Heading from '@components/Heading'
 import Section from '@components/Section'
 import Title from '@components/Title'
-import Heading from '@components/Heading'
 
-import * as Styled from './styles/ClubOverview.style'
-
-import { ClubOverviewProps } from './ClubOverview.types'
 import { useBreakpoints } from '@hooks/useBreakpoints'
+
+import type { ClubOverviewProps } from './ClubOverview.types'
+import * as Styled from './styles/ClubOverview.style'
 
 const ClubOverview: FC<ClubOverviewProps> = ({ overview }: ClubOverviewProps): ReactElement => {
   const { sm } = useBreakpoints()
@@ -22,7 +23,9 @@ const ClubOverview: FC<ClubOverviewProps> = ({ overview }: ClubOverviewProps): R
           {overview.map((overviewItem, index) => {
             return (
               <Styled.Item key={index}>
-                <Styled.Index><FontAwesomeIcon icon={faAngleRight as IconProp} /></Styled.Index>
+                <Styled.Index>
+                  <FontAwesomeIcon icon={faAngleRight as IconProp} />
+                </Styled.Index>
                 <Heading text={overviewItem.subscriptionPerk} size={2} font='ChronicleCondensed' />
                 {/* <Paragraph text={overviewItem.subscriptionPerk} font='Cera' size={1} /> */}
               </Styled.Item>

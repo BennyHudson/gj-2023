@@ -1,12 +1,13 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
-import Thumbnail from '@components/Thumbnail'
 import Meta from '@components/Meta'
+import Thumbnail from '@components/Thumbnail'
 
-import * as Styled from './styles/SkeletonLoader.style'
-
-import { SkeletonLoaderProps } from './SkeletonLoader.types'
 import { useBreakpoints } from '@hooks/useBreakpoints'
+
+import type { SkeletonLoaderProps } from './SkeletonLoader.types'
+import * as Styled from './styles/SkeletonLoader.style'
 
 const SkeletonLoader: FC<SkeletonLoaderProps> = ({ type = 'post', columns = 4 }: SkeletonLoaderProps): ReactElement => {
   const { mdAndAbove } = useBreakpoints()

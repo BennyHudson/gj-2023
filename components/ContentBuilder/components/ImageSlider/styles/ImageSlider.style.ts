@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledImageSliderProps } from './ImageSlider.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledImageSliderProps } from './ImageSlider.style.types'
 
 export const Slide = styled.div(
   (props: StyledImageSliderProps): FlattenSimpleInterpolation => css`

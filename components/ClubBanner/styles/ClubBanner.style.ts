@@ -1,8 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import respondTo from '@mixins/respondTo'
 
-import { StyledClubBannerProps } from './ClubBanner.style.types'
+import type { StyledClubBannerProps } from './ClubBanner.style.types'
 
 export const ClubBanner = styled.div(
   (props: StyledClubBannerProps): FlattenSimpleInterpolation => css`

@@ -1,22 +1,22 @@
-import React, { ReactElement, FC, useState, useContext, useEffect } from 'react'
-import { useRouter } from 'next/router'
 import { useStripe } from '@stripe/react-stripe-js'
+import { useRouter } from 'next/router'
 import Script from 'next/script'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import Notification from '@components/Notification'
 
-import CustomerDetails from './components/CustomerDetails'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import type { CheckoutProps, CheckoutState } from './Checkout.types'
 import BillingAddress from './components/BillingAddress'
-import ShippingAddress from './components/ShippingAddress'
-import VoucherCode from './components/VoucherCode'
+import CustomerDetails from './components/CustomerDetails'
 import OrderSummary from './components/OrderSummary'
 import Payment from './components/Payment'
-
+import ShippingAddress from './components/ShippingAddress'
+import VoucherCode from './components/VoucherCode'
 import * as Styled from './styles/Checkout.style'
-
-import { CheckoutProps, CheckoutState } from './Checkout.types'
 
 const Checkout: FC<CheckoutProps> = ({ paymentIntent }: CheckoutProps): ReactElement => {
   const { setCart, getCustomerData, customer } = useContext(PageContext) as PageContextProps
@@ -39,7 +39,7 @@ const Checkout: FC<CheckoutProps> = ({ paymentIntent }: CheckoutProps): ReactEle
       state: '',
       postcode: '',
       country: '',
-    }
+    },
   })
   const [isLoading, setIsLoading] = useState<CheckoutState['isLoading']>(false)
   const [notificationState, setNotificationState] = useState<CheckoutState['notificationState']>('error')
@@ -59,7 +59,7 @@ const Checkout: FC<CheckoutProps> = ({ paymentIntent }: CheckoutProps): ReactEle
     }
 
     stripe.retrievePaymentIntent(clientSecret).then(async ({ paymentIntent }) => {
-      if (!paymentIntent) return 
+      if (!paymentIntent) return
 
       const { payment_method, status } = paymentIntent
 
@@ -122,7 +122,7 @@ const Checkout: FC<CheckoutProps> = ({ paymentIntent }: CheckoutProps): ReactEle
   if (message) {
     return (
       <>
-        {notificationState === 'success' &&
+        {notificationState === 'success' && (
           <Script id='google-conversion'>
             {`
               gtag('event', 'conversion', {
@@ -133,7 +133,7 @@ const Checkout: FC<CheckoutProps> = ({ paymentIntent }: CheckoutProps): ReactEle
               });
             `}
           </Script>
-        }
+        )}
         <Notification state={notificationState} text={message} />
       </>
     )
@@ -141,12 +141,7 @@ const Checkout: FC<CheckoutProps> = ({ paymentIntent }: CheckoutProps): ReactEle
 
   return (
     <Styled.CheckoutPanels isLoading={isLoading}>
-      <CustomerDetails
-        activePanel={activePanel}
-        panelIndex={1}
-        setActivePanel={setActivePanel}
-        setCheckoutForm={setCheckoutForm}
-      />
+      <CustomerDetails activePanel={activePanel} panelIndex={1} setActivePanel={setActivePanel} setCheckoutForm={setCheckoutForm} />
       <BillingAddress
         activePanel={activePanel}
         panelIndex={2}

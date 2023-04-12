@@ -1,32 +1,19 @@
-import React, { ReactElement, FC } from 'react'
-import Head from 'next/head'
 import he from 'he'
+import Head from 'next/head'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import { HeadTagsProps } from './HeadTags.types'
+import type { HeadTagsProps } from './HeadTags.types'
 
 const HeadTags: FC<HeadTagsProps> = ({ seo, siteOptions }: HeadTagsProps): ReactElement => {
   const { favicons } = siteOptions.gjOptions.faviconImages
   return (
     <Head>
-      <link
-        rel='apple-touch-icon'
-        sizes='180x180'
-        href={featuredImageUrl(favicons.faviconLarge.sourceUrl)}
-      />
-      <link
-        rel='icon'
-        type='image/png'
-        sizes='32x32'
-        href={featuredImageUrl(favicons.faviconMedium.sourceUrl)}
-      />
-      <link
-        rel='icon'
-        type='image/png'
-        sizes='16x16'
-        href={featuredImageUrl(favicons.faviconSmall.sourceUrl)}
-      />
+      <link rel='apple-touch-icon' sizes='180x180' href={featuredImageUrl(favicons.faviconLarge.sourceUrl)} />
+      <link rel='icon' type='image/png' sizes='32x32' href={featuredImageUrl(favicons.faviconMedium.sourceUrl)} />
+      <link rel='icon' type='image/png' sizes='16x16' href={featuredImageUrl(favicons.faviconSmall.sourceUrl)} />
       <meta charSet='UTF-8' />
       <meta httpEquiv='x-ua-compatible' content='ie=edge,chrome=1' />
       <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=1' />

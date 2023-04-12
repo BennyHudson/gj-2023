@@ -1,14 +1,16 @@
-import React, { ReactElement, FC, useEffect, useState, useContext } from 'react'
-import Head from 'next/head'
-import Slider from 'react-slick'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/pro-thin-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Head from 'next/head'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import Slider from 'react-slick'
 
-import * as Styled from './styles/PostCarousel.style'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
 import CarouselPost from './components/CarouselPost/CarouselPost'
+import * as Styled from './styles/PostCarousel.style'
 
 const PostCarousel: FC = (): ReactElement => {
   const { cmsUrl } = useContext(PageContext) as PageContextProps
@@ -17,8 +19,8 @@ const PostCarousel: FC = (): ReactElement => {
   const getPosts = async () => {
     const page = Math.floor(Math.random() * 101)
     const postRequest = await fetch(`${cmsUrl}/wp-json/wp/v2/articles?page=${page}`)
-    
-    if (!postRequest) return 
+
+    if (!postRequest) return
 
     const postResponse = await postRequest.json()
     setPosts(postResponse)

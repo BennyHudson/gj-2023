@@ -1,23 +1,23 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { ReactElement, FC } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faAngleDoubleUp } from '@fortawesome/pro-thin-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import dayjs from 'dayjs'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
-import Section from '@components/Section'
 import Link from '@components/Link'
 import Logo from '@components/Logo'
 import Paragraph from '@components/Paragraph'
-
-import FooterMainMenu from './components/FooterMainMenu'
+import Section from '@components/Section'
 
 import flatListToHierarchical from '@helpers/flatListToHierarchical'
 
-import { FooterProps } from './Footer.types'
-
-import * as Styled from './styles/Footer.style'
 import { useBreakpoints } from '@hooks/useBreakpoints'
+
+import FooterMainMenu from './components/FooterMainMenu'
+import type { FooterProps } from './Footer.types'
+import * as Styled from './styles/Footer.style'
 
 const Footer: FC<FooterProps> = ({ footerNav }: FooterProps): ReactElement => {
   const { lgAndAbove } = useBreakpoints()

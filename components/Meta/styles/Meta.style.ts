@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledMetaProps } from './Meta.style.types'
+import type { StyledMetaProps } from './Meta.style.types'
 
 export const Meta = styled.div(
   (props: StyledMetaProps): FlattenSimpleInterpolation => css`

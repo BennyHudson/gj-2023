@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 
-import { Shipping } from '@typings/Shipping.types'
 import { BillingAddress } from '@typings/BillingAddress.types'
+import { Shipping } from '@typings/Shipping.types'
 import { ShippingAddress } from '@typings/ShippingAddress.types'
 
 interface Customer {

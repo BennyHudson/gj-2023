@@ -1,5 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
-import { StyledBylineProps } from './Byline.style.types'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
+
+import type { StyledBylineProps } from './Byline.style.types'
 
 export const Byline = styled.div((): FlattenSimpleInterpolation => [])
 

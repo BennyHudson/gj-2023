@@ -1,23 +1,29 @@
-import React, { FC, ReactElement, useEffect, useContext } from 'react'
 import { gql } from '@apollo/client'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
+
+import BannerAdvert from '@components/BannerAdvert'
+import Breadcrumbs from '@components/Breadcrumbs'
+import Feed from '@components/Feed'
+import PageLayout from '@components/PageLayout'
+import Section from '@components/Section'
+import Title from '@components/Title'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import { useBreakpoints } from '@hooks/useBreakpoints'
 
 import client from '@lib/apollo-client'
 
-import BannerAdvert from '@components/BannerAdvert'
-import Section from '@components/Section'
-import Breadcrumbs from '@components/Breadcrumbs'
-import Title from '@components/Title'
-import Feed from '@components/Feed'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
-import { headerNavQuery } from '@queries/global/header-nav'
+import type { CategoryBody} from '@queries/category/category-body'
+import { categoryBodyQuery } from '@queries/category/category-body'
 import { footerNavQuery } from '@queries/global/footer-nav'
-import PageLayout from '@components/PageLayout'
-import { CategoryBody, categoryBodyQuery } from '@queries/category/category-body'
-import { StaticPaths } from '@typings/StaticPaths.types'
-import { PageData } from '@typings/PageData.types'
-import { useBreakpoints } from '@hooks/useBreakpoints'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import type { PageData } from '@typings/PageData.types'
+import type { StaticPaths } from '@typings/StaticPaths.types'
 
 interface CategoryData extends PageData {
   category: CategoryBody

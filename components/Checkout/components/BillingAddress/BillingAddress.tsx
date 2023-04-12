@@ -1,14 +1,15 @@
-import React, { ReactElement, FC, useContext } from 'react'
 import { Formik } from 'formik'
+import type { ReactElement, FC} from 'react'
+import React, { useContext } from 'react'
 
 import BillingForm, { billingValidation } from '@components/BillingForm'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
 import { BillingAddress } from '@typings/BillingAddress.types'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
-
+import type { BillingAddressProps } from './BillingAddress.types'
 import CheckoutPanel from '../CheckoutPanel'
-
-import { BillingAddressProps } from './BillingAddress.types'
 
 const BillingAddress: FC<BillingAddressProps> = ({
   panelIndex,

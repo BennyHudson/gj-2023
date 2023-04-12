@@ -1,14 +1,15 @@
-import React, { ReactElement, FC } from 'react'
+import { Form } from 'formik'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 import * as Yup from 'yup'
 
-import TextField from '@components/TextField'
 import EditButton from '@components/EditButton'
 import Select from '@components/Select'
+import TextField from '@components/TextField'
 
 import { countries } from '@helpers/countries'
-import { Form } from 'formik'
 
-import { BillingFormProps } from './BillingForm.types'
+import type { BillingFormProps } from './BillingForm.types'
 
 export const billingValidation = Yup.object().shape({
   billing: Yup.object().shape({

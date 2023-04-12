@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledNotificationProps } from './Notification.style.types'
+import type { StyledNotificationProps } from './Notification.style.types'
 
 export const Notification = styled.div(
   (props: StyledNotificationProps): FlattenSimpleInterpolation => css`

@@ -1,14 +1,14 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
-import Thumbnail from '@components/Thumbnail'
-import Meta from '@components/Meta'
 import Heading from '@components/Heading'
 import Link from '@components/Link'
+import Meta from '@components/Meta'
 import Paragraph from '@components/Paragraph'
+import Thumbnail from '@components/Thumbnail'
 
+import type { PodcastCardProps } from './PodcastCard.types'
 import * as Styled from './styles/PodcastCard.style'
-
-import { PodcastCardProps } from './PodcastCard.types'
 
 const PodcastCard: FC<PodcastCardProps> = ({ podcast }: PodcastCardProps): ReactElement => {
   let podcastMeta = podcast.podcasts.podcastMeta.guest.name

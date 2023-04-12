@@ -1,16 +1,18 @@
-import React, { ReactElement, FC } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
+
+import Button from '@components/Button'
+import EditButton from '@components/EditButton'
+import Heading from '@components/Heading'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import * as Styled from './styles/MagazineGrid.style'
-
-import { MagazineGridProps } from './MagazineGrid.types'
-import Heading from '@components/Heading'
-import Button from '@components/Button'
-import EditButton from '@components/EditButton'
 import { useBreakpoints } from '@hooks/useBreakpoints'
-import Link from 'next/link'
+
+import type { MagazineGridProps } from './MagazineGrid.types'
+import * as Styled from './styles/MagazineGrid.style'
 
 const MagazineGrid: FC<MagazineGridProps> = ({ magazines }: MagazineGridProps): ReactElement => {
   const { mdAndAbove } = useBreakpoints()

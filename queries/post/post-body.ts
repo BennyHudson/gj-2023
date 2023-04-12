@@ -1,10 +1,10 @@
 import { gql } from '@apollo/client'
 
-import { postContent, Post } from '@queries/fragments/postContent'
-import { articleNote, ArticleNote } from '@queries/fragments/articleNote'
-import { bylineContent, Byline } from '@queries/fragments/postBylineContent'
-import { contentBuilder, ContentBuilder } from '@queries/fragments/contentBuilder'
-import { seo, Seo } from '@queries/fragments/seo'
+import { ArticleNote, articleNote } from '@queries/fragments/articleNote'
+import { ContentBuilder, contentBuilder } from '@queries/fragments/contentBuilder'
+import { Byline, bylineContent } from '@queries/fragments/postBylineContent'
+import { Post, postContent } from '@queries/fragments/postContent'
+import { Seo, seo } from '@queries/fragments/seo'
 
 interface PostProps extends Omit<Post, 'articleAcf'> {
   articleAcf: {

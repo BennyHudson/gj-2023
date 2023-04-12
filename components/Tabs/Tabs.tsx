@@ -1,13 +1,14 @@
-import React, { ReactElement, FC, useState, Fragment } from 'react'
-import AnimateHeight from 'react-animate-height'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faAngleDown, faAngleUp } from '@fortawesome/pro-light-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import type { FC, ReactElement} from 'react'
+import React, { Fragment, useState } from 'react'
+import AnimateHeight from 'react-animate-height'
+
+import { useBreakpoints } from '@hooks/useBreakpoints'
 
 import * as Styled from './styles/Tabs.style'
-
-import { TabsProps, TabsState } from './Tabs.types'
-import { useBreakpoints } from '@hooks/useBreakpoints'
+import type { TabsProps, TabsState } from './Tabs.types'
 
 const Tabs: FC<TabsProps> = ({ tabs }: TabsProps): ReactElement => {
   const [activeTab, setActiveTab] = useState<TabsState['activeTab'] | null>(0)

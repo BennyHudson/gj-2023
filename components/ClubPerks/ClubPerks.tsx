@@ -1,17 +1,19 @@
-import React, { ReactElement, FC, useRef } from 'react'
 import Image from 'next/image'
+import type { FC, ReactElement} from 'react'
+import React, { useRef } from 'react'
+
+import Heading from '@components/Heading'
+import Link from '@components/Link'
+import RawHtmlWrapper from '@components/RawHtmlWrapper'
+import Title from '@components/Title'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import * as Styled from './styles/ClubPerks.style'
-
-import { ClubPerksProps } from './ClubPerks.types'
-import Heading from '@components/Heading'
-import RawHtmlWrapper from '@components/RawHtmlWrapper'
-import Link from '@components/Link'
-import Title from '@components/Title'
-import useNextLink from '@hooks/useNextLink'
 import { useBreakpoints } from '@hooks/useBreakpoints'
+import useNextLink from '@hooks/useNextLink'
+
+import type { ClubPerksProps } from './ClubPerks.types'
+import * as Styled from './styles/ClubPerks.style'
 
 const ClubPerks: FC<ClubPerksProps> = ({ perks, title, subtitle }: ClubPerksProps): ReactElement => {
   const perksList = useRef<HTMLDivElement>(null)

@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client'
 import { disableFragmentWarnings } from 'graphql-tag'
 
-import { Podcast, podcastContent } from '@queries/fragments/podcastContent'
 import { media } from '@queries/fragments/media'
+import { Podcast, podcastContent } from '@queries/fragments/podcastContent'
 
 disableFragmentWarnings()
 

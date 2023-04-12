@@ -1,10 +1,12 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { PostExcerpt } from '@components/PostExcerpt/styles/PostExcerpt.style'
-
-import { StyledSessionsHeaderProps } from './SessionsHeader.style.types'
 import { Section } from '@components/Section/styles/Section.style'
+
 import respondTo from '@mixins/respondTo'
+
+import type { StyledSessionsHeaderProps } from './SessionsHeader.style.types'
 
 export const SessionsHeader = styled.div(
   (props: StyledSessionsHeaderProps): FlattenSimpleInterpolation => css`

@@ -1,16 +1,18 @@
-import React, { ReactElement, FC, useContext } from 'react'
 import Image from 'next/image'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
+
+import Button from '@components/Button'
+import Heading from '@components/Heading'
+import RawHtmlWrapper from '@components/RawHtmlWrapper'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
-
+import type { ProductFeatureProps } from './ProductFeature.types'
 import * as Styled from './styles/ProductFeature.style'
-
-import { ProductFeatureProps } from './ProductFeature.types'
-import Heading from '@components/Heading'
-import RawHtmlWrapper from '@components/RawHtmlWrapper'
-import Button from '@components/Button'
 
 const ProductFeature: FC<ProductFeatureProps> = ({ product }: ProductFeatureProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps

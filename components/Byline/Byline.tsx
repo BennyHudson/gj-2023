@@ -1,13 +1,13 @@
-import React, { ReactElement, FC } from 'react'
 import Image from 'next/image'
-
-import featuredImageUrl from '@helpers/featuredImageUrl'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import Paragraph from '@components/Paragraph'
 
-import * as Styled from './styles/Byline.style'
+import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import { BylineProps } from './Byline.types'
+import type { BylineProps } from './Byline.types'
+import * as Styled from './styles/Byline.style'
 
 const Byline: FC<BylineProps> = ({ author, photographer, additionalBylines, sponsoredPost }: BylineProps): ReactElement => {
   return (

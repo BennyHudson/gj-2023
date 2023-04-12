@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components'
 
 import { Theme } from '@themes/gjTheme/gjTheme.types'
 
-import { breakpointWatcher, addBreakpointCallback, removeBreakpointCallback } from './helpers/breakpointTools'
+import { addBreakpointCallback, breakpointWatcher, removeBreakpointCallback } from './helpers/breakpointTools'
 
 export const useBreakpoints = () => {
   const [breakpoints, setBreakpoints] = useState(breakpointWatcher.breakpoints)

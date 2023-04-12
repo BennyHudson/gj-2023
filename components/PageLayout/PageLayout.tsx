@@ -1,15 +1,17 @@
-import React, { FC, ReactElement, useContext, useEffect, useState } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
-import Header from '@components/Header'
 import Footer from '@components/Footer'
+import Header from '@components/Header'
 import HeadTags from '@components/HeadTags'
 import NewsletterModal from '@components/NewsletterModal'
 import Toolbar from '@components/Toolbar'
 
-import * as Styled from './styles/PageLayout.style'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
-import { PageLayoutProps } from './PageLayout.types'
-import PageContext, { PageContextProps } from '@context/PageContext'
+import type { PageLayoutProps } from './PageLayout.types'
+import * as Styled from './styles/PageLayout.style'
 
 const PageLayout: FC<PageLayoutProps> = ({
   children,
@@ -22,7 +24,7 @@ const PageLayout: FC<PageLayoutProps> = ({
 }: PageLayoutProps): ReactElement => {
   const { showToolbar } = useContext(PageContext) as PageContextProps
 
-  const [ showNewsletterModal, setShowNewsletterModal ] = useState(false)
+  const [showNewsletterModal, setShowNewsletterModal] = useState(false)
 
   const loadModal = () => {
     setTimeout(() => {
@@ -40,7 +42,13 @@ const PageLayout: FC<PageLayoutProps> = ({
   return (
     <Styled.PageLayout>
       <HeadTags seo={seo} siteOptions={siteOptions} />
-      {(showNewsletterModal && siteOptions) && <NewsletterModal newsletterForm={siteOptions.gfForm} backgroundImage={siteOptions.gjOptions.newsletterModal.modalNewsletter.image.sourceUrl} setShowNewsletterModal={setShowNewsletterModal} />}
+      {showNewsletterModal && siteOptions && (
+        <NewsletterModal
+          newsletterForm={siteOptions.gfForm}
+          backgroundImage={siteOptions.gjOptions.newsletterModal.modalNewsletter.image.sourceUrl}
+          setShowNewsletterModal={setShowNewsletterModal}
+        />
+      )}
       <Header headerStyle={headerStyle} headerNav={headerNav} />
       {showToolbar && <Toolbar databaseId={databaseId} />}
       <Styled.Page>{children}</Styled.Page>

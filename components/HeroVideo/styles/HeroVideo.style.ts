@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledHeroVideoProps } from './HeroVideo.style.types'
+import type { StyledHeroVideoProps } from './HeroVideo.style.types'
 
 export const HeroVideo = styled.div(
   (props: StyledHeroVideoProps): FlattenSimpleInterpolation => css`

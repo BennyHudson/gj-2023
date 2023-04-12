@@ -1,18 +1,22 @@
-import React, { ReactElement, FC } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faTimes } from '@fortawesome/pro-thin-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
+
+import Newsletter from '@components/Newsletter/Newsletter'
+import Overlay from '@components/Overlay'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import Overlay from '@components/Overlay'
-import Newsletter from '@components/Newsletter/Newsletter'
-
+import type { NewsletterModalProps } from './NewsletterModal.types'
 import * as Styled from './styles/NewsletterModal.style'
 
-import { NewsletterModalProps } from './NewsletterModal.types'
-
-const NewsletterModal: FC<NewsletterModalProps> = ({ newsletterForm, backgroundImage, setShowNewsletterModal }: NewsletterModalProps): ReactElement => {
+const NewsletterModal: FC<NewsletterModalProps> = ({
+  newsletterForm,
+  backgroundImage,
+  setShowNewsletterModal,
+}: NewsletterModalProps): ReactElement => {
   return (
     <>
       <Styled.HideOverflow />
@@ -21,7 +25,9 @@ const NewsletterModal: FC<NewsletterModalProps> = ({ newsletterForm, backgroundI
         <Styled.ModalWrapper>
           <Styled.Column backgroundImage={featuredImageUrl(backgroundImage)} />
           <Styled.Column>
-            <Styled.IconButton onClick={() => setShowNewsletterModal(false)}><FontAwesomeIcon icon={faTimes as IconProp} /></Styled.IconButton>
+            <Styled.IconButton onClick={() => setShowNewsletterModal(false)}>
+              <FontAwesomeIcon icon={faTimes as IconProp} />
+            </Styled.IconButton>
             <Newsletter form={newsletterForm} />
           </Styled.Column>
         </Styled.ModalWrapper>

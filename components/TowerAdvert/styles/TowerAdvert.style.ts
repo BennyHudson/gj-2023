@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledTowerAdvertProps } from './TowerAdvert.style.types'
+import type { StyledTowerAdvertProps } from './TowerAdvert.style.types'
 
 export const TowerAdvert = styled.div(
   (props: StyledTowerAdvertProps): FlattenSimpleInterpolation => css`

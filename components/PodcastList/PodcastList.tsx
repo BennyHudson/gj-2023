@@ -1,19 +1,21 @@
-import React, { ReactElement, FC, useState } from 'react'
 import { useQuery } from '@apollo/client'
+import type { FC, ReactElement} from 'react'
+import React, { useState } from 'react'
+
+import Heading from '@components/Heading'
+import Link from '@components/Link'
+import LoadMore from '@components/LoadMore'
+import Meta from '@components/Meta'
+import Paragraph from '@components/Paragraph'
+import Section from '@components/Section'
+import Thumbnail from '@components/Thumbnail'
+import Title from '@components/Title'
+
+import { useBreakpoints } from '@hooks/useBreakpoints'
 
 import { latestPodcastsQuery } from '@queries/global/latest-podcasts'
 
-import Section from '@components/Section'
-import Title from '@components/Title'
-import Thumbnail from '@components/Thumbnail'
-import LoadMore from '@components/LoadMore'
-import Meta from '@components/Meta'
-import Heading from '@components/Heading'
-import Paragraph from '@components/Paragraph'
-import Link from '@components/Link'
-
 import * as Styled from './styles/PodcastList.style'
-import { useBreakpoints } from '@hooks/useBreakpoints'
 
 const PodcastList: FC = (): ReactElement => {
   const [last, setLast] = useState()

@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledGiftGuideFeatureProps } from './GiftGuideFeature.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledGiftGuideFeatureProps } from './GiftGuideFeature.style.types'
 
 type ThemeProps = Pick<StyledGiftGuideFeatureProps, 'theme'>
 

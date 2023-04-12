@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledPodcastListProps } from './PodcastList.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledPodcastListProps } from './PodcastList.style.types'
 
 export const PodcastList = styled.ul((): FlattenSimpleInterpolation => [])
 

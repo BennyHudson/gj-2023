@@ -1,6 +1,7 @@
-import { BylineProps } from '@components/Byline/Byline.types'
-import { ArticleNote } from '@queries/fragments/articleNote'
-import { ContentBuilder } from '@queries/fragments/contentBuilder'
+import type { BylineProps } from '@components/Byline/Byline.types'
+
+import type { ArticleNote } from '@queries/fragments/articleNote'
+import type { ContentBuilder } from '@queries/fragments/contentBuilder'
 
 export interface ContentGridProps {
   byline?: BylineProps

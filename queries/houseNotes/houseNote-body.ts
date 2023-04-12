@@ -1,9 +1,9 @@
 import { gql } from '@apollo/client'
 
 import { articleNote } from '@queries/fragments/articleNote'
-import { contentBuilder, ContentBuilder } from '@queries/fragments/contentBuilder'
-import { houseNoteContent, HouseNote } from '@queries/fragments/houseNoteContent'
-import { seo, Seo } from '@queries/fragments/seo'
+import { ContentBuilder, contentBuilder } from '@queries/fragments/contentBuilder'
+import { HouseNote, houseNoteContent } from '@queries/fragments/houseNoteContent'
+import { Seo, seo } from '@queries/fragments/seo'
 
 export interface HouseNoteBody extends HouseNote {
   seo: Seo

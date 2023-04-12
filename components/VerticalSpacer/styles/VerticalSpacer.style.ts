@@ -1,8 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { Spacing } from '@themes/gjTheme/constants/spacing.types'
+import type { Spacing } from '@themes/gjTheme/constants/spacing.types'
 
-import { StyledVerticalSpacerProps } from './VerticalSpacer.style.types'
+import type { StyledVerticalSpacerProps } from './VerticalSpacer.style.types'
 
 export const VerticalSpacer = styled.div(
   (props: StyledVerticalSpacerProps): FlattenSimpleInterpolation => css`

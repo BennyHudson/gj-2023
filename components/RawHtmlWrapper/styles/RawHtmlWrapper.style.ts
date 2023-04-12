@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledRawHtmlWrapperProps } from './RawHtmlWrapper.style.types'
+import type { StyledRawHtmlWrapperProps } from './RawHtmlWrapper.style.types'
 
 export const RawHtmlWrapper = styled.div(
   (props: StyledRawHtmlWrapperProps): FlattenSimpleInterpolation => css`

@@ -1,13 +1,13 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
+import Heading from '@components/Heading'
+import Link from '@components/Link'
+import RawHtmlWrapper from '@components/RawHtmlWrapper'
 import Section from '@components/Section'
 import Thumbnail from '@components/Thumbnail'
-import Heading from '@components/Heading'
-import RawHtmlWrapper from '@components/RawHtmlWrapper'
-import Link from '@components/Link'
 
-import { SessionsFeatureProps } from './SessionsFeature.types'
-
+import type { SessionsFeatureProps } from './SessionsFeature.types'
 import * as Styled from './styles/SessionsFeature.style'
 
 const SessionsFeature: FC<SessionsFeatureProps> = ({ content, post }: SessionsFeatureProps): ReactElement => {

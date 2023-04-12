@@ -1,14 +1,16 @@
-import React, { ReactElement, FC } from 'react'
-
-import * as Styled from './styles/ErrorPageTemplate.style'
-
-import { ErrorPageTemplateProps } from './ErrorPageTemplate.types'
 import Image from 'next/image'
-import featuredImageUrl from '@helpers/featuredImageUrl'
-import Overlay from '@components/Overlay'
-import Heading from '@components/Heading'
-import Paragraph from '@components/Paragraph'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
+
 import Button from '@components/Button'
+import Heading from '@components/Heading'
+import Overlay from '@components/Overlay'
+import Paragraph from '@components/Paragraph'
+
+import featuredImageUrl from '@helpers/featuredImageUrl'
+
+import type { ErrorPageTemplateProps } from './ErrorPageTemplate.types'
+import * as Styled from './styles/ErrorPageTemplate.style'
 
 const ErrorPageTemplate: FC<ErrorPageTemplateProps> = ({ backgroundImage }: ErrorPageTemplateProps): ReactElement => {
   return (

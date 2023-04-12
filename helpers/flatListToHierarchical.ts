@@ -1,6 +1,7 @@
+import { MenuItems } from '@typings/MenuItems.types'
+
 import { FooterNav } from '@queries/global/footer-nav'
 import { HeaderNav } from '@queries/global/header-nav'
-import { MenuItems } from '@typings/MenuItems.types'
 
 type HeaderNavProps = HeaderNav['menu']['menuItems']['nodes']
 type FooterNavProps = FooterNav['primaryMenu']['menuItems']['nodes']

@@ -1,10 +1,11 @@
-import React, { ReactElement, FC, useState } from 'react'
 import { useQuery } from '@apollo/client'
-
-import { latestHouseNotesQuery } from '@queries/global/latest-houseNotes'
+import type { FC, ReactElement} from 'react'
+import React, { useState } from 'react'
 
 import HouseNoteGrid from '@components/HouseNoteGrid'
 import LoadMore from '@components/LoadMore'
+
+import { latestHouseNotesQuery } from '@queries/global/latest-houseNotes'
 
 import * as Styled from './styles/HouseNotesFeed.style'
 

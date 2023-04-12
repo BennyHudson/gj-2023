@@ -1,10 +1,10 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import Heading from '@components/Heading'
 
+import type { HeadingBlockProps } from './HeadingBlock.types'
 import * as Styled from './styles/HeadingBlock.style'
-
-import { HeadingBlockProps } from './HeadingBlock.types'
 
 const HeadingBlock: FC<HeadingBlockProps> = ({ text }: HeadingBlockProps): ReactElement => {
   return (

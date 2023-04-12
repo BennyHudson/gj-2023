@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledDividerProps } from './Divider.style.types'
+import type { StyledDividerProps } from './Divider.style.types'
 
 export const Divider = styled.div(
   (props: StyledDividerProps): FlattenSimpleInterpolation => css`

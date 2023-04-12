@@ -1,9 +1,11 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { Logo } from '@components/Logo/styles/Logo.style'
 
-import { StyledHeaderProps } from './Header.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledHeaderProps } from './Header.style.types'
 
 export const Header = styled.div(
   (props: StyledHeaderProps): FlattenSimpleInterpolation => css`

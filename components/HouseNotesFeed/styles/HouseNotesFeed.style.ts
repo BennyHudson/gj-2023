@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledHouseNotesFeedProps } from './HouseNotesFeed.style.types'
+import type { StyledHouseNotesFeedProps } from './HouseNotesFeed.style.types'
 
 export const HouseNotesFeed = styled.div(
   (props: StyledHouseNotesFeedProps): FlattenSimpleInterpolation => css`

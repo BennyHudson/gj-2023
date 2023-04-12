@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledFormErrorMessageProps } from './FormErrorMessage.style.types'
+import type { StyledFormErrorMessageProps } from './FormErrorMessage.style.types'
 
 export const FormErrorMessage = styled.div(
   (props: StyledFormErrorMessageProps): FlattenSimpleInterpolation => css`

@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledThumbnailProps } from './Thumbnail.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledThumbnailProps } from './Thumbnail.style.types'
 
 export const Thumbnail = styled.div(
   (props: StyledThumbnailProps): FlattenSimpleInterpolation => css`

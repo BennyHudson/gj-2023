@@ -1,20 +1,23 @@
-import React, { FC, ReactElement, useEffect, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
+
+import ClubhouseGateway from '@components/ClubhouseGateway'
+import MyAccount from '@components/MyAccount'
+import PageLayout from '@components/PageLayout'
+import SplitPageTemplate from '@components/SplitPageTemplate'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import client from '@lib/apollo-client'
 
-import { subscriptionProductsQuery } from '@queries/global/subscription-products'
-import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
-
-import PageLayout from '@components/PageLayout'
-import SplitPageTemplate from '@components/SplitPageTemplate'
-import ClubhouseGateway from '@components/ClubhouseGateway'
-import MyAccount from '@components/MyAccount'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
 import { freeGiftQuery } from '@queries/global/free-gift'
-import featuredImageUrl from '@helpers/featuredImageUrl'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import { subscriptionProductsQuery } from '@queries/global/subscription-products'
 
 const ClubPage: FC = ({ headerNav, footerNav, subscriptionProducts, freeGift, siteOptions }): ReactElement => {
   const { token, setActiveNavElement, customer } = useContext(PageContext) as PageContextProps
@@ -24,7 +27,13 @@ const ClubPage: FC = ({ headerNav, footerNav, subscriptionProducts, freeGift, si
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
+    <PageLayout
+      headerStyle='standard'
+      headerNav={headerNav}
+      footerNav={footerNav}
+      seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }}
+      siteOptions={siteOptions}
+    >
       <SplitPageTemplate image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.accountPage.sourceUrl)}>
         {token && customer ? <MyAccount /> : <ClubhouseGateway products={subscriptionProducts} freeGift={freeGift} />}
       </SplitPageTemplate>

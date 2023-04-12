@@ -1,8 +1,8 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
+import type { EditButtonProps } from './EditButton.types'
 import * as Styled from './styles/EditButton.style'
-
-import { EditButtonProps } from './EditButton.types'
 
 const EditButton: FC<EditButtonProps> = ({ onClick, text, href, type }: EditButtonProps): ReactElement => {
   return (

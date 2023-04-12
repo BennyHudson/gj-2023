@@ -1,17 +1,20 @@
-import React, { ReactElement, FC } from 'react'
-import Image from 'next/image'
 import Head from 'next/head'
+import Image from 'next/image'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 import Slider from 'react-slick'
+import { useTheme } from 'styled-components'
+
+import Heading from '@components/Heading'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import * as Styled from './styles/ShopGrid.style'
-
-import { ShopGridProps } from './ShopGrid.types'
-import Heading from '@components/Heading'
 import { useBreakpoints } from '@hooks/useBreakpoints'
-import { useTheme } from 'styled-components'
-import { Theme } from '@themes/gjTheme/gjTheme.types'
+
+import type { Theme } from '@themes/gjTheme/gjTheme.types'
+
+import type { ShopGridProps } from './ShopGrid.types'
+import * as Styled from './styles/ShopGrid.style'
 
 const ShopGrid: FC<ShopGridProps> = ({ products }: ShopGridProps): ReactElement => {
   const { mdAndBelow } = useBreakpoints()

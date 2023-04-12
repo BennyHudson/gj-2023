@@ -1,8 +1,11 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledSessionsSponsorProps } from './SessionsSponsor.style.types'
 import { Content, Section } from '@components/Section/styles/Section.style'
+
 import respondTo from '@mixins/respondTo'
+
+import type { StyledSessionsSponsorProps } from './SessionsSponsor.style.types'
 
 export const SessionsSponsor = styled.div(
   (props: StyledSessionsSponsorProps): FlattenSimpleInterpolation => css`

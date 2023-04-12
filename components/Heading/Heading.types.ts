@@ -1,4 +1,4 @@
-import { HeadingKeys, WeightKeys } from '@themes/gjTheme/constants/typography.types'
+import type { HeadingKeys, WeightKeys } from '@themes/gjTheme/constants/typography.types'
 
 export interface HeadingProps {
   appearance?: 'primary' | 'secondary'

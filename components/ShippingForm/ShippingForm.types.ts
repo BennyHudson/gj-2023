@@ -1,4 +1,4 @@
-import { BillingAddress } from '@typings/BillingAddress.types'
+import type { BillingAddress } from '@typings/BillingAddress.types'
 
 export interface ShippingFormProps {
   billingAddress: BillingAddress

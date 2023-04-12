@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledHouseNoteExcerptProps } from './HouseNoteExcerpt.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledHouseNoteExcerptProps } from './HouseNoteExcerpt.style.types'
 
 export const HouseNoteExcerpt = styled.div(
   (props: StyledHouseNoteExcerptProps): FlattenSimpleInterpolation => css`

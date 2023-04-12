@@ -1,10 +1,9 @@
-import { css, FlattenSimpleInterpolation } from 'styled-components'
-
-import { MixinRespondToGeneric } from './respondTo.types'
-
-import createMixin from './utils/createMixin'
+import { FlattenSimpleInterpolation, css } from 'styled-components'
 
 import { Theme } from '@themes/gjTheme/gjTheme.types'
+
+import { MixinRespondToGeneric } from './respondTo.types'
+import createMixin from './utils/createMixin'
 
 function getMdBreakpoint(theme: Theme, styles: FlattenSimpleInterpolation): FlattenSimpleInterpolation {
   return css`

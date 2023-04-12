@@ -1,13 +1,13 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
-import Thumbnail from '@components/Thumbnail'
 import Heading from '@components/Heading'
-import Paragraph from '@components/Paragraph'
 import Link from '@components/Link'
+import Paragraph from '@components/Paragraph'
+import Thumbnail from '@components/Thumbnail'
 
+import type { HouseNoteExcerptProps } from './HouseNoteExcerpt.types'
 import * as Styled from './styles/HouseNoteExcerpt.style'
-
-import { HouseNoteExcerptProps } from './HouseNoteExcerpt.types'
 
 const HouseNoteExcerpt: FC<HouseNoteExcerptProps> = ({
   feature = true,

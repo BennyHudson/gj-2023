@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function createPaymentMethod(req: NextApiRequest, res: NextApiResponse) {
   const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)

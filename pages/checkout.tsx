@@ -1,20 +1,23 @@
-import React, { FC, ReactElement, useEffect, useContext, useState } from 'react'
-import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+
+import Checkout from '@components/Checkout'
+import EditButton from '@components/EditButton'
+import PageLayout from '@components/PageLayout'
+import Paragraph from '@components/Paragraph'
+import SplitPageTemplate from '@components/SplitPageTemplate'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import client from '@lib/apollo-client'
 
-import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
-
-import PageLayout from '@components/PageLayout'
-import SplitPageTemplate from '@components/SplitPageTemplate'
-import Checkout from '@components/Checkout'
-import Paragraph from '@components/Paragraph'
-import EditButton from '@components/EditButton'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
-import featuredImageUrl from '@helpers/featuredImageUrl'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
 
 const CheckoutPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
@@ -56,11 +59,14 @@ const CheckoutPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement =
   }
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} headerStyle='standard' seo={{ title: 'Checkout | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
-      <SplitPageTemplate
-        image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.checkoutPage.sourceUrl)}
-        title='Checkout'
-      >
+    <PageLayout
+      headerNav={headerNav}
+      footerNav={footerNav}
+      headerStyle='standard'
+      seo={{ title: 'Checkout | The Gentleman\'s Journal' }}
+      siteOptions={siteOptions}
+    >
+      <SplitPageTemplate image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.checkoutPage.sourceUrl)} title='Checkout'>
         {!cart.length && (
           <>
             <Paragraph size={2} font='Cera'>

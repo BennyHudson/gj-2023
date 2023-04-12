@@ -1,13 +1,13 @@
-import React, { ReactElement, FC } from 'react'
 import Image from 'next/image'
-
-import featuredImageUrl from '@helpers/featuredImageUrl'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import RawHtmlWrapper from '@components/RawHtmlWrapper'
 
-import * as Styled from './styles/GalleryBlock.style'
+import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import { GalleryBlockProps } from './GalleryBlock.types'
+import type { GalleryBlockProps } from './GalleryBlock.types'
+import * as Styled from './styles/GalleryBlock.style'
 
 const GalleryBlock: FC<GalleryBlockProps> = ({ gallery }: GalleryBlockProps): ReactElement | undefined => {
   if (!gallery) return

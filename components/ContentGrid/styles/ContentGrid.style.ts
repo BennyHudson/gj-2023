@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledContentGridProps } from './ContentGrid.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledContentGridProps } from './ContentGrid.style.types'
 
 export const ContentGrid = styled.div(
   (props: StyledContentGridProps): FlattenSimpleInterpolation => css`

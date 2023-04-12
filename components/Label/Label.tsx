@@ -1,8 +1,8 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
+import type { LabelProps } from './Label.types'
 import * as Styled from './styles/Label.style'
-
-import { LabelProps } from './Label.types'
 
 const Label: FC<LabelProps> = ({ target, text, required }: LabelProps): ReactElement => {
   return (

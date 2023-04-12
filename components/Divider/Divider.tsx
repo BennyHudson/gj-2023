@@ -1,4 +1,5 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import * as Styled from './styles/Divider.style'
 

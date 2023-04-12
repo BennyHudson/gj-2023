@@ -1,4 +1,4 @@
-import { ParagraphProps } from '@components/Paragraph/Paragraph.types'
+import type { ParagraphProps } from '@components/Paragraph/Paragraph.types'
 
 export interface LinkProps extends ParagraphProps {
   to?: string

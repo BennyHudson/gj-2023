@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledErrorPageTemplateProps } from './ErrorPageTemplate.style.types'
 import { Heading } from '@components/Heading/styles/Heading.style'
+
+import type { StyledErrorPageTemplateProps } from './ErrorPageTemplate.style.types'
 
 export const ErrorPageTemplate = styled.div(
   (): FlattenSimpleInterpolation => css`

@@ -1,9 +1,10 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { ImageBlock } from '../../ImageBlock/styles/ImageBlock.style'
-
-import { StyledGalleryBlockProps } from './GalleryBlock.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledGalleryBlockProps } from './GalleryBlock.style.types'
+import { ImageBlock } from '../../ImageBlock/styles/ImageBlock.style'
 
 export const GalleryBlock = styled.div(
   (props: StyledGalleryBlockProps): FlattenSimpleInterpolation => css`

@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledQuoteBlockProps } from './QuoteBlock.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledQuoteBlockProps } from './QuoteBlock.style.types'
 
 export const QuoteBlock = styled.div(
   (props: StyledQuoteBlockProps): FlattenSimpleInterpolation => css`

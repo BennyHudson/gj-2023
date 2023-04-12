@@ -1,5 +1,6 @@
-import { FormFieldProps } from '@typings/FormField.types'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
+
+import type { FormFieldProps } from '@typings/FormField.types'
 
 export interface FieldWrapperProps extends FormFieldProps {
   children: ReactNode

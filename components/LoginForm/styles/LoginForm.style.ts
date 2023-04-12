@@ -1,7 +1,8 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { Form } from 'formik'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledLoginFormProps } from './LoginForm.style.types'
+import type { StyledLoginFormProps } from './LoginForm.style.types'
 
 export const LoginForm = styled(Form)(
   (props: StyledLoginFormProps): FlattenSimpleInterpolation => css`

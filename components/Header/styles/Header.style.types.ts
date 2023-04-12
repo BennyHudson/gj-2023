@@ -1,6 +1,6 @@
-import { Theme } from '@themes/gjTheme/gjTheme.types'
+import type { Theme } from '@themes/gjTheme/gjTheme.types'
 
-import { HeaderProps } from '../Header.types'
+import type { HeaderProps } from '../Header.types'
 
 export interface StyledHeaderProps {
   theme: Theme

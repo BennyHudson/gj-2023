@@ -1,7 +1,8 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import Link from 'next/link'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledCarouselPostProps } from './CarouselPost.style.types'
+import type { StyledCarouselPostProps } from './CarouselPost.style.types'
 
 export const CarouselPost = styled(Link)(
   (props: StyledCarouselPostProps): FlattenSimpleInterpolation => css`

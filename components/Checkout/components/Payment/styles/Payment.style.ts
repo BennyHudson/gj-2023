@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledPaymentProps } from './Payment.style.types'
+import type { StyledPaymentProps } from './Payment.style.types'
 
 export const PaymentWrapper = styled.div(
   (props: StyledPaymentProps): FlattenSimpleInterpolation => css`

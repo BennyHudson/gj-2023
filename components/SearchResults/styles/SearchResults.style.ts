@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledSearchResultsProps } from './SearchResults.style.types'
+import type { StyledSearchResultsProps } from './SearchResults.style.types'
 
 export const SearchResults = styled.ol(
   (props: StyledSearchResultsProps): FlattenSimpleInterpolation => css`

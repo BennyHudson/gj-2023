@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledPaymentDetailsProps } from './PaymentDetails.style.types'
 import { ValueWithLabel } from '@components/ValueWithLabel/styles/ValueWithLabel.style'
+
+import type { StyledPaymentDetailsProps } from './PaymentDetails.style.types'
 
 export const PaymentDetails = styled.div(
   (props: StyledPaymentDetailsProps): FlattenSimpleInterpolation => css`

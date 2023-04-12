@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledFooterMainMenuProps } from './FooterMainMenu.style.types'
+import type { StyledFooterMainMenuProps } from './FooterMainMenu.style.types'
 
 export const FooterMainMenu = styled.ul(
   (props: StyledFooterMainMenuProps): FlattenSimpleInterpolation => css`

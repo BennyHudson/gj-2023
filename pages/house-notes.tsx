@@ -1,19 +1,21 @@
-import React, { FC, ReactElement, useContext, useEffect } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
+
+import HouseNotesFeature from '@components/HouseNotesFeature'
+import HouseNotesFeed from '@components/HouseNotesFeed'
+import PageLayout from '@components/PageLayout'
+import Section from '@components/Section'
+import Title from '@components/Title'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
 
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
-import { houseNotesQuery } from '@queries/houseNotes/featured-houseNotes'
-
-import PageLayout from '@components/PageLayout'
-import HouseNotesFeature from '@components/HouseNotesFeature'
-import HouseNotesFeed from '@components/HouseNotesFeed'
-import Section from '@components/Section'
-import Title from '@components/Title'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import { houseNotesQuery } from '@queries/houseNotes/featured-houseNotes'
 
 const HouseNotes: FC = ({ featuredHouseNotes, headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps

@@ -1,10 +1,11 @@
-import React, { ReactElement, FC } from 'react'
 import { Field } from 'formik'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
-import * as Styled from './styles/RadioList.style'
-
-import { RadioListProps } from './RadioList.types'
 import FieldWrapper from '@components/FieldWrapper'
+
+import type { RadioListProps } from './RadioList.types'
+import * as Styled from './styles/RadioList.style'
 
 const RadioList: FC<RadioListProps> = ({ target, label, isRequired, hideLabels, choices, id }): ReactElement => {
   return (

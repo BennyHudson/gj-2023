@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next'
 import dayjs from 'dayjs'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { WooCommerce } from '../WooCommerce'
 

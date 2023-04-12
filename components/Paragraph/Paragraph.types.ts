@@ -1,6 +1,6 @@
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
-import { ParagraphKeys, WeightKeys } from '@themes/gjTheme/constants/typography.types'
+import type { ParagraphKeys, WeightKeys } from '@themes/gjTheme/constants/typography.types'
 
 export interface ParagraphProps {
   appearance?: 'primary' | 'secondary'

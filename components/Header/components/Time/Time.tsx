@@ -1,12 +1,12 @@
-import React, { ReactElement, FC, useEffect, useState } from 'react'
 import dayjs from 'dayjs'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
+import type { FC, ReactElement} from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Paragraph from '@components/Paragraph'
 
 import * as Styled from './styles/Time.style'
-
-import { TimeProps } from './Time.types'
+import type { TimeProps } from './Time.types'
 
 const Time: FC<TimeProps> = ({ inverse = false }: TimeProps): ReactElement => {
   dayjs.extend(advancedFormat)

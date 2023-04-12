@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledTitleProps } from './Title.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledTitleProps } from './Title.style.types'
 
 export const Title = styled.div(
   (props: StyledTitleProps): FlattenSimpleInterpolation => css`

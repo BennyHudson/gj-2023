@@ -1,11 +1,11 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 import Masonry from 'react-masonry-css'
 
 import HouseNoteExcerpt from '@components/HouseNoteExcerpt'
 
+import type { HouseNoteGridProps } from './HouseNoteGrid.types'
 import * as Styled from './styles/HouseNoteGrid.style'
-
-import { HouseNoteGridProps } from './HouseNoteGrid.types'
 
 const HouseNoteGrid: FC<HouseNoteGridProps> = ({ posts }: HouseNoteGridProps): ReactElement => {
   const breakpointColumnsObj = {

@@ -1,12 +1,13 @@
-import React, { ReactElement, FC, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
 
 import Section from '@components/Section'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
+import type { SessionsHeaderProps } from './SessionsHeader.types'
 import * as Styled from './styles/SessionsHeader.style'
-
-import { SessionsHeaderProps } from './SessionsHeader.types'
 
 const SessionsHeader: FC<SessionsHeaderProps> = ({ children }: SessionsHeaderProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps

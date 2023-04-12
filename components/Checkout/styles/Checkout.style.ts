@@ -1,7 +1,8 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { Form } from 'formik'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledCheckoutProps } from './Checkout.style.types'
+import type { StyledCheckoutProps } from './Checkout.style.types'
 
 export const Checkout = styled(Form)((): FlattenSimpleInterpolation => [])
 

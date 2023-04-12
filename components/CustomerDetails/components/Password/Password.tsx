@@ -1,16 +1,19 @@
 /* eslint-disable react/prop-types */
-import React, { FC, ReactElement, useContext, useState } from 'react'
-import { Formik, Form } from 'formik'
+import { Form, Formik } from 'formik'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useState } from 'react'
 import * as Yup from 'yup'
 
-import Heading from '@components/Heading'
 import EditButton from '@components/EditButton'
+import Heading from '@components/Heading'
+import Notification from '@components/Notification'
+import TextField from '@components/TextField'
 import ValueWithLabel from '@components/ValueWithLabel'
 
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
 import * as Styled from '../../styles/CustomerDetails.style'
-import PageContext, { PageContextProps } from '@context/PageContext'
-import TextField from '@components/TextField'
-import Notification from '@components/Notification'
 
 const Password: FC = (): ReactElement | null => {
   const [editMode, setEditMode] = useState(false)

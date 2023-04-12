@@ -1,17 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
-import Section from '@components/Section'
-import Meta from '@components/Meta'
-import Thumbnail from '@components/Thumbnail'
 import Heading from '@components/Heading'
-import RawHtmlWrapper from '@components/RawHtmlWrapper'
+import Meta from '@components/Meta'
 import Paragraph from '@components/Paragraph'
+import RawHtmlWrapper from '@components/RawHtmlWrapper'
+import Section from '@components/Section'
+import Thumbnail from '@components/Thumbnail'
+
 // import Sharers from '@components/Sharers'
-
+import type { PodcastContentProps } from './PodcastContent.types'
 import * as Styled from './styles/PodcastContent.style'
-
-import { PodcastContentProps } from './PodcastContent.types'
 
 const PodcastContent: FC<PodcastContentProps> = ({
   date,

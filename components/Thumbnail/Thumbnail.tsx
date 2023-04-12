@@ -1,16 +1,16 @@
-import React, { ReactElement, FC } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
+
+import Heading from '@components/Heading'
+import Meta from '@components/Meta'
+import Overlay from '@components/Overlay'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import Meta from '@components/Meta'
-import Heading from '@components/Heading'
-import Overlay from '@components/Overlay'
-
 import * as Styled from './styles/Thumbnail.style'
-
-import { ThumbnailProps } from './Thumbnail.types'
+import type { ThumbnailProps } from './Thumbnail.types'
 
 const Thumbnail: FC<ThumbnailProps> = ({
   type = 'rectangle',

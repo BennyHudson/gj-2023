@@ -1,8 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import respondTo from '@mixins/respondTo'
 
-import { StyledProductFeatureProps } from './ProductFeature.style.types'
+import type { StyledProductFeatureProps } from './ProductFeature.style.types'
 
 export const ProductFeature = styled.div(
   (props: StyledProductFeatureProps): FlattenSimpleInterpolation => css`

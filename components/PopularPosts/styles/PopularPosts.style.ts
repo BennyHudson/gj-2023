@@ -1,8 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { Link } from '@components/Link/styles/Link.style'
 
-import { StyledPopularPostsProps } from './PopularPosts.style.types'
+import type { StyledPopularPostsProps } from './PopularPosts.style.types'
 
 export const PopularPosts = styled.div(
   (props: StyledPopularPostsProps): FlattenSimpleInterpolation => css`

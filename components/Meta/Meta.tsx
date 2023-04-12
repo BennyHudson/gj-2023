@@ -1,11 +1,11 @@
-import React, { ReactElement, FC } from 'react'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import updateLocale from 'dayjs/plugin/updateLocale'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
+import type { MetaProps } from './Meta.types'
 import * as Styled from './styles/Meta.style'
-
-import { MetaProps } from './Meta.types'
 
 const Meta: FC<MetaProps> = ({ categories, date, inverse = false }: MetaProps): ReactElement => {
   dayjs.extend(relativeTime)

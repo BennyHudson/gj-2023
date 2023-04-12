@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { WooCommerce } from '../WooCommerce'
 
@@ -19,7 +19,7 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
         quantity: 1,
       }
     }),
-    coupon_lines: voucher ? [{ code: voucher.code }] : []
+    coupon_lines: voucher ? [{ code: voucher.code }] : [],
   }
 
   const order = await WooCommerce.post('orders', orderData)

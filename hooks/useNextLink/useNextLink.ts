@@ -1,5 +1,5 @@
-import { useEffect, RefObject } from 'react'
 import { useRouter } from 'next/router'
+import { RefObject, useEffect } from 'react'
 
 export default function useNextLink(ref: RefObject<HTMLDivElement>) {
   const router = useRouter()

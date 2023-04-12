@@ -1,14 +1,14 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import Heading from '@components/Heading'
 import HouseNoteExcerpt from '@components/HouseNoteExcerpt'
-import Section from '@components/Section'
 import Link from '@components/Link'
+import Section from '@components/Section'
 import TitleAndIntro from '@components/TitleAndIntro'
 
+import type { HouseNotesFeatureProps } from './HouseNotesFeature.types'
 import * as Styled from './styles/HouseNotesFeature.style'
-
-import { HouseNotesFeatureProps } from './HouseNotesFeature.types'
 
 const HouseNotesFeature: FC<HouseNotesFeatureProps> = ({ introText, columns }: HouseNotesFeatureProps): ReactElement => {
   return (

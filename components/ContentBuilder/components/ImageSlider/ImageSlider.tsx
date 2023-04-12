@@ -1,16 +1,16 @@
-import React, { ReactElement, FC } from 'react'
-import Head from 'next/head'
-import Slider from 'react-slick'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/pro-thin-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Head from 'next/head'
 import Image from 'next/image'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
+import Slider from 'react-slick'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
+import type { ImageSliderProps } from './ImageSlider.types'
 import * as Styled from './styles/ImageSlider.style'
-
-import { ImageSliderProps } from './ImageSlider.types'
 
 const ImageSlider: FC<ImageSliderProps> = ({ slides }: ImageSliderProps): ReactElement => {
   const sliderSettings = {

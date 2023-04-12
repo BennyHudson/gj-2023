@@ -1,4 +1,5 @@
-import styled, { FlattenSimpleInterpolation, css } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const PageLayout = styled.main(
   (): FlattenSimpleInterpolation => css`

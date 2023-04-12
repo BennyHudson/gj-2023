@@ -1,14 +1,15 @@
-import React, { ReactElement, FC, useContext } from 'react'
 import { Formik } from 'formik'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
-
+import type { CheckoutState } from '@components/Checkout/Checkout.types'
 import ShippingForm, { shippingValidation } from '@components/ShippingForm'
 
-import CheckoutPanel from '../CheckoutPanel'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
-import { ShippingAddressProps } from './ShippingAddress.types'
-import { CheckoutState } from '@components/Checkout/Checkout.types'
+import type { ShippingAddressProps } from './ShippingAddress.types'
+import CheckoutPanel from '../CheckoutPanel'
 
 const ShippingAddress: FC<ShippingAddressProps> = ({
   panelIndex,

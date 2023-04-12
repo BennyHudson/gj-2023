@@ -1,18 +1,20 @@
 /* eslint-disable react/prop-types */
-import React, { FC, ReactElement, useContext, useState } from 'react'
-import { Formik, Form } from 'formik'
+import { Form, Formik } from 'formik'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useState } from 'react'
 import * as Yup from 'yup'
 
-import Heading from '@components/Heading'
 import EditButton from '@components/EditButton'
+import Heading from '@components/Heading'
+import NameField from '@components/NameField'
+import Notification from '@components/Notification'
+import TextField from '@components/TextField'
 import ValueWithLabel from '@components/ValueWithLabel'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import * as Styled from '../../styles/CustomerDetails.style'
-import NameField from '@components/NameField'
-import TextField from '@components/TextField'
-import Notification from '@components/Notification'
 
 const Customer: FC = (): ReactElement | null => {
   const { customer } = useContext(PageContext) as PageContextProps

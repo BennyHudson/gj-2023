@@ -5,5 +5,24 @@
   "jsxSingleQuote": true,
   "printWidth": 140,
   "tabWidth": 2,
-  "arrowParens": "always"
+  "arrowParens": "always",
+  "importOrder": [
+    "^@assets/(.*)$",
+    "^@components/(.*)$",
+    "^@context/(.*)$",
+    "^@helpers/(.*)$",
+    "^@hooks/(.*)$",
+    "^@images/(.*)$",
+    "^@lib/(.*)$",
+    "^@mixins/(.*)$",
+    "^@pages/(.*)$",
+    "^@styles/(.*)$",
+    "^@themes/(.*)$",
+    "^@typings/(.*)$",
+    "^@utils/(.*)$",
+    "^@queries/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

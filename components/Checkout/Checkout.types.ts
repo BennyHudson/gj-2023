@@ -1,9 +1,9 @@
-import { PaymentIntent } from '@stripe/stripe-js'
-import { ReactNode } from 'react'
+import type { PaymentIntent } from '@stripe/stripe-js'
+import type { ReactNode } from 'react'
 
-import { BillingAddress } from '@typings/BillingAddress.types'
-import { ShippingAddress } from '@typings/ShippingAddress.types'
-import { Voucher } from '@typings/Voucher.types'
+import type { BillingAddress } from '@typings/BillingAddress.types'
+import type { ShippingAddress } from '@typings/ShippingAddress.types'
+import type { Voucher } from '@typings/Voucher.types'
 
 export interface CheckoutProps {
   children: ReactNode
@@ -19,5 +19,5 @@ export interface CheckoutState {
     voucher?: Voucher
   }
   isLoading: boolean
-  notificationState: 'error' | 'success' 
+  notificationState: 'error' | 'success'
 }

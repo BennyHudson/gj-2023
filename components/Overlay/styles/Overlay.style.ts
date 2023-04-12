@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledOverlayProps } from './Overlay.style.types'
+import type { StyledOverlayProps } from './Overlay.style.types'
 
 export const Overlay = styled.div(
   (props: StyledOverlayProps): FlattenSimpleInterpolation => css`

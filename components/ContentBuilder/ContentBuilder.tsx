@@ -1,20 +1,23 @@
-import React, { ReactElement, FC, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
 
-import ImageBlock from './components/ImageBlock'
+import Paywall from '@components/Paywall'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import AffiliateProductBlock from './components/AffiliateProductBlock'
+import ButtonBlock from './components/ButtonBlock'
+import CodeBlock from './components/CodeBlock'
+import Form from './components/Form'
 import GalleryBlock from './components/GalleryBlock'
+import HeadingBlock from './components/HeadingBlock'
+import ImageBlock from './components/ImageBlock'
+import ImageSlider from './components/ImageSlider'
+import QuoteBlock from './components/QuoteBlock'
 import TextBlock from './components/TextBlock'
 import VideoBlock from './components/VideoBlock'
-import ButtonBlock from './components/ButtonBlock'
-import QuoteBlock from './components/QuoteBlock'
-import HeadingBlock from './components/HeadingBlock'
-import ImageSlider from './components/ImageSlider'
-import Form from './components/Form'
-import CodeBlock from './components/CodeBlock'
-import AffiliateProductBlock from './components/AffiliateProductBlock'
-
-import { ContentBuilderProps } from './ContentBuilder.types'
-import PageContext, { PageContextProps } from '@context/PageContext'
-import Paywall from '@components/Paywall'
+import type { ContentBuilderProps } from './ContentBuilder.types'
 
 const ContentBuilder: FC<ContentBuilderProps> = ({ content, prefix, membersOnly = false }: ContentBuilderProps): ReactElement => {
   const { subscriptions } = useContext(PageContext) as PageContextProps
@@ -53,12 +56,8 @@ const ContentBuilder: FC<ContentBuilderProps> = ({ content, prefix, membersOnly 
 
     case `${prefix}_CompetitionForm`:
       return (
-        <> 
-          {block.gravityForm ?
-            <Form key={index} formId={block.gravityForm} />
-            :
-            <HeadingBlock text='This competition is now closed' />
-          }
+        <>
+          {block.gravityForm ? <Form key={index} formId={block.gravityForm} /> : <HeadingBlock text='This competition is now closed' />}
         </>
       )
 

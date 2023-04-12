@@ -1,42 +1,44 @@
-import React, { FC, ReactElement, useEffect, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
+
+import BannerAdvert from '@components/BannerAdvert'
+import ClubBanner from '@components/ClubBanner'
+import FeatureCarousel from '@components/FeatureCarousel'
+import FullPageFeature from '@components/FullPageFeature'
+import GiftGuideFeature from '@components/GiftGuideFeature'
+import NewsletterBanner from '@components/NewsletterBanner'
+import PageLayout from '@components/PageLayout'
+import PodcastGrid from '@components/PodcastGrid'
+import PostCarousel from '@components/PostCarousel'
+import PostGrid from '@components/PostGrid'
+import Section from '@components/Section'
+import SessionsFeature from '@components/SessionsFeature'
+import ShopGrid from '@components/ShopGrid'
+import Title from '@components/Title'
+import WeeklyHighlight from '@components/WeeklyHighlight'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
 import client from '@lib/apollo-client'
 
-import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
-
-import { homepageQuery } from '@queries/homepage/homepage'
-import { latestPostsQuery } from '@queries/homepage/latest-posts'
-import { sessionsFeatureQuery } from '@queries/homepage/sessions-feature'
-import { latestPodcastsQuery } from '@queries/homepage/latest-podcasts'
-import { giftGuideQuery } from '@queries/homepage/gift-guide'
-import { latestVideoQuery } from '@queries/homepage/latest-video'
-import { articleCategoryQuery } from '@queries/homepage/category'
-
-import FullPageFeature from '@components/FullPageFeature'
-import PostCarousel from '@components/PostCarousel'
-import Section from '@components/Section'
-import Title from '@components/Title'
-import PostGrid from '@components/PostGrid'
-import BannerAdvert from '@components/BannerAdvert'
-import GiftGuideFeature from '@components/GiftGuideFeature'
-import WeeklyHighlight from '@components/WeeklyHighlight'
-import SessionsFeature from '@components/SessionsFeature'
-import PodcastGrid from '@components/PodcastGrid'
-import FeatureCarousel from '@components/FeatureCarousel'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
-import PageLayout from '@components/PageLayout'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
-import NewsletterBanner from '@components/NewsletterBanner'
-import { featuredProductsQuery } from '@queries/homepage/featured-products'
-import ShopGrid from '@components/ShopGrid'
-import ClubBanner from '@components/ClubBanner'
+import { articleCategoryQuery } from '@queries/homepage/category'
 import { clubQuery } from '@queries/homepage/club'
+import { featuredProductsQuery } from '@queries/homepage/featured-products'
+import { giftGuideQuery } from '@queries/homepage/gift-guide'
+import { homepageQuery } from '@queries/homepage/homepage'
+import { latestPodcastsQuery } from '@queries/homepage/latest-podcasts'
+import { latestPostsQuery } from '@queries/homepage/latest-posts'
+import { latestVideoQuery } from '@queries/homepage/latest-video'
+import { sessionsFeatureQuery } from '@queries/homepage/sessions-feature'
 
 const Home: FC = ({
   headerNav,
   footerNav,
-  siteOptions, 
+  siteOptions,
   pageData,
   latestPosts,
   coverInterviews,
@@ -56,13 +58,24 @@ const Home: FC = ({
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerStyle='feature' headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions} databaseId={pageData.databaseId}>
+    <PageLayout
+      headerStyle='feature'
+      headerNav={headerNav}
+      footerNav={footerNav}
+      seo={pageData.seo}
+      siteOptions={siteOptions}
+      databaseId={pageData.databaseId}
+    >
       <FullPageFeature
         {...pageData.homeFeaturedPost.homeFeaturedPost}
         excerpt={pageData.homeFeaturedPost.homeFeaturedPost.articleAcf.standfirst}
       />
       <PostCarousel />
-      <NewsletterBanner backgroundImage={siteOptions.gjOptions.newsletterModal.sectionNewsletter.image.sourceUrl} form={newsletterForm} size={1} />
+      <NewsletterBanner
+        backgroundImage={siteOptions.gjOptions.newsletterModal.sectionNewsletter.image.sourceUrl}
+        form={newsletterForm}
+        size={1}
+      />
       <Section>
         <Title
           title='The Latest'
@@ -167,7 +180,11 @@ const Home: FC = ({
         />
         <PostGrid priority={false} columns={4} posts={competitions.articles.nodes} smCarousel />
       </Section>
-      <NewsletterBanner backgroundImage={siteOptions.gjOptions.newsletterModal.sectionNewsletter.imageAlt.sourceUrl} form={newsletterForm} size={2} />
+      <NewsletterBanner
+        backgroundImage={siteOptions.gjOptions.newsletterModal.sectionNewsletter.imageAlt.sourceUrl}
+        form={newsletterForm}
+        size={2}
+      />
     </PageLayout>
   )
 }

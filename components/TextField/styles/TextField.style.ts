@@ -1,5 +1,6 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { Field } from 'formik'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const TextField = styled(Field)(
   (): FlattenSimpleInterpolation => css`

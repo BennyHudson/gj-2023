@@ -17,6 +17,7 @@ module.exports = {
   plugins: ['react', '@typescript-eslint'],
   rules: {
     '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/consistent-type-imports': 'error',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'warn',
     'react-hooks/exhaustive-deps': 'off',
@@ -31,43 +32,34 @@ module.exports = {
       },
     ],
     'import/order': [
-      1, 
-      { 
-        'groups': [
-          'external', 
-          'builtin', 
-          'internal', 
-          'sibling', 
-          'parent', 
-          'index'
-        ], 
-        'pathGroups': [
-          { 
-            'pattern': 'components', 
-            'group': 'internal' 
-          }, 
-          { 
-            'pattern': 'common', 
-            'group': 'internal' 
-          }, 
-          { 
-            'pattern': 'routes/ **', 
-            'group': 'internal' 
-          }, 
-          { 
-            'pattern': 'assets/**', 
-            'group': 'internal', 
-            'position': 'after' 
-          }
-        ], 
-        'pathGroupsExcludedImportTypes': [
-          'internal'
-        ], 
-        'alphabetize': { 
-          'order': 'asc', 
-          'caseInsensitive': true 
-        } 
-      }
-    ] 
+      2,
+      {
+        groups: ['external', 'builtin', 'internal', 'sibling', 'parent', 'index'],
+        pathGroups: [
+          {
+            pattern: 'components',
+            group: 'internal',
+          },
+          {
+            pattern: 'common',
+            group: 'internal',
+          },
+          {
+            pattern: 'routes/ **',
+            group: 'internal',
+          },
+          {
+            pattern: 'assets/**',
+            group: 'internal',
+            position: 'after',
+          },
+        ],
+        pathGroupsExcludedImportTypes: ['internal'],
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
+    ],
   },
 }

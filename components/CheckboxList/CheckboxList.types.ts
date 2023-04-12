@@ -1,4 +1,4 @@
-import { FormFieldProps } from '@typings/FormField.types'
+import type { FormFieldProps } from '@typings/FormField.types'
 
 export interface CheckboxListProps extends FormFieldProps {
   choices: {

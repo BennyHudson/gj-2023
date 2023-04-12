@@ -1,10 +1,10 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import Button from '@components/Button'
 
+import type { LoadMoreProps } from './LoadMore.types'
 import * as Styled from './styles/LoadMore.style'
-
-import { LoadMoreProps } from './LoadMore.types'
 
 const LoadMore: FC<LoadMoreProps> = ({ onClick }: LoadMoreProps): ReactElement => {
   return (

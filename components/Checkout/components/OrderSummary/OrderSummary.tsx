@@ -1,12 +1,18 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import Cart from '@components/Cart'
 import EditButton from '@components/EditButton'
 
-import { OrderSummaryProps } from './OrderSummary.types'
+import type { OrderSummaryProps } from './OrderSummary.types'
 import CheckoutPanel from '../CheckoutPanel'
 
-const OrderSummary: FC<OrderSummaryProps> = ({ panelIndex, activePanel, setActivePanel, checkoutForm }: OrderSummaryProps): ReactElement => {
+const OrderSummary: FC<OrderSummaryProps> = ({
+  panelIndex,
+  activePanel,
+  setActivePanel,
+  checkoutForm,
+}: OrderSummaryProps): ReactElement => {
   return (
     <CheckoutPanel panelIndex={panelIndex} activePanel={activePanel} setActivePanel={setActivePanel} title='Order Summary'>
       <Cart viewOnly voucher={checkoutForm?.voucher} />

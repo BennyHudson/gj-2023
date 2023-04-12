@@ -1,9 +1,11 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { Section } from '@components/Section/styles/Section.style'
 
-import { StyledClubOverviewProps } from './ClubOverview.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledClubOverviewProps } from './ClubOverview.style.types'
 
 export const ClubOverview = styled.div(
   (props: StyledClubOverviewProps): FlattenSimpleInterpolation => css`

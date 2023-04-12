@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledPodcastContentProps } from './PodcastContent.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledPodcastContentProps } from './PodcastContent.style.types'
 
 export const Header = styled.div(
   (props: StyledPodcastContentProps): FlattenSimpleInterpolation => css`

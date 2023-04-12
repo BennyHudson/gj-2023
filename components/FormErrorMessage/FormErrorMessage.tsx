@@ -1,7 +1,8 @@
-import React, { ReactElement, FC } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faWarning } from '@fortawesome/pro-thin-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import Heading from '@components/Heading'
 

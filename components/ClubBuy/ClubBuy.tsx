@@ -1,13 +1,15 @@
-import React, { ReactElement, FC, useContext } from 'react'
 import { useRouter } from 'next/router'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
 
-import Section from '@components/Section'
-import Heading from '@components/Heading'
-import Paragraph from '@components/Paragraph'
 import Button from '@components/Button'
+import Heading from '@components/Heading'
 import Link from '@components/Link'
+import Paragraph from '@components/Paragraph'
+import Section from '@components/Section'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import * as Styled from './styles/ClubBuy.style'
 

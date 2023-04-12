@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledCartProps } from './Cart.style.types'
+import type { StyledCartProps } from './Cart.style.types'
 
 export const Cart = styled.div(
   (props: StyledCartProps): FlattenSimpleInterpolation => css`

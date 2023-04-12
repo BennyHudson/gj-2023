@@ -1,11 +1,13 @@
-import React, { ReactElement, FC } from 'react'
 import Image from 'next/image'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
-import Section from '@components/Section'
-import Title from '@components/Title'
-import featuredImageUrl from '@helpers/featuredImageUrl'
 import Heading from '@components/Heading'
 import RawHtmlWrapper from '@components/RawHtmlWrapper'
+import Section from '@components/Section'
+import Title from '@components/Title'
+
+import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import * as Styled from './styles/ClubGift.style'
 

@@ -1,11 +1,13 @@
-import React, { ReactElement, FC, useContext } from 'react'
 import Image from 'next/image'
-
-import featuredImageUrl from '@helpers/featuredImageUrl'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
 
 import Newsletter from '@components/Newsletter'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import * as Styled from './styles/NewsletterBanner.style'
 

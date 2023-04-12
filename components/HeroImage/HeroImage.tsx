@@ -1,14 +1,15 @@
-import React, { ReactElement, FC, useContext } from 'react'
 import Head from 'next/head'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
 import YouTube from 'react-youtube'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
-
+import type { HeroImageProps } from './HeroImage.types'
 import * as Styled from './styles/HeroImage.style'
-
-import { HeroImageProps } from './HeroImage.types'
 
 const HeroImage: FC<HeroImageProps> = ({ featuredImage, height = 2, featuredVideo }: HeroImageProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps
@@ -26,7 +27,12 @@ const HeroImage: FC<HeroImageProps> = ({ featuredImage, height = 2, featuredVide
       <Head>
         <link rel='preload' href={featuredImageUrl(featuredImage)} as='image' />
       </Head>
-      <Styled.HeroImage height={height} backgroundImage={featuredImageUrl(featuredImage)} headerHeight={headerHeight} hasVideo={!!featuredVideo}>
+      <Styled.HeroImage
+        height={height}
+        backgroundImage={featuredImageUrl(featuredImage)}
+        headerHeight={headerHeight}
+        hasVideo={!!featuredVideo}
+      >
         {featuredVideo && (
           <Styled.VideoWrapper height={height} headerHeight={headerHeight}>
             <Styled.Video headerHeight={headerHeight}>

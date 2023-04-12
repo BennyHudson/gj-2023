@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledClubVideoProps } from './ClubVideo.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledClubVideoProps } from './ClubVideo.style.types'
 
 export const ClubVideo = styled.video(
   (props: StyledClubVideoProps): FlattenSimpleInterpolation => css`

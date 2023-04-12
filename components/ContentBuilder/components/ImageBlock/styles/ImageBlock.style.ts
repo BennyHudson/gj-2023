@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledImageBlockProps } from './ImageBlock.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledImageBlockProps } from './ImageBlock.style.types'
 
 export const ImageBlock = styled.div(
   (props: StyledImageBlockProps): FlattenSimpleInterpolation => css`

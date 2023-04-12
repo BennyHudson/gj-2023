@@ -1,17 +1,18 @@
-import React, { ReactElement, FC, useState } from 'react'
-import { useQuery, gql } from '@apollo/client'
+import { gql, useQuery } from '@apollo/client'
+import type { FC, ReactElement} from 'react'
+import React, { useState } from 'react'
+
+import Feed from '@components/Feed'
+import Heading from '@components/Heading'
+import Link from '@components/Link'
+import Paragraph from '@components/Paragraph'
+import Thumbnail from '@components/Thumbnail'
+import Title from '@components/Title'
+import TowerAdvert from '@components/TowerAdvert'
 
 import { articleContent } from '@queries/fragments/articleContent'
 
-import Title from '@components/Title'
-import Feed from '@components/Feed'
-import Heading from '@components/Heading'
-import Paragraph from '@components/Paragraph'
-import Link from '@components/Link'
-import Thumbnail from '@components/Thumbnail'
-
 import * as Styled from './styles/SessionsFeed.style'
-import TowerAdvert from '@components/TowerAdvert'
 
 const SessionsFeed: FC = (): ReactElement => {
   const [spotifyPlaylist, setSpotifyPlaylist] = useState('')

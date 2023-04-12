@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledSidebarProps } from './Sidebar.style.types'
+import type { StyledSidebarProps } from './Sidebar.style.types'
 
 export const Sidebar = styled.div(
   (props: StyledSidebarProps): FlattenSimpleInterpolation => css`

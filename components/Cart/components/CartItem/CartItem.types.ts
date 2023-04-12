@@ -1,4 +1,4 @@
-import { Voucher } from '@typings/Voucher.types'
+import type { Voucher } from '@typings/Voucher.types'
 
 export interface CartItemProps {
   productId: number

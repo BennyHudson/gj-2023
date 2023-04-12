@@ -1,8 +1,8 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import * as Styled from './styles/VideoBlock.style'
-
-import { VideoBlockProps } from './VideoBlock.types'
+import type { VideoBlockProps } from './VideoBlock.types'
 
 const VideoBlock: FC<VideoBlockProps> = ({ videoUrl }: VideoBlockProps): ReactElement => {
   let videoId = videoUrl.split('=')[1]

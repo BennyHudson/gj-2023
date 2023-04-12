@@ -1,16 +1,16 @@
-import React, { ReactElement, FC } from 'react'
 import Image from 'next/image'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 import { useTheme } from 'styled-components'
-
-import { Theme } from '@themes/gjTheme/gjTheme.types'
-
-import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import Section from '@components/Section'
 
-import * as Styled from './styles/ClubAdverts.style'
+import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import { ClubAdvertsProps } from './ClubAdverts.types'
+import type { Theme } from '@themes/gjTheme/gjTheme.types'
+
+import type { ClubAdvertsProps } from './ClubAdverts.types'
+import * as Styled from './styles/ClubAdverts.style'
 
 const ClubAdverts: FC<ClubAdvertsProps> = ({ adverts }: ClubAdvertsProps): ReactElement => {
   const theme = useTheme() as Theme

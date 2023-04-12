@@ -1,9 +1,11 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { Link } from '@components/Link/styles/Link.style'
 
-import { StyledBreadcrumbsProps } from './Breadcrumbs.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledBreadcrumbsProps } from './Breadcrumbs.style.types'
 
 export const Breadcrumbs = styled.ul(
   (props: StyledBreadcrumbsProps): FlattenSimpleInterpolation => css`

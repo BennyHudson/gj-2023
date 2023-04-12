@@ -1,17 +1,17 @@
-import React, { ReactElement, FC, useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faTimes } from '@fortawesome/pro-thin-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import type { FC, ReactElement} from 'react'
+import React, { useState } from 'react'
 
-import Heading from '@components/Heading'
-import Thumbnail from '@components/Thumbnail'
-import Paragraph from '@components/Paragraph'
 import Button from '@components/Button'
 import EditButton from '@components/EditButton'
+import Heading from '@components/Heading'
+import Paragraph from '@components/Paragraph'
+import Thumbnail from '@components/Thumbnail'
 
+import type { PartnerCardProps } from './PartnerCard.types'
 import * as Styled from './styles/PartnerCard.style'
-
-import { PartnerCardProps } from './PartnerCard.types'
 
 const PartnerCard: FC<PartnerCardProps> = ({ featuredImage, title, clubhousePartners }: PartnerCardProps): ReactElement => {
   const { website, offer, redeem, termsOfUse } = clubhousePartners.partnerInformation

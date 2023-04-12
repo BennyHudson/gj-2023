@@ -1,9 +1,11 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { Heading } from '@components/Heading/styles/Heading.style'
 
-import { StyledTeamGridProps } from './TeamGrid.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledTeamGridProps } from './TeamGrid.style.types'
 
 export const TeamGridWrapper = styled.div(
   (props: StyledTeamGridProps): FlattenSimpleInterpolation => css`

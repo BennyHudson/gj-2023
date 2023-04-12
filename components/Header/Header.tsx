@@ -1,22 +1,22 @@
-import React, { ReactElement, FC, useEffect, useState, useRef, useContext } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faBars, faTimes } from '@fortawesome/pro-light-svg-icons'
-
-import Time from './components/Time'
-import Navigation from './components/Navigation'
-import SecondaryNav from './components/SecondaryNav'
-import MobileNavigation from './components/MobileNavigation'
-
-import { useBreakpoints } from '@hooks/useBreakpoints'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import Logo from '@components/Logo'
 
-import * as Styled from './styles/Header.style'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
-import { HeaderProps, HeaderState } from './Header.types'
+import { useBreakpoints } from '@hooks/useBreakpoints'
+
+import MobileNavigation from './components/MobileNavigation'
+import Navigation from './components/Navigation'
+import SecondaryNav from './components/SecondaryNav'
+import Time from './components/Time'
+import type { HeaderProps, HeaderState } from './Header.types'
+import * as Styled from './styles/Header.style'
 
 const Header: FC<HeaderProps> = ({ headerStyle = 'standard', headerNav }: HeaderProps): ReactElement => {
   const header = useRef<HTMLDivElement>(null)

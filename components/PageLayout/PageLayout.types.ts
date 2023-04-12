@@ -1,7 +1,7 @@
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
-import { FooterNav } from '@queries/global/footer-nav'
-import { HeaderNav } from '@queries/global/header-nav'
+import type { FooterNav } from '@queries/global/footer-nav'
+import type { HeaderNav } from '@queries/global/header-nav'
 
 export interface PageLayoutProps {
   children: ReactNode

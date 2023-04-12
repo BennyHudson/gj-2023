@@ -1,11 +1,13 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { Content } from '@components/Section/styles/Section.style'
 import { Link } from '@components/Link/styles/Link.style'
-import { FooterMainMenu } from '../components/FooterMainMenu/styles/FooterMainMenu.style'
+import { Content } from '@components/Section/styles/Section.style'
 
-import { StyledFooterProps } from './Footer.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledFooterProps } from './Footer.style.types'
+import { FooterMainMenu } from '../components/FooterMainMenu/styles/FooterMainMenu.style'
 
 export const Footer = styled.div(
   (props: StyledFooterProps): FlattenSimpleInterpolation => css`

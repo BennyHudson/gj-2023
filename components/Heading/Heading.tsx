@@ -1,7 +1,7 @@
-import React, { FC, ReactElement } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
-import { HeadingProps } from './Heading.types'
-
+import type { HeadingProps } from './Heading.types'
 import * as Styled from './styles/Heading.style'
 
 const Heading: FC<HeadingProps> = ({

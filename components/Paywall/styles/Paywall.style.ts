@@ -1,9 +1,12 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledPaywallProps } from './Paywall.style.types'
-import respondTo from '@mixins/respondTo'
 import { Section } from '@components/Section/styles/Section.style'
 import { Title } from '@components/Title/styles/Title.style'
+
+import respondTo from '@mixins/respondTo'
+
+import type { StyledPaywallProps } from './Paywall.style.types'
 
 export const Paywall = styled.div(
   (props: StyledPaywallProps): FlattenSimpleInterpolation => css`

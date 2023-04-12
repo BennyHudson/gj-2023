@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client'
+
 import { media } from './media'
 
 export interface HouseNote {

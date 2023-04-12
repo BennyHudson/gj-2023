@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledMagazineGridProps } from './MagazineGrid.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledMagazineGridProps } from './MagazineGrid.style.types'
 
 export const MagazineGrid = styled.div(
   (props: StyledMagazineGridProps): FlattenSimpleInterpolation => css`

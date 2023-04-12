@@ -1,16 +1,16 @@
-import React, { ReactElement, FC } from 'react'
 import Image from 'next/image'
-
-import featuredImageUrl from '@helpers/featuredImageUrl'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import Byline from '@components/Byline'
 import ContentBuilder from '@components/ContentBuilder'
+import Link from '@components/Link'
 import RawHtmlWrapper from '@components/RawHtmlWrapper'
 
-import * as Styled from './styles/ContentGrid.style'
+import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import { ContentGridProps } from './ContentGrid.types'
-import Link from '@components/Link'
+import type { ContentGridProps } from './ContentGrid.types'
+import * as Styled from './styles/ContentGrid.style'
 
 const ContentGrid: FC<ContentGridProps> = ({
   byline,

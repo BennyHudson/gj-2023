@@ -1,13 +1,13 @@
-import React, { ReactElement, FC } from 'react'
 import Image from 'next/image'
-
-import featuredImageUrl from '@helpers/featuredImageUrl'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import RawHtmlWrapper from '@components/RawHtmlWrapper'
 
-import * as Styled from './styles/ImageBlock.style'
+import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import { ImageBlockProps } from './ImageBlock.types'
+import type { ImageBlockProps } from './ImageBlock.types'
+import * as Styled from './styles/ImageBlock.style'
 
 const ImageBlock: FC<ImageBlockProps> = ({ imageSize, image }): ReactElement | undefined => {
   if (!image) return

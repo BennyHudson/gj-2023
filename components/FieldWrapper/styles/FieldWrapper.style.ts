@@ -1,9 +1,10 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { TextField } from '../../TextField/styles/TextField.style'
 import { Label } from '@components/Label/styles/Label.style'
 
-import { StyledFieldWrapperProps } from './FieldWrapper.style.types'
+import type { StyledFieldWrapperProps } from './FieldWrapper.style.types'
+import { TextField } from '../../TextField/styles/TextField.style'
 
 export const FieldWrapper = styled.div(
   (props: StyledFieldWrapperProps): FlattenSimpleInterpolation => css`

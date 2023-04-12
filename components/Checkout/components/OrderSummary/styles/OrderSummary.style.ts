@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledOrderSummaryProps } from './OrderSummary.style.types'
+import type { StyledOrderSummaryProps } from './OrderSummary.style.types'
 
 export const OrderSummary = styled.div(
   (props: StyledOrderSummaryProps): FlattenSimpleInterpolation => css`

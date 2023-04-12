@@ -1,16 +1,16 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
+
+import Button from '@components/Button'
+import Heading from '@components/Heading'
+import Paragraph from '@components/Paragraph'
+import RawHtmlWrapper from '@components/RawHtmlWrapper'
+import Title from '@components/Title'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import RawHtmlWrapper from '@components/RawHtmlWrapper'
-import Heading from '@components/Heading'
-import Paragraph from '@components/Paragraph'
-import Button from '@components/Button'
-import Title from '@components/Title'
-
+import type { JobsListProps } from './JobsList.types'
 import * as Styled from './styles/JobsList.style'
-
-import { JobsListProps } from './JobsList.types'
 
 const JobsList: FC<JobsListProps> = ({ content, jobs }: JobsListProps): ReactElement => {
   return (

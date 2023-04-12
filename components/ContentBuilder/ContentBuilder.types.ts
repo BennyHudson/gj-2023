@@ -1,4 +1,4 @@
-import { ContentBuilder } from '@queries/fragments/contentBuilder'
+import type { ContentBuilder } from '@queries/fragments/contentBuilder'
 
 export interface ContentBuilderProps {
   content: ContentBuilder[]

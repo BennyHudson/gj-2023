@@ -1,22 +1,24 @@
-import React, { FC, ReactElement, useEffect, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
+
+import BannerAdvert from '@components/BannerAdvert'
+import PageLayout from '@components/PageLayout'
+import SessionsFeed from '@components/SessionsFeed'
+import SessionsHeader from '@components/SessionsHeader'
+import SessionsSponsor from '@components/SessionsSponsor'
+import Thumbnail from '@components/Thumbnail'
+import TitleAndIntro from '@components/TitleAndIntro'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
 
-import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
-import { sessionsFeatureQuery } from '@queries/homepage/sessions-feature'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
-
-import TitleAndIntro from '@components/TitleAndIntro'
-import Thumbnail from '@components/Thumbnail'
-import SessionsHeader from '@components/SessionsHeader'
-import BannerAdvert from '@components/BannerAdvert'
-import SessionsFeed from '@components/SessionsFeed'
-import SessionsSponsor from '@components/SessionsSponsor'
-import PageLayout from '@components/PageLayout'
-import { sessionsQuery } from '@queries/pages/sessions'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import { sessionsFeatureQuery } from '@queries/homepage/sessions-feature'
+import { sessionsQuery } from '@queries/pages/sessions'
 
 const SessionsPage: FC = ({ pageData, featuredArticle, headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps

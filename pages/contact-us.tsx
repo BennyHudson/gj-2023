@@ -1,17 +1,20 @@
-import React, { FC, ReactElement, useEffect, useContext } from 'react'
-import client from '@lib/apollo-client'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
 
-import { headerNavQuery } from '@queries/global/header-nav'
-import { footerNavQuery } from '@queries/global/footer-nav'
-import { pageQuery } from '@queries/pages/page'
-
+import ContactDetails from '@components/ContactDetails'
+import Masthead from '@components/Masthead'
 import PageLayout from '@components/PageLayout'
 import Section from '@components/Section'
-import Masthead from '@components/Masthead'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
-import ContactDetails from '@components/ContactDetails'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import client from '@lib/apollo-client'
+
+import { footerNavQuery } from '@queries/global/footer-nav'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import { pageQuery } from '@queries/pages/page'
 
 const ContactPage: FC = ({ headerNav, footerNav, pageData, siteOptions }): ReactElement => {
   const breadcrumbs = [
@@ -32,7 +35,14 @@ const ContactPage: FC = ({ headerNav, footerNav, pageData, siteOptions }): React
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions} databaseId={2}>
+    <PageLayout
+      headerStyle='standard'
+      headerNav={headerNav}
+      footerNav={footerNav}
+      seo={pageData.seo}
+      siteOptions={siteOptions}
+      databaseId={2}
+    >
       <Section>
         <Masthead
           breadcrumbs={breadcrumbs}

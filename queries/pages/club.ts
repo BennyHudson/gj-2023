@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client'
+
 import { seo } from '@queries/fragments/seo'
 
 export const clubQuery = {

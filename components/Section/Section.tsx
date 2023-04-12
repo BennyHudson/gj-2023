@@ -1,8 +1,8 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
+import type { SectionProps } from './Section.types'
 import * as Styled from './styles/Section.style'
-
-import { SectionProps } from './Section.types'
 
 const Section: FC<SectionProps> = ({
   children,

@@ -1,9 +1,10 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { Label } from '@components/Label/styles/Label.style'
 import { EditButton } from '@components/EditButton/styles/EditButton.style'
+import { Label } from '@components/Label/styles/Label.style'
 
-import { StyledCheckoutPanelProps } from './CheckoutPanel.style.types'
+import type { StyledCheckoutPanelProps } from './CheckoutPanel.style.types'
 
 export const CheckoutHeader = styled.div(
   (props: StyledCheckoutPanelProps): FlattenSimpleInterpolation => css`

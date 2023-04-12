@@ -1,6 +1,6 @@
-import { PaymentIntent } from '@stripe/stripe-js'
+import type { PaymentIntent } from '@stripe/stripe-js'
 
-import { CheckoutState } from '../../Checkout.types'
+import type { CheckoutState } from '../../Checkout.types'
 
 export interface PaymentProps {
   panelIndex: number

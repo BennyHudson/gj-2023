@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next'
+
 import { WooCommerce } from '../WooCommerce'
 
 export default async function updatePaymentIntent(req: NextApiRequest, res: NextApiResponse) {
@@ -31,7 +32,7 @@ export default async function updatePaymentIntent(req: NextApiRequest, res: Next
 
     if (voucher.discount_type === 'percent') {
       const percentageDiscount = Math.trunc(voucher.amount)
-      return basketTotal - (basketTotal * (percentageDiscount / 100))
+      return basketTotal - basketTotal * (percentageDiscount / 100)
     }
 
     return basketTotal - parseFloat(voucher.amount)

@@ -1,8 +1,8 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
+import type { SidebarProps } from './Sidebar.types'
 import * as Styled from './styles/Sidebar.style'
-
-import { SidebarProps } from './Sidebar.types'
 
 const Sidebar: FC<SidebarProps> = ({ children, sidebarContent }: SidebarProps): ReactElement => {
   return (

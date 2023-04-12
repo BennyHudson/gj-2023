@@ -1,9 +1,10 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { Form as FormikForm } from 'formik'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { Heading } from '@components/Heading/styles/Heading.style'
 
-import { StyledFormProps } from './Form.style.types'
+import type { StyledFormProps } from './Form.style.types'
 
 type FormProps = Pick<StyledFormProps, 'theme'>
 export const Form = styled(FormikForm)(

@@ -1,15 +1,16 @@
-import React, { ReactElement, FC, useState } from 'react'
 import { Formik } from 'formik'
+import type { FC, ReactElement} from 'react'
+import React, { useState } from 'react'
 
-import Title from '@components/Title'
-import TextField from '@components/TextField'
-import NameField from '@components/NameField'
+import Button from '@components/Button'
 import CheckboxList from '@components/CheckboxList'
+import FormErrorMessage from '@components/FormErrorMessage'
+import NameField from '@components/NameField'
+import RawHtmlWrapper from '@components/RawHtmlWrapper'
+import TextField from '@components/TextField'
+import Title from '@components/Title'
 
 import * as Styled from './styles/Newsletter.style'
-import Button from '@components/Button'
-import RawHtmlWrapper from '@components/RawHtmlWrapper'
-import FormErrorMessage from '@components/FormErrorMessage'
 
 const Newsletter: FC = ({ form, showTitle = true }): ReactElement => {
   const [confirmationMessage, setConfirmationMessage] = useState()

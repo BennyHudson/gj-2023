@@ -1,8 +1,7 @@
-import { Theme } from '@themes/gjTheme/gjTheme.types'
+import type { ParagraphKeys, WeightKeys } from '@themes/gjTheme/constants/typography.types'
+import type { Theme } from '@themes/gjTheme/gjTheme.types'
 
-import { ParagraphKeys, WeightKeys } from '@themes/gjTheme/constants/typography.types'
-
-import { LinkProps } from '../Link.types'
+import type { LinkProps } from '../Link.types'
 
 export interface StyledLinkProps {
   theme: Theme

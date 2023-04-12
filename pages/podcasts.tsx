@@ -1,21 +1,23 @@
-import React, { FC, ReactElement, useEffect, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
+
+import BannerAdvert from '@components/BannerAdvert'
+import Divider from '@components/Divider'
+import FeatureCarousel from '@components/FeatureCarousel'
+import PageLayout from '@components/PageLayout'
+import PodcastCarousel from '@components/PodcastCarousel'
+import PodcastIntro from '@components/PodcastIntro'
+import PodcastList from '@components/PodcastList'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
 
-import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
-import { podcastOptionsQuery } from '@queries/podcasts/podcast-options'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
-
-import PageLayout from '@components/PageLayout'
-import FeatureCarousel from '@components/FeatureCarousel'
-import BannerAdvert from '@components/BannerAdvert'
-import PodcastIntro from '@components/PodcastIntro'
-import PodcastList from '@components/PodcastList'
-import PodcastCarousel from '@components/PodcastCarousel'
-import Divider from '@components/Divider'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
+import { podcastOptionsQuery } from '@queries/podcasts/podcast-options'
 
 const Podcasts: FC = ({ podcastOptions, headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -25,12 +27,7 @@ const Podcasts: FC = ({ podcastOptions, headerNav, footerNav, siteOptions }): Re
   }, [setActiveNavElement])
 
   return (
-    <PageLayout
-      headerNav={headerNav}
-      footerNav={footerNav}
-      seo={{ title: 'Podcasts | The Gentleman\'s Journal' }}
-      siteOptions={siteOptions}
-    >
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Podcasts | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
       <FeatureCarousel
         height={1}
         title='Podcasts'

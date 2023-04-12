@@ -1,12 +1,12 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import Heading from '@components/Heading'
-import Paragraph from '@components/Paragraph'
 import Link from '@components/Link'
+import Paragraph from '@components/Paragraph'
 
 import * as Styled from './styles/Title.style'
-
-import { TitleProps } from './Title.types'
+import type { TitleProps } from './Title.types'
 
 const Title: FC<TitleProps> = ({ title, subtitle, links, inverse = false }: TitleProps): ReactElement => {
   return (

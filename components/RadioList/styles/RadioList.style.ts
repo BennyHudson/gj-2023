@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledRadioListProps } from './RadioList.style.types'
+import type { StyledRadioListProps } from './RadioList.style.types'
 
 export const Radio = styled.div(
   (props: StyledRadioListProps): FlattenSimpleInterpolation => css`

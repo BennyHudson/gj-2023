@@ -1,17 +1,18 @@
-import React, { ReactElement, FC, useContext } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faLockAlt } from '@fortawesome/pro-thin-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
 
 import Heading from '@components/Heading'
 import Meta from '@components/Meta'
 import Thumbnail from '@components/Thumbnail'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
+import type { PostExcerptProps } from './PostExcerpt.types'
 import * as Styled from './styles/PostExcerpt.style'
-
-import { PostExcerptProps } from './PostExcerpt.types'
 
 const PostExcerpt: FC<PostExcerptProps> = ({
   title,

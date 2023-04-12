@@ -1,8 +1,10 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import Link from 'next/link'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledPodcastGridProps } from './PodcastGrid.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledPodcastGridProps } from './PodcastGrid.style.types'
 
 export const PodcastGrid = styled.div(
   (props: StyledPodcastGridProps): FlattenSimpleInterpolation => css`

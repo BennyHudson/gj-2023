@@ -1,15 +1,16 @@
-import React, { ReactElement, FC } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faAngleRight } from '@fortawesome/pro-thin-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import he from 'he'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import Link from '@components/Link'
 
-import * as Styled from './styles/Breadcrumbs.style'
-
-import { BreadcrumbsProps } from './Breadcrumbs.types'
 import { useBreakpoints } from '@hooks/useBreakpoints'
+
+import type { BreadcrumbsProps } from './Breadcrumbs.types'
+import * as Styled from './styles/Breadcrumbs.style'
 
 const Breadcrumbs: FC<BreadcrumbsProps> = ({ links }: BreadcrumbsProps): ReactElement => {
   const { sm, mdAndAbove } = useBreakpoints()

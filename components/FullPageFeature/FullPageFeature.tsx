@@ -1,17 +1,20 @@
-import React, { ReactElement, FC, useEffect, useState, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+
+import Heading from '@components/Heading'
+import Link from '@components/Link'
+import Overlay from '@components/Overlay'
+import Paragraph from '@components/Paragraph'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import Heading from '@components/Heading'
-import Paragraph from '@components/Paragraph'
-import Link from '@components/Link'
-
-import * as Styled from './styles/FullPageFeature.style'
-
-import { FullPageFeatureProps } from './FullPageFeature.types'
-import Overlay from '@components/Overlay'
 import { useBreakpoints } from '@hooks/useBreakpoints'
-import PageContext, { PageContextProps } from '@context/PageContext'
+
+import type { FullPageFeatureProps } from './FullPageFeature.types'
+import * as Styled from './styles/FullPageFeature.style'
 
 const FullPageFeature: FC<FullPageFeatureProps> = ({ title, excerpt, uri, featuredImage }: FullPageFeatureProps): ReactElement => {
   const { mdAndAbove } = useBreakpoints()

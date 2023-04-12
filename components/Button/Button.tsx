@@ -1,8 +1,8 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
+import type { ButtonProps } from './Button.types'
 import * as Styled from './styles/Button.style'
-
-import { ButtonProps } from './Button.types'
 
 const Button: FC<ButtonProps> = ({ onClick, text, type = 'button', href, size = 2 }: ButtonProps): ReactElement => {
   return (

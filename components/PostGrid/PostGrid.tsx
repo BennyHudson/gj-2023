@@ -1,15 +1,18 @@
-import React, { ReactElement, FC } from 'react'
 import Head from 'next/head'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 import Slider from 'react-slick'
-import PostExcerpt from '@components/PostExcerpt'
-
-import * as Styled from './styles/PostGrid.style'
-
-import { PostGridProps } from './PostGrid.types'
-import { useBreakpoints } from '@hooks/useBreakpoints'
 import { useTheme } from 'styled-components'
-import { Theme } from '@themes/gjTheme/gjTheme.types'
+
+import PostExcerpt from '@components/PostExcerpt'
 import TowerAdvert from '@components/TowerAdvert'
+
+import { useBreakpoints } from '@hooks/useBreakpoints'
+
+import type { Theme } from '@themes/gjTheme/gjTheme.types'
+
+import type { PostGridProps } from './PostGrid.types'
+import * as Styled from './styles/PostGrid.style'
 
 const PostGrid: FC<PostGridProps> = ({
   posts,

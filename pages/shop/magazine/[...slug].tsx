@@ -1,23 +1,33 @@
-import React, { FC, ReactElement } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
-import client from '@lib/apollo-client'
-import { getAllProducts } from '@lib/api'
-import { headerNavQuery } from '@queries/global/header-nav'
-import { footerNavQuery } from '@queries/global/footer-nav'
-
-import { StaticPaths } from '@typings/StaticPaths.types'
+import MagazineGrid from '@components/MagazineGrid'
 import PageLayout from '@components/PageLayout'
-import { magazineQuery } from '@queries/products/external-product'
 import ProductFeature from '@components/ProductFeature'
-import { magazineCategoryQuery } from '@queries/products/magazine-category'
 import Section from '@components/Section'
 import Title from '@components/Title'
-import MagazineGrid from '@components/MagazineGrid'
+
+import { getAllProducts } from '@lib/api'
+import client from '@lib/apollo-client'
+
+
+import { footerNavQuery } from '@queries/global/footer-nav'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import { magazineQuery } from '@queries/products/external-product'
+import { magazineCategoryQuery } from '@queries/products/magazine-category'
+import type { StaticPaths } from '@typings/StaticPaths.types'
 
 const ProductPage: FC = ({ headerNav, footerNav, product, magazines, siteOptions }): ReactElement => {
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={product.seo} headerStyle='standard' siteOptions={siteOptions} databaseId={product.databaseId}>
+    <PageLayout
+      headerNav={headerNav}
+      footerNav={footerNav}
+      seo={product.seo}
+      headerStyle='standard'
+      siteOptions={siteOptions}
+      databaseId={product.databaseId}
+    >
       <ProductFeature product={product} />
       <Section>
         <Title

@@ -1,8 +1,8 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import { Field, Form } from 'formik'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { Form, Field } from 'formik'
-
-import { StyledSearchFormProps } from './SearchForm.style.types'
+import type { StyledSearchFormProps } from './SearchForm.style.types'
 
 export const SearchWrapper = styled.div(
   (): FlattenSimpleInterpolation => css`

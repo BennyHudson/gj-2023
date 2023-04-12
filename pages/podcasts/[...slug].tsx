@@ -1,23 +1,27 @@
-import React, { FC, ReactElement, useEffect, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
 
-import client from '@lib/apollo-client'
-import { getAllPosts } from '@lib/api'
-
-import { PodcastOptions, podcastOptionsQuery } from '@queries/podcasts/podcast-options'
-import { headerNavQuery } from '@queries/global/header-nav'
-import { footerNavQuery } from '@queries/global/footer-nav'
-import { PodcastBody, podcastBodyQuery } from '@queries/podcasts/podcast-body'
-
-import PageLayout from '@components/PageLayout'
 import BannerAdvert from '@components/BannerAdvert'
-import PodcastContent from '@components/PodcastContent'
+import PageLayout from '@components/PageLayout'
 import PodcastCarousel from '@components/PodcastCarousel'
+import PodcastContent from '@components/PodcastContent'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
-import { StaticPaths } from '@typings/StaticPaths.types'
-import { PageData } from '@typings/PageData.types'
+import { getAllPosts } from '@lib/api'
+import client from '@lib/apollo-client'
+
+
+import { footerNavQuery } from '@queries/global/footer-nav'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import type { PodcastBody} from '@queries/podcasts/podcast-body'
+import { podcastBodyQuery } from '@queries/podcasts/podcast-body'
+import type { PodcastOptions} from '@queries/podcasts/podcast-options'
+import { podcastOptionsQuery } from '@queries/podcasts/podcast-options'
+import type { PageData } from '@typings/PageData.types'
+import type { StaticPaths } from '@typings/StaticPaths.types'
 
 interface PodcastData extends PageData {
   podcastData: PodcastBody
@@ -32,7 +36,14 @@ const Podcast: FC<PodcastData> = ({ podcastData, podcastOptions, headerNav, foot
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={podcastData.seo} siteOptions={siteOptions} databaseId={podcastData.databaseId}>
+    <PageLayout
+      headerStyle='standard'
+      headerNav={headerNav}
+      footerNav={footerNav}
+      seo={podcastData.seo}
+      siteOptions={siteOptions}
+      databaseId={podcastData.databaseId}
+    >
       <BannerAdvert parent='GJ_728x90_001_0' paddingLevel={1} />
       <PodcastContent {...podcastData} {...podcastOptions} />
       <PodcastCarousel title='You might also like' podcasts={podcastOptions.featured.featured} />

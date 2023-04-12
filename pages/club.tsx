@@ -1,26 +1,36 @@
-import React, { FC, ReactElement, useEffect, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
+
+import ClubBuy from '@components/ClubBuy'
+import ClubGift from '@components/ClubGift'
+import ClubHero from '@components/ClubHero'
+import ClubOverview from '@components/ClubOverview'
+import ClubPerks from '@components/ClubPerks'
+import ClubVideo from '@components/ClubVideo'
+import PageLayout from '@components/PageLayout'
+import Section from '@components/Section'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
 
-import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
-import { subscriptionProductsQuery } from '@queries/global/subscription-products'
 import { freeGiftQuery } from '@queries/global/free-gift'
+import { headerNavQuery } from '@queries/global/header-nav'
+import { siteOptionsQuery } from '@queries/global/site-options'
+import { subscriptionProductsQuery } from '@queries/global/subscription-products'
 import { clubQuery } from '@queries/pages/club'
 
-import PageLayout from '@components/PageLayout'
-import ClubOverview from '@components/ClubOverview'
-import ClubGift from '@components/ClubGift'
-import ClubBuy from '@components/ClubBuy'
-import ClubPerks from '@components/ClubPerks'
-import ClubHero from '@components/ClubHero'
-import Section from '@components/Section'
-import ClubVideo from '@components/ClubVideo'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
-import { siteOptionsQuery } from '@queries/global/site-options'
-
-const ClubPage: FC = ({ pageData, headerNav, footerNav, subscriptionProducts, freeGift, subscriptionOverview, siteOptions }): ReactElement => {
+const ClubPage: FC = ({
+  pageData,
+  headerNav,
+  footerNav,
+  subscriptionProducts,
+  freeGift,
+  subscriptionOverview,
+  siteOptions,
+}): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -28,7 +38,14 @@ const ClubPage: FC = ({ pageData, headerNav, footerNav, subscriptionProducts, fr
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions} databaseId={pageData.databaseId}>
+    <PageLayout
+      headerStyle='standard'
+      headerNav={headerNav}
+      footerNav={footerNav}
+      seo={pageData.seo}
+      siteOptions={siteOptions}
+      databaseId={pageData.databaseId}
+    >
       <ClubVideo video={pageData.subscriptionPage.club.video.url} poster={pageData.featuredImage.node.sourceUrl} />
       <ClubHero
         title={pageData.title}

@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledNameFieldProps } from './NameField.style.types'
 import { FieldWrapper } from '@components/FieldWrapper/styles/FieldWrapper.style'
+
+import type { StyledNameFieldProps } from './NameField.style.types'
 
 export const NameFields = styled.div(
   (props: StyledNameFieldProps): FlattenSimpleInterpolation => css`

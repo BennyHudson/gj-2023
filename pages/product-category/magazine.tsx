@@ -1,17 +1,20 @@
-import React, { FC, ReactElement, useEffect, useContext } from 'react'
-import client from '@lib/apollo-client'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
 
-import { headerNavQuery } from '@queries/global/header-nav'
-import { footerNavQuery } from '@queries/global/footer-nav'
-import { magazineCategoryQuery } from '@queries/products/magazine-category'
-
+import MagazineGrid from '@components/MagazineGrid'
+import Masthead from '@components/Masthead'
 import PageLayout from '@components/PageLayout'
 import Section from '@components/Section'
-import Masthead from '@components/Masthead'
-import MagazineGrid from '@components/MagazineGrid'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import client from '@lib/apollo-client'
+
+import { footerNavQuery } from '@queries/global/footer-nav'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import { magazineCategoryQuery } from '@queries/products/magazine-category'
 
 const Magazines: FC = ({ headerNav, footerNav, magazineData, siteOptions }): ReactElement => {
   const breadcrumbs = [
@@ -32,7 +35,12 @@ const Magazines: FC = ({ headerNav, footerNav, magazineData, siteOptions }): Rea
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: `${magazineData.name} | The Gentleman's Journal` }} siteOptions={siteOptions}>
+    <PageLayout
+      headerNav={headerNav}
+      footerNav={footerNav}
+      seo={{ title: `${magazineData.name} | The Gentleman's Journal` }}
+      siteOptions={siteOptions}
+    >
       <Section appearance='tertiary'>
         <Masthead breadcrumbs={breadcrumbs} title={magazineData.name} />
         <MagazineGrid magazines={magazineData.products.edges} />

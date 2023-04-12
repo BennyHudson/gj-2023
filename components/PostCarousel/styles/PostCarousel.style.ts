@@ -1,9 +1,11 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
-// import Link from 'next/link'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledPostCarouselProps } from './PostCarousel.style.types'
-import { CarouselPost } from '../components/CarouselPost/styles/CarouselPost.style'
+// import Link from 'next/link'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledPostCarouselProps } from './PostCarousel.style.types'
+import { CarouselPost } from '../components/CarouselPost/styles/CarouselPost.style'
 
 export const PostCarousel = styled.div(
   (props: StyledPostCarouselProps): FlattenSimpleInterpolation => css`

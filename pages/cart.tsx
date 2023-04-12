@@ -1,17 +1,20 @@
-import React, { FC, ReactElement, useEffect, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
 
-import client from '@lib/apollo-client'
-
-import { headerNavQuery } from '@queries/global/header-nav'
-import { footerNavQuery } from '@queries/global/footer-nav'
-
+import Cart from '@components/Cart'
 import PageLayout from '@components/PageLayout'
 import SplitPageTemplate from '@components/SplitPageTemplate'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
-import Cart from '@components/Cart'
-import { siteOptionsQuery } from '@queries/global/site-options'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
 import featuredImageUrl from '@helpers/featuredImageUrl'
+
+import client from '@lib/apollo-client'
+
+import { footerNavQuery } from '@queries/global/footer-nav'
+import { headerNavQuery } from '@queries/global/header-nav'
+import { siteOptionsQuery } from '@queries/global/site-options'
 
 const CartPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -21,11 +24,14 @@ const CartPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerStyle='standard' headerNav={headerNav} footerNav={footerNav} seo={{ title: 'Cart | The Gentleman\'s Journal' }} siteOptions={siteOptions}>
-      <SplitPageTemplate
-        image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.cartPage.sourceUrl)}
-        title='Cart'
-      >
+    <PageLayout
+      headerStyle='standard'
+      headerNav={headerNav}
+      footerNav={footerNav}
+      seo={{ title: 'Cart | The Gentleman\'s Journal' }}
+      siteOptions={siteOptions}
+    >
+      <SplitPageTemplate image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.cartPage.sourceUrl)} title='Cart'>
         <Cart />
       </SplitPageTemplate>
     </PageLayout>
@@ -43,7 +49,7 @@ export async function getStaticProps() {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
-      siteOptions: siteOptions.data
+      siteOptions: siteOptions.data,
     },
   }
 }

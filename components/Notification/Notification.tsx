@@ -1,11 +1,11 @@
-import React, { ReactElement, FC } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faCheckCircle, faExclamationCircle } from '@fortawesome/pro-light-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
+import type { NotificationProps } from './Notification.types'
 import * as Styled from './styles/Notification.style'
-
-import { NotificationProps } from './Notification.types'
 
 const Notification: FC<NotificationProps> = ({ text, state }: NotificationProps): ReactElement => {
   return (

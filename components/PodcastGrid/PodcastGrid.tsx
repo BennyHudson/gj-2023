@@ -1,16 +1,17 @@
-import React, { ReactElement, FC } from 'react'
 import Head from 'next/head'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 import Slider from 'react-slick'
 
-import Thumbnail from '@components/Thumbnail'
-import Meta from '@components/Meta'
 import Heading from '@components/Heading'
+import Meta from '@components/Meta'
 import Paragraph from '@components/Paragraph'
+import Thumbnail from '@components/Thumbnail'
 
-import * as Styled from './styles/PodcastGrid.style'
-
-import { PodcastGridProps } from './PodcastGrid.types'
 import { useBreakpoints } from '@hooks/useBreakpoints'
+
+import type { PodcastGridProps } from './PodcastGrid.types'
+import * as Styled from './styles/PodcastGrid.style'
 
 const PodcastGrid: FC<PodcastGridProps> = ({ podcasts }: PodcastGridProps): ReactElement => {
   const { sm, mdAndAbove } = useBreakpoints()

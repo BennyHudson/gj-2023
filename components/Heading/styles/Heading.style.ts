@@ -1,8 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import respondTo from '@mixins/respondTo'
 
-import { StyledHeadingProps } from './Heading.style.types'
+import type { StyledHeadingProps } from './Heading.style.types'
 
 export const Heading = styled.h2(
   (props: StyledHeadingProps): FlattenSimpleInterpolation => css`

@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledBrandGridProps } from './BrandGrid.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledBrandGridProps } from './BrandGrid.style.types'
 
 export const BrandGrid = styled.div(
   (props: StyledBrandGridProps): FlattenSimpleInterpolation => css`

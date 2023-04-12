@@ -1,12 +1,12 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
+import FieldWrapper from '@components/FieldWrapper'
 import Select from '@components/Select'
 import TextField from '@components/TextField'
 
+import type { NameFieldProps } from './NameField.types'
 import * as Styled from './styles/NameField.style'
-
-import { NameFieldProps } from './NameField.types'
-import FieldWrapper from '@components/FieldWrapper'
 
 const NameField: FC<NameFieldProps> = (props: NameFieldProps): ReactElement => {
   const visibleColumns = props.inputs.filter((input) => !input.isHidden)

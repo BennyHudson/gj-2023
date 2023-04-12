@@ -1,4 +1,4 @@
-import { FooterNav } from '@queries/global/footer-nav'
+import type { FooterNav } from '@queries/global/footer-nav'
 
 export interface FooterProps {
   footerNav: FooterNav

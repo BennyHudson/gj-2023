@@ -1,20 +1,21 @@
 /* eslint-disable react/prop-types */
-import React, { ReactElement, FC, useContext, useState, useEffect } from 'react'
 import { Formik } from 'formik'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import * as Yup from 'yup'
+
+import Button from '@components/Button'
+import EditButton from '@components/EditButton'
+import Notification from '@components/Notification'
+import TextField from '@components/TextField'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import useResetPassword from '@hooks/useResetPassword'
 
-import Button from '@components/Button'
-import TextField from '@components/TextField'
-import EditButton from '@components/EditButton'
-import Notification from '@components/Notification'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
-
+import type { LoginFormProps } from './LoginForm.types'
 import * as Styled from './styles/LoginForm.style'
-
-import { LoginFormProps } from './LoginForm.types'
 
 const LoginForm: FC<LoginFormProps> = (): ReactElement => {
   const { setToken, setCustomer, setCustomerId, getCustomerData } = useContext(PageContext) as PageContextProps
@@ -28,7 +29,7 @@ const LoginForm: FC<LoginFormProps> = (): ReactElement => {
 
   const passwordValidation = Yup.object().shape({
     username: Yup.string().email('Please enter a valid email address').required('Required field'),
-    password: Yup.string().required('Required field'),    
+    password: Yup.string().required('Required field'),
   })
 
   useEffect(() => {
@@ -88,7 +89,7 @@ const LoginForm: FC<LoginFormProps> = (): ReactElement => {
 
         const customer = await tokenData.json()
 
-        if(customer.statusCode !== 200) {
+        if (customer.statusCode !== 200) {
           setLoginError(customer.message)
           setLoading(false)
           return
@@ -109,7 +110,14 @@ const LoginForm: FC<LoginFormProps> = (): ReactElement => {
         <Styled.LoginForm isLoading={loading}>
           {loginError && <Notification state='error' text={loginError} />}
           <TextField label='Email Address' id='username' isRequired={false} target='username' validationMessage={props.errors?.username} />
-          <TextField label='Password' id='password' type='password' isRequired={false} target='password' validationMessage={props.errors?.password} />
+          <TextField
+            label='Password'
+            id='password'
+            type='password'
+            isRequired={false}
+            target='password'
+            validationMessage={props.errors?.password}
+          />
           <Styled.LoginFooter>
             <Button type='submit' text='Login' />
             <EditButton text='Forgot Password?' onClick={() => setForgotPassword(true)} />

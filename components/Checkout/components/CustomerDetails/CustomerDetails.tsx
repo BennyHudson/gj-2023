@@ -1,18 +1,20 @@
-import React, { ReactElement, FC, useState, useContext } from 'react'
-import { Formik, Form } from 'formik'
+import { Form, Formik } from 'formik'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useState } from 'react'
 import * as Yup from 'yup'
 
-import NameField from '@components/NameField'
-import TextField from '@components/TextField'
 import EditButton from '@components/EditButton'
+import LoginForm from '@components/LoginForm'
+import NameField from '@components/NameField'
+import Tabs from '@components/Tabs'
+import TextField from '@components/TextField'
 import ValueWithLabel from '@components/ValueWithLabel'
 
-import Tabs from '@components/Tabs'
-import LoginForm from '@components/LoginForm'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
-import { CustomerDetailsProps, CustomerDetailsState } from './CustomerDetails.types'
+import type { CustomerDetailsProps, CustomerDetailsState } from './CustomerDetails.types'
 import CheckoutPanel from '../CheckoutPanel'
-import PageContext, { PageContextProps } from '@context/PageContext'
 
 const CustomerDetails: FC<CustomerDetailsProps> = ({
   panelIndex,

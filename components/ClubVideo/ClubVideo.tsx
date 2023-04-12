@@ -1,10 +1,13 @@
-import React, { ReactElement, FC, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
 
-import * as Styled from './styles/ClubVideo.style'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
-import { ClubVideoProps } from './ClubVideo.types'
 import featuredImageUrl from '@helpers/featuredImageUrl'
-import PageContext, { PageContextProps } from '@context/PageContext'
+
+import type { ClubVideoProps } from './ClubVideo.types'
+import * as Styled from './styles/ClubVideo.style'
 
 const ClubVideo: FC<ClubVideoProps> = ({ video, poster }: ClubVideoProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps

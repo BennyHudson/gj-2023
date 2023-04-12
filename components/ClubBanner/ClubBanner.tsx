@@ -1,19 +1,19 @@
-import React, { ReactElement, FC } from 'react'
 import Image from 'next/image'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 import { useTheme } from 'styled-components'
+
+import Button from '@components/Button'
+import Heading from '@components/Heading'
+import Paragraph from '@components/Paragraph'
+import Section from '@components/Section'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import { Theme } from '@themes/gjTheme/gjTheme.types'
+import type { Theme } from '@themes/gjTheme/gjTheme.types'
 
-import Heading from '@components/Heading'
-import Section from '@components/Section'
-import Paragraph from '@components/Paragraph'
-import Button from '@components/Button'
-
+import type { ClubBannerProps } from './ClubBanner.types'
 import * as Styled from './styles/ClubBanner.style'
-
-import { ClubBannerProps } from './ClubBanner.types'
 
 const ClubBanner: FC<ClubBannerProps> = ({ content, card }: ClubBannerProps): ReactElement => {
   const theme = useTheme() as Theme

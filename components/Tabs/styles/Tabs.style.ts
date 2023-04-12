@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledTabsProps } from './Tabs.style.types'
+import type { StyledTabsProps } from './Tabs.style.types'
 
 type TabsProps = Pick<StyledTabsProps, 'theme' | 'tabCount'>
 export const Tabs = styled.div(

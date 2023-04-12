@@ -1,8 +1,11 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledButtonBlockProps } from './ButtonBlock.style.types'
-import respondTo from '@mixins/respondTo'
 import { Button } from '@components/Button/styles/Button.style'
+
+import respondTo from '@mixins/respondTo'
+
+import type { StyledButtonBlockProps } from './ButtonBlock.style.types'
 
 export const ButtonBlock = styled.div(
   (props: StyledButtonBlockProps): FlattenSimpleInterpolation => css`

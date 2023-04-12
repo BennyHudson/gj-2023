@@ -1,15 +1,15 @@
-import React, { ReactElement, FC } from 'react'
 import Image from 'next/image'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
+
+import Button from '@components/Button'
+import Heading from '@components/Heading'
+import Section from '@components/Section'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import Heading from '@components/Heading'
-
+import type { SessionsSponsorProps } from './SessionsSponsor.types'
 import * as Styled from './styles/SessionsSponsor.style'
-
-import { SessionsSponsorProps } from './SessionsSponsor.types'
-import Section from '@components/Section'
-import Button from '@components/Button'
 
 const SessionsSponsor: FC<SessionsSponsorProps> = ({ sponsor }: SessionsSponsorProps): ReactElement => {
   return (

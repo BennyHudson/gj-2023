@@ -1,4 +1,4 @@
-import { createGlobalStyle, css, FlattenSimpleInterpolation } from 'styled-components'
+import { FlattenSimpleInterpolation, createGlobalStyle, css } from 'styled-components'
 
 import { GlobalStyleProps } from './GlobalStyle.types'
 

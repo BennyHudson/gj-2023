@@ -1,15 +1,17 @@
-import React, { FC, ReactElement, useEffect, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
+
+import ErrorPageTemplate from '@components/ErrorPageTemplate'
+import PageLayout from '@components/PageLayout'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
 
-import { headerNavQuery } from '@queries/global/header-nav'
-import { footerNavQuery } from '@queries/global/footer-nav'
-
-import PageLayout from '@components/PageLayout'
-import ErrorPageTemplate from '@components/ErrorPageTemplate'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
 import { page404Query } from '@queries/global/404-page'
+import { footerNavQuery } from '@queries/global/footer-nav'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
 
 const SearchPage: FC = ({ headerNav, footerNav, backgroundImage, siteOptions }): ReactElement => {

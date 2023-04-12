@@ -1,15 +1,15 @@
-import React, { ReactElement, FC } from 'react'
-import { Field } from 'formik'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faCheck } from '@fortawesome/pro-thin-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Field } from 'formik'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import FieldWrapper from '@components/FieldWrapper'
 import RawHtmlWrapper from '@components/RawHtmlWrapper'
 
+import type { CheckboxListProps } from './CheckboxList.types'
 import * as Styled from './styles/CheckboxList.style'
-
-import { CheckboxListProps } from './CheckboxList.types'
 
 const CheckboxList: FC<CheckboxListProps> = ({
   target,

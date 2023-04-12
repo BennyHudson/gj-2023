@@ -1,12 +1,14 @@
-import React, { ReactElement, FC, useState, useContext } from 'react'
-import { Formik } from 'formik'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faArrowRight, faSpinner } from '@fortawesome/pro-thin-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Formik } from 'formik'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useState } from 'react'
 
 import SearchResults from '@components/SearchResults'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import * as Styled from './styles/SearchForm.style'
 

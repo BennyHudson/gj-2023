@@ -1,14 +1,14 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
-import RawHtmlWrapper from '@components/RawHtmlWrapper'
-import Title from '@components/Title'
-import Thumbnail from '@components/Thumbnail'
 import Heading from '@components/Heading'
 import Paragraph from '@components/Paragraph'
+import RawHtmlWrapper from '@components/RawHtmlWrapper'
+import Thumbnail from '@components/Thumbnail'
+import Title from '@components/Title'
 
+import type { PodcastIntroProps } from './PodcastIntro.types'
 import * as Styled from './styles/PodcastIntro.style'
-
-import { PodcastIntroProps } from './PodcastIntro.types'
 
 const PodcastIntro: FC<PodcastIntroProps> = ({ text, host }: PodcastIntroProps): ReactElement => {
   return (

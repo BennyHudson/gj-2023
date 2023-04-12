@@ -1,8 +1,11 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledPostGridProps } from './PostGrid.style.types'
-import respondTo from '@mixins/respondTo'
 import { PostExcerpt } from '@components/PostExcerpt/styles/PostExcerpt.style'
+
+import respondTo from '@mixins/respondTo'
+
+import type { StyledPostGridProps } from './PostGrid.style.types'
 
 export const PostGrid = styled.div(
   (props: StyledPostGridProps): FlattenSimpleInterpolation => css`

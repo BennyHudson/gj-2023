@@ -1,11 +1,14 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledSessionsFeedProps } from './SessionsFeed.style.types'
-import respondTo from '@mixins/respondTo'
-import { Title } from '@components/Title/styles/Title.style'
-import { PostGrid } from '@components/PostGrid/styles/PostGrid.style'
-import { TowerAdvert } from '@components/TowerAdvert/styles/TowerAdvert.style'
 import { Link } from '@components/Link/styles/Link.style'
+import { PostGrid } from '@components/PostGrid/styles/PostGrid.style'
+import { Title } from '@components/Title/styles/Title.style'
+import { TowerAdvert } from '@components/TowerAdvert/styles/TowerAdvert.style'
+
+import respondTo from '@mixins/respondTo'
+
+import type { StyledSessionsFeedProps } from './SessionsFeed.style.types'
 
 export const FeedWrapper = styled.div(
   (): FlattenSimpleInterpolation => css`

@@ -1,16 +1,17 @@
-import React, { ReactElement, FC, useContext } from 'react'
 import Link from 'next/link'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
 
-import Title from '@components/Title'
 import PostGrid from '@components/PostGrid'
+import Title from '@components/Title'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import flatListToHierarchical from '@helpers/flatListToHierarchical'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
-
+import type { NavigationProps } from './Navigation.types'
 import * as Styled from './styles/Navigation.style'
-
-import { NavigationProps } from './Navigation.types'
 
 const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: NavigationProps): ReactElement => {
   const { activeNavElement } = useContext(PageContext) as PageContextProps

@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledHeroImageProps } from './HeroImage.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledHeroImageProps } from './HeroImage.style.types'
 
 export const HeroImage = styled.div(
   (props: StyledHeroImageProps): FlattenSimpleInterpolation => css`
@@ -16,7 +18,8 @@ export const HeroImage = styled.div(
     ${respondTo.lg(css`
       height: ${props.height === 2 ? `calc(100vh - ${props.headerHeight}px)` : '80vh'};
 
-      ${props.hasVideo && css`
+      ${props.hasVideo &&
+      css`
         height: calc(100vh - ${props.headerHeight}px);
       `}
     `)}

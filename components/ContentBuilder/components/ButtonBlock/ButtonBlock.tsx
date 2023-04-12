@@ -1,15 +1,15 @@
-import React, { ReactElement, FC } from 'react'
 import Image from 'next/image'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
+
+import Button from '@components/Button'
+import Heading from '@components/Heading'
+import Paragraph from '@components/Paragraph'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import Heading from '@components/Heading'
-import Paragraph from '@components/Paragraph'
-import Button from '@components/Button'
-
+import type { ButtonBlockProps } from './ButtonBlock.types'
 import * as Styled from './styles/ButtonBlock.style'
-
-import { ButtonBlockProps } from './ButtonBlock.types'
 
 const ButtonBlock: FC<ButtonBlockProps> = ({ title, callToAction, link, price, image }: ButtonBlockProps): ReactElement => {
   return (

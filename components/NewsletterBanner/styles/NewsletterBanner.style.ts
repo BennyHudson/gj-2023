@@ -1,12 +1,14 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import hexToRgba from 'hex-to-rgba'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { Newsletter } from '@components/Newsletter/styles/Newsletter.style'
-
-import { StyledNewsletterBannerProps } from './NewsletterBanner.style.types'
-import respondTo from '@mixins/respondTo'
 import { Heading } from '@components/Heading/styles/Heading.style'
+import { Newsletter } from '@components/Newsletter/styles/Newsletter.style'
 import { Title } from '@components/Title/styles/Title.style'
+
+import respondTo from '@mixins/respondTo'
+
+import type { StyledNewsletterBannerProps } from './NewsletterBanner.style.types'
 
 export const NewsletterBanner = styled.div(
   (props: StyledNewsletterBannerProps): FlattenSimpleInterpolation => css`

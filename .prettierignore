@@ -3,3 +3,4 @@ _templates
 build
 node_modules
 yarn.lock
+.next

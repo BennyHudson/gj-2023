@@ -1,8 +1,10 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import Link from 'next/link'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledSecondaryNavProps } from './SecondaryNav.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledSecondaryNavProps } from './SecondaryNav.style.types'
 
 export const SecondaryNav = styled.div(
   (): FlattenSimpleInterpolation => css`

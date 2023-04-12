@@ -1,9 +1,10 @@
-import React, { ReactElement, FC } from 'react'
 import { Field } from 'formik'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
+
+import type { FormFieldProps } from '@typings/FormField.types'
 
 import FieldWrapper from '../FieldWrapper'
-
-import { FormFieldProps } from '@typings/FormField.types'
 
 const TextArea: FC<FormFieldProps> = ({
   label,

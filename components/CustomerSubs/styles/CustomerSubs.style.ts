@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledCustomerSubsProps } from './CustomerSubs.style.types'
+import type { StyledCustomerSubsProps } from './CustomerSubs.style.types'
 
 export const CustomerSubs = styled.div(
   (props: StyledCustomerSubsProps): FlattenSimpleInterpolation => css`

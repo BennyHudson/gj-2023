@@ -1,6 +1,6 @@
-import { Theme } from '@themes/gjTheme/gjTheme.types'
+import type { Theme } from '@themes/gjTheme/gjTheme.types'
 
-import { ImageBlockProps } from '../ImageBlock.types'
+import type { ImageBlockProps } from '../ImageBlock.types'
 
 export interface StyledImageBlockProps {
   theme: Theme

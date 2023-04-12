@@ -1,7 +1,8 @@
-import styled, { css, FlattenSimpleInterpolation, createGlobalStyle } from 'styled-components'
 import Link from 'next/link'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { createGlobalStyle, css } from 'styled-components'
 
-import { StyledMobileNavigationProps } from './MobileNavigation.style.types'
+import type { StyledMobileNavigationProps } from './MobileNavigation.style.types'
 import { IconButton, SecondaryNav } from '../../SecondaryNav/styles/SecondaryNav.style'
 
 export const MobileNavigation = styled.nav(

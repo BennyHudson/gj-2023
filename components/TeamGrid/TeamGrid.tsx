@@ -1,11 +1,11 @@
-import React, { ReactElement, FC } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
 import Heading from '@components/Heading'
 import Paragraph from '@components/Paragraph'
 
 import * as Styled from './styles/TeamGrid.style'
-
-import { TeamGridProps } from './TeamGrid.types'
+import type { TeamGridProps } from './TeamGrid.types'
 
 const TeamGrid: FC<TeamGridProps> = ({ title, teamMembers }: TeamGridProps): ReactElement => {
   return (

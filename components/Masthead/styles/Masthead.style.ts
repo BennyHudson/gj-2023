@@ -1,8 +1,11 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledMastheadProps } from './Masthead.style.types'
-import respondTo from '@mixins/respondTo'
 import { Breadcrumbs } from '@components/Breadcrumbs/styles/Breadcrumbs.style'
+
+import respondTo from '@mixins/respondTo'
+
+import type { StyledMastheadProps } from './Masthead.style.types'
 
 export const Masthead = styled.div(
   (props: StyledMastheadProps): FlattenSimpleInterpolation => css`

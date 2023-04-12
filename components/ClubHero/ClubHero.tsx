@@ -1,13 +1,14 @@
-import React, { ReactElement, FC, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
 
-import PageContext, { PageContextProps } from '@context/PageContext'
-
-import Section from '@components/Section'
 import Heading from '@components/Heading'
+import Section from '@components/Section'
 
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import type { ClubHeroProps } from './ClubHero.types'
 import * as Styled from './styles/ClubHero.style'
-
-import { ClubHeroProps } from './ClubHero.types'
 
 const ClubHero: FC<ClubHeroProps> = ({ title, subtitle }: ClubHeroProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps

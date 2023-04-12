@@ -1,9 +1,11 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { Link } from '@components/Link/styles/Link.style'
 
-import { StyledPodcastCardProps } from './PodcastCard.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledPodcastCardProps } from './PodcastCard.style.types'
 
 export const PodcastCard = styled.div(
   (props: StyledPodcastCardProps): FlattenSimpleInterpolation => css`

@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledLinkProps } from './Link.style.types'
+import type { StyledLinkProps } from './Link.style.types'
 
 export const Link = styled.div(
   (props: StyledLinkProps): FlattenSimpleInterpolation => css`

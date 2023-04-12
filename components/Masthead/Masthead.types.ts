@@ -1,4 +1,4 @@
-import { BreadcrumbsProps } from '@components/Breadcrumbs/Breadcrumbs.types'
+import type { BreadcrumbsProps } from '@components/Breadcrumbs/Breadcrumbs.types'
 
 export interface MastheadProps {
   title: string

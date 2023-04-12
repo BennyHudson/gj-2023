@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledButtonProps } from './Button.style.types'
+import type { StyledButtonProps } from './Button.style.types'
 
 export const Button = styled.button(
   (props: StyledButtonProps): FlattenSimpleInterpolation => css`

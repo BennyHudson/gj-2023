@@ -1,5 +1,6 @@
-import { useEffect, RefObject } from 'react'
 import { useRouter } from 'next/router'
+import { RefObject, useEffect } from 'react'
+
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
 export default function useImage(ref: RefObject<HTMLDivElement>) {

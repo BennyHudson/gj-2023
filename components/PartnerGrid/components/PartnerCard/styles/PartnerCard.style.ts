@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledPartnerCardProps } from './PartnerCard.style.types'
 import { Button } from '@components/Button/styles/Button.style'
+
+import type { StyledPartnerCardProps } from './PartnerCard.style.types'
 
 export const PartnerCard = styled.div(
   (props: StyledPartnerCardProps): FlattenSimpleInterpolation => css`

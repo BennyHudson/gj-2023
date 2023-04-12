@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledVideoBlockProps } from './VideoBlock.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledVideoBlockProps } from './VideoBlock.style.types'
 
 export const VideoBlock = styled.div(
   (props: StyledVideoBlockProps): FlattenSimpleInterpolation => css`

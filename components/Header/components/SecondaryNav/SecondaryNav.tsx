@@ -1,13 +1,16 @@
-import React, { ReactElement, FC, useContext } from 'react'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { faEnvelope, faSearch, faShoppingBag, faUser } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faSearch, faUser, faShoppingBag, faEnvelope } from '@fortawesome/pro-light-svg-icons'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
 
-import * as Styled from './styles/SecondaryNav.style'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
-import { SecondaryNavProps } from './SecondaryNav.types'
 import { useBreakpoints } from '@hooks/useBreakpoints'
-import PageContext, { PageContextProps } from '@context/PageContext'
+
+import type { SecondaryNavProps } from './SecondaryNav.types'
+import * as Styled from './styles/SecondaryNav.style'
 
 const SecondaryNav: FC<SecondaryNavProps> = ({ inverse, showAll = false }: SecondaryNavProps): ReactElement => {
   const { cart } = useContext(PageContext) as PageContextProps

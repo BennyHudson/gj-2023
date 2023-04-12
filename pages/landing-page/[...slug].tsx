@@ -1,30 +1,43 @@
-import React, { FC, ReactElement, useEffect, useContext } from 'react'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect } from 'react'
+
+import ClubBuy from '@components/ClubBuy/ClubBuy'
+import ClubPerks from '@components/ClubPerks/ClubPerks'
+import Heading from '@components/Heading/Heading'
+import HeroImage from '@components/HeroImage'
+import PageLayout from '@components/PageLayout'
+import Paragraph from '@components/Paragraph'
+import PartnerGrid from '@components/PartnerGrid'
+import Section from '@components/Section'
+import Title from '@components/Title/Title'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
+
+import featuredImageUrl from '@helpers/featuredImageUrl'
+
+import { getAllPosts } from '@lib/api'
 import client from '@lib/apollo-client'
 
-import { headerNavQuery } from '@queries/global/header-nav'
 import { footerNavQuery } from '@queries/global/footer-nav'
-import { landingPageContentQuery } from '@queries/landingPages/landing-page'
-import { partnerQuery } from '@queries/partners/partners'
-import { clubQuery } from '@queries/pages/club'
-
-import PageLayout from '@components/PageLayout'
-import HeroImage from '@components/HeroImage'
-import Section from '@components/Section'
-import PartnerGrid from '@components/PartnerGrid'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
-import { getAllPosts } from '@lib/api'
-import featuredImageUrl from '@helpers/featuredImageUrl'
-import Title from '@components/Title/Title'
-import ClubPerks from '@components/ClubPerks/ClubPerks'
-import { subscriptionProductsQuery } from '@queries/global/subscription-products'
-import ClubBuy from '@components/ClubBuy/ClubBuy'
 import { freeGiftQuery } from '@queries/global/free-gift'
-import Heading from '@components/Heading/Heading'
-import Paragraph from '@components/Paragraph'
+import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import { subscriptionProductsQuery } from '@queries/global/subscription-products'
+import { landingPageContentQuery } from '@queries/landingPages/landing-page'
+import { clubQuery } from '@queries/pages/club'
+import { partnerQuery } from '@queries/partners/partners'
 
-const LandingPage: FC = ({ headerNav, footerNav, landingPageContent, partners, club, subscriptionProducts, freeGift, siteOptions }): ReactElement => {
+const LandingPage: FC = ({
+  headerNav,
+  footerNav,
+  landingPageContent,
+  partners,
+  club,
+  subscriptionProducts,
+  freeGift,
+  siteOptions,
+}): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -32,7 +45,13 @@ const LandingPage: FC = ({ headerNav, footerNav, landingPageContent, partners, c
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={{ title: `${landingPageContent.title} | The Gentleman's Journal` }} siteOptions={siteOptions} databaseId={landingPageContent.databaseId}>
+    <PageLayout
+      headerNav={headerNav}
+      footerNav={footerNav}
+      seo={{ title: `${landingPageContent.title} | The Gentleman's Journal` }}
+      siteOptions={siteOptions}
+      databaseId={landingPageContent.databaseId}
+    >
       <HeroImage featuredImage={featuredImageUrl(landingPageContent.featuredImage.node.sourceUrl)} height={1} />
       <Section appearance='secondary' containerWidth='narrow' textAlign='center'>
         <Heading text={landingPageContent.title} inverse size={5} font='ChronicleCondensed' />

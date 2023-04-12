@@ -1,7 +1,7 @@
-import React, { FC, ReactElement } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 
-import { ParagraphProps } from './Paragraph.types'
-
+import type { ParagraphProps } from './Paragraph.types'
 import * as Styled from './styles/Paragraph.style'
 
 const Paragraph: FC<ParagraphProps> = ({

@@ -1,10 +1,12 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import Link from 'next/link'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { Thumbnail } from '@components/Thumbnail/styles/Thumbnail.style'
 
-import { StyledPostExcerptProps } from './PostExcerpt.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledPostExcerptProps } from './PostExcerpt.style.types'
 
 type PostExcerptProps = Pick<StyledPostExcerptProps, 'theme'>
 export const PostExcerpt = styled(Link)(

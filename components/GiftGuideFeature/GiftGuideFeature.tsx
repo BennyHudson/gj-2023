@@ -1,19 +1,21 @@
-import React, { ReactElement, FC, useContext } from 'react'
 import Image from 'next/image'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
+
+import Heading from '@components/Heading'
+import Link from '@components/Link'
+import Overlay from '@components/Overlay'
+import Paragraph from '@components/Paragraph'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
-import Heading from '@components/Heading'
-import Paragraph from '@components/Paragraph'
-import Link from '@components/Link'
-import Overlay from '@components/Overlay'
-
-import PageContext, { PageContextProps } from '@context/PageContext'
-
-import * as Styled from './styles/GiftGuideFeature.style'
-
-import { GiftGuideFeatureProps } from './GiftGuideFeature.types'
 import { useBreakpoints } from '@hooks/useBreakpoints'
+
+import type { GiftGuideFeatureProps } from './GiftGuideFeature.types'
+import * as Styled from './styles/GiftGuideFeature.style'
 
 const GiftGuideFeature: FC<GiftGuideFeatureProps> = ({
   title,

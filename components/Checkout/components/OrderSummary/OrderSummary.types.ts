@@ -1,4 +1,4 @@
-import { CheckoutState } from '../../Checkout.types'
+import type { CheckoutState } from '../../Checkout.types'
 
 export interface OrderSummaryProps {
   panelIndex: number

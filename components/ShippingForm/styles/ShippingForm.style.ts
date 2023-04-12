@@ -1,7 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledShippingFormProps } from './ShippingForm.style.types'
 import { EditButton } from '@components/EditButton/styles/EditButton.style'
+
+import type { StyledShippingFormProps } from './ShippingForm.style.types'
 
 export const ShippingForm = styled.div(
   (props: StyledShippingFormProps): FlattenSimpleInterpolation => css`

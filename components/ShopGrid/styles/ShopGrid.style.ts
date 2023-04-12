@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledShopGridProps } from './ShopGrid.style.types'
+import type { StyledShopGridProps } from './ShopGrid.style.types'
 
 export const ShopGrid = styled.div(
   (props: StyledShopGridProps): FlattenSimpleInterpolation => css`

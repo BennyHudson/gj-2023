@@ -1,19 +1,23 @@
-import React, { ReactElement, FC, useContext } from 'react'
+import { useQuery } from '@apollo/client'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { faSpinner } from '@fortawesome/pro-light-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import type { FC, ReactElement} from 'react'
+import React, { useContext } from 'react'
 
+import EditButton from '@components/EditButton'
 import Heading from '@components/Heading'
 import Paragraph from '@components/Paragraph'
-import EditButton from '@components/EditButton'
 
-import * as Styled from '../../styles/Cart.style'
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
-import { CartItemProps } from './CartItem.types'
-import PageContext, { PageContextProps } from '@context/PageContext'
-import { useQuery } from '@apollo/client'
 import { productQuery } from '@queries/products/product'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSpinner } from '@fortawesome/pro-light-svg-icons'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { ProductData } from '@typings/ProductData.types'
+import type { ProductData } from '@typings/ProductData.types'
+
+
+import type { CartItemProps } from './CartItem.types'
+import * as Styled from '../../styles/Cart.style'
 
 const CartItem: FC<CartItemProps> = ({ productId, removeable, voucher }: CartItemProps): ReactElement => {
   const { setCart, shippingRate } = useContext(PageContext) as PageContextProps
@@ -30,7 +34,7 @@ const CartItem: FC<CartItemProps> = ({ productId, removeable, voucher }: CartIte
 
     if (voucher && voucher.discount_type === 'percent') {
       const percentageDiscount = Math.trunc(voucher.amount)
-      return `${(price - (price * (percentageDiscount / 100))).toFixed(2)} for the first year - Voucher Code: ${voucher.code}`
+      return `${(price - price * (percentageDiscount / 100)).toFixed(2)} for the first year - Voucher Code: ${voucher.code}`
     }
 
     return `${(price - parseFloat(voucher!.amount as unknown as string)).toFixed(2)} for the first year - Voucher Code: ${voucher!.code}`
@@ -41,11 +45,11 @@ const CartItem: FC<CartItemProps> = ({ productId, removeable, voucher }: CartIte
     const onSale = parseFloat(salePrice) > parseFloat(signUpFee)
 
     if (voucher) {
-      if (voucher.product_ids?.find(validProduct => validProduct === productData.product.databaseId)) {
+      if (voucher.product_ids?.find((validProduct) => validProduct === productData.product.databaseId)) {
         return calculateVoucherDiscount(subscriptionPrice)
       }
 
-      if (voucher.product_ids?.length && !voucher.product_ids?.find(validProduct => validProduct === productData.product.databaseId)) {
+      if (voucher.product_ids?.length && !voucher.product_ids?.find((validProduct) => validProduct === productData.product.databaseId)) {
         return subscriptionPrice
       }
 

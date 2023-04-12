@@ -1,15 +1,17 @@
-import React, { ReactElement, FC, useState, useContext, useEffect } from 'react'
 import dayjs from 'dayjs'
+import type { FC, ReactElement} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
+import EditButton from '@components/EditButton'
 import Heading from '@components/Heading'
 import Paragraph from '@components/Paragraph'
 import ValueWithLabel from '@components/ValueWithLabel'
-import EditButton from '@components/EditButton'
+
+import type { PageContextProps } from '@context/PageContext'
+import PageContext from '@context/PageContext'
 
 import * as Styled from './styles/Subscription.style'
-
-import { SubscriptionProps } from './Subscription.types'
-import PageContext, { PageContextProps } from '@context/PageContext'
+import type { SubscriptionProps } from './Subscription.types'
 import PaymentDetails from '../PaymentDetails/'
 
 const Subscription: FC<SubscriptionProps> = ({ subscription }: SubscriptionProps): ReactElement => {
@@ -29,7 +31,7 @@ const Subscription: FC<SubscriptionProps> = ({ subscription }: SubscriptionProps
 
   const getCardDetails = async () => {
     if (!stripeCustomerId || !paymentMethod) return
-    
+
     const paymentDetails = await fetch('/api/subscription/get-card-details', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

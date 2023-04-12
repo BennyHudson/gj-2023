@@ -1,6 +1,7 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { StyledLoadMoreProps } from './LoadMore.style.types'
+import type { StyledLoadMoreProps } from './LoadMore.style.types'
 
 export const LoadMore = styled.div(
   (props: StyledLoadMoreProps): FlattenSimpleInterpolation => css`

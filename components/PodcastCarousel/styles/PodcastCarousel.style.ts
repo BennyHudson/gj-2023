@@ -1,9 +1,11 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { PodcastCard } from '@components/PodcastCard/styles/PodcastCard.style'
 
-import { StyledPodcastCarouselProps } from './PodcastCarousel.style.types'
 import respondTo from '@mixins/respondTo'
+
+import type { StyledPodcastCarouselProps } from './PodcastCarousel.style.types'
 
 export const PodcastCarousel = styled.div(
   (props: StyledPodcastCarouselProps): FlattenSimpleInterpolation => css`

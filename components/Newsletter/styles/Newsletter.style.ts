@@ -1,9 +1,10 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { Form } from 'formik'
+import type { FlattenSimpleInterpolation} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { FieldWrapper } from '@components/FieldWrapper/styles/FieldWrapper.style'
 
-import { StyledNewsletterProps } from './Newsletter.style.types'
+import type { StyledNewsletterProps } from './Newsletter.style.types'
 
 export const Newsletter = styled(Form)(
   (props: StyledNewsletterProps): FlattenSimpleInterpolation => css`
