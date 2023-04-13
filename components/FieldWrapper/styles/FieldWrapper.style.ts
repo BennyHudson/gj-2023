@@ -21,7 +21,7 @@ export const FieldWrapper = styled.div(
 
     ${TextField},
   .styled-select {
-      min-height: 56px;
+      // min-height: 56px;
     }
 
     .styled-textarea,

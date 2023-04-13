@@ -72,7 +72,7 @@ const Home: FC = ({
       />
       <PostCarousel />
       <NewsletterBanner
-        backgroundImage={siteOptions.gjOptions.newsletterModal.sectionNewsletter.image.medium}
+        backgroundImage={siteOptions.gjOptions.newsletterModal.sectionNewsletter.image.fullSize}
         form={newsletterForm}
         size={1}
       />

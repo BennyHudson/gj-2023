@@ -2,7 +2,7 @@ import { gql } from '@apollo/client'
 
 import { media } from '@queries/fragments/media'
 
-export const magazineCategoryQuery = (count = 1) => {
+export const magazineCategoryQuery = (count = 100) => {
   return {
     query: gql`
       query magazineCategoryQuery {
