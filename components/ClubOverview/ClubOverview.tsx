@@ -27,7 +27,6 @@ const ClubOverview: FC<ClubOverviewProps> = ({ overview }: ClubOverviewProps): R
                   <FontAwesomeIcon icon={faAngleRight as IconProp} />
                 </Styled.Index>
                 <Heading text={overviewItem.subscriptionPerk} size={2} font='ChronicleCondensed' />
-                {/* <Paragraph text={overviewItem.subscriptionPerk} font='Cera' size={1} /> */}
               </Styled.Item>
             )
           })}

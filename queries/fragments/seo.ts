@@ -1,3 +1,7 @@
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+
+import { media } from './media'
+
 export interface Seo {
   breadcrumbs?: {
     text: string
@@ -12,9 +16,7 @@ export interface Seo {
   metaRobotsNoindex: string
   opengraphAuthor: string
   opengraphDescription: string
-  opengraphImage?: {
-    sourceUrl: string
-  }
+  opengraphImage?: FeaturedImage
   opengraphModifiedTime: string
   opengraphPublishedTime: string
   opengraphPublisher: string
@@ -29,9 +31,7 @@ export interface Seo {
   }
   title: string
   twitterDescription: string
-  twitterImage?: {
-    sourceUrl: string
-  }
+  twitterImage?: FeaturedImage
   twitterTitle: string
 }
 
@@ -51,7 +51,7 @@ export const seo = () => {
     opengraphAuthor
     opengraphDescription
     opengraphImage {
-      sourceUrl
+      ${media()}
     }
     opengraphModifiedTime
     opengraphPublishedTime
@@ -68,7 +68,7 @@ export const seo = () => {
     title
     twitterDescription
     twitterImage {
-      sourceUrl
+      ${media()}
     }
     twitterTitle
   }`

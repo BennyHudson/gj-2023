@@ -1,4 +1,4 @@
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect } from 'react'
 
 import HouseNotesFeature from '@components/HouseNotesFeature'

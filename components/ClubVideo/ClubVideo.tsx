@@ -1,4 +1,4 @@
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext } from 'react'
 
 import type { PageContextProps } from '@context/PageContext'

@@ -1,14 +1,15 @@
-export interface SingleAffiliatBlock {
+import type { Image } from '@typings/FeaturedImage.types'
+
+import { media } from '../media'
+
+export interface SingleAffiliateBlock {
   [P: string]: {
     description: string
     fieldGroupName: string
     link: string
     price: string
     title: string
-    image: {
-      caption?: string
-      sourceUrl: string
-    }
+    image: Image
   }
 }
 
@@ -21,7 +22,7 @@ export const singleAffiliateBlock = (postType: string): string => {
     title
     image {
       caption
-      sourceUrl
+      ${media()}
     }
   }`
 }

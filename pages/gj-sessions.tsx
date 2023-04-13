@@ -1,4 +1,4 @@
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect } from 'react'
 
 import BannerAdvert from '@components/BannerAdvert'
@@ -44,11 +44,11 @@ const SessionsPage: FC = ({ pageData, featuredArticle, headerNav, footerNav, sit
       <SessionsFeed />
       <SessionsSponsor
         sponsor={{
-          backgroundImage: pageData.sessions.sessions.sponsorBackgroundImage.sourceUrl,
+          backgroundImage: pageData.sessions.sessions.sponsorBackgroundImage.fullSize,
           buttonText: pageData.sessions.sessions.sponsorButtonText,
           sponsorContent: pageData.sessions.sessions.sponsorContent,
           sponsorLink: pageData.sessions.sessions.sponsorLink,
-          logo: pageData.sessions.sessions.sponsorLogoAlt.sourceUrl,
+          logo: pageData.sessions.sessions.sponsorLogoAlt.medium,
         }}
       />
     </PageLayout>

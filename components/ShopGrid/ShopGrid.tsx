@@ -56,7 +56,7 @@ const ShopGrid: FC<ShopGridProps> = ({ products }: ShopGridProps): ReactElement 
               return (
                 <Styled.CardWrapper key={index}>
                   <Styled.ShopCard href={product.link}>
-                    <Image src={featuredImageUrl(product.featured.sourceUrl)} width={400} height={400} alt={product.name} />
+                    <Image src={featuredImageUrl(product.featured.squareThumb)} width={400} height={400} alt={product.name} />
                     <Heading size={1} font='Cera' text={product.name} />
                   </Styled.ShopCard>
                 </Styled.CardWrapper>
@@ -73,7 +73,7 @@ const ShopGrid: FC<ShopGridProps> = ({ products }: ShopGridProps): ReactElement 
       {products.map((product, index) => {
         return (
           <Styled.ShopCard key={index} href={product.link}>
-            <Image src={featuredImageUrl(product.featured.sourceUrl)} width={400} height={400} alt={product.name} />
+            <Image src={featuredImageUrl(product.featured.squareThumb)} width={400} height={400} alt={product.name} />
             <Heading size={1} font='Cera' text={product.name} />
           </Styled.ShopCard>
         )

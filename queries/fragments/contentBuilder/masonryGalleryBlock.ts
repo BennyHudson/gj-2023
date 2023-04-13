@@ -1,9 +1,10 @@
+import type { Image } from '@typings/FeaturedImage.types'
+
+import { media } from '../media'
+
 export interface MasonryGalleryBlock {
   fieldGroupName: string
-  gallery: {
-    caption?: string
-    sourceUrl: string
-  }
+  gallery: Image[]
 }
 
 export const masonryGalleryBlock = (postType: string): string => {
@@ -11,7 +12,7 @@ export const masonryGalleryBlock = (postType: string): string => {
     fieldGroupName
     gallery {
       caption
-      sourceUrl
+      ${media()}
     }
   }`
 }

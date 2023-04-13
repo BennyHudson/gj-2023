@@ -1,4 +1,4 @@
-import type { FlattenSimpleInterpolation} from 'styled-components'
+import type { FlattenSimpleInterpolation } from 'styled-components'
 import styled, { css } from 'styled-components'
 
 import { Link } from '@components/Link/styles/Link.style'
@@ -8,8 +8,10 @@ import respondTo from '@mixins/respondTo'
 
 import type { StyledClubPerksProps } from './ClubPerks.style.types'
 
+type ClubPerksTheme = Pick<StyledClubPerksProps, 'theme'>
+
 export const ClubPerks = styled.div(
-  (props: StyledClubPerksProps): FlattenSimpleInterpolation => css`
+  (props: ClubPerksTheme): FlattenSimpleInterpolation => css`
     display: grid;
     grid-template-columns: repeat(12, [col-start] 1fr);
     gap: ${props.theme.spacing[2]}px;
@@ -65,7 +67,7 @@ export const Perk = styled.div(
 )
 
 export const PerkContent = styled.div(
-  (props: StyledClubPerksProps): FlattenSimpleInterpolation => css`
+  (props: ClubPerksTheme): FlattenSimpleInterpolation => css`
     display: flex;
     flex-direction: column;
     gap: ${props.theme.spacing[4]}px;
@@ -93,20 +95,3 @@ export const PerkContent = styled.div(
     `)}
   `,
 )
-
-// export const ImageWrapper = styled.div(
-//   (): FlattenSimpleInterpolation => css`
-//     position: relative;
-//     height: 240px;
-//     width: 100%;
-
-//     ${respondTo.lg(css`
-//       width: 60%;
-//       height: auto;
-//     `)}
-
-//     img {
-//       object-fit: contain;
-//     }
-//   `,
-// )

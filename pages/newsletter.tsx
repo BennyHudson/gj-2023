@@ -1,4 +1,4 @@
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect } from 'react'
 
 import Newsletter from '@components/Newsletter'
@@ -32,7 +32,7 @@ const NewsletterPage: FC = ({ headerNav, footerNav, newsletter, newsletterForm, 
       seo={{ title: `${newsletter.title} | The Gentleman's Journal` }}
       siteOptions={siteOptions}
     >
-      <SplitPageTemplate image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.newsletterPage.sourceUrl)} title={newsletter.title}>
+      <SplitPageTemplate image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.newsletterPage.fullSize)} title={newsletter.title}>
         <RawHtmlWrapper content={newsletter.description} />
         <Newsletter form={newsletterForm} showTitle={false} />
       </SplitPageTemplate>

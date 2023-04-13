@@ -1,4 +1,4 @@
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect } from 'react'
 
 import ErrorPageTemplate from '@components/ErrorPageTemplate'
@@ -41,7 +41,7 @@ export async function getStaticProps() {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
       siteOptions: siteOptions.data,
-      backgroundImage: errorPageData.data.gjOptions.error404.errorBackgroundImage.sourceUrl,
+      backgroundImage: errorPageData.data.gjOptions.error404.errorBackgroundImage.fullSize,
     },
   }
 }

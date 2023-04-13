@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useRouter } from 'next/router'
 import Script from 'next/script'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useEffect } from 'react'
 
 import Section from '@components/Section'

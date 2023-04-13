@@ -1,7 +1,7 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faEnvelope, faSearch, faShoppingBag, faUser } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext } from 'react'
 
 import type { PageContextProps } from '@context/PageContext'

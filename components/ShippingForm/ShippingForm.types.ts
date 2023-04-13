@@ -1,15 +1,15 @@
-import type { BillingAddress } from '@typings/BillingAddress.types'
+import type { FormikErrors } from 'formik'
+
+import type { BillingAddressProps } from '@typings/BillingAddress.types'
+import type { ShippingAddress } from '@typings/ShippingAddress.types'
+import type { Voucher } from '@typings/Voucher.types'
 
 export interface ShippingFormProps {
-  billingAddress: BillingAddress
+  billingAddress: BillingAddressProps
   setFieldValue: (target: string, value?: string) => void
-  errors?: {
-    shipping?: {
-      address_1?: string
-      city?: string
-      state?: string
-      postcode?: string
-      country?: string
-    }
-  }
+  errors?: FormikErrors<{
+    billing?: BillingAddressProps | undefined
+    shipping?: ShippingAddress | undefined
+    voucher?: Voucher | undefined
+  }>
 }

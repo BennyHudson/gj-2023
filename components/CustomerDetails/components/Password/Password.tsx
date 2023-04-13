@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Form, Formik } from 'formik'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useState } from 'react'
 import * as Yup from 'yup'
 

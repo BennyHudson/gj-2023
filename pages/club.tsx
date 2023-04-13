@@ -1,4 +1,4 @@
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect } from 'react'
 
 import ClubBuy from '@components/ClubBuy'
@@ -46,12 +46,8 @@ const ClubPage: FC = ({
       siteOptions={siteOptions}
       databaseId={pageData.databaseId}
     >
-      <ClubVideo video={pageData.subscriptionPage.club.video.url} poster={pageData.featuredImage.node.sourceUrl} />
-      <ClubHero
-        title={pageData.title}
-        subtitle={pageData.subscriptionPage.club.description}
-        featuredImage={pageData.featuredImage.node.sourceUrl}
-      />
+      <ClubVideo video={pageData.subscriptionPage.club.video.url} poster={pageData.featuredImage.node.fullSize} />
+      <ClubHero title={pageData.title} subtitle={pageData.subscriptionPage.club.description} />
       <ClubOverview overview={subscriptionOverview} />
       {freeGift && <ClubGift freeGift={freeGift} />}
       <ClubBuy products={subscriptionProducts} freeGift={freeGift} offerCode={pageData.subscriptionPage.club.clubhouseOffer} />

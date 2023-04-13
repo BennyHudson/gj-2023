@@ -1,10 +1,11 @@
+import type { Image } from '@typings/FeaturedImage.types'
+
+import { media } from '../media'
+
 export interface ImageBlock {
   [P: string]: {
     fieldGroupName: string
-    image: {
-      sourceUrl: string
-      caption?: string
-    }
+    image: Image
     hasLink: boolean
     imageSize: string
     internalExternal?: string
@@ -21,7 +22,7 @@ export const imageBlock = (postType: string): string => {
   return `... on ${postType}_Articleacf_ContentBuilder_Image {
     fieldGroupName
     image {
-      sourceUrl
+      ${media()}
       caption
     }
     hasLink

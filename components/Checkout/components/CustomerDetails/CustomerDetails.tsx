@@ -1,5 +1,5 @@
 import { Form, Formik } from 'formik'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useState } from 'react'
 import * as Yup from 'yup'
 
@@ -124,18 +124,23 @@ const CustomerDetails: FC<CustomerDetailsProps> = ({
                   {(props) => (
                     <Form>
                       <NameField
+                        label='YourName'
+                        id='billing-name'
+                        target='billing-name'
                         inputs={[
                           {
                             isRequired: true,
                             label: 'First Name',
                             id: 'billing.first_name',
                             name: 'billing.first_name',
+                            target: 'billing.first_name',
                           },
                           {
                             isRequired: true,
                             label: 'Last Name',
                             id: 'billing.last_name',
                             name: 'billing.last_name',
+                            target: 'billing.last_name',
                           },
                         ]}
                         validationMessage={props.errors.billing?.first_name || props.errors.billing?.last_name}

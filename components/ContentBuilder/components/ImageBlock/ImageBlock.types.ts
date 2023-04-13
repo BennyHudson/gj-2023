@@ -1,7 +1,6 @@
+import type { Image } from '@typings/FeaturedImage.types'
+
 export interface ImageBlockProps {
-  image: {
-    sourceUrl: string
-    caption?: string
-  }
+  image: Image
   imageSize: 'standard' | 'standard--tall' | 'standard--full'
 }

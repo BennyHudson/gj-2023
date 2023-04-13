@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import { Form, Formik } from 'formik'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext } from 'react'
 
 import EditButton from '@components/EditButton'

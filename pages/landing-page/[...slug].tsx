@@ -1,4 +1,4 @@
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect } from 'react'
 
 import ClubBuy from '@components/ClubBuy/ClubBuy'
@@ -52,7 +52,7 @@ const LandingPage: FC = ({
       siteOptions={siteOptions}
       databaseId={landingPageContent.databaseId}
     >
-      <HeroImage featuredImage={featuredImageUrl(landingPageContent.featuredImage.node.sourceUrl)} height={1} />
+      <HeroImage featuredImage={featuredImageUrl(landingPageContent.featuredImage.node.fullSize)} height={1} />
       <Section appearance='secondary' containerWidth='narrow' textAlign='center'>
         <Heading text={landingPageContent.title} inverse size={5} font='ChronicleCondensed' />
         <Paragraph inverse text={landingPageContent.landingPageContent.redemptionDetails} font='Cera' />

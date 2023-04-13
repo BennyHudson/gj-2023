@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useRef } from 'react'
 
 import Heading from '@components/Heading'
@@ -18,7 +18,9 @@ import * as Styled from './styles/ClubPerks.style'
 const ClubPerks: FC<ClubPerksProps> = ({ perks, title, subtitle }: ClubPerksProps): ReactElement => {
   const perksList = useRef<HTMLDivElement>(null)
   useNextLink(perksList)
+
   const { sm, mdAndAbove } = useBreakpoints()
+
   return (
     <Styled.ClubPerks ref={perksList}>
       {title && <Title title={title} subtitle={subtitle} />}
@@ -26,9 +28,9 @@ const ClubPerks: FC<ClubPerksProps> = ({ perks, title, subtitle }: ClubPerksProp
         return (
           <Styled.Perk key={index} reverse={perk.textAlignement === 'Right'}>
             {mdAndAbove ? (
-              <Image src={featuredImageUrl(perk.backgroundImage.sourceUrl)} fill alt={perk.title} quality={100} />
+              <Image src={featuredImageUrl(perk.backgroundImage.medium)} fill alt={perk.title} quality={100} />
             ) : (
-              <Image src={featuredImageUrl(perk.backgroundImageMobile.sourceUrl)} alt={perk.title} quality={100} width={480} height={360} />
+              <Image src={featuredImageUrl(perk.backgroundImageMobile.medium)} alt={perk.title} quality={100} width={480} height={360} />
             )}
             <Styled.PerkContent>
               <Heading inverse={sm ? true : perk.textColor === 'Light'} text={perk.title} size={3} font='ChronicleCondensed' noMargin />

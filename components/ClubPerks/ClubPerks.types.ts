@@ -1,15 +1,13 @@
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+
 export interface ClubPerksProps {
   title?: string
   subtitle?: string
   perks: {
     textAlignement: 'Right' | 'Left'
     textColor: 'Light' | 'Dark'
-    backgroundImage: {
-      sourceUrl: string
-    }
-    backgroundImageMobile: {
-      sourceUrl: string
-    }
+    backgroundImage: FeaturedImage
+    backgroundImageMobile: FeaturedImage
     title: string
     content: string
     hasLink: boolean

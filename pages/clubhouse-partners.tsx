@@ -1,4 +1,4 @@
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect } from 'react'
 
 import HeroImage from '@components/HeroImage'
@@ -43,7 +43,7 @@ const TeamPage: FC = ({ headerNav, footerNav, pageData, partners, siteOptions })
       seo={{ title: 'Partner Offers | The Gentleman\'s Journal' }}
       siteOptions={siteOptions}
     >
-      <HeroImage featuredImage={pageData.featuredImage.sourceUrl} height={1} />
+      <HeroImage featuredImage={pageData.featuredImage.fullSize} height={1} />
       <Section appearance='tertiary'>
         <Masthead breadcrumbs={breadcrumbs} title='Clubhouse Partners' subtitle={pageData.subTitle} />
         <PartnerGrid partners={partners} />

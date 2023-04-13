@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useState } from 'react'
 import Slider from 'react-slick'
 

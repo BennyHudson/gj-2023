@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client'
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faSpinner } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext } from 'react'
 
 import EditButton from '@components/EditButton'

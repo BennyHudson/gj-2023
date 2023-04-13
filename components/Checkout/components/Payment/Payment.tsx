@@ -1,7 +1,7 @@
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import type { StripePaymentElementOptions } from '@stripe/stripe-js'
 import { Form, Formik } from 'formik'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect } from 'react'
 
 import Button from '@components/Button'

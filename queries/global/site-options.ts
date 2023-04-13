@@ -1,5 +1,49 @@
 import { gql } from '@apollo/client'
 
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+import type { FormFieldProps } from '@typings/FormField.types'
+
+import { media } from '@queries/fragments/media'
+
+export interface SiteOptions {
+  gjOptions: {
+    faviconImages: {
+      favicons: {
+        faviconLarge: FeaturedImage
+        faviconMedium: FeaturedImage
+        faviconSmall: FeaturedImage
+      }
+    }
+    splitPageImages: {
+      accountPage: FeaturedImage
+      cartPage: FeaturedImage
+      checkoutPage: FeaturedImage
+      newsletterPage: FeaturedImage
+      searchPage: FeaturedImage
+    }
+    newsletterModal: {
+      modalNewsletter: {
+        title: string
+        description: string
+        image: FeaturedImage
+      }
+      sectionNewsletter: {
+        image: FeaturedImage
+        imageAlt: FeaturedImage
+      }
+    }
+  }
+  gfForm: {
+    title: string
+    formFields: {
+      nodes: FormFieldProps[]
+    }
+    submitButton: {
+      text: string
+    }
+  }
+}
+
 export const siteOptionsQuery = {
   query: gql`
     query siteOptions {
@@ -7,31 +51,31 @@ export const siteOptionsQuery = {
         faviconImages {
           favicons {
             faviconLarge {
-              sourceUrl
+              ${media()}
             }
             faviconMedium {
-              sourceUrl
+              ${media()}
             }
             faviconSmall {
-              sourceUrl
+              ${media()}
             }
           }
         }
         splitPageImages {
           accountPage {
-            sourceUrl
+            ${media()}
           }
           cartPage {
-            sourceUrl
+            ${media()}
           }
           checkoutPage {
-            sourceUrl
+            ${media()}
           }
           newsletterPage {
-            sourceUrl
+            ${media()}
           }
           searchPage {
-            sourceUrl
+            ${media()}
           }
         }
         newsletterModal {
@@ -39,15 +83,15 @@ export const siteOptionsQuery = {
             title
             description
             image {
-              sourceUrl
+              ${media()}
             }
           }
           sectionNewsletter {
             image {
-              sourceUrl
+              ${media()}
             }
             imageAlt {
-              sourceUrl
+              ${media()}
             }
           }
         }

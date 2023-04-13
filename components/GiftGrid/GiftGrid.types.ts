@@ -1,10 +1,10 @@
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+
 export interface GiftGridProps {
   gifts: {
     title: string
     featuredImage: {
-      node: {
-        sourceUrl: string
-      }
+      node: FeaturedImage
     }
     gift: {
       giftBrand: string

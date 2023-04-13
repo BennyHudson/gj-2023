@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect } from 'react'
 
 import BannerAdvert from '@components/BannerAdvert'
@@ -17,7 +17,7 @@ import { useBreakpoints } from '@hooks/useBreakpoints'
 import client from '@lib/apollo-client'
 
 
-import type { CategoryBody} from '@queries/category/category-body'
+import type { CategoryBody } from '@queries/category/category-body'
 import { categoryBodyQuery } from '@queries/category/category-body'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'

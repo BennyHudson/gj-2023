@@ -1,3 +1,5 @@
+import type { FeaturedImage } from './FeaturedImage.types'
+
 export interface Post {
   id: string
   title: string
@@ -12,9 +14,7 @@ export interface Post {
   }
   databaseId: number
   featuredImage: {
-    node: {
-      sourceUrl: string
-    }
+    node: FeaturedImage
   }
   contentType: {
     node: {

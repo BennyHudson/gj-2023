@@ -1,5 +1,7 @@
 import { gql } from '@apollo/client'
 
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+
 import { media } from './media'
 
 export interface Post {
@@ -9,9 +11,7 @@ export interface Post {
   uri: string
   databaseId: number
   featuredImage?: {
-    node: {
-      sourceUrl: string
-    }
+    node: FeaturedImage
   }
   categories?: {
     nodes: {

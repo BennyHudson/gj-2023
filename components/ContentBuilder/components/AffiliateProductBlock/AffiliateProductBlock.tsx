@@ -23,7 +23,7 @@ const AffiliateProductBlock: FC<AffiliateProductBlockProps> = ({ affiliateProduc
         return (
           <Styled.Product key={index}>
             <Image
-              src={featuredImageUrl(product.image.sourceUrl)}
+              src={featuredImageUrl(product.image.squareThumb)}
               alt={product.title}
               width={theme.containerWidth / productCount}
               height={theme.containerWidth / productCount}

@@ -9,15 +9,16 @@ import Title from '@components/Title'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
+import type { ClubGiftProps } from './ClubGift.types'
 import * as Styled from './styles/ClubGift.style'
 
-const ClubGift: FC = ({ freeGift }): ReactElement => {
+const ClubGift: FC<ClubGiftProps> = ({ freeGift }: ClubGiftProps): ReactElement => {
   return (
     <Section appearance='tertiary'>
       <Title title='Complimentary Gift' subtitle='While stocks last, included in every new clubhouse membership you will receive a:' />
       <Styled.ClubGift>
         <Styled.GiftImage>
-          <Image src={featuredImageUrl(freeGift.featuredImage.node.sourceUrl)} alt={freeGift.name} fill />
+          <Image src={featuredImageUrl(freeGift.featuredImage.node.medium)} alt={freeGift.name} fill />
         </Styled.GiftImage>
         <Styled.GiftDetails>
           <Heading text={freeGift.name} noMargin size={3} font='ChronicleCondensed' />

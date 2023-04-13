@@ -1,5 +1,5 @@
 import { Form } from 'formik'
-import type { FlattenSimpleInterpolation} from 'styled-components'
+import type { FlattenSimpleInterpolation } from 'styled-components'
 import styled, { css } from 'styled-components'
 
 import { FieldWrapper } from '@components/FieldWrapper/styles/FieldWrapper.style'

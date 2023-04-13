@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client'
 
+import { media } from '@queries/fragments/media'
 import { seo } from '@queries/fragments/seo'
 
 export const clubQuery = {
@@ -19,7 +20,7 @@ export const clubQuery = {
         databaseId
         featuredImage {
           node {
-            sourceUrl
+            ${media()}
           }
         }
         subscriptionPage {
@@ -28,10 +29,10 @@ export const clubQuery = {
             clubhouseOffer
             subscriptionPerks {
               backgroundImage {
-                sourceUrl
+                ${media()}
               }
               backgroundImageMobile {
-                sourceUrl
+                ${media()}
               }
               content
               hasLink

@@ -1,6 +1,5 @@
+import type { Image } from '@typings/FeaturedImage.types'
+
 export interface GalleryBlockProps {
-  gallery: {
-    sourceUrl: string
-    caption?: string
-  }[]
+  gallery: Image[]
 }

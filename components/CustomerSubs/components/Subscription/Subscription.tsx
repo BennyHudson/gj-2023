@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect, useState } from 'react'
 
 import EditButton from '@components/EditButton'

@@ -1,7 +1,7 @@
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+
 export interface ClubAdvertsProps {
   adverts: {
-    adImage: {
-      sourceUrl: string
-    }
+    adImage: FeaturedImage
   }[]
 }

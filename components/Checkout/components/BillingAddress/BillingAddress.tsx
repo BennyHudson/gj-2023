@@ -1,8 +1,9 @@
 import { Formik } from 'formik'
-import type { ReactElement, FC} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext } from 'react'
 
 import BillingForm, { billingValidation } from '@components/BillingForm'
+
 import type { PageContextProps } from '@context/PageContext'
 import PageContext from '@context/PageContext'
 
@@ -39,7 +40,7 @@ const BillingAddress: FC<BillingAddressProps> = ({
               country: customer?.billing?.country || '',
             },
           }}
-          onSubmit={async (values: { billing: BAProps}) => {
+          onSubmit={async (values: { billing: BAProps }) => {
             const updateUser = await fetch(`/api/user/update/${customer?.id || customerId}`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },

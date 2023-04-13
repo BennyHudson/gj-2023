@@ -1,5 +1,5 @@
 import { Form } from 'formik'
-import type { FlattenSimpleInterpolation} from 'styled-components'
+import type { FlattenSimpleInterpolation } from 'styled-components'
 import styled, { css } from 'styled-components'
 
 import type { StyledLoginFormProps } from './LoginForm.style.types'
@@ -26,8 +26,9 @@ export const LoginForm = styled(Form)(
   `,
 )
 
+type LoginFooterProps = Pick<StyledLoginFormProps, 'theme'>
 export const LoginFooter = styled.div(
-  (props: StyledLoginFormProps): FlattenSimpleInterpolation => css`
+  (props: LoginFooterProps): FlattenSimpleInterpolation => css`
     display: flex;
     align-items: center;
     gap: ${props.theme.spacing[4]}px;

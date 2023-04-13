@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client'
 
+import { media } from '@queries/fragments/media'
 import { seo } from '@queries/fragments/seo'
 
 export const pageQuery = (pageId: number) => {
@@ -14,7 +15,7 @@ export const pageQuery = (pageId: number) => {
           ${seo()}
           featuredImage {
             node {
-              sourceUrl
+              ${media()}
             }
           }
           additionalPageData {

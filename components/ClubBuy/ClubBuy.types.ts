@@ -1,6 +1,7 @@
 import type { Product } from '@typings/Product.types'
 
-export interface QuickSubscribeProps {
+export interface ClubBuyProps {
   products: Product[]
   freeGift?: Product
+  offerCode?: string
 }

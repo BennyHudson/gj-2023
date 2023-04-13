@@ -1,4 +1,4 @@
-import type { FlattenSimpleInterpolation} from 'styled-components'
+import type { FlattenSimpleInterpolation } from 'styled-components'
 import styled, { css } from 'styled-components'
 
 import respondTo from '@mixins/respondTo'
@@ -22,8 +22,9 @@ export const AffiliateProductBlock = styled.div(
   `,
 )
 
+type ProductProps = Pick<StyledAffiliateProductBlockProps, 'theme'>
 export const Product = styled.div(
-  (props: StyledAffiliateProductBlockProps): FlattenSimpleInterpolation => css`
+  (props: ProductProps): FlattenSimpleInterpolation => css`
     display: flex;
     gap: ${props.theme.spacing[2]}px;
     flex-direction: column;

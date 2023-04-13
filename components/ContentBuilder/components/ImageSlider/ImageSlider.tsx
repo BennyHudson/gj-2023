@@ -31,6 +31,7 @@ const ImageSlider: FC<ImageSliderProps> = ({ slides }: ImageSliderProps): ReactE
     nextArrow: <FontAwesomeIcon icon={faChevronCircleRight as IconProp} />,
     prevArrow: <FontAwesomeIcon icon={faChevronCircleLeft as IconProp} />,
   }
+
   return (
     <>
       <Head>
@@ -41,7 +42,7 @@ const ImageSlider: FC<ImageSliderProps> = ({ slides }: ImageSliderProps): ReactE
           {slides.map((slide, index) => {
             return (
               <Styled.Slide key={index}>
-                <Image key={slide} src={featuredImageUrl(slide.sourceUrl)} width={360} height={240} alt='' />
+                <Image key={slide.medium} src={featuredImageUrl(slide.medium)} width={360} height={240} alt='' />
               </Styled.Slide>
             )
           })}

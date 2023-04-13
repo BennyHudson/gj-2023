@@ -1,6 +1,6 @@
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect, useState } from 'react'
 
 import Checkout from '@components/Checkout'
@@ -66,7 +66,7 @@ const CheckoutPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement =
       seo={{ title: 'Checkout | The Gentleman\'s Journal' }}
       siteOptions={siteOptions}
     >
-      <SplitPageTemplate image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.checkoutPage.sourceUrl)} title='Checkout'>
+      <SplitPageTemplate image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.checkoutPage.fullSize)} title='Checkout'>
         {!cart.length && (
           <>
             <Paragraph size={2} font='Cera'>

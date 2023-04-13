@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext } from 'react'
 
 import Button from '@components/Button'
@@ -20,7 +20,7 @@ const ProductFeature: FC<ProductFeatureProps> = ({ product }: ProductFeatureProp
   return (
     <Styled.ProductFeature headerHeight={headerHeight}>
       <Styled.ProductImage>
-        <Image src={featuredImageUrl(product.image.sourceUrl)} width={600} height={900} alt={product.name} />
+        <Image src={featuredImageUrl(product.image.large)} width={600} height={900} alt={product.name} />
       </Styled.ProductImage>
       <Styled.ProductContent>
         <Styled.ContentWrapper>

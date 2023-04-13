@@ -1,5 +1,7 @@
 import { gql } from '@apollo/client'
 
+import { media } from '@queries/fragments/media'
+
 export const clubQuery = {
   query: gql`
     query clubQuery {
@@ -8,7 +10,7 @@ export const clubQuery = {
           club {
             description
             card {
-              sourceUrl
+              ${media()}
             }
           }
         }

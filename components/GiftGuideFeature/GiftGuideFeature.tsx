@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext } from 'react'
 
 import Heading from '@components/Heading'

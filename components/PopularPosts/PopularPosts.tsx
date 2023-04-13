@@ -1,7 +1,7 @@
 import type { ManipulateType } from 'dayjs'
 import dayjs from 'dayjs'
 import he from 'he'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect, useState } from 'react'
 
 import Heading from '@components/Heading'

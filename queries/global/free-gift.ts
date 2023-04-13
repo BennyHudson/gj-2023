@@ -1,5 +1,7 @@
 import { gql } from '@apollo/client'
 
+import { media } from '@queries/fragments/media'
+
 export const freeGiftQuery = {
   query: gql`
     query freeGift {
@@ -12,7 +14,7 @@ export const freeGiftQuery = {
             databaseId
             featuredImage {
               node {
-                sourceUrl
+                ${media()}
               }
             }
           }

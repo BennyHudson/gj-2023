@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react'
+import type { Magazine } from '@queries/products/external-product'
 
 export interface ProductFeatureProps {
-  children: ReactNode
+  product: Magazine
 }

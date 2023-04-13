@@ -9,15 +9,13 @@ import featuredImageUrl from '@helpers/featuredImageUrl'
 import type { GalleryBlockProps } from './GalleryBlock.types'
 import * as Styled from './styles/GalleryBlock.style'
 
-const GalleryBlock: FC<GalleryBlockProps> = ({ gallery }: GalleryBlockProps): ReactElement | undefined => {
-  if (!gallery) return
-
+const GalleryBlock: FC<GalleryBlockProps> = ({ gallery }: GalleryBlockProps): ReactElement => {
   return (
     <Styled.GalleryBlock imageCount={gallery.length}>
       {gallery.map((image, index) => {
         return (
           <div key={index}>
-            <Image src={featuredImageUrl(image.sourceUrl)} width={900} height={900} alt={image.caption || ''} />
+            <Image src={featuredImageUrl(image.large)} width={900} height={900} alt={image.caption || ''} />
             {image.caption && (
               <Styled.Caption>
                 <RawHtmlWrapper content={image.caption} />

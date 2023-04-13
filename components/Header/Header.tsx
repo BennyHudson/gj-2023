@@ -1,7 +1,7 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faBars, faTimes } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import Logo from '@components/Logo'

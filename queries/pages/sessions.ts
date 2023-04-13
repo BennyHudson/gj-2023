@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client'
 
+import { media } from '@queries/fragments/media'
 import { seo } from '@queries/fragments/seo'
 
 export const sessionsQuery = {
@@ -12,13 +13,13 @@ export const sessionsQuery = {
           sessions {
             sessionsIntroText
             sponsorBackgroundImage {
-              sourceUrl
+              ${media()}
             }
             sponsorButtonText
             sponsorContent
             sponsorLink
             sponsorLogoAlt {
-              sourceUrl
+              ${media()}
             }
           }
         }

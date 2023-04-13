@@ -1,3 +1,5 @@
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+
 export interface BylineProps {
   author: string
   photographer?: string
@@ -6,9 +8,7 @@ export interface BylineProps {
     content: string
   }[]
   sponsoredPost?: {
-    sponsorLogo: {
-      sourceUrl: string
-    }
+    sponsorLogo: FeaturedImage
     sponsorDisableLink: boolean
     sponsorName: string
     sponsorUrl: string

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext } from 'react'
 import YouTube from 'react-youtube'
 

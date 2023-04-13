@@ -6,8 +6,27 @@ export interface FormFieldProps {
   databaseId?: number
   placeholder?: string
   hideLabels?: boolean
-  type?: 'password' | 'email' | 'telephone' | 'number'
+  type?:
+    | 'password'
+    | 'email'
+    | 'telephone'
+    | 'number'
+    | 'TEXT'
+    | 'EMAIL'
+    | 'TEXTAREA'
+    | 'SELECT'
+    | 'CHECKBOX'
+    | 'RADIO'
+    | 'NAME'
+    | 'CONSENT'
   validationMessage?: string
   labelPlacement?: 'TOP' | 'HIDDEN' | 'BOTTOM'
   description?: string
+  choices?: {
+    value: string
+    text: string
+  }[]
+  name?: string
+  checkboxLabel?: string
+  inputs?: FormFieldProps[]
 }

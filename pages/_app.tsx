@@ -1,7 +1,7 @@
 import { ApolloProvider } from '@apollo/client'
 import jwt_decode from 'jwt-decode'
 import type { AppProps } from 'next/app'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useEffect, useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 

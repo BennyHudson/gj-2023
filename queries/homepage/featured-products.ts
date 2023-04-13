@@ -1,5 +1,7 @@
 import { gql } from '@apollo/client'
 
+import { media } from '@queries/fragments/media'
+
 export const featuredProductsQuery = {
   query: gql`
     query featuredProductsQuery {
@@ -8,7 +10,7 @@ export const featuredProductsQuery = {
           store {
             brands {
               featured {
-                sourceUrl
+                ${media()}
               }
               name
               link

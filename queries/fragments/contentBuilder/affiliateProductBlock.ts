@@ -1,17 +1,20 @@
+import type { Image } from '@typings/FeaturedImage.types'
+
+import { media } from '../media'
+
+export interface AffiliateProduct {
+  urlButtonText: string
+  title: string
+  text: string
+  price: string
+  affiliateLink: string
+  image: Image
+}
+
 export interface AffiliateProductBlock {
   [P: string]: {
     fieldGroupName: string
-    affiliateProducts: {
-      urlButtonText: string
-      title: string
-      text: string
-      price: string
-      affiliateLink: string
-      image: {
-        caption?: string
-        sourceUrl: string
-      }
-    }[]
+    affiliateProducts: AffiliateProduct[]
   }
 }
 
@@ -26,7 +29,7 @@ export const affiliateProductBlock = (postType: string): string => {
       affiliateLink
       image {
         caption
-        sourceUrl
+        ${media()}
       }
     }
   }`

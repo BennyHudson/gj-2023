@@ -1,5 +1,7 @@
 import { gql } from '@apollo/client'
 
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+
 import { media } from './media'
 
 export interface HouseNote {
@@ -10,9 +12,7 @@ export interface HouseNote {
     articleTypeLandingPageExcerpt: string
   }
   featuredImage: {
-    node: {
-      sourceUrl: string
-    }
+    node: FeaturedImage
   }
   author: {
     node: {

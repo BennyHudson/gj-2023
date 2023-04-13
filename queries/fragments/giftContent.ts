@@ -1,5 +1,9 @@
 import { gql } from '@apollo/client'
 
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+
+import { media } from './media'
+
 export interface Gift {
   title: string
   gift: {
@@ -8,9 +12,7 @@ export interface Gift {
     giftBrand: string
   }
   featuredImage?: {
-    node: {
-      sourceUrl: string
-    }
+    node: FeaturedImage
   }
 }
 
@@ -24,7 +26,7 @@ export const giftContent = gql`
     }
     featuredImage {
       node {
-        sourceUrl
+        ${media()}
       }
     }
   }

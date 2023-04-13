@@ -1,5 +1,8 @@
-import type { ReactNode } from 'react'
+import type { FormFieldProps } from '@typings/FormField.types'
 
-export interface RadioListProps {
-  children: ReactNode
+export interface RadioListProps extends FormFieldProps {
+  choices: {
+    value: string
+    text: string
+  }[]
 }

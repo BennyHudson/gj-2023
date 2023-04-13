@@ -1,4 +1,4 @@
-import type { FlattenSimpleInterpolation} from 'styled-components'
+import type { FlattenSimpleInterpolation } from 'styled-components'
 import styled, { css } from 'styled-components'
 
 import { Logo } from '@components/Logo/styles/Logo.style'

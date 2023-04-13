@@ -1,4 +1,4 @@
-import type { FlattenSimpleInterpolation} from 'styled-components'
+import type { FlattenSimpleInterpolation } from 'styled-components'
 import styled, { createGlobalStyle, css } from 'styled-components'
 
 import { Title } from '@components/Title/styles/Title.style'

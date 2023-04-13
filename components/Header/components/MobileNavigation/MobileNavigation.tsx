@@ -2,7 +2,7 @@ import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faAngleDown, faAngleUp } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useState } from 'react'
 import AnimateHeight from 'react-animate-height'
 

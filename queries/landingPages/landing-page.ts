@@ -1,5 +1,7 @@
 import { gql } from '@apollo/client'
 
+import { media } from '@queries/fragments/media'
+
 export const landingPageContentQuery = (slug: string, preview: boolean) => {
   return {
     query: gql`
@@ -14,7 +16,7 @@ export const landingPageContentQuery = (slug: string, preview: boolean) => {
           }
           featuredImage {
             node {
-              sourceUrl
+              ${media()}
             }
           }
         }

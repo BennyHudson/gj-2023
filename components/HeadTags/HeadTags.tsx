@@ -11,9 +11,9 @@ const HeadTags: FC<HeadTagsProps> = ({ seo, siteOptions }: HeadTagsProps): React
   const { favicons } = siteOptions.gjOptions.faviconImages
   return (
     <Head>
-      <link rel='apple-touch-icon' sizes='180x180' href={featuredImageUrl(favicons.faviconLarge.sourceUrl)} />
-      <link rel='icon' type='image/png' sizes='32x32' href={featuredImageUrl(favicons.faviconMedium.sourceUrl)} />
-      <link rel='icon' type='image/png' sizes='16x16' href={featuredImageUrl(favicons.faviconSmall.sourceUrl)} />
+      <link rel='apple-touch-icon' sizes='180x180' href={featuredImageUrl(favicons.faviconLarge.fullSize)} />
+      <link rel='icon' type='image/png' sizes='32x32' href={featuredImageUrl(favicons.faviconMedium.fullSize)} />
+      <link rel='icon' type='image/png' sizes='16x16' href={featuredImageUrl(favicons.faviconSmall.fullSize)} />
       <meta charSet='UTF-8' />
       <meta httpEquiv='x-ua-compatible' content='ie=edge,chrome=1' />
       <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=1' />
@@ -35,7 +35,7 @@ const HeadTags: FC<HeadTagsProps> = ({ seo, siteOptions }: HeadTagsProps): React
       {seo.opengraphUrl && <meta property='og:url' content={seo.opengraphUrl.replace('cms.', '')} />}
       {seo.opengraphSiteName && <meta property='og:site_name' content={he.decode(seo.opengraphSiteName)} />}
       {seo.opengraphPublisher && <meta property='article:publisher' content={he.decode(seo.opengraphPublisher)} />}
-      {seo.opengraphImage && <meta property='og:image' content={featuredImageUrl(seo.opengraphImage.sourceUrl)} />}
+      {seo.opengraphImage && <meta property='og:image' content={featuredImageUrl(seo.opengraphImage.fullSize)} />}
       <meta property='og:image:width' content='2560' />
       <meta property='og:image:height' content='1076' />
       <meta property='og:image:type' content='image/jpeg' />

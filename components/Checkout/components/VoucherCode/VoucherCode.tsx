@@ -1,5 +1,5 @@
 import { Form, Formik } from 'formik'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useState } from 'react'
 
 import EditButton from '@components/EditButton'
