@@ -1,9 +1,10 @@
+import type { Image } from '@typings/FeaturedImage.types'
+
+import { media } from '../media'
+
 export interface ImageSliderBlock {
   fieldGroupName: string
-  slider: {
-    caption?: string
-    sourceUrl: string
-  }[]
+  slider: Image[]
 }
 
 export const imageSliderBlock = (postType: string): string => {
@@ -11,7 +12,7 @@ export const imageSliderBlock = (postType: string): string => {
     fieldGroupName
     slider {
       caption
-      sourceUrl
+      ${media()}
     }
   }`
 }

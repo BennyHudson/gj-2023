@@ -1,10 +1,12 @@
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+
+import { media } from '../media'
+
 export interface VideoBlock {
   [P: string]: {
     fieldGroupName: string
     videoEmbed: string
-    videoThumb?: {
-      sourceUrl: string
-    }
+    videoThumb?: FeaturedImage
   }
 }
 
@@ -13,7 +15,7 @@ export const videoBlock = (postType: string): string => {
     fieldGroupName
     videoEmbed
     videoThumb {
-      sourceUrl
+      ${media()}
     }
   }`
 }

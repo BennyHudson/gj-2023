@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Formik } from 'formik'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect, useState } from 'react'
 import * as Yup from 'yup'
 
@@ -14,10 +14,9 @@ import PageContext from '@context/PageContext'
 
 import useResetPassword from '@hooks/useResetPassword'
 
-import type { LoginFormProps } from './LoginForm.types'
 import * as Styled from './styles/LoginForm.style'
 
-const LoginForm: FC<LoginFormProps> = (): ReactElement => {
+const LoginForm: FC = (): ReactElement => {
   const { setToken, setCustomer, setCustomerId, getCustomerData } = useContext(PageContext) as PageContextProps
   const [forgotPassword, setForgotPassword] = useState(false)
   const [loginError, setLoginError] = useState()

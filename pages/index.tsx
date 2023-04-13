@@ -1,4 +1,4 @@
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect } from 'react'
 
 import BannerAdvert from '@components/BannerAdvert'
@@ -72,7 +72,7 @@ const Home: FC = ({
       />
       <PostCarousel />
       <NewsletterBanner
-        backgroundImage={siteOptions.gjOptions.newsletterModal.sectionNewsletter.image.sourceUrl}
+        backgroundImage={siteOptions.gjOptions.newsletterModal.sectionNewsletter.image.medium}
         form={newsletterForm}
         size={1}
       />
@@ -103,7 +103,7 @@ const Home: FC = ({
         />
         <PostGrid priority={false} columns={4} posts={coverInterviews.articles.nodes} smCarousel />
       </Section>
-      <ClubBanner content={club.description} card={club.card.sourceUrl} />
+      <ClubBanner content={club.description} card={club.card.medium} />
       <Section appearance='tertiary'>
         <Title
           title='Shop'
@@ -181,7 +181,7 @@ const Home: FC = ({
         <PostGrid priority={false} columns={4} posts={competitions.articles.nodes} smCarousel />
       </Section>
       <NewsletterBanner
-        backgroundImage={siteOptions.gjOptions.newsletterModal.sectionNewsletter.imageAlt.sourceUrl}
+        backgroundImage={siteOptions.gjOptions.newsletterModal.sectionNewsletter.imageAlt.fullSize}
         form={newsletterForm}
         size={2}
       />

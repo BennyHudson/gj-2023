@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Form, Formik } from 'formik'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useState } from 'react'
 import * as Yup from 'yup'
 
@@ -68,18 +68,23 @@ const Customer: FC = (): ReactElement | null => {
           {(props) => (
             <Form>
               <NameField
+                label='Your Name'
+                id='your-name'
+                target='your-name'
                 inputs={[
                   {
                     isRequired: true,
                     label: 'First Name',
                     id: 'first_name',
                     name: 'first_name',
+                    target: 'first_name',
                   },
                   {
                     isRequired: true,
                     label: 'Last Name',
                     id: 'last_name',
                     name: 'last_name',
+                    target: 'last_name',
                   },
                 ]}
                 validationMessage={props.errors?.first_name || props.errors?.last_name}
@@ -90,7 +95,7 @@ const Customer: FC = (): ReactElement | null => {
                 id='billing.phone'
                 target='billing.phone'
                 type='telephone'
-                validationMessage={props.errors?.billing?.phone}
+                validationMessage={props.errors?.phone}
               />
               <EditButton type='submit' text='Continue' />
             </Form>

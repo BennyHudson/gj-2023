@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useState } from 'react'
 
 import LoadMore from '@components/LoadMore'

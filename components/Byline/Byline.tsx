@@ -34,8 +34,8 @@ const Byline: FC<BylineProps> = ({ author, photographer, additionalBylines, spon
             In association with:
           </Paragraph>
           <Styled.SponsoredPost as={sponsoredPost.sponsorDisableLink ? 'div' : 'a'} href={sponsoredPost.sponsorUrl}>
-            {sponsoredPost.sponsorLogo?.sourceUrl ? (
-              <Image src={featuredImageUrl(sponsoredPost.sponsorLogo.sourceUrl)} alt={sponsoredPost.sponsorName} width={80} height={80} />
+            {sponsoredPost.sponsorLogo?.fullSize ? (
+              <Image src={featuredImageUrl(sponsoredPost.sponsorLogo.fullSize)} alt={sponsoredPost.sponsorName} width={80} height={80} />
             ) : (
               <Paragraph noMargin size={2} font='Cera'>
                 {sponsoredPost.sponsorName}

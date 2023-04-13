@@ -1,3 +1,5 @@
+import { media } from './media'
+
 export const categorySeo = () => {
   return `seo {
     breadcrumbs {
@@ -14,7 +16,7 @@ export const categorySeo = () => {
     opengraphAuthor
     opengraphDescription
     opengraphImage {
-      sourceUrl
+      ${media()}
     }
     opengraphModifiedTime
     opengraphPublishedTime
@@ -26,7 +28,7 @@ export const categorySeo = () => {
     title
     twitterDescription
     twitterImage {
-      sourceUrl
+      ${media()}
     }
     twitterTitle
   }`

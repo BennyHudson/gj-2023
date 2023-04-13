@@ -1,5 +1,9 @@
-import type { ReactNode } from 'react'
+import type { Card } from '@stripe/stripe-js'
 
 export interface PaymentDetailsProps {
-  children: ReactNode
+  cardDetails: Card
+  editMode?: boolean
+  setEditMode: (editMode: boolean) => void
+  customerId: number
+  subscriptionId: number
 }

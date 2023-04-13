@@ -1,4 +1,4 @@
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect } from 'react'
 
 import HeroImage from '@components/HeroImage'
@@ -37,7 +37,7 @@ const TeamPage: FC = ({ headerNav, footerNav, pageData, siteOptions }): ReactEle
 
   return (
     <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} siteOptions={siteOptions} databaseId={9}>
-      <HeroImage featuredImage={pageData.featuredImage.node.sourceUrl} height={1} />
+      <HeroImage featuredImage={pageData.featuredImage.node.fullSize} height={1} />
       <Section containerWidth='narrow'>
         <Masthead
           breadcrumbs={breadcrumbs}

@@ -1,5 +1,5 @@
 import { Form } from 'formik'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext } from 'react'
 import * as Yup from 'yup'
 

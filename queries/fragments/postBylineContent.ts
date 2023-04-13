@@ -1,5 +1,9 @@
 import { gql } from '@apollo/client'
 
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+
+import { media } from './media'
+
 export interface Byline {
   author: {
     node: {
@@ -14,9 +18,7 @@ export interface Byline {
     }[]
   }
   sponsoredPost?: {
-    sponsorLogo: {
-      sourceUrl: string
-    }
+    sponsorLogo: FeaturedImage
     sponsorDisableLink: boolean
     sponsorName: string
     sponsorUrl: string
@@ -39,7 +41,7 @@ export const bylineContent = gql`
     }
     sponsoredPost {
       sponsorLogo {
-        sourceUrl
+        ${media()}
       }
       sponsorDisableLink
       sponsorName

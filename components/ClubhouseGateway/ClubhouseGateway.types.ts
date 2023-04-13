@@ -1,5 +1,6 @@
-import type { ReactNode } from 'react'
+import type { Product } from '@typings/Product.types'
 
 export interface ClubhouseGatewayProps {
-  children: ReactNode
+  products: Product[]
+  freeGift?: Product
 }

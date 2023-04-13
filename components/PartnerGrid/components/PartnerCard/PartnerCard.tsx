@@ -1,7 +1,7 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faTimes } from '@fortawesome/pro-thin-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useState } from 'react'
 
 import Button from '@components/Button'
@@ -34,7 +34,7 @@ const PartnerCard: FC<PartnerCardProps> = ({ featuredImage, title, clubhousePart
         </Styled.DetailsPanel>
       )}
 
-      <Thumbnail featuredImage={featuredImage.node.sourceUrl} />
+      <Thumbnail featuredImage={featuredImage.node.postThumb} />
       <Heading font='ChronicleCondensed' size={2} text={title} noMargin />
       <Paragraph font='Cera' size={2}>
         {offer}

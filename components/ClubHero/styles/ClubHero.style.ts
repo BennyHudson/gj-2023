@@ -1,4 +1,4 @@
-import type { FlattenSimpleInterpolation} from 'styled-components'
+import type { FlattenSimpleInterpolation } from 'styled-components'
 import styled, { css } from 'styled-components'
 
 import { Content } from '@components/Section/styles/Section.style'
@@ -26,25 +26,6 @@ export const HeroContent = styled.div(
 
     ${respondTo.lg(css`
       width: 40%;
-    `)}
-  `,
-)
-
-export const BackgroundImage = styled.div(
-  (): FlattenSimpleInterpolation => css`
-    // display: none;
-
-    img {
-      object-fit: cover;
-    }
-
-    ${respondTo.lg(css`
-      display: block;
-      height: 100vh;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
     `)}
   `,
 )

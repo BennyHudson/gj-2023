@@ -1,5 +1,5 @@
 import { Formik } from 'formik'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext } from 'react'
 
 import type { CheckoutState } from '@components/Checkout/Checkout.types'
@@ -61,12 +61,12 @@ const ShippingAddress: FC<ShippingAddressProps> = ({
               const shippingRate = await shippingCalculator.json()
               setShippingRate(shippingRate)
               setCheckoutForm({ ...checkoutForm, shipping: { ...values.shipping } })
-              getCustomerData(customer.id)
+              getCustomerData(customer!.id)
               setActivePanel(activePanel + 1)
             }
           }}
         >
-          {(props) => <ShippingForm {...props} billingAddress={checkoutForm.billing} />}
+          {(props) => <ShippingForm {...props} billingAddress={checkoutForm.billing!} />}
         </Formik>
       )}
     </CheckoutPanel>

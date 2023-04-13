@@ -1,8 +1,10 @@
+import { FeaturedImage } from '@typings/FeaturedImage.types'
+
+import { media } from './media'
+
 export interface ArticleNote {
   content: string
-  image: {
-    sourceUrl: string
-  }
+  image: FeaturedImage
   link: {
     title: string
     url: string
@@ -14,7 +16,7 @@ export const articleNote = () => {
     articleNote {
       content
       image {
-        sourceUrl
+        ${media()}
       }
       link {
         title

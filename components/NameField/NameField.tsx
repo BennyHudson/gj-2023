@@ -8,14 +8,7 @@ import TextField from '@components/TextField'
 import type { NameFieldProps } from './NameField.types'
 import * as Styled from './styles/NameField.style'
 
-const NameField: FC<NameFieldProps> = ({
-  inputs,
-  label,
-  validationMessage,
-  split = 'even',
-  target,
-  id,
-}: NameFieldProps): ReactElement => {
+const NameField: FC<NameFieldProps> = ({ inputs, label, validationMessage, split = 'even', target, id }: NameFieldProps): ReactElement => {
   const visibleColumns = inputs.filter((input) => !input.isHidden)
 
   return (

@@ -1,6 +1,6 @@
 import { Form, Formik } from 'formik'
 import { useRouter } from 'next/router'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect, useState } from 'react'
 import * as Yup from 'yup'
 
@@ -65,10 +65,7 @@ const ClubPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
         seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }}
         siteOptions={siteOptions}
       >
-        <SplitPageTemplate
-          image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.accountPage.sourceUrl)}
-          title='Reset your password'
-        >
+        <SplitPageTemplate image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.accountPage.fullSize)} title='Reset your password'>
           <Notification state='success' text='Password reset successfully, you are being redirected to The Clubhouse' />
         </SplitPageTemplate>
       </PageLayout>
@@ -83,7 +80,7 @@ const ClubPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
       seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }}
       siteOptions={siteOptions}
     >
-      <SplitPageTemplate image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.accountPage.sourceUrl)} title='Reset your password'>
+      <SplitPageTemplate image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.accountPage.fullSize)} title='Reset your password'>
         <Formik
           validationSchema={passwordValidation}
           validateOnBlur={false}

@@ -1,4 +1,4 @@
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect } from 'react'
 
 import ClubhouseGateway from '@components/ClubhouseGateway'
@@ -34,7 +34,7 @@ const ClubPage: FC = ({ headerNav, footerNav, subscriptionProducts, freeGift, si
       seo={{ title: 'Clubhouse | The Gentleman\'s Journal' }}
       siteOptions={siteOptions}
     >
-      <SplitPageTemplate image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.accountPage.sourceUrl)}>
+      <SplitPageTemplate image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.accountPage.fullSize)}>
         {token && customer ? <MyAccount /> : <ClubhouseGateway products={subscriptionProducts} freeGift={freeGift} />}
       </SplitPageTemplate>
     </PageLayout>

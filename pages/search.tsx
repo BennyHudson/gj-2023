@@ -1,4 +1,4 @@
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect } from 'react'
 
 import PageLayout from '@components/PageLayout'
@@ -31,7 +31,7 @@ const SearchPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => 
       seo={{ title: 'Search | The Gentleman\'s Journal' }}
       siteOptions={siteOptions}
     >
-      <SplitPageTemplate image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.searchPage.sourceUrl)} title='Search'>
+      <SplitPageTemplate image={featuredImageUrl(siteOptions.gjOptions.splitPageImages.searchPage.fullSize)} title='Search'>
         <SearchForm />
       </SplitPageTemplate>
     </PageLayout>

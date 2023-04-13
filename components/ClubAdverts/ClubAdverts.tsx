@@ -21,7 +21,7 @@ const ClubAdverts: FC<ClubAdvertsProps> = ({ adverts }: ClubAdvertsProps): React
           return (
             <div key={index}>
               <Image
-                src={featuredImageUrl(adImage.adImage.sourceUrl)}
+                src={featuredImageUrl(adImage.adImage.large)}
                 alt=''
                 width={theme.containerWidth / 2}
                 height={theme.containerWidth / 2}

@@ -1,5 +1,7 @@
 import { gql } from '@apollo/client'
 
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+
 import { media } from './media'
 
 export interface Podcast {
@@ -8,9 +10,7 @@ export interface Podcast {
   title: string
   date: string
   featuredImage?: {
-    node: {
-      sourceUrl: string
-    }
+    node: FeaturedImage
   }
   podcasts: {
     podcastMeta: {

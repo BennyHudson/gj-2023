@@ -1,8 +1,11 @@
 import { gql } from '@apollo/client'
 import { disableFragmentWarnings } from 'graphql-tag'
 
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+
 import { media } from '@queries/fragments/media'
-import { Podcast, podcastContent } from '@queries/fragments/podcastContent'
+import type { Podcast } from '@queries/fragments/podcastContent'
+import { podcastContent } from '@queries/fragments/podcastContent'
 
 disableFragmentWarnings()
 
@@ -14,9 +17,7 @@ export interface PodcastOptions {
     user: {
       moreInfo: {
         role: string
-        profileImage: {
-          sourceUrl: string
-        }
+        profileImage: FeaturedImage
       }
     }
   }

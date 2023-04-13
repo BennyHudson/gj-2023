@@ -9,7 +9,7 @@ import * as Styled from './styles/RadioList.style'
 
 const RadioList: FC<RadioListProps> = ({ target, label, isRequired, hideLabels, choices, id }): ReactElement => {
   return (
-    <FieldWrapper target={target} label={label} required={isRequired} hideLabels={hideLabels}>
+    <FieldWrapper target={target} label={label} required={isRequired} hideLabels={hideLabels} id={id}>
       <Styled.RadioList>
         {choices.map((choice, index) => {
           return (

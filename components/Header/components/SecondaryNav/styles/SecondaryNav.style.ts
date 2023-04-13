@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import type { FlattenSimpleInterpolation} from 'styled-components'
+import type { FlattenSimpleInterpolation } from 'styled-components'
 import styled, { css } from 'styled-components'
 
 import respondTo from '@mixins/respondTo'

@@ -1,7 +1,7 @@
-/* eslint-disable indent */
+/* eslint-disable @typescript-eslint/no-explicit-any, indent */
 import { useQuery } from '@apollo/client'
 import { Formik } from 'formik'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useState } from 'react'
 
 import Button from '@components/Button'
@@ -15,6 +15,8 @@ import TextArea from '@components/TextArea'
 import TextField from '@components/TextField'
 
 import { formQuery } from '@queries/global/form'
+import type { FormFieldProps } from '@typings/FormField.types'
+
 
 import type { FormProps } from './Form.types'
 import * as Styled from './styles/Form.style'
@@ -22,12 +24,12 @@ import * as Styled from './styles/Form.style'
 const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
   const { loading, data } = useQuery(formQuery(formId).query)
 
-  const initialValues = data && data.gfForm.formFields.nodes.reduce((acc, curr) => ((acc[`input_${curr.id}`] = ''), acc), {})
+  const initialValues =
+    data &&
+    data.gfForm.formFields.nodes.reduce((acc: { [x: string]: string }, curr: { id: any }) => ((acc[`input_${curr.id}`] = ''), acc), {})
 
   const [confirmationMessage, setConfirmationMessage] = useState()
-  const [validationMessages, setValidationMessages] = useState({})
-  // const [isValid, setIsValid] = useState(true)
-  // const [isSubmitting, setIsSubmitting] = useState(false)
+  const [validationMessages, setValidationMessages] = useState([])
 
   if (loading) return <div>Loading...</div>
 
@@ -51,8 +53,6 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
     <Formik
       initialValues={initialValues}
       onSubmit={async (values) => {
-        // setIsSubmitting(true)
-
         const formResponse = await fetch(`/api/forms/${formId}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -60,9 +60,6 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
         })
 
         const response = await formResponse.json()
-
-        // setIsSubmitting(false)
-        // setIsValid(response.is_valid)
 
         if (response.status === 200) {
           setConfirmationMessage(response.confirmation_message)
@@ -76,7 +73,7 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
         <Styled.Form>
           {data && <Heading text={data.gfForm.title} size={3} font='ChronicleCondensed' />}
           {data &&
-            data.gfForm.formFields.nodes.map((formField, index) => {
+            data.gfForm.formFields.nodes.map((formField: FormFieldProps, index: number) => {
               switch (formField.type) {
                 case 'TEXT': {
                   return (
@@ -117,6 +114,7 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
                     <Select
                       key={index}
                       {...formField}
+                      choices={formField.choices!}
                       databaseId={data.gfForm.databaseId}
                       validationMessage={validationMessages?.[index + 1]}
                     />
@@ -128,6 +126,7 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
                     <CheckboxList
                       key={index}
                       {...formField}
+                      choices={formField.choices!}
                       databaseId={data.gfForm.databaseId}
                       validationMessage={validationMessages?.[index + 1]}
                     />
@@ -139,6 +138,7 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
                     <RadioList
                       key={index}
                       {...formField}
+                      choices={formField.choices!}
                       databaseId={data.gfForm.databaseId}
                       validationMessage={validationMessages?.[index + 1]}
                     />
@@ -150,6 +150,7 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
                     <NameField
                       key={index}
                       {...formField}
+                      inputs={formField.inputs!}
                       databaseId={data.gfForm.databaseId}
                       validationMessage={validationMessages?.[index + 1]}
                     />
@@ -164,7 +165,7 @@ const Form: FC<FormProps> = ({ formId }: FormProps): ReactElement => {
                       choices={[
                         {
                           value: '1',
-                          text: formField.checkboxLabel,
+                          text: formField.checkboxLabel!,
                         },
                       ]}
                       validationMessage={validationMessages?.[index + 1]}

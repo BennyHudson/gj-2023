@@ -1,5 +1,7 @@
 import { gql } from '@apollo/client'
 
+import { media } from '@queries/fragments/media'
+
 export const productQuery = (productId: number) => {
   return {
     query: gql`
@@ -12,7 +14,7 @@ export const productQuery = (productId: number) => {
             databaseId
             featuredImage {
               node {
-                sourceUrl
+                ${media()}
               }
             }
           }

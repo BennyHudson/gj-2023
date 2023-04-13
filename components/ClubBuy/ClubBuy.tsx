@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext } from 'react'
 
 import Button from '@components/Button'
@@ -11,14 +11,17 @@ import Section from '@components/Section'
 import type { PageContextProps } from '@context/PageContext'
 import PageContext from '@context/PageContext'
 
+import type { Product } from '@typings/Product.types'
+
+import type { ClubBuyProps } from './ClubBuy.types'
 import * as Styled from './styles/ClubBuy.style'
 
-const ClubBuy: FC = ({ products, freeGift, offerCode }): ReactElement => {
+const ClubBuy: FC<ClubBuyProps> = ({ products, freeGift, offerCode }: ClubBuyProps): ReactElement => {
   const router = useRouter()
 
   const { setCart } = useContext(PageContext) as PageContextProps
 
-  const addToCart = (selectedProduct) => {
+  const addToCart = (selectedProduct: Product) => {
     if (freeGift) {
       setCart([selectedProduct.databaseId, freeGift.databaseId])
       localStorage.setItem('cart', `${selectedProduct.databaseId},${freeGift.databaseId}`)

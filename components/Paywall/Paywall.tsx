@@ -11,10 +11,9 @@ import Heading from '@components/Heading'
 
 import { clubQuery } from '@queries/pages/club'
 
-import type { PaywallProps } from './Paywall.types'
 import * as Styled from './styles/Paywall.style'
 
-const Paywall: FC<PaywallProps> = (): ReactElement => {
+const Paywall: FC = (): ReactElement => {
   const { data } = useQuery(clubQuery.query)
   return (
     <Styled.Paywall>

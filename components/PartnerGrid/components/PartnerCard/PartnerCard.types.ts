@@ -1,8 +1,8 @@
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+
 export interface PartnerCardProps {
   featuredImage: {
-    node: {
-      sourceUrl: string
-    }
+    node: FeaturedImage
   }
   title: string
   clubhousePartners: {

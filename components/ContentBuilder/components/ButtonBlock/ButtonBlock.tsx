@@ -14,7 +14,7 @@ import * as Styled from './styles/ButtonBlock.style'
 const ButtonBlock: FC<ButtonBlockProps> = ({ title, callToAction, link, price, image }: ButtonBlockProps): ReactElement => {
   return (
     <Styled.ButtonBlock>
-      {image?.sourceUrl && <Image src={featuredImageUrl(image.sourceUrl)} width={150} height={150} alt={image.caption || ''} />}
+      {image?.squareThumb && <Image src={featuredImageUrl(image.squareThumb)} width={150} height={150} alt={image.caption || ''} />}
       <div>
         <Heading text={title} weight={3} level={2} font='Cera' size={1} noMargin />
         {price && <Paragraph appearance='secondary'>£{price?.toFixed(2)}</Paragraph>}

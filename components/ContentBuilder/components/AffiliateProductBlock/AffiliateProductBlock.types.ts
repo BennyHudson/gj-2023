@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react'
+import type { AffiliateProduct } from '@queries/fragments/contentBuilder/affiliateProductBlock'
 
 export interface AffiliateProductBlockProps {
-  children: ReactNode
+  affiliateProducts: AffiliateProduct[]
 }

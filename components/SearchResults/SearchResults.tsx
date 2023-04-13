@@ -1,5 +1,5 @@
 import he from 'he'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useState } from 'react'
 
 import Heading from '@components/Heading'

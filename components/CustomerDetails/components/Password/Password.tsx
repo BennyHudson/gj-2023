@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Form, Formik } from 'formik'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useState } from 'react'
 import * as Yup from 'yup'
 
@@ -17,7 +17,7 @@ import * as Styled from '../../styles/CustomerDetails.style'
 
 const Password: FC = (): ReactElement | null => {
   const [editMode, setEditMode] = useState(false)
-  const [passwordMessage, setPasswordMessage] = useState()
+  const [passwordMessage, setPasswordMessage] = useState<string | undefined>()
   const [showPostEditMessage, setShowPostEditMessage] = useState(false)
   const { customer } = useContext(PageContext) as PageContextProps
 

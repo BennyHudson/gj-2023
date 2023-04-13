@@ -1,4 +1,4 @@
-import type { FlattenSimpleInterpolation} from 'styled-components'
+import type { FlattenSimpleInterpolation } from 'styled-components'
 import styled, { css } from 'styled-components'
 
 import type { StyledQuickSubscribeProps } from './QuickSubscribe.style.types'
@@ -11,8 +11,9 @@ export const QuickSubscribe = styled.div(
   `,
 )
 
+type ProductListProps = Pick<StyledQuickSubscribeProps, 'theme'>
 export const ProductList = styled.div(
-  (props: StyledQuickSubscribeProps): FlattenSimpleInterpolation => css`
+  (props: ProductListProps): FlattenSimpleInterpolation => css`
     border-top: 1px solid ${props.theme.colours.black};
     display: flex;
     flex-direction: column;

@@ -1,7 +1,7 @@
 import { useStripe } from '@stripe/react-stripe-js'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect, useState } from 'react'
 
 import Notification from '@components/Notification'

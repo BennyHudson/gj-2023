@@ -1,5 +1,7 @@
 import { gql } from '@apollo/client'
 
+import { media } from '@queries/fragments/media'
+
 export const partnerQuery = (count: number) => {
   return {
     query: gql`
@@ -10,7 +12,7 @@ export const partnerQuery = (count: number) => {
             date
             featuredImage {
               node {
-                sourceUrl
+                ${media()}
               }
             }
             clubhousePartners {
@@ -20,7 +22,7 @@ export const partnerQuery = (count: number) => {
                 redeem
                 offer
                 logo {
-                  sourceUrl
+                  ${media()}
                 }
                 featured
                 address {

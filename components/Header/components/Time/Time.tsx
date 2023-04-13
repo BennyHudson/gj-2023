@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useEffect, useState } from 'react'
 
 import Paragraph from '@components/Paragraph'

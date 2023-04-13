@@ -3,6 +3,7 @@ import { disableFragmentWarnings } from 'graphql-tag'
 
 import { articleContent } from '@queries/fragments/articleContent'
 import { giftContent } from '@queries/fragments/giftContent'
+import { media } from '@queries/fragments/media'
 import { seo } from '@queries/fragments/seo'
 
 disableFragmentWarnings()
@@ -41,7 +42,7 @@ export const giftGuideContentQuery = {
           }
           featuredBrands {
             image {
-              sourceUrl
+              ${media()}
             }
             name
             link

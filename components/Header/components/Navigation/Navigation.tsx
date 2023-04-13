@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext } from 'react'
 
 import PostGrid from '@components/PostGrid'

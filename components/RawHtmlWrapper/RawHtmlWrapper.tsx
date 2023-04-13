@@ -1,4 +1,4 @@
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useRef } from 'react'
 
 import useImage from '@hooks/useImage/useImage'

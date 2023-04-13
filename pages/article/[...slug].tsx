@@ -1,4 +1,4 @@
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import { useContext, useEffect } from 'react'
 
 import BannerAdvert from '@components/BannerAdvert'
@@ -15,12 +15,12 @@ import PageContext from '@context/PageContext'
 import { getAllPosts } from '@lib/api'
 import client from '@lib/apollo-client'
 
-import type { ArticleBody} from '@queries/article/article-body'
+
+import type { ArticleBody } from '@queries/article/article-body'
 import { articleBody } from '@queries/article/article-body'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
-
 import type { PageData } from '@typings/PageData.types'
 import type { StaticPaths } from '@typings/StaticPaths.types'
 

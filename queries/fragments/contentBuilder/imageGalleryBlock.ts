@@ -1,11 +1,12 @@
+import type { Image } from '@typings/FeaturedImage.types'
+
+import { media } from '../media'
+
 export interface ImageGalleryBlock {
   [P: string]: {
     fieldGroupName: string
     type: string
-    gallery: {
-      sourceUrl: string
-      caption?: string
-    }[]
+    gallery: Image[]
   }
 }
 
@@ -14,7 +15,7 @@ export const imageGalleryBlock = (postType: string): string => {
     fieldGroupName
     type
     gallery {
-      sourceUrl
+      ${media()}
       caption
     }
   }`

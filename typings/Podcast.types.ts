@@ -1,3 +1,5 @@
+import type { FeaturedImage } from './FeaturedImage.types'
+
 export interface Podcast {
   uri: string
   title: string
@@ -13,8 +15,6 @@ export interface Podcast {
   databaseId: number
   featuredImageDatabaseId: number
   featuredImage: {
-    node: {
-      sourceUrl: string
-    }
+    node: FeaturedImage
   }
 }

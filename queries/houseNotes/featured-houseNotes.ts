@@ -2,6 +2,7 @@ import { gql } from '@apollo/client'
 import { disableFragmentWarnings } from 'graphql-tag'
 
 import { houseNoteContent } from '@queries/fragments/houseNoteContent'
+import { media } from '@queries/fragments/media'
 
 disableFragmentWarnings()
 
@@ -62,7 +63,7 @@ export const houseNotesQuery = {
           opengraphAuthor
           opengraphDescription
           opengraphImage {
-            sourceUrl
+            ${media()}
           }
           opengraphModifiedTime
           opengraphPublishedTime
@@ -79,7 +80,7 @@ export const houseNotesQuery = {
           title
           twitterDescription
           twitterImage {
-            sourceUrl
+            ${media()}
           }
           twitterTitle
         }

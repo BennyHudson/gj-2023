@@ -1,4 +1,4 @@
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect, useState } from 'react'
 
 import Footer from '@components/Footer'
@@ -45,7 +45,7 @@ const PageLayout: FC<PageLayoutProps> = ({
       {showNewsletterModal && siteOptions && (
         <NewsletterModal
           newsletterForm={siteOptions.gfForm}
-          backgroundImage={siteOptions.gjOptions.newsletterModal.modalNewsletter.image.sourceUrl}
+          backgroundImage={siteOptions.gjOptions.newsletterModal.modalNewsletter.image.large}
           setShowNewsletterModal={setShowNewsletterModal}
         />
       )}

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import type { FC, ReactElement} from 'react'
+import type { FC, ReactElement } from 'react'
 import React, { useContext, useState } from 'react'
 
 import Button from '@components/Button'
@@ -20,8 +20,14 @@ const QuickSubscribe: FC<QuickSubscribeProps> = ({ products, freeGift }: QuickSu
   const [selectedProduct, setSelectedProduct] = useState(products[0])
 
   const addToCart = () => {
-    setCart([selectedProduct, freeGift])
-    localStorage.setItem('cart', `${selectedProduct.databaseId},${freeGift.databaseId}`)
+    if (freeGift) {
+      setCart([selectedProduct.databaseId, freeGift.databaseId])
+      localStorage.setItem('cart', `${selectedProduct.databaseId},${freeGift?.databaseId}`)
+    } else {
+      setCart([selectedProduct.databaseId])
+      localStorage.setItem('cart', `${selectedProduct.databaseId}`)
+    }
+
     router.push('/cart')
   }
 
