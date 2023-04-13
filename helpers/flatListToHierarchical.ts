@@ -1,17 +1,17 @@
-import { MenuItems } from '@typings/MenuItems.types'
+import type { FooterNav } from '@queries/global/footer-nav'
+import type { HeaderNav } from '@queries/global/header-nav'
 
-import { FooterNav } from '@queries/global/footer-nav'
-import { HeaderNav } from '@queries/global/header-nav'
+import type { MenuItems } from '@typings/MenuItems.types'
 
 type HeaderNavProps = HeaderNav['menu']['menuItems']['nodes']
 type FooterNavProps = FooterNav['primaryMenu']['menuItems']['nodes']
 type LegalNavProps = FooterNav['legalMenu']['menuItems']['nodes']
 type SecondaryFooterNavProps = FooterNav['primaryMenu']['menuItems']['nodes']
 
-type Menu = HeaderNavProps | FooterNavProps | LegalNavProps | SecondaryFooterNavProps
+export type Menu = HeaderNavProps | FooterNavProps | LegalNavProps | SecondaryFooterNavProps
 
 const flatListToHierarchical = (
-  data: Menu[] = [],
+  data: Menu = [],
   { idKey = 'key', parentKey = 'parentId', childrenKey = 'children' } = {},
 ): MenuItems[] => {
   const tree: MenuItems[] = []

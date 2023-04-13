@@ -120,8 +120,9 @@ export const Thumbs = styled.ul(
   `,
 )
 
+type SliderProps = Pick<StyledFeatureCarouselProps, 'theme'>
 export const Slider = styled.div(
-  (props: StyledFeatureCarouselProps): FlattenSimpleInterpolation => css`
+  (props: SliderProps): FlattenSimpleInterpolation => css`
     position: absolute;
     top: 0;
     left: 0;
@@ -174,7 +175,7 @@ export const Slider = styled.div(
 )
 
 export const Slide = styled.div(
-  (props: StyledFeatureCarouselProps): FlattenSimpleInterpolation => css`
+  (props: SliderProps): FlattenSimpleInterpolation => css`
     position: relative;
     height: 100%;
     padding: ${props.theme.spacing[8]}px 5%;

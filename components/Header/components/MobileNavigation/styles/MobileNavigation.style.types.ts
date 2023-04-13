@@ -5,4 +5,5 @@ export interface StyledMobileNavigationProps {
   $inverse: boolean
   $isActive: boolean
   $feature: boolean
+  headerHeight: number
 }
