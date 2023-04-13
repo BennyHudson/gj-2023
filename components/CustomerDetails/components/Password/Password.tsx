@@ -17,7 +17,7 @@ import * as Styled from '../../styles/CustomerDetails.style'
 
 const Password: FC = (): ReactElement | null => {
   const [editMode, setEditMode] = useState(false)
-  const [passwordMessage, setPasswordMessage] = useState()
+  const [passwordMessage, setPasswordMessage] = useState<string | undefined>()
   const [showPostEditMessage, setShowPostEditMessage] = useState(false)
   const { customer } = useContext(PageContext) as PageContextProps
 

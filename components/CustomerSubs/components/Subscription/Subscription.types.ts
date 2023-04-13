@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react'
+import type { Subscription } from '@typings/Subscription.types'
 
 export interface SubscriptionProps {
-  children: ReactNode
+  subscription: Subscription
 }

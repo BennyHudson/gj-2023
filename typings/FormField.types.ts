@@ -23,7 +23,7 @@ export interface FormFieldProps {
   labelPlacement?: 'TOP' | 'HIDDEN' | 'BOTTOM'
   description?: string
   choices?: {
-    value: string
+    value: string | number
     text: string
   }[]
   name?: string

@@ -6,6 +6,7 @@ import Paywall from '@components/Paywall'
 import type { PageContextProps } from '@context/PageContext'
 import PageContext from '@context/PageContext'
 
+import type { ContentBuilder as CBProps } from '@queries/fragments/contentBuilder'
 import AffiliateProductBlock from './components/AffiliateProductBlock'
 import ButtonBlock from './components/ButtonBlock'
 import CodeBlock from './components/CodeBlock'
@@ -22,7 +23,7 @@ import type { ContentBuilderProps } from './ContentBuilder.types'
 const ContentBuilder: FC<ContentBuilderProps> = ({ content, prefix, membersOnly = false }: ContentBuilderProps): ReactElement => {
   const { subscriptions } = useContext(PageContext) as PageContextProps
 
-  const contentBlocks = (block, index) => {
+  const contentBlocks = (block: CBProps, index: number) => {
     switch (block.fieldGroupName) {
     case `${prefix}_Paragraph`:
       return <TextBlock key={index} content={block.paragraph} />

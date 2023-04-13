@@ -3,6 +3,7 @@ import { createContext } from 'react'
 import type { BillingAddressProps } from '@typings/BillingAddress.types'
 import type { Shipping } from '@typings/Shipping.types'
 import type { ShippingAddress } from '@typings/ShippingAddress.types'
+import type { Subscription } from '@typings/Subscription.types'
 
 interface Customer {
   id: number
@@ -32,6 +33,7 @@ export interface PageContextProps {
   setShippingRate: (shippingRate: number) => void
   showToolbar: boolean
   getCustomerData: (id: number) => void
+  subscriptions: Subscription[]
 }
 
 export default createContext<Partial<PageContextProps>>({})

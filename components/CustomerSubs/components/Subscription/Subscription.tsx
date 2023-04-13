@@ -26,7 +26,7 @@ const Subscription: FC<SubscriptionProps> = ({ subscription }: SubscriptionProps
 
   const cancelSubscription = async (id: number) => {
     await fetch(`/api/subscription/delete/${id}`)
-    getCustomerData(customer.id)
+    getCustomerData(customer!.id)
   }
 
   const getCardDetails = async () => {
@@ -64,7 +64,7 @@ const Subscription: FC<SubscriptionProps> = ({ subscription }: SubscriptionProps
           cardDetails={cardDetails}
           editMode={editMode}
           setEditMode={setEditMode}
-          customerId={stripeCustomerId.value}
+          customerId={stripeCustomerId!.value}
           subscriptionId={subscription.id}
         />
       )}

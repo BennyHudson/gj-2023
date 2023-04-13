@@ -5,7 +5,7 @@ import type { ShippingAddress } from '@typings/ShippingAddress.types'
 import type { Voucher } from '@typings/Voucher.types'
 
 export interface ShippingFormProps {
-  billingAddress: BillingAddressProps
+  billingAddress?: BillingAddressProps
   setFieldValue: (target: string, value?: string) => void
   errors?: FormikErrors<{
     billing?: BillingAddressProps | undefined

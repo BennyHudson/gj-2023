@@ -16,7 +16,7 @@ import * as Styled from './styles/PaymentDetails.style'
 
 const PaymentDetails: FC<PaymentDetailsProps> = ({
   cardDetails,
-  editMode,
+  editMode = false,
   setEditMode,
   customerId,
   subscriptionId,
@@ -59,6 +59,8 @@ const PaymentDetails: FC<PaymentDetailsProps> = ({
             <Form>
               <NameField
                 label='Card Details'
+                id='card-details'
+                target='card-details'
                 split='2/1'
                 inputs={[
                   {
@@ -66,23 +68,28 @@ const PaymentDetails: FC<PaymentDetailsProps> = ({
                     label: 'Card Number',
                     id: 'cardNumber',
                     name: 'cardNumber',
+                    target: 'cardNumber',
                   },
                   {
                     isRequired: true,
                     label: 'CVC',
                     id: 'cvc',
                     name: 'cvc',
+                    target: 'cvc',
                   },
                 ]}
               />
               <NameField
                 label='Expiry Date'
+                id='expiry-date'
+                target='expiry-date'
                 inputs={[
                   {
                     isRequired: true,
                     label: 'Month',
                     id: 'expiryMonth',
                     name: 'expiryMonth',
+                    target: 'expiryMonth',
                     choices: [
                       {
                         value: 1,
@@ -139,6 +146,7 @@ const PaymentDetails: FC<PaymentDetailsProps> = ({
                     label: 'Year',
                     id: 'expiryYear',
                     name: 'expiryYear',
+                    target: 'expiryYear',
                   },
                 ]}
               />
