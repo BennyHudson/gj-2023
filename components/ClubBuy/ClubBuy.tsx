@@ -53,19 +53,29 @@ const ClubBuy: FC<ClubBuyProps> = ({ products, freeGift, offerCode }: ClubBuyPro
                   <Heading inverse text='The Clubhouse' font='Cera' size={2} weight={3} noMargin />
                   <Heading
                     inverse
-                    text={subscriptionLength ? `${subscriptionLength[0]} Year Membership` : 'Annual Membership'}
+                    text={subscriptionLength ? `${parseFloat(subscriptionLength[0]) * 12} Month Plan` : '12 Month Plan'}
                     font='Cera'
                     size={1}
                     weight={3}
                   />
+                  <Heading inverse font='Cera' size={3} weight={3}>
+                    {product.signUpFee ? (
+                      <>
+                        {product.salePrice && <del>£{onSale ? (parseFloat(product.subscriptionPrice.trim()) / 12).toFixed(2) : (parseFloat(product.regularPrice) / 12).toFixed(2)}</del>} £
+                        {(parseFloat(parseFloat(product.signUpFee) / 12).toFixed(2)) - 0.01}/month
+                      </>
+                    ) : (
+                      `£${(parseFloat(product.subscriptionPrice) / (parseFloat(subscriptionLength[0]) * 12)).toFixed(2)}/month`
+                    )}
+                  </Heading>
                   <Paragraph inverse font='Cera'>
                     {product.signUpFee ? (
                       <>
-                        {product.salePrice && <del>£{onSale ? product.subscriptionPrice.trim() : product.regularPrice}</del>} £
-                        {product.signUpFee} {onSale ? 'for the first year' : product.subscriptionPeriod}
+                        Pay {product.salePrice && <del>£{onSale ? product.subscriptionPrice.trim() : product.regularPrice}</del>} £
+                        {product.signUpFee} {onSale ? 'for the first year' : `today and renew at the same price ${product.subscriptionPeriod}`}
                       </>
                     ) : (
-                      `£${product.subscriptionPrice} ${product.subscriptionPeriod}`
+                      `Pay £${product.subscriptionPrice} today and renew at the same price every ${product.subscriptionPeriod}`
                     )}
                   </Paragraph>
                 </div>

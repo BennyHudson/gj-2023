@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react'
+
 import type { HeadingKeys, WeightKeys } from '@themes/gjTheme/constants/typography.types'
 
 export interface HeadingProps {
@@ -11,4 +13,5 @@ export interface HeadingProps {
   font?: 'Cera' | 'Chronicle' | 'ChronicleCondensed'
   transform?: 'uppercase'
   state?: 'error'
+  children?: ReactNode
 }

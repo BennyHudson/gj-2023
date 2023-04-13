@@ -37,6 +37,8 @@ const ClubPage: FC = ({
 }): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
+  console.log(pageData)
+
   useEffect(() => {
     setActiveNavElement(8)
   }, [setActiveNavElement])
@@ -88,9 +90,12 @@ const ClubPage: FC = ({
       </Section>
       {freeGift && <ClubGift freeGift={freeGift} />}
       <ClubBuy products={subscriptionProducts} freeGift={freeGift} offerCode={pageData.subscriptionPage.club.clubhouseOffer} />
-      <Section>
-        <ClubPerks perks={pageData.subscriptionPage.club.subscriptionPerks} title='Join the club.' subtitle='Scroll to see the perks' />
-      </Section>
+      <ClubPerks 
+        perks={pageData.subscriptionPage.club.subscriptionPerks} 
+        title='Join the club.' 
+        subtitle='Scroll to see the perks'
+        brands={pageData.subscriptionPage.club.clubhouseBrands}
+      />
       <ClubBuy products={subscriptionProducts} freeGift={freeGift} offerCode={pageData.subscriptionPage.club.clubhouseOffer} />
     </PageLayout>
   )

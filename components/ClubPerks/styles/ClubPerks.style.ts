@@ -95,3 +95,35 @@ export const PerkContent = styled.div(
     `)}
   `,
 )
+
+export const Logos = styled.div((props: StyledClubPerksProps): FlattenSimpleInterpolation => css`
+  background: ${props.theme.colours.white};
+
+  ${Title} {
+    margin: 0 auto;
+    margin-bottom: ${props.theme.spacing[4]}px;
+    max-width: ${props.theme.containerWidth}px;
+  }
+
+  .slick-track {
+    display: flex !important;
+    align-items: center;
+  }
+
+  .slick-slide {
+    display: flex;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  img {
+    max-width: 120px;
+    margin: 0 ${props.theme.spacing[6]}px;
+    display: block;
+    filter: grayscale(100%);
+  }
+`)

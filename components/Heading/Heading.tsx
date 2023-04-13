@@ -15,6 +15,7 @@ const Heading: FC<HeadingProps> = ({
   transform,
   appearance = 'primary',
   state,
+  children,
 }: HeadingProps): ReactElement => {
   return (
     <Styled.Heading
@@ -28,7 +29,7 @@ const Heading: FC<HeadingProps> = ({
       appearance={appearance}
       state={state}
     >
-      {text}
+      {text || children}
     </Styled.Heading>
   )
 }
