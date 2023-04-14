@@ -33,7 +33,7 @@ const Footer: FC<FooterProps> = ({ footerNav }: FooterProps): ReactElement => {
     <Styled.Footer>
       <Section appearance='secondary'>
         <Styled.Top>
-          <Logo inverse smLogo />
+          <Logo inverse />
           <Styled.ScrollUp onClick={scrollToTop}>
             <FontAwesomeIcon icon={faAngleDoubleUp as IconProp} size='2x' /> Back to Top
           </Styled.ScrollUp>

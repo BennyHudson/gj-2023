@@ -21,7 +21,7 @@ export const FieldWrapper = styled.div(
 
     ${TextField},
   .styled-select {
-      min-height: 56px;
+      // min-height: 56px;
     }
 
     .styled-textarea,
@@ -94,8 +94,9 @@ export const FieldWrapper = styled.div(
   `,
 )
 
+type ValidationMessageProps = Pick<StyledFieldWrapperProps, 'theme'>
 export const ValidationMessage = styled.div(
-  (props: StyledFieldWrapperProps): FlattenSimpleInterpolation => css`
+  (props: ValidationMessageProps): FlattenSimpleInterpolation => css`
     font-family: 'Cera Pro Regular';
     color: ${props.theme.colours.red};
     font-size: ${props.theme.typography.paragraph[2].fontSize};

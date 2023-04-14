@@ -96,7 +96,7 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
                 return (
                   <li key={index}>
                     <Styled.Thumb onClick={() => setActiveIndex(index)}>
-                      <Styled.Index $active={index === activeIndex}>{index + 1}</Styled.Index>
+                      <Styled.Index $isActive={index === activeIndex}>{index + 1}</Styled.Index>
                       <Styled.ThumbContent>
                         <Paragraph font='Cera' size={2} inverse>
                           {post.title}

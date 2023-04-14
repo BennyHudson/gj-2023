@@ -13,8 +13,9 @@ export const Spacer = styled.div(
   `,
 )
 
+type BackgroundProps = Pick<StyledFullPageFeatureProps, 'backgroundImage' | 'theme' | 'opacity'>
 export const Background = styled.div(
-  (props: StyledFullPageFeatureProps): FlattenSimpleInterpolation => css`
+  (props: BackgroundProps): FlattenSimpleInterpolation => css`
     height: 100vh;
     display: flex;
     align-items: center;
@@ -43,8 +44,9 @@ export const Background = styled.div(
   `,
 )
 
+type FullPageFeatureProps = Pick<StyledFullPageFeatureProps, 'theme' | 'opacity' | 'headerHeight'>
 export const FullPageFeature = styled.div(
-  (props: StyledFullPageFeatureProps): FlattenSimpleInterpolation => css`
+  (props: FullPageFeatureProps): FlattenSimpleInterpolation => css`
     height: calc(100vh - ${props.headerHeight * 2}px);
     padding: ${props.headerHeight}px ${props.theme.spacing[2]}px;
     display: grid;

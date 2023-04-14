@@ -2,6 +2,8 @@ import Link from 'next/link'
 import type { FlattenSimpleInterpolation } from 'styled-components'
 import styled, { css } from 'styled-components'
 
+import { Footer } from '@components/Footer/styles/Footer.style'
+
 import respondTo from '@mixins/respondTo'
 
 import type { StyledLogoProps } from './Logo.style.types'
@@ -11,6 +13,11 @@ export const Logo = styled.div(
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-grow: 1;
+
+    ${Footer} & {
+      justify-content: flex-start;
+    }
   `,
 )
 

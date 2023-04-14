@@ -59,7 +59,7 @@ const Newsletter: FC = ({ form, showTitle = true }): ReactElement => {
             {form.formFields.nodes.map((formField, index) => {
               switch (formField.type) {
               case 'NAME': {
-                return <NameField key={index} {...formField} validationMessage={validationMessages[3]} />
+                return <NameField key={index} {...formField} validationMessage={validationMessages[3]} labelPlacement='HIDDEN' />
               }
 
               case 'EMAIL': {

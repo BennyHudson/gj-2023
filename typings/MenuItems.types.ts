@@ -2,11 +2,7 @@ export interface MenuItems {
   id: string
   uri: string
   label: string
-  children?: {
-    id: string
-    uri: string
-    label: string
-  }[]
+  children?: MenuItems[]
 }
 
 export interface RawMenu {

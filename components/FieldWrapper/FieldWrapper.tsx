@@ -24,7 +24,7 @@ const FieldWrapper: FC<FieldWrapperProps> = ({
           <span>{validationMessage}</span>
         </Styled.ValidationMessage>
       )}
-      {labelPlacement !== 'HIDDEN' && <Label target={target} text={label} required={required} />}
+      {labelPlacement !== 'HIDDEN' && <Label target={target as string} text={label} required={required} />}
       {children}
     </Styled.FieldWrapper>
   )

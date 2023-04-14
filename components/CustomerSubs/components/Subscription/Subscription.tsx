@@ -64,7 +64,7 @@ const Subscription: FC<SubscriptionProps> = ({ subscription }: SubscriptionProps
           cardDetails={cardDetails}
           editMode={editMode}
           setEditMode={setEditMode}
-          customerId={stripeCustomerId!.value}
+          customerId={stripeCustomerId!.value as number}
           subscriptionId={subscription.id}
         />
       )}

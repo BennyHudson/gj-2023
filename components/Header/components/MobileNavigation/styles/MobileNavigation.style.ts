@@ -5,8 +5,9 @@ import styled, { createGlobalStyle, css } from 'styled-components'
 import type { StyledMobileNavigationProps } from './MobileNavigation.style.types'
 import { IconButton, SecondaryNav } from '../../SecondaryNav/styles/SecondaryNav.style'
 
+type MobileNavigationProps = Pick<StyledMobileNavigationProps, 'theme' | 'headerHeight' | '$inverse'>
 export const MobileNavigation = styled.nav(
-  (props: StyledMobileNavigationProps): FlattenSimpleInterpolation => css`
+  (props: MobileNavigationProps): FlattenSimpleInterpolation => css`
     position: fixed;
     top: ${props.headerHeight}px;
     width: 90vw;
@@ -47,8 +48,9 @@ export const MobileNavigation = styled.nav(
   `,
 )
 
+type MainMenuProps = Pick<StyledMobileNavigationProps, 'theme' | '$inverse'>
 export const MainMenu = styled.ul(
-  (props: StyledMobileNavigationProps) => css`
+  (props: MainMenuProps) => css`
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -114,8 +116,9 @@ export const MenuItem = styled.li(
   `,
 )
 
+type SubMenuProps = Pick<StyledMobileNavigationProps, 'theme'>
 export const SubMenu = styled.ul(
-  (props: StyledMobileNavigationProps) => css`
+  (props: SubMenuProps) => css`
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     margin: 0 0 0 auto;
@@ -134,8 +137,9 @@ export const SubMenuList = styled.ul(
   `,
 )
 
-export const SubLink = styled(Link)(
-  (props: StyledMobileNavigationProps) => css`
+type SubLinkProps = Pick<StyledMobileNavigationProps, 'theme' | '$feature' | '$inverse'>
+export const SubLink = styled.button(
+  (props: SubLinkProps) => css`
     color: ${props.theme.colours.grey};
     text-decoration: none;
     text-transform: none;

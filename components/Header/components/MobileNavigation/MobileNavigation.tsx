@@ -2,7 +2,7 @@ import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faAngleDown, faAngleUp } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
-import type { FC, ReactElement } from 'react'
+import type { ElementType, FC, ReactElement } from 'react'
 import React, { useContext, useState } from 'react'
 import AnimateHeight from 'react-animate-height'
 
@@ -19,8 +19,8 @@ const MobileNavigation: FC<MobileNavigationProps> = ({ inverse = false, navigati
   const { activeNavElement, headerHeight } = useContext(PageContext) as PageContextProps
   const heirarchalNav = flatListToHierarchical(navigation.menu.menuItems.nodes)
 
-  const [activeNav, setActiveNav] = useState(null)
-  const [activeSubNav, setActiveSubNav] = useState(null)
+  const [activeNav, setActiveNav] = useState<number | null>(null)
+  const [activeSubNav, setActiveSubNav] = useState<number | null>(null)
 
   return (
     <>
@@ -28,7 +28,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({ inverse = false, navigati
         <Styled.MainMenu $inverse={inverse}>
           {heirarchalNav.map((item, index) => {
             const isActive = activeNav === index
-            if (item.children.length)
+            if (item.children?.length)
               return (
                 <Styled.MenuItem key={index} $inverse={inverse}>
                   <Styled.MenuLink $isActive={index === activeNavElement} as='button' onClick={() => setActiveNav(isActive ? null : index)}>
@@ -36,7 +36,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({ inverse = false, navigati
                     <FontAwesomeIcon icon={isActive ? (faAngleUp as IconProp) : (faAngleDown as IconProp)} />
                   </Styled.MenuLink>
                   <AnimateHeight duration={500} height={isActive ? 'auto' : 0}>
-                    <Styled.SubMenu subListCount={item.children.length}>
+                    <Styled.SubMenu>
                       {item.children.map((child, index) => {
                         const isActive = activeSubNav === index
                         return (
@@ -44,19 +44,25 @@ const MobileNavigation: FC<MobileNavigationProps> = ({ inverse = false, navigati
                             <Styled.SubLink
                               $inverse={inverse}
                               $feature
-                              href={child.uri}
-                              as='button'
                               onClick={() => setActiveSubNav(isActive ? null : index)}
                             >
                               {child.label} <FontAwesomeIcon icon={isActive ? (faAngleUp as IconProp) : (faAngleDown as IconProp)} />
                             </Styled.SubLink>
                             <AnimateHeight duration={500} height={isActive ? 'auto' : 0}>
                               <Styled.SubMenuList>
-                                {child.children.map((cat, index) => {
+                                {child.children?.map((cat, index) => {
                                   return (
-                                    <Styled.SubLink $inverse={inverse} href={cat.uri} key={index}>
+                                    /* eslint-disable */
+                                    <Styled.SubLink 
+                                      $feature={false} 
+                                      $inverse={inverse} 
+                                      href={cat.uri} 
+                                      key={index} 
+                                      as={Link as ElementType}
+                                    >
                                       {cat.label}
                                     </Styled.SubLink>
+                                    /* eslint-enable */
                                   )
                                 })}
                               </Styled.SubMenuList>

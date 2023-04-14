@@ -21,8 +21,8 @@ const FullPageFeature: FC<FullPageFeatureProps> = ({ title, excerpt, uri, featur
   const [opacity, setOpacity] = useState(1)
   const { headerHeight } = useContext(PageContext) as PageContextProps
 
-  const onScroll = (e) => {
-    const scrollTop = e.target.documentElement.scrollTop
+  const onScroll: EventListener = (e: Event) => {
+    const scrollTop = e.target ? e.target.documentElement.scrollTop : 0
     const viewportHeight = window.innerHeight
     const offset = (viewportHeight - scrollTop) / viewportHeight
 
@@ -40,7 +40,7 @@ const FullPageFeature: FC<FullPageFeatureProps> = ({ title, excerpt, uri, featur
     <>
       <Styled.Spacer></Styled.Spacer>
       <Styled.Background opacity={opacity} backgroundImage={featuredImageUrl(featuredImage.node.fullSize)}>
-        <Styled.FullPageFeature headerHeight={headerHeight}>
+        <Styled.FullPageFeature headerHeight={headerHeight} opacity={opacity}>
           <Styled.Content>
             <Paragraph size={1} weight={3} text='Featured Article' inverse font='Cera' transform='uppercase' />
             <Heading text={title} level={1} size={5} inverse font='ChronicleCondensed' />
