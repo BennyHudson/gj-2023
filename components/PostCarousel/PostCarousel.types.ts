@@ -1,7 +1,9 @@
-import type { Post } from '@typings/Post.types'
-
-export interface PostCarouselProps {
+export interface PostCarouselState {
   posts: {
-    node: Post
+    featured_media: number
+    slug: string
+    title: {
+      rendered: string
+    }
   }[]
 }

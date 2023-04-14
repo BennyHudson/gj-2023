@@ -10,11 +10,13 @@ import type { PageContextProps } from '@context/PageContext'
 import PageContext from '@context/PageContext'
 
 import CarouselPost from './components/CarouselPost/CarouselPost'
+import type { PostCarouselState } from './PostCarousel.types'
 import * as Styled from './styles/PostCarousel.style'
 
 const PostCarousel: FC = (): ReactElement => {
   const { cmsUrl } = useContext(PageContext) as PageContextProps
-  const [posts, setPosts] = useState([])
+  
+  const [posts, setPosts] = useState<PostCarouselState['posts']>([])
 
   const getPosts = async () => {
     const page = Math.floor(Math.random() * 101)

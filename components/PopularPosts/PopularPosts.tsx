@@ -10,15 +10,19 @@ import Link from '@components/Link'
 import type { PageContextProps } from '@context/PageContext'
 import PageContext from '@context/PageContext'
 
+import type { DateRanges, PopularPostsState } from './PopularPosts.types'
+
 import * as Styled from './styles/PopularPosts.style'
 
 const PopularPosts: FC = (): ReactElement => {
-  const [dateRange, setDateRange] = useState('week')
-  const [popularPosts, setPopularPosts] = useState([])
-  const ranges = ['week', 'month', 'year']
+  const [dateRange, setDateRange] = useState<PopularPostsState['dateRange']>('week')
+  const [popularPosts, setPopularPosts] = useState<PopularPostsState['popularPosts']>([])
+
+  const ranges = ['week', 'month', 'year'] as DateRanges[]
 
   const { apiUrl, cmsUrl } = useContext(PageContext) as PageContextProps
 
+  // TODO: Need to update this to actually query posts by popularity | Otherwise styled & ready to go
   useEffect(() => {
     const date = dayjs()
       .subtract(1, dateRange as ManipulateType)

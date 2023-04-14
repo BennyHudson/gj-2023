@@ -34,8 +34,8 @@ const Header: FC<HeaderProps> = ({ headerStyle = 'standard', headerNav }: Header
   const announcementBar = headerNav.page.subscriptionPage.club.clubhouseOffer
   const showAnnouncementBar = !!announcementBar
 
-  const onScroll = (e) => {
-    const scrollTop = e.target.documentElement.scrollTop
+  const onScroll: EventListener = (e: Event) => {
+    const scrollTop = e.target ? e.target.documentElement.scrollTop : 0
     if (scrollTop === 0 && headerStyle === 'feature') {
       setTransparent(true)
     } else {

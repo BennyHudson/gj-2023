@@ -16,4 +16,5 @@ export interface NameFieldProps {
   target: FormFieldProps['target']
   id: FormFieldProps['id']
   databaseId?: FormFieldProps['databaseId']
+  labelPlacement?: FormFieldProps['labelPlacement']
 }

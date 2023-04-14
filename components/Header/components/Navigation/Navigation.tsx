@@ -10,6 +10,10 @@ import PageContext from '@context/PageContext'
 
 import flatListToHierarchical from '@helpers/flatListToHierarchical'
 
+import type { HouseNote } from '@queries/fragments/houseNoteContent'
+import type { Podcast } from '@queries/fragments/podcastContent'
+import type { Post } from '@queries/fragments/postContent'
+
 import type { NavigationProps } from './Navigation.types'
 import * as Styled from './styles/Navigation.style'
 
@@ -21,7 +25,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
     <Styled.Navigation>
       <Styled.MainMenu $inverse={inverse}>
         {heirarchalNav.map((item, index) => {
-          if (item.children.length)
+          if (item.children?.length)
             return (
               <Styled.MenuItem key={index} $inverse={inverse}>
                 <Styled.MenuLink $isActive={index === activeNavElement} as={!item.uri ? 'span' : Link} href={item.uri}>
@@ -36,10 +40,10 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
                             {child.label}
                           </Styled.SubLink>
                           <Styled.SubMenuList>
-                            {child.children.map((cat, index) => {
+                            {child.children?.map((cat, index) => {
                               return (
                                 <li key={index}>
-                                  <Styled.SubLink $inverse={inverse} href={cat.uri}>
+                                  <Styled.SubLink $inverse={inverse} $feature={false} href={cat.uri}>
                                     {cat.label}
                                   </Styled.SubLink>
                                 </li>
@@ -70,7 +74,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
                       },
                     ]}
                   />
-                  <PostGrid inverse={inverse} posts={navigation.podcasts.nodes} />
+                  <PostGrid inverse={inverse} posts={navigation.podcasts.nodes as Podcast[]} />
                 </Styled.SubMenuWrapper>
               </Styled.MenuItem>
             )
@@ -92,7 +96,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
                       },
                     ]}
                   />
-                  <PostGrid inverse={inverse} posts={navigation.houseNotes.nodes} />
+                  <PostGrid inverse={inverse} posts={navigation.houseNotes.nodes as HouseNote[]} />
                 </Styled.SubMenuWrapper>
               </Styled.MenuItem>
             )
@@ -114,7 +118,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
                       },
                     ]}
                   />
-                  <PostGrid inverse={inverse} posts={navigation.videos.nodes} />
+                  <PostGrid inverse={inverse} posts={navigation.videos.nodes as Post[]} />
                 </Styled.SubMenuWrapper>
               </Styled.MenuItem>
             )
@@ -136,7 +140,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
                       },
                     ]}
                   />
-                  <PostGrid inverse={inverse} posts={navigation.sessions.nodes} />
+                  <PostGrid inverse={inverse} posts={navigation.sessions.nodes as Post[]} />
                 </Styled.SubMenuWrapper>
               </Styled.MenuItem>
             )

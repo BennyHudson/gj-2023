@@ -10,8 +10,9 @@ import respondTo from '@mixins/respondTo'
 
 import type { StyledNewsletterBannerProps } from './NewsletterBanner.style.types'
 
+type NewsletterBannerProps = Pick<StyledNewsletterBannerProps, 'theme' | 'size' | 'headerHeight'>
 export const NewsletterBanner = styled.div(
-  (props: StyledNewsletterBannerProps): FlattenSimpleInterpolation => css`
+  (props: NewsletterBannerProps): FlattenSimpleInterpolation => css`
     background: ${props.theme.colours.lightGrey};
     position: relative;
     z-index: 1;
@@ -40,8 +41,9 @@ export const NewsletterBanner = styled.div(
   `,
 )
 
+type NewsletterBannerContentProps = Pick<StyledNewsletterBannerProps, 'backgroundImage' | 'theme' | 'size'>
 export const NewsletterBannerContent = styled.div(
-  (props: StyledNewsletterBannerProps): FlattenSimpleInterpolation => css`
+  (props: NewsletterBannerContentProps): FlattenSimpleInterpolation => css`
     width: 90%;
     background: url('${props.backgroundImage}') center left no-repeat;
     background-size: 50% auto;
@@ -107,8 +109,9 @@ export const NewsletterBannerContent = styled.div(
   `,
 )
 
+type BackgroundImageProps = Pick<StyledNewsletterBannerProps, 'theme'>
 export const BackgroundImage = styled.div(
-  (props: StyledNewsletterBannerProps): FlattenSimpleInterpolation => css`
+  (props: BackgroundImageProps): FlattenSimpleInterpolation => css`
     position: absolute;
     top: 0;
     left: 0;

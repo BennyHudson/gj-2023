@@ -1,4 +1,4 @@
-import type { Podcast } from '@typings/Podcast.types'
+import type { Podcast } from '@queries/fragments/podcastContent'
 
 export interface PodcastCardProps {
   podcast: Podcast

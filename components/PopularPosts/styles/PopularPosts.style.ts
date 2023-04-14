@@ -5,8 +5,10 @@ import { Link } from '@components/Link/styles/Link.style'
 
 import type { StyledPopularPostsProps } from './PopularPosts.style.types'
 
+type PopularPostsTheme = Pick<StyledPopularPostsProps, 'theme'>
+
 export const PopularPosts = styled.div(
-  (props: StyledPopularPostsProps): FlattenSimpleInterpolation => css`
+  (props: PopularPostsTheme): FlattenSimpleInterpolation => css`
     border-top: 1px solid ${props.theme.colours.grey};
     border-bottom: 1px solid ${props.theme.colours.grey};
     padding: ${props.theme.spacing[2]}px 0;
@@ -14,7 +16,7 @@ export const PopularPosts = styled.div(
 )
 
 export const Heading = styled.div(
-  (props: StyledPopularPostsProps): FlattenSimpleInterpolation => css`
+  (props: PopularPostsTheme): FlattenSimpleInterpolation => css`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,7 +26,7 @@ export const Heading = styled.div(
 )
 
 export const Toggles = styled.ul(
-  (props: StyledPopularPostsProps): FlattenSimpleInterpolation => css`
+  (props: PopularPostsTheme): FlattenSimpleInterpolation => css`
     display: flex;
     align-items: center;
 
@@ -63,7 +65,7 @@ export const Toggle = styled.button(
 )
 
 export const PostList = styled.ol(
-  (props: StyledPopularPostsProps): FlattenSimpleInterpolation => css`
+  (props: PopularPostsTheme): FlattenSimpleInterpolation => css`
     display: flex;
     flex-direction: column;
     gap: ${props.theme.spacing[2]}px;

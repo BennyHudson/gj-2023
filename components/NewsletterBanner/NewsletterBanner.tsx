@@ -9,9 +9,11 @@ import PageContext from '@context/PageContext'
 
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
+import type { NewsletterBannerProps } from './NewsletterBanner.types'
+
 import * as Styled from './styles/NewsletterBanner.style'
 
-const NewsletterBanner: FC = ({ form, backgroundImage, size = 1 }): ReactElement => {
+const NewsletterBanner: FC<NewsletterBannerProps> = ({ form, backgroundImage, size = 1 }: NewsletterBannerProps): ReactElement => {
   const { headerHeight } = useContext(PageContext) as PageContextProps
   return (
     <Styled.NewsletterBanner size={size} headerHeight={headerHeight}>

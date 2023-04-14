@@ -1,5 +1,9 @@
-import type { ReactNode } from 'react'
+import type { HouseNote } from '@queries/fragments/houseNoteContent'
 
-export interface HouseNotesFeedProps {
-  children: ReactNode
+export interface HouseNotesFeedState {
+  allHouseNotes: {
+    node: HouseNote
+  }[]
+  moreHouseNotes: boolean
+  last: string
 }

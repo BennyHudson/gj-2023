@@ -1,7 +1,9 @@
-import type { Podcast } from '@typings/Podcast.types'
+import type { Podcast } from '@queries/fragments/podcastContent'
 
-export interface PodcastListProps {
-  podcasts: {
+export interface PodcastListState {
+  allPodcasts: {
     node: Podcast
   }[]
+  morePodcasts: boolean
+  last: string
 }

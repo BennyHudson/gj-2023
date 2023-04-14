@@ -15,12 +15,14 @@ import { useBreakpoints } from '@hooks/useBreakpoints'
 
 import { latestPodcastsQuery } from '@queries/global/latest-podcasts'
 
+import type { PodcastListState } from './PodcastList.types'
+
 import * as Styled from './styles/PodcastList.style'
 
 const PodcastList: FC = (): ReactElement => {
-  const [last, setLast] = useState()
-  const [allPodcasts, setAllPodcasts] = useState()
-  const [morePodcasts, setMorePodcasts] = useState(true)
+  const [last, setLast] = useState<PodcastListState['last']>()
+  const [allPodcasts, setAllPodcasts] = useState<PodcastListState['allPodcasts']>([])
+  const [morePodcasts, setMorePodcasts] = useState<PodcastListState['morePodcasts']>(true)
 
   const { mdAndAbove } = useBreakpoints()
 
@@ -36,7 +38,7 @@ const PodcastList: FC = (): ReactElement => {
     const more = await fetchMore({ variables: { after: last } })
     if (more.data) {
       setLast(more.data.podcasts.pageInfo.endCursor)
-      setAllPodcasts([...allPodcasts, ...more.data.podcasts.edges])
+      setAllPodcasts([...allPodcasts!, ...more.data.podcasts.edges])
       setMorePodcasts(more.data.podcasts.pageInfo.hasNextPage)
     }
   }

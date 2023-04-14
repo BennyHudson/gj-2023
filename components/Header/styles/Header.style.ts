@@ -7,8 +7,9 @@ import respondTo from '@mixins/respondTo'
 
 import type { StyledHeaderProps } from './Header.style.types'
 
+type HeaderProps = Pick<StyledHeaderProps, 'theme' | 'headerStyle' | 'fixed' | 'topPosition' | 'transparent'>
 export const Header = styled.div(
-  (props: StyledHeaderProps): FlattenSimpleInterpolation => css`
+  (props: HeaderProps): FlattenSimpleInterpolation => css`
     position: ${props.headerStyle === 'feature' ? 'fixed' : 'sticky'};
     top: 0;
     width: 100%;
@@ -42,27 +43,12 @@ export const Header = styled.div(
       border-bottom: none;
       box-shadow: 0 1px 6px -2px rgb(49 49 49 / 30%);
     `}
-
-  ${props.overrideHeaderStyle &&
-    css`
-      position: fixed;
-      background: #fff;
-      border-bottom: none;
-      box-shadow: 0 1px 6px -2px rgb(49 49 49 / 30%);
-    `}
-
-  ${props.searchResults &&
-    css`
-      position: sticky;
-      background: #fff;
-      border-bottom: none;
-      box-shadow: 0 1px 6px -2px rgb(49 49 49 / 30%);
-    `}
   `,
 )
 
+type AnnouncementBarProps = Pick<StyledHeaderProps, 'theme'>
 export const AnnouncementBar = styled.div(
-  (props: StyledHeaderProps): FlattenSimpleInterpolation => css`
+  (props: AnnouncementBarProps): FlattenSimpleInterpolation => css`
     background: ${props.theme.colours.black};
     padding: ${props.theme.spacing[1] / 2}px 0;
     text-align: center;
@@ -118,8 +104,9 @@ export const MobileTrigger = styled.div(
   `,
 )
 
+type MobileNavTriggerProps = Pick<StyledHeaderProps, 'theme' | '$inverse'>
 export const MobileNavTrigger = styled.button(
-  (props: StyledHeaderProps): FlattenSimpleInterpolation => css`
+  (props: MobileNavTriggerProps): FlattenSimpleInterpolation => css`
     background: none;
     border: none;
     padding: 0 ${props.theme.spacing[2]}px;

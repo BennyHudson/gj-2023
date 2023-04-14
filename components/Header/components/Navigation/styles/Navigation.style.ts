@@ -13,7 +13,7 @@ import type { StyledNavigationProps } from './Navigation.style.types'
 export const Navigation = styled.nav(
   (): FlattenSimpleInterpolation => css`
     display: flex;
-    align: center;
+    align-items: center;
     justify-content: center;
     position: relative;
     z-index: 1;
@@ -153,8 +153,9 @@ export const MenuItem = styled.li(
   `,
 )
 
+type SubMenuProps = Pick<StyledNavigationProps, 'theme' | 'subListCount'>
 export const SubMenu = styled.ul(
-  (props: StyledNavigationProps) => css`
+  (props: SubMenuProps) => css`
     display: grid;
     grid-template-columns: repeat(${props.subListCount}, 1fr);
     margin: 0 auto;
@@ -172,8 +173,9 @@ export const SubMenuList = styled.ul(
   `,
 )
 
+type SubLinkProps = Pick<StyledNavigationProps, 'theme' | '$feature' | '$inverse'>
 export const SubLink = styled(Link)(
-  (props: StyledNavigationProps) => css`
+  (props: SubLinkProps) => css`
     color: ${props.theme.colours.grey};
     text-decoration: none;
     text-transform: none;
@@ -191,8 +193,9 @@ export const SubLink = styled(Link)(
   `,
 )
 
+type MainMenuProps = Pick<StyledNavigationProps, 'theme' | '$inverse'>
 export const MainMenu = styled.ul(
-  (props: StyledNavigationProps) => css`
+  (props: MainMenuProps) => css`
     display: flex;
     align-items: center;
     justify-content: center;
