@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Image from 'next/image'
 import type { FC, ReactElement } from 'react'
 import React, { useRef } from 'react'
@@ -16,7 +17,6 @@ import useNextLink from '@hooks/useNextLink'
 
 import type { ClubPerksProps } from './ClubPerks.types'
 import * as Styled from './styles/ClubPerks.style'
-import Head from 'next/head'
 
 const ClubPerks: FC<ClubPerksProps> = ({ perks, title, subtitle, brands }: ClubPerksProps): ReactElement => {
   const perksList = useRef<HTMLDivElement>(null)
