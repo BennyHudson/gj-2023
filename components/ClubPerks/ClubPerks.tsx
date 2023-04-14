@@ -47,22 +47,6 @@ const ClubPerks: FC<ClubPerksProps> = ({ perks, title, subtitle, brands }: ClubP
     variableWidth: true,
     arrows: false,
     dots: false,
-    // responsive: [
-    //   {
-    //     breakpoint: 480,
-    //     settings: {
-    //       slidesToShow: 1,
-    //       slidesToScroll: 1,
-    //     },
-    //   },
-    //   {
-    //     breakpoint: breakpoints.lg,
-    //     settings: {
-    //       slidesToShow: 2,
-    //       slidesToScroll: 1,
-    //     },
-    //   },
-    // ],
   }
 
   return (

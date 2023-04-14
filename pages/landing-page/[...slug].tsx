@@ -64,7 +64,12 @@ const LandingPage: FC = ({
       </Section>
       <ClubBuy products={subscriptionProducts} freeGift={freeGift} />
       <Section>
-        <ClubPerks perks={club.subscriptionPerks} title='Join the club.' subtitle='Scroll to see the perks' />
+        <ClubPerks 
+          perks={club.subscriptionPerks} 
+          title='Join the club.' 
+          subtitle='Scroll to see the perks'
+          brands={club.clubhouseBrands}
+        />
       </Section>
     </PageLayout>
   )
