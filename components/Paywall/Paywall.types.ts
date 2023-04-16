@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react'
 
-export interface SidebarProps {
+export interface PaywallProps {
   children: ReactNode
-  sidebarContent: ReactNode
 }

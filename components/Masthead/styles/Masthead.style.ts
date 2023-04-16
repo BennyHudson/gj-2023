@@ -7,8 +7,9 @@ import respondTo from '@mixins/respondTo'
 
 import type { StyledMastheadProps } from './Masthead.style.types'
 
+type MastheadTheme = Pick<StyledMastheadProps, 'theme'>
 export const Masthead = styled.div(
-  (props: StyledMastheadProps): FlattenSimpleInterpolation => css`
+  (props: MastheadTheme): FlattenSimpleInterpolation => css`
   display: grid;
   grid-template-columns: repeat(12, [col-start] 1fr);
   margin-bottom: ${props.theme.spacing[4]}px;
@@ -18,7 +19,7 @@ export const Masthead = styled.div(
   `)}
 
   ${Breadcrumbs} {
-    width 100%;
+    width: 100%;
   }
 `,
 )

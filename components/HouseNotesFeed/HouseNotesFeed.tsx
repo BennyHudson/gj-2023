@@ -7,14 +7,14 @@ import LoadMore from '@components/LoadMore'
 
 import { latestHouseNotesQuery } from '@queries/global/latest-houseNotes'
 
+import type { HouseNotesFeedState } from './HouseNotesFeed.types'
+
 import * as Styled from './styles/HouseNotesFeed.style'
 
-// import { HouseNotesFeedProps } from './HouseNotesFeed.types'
-
 const HouseNotesFeed: FC = (): ReactElement => {
-  const [last, setLast] = useState()
-  const [allHouseNotes, setAllHouseNotes] = useState()
-  const [moreHouseNotes, setMoreHouseNotes] = useState(true)
+  const [last, setLast] = useState<HouseNotesFeedState['last']>()
+  const [allHouseNotes, setAllHouseNotes] = useState<HouseNotesFeedState['allHouseNotes']>()
+  const [moreHouseNotes, setMoreHouseNotes] = useState<HouseNotesFeedState['moreHouseNotes']>(true)
 
   const { fetchMore } = useQuery(latestHouseNotesQuery.query, {
     onCompleted: (data) => {
@@ -28,7 +28,7 @@ const HouseNotesFeed: FC = (): ReactElement => {
     const more = await fetchMore({ variables: { after: last } })
     if (more.data) {
       setLast(more.data.houseNotes.pageInfo.endCursor)
-      setAllHouseNotes([...allHouseNotes, ...more.data.houseNotes.edges])
+      setAllHouseNotes([...allHouseNotes!, ...more.data.houseNotes.edges])
       setMoreHouseNotes(more.data.houseNotes.pageInfo.hasNextPage)
     }
   }

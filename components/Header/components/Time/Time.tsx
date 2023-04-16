@@ -10,7 +10,7 @@ import type { TimeProps } from './Time.types'
 
 const Time: FC<TimeProps> = ({ inverse = false }: TimeProps): ReactElement => {
   dayjs.extend(advancedFormat)
-  const [time, setTime] = useState()
+  const [time, setTime] = useState<string>()
 
   useEffect(() => {
     setTime(dayjs().format('dddd Do MMMM YYYY HH:mm:ss'))

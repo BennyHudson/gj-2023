@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react'
+import type { PartnerCardProps } from './components/PartnerCard/PartnerCard.types'
 
 export interface PartnerGridProps {
-  children: ReactNode
+  partners: PartnerCardProps[]
 }

@@ -30,8 +30,9 @@ export const NewsletterModal = styled.div(
   `,
 )
 
+type NewsletterModalTheme = Pick<StyledNewsletterModalProps, 'theme'>
 export const ModalWrapper = styled.div(
-  (props: StyledNewsletterModalProps): FlattenSimpleInterpolation => css`
+  (props: NewsletterModalTheme): FlattenSimpleInterpolation => css`
     background: ${props.theme.colours.white};
     width: 90%;
     max-width: ${props.theme.containerWidth}px;
@@ -48,8 +49,18 @@ export const ModalWrapper = styled.div(
   `,
 )
 
+type BackgroundProps = Pick<StyledNewsletterModalProps, 'backgroundImage'>
+export const Background = styled.div(
+  (props: BackgroundProps): FlattenSimpleInterpolation => css`
+    background: url('${props.backgroundImage}') center center no-repeat;
+    background-size: cover;
+    min-height: 200px;
+    padding: 0;
+  `,
+)
+
 export const Column = styled.div(
-  (props: StyledNewsletterModalProps): FlattenSimpleInterpolation => css`
+  (props: NewsletterModalTheme): FlattenSimpleInterpolation => css`
     padding: ${props.theme.spacing[2]}px;
     display: flex;
     align-items: center;
@@ -57,14 +68,6 @@ export const Column = styled.div(
     ${respondTo.md(css`
       padding: ${props.theme.spacing[8]}px;
     `)}
-
-    ${props.backgroundImage &&
-    css`
-      background: url('${props.backgroundImage}') center center no-repeat;
-      background-size: cover;
-      min-height: 200px;
-      padding: 0;
-    `}
 
   ${Title} {
       width: 100%;
@@ -77,7 +80,7 @@ export const Column = styled.div(
 )
 
 export const IconButton = styled.button(
-  (props: StyledNewsletterModalProps): FlattenSimpleInterpolation => css`
+  (props: NewsletterModalTheme): FlattenSimpleInterpolation => css`
     position: absolute;
     top: ${props.theme.spacing[1]}px;
     right: ${props.theme.spacing[1]}px;

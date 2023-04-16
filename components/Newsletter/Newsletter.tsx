@@ -4,15 +4,20 @@ import React, { useState } from 'react'
 
 import Button from '@components/Button'
 import CheckboxList from '@components/CheckboxList'
+import type { CheckboxListProps } from '@components/CheckboxList/CheckboxList.types'
 import FormErrorMessage from '@components/FormErrorMessage'
 import NameField from '@components/NameField'
+import type { NameFieldProps } from '@components/NameField/NameField.types'
 import RawHtmlWrapper from '@components/RawHtmlWrapper'
 import TextField from '@components/TextField'
 import Title from '@components/Title'
 
+import type { NewsletterProps } from './Newsletter.types'
+
 import * as Styled from './styles/Newsletter.style'
 
-const Newsletter: FC = ({ form, showTitle = true }): ReactElement => {
+
+const Newsletter: FC<NewsletterProps> = ({ form, showTitle = true }: NewsletterProps): ReactElement => {
   const [confirmationMessage, setConfirmationMessage] = useState()
   const [validationMessages, setValidationMessages] = useState({ 3: undefined, 4: undefined, 5: undefined })
   const [isValid, setIsValid] = useState(true)
@@ -59,7 +64,7 @@ const Newsletter: FC = ({ form, showTitle = true }): ReactElement => {
             {form.formFields.nodes.map((formField, index) => {
               switch (formField.type) {
               case 'NAME': {
-                return <NameField key={index} {...formField} validationMessage={validationMessages[3]} labelPlacement='HIDDEN' />
+                return <NameField key={index} {...formField as NameFieldProps} validationMessage={validationMessages[3]} labelPlacement='HIDDEN' />
               }
 
               case 'EMAIL': {
@@ -70,11 +75,11 @@ const Newsletter: FC = ({ form, showTitle = true }): ReactElement => {
                 return (
                   <CheckboxList
                     key={index}
-                    {...formField}
+                    {...formField as CheckboxListProps}
                     choices={[
                       {
                         value: '1',
-                        text: formField.checkboxLabel,
+                        text: formField.checkboxLabel!,
                       },
                     ]}
                     validationMessage={validationMessages[5]}

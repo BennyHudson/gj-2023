@@ -41,8 +41,9 @@ export const Title = styled.div(
   `,
 )
 
+type IconWrapperProps = Pick<StyledPostExcerptProps, 'theme'>
 export const IconWrapper = styled.div(
-  (props: StyledPostExcerptProps): FlattenSimpleInterpolation => css`
+  (props: IconWrapperProps): FlattenSimpleInterpolation => css`
     display: flex;
     align-items: center;
     height: ${props.theme.typography.heading[1].lineHeight};
@@ -55,8 +56,9 @@ export const IconWrapper = styled.div(
   `,
 )
 
+type BodyProps = Pick<StyledPostExcerptProps, 'theme'>
 export const Body = styled.div(
-  (props: StyledPostExcerptProps): FlattenSimpleInterpolation => css`
+  (props: BodyProps): FlattenSimpleInterpolation => css`
     width: 90%;
     margin: 0 auto;
     padding: ${props.theme.spacing[2]}px 0 0;

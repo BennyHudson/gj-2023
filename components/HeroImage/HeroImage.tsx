@@ -34,13 +34,12 @@ const HeroImage: FC<HeroImageProps> = ({ featuredImage, height = 2, featuredVide
         hasVideo={!!featuredVideo}
       >
         {featuredVideo && (
-          <Styled.VideoWrapper height={height} headerHeight={headerHeight}>
-            <Styled.Video headerHeight={headerHeight}>
+          <Styled.VideoWrapper>
+            <Styled.Video>
               <YouTube videoId={featuredVideo} opts={videoOptions} className='video-wrapper' />
             </Styled.Video>
           </Styled.VideoWrapper>
         )}
-        {/* {featuredImage && <Image src={featuredImageUrl(featuredImage)} key={featuredImage} fill alt='' quality={100} priority />} */}
       </Styled.HeroImage>
     </>
   )

@@ -23,7 +23,7 @@ const NewsletterModal: FC<NewsletterModalProps> = ({
       <Styled.NewsletterModal>
         <Overlay appearance='secondary' onClick={() => setShowNewsletterModal(false)} />
         <Styled.ModalWrapper>
-          <Styled.Column backgroundImage={featuredImageUrl(backgroundImage)} />
+          <Styled.Background backgroundImage={featuredImageUrl(backgroundImage)} />
           <Styled.Column>
             <Styled.IconButton onClick={() => setShowNewsletterModal(false)}>
               <FontAwesomeIcon icon={faTimes as IconProp} />

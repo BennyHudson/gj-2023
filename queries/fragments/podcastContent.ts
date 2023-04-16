@@ -9,7 +9,7 @@ export interface Podcast {
   databaseId: number
   title: string
   date: string
-  featuredImage?: {
+  featuredImage: {
     node: FeaturedImage
   }
   podcasts: {

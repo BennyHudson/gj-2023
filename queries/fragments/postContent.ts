@@ -10,7 +10,7 @@ export interface Post {
   date: string
   uri: string
   databaseId: number
-  featuredImage?: {
+  featuredImage: {
     node: FeaturedImage
   }
   categories?: {

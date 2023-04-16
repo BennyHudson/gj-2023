@@ -32,8 +32,9 @@ export const PostGrid = styled.div(
   `,
 )
 
+type PostCarouselProps = Pick<StyledPostGridProps, 'theme'>
 export const PostCarousel = styled.div(
-  (props: StyledPostGridProps): FlattenSimpleInterpolation => css`
+  (props: PostCarouselProps): FlattenSimpleInterpolation => css`
     width: 100%;
     overflow: hidden;
 

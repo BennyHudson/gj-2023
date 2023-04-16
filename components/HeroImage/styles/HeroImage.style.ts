@@ -30,8 +30,9 @@ export const HeroImage = styled.div(
   `,
 )
 
+type ThemeProps = Pick<StyledHeroImageProps, 'theme'>
 export const VideoWrapper = styled.div(
-  (props: StyledHeroImageProps): FlattenSimpleInterpolation => css`
+  (props: ThemeProps): FlattenSimpleInterpolation => css`
     position: absolute;
     top: 0;
     left: 0;
@@ -51,7 +52,7 @@ export const VideoWrapper = styled.div(
 )
 
 export const Video = styled.div(
-  (props: StyledHeroImageProps): FlattenSimpleInterpolation => css`
+  (props: ThemeProps): FlattenSimpleInterpolation => css`
     width: 90%;
     max-width: ${props.theme.containerWidth}px;
     max-height: 100%;

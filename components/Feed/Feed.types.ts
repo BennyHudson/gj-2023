@@ -1,4 +1,4 @@
-import type { Post } from '@typings/Post.types'
+import type { Post } from '@queries/fragments/postContent'
 
 export interface FeedProps {
   category?: number

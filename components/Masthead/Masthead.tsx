@@ -14,7 +14,7 @@ const Masthead: FC<MastheadProps> = ({ breadcrumbs, title, subtitle, fullWidth =
       <Styled.MastheadContent fullWidth={fullWidth}>
         {breadcrumbs && <Breadcrumbs links={breadcrumbs} />}
         <Heading text={title} size={5} weight={1} level={1} noMargin={fullWidth} font='ChronicleCondensed' />
-        <Heading text={subtitle} weight={1} size={1} font='Cera' appearance='secondary' />
+        {subtitle && <Heading text={subtitle} weight={1} size={1} font='Cera' appearance='secondary' />}
         {author && <Byline author={author} />}
       </Styled.MastheadContent>
     </Styled.Masthead>
