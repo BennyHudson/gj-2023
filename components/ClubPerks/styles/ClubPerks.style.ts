@@ -102,7 +102,11 @@ export const Logos = styled.div((props: StyledClubPerksProps): FlattenSimpleInte
   ${Title} {
     margin: 0 auto;
     margin-bottom: ${props.theme.spacing[4]}px;
-    max-width: ${props.theme.containerWidth}px;
+    max-width: 1074px;
+
+    ${respondTo.lg(css`
+      width: 90%;
+    `)}
   }
 
   .slick-track {

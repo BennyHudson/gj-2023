@@ -49,10 +49,6 @@ const ClubPage: FC = ({
       partners: partners.restaurants.partners.nodes,
     },
     {
-      title: 'Clubs Covered In Membership',
-      partners: partners.clubs.partners.nodes,
-    },
-    {
       title: 'Hotels Covered In Membership',
       partners: partners.hotels.partners.nodes,
     },
@@ -63,6 +59,10 @@ const ClubPage: FC = ({
     {
       title: 'Lifestyle Brands Covered In Membership',
       partners: partners.lifestyle.partners.nodes,
+    },
+    {
+      title: 'Clubs Covered In Membership',
+      partners: partners.clubs.partners.nodes,
     },
   ]
 
@@ -78,6 +78,8 @@ const ClubPage: FC = ({
       <ClubVideo video={pageData.subscriptionPage.club.video.url} poster={pageData.featuredImage.node.fullSize} />
       <ClubHero title={pageData.title} subtitle={pageData.subscriptionPage.club.description} />
       <ClubOverview overview={subscriptionOverview} />
+      {freeGift && <ClubGift freeGift={freeGift} />}
+      <ClubBuy products={subscriptionProducts} freeGift={freeGift} offerCode={pageData.subscriptionPage.club.clubhouseOffer} />
       <Section appearance='secondary'>
         <Title title='Clubs, Bars, Gyms & Restaurant Offers' subtitle='You will receive direct offers and benefits with 68 luxury hotels, clubs, restaurants and handpicked brands' inverse />
         {
@@ -88,8 +90,6 @@ const ClubPage: FC = ({
           })
         }
       </Section>
-      {freeGift && <ClubGift freeGift={freeGift} />}
-      <ClubBuy products={subscriptionProducts} freeGift={freeGift} offerCode={pageData.subscriptionPage.club.clubhouseOffer} />
       <ClubPerks 
         perks={pageData.subscriptionPage.club.subscriptionPerks} 
         title='Join the club.' 

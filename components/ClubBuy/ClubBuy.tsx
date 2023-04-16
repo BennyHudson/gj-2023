@@ -72,7 +72,7 @@ const ClubBuy: FC<ClubBuyProps> = ({ products, freeGift, offerCode }: ClubBuyPro
                     {product.signUpFee ? (
                       <>
                         Pay {product.salePrice && <del>£{onSale ? product.subscriptionPrice.trim() : product.regularPrice}</del>} £
-                        {product.signUpFee} {onSale ? 'for the first year' : `today and renew at the same price ${product.subscriptionPeriod}`}
+                        {product.signUpFee} {onSale ? 'for the first year' : 'today.'}
                       </>
                     ) : (
                       `Pay £${product.subscriptionPrice} today and renew at the same price every ${product.subscriptionPeriod}`

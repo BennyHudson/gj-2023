@@ -36,7 +36,7 @@ export const PartnerCarousel = styled.div((props: StyledPartnerCarouselProps): F
     transition: 0.4s all ease;
     transform-origin: center;
     position: absolute;
-    top: 50%;
+    top: 40%;
     transform: translateY(-50%);
     width: ${props.theme.spacing[3]}px;
     height: ${props.theme.spacing[3]}px;

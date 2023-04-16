@@ -9,7 +9,6 @@ import type { StyledClubBuyProps } from './ClubBuy.style.types'
 
 export const ClubBuy = styled.div(
   (props: StyledClubBuyProps): FlattenSimpleInterpolation => css`
-    border-bottom: 1px solid ${props.theme.colours.grey};
 
     ${Section} {
       padding-bottom: 0;

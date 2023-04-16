@@ -13,7 +13,7 @@ const Title: FC<TitleProps> = ({ title, subtitle, links, inverse = false }: Titl
     <Styled.Title inverse={inverse}>
       <div>
         <Heading inverse={inverse} text={title} level={2} size={3} noMargin font='ChronicleCondensed' />
-        {subtitle && <Paragraph inverse={inverse} text={subtitle} font='Cera' size={1} appearance='secondary' />}
+        {subtitle && <Paragraph inverse={inverse} text={subtitle} font='Cera' size={1} appearance='primary' />}
       </div>
       {links && (
         <Styled.LinkList>
