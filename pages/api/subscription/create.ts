@@ -1,6 +1,8 @@
 import dayjs from 'dayjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
+import type { Product } from '@typings/Product.types'
+
 import { WooCommerce } from '../WooCommerce'
 
 export default async function userHandler(req: NextApiRequest, res: NextApiResponse) {
@@ -19,7 +21,7 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
   let subscription
 
   for await (const cartItem of cart) {
-    const itemDetails = await WooCommerce.get(`products/${cartItem}`)
+    const itemDetails: Product = await WooCommerce.get(`products/${cartItem}`)
     if (itemDetails.data.type === 'subscription') {
       const billingInterval = itemDetails.data.meta_data.find((meta) => meta.key === '_subscription_period_interval')
       const subscriptionData = await WooCommerce.post('subscriptions', {
@@ -28,9 +30,9 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
         parent_id: parentOrder,
         paymentMethod: 'stripe',
         billing_period: 'year',
-        billing_interval: parseInt(billingInterval.value),
+        billing_interval: parseInt(billingInterval!.value),
         start_date: dayjs().format('YYYY-MM-DD HH:mm:ss'),
-        next_payment_date: dayjs().add(parseInt(billingInterval.value), 'year').format('YYYY-MM-DD HH:mm:ss'),
+        next_payment_date: dayjs().add(parseInt(billingInterval!.value), 'year').format('YYYY-MM-DD HH:mm:ss'),
         line_items: [
           {
             product_id: cartItem,

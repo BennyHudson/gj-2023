@@ -1,9 +1,7 @@
 export interface ParagraphBlock {
-  [P: string]: {
-    fieldGroupName: string
-    paragraph: string
-    pull: string
-  }
+  fieldGroupName: string
+  paragraph: string
+  pull: string
 }
 
 export const paragraphBlock = (postType: string): string => {

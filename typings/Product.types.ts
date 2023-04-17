@@ -1,3 +1,5 @@
+import type { Seo } from '@queries/fragments/seo'
+
 import type { FeaturedImage } from './FeaturedImage.types'
 
 export interface Product {
@@ -13,4 +15,14 @@ export interface Product {
   featuredImage: {
     node: FeaturedImage
   }
+  data: {
+    price: string
+    shipping_class_id: number
+    type: 'subscription' | 'product'
+    meta_data: {
+      key: string
+      value: string
+    }[]
+  }
+  seo: Seo
 }

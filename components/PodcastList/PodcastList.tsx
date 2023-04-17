@@ -16,7 +16,6 @@ import { useBreakpoints } from '@hooks/useBreakpoints'
 import { latestPodcastsQuery } from '@queries/global/latest-podcasts'
 
 import type { PodcastListState } from './PodcastList.types'
-
 import * as Styled from './styles/PodcastList.style'
 
 const PodcastList: FC = (): ReactElement => {

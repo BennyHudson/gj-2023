@@ -10,18 +10,18 @@ import type { StyledMastheadProps } from './Masthead.style.types'
 type MastheadTheme = Pick<StyledMastheadProps, 'theme'>
 export const Masthead = styled.div(
   (props: MastheadTheme): FlattenSimpleInterpolation => css`
-  display: grid;
-  grid-template-columns: repeat(12, [col-start] 1fr);
-  margin-bottom: ${props.theme.spacing[4]}px;
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    margin-bottom: ${props.theme.spacing[4]}px;
 
-  ${respondTo.md(css`
-    margin-bottom: ${props.theme.spacing[8]}px;
-  `)}
+    ${respondTo.md(css`
+      margin-bottom: ${props.theme.spacing[8]}px;
+    `)}
 
-  ${Breadcrumbs} {
-    width: 100%;
-  }
-`,
+    ${Breadcrumbs} {
+      width: 100%;
+    }
+  `,
 )
 
 export const MastheadContent = styled.div(

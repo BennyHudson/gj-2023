@@ -12,11 +12,13 @@ import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import client from '@lib/apollo-client'
 
+
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import type { PageData } from '@typings/PageData.types'
 
-const CartPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
+const CartPage: FC<PageData> = ({ headerNav, footerNav, siteOptions }: PageData): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {

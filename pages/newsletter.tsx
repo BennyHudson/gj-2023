@@ -2,6 +2,7 @@ import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect } from 'react'
 
 import Newsletter from '@components/Newsletter'
+import type { NewsletterProps } from '@components/Newsletter/Newsletter.types'
 import PageLayout from '@components/PageLayout'
 import RawHtmlWrapper from '@components/RawHtmlWrapper'
 import SplitPageTemplate from '@components/SplitPageTemplate'
@@ -13,11 +14,27 @@ import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import client from '@lib/apollo-client'
 
+
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import type { PageData } from '@typings/PageData.types'
 
-const NewsletterPage: FC = ({ headerNav, footerNav, newsletter, newsletterForm, siteOptions }): ReactElement => {
+interface NewsletterPageProps extends PageData {
+  newsletter: {
+    title: string
+    description: string
+  }
+  newsletterForm: NewsletterProps['form']
+}
+
+const NewsletterPage: FC<NewsletterPageProps> = ({
+  headerNav,
+  footerNav,
+  newsletter,
+  newsletterForm,
+  siteOptions,
+}: NewsletterPageProps): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {

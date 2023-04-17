@@ -1,10 +1,8 @@
 export interface HeadingBlock {
-  [P: string]: {
-    heading: string
-    pull: string
-    selectHeadingType: string
-    fieldGroupName: string
-  }
+  heading: string
+  pull: string
+  selectHeadingType: string
+  fieldGroupName: string
 }
 
 export const headingBlock = (postType: string): string => {

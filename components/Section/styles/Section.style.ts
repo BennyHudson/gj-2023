@@ -5,8 +5,9 @@ import respondTo from '@mixins/respondTo'
 
 import type { StyledSectionProps } from './Section.style.types'
 
+type SectionProps = Pick<StyledSectionProps, 'theme' | 'appearance' | 'paddingLevel' | 'backgroundImage'>
 export const Section = styled.div(
-  (props: StyledSectionProps): FlattenSimpleInterpolation => css`
+  (props: SectionProps): FlattenSimpleInterpolation => css`
     position: relative;
     background-color: ${props.theme.colours.white};
     padding: ${props.theme.spacing[4]}px 0;
@@ -44,8 +45,9 @@ export const Section = styled.div(
   `,
 )
 
+type ContentProps = Pick<StyledSectionProps, 'theme' | 'containerWidth' | 'textAlign'>
 export const Content = styled.div(
-  (props: StyledSectionProps): FlattenSimpleInterpolation => css`
+  (props: ContentProps): FlattenSimpleInterpolation => css`
     margin: 0 auto;
     width: 100%;
     max-width: ${props.theme.containerWidth}px;

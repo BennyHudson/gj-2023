@@ -1,8 +1,11 @@
-import { FlattenSimpleInterpolation, css } from 'styled-components'
+/* eslint-disable import/no-anonymous-default-export, @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+import type { FlattenSimpleInterpolation } from 'styled-components'
+import { css } from 'styled-components'
 
-import { Theme } from '@themes/gjTheme/gjTheme.types'
+import type { Theme } from '@themes/gjTheme/gjTheme.types'
 
-import { MixinRespondToGeneric } from './respondTo.types'
+import type { MixinRespondToGeneric } from './respondTo.types'
 import createMixin from './utils/createMixin'
 
 function getMdBreakpoint(theme: Theme, styles: FlattenSimpleInterpolation): FlattenSimpleInterpolation {

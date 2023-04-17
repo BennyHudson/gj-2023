@@ -41,11 +41,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({ inverse = false, navigati
                         const isActive = activeSubNav === index
                         return (
                           <li key={index}>
-                            <Styled.SubLink
-                              $inverse={inverse}
-                              $feature
-                              onClick={() => setActiveSubNav(isActive ? null : index)}
-                            >
+                            <Styled.SubLink $inverse={inverse} $feature onClick={() => setActiveSubNav(isActive ? null : index)}>
                               {child.label} <FontAwesomeIcon icon={isActive ? (faAngleUp as IconProp) : (faAngleDown as IconProp)} />
                             </Styled.SubLink>
                             <AnimateHeight duration={500} height={isActive ? 'auto' : 0}>
@@ -53,13 +49,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({ inverse = false, navigati
                                 {child.children?.map((cat, index) => {
                                   return (
                                     /* eslint-disable */
-                                    <Styled.SubLink 
-                                      $feature={false} 
-                                      $inverse={inverse} 
-                                      href={cat.uri} 
-                                      key={index} 
-                                      as={Link as ElementType}
-                                    >
+                                    <Styled.SubLink $feature={false} $inverse={inverse} href={cat.uri} key={index} as={Link as ElementType}>
                                       {cat.label}
                                     </Styled.SubLink>
                                     /* eslint-enable */

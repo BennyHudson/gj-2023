@@ -1,9 +1,5 @@
-import type { FeaturedImage } from '@typings/FeaturedImage.types'
+import type { ShopProduct } from '@queries/homepage/featured-products'
 
 export interface ShopGridProps {
-  products: {
-    name: string
-    link: string
-    featured: FeaturedImage
-  }[]
+  products: ShopProduct[]
 }

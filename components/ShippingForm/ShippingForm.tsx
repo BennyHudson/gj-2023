@@ -34,12 +34,12 @@ const ShippingForm: FC<ShippingFormProps> = ({ billingAddress, setFieldValue, er
         <EditButton
           type='button'
           onClick={() => {
-            setFieldValue('shipping.address_1', customer?.billing?.address_1 || billingAddress.address_1)
-            setFieldValue('shipping.address_2', customer?.billing?.address_2 || billingAddress.address_2)
-            setFieldValue('shipping.city', customer?.billing?.city || billingAddress.city)
-            setFieldValue('shipping.state', customer?.billing?.state || billingAddress.state)
-            setFieldValue('shipping.postcode', customer?.billing?.postcode || billingAddress.postcode)
-            setFieldValue('shipping.country', customer?.billing?.country || billingAddress.country)
+            setFieldValue('shipping.address_1', customer?.billing?.address_1 || billingAddress?.address_1 || '')
+            setFieldValue('shipping.address_2', customer?.billing?.address_2 || billingAddress?.address_2 || '')
+            setFieldValue('shipping.city', customer?.billing?.city || billingAddress?.city || '')
+            setFieldValue('shipping.state', customer?.billing?.state || billingAddress?.state || '')
+            setFieldValue('shipping.postcode', customer?.billing?.postcode || billingAddress?.postcode || '')
+            setFieldValue('shipping.country', customer?.billing?.country || billingAddress?.country || '')
           }}
           text='Copy from billing address'
         />

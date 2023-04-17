@@ -7,6 +7,8 @@ import respondTo from '@mixins/respondTo'
 
 import type { StyledSkeletonLoaderProps } from './SkeletonLoader.style.types'
 
+type SkeletonLoaderTheme = Pick<StyledSkeletonLoaderProps, 'theme'>
+
 export const SkeletonLoader = styled.div((): FlattenSimpleInterpolation => [])
 
 export const PostGrid = styled.div(
@@ -35,7 +37,7 @@ export const PostGrid = styled.div(
 )
 
 export const Excerpt = styled.div(
-  (props: StyledSkeletonLoaderProps): FlattenSimpleInterpolation => css`
+  (props: SkeletonLoaderTheme): FlattenSimpleInterpolation => css`
     ${Date} {
       background: ${props.theme.colours.lightGrey};
       color: ${props.theme.colours.lightGrey};
@@ -45,7 +47,7 @@ export const Excerpt = styled.div(
 )
 
 export const Title = styled.div(
-  (props: StyledSkeletonLoaderProps): FlattenSimpleInterpolation => css`
+  (props: SkeletonLoaderTheme): FlattenSimpleInterpolation => css`
     display: flex;
     flex-direction: column;
     gap: ${props.theme.spacing[1] / 2}px;
@@ -53,7 +55,7 @@ export const Title = styled.div(
 )
 
 export const Text = styled.span(
-  (props: StyledSkeletonLoaderProps): FlattenSimpleInterpolation => css`
+  (props: SkeletonLoaderTheme): FlattenSimpleInterpolation => css`
     display: block;
     height: ${props.theme.typography.heading[1].fontSize};
     background: ${props.theme.colours.lightGrey};

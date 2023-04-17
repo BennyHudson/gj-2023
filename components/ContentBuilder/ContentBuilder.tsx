@@ -7,9 +7,9 @@ import type { PageContextProps } from '@context/PageContext'
 import PageContext from '@context/PageContext'
 
 import type { ContentBuilder as CBProps } from '@queries/fragments/contentBuilder'
+
 import AffiliateProductBlock from './components/AffiliateProductBlock'
 import ButtonBlock from './components/ButtonBlock'
-import CodeBlock from './components/CodeBlock'
 import Form from './components/Form'
 import GalleryBlock from './components/GalleryBlock'
 import HeadingBlock from './components/HeadingBlock'
@@ -52,9 +52,6 @@ const ContentBuilder: FC<ContentBuilderProps> = ({ content, prefix, membersOnly 
     case `${prefix}_ImageSlider`:
       return <ImageSlider key={index} slides={block.slider} />
 
-    case `${prefix}_CodeSnippet`:
-      return <CodeBlock key={index} adCode={block.adCode} />
-
     case `${prefix}_CompetitionForm`:
       return (
         <>
@@ -63,7 +60,7 @@ const ContentBuilder: FC<ContentBuilderProps> = ({ content, prefix, membersOnly 
       )
 
     case `${prefix}_AffiliateProducts`:
-      return <AffiliateProductBlock key={index} {...block} />
+      return <AffiliateProductBlock key={index} affiliateProducts={block.affiliateProducts} />
     }
   }
 

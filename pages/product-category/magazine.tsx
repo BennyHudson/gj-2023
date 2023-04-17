@@ -11,12 +11,30 @@ import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
 
+
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
 import { magazineCategoryQuery } from '@queries/products/magazine-category'
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+import type { PageData } from '@typings/PageData.types'
 
-const Magazines: FC = ({ headerNav, footerNav, magazineData, siteOptions }): ReactElement => {
+interface MagazinesPageProps extends PageData {
+  magazineData: {
+    name: string
+    products: {
+      edges: {
+        node: {
+          name: string
+          slug: string
+          image: FeaturedImage
+        }
+      }[]
+    }
+  }
+}
+
+const MagazinesPage: FC<MagazinesPageProps> = ({ headerNav, footerNav, magazineData, siteOptions }: MagazinesPageProps): ReactElement => {
   const breadcrumbs = [
     {
       text: 'Home',
@@ -49,7 +67,7 @@ const Magazines: FC = ({ headerNav, footerNav, magazineData, siteOptions }): Rea
   )
 }
 
-export default Magazines
+export default MagazinesPage
 
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
@@ -64,6 +82,6 @@ export async function getStaticProps() {
       siteOptions: siteOptions.data,
       magazineData: magazineData.data.productCategory,
     },
-    // revalidate: 60,
+    revalidate: 60,
   }
 }

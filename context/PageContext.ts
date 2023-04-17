@@ -5,13 +5,18 @@ import type { Shipping } from '@typings/Shipping.types'
 import type { ShippingAddress } from '@typings/ShippingAddress.types'
 import type { Subscription } from '@typings/Subscription.types'
 
-interface Customer {
+export interface Customer {
   id: number
   first_name: string
   last_name: string
   email: string
   billing?: BillingAddressProps
   shipping?: ShippingAddress
+  role: string
+  meta_data: {
+    key: string
+    value: number[]
+  }[]
 }
 
 export interface PageContextProps {
@@ -30,7 +35,7 @@ export interface PageContextProps {
   customer: Customer | null
   setCustomer: (customer?: Customer) => void
   shippingRate: Shipping
-  setShippingRate: (shippingRate: number) => void
+  setShippingRate: (shippingRate: Shipping) => void
   showToolbar: boolean
   getCustomerData: (id: number) => void
   subscriptions: Subscription[]

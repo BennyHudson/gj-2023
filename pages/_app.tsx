@@ -9,7 +9,7 @@ import '@assets/styles/fonts.css'
 
 import Scripts from '@components/Scripts'
 
-import type { PageContextProps } from '@context/PageContext'
+import type { Customer, PageContextProps } from '@context/PageContext'
 import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
@@ -17,6 +17,16 @@ import client from '@lib/apollo-client'
 import GlobalStyle from '@styles/GlobalStyle'
 
 import { gjTheme } from '@themes/gjTheme'
+
+import type { Subscription } from '@typings/Subscription.types'
+
+interface TokenData {
+  data: {
+    user: {
+      id: number
+    }
+  }
+}
 
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => {
   const [token, setToken] = useState<PageContextProps['token']>()
@@ -26,12 +36,12 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
   const [cart, setCart] = useState<PageContextProps['cart']>([])
   const [shippingRate, setShippingRate] = useState<PageContextProps['shippingRate']>()
   const [customer, setCustomer] = useState<PageContextProps['customer']>()
-  const [subscriptions, setSubscriptions] = useState()
+  const [subscriptions, setSubscriptions] = useState<Subscription[]>()
   const [showToolbar, setShowToolbar] = useState(false)
 
   const getCustomerData = async (id: number) => {
     const customerDetails = await fetch(`/api/user/${id}`)
-    const customerData = await customerDetails.json()
+    const customerData = (await customerDetails.json()) as Customer
 
     if (customerData.role === 'administrator' || customerData.role === 'editor') {
       setShowToolbar(true)
@@ -43,7 +53,7 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
       const subscriptionIds = customerData.meta_data?.find((meta) => meta.key === '_wcs_subscription_ids_cache')
       if (!subscriptionIds) return
 
-      const subs = []
+      const subs: Subscription[] = []
 
       await Promise.all(
         subscriptionIds.value.map(async (subscriptionId: number) => {
@@ -59,8 +69,10 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
 
   useEffect(() => {
     const gjCart = localStorage.getItem('cart')
+
     if (gjCart) {
-      setCart(gjCart.split(','))
+      const cartIds = gjCart.split(',')
+      setCart(cartIds.map((cartId) => parseInt(cartId)))
     }
   }, [])
 
@@ -68,7 +80,7 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps): ReactElement => 
     const gjToken = localStorage.getItem('gjToken')
     if (gjToken) {
       setToken(gjToken)
-      const decodedToken: number = jwt_decode(gjToken)
+      const decodedToken: TokenData = jwt_decode(gjToken)
       getCustomerData(decodedToken.data.user.id)
     }
   }, [])

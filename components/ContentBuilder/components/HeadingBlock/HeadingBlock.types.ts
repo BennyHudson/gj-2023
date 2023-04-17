@@ -1,3 +1,5 @@
+import type { HeadingBlock } from '@queries/fragments/contentBuilder/headingBlock'
+
 export interface HeadingBlockProps {
-  text: string
+  text: HeadingBlock['heading']
 }

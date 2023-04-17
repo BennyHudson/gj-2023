@@ -15,14 +15,27 @@ import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
 
+
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { freeGiftQuery } from '@queries/global/free-gift'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
 import { subscriptionProductsQuery } from '@queries/global/subscription-products'
+import type { ClubPageData } from '@queries/pages/club'
 import { clubQuery } from '@queries/pages/club'
+import type { PageData } from '@typings/PageData.types'
+import type { Product } from '@typings/Product.types'
 
-const ClubPage: FC = ({
+interface ClubPageProps extends PageData {
+  pageData: ClubPageData
+  subscriptionProducts: Product[]
+  freeGift?: Product
+  subscriptionOverview: {
+    subscriptionPerk: string
+  }[]
+}
+
+const ClubPage: FC<ClubPageProps> = ({
   pageData,
   headerNav,
   footerNav,
@@ -30,7 +43,7 @@ const ClubPage: FC = ({
   freeGift,
   subscriptionOverview,
   siteOptions,
-}): ReactElement => {
+}: ClubPageProps): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {

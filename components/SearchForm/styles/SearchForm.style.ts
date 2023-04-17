@@ -10,8 +10,9 @@ export const SearchWrapper = styled.div(
   `,
 )
 
+type SearchFormProps = Pick<StyledSearchFormProps, 'theme'>
 export const SearchForm = styled(Form)(
-  (props: StyledSearchFormProps): FlattenSimpleInterpolation => css`
+  (props: SearchFormProps): FlattenSimpleInterpolation => css`
     display: flex;
     width: 100%;
     margin-bottom: ${props.theme.spacing[8]}px;

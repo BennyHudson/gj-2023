@@ -12,12 +12,19 @@ import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
 
+
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import type { Page } from '@queries/pages/page'
 import { pageQuery } from '@queries/pages/page'
+import type { PageData } from '@typings/PageData.types'
 
-const TeamPage: FC = ({ headerNav, footerNav, pageData, siteOptions }): ReactElement => {
+interface TermsPageProps extends PageData {
+  pageData: Page
+}
+
+const TermsPage: FC<TermsPageProps> = ({ headerNav, footerNav, pageData, siteOptions }: TermsPageProps): ReactElement => {
   const breadcrumbs = [
     {
       text: 'Home',
@@ -50,7 +57,7 @@ const TeamPage: FC = ({ headerNav, footerNav, pageData, siteOptions }): ReactEle
   )
 }
 
-export default TeamPage
+export default TermsPage
 
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
@@ -65,6 +72,6 @@ export async function getStaticProps() {
       siteOptions: siteOptions.data,
       pageData: pageData.data.page,
     },
-    // revalidate: 60,
+    revalidate: 60,
   }
 }

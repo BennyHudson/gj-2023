@@ -12,12 +12,33 @@ import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
 
+
+import type { HouseNote } from '@queries/fragments/houseNoteContent'
+import type { Seo } from '@queries/fragments/seo'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
 import { houseNotesQuery } from '@queries/houseNotes/featured-houseNotes'
+import type { PageData } from '@typings/PageData.types'
 
-const HouseNotes: FC = ({ featuredHouseNotes, headerNav, footerNav, siteOptions }): ReactElement => {
+interface HouseNotesPageProps extends PageData {
+  pageData: {
+    seo: Seo
+    additionalPageData: {
+      subtitleText: string
+    }
+    houseNotes: {
+      houseNotesOverheardColumn: HouseNote
+      houseNotesPodcastColumn: HouseNote
+      houseNotesWatchColumn: HouseNote
+      houseNotesScrollColumn: HouseNote[]
+      houseNotesReadColumn: HouseNote[]
+      houseNotesQuoteColumn: HouseNote
+    }
+  }
+}
+
+const HouseNotesPage: FC<HouseNotesPageProps> = ({ pageData, headerNav, footerNav, siteOptions }: HouseNotesPageProps): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -25,16 +46,16 @@ const HouseNotes: FC = ({ featuredHouseNotes, headerNav, footerNav, siteOptions 
   }, [setActiveNavElement])
 
   return (
-    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={featuredHouseNotes.seo} headerStyle='standard' siteOptions={siteOptions}>
+    <PageLayout headerNav={headerNav} footerNav={footerNav} seo={pageData.seo} headerStyle='standard' siteOptions={siteOptions}>
       <HouseNotesFeature
-        introText={featuredHouseNotes.additionalPageData.subtitleText.replace(/<\/?[^>]+(>|$)/g, '')}
+        introText={pageData.additionalPageData.subtitleText.replace(/<\/?[^>]+(>|$)/g, '')}
         columns={{
-          overheard: featuredHouseNotes.houseNotes.houseNotesOverheardColumn,
-          listen: featuredHouseNotes.houseNotes.houseNotesPodcastColumn,
-          watch: featuredHouseNotes.houseNotes.houseNotesWatchColumn,
-          scroll: featuredHouseNotes.houseNotes.houseNotesScrollColumn,
-          read: featuredHouseNotes.houseNotes.houseNotesReadColumn,
-          quote: featuredHouseNotes.houseNotes.houseNotesQuoteColumn,
+          overheard: pageData.houseNotes.houseNotesOverheardColumn,
+          listen: pageData.houseNotes.houseNotesPodcastColumn,
+          watch: pageData.houseNotes.houseNotesWatchColumn,
+          scroll: pageData.houseNotes.houseNotesScrollColumn,
+          read: pageData.houseNotes.houseNotesReadColumn,
+          quote: pageData.houseNotes.houseNotesQuoteColumn,
         }}
       />
       <Section>
@@ -45,20 +66,20 @@ const HouseNotes: FC = ({ featuredHouseNotes, headerNav, footerNav, siteOptions 
   )
 }
 
-export default HouseNotes
+export default HouseNotesPage
 
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
   const siteOptions = await client.query(siteOptionsQuery)
-  const featuredHouseNotes = await client.query(houseNotesQuery)
+  const pageData = await client.query(houseNotesQuery)
 
   return {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
       siteOptions: siteOptions.data,
-      featuredHouseNotes: featuredHouseNotes.data.page,
+      pageData: pageData.data.page,
     },
   }
 }

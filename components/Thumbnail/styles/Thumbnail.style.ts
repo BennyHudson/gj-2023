@@ -84,8 +84,9 @@ export const Thumbnail = styled.div(
   `,
 )
 
+type ThumbnailContentProps = Pick<StyledThumbnailProps, 'theme'>
 export const ThumbnailContent = styled.div(
-  (props: StyledThumbnailProps): FlattenSimpleInterpolation => css`
+  (props: ThumbnailContentProps): FlattenSimpleInterpolation => css`
     position: absolute;
     width: 100%;
     height: 50%;

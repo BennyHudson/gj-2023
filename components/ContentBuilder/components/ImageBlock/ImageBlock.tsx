@@ -10,7 +10,6 @@ import featuredImageUrl from '@helpers/featuredImageUrl'
 import type { Theme } from '@themes/gjTheme/gjTheme.types'
 
 import type { ImageBlockProps } from './ImageBlock.types'
-
 import * as Styled from './styles/ImageBlock.style'
 
 const ImageBlock: FC<ImageBlockProps> = ({ imageSize, image }): ReactElement => {

@@ -19,16 +19,41 @@ import featuredImageUrl from '@helpers/featuredImageUrl'
 import { getAllPosts } from '@lib/api'
 import client from '@lib/apollo-client'
 
+
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { freeGiftQuery } from '@queries/global/free-gift'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
 import { subscriptionProductsQuery } from '@queries/global/subscription-products'
 import { landingPageContentQuery } from '@queries/landingPages/landing-page'
+import type { ClubPageData } from '@queries/pages/club'
 import { clubQuery } from '@queries/pages/club'
+import type { Partner } from '@queries/partners/partners'
 import { partnerQuery } from '@queries/partners/partners'
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+import type { PageData } from '@typings/PageData.types'
+import type { Product } from '@typings/Product.types'
+import type { StaticPaths } from '@typings/StaticPaths.types'
 
-const LandingPage: FC = ({
+interface LandingPageProps extends PageData {
+  landingPageContent: {
+    title: string
+    databaseId: number
+    featuredImage: {
+      node: FeaturedImage
+    }
+    landingPageContent: {
+      redemptionDetails: string
+      redemptionTerms: string
+    }
+  }
+  partners: Partner[]
+  club: ClubPageData['subscriptionPage']['club']
+  subscriptionProducts: Product[]
+  freeGift?: Product
+}
+
+const LandingPage: FC<LandingPageProps> = ({
   headerNav,
   footerNav,
   landingPageContent,
@@ -37,7 +62,7 @@ const LandingPage: FC = ({
   subscriptionProducts,
   freeGift,
   siteOptions,
-}): ReactElement => {
+}: LandingPageProps): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -91,7 +116,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ preview = false, params }) {
+export async function getStaticProps({ preview = false, params }: StaticPaths) {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
   const siteOptions = await client.query(siteOptionsQuery)
@@ -112,6 +137,6 @@ export async function getStaticProps({ preview = false, params }) {
       subscriptionProducts: subscriptionProducts.data.products.nodes,
       freeGift: freeGift.data.products.nodes.length > 0 && freeGift.data.products.nodes[0],
     },
-    // revalidate: 60,
+    revalidate: 60,
   }
 }

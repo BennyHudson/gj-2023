@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import type { FC, ReactElement } from 'react'
 import React, { useContext, useState } from 'react'
@@ -55,31 +54,26 @@ const FeatureCarousel: FC<FeatureCarouselProps> = ({
       <Section appearance='secondary' containerWidth='wide'>
         {title && <Title title={title} links={links} inverse />}
         {mdAndBelow && (
-          <>
-            <Head>
-              <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' />
-            </Head>
-            <Styled.Slider>
-              <Slider {...sliderSettings}>
-                {posts.map((post, index) => {
-                  return (
-                    <Styled.Slide key={index}>
-                      <Styled.PostTitle>
-                        <Meta date={post.date} categories={post.categories} inverse />
-                        {post.meta && <Heading size={1} text={post.meta!} inverse font='Cera' />}
-                        <Heading text={post.title} size={4} inverse font='ChronicleCondensed' />
-                        <Link to={post.uri} size={1} weight={3} inverse font='Cera' showIcon>
-                          {cta}
-                        </Link>
-                      </Styled.PostTitle>
-                      <Overlay />
-                      <Image src={featuredImageUrl(post.featuredImage.node.fullSize)!} fill alt='' key={index} priority={priority} />
-                    </Styled.Slide>
-                  )
-                })}
-              </Slider>
-            </Styled.Slider>
-          </>
+          <Styled.Slider>
+            <Slider {...sliderSettings}>
+              {posts.map((post, index) => {
+                return (
+                  <Styled.Slide key={index}>
+                    <Styled.PostTitle>
+                      <Meta date={post.date} categories={post.categories} inverse />
+                      {post.meta && <Heading size={1} text={post.meta!} inverse font='Cera' />}
+                      <Heading text={post.title} size={4} inverse font='ChronicleCondensed' />
+                      <Link to={post.uri} size={1} weight={3} inverse font='Cera' showIcon>
+                        {cta}
+                      </Link>
+                    </Styled.PostTitle>
+                    <Overlay />
+                    <Image src={featuredImageUrl(post.featuredImage.node.fullSize)!} fill alt='' key={index} priority={priority} />
+                  </Styled.Slide>
+                )
+              })}
+            </Slider>
+          </Styled.Slider>
         )}
         {lgAndAbove && (
           <>

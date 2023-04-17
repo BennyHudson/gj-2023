@@ -9,12 +9,18 @@ import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
 
+
 import { page404Query } from '@queries/global/404-page'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import type { PageData } from '@typings/PageData.types'
 
-const SearchPage: FC = ({ headerNav, footerNav, backgroundImage, siteOptions }): ReactElement => {
+interface ErrorPageProps extends PageData {
+  backgroundImage: string
+}
+
+const ErrorPage: FC<ErrorPageProps> = ({ headerNav, footerNav, backgroundImage, siteOptions }: ErrorPageProps): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -28,7 +34,7 @@ const SearchPage: FC = ({ headerNav, footerNav, backgroundImage, siteOptions }):
   )
 }
 
-export default SearchPage
+export default ErrorPage
 
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)

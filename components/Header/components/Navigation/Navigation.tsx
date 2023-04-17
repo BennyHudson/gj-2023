@@ -10,10 +10,6 @@ import PageContext from '@context/PageContext'
 
 import flatListToHierarchical from '@helpers/flatListToHierarchical'
 
-import type { HouseNote } from '@queries/fragments/houseNoteContent'
-import type { Podcast } from '@queries/fragments/podcastContent'
-import type { Post } from '@queries/fragments/postContent'
-
 import type { NavigationProps } from './Navigation.types'
 import * as Styled from './styles/Navigation.style'
 
@@ -74,7 +70,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
                       },
                     ]}
                   />
-                  <PostGrid inverse={inverse} posts={navigation.podcasts.nodes as Podcast[]} />
+                  <PostGrid inverse={inverse} posts={navigation.podcasts.nodes} />
                 </Styled.SubMenuWrapper>
               </Styled.MenuItem>
             )
@@ -96,7 +92,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
                       },
                     ]}
                   />
-                  <PostGrid inverse={inverse} posts={navigation.houseNotes.nodes as HouseNote[]} />
+                  <PostGrid inverse={inverse} posts={navigation.houseNotes.nodes} />
                 </Styled.SubMenuWrapper>
               </Styled.MenuItem>
             )
@@ -118,7 +114,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
                       },
                     ]}
                   />
-                  <PostGrid inverse={inverse} posts={navigation.videos.nodes as Post[]} />
+                  <PostGrid inverse={inverse} posts={navigation.videos.nodes} />
                 </Styled.SubMenuWrapper>
               </Styled.MenuItem>
             )
@@ -140,7 +136,7 @@ const Navigation: FC<NavigationProps> = ({ inverse = false, navigation }: Naviga
                       },
                     ]}
                   />
-                  <PostGrid inverse={inverse} posts={navigation.sessions.nodes as Post[]} />
+                  <PostGrid inverse={inverse} posts={navigation.sessions.nodes} />
                 </Styled.SubMenuWrapper>
               </Styled.MenuItem>
             )

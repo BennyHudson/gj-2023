@@ -10,7 +10,6 @@ import PageContext from '@context/PageContext'
 import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import type { NewsletterBannerProps } from './NewsletterBanner.types'
-
 import * as Styled from './styles/NewsletterBanner.style'
 
 const NewsletterBanner: FC<NewsletterBannerProps> = ({ form, backgroundImage, size = 1 }: NewsletterBannerProps): ReactElement => {

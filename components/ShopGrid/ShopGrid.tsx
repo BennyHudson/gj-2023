@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import type { FC, ReactElement } from 'react'
 import React from 'react'
@@ -46,25 +45,20 @@ const ShopGrid: FC<ShopGridProps> = ({ products }: ShopGridProps): ReactElement 
 
   if (mdAndBelow) {
     return (
-      <>
-        <Head>
-          <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' />
-        </Head>
-        <Styled.ProductCarousel>
-          <Slider {...sliderSettings}>
-            {products.map((product, index) => {
-              return (
-                <Styled.CardWrapper key={index}>
-                  <Styled.ShopCard href={product.link}>
-                    <Image src={featuredImageUrl(product.featured.squareThumb)} width={400} height={400} alt={product.name} />
-                    <Heading size={1} font='Cera' text={product.name} />
-                  </Styled.ShopCard>
-                </Styled.CardWrapper>
-              )
-            })}
-          </Slider>
-        </Styled.ProductCarousel>
-      </>
+      <Styled.ProductCarousel>
+        <Slider {...sliderSettings}>
+          {products.map((product, index) => {
+            return (
+              <Styled.CardWrapper key={index}>
+                <Styled.ShopCard href={product.link}>
+                  <Image src={featuredImageUrl(product.featured.squareThumb)} width={400} height={400} alt={product.name} />
+                  <Heading size={1} font='Cera' text={product.name} />
+                </Styled.ShopCard>
+              </Styled.CardWrapper>
+            )
+          })}
+        </Slider>
+      </Styled.ProductCarousel>
     )
   }
 

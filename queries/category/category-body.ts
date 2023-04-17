@@ -10,6 +10,7 @@ export interface CategoryBody {
   taxonomyName: string
   slug: string
   seo: Seo
+  databaseId: number
   children: {
     nodes: {
       name: string

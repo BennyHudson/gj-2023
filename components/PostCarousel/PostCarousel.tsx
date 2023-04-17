@@ -1,7 +1,6 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/pro-thin-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Head from 'next/head'
 import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect, useState } from 'react'
 import Slider from 'react-slick'
@@ -15,7 +14,7 @@ import * as Styled from './styles/PostCarousel.style'
 
 const PostCarousel: FC = (): ReactElement => {
   const { cmsUrl } = useContext(PageContext) as PageContextProps
-  
+
   const [posts, setPosts] = useState<PostCarouselState['posts']>([])
 
   const getPosts = async () => {
@@ -52,9 +51,6 @@ const PostCarousel: FC = (): ReactElement => {
 
   return (
     <Styled.PostCarousel>
-      <Head>
-        <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' />
-      </Head>
       <Styled.Container>
         <Slider {...sliderSettings}>
           {posts.map((post, index) => {

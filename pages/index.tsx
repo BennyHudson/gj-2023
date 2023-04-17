@@ -4,9 +4,11 @@ import React, { useContext, useEffect } from 'react'
 import BannerAdvert from '@components/BannerAdvert'
 import ClubBanner from '@components/ClubBanner'
 import FeatureCarousel from '@components/FeatureCarousel'
+import type { PostProps } from '@components/FeatureCarousel/FeatureCarousel.types'
 import FullPageFeature from '@components/FullPageFeature'
 import GiftGuideFeature from '@components/GiftGuideFeature'
 import NewsletterBanner from '@components/NewsletterBanner'
+import type { NewsletterBannerProps } from '@components/NewsletterBanner/NewsletterBanner.types'
 import PageLayout from '@components/PageLayout'
 import PodcastGrid from '@components/PodcastGrid'
 import PostCarousel from '@components/PostCarousel'
@@ -22,20 +24,82 @@ import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
 
+
+import type { Article } from '@queries/fragments/articleContent'
+import type { Podcast } from '@queries/fragments/podcastContent'
+import type { Post } from '@queries/fragments/postContent'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
 import { articleCategoryQuery } from '@queries/homepage/category'
 import { clubQuery } from '@queries/homepage/club'
+import type { ShopProduct } from '@queries/homepage/featured-products'
 import { featuredProductsQuery } from '@queries/homepage/featured-products'
 import { giftGuideQuery } from '@queries/homepage/gift-guide'
+import type { HomepageData } from '@queries/homepage/homepage'
 import { homepageQuery } from '@queries/homepage/homepage'
 import { latestPodcastsQuery } from '@queries/homepage/latest-podcasts'
 import { latestPostsQuery } from '@queries/homepage/latest-posts'
 import { latestVideoQuery } from '@queries/homepage/latest-video'
 import { sessionsFeatureQuery } from '@queries/homepage/sessions-feature'
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+import type { PageData } from '@typings/PageData.types'
 
-const Home: FC = ({
+interface HomePageProps extends PageData {
+  pageData: HomepageData
+  latestPosts: Post[] | Article[]
+  coverInterviews: {
+    category: {
+      name: string
+      description: string
+      uri: string
+    }
+    articles: {
+      nodes: Post[] | Article[]
+    }
+  }
+  sessionsFeature: {
+    page: {
+      sessions: {
+        sessions: {
+          sessionsIntroText: string
+        }
+      }
+    }
+    articles: {
+      nodes: Post[] | Article[]
+    }
+  }
+  giftGuide: {
+    featuredImage: {
+      node: FeaturedImage
+    }
+  }
+  latestPodcasts: {
+    podcasts: {
+      nodes: Podcast[]
+    }
+  }
+  latestVideo: PostProps[]
+  competitions: {
+    category: {
+      name: string
+      description: string
+      uri: string
+    }
+    articles: {
+      nodes: Post[] | Article[]
+    }
+  }
+  newsletterForm: NewsletterBannerProps['form']
+  featuredProducts: ShopProduct[]
+  club: {
+    description: string
+    card: FeaturedImage
+  }
+}
+
+const HomePage: FC<HomePageProps> = ({
   headerNav,
   footerNav,
   siteOptions,
@@ -50,7 +114,7 @@ const Home: FC = ({
   newsletterForm,
   featuredProducts,
   club,
-}): ReactElement => {
+}: HomePageProps): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -143,14 +207,7 @@ const Home: FC = ({
       </Section>
       <FeatureCarousel
         posts={latestVideo.map((video) => {
-          return {
-            title: video.title,
-            date: video.date,
-            uri: video.uri,
-            subtitle: video.articleAcf.standfirst,
-            categories: video.categories,
-            featuredImage: video.featuredImage,
-          }
+          return { ...video }
         })}
         title='Video'
         links={[
@@ -189,7 +246,7 @@ const Home: FC = ({
   )
 }
 
-export default Home
+export default HomePage
 
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
@@ -225,6 +282,6 @@ export async function getStaticProps() {
       featuredProducts: featuredProducts.data.clubhousePartnersOptions.store.store.brands,
       club: club.data.page.subscriptionPage.club,
     },
-    // revalidate: 60,
+    revalidate: 60,
   }
 }

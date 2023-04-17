@@ -19,13 +19,13 @@ import useResetPassword from '@hooks/useResetPassword'
 
 import client from '@lib/apollo-client'
 
+
 import { footerNavQuery } from '@queries/global/footer-nav'
-import { freeGiftQuery } from '@queries/global/free-gift'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
-import { subscriptionProductsQuery } from '@queries/global/subscription-products'
+import type { PageData } from '@typings/PageData.types'
 
-const ClubPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
+const LostPasswordPage: FC<PageData> = ({ headerNav, footerNav, siteOptions }: PageData): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   const [success, setSuccess] = useState(false)
@@ -125,21 +125,17 @@ const ClubPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
   )
 }
 
-export default ClubPage
+export default LostPasswordPage
 
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)
   const footerNav = await client.query(footerNavQuery)
-  const subscriptionProducts = await client.query(subscriptionProductsQuery)
-  const freeGift = await client.query(freeGiftQuery)
   const siteOptions = await client.query(siteOptionsQuery)
 
   return {
     props: {
       headerNav: headerNav.data,
       footerNav: footerNav.data,
-      subscriptionProducts: subscriptionProducts.data.products.nodes,
-      freeGift: freeGift.data.products.nodes.length > 0 && freeGift.data.products.nodes[0],
       siteOptions: siteOptions.data,
     },
   }

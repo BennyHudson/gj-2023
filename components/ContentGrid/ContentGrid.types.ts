@@ -6,9 +6,8 @@ import type { ContentBuilder } from '@queries/fragments/contentBuilder'
 export interface ContentGridProps {
   byline?: BylineProps
   contentBuilder?: {
-    content: ContentBuilder[]
+    content?: ContentBuilder[]
     membersOnly?: boolean
-    prefix: string
   }
   contentBuilderPrefix: string
   articleNote: ArticleNote

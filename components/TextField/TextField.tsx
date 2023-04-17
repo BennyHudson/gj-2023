@@ -23,6 +23,7 @@ const TextField: FC<FormFieldProps> = ({
       required={isRequired}
       labelPlacement={labelPlacement}
       validationMessage={validationMessage}
+      id={id}
     >
       <Styled.TextField
         name={typeof id === 'number' ? `input_${id}` : id}

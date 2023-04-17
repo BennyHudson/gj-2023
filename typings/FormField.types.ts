@@ -10,6 +10,7 @@ export interface FormFieldProps {
     | 'password'
     | 'email'
     | 'telephone'
+    | 'text'
     | 'number'
     | 'TEXT'
     | 'EMAIL'

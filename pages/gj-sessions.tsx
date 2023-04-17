@@ -14,13 +14,33 @@ import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
 
+
+import type { Article } from '@queries/fragments/articleContent'
+import type { Post } from '@queries/fragments/postContent'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
 import { sessionsFeatureQuery } from '@queries/homepage/sessions-feature'
+import type { Sessions } from '@queries/pages/sessions'
 import { sessionsQuery } from '@queries/pages/sessions'
+import type { PageData } from '@typings/PageData.types'
 
-const SessionsPage: FC = ({ pageData, featuredArticle, headerNav, footerNav, siteOptions }): ReactElement => {
+interface SessionsPageProps extends PageData {
+  featuredArticle: {
+    articles: {
+      nodes: Post[] | Article[]
+    }
+  }
+  pageData: Sessions
+}
+
+const SessionsPage: FC<SessionsPageProps> = ({
+  pageData,
+  featuredArticle,
+  headerNav,
+  footerNav,
+  siteOptions,
+}: SessionsPageProps): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {

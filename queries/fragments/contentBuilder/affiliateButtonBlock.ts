@@ -1,9 +1,7 @@
 export interface AffiliateButtonBlock {
-  [P: string]: {
-    fieldGroupName: string
-    text: string
-    url: string
-  }
+  fieldGroupName: string
+  text: string
+  url: string
 }
 
 export const affiliateButtonBlock = (postType: string): string => {

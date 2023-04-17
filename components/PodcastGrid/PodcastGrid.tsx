@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import type { FC, ReactElement } from 'react'
 import React from 'react'
 import Slider from 'react-slick'
@@ -45,28 +44,23 @@ const PodcastGrid: FC<PodcastGridProps> = ({ podcasts }: PodcastGridProps): Reac
         </Styled.FeatureDetails>
       </Styled.FeaturedPodcast>
       {sm && (
-        <>
-          <Head>
-            <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' />
-          </Head>
-          <Styled.PostCarousel>
-            <Slider {...sliderSettings}>
-              {podcasts.slice(1).map((podcast, index) => {
-                return (
-                  <Styled.Podcast key={index}>
-                    <Styled.PodcastDetails href={podcast.uri}>
-                      <Meta date={podcasts[0].date} />
-                      <Heading size={1} text={podcast.title} font='ChronicleCondensed' />
-                      <Paragraph font='Cera' weight={1} size={1} appearance='secondary'>
-                        {podcast.podcasts.podcastMeta.guest.name}, {podcast.podcasts.podcastMeta.guest.about}
-                      </Paragraph>
-                    </Styled.PodcastDetails>
-                  </Styled.Podcast>
-                )
-              })}
-            </Slider>
-          </Styled.PostCarousel>
-        </>
+        <Styled.PostCarousel>
+          <Slider {...sliderSettings}>
+            {podcasts.slice(1).map((podcast, index) => {
+              return (
+                <Styled.Podcast key={index}>
+                  <Styled.PodcastDetails href={podcast.uri}>
+                    <Meta date={podcasts[0].date} />
+                    <Heading size={1} text={podcast.title} font='ChronicleCondensed' />
+                    <Paragraph font='Cera' weight={1} size={1} appearance='secondary'>
+                      {podcast.podcasts.podcastMeta.guest.name}, {podcast.podcasts.podcastMeta.guest.about}
+                    </Paragraph>
+                  </Styled.PodcastDetails>
+                </Styled.Podcast>
+              )
+            })}
+          </Slider>
+        </Styled.PostCarousel>
       )}
       {mdAndAbove && (
         <Styled.PodcastList>

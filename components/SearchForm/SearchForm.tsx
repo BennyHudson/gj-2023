@@ -6,6 +6,7 @@ import type { FC, ReactElement } from 'react'
 import React, { useContext, useState } from 'react'
 
 import SearchResults from '@components/SearchResults'
+import type { SearchResult } from '@components/SearchResults/SearchResults.types'
 
 import type { PageContextProps } from '@context/PageContext'
 import PageContext from '@context/PageContext'
@@ -14,7 +15,7 @@ import * as Styled from './styles/SearchForm.style'
 
 const SearchForm: FC = (): ReactElement => {
   const [loading, setLoading] = useState(false)
-  const [searchResults, setSearchResults] = useState([])
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([])
   const [searchTerm, setSearchTerm] = useState()
   const { apiUrl } = useContext(PageContext) as PageContextProps
 

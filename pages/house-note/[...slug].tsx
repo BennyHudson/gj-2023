@@ -100,6 +100,6 @@ export async function getStaticProps({ preview = false, params }: StaticPaths) {
       pageData: response.data.houseNote,
       articleNote: response.data.gjOptions.articleNote,
     },
-    // revalidate: 60
+    revalidate: 60,
   }
 }

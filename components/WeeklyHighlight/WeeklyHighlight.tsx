@@ -12,11 +12,17 @@ import Title from '@components/Title'
 
 import { useBreakpoints } from '@hooks/useBreakpoints'
 
-import type { Post } from '@typings/Post.types'
-
 import * as Styled from './styles/WeeklyHighlight.style'
+import type { WeeklyHighlightProps } from './WeeklyHighlight.types'
 
-const WeeklyHighlight: FC<Post> = ({ title, excerpt, uri, date, categories, featuredImage }: Post): ReactElement => {
+const WeeklyHighlight: FC<WeeklyHighlightProps> = ({
+  title,
+  excerpt,
+  uri,
+  date,
+  categories,
+  featuredImage,
+}: WeeklyHighlightProps): ReactElement => {
   const { mdAndAbove } = useBreakpoints()
   return (
     <Section>

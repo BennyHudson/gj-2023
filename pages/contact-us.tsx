@@ -11,12 +11,19 @@ import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
 
+
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import type { Page } from '@queries/pages/page'
 import { pageQuery } from '@queries/pages/page'
+import type { PageData } from '@typings/PageData.types'
 
-const ContactPage: FC = ({ headerNav, footerNav, pageData, siteOptions }): ReactElement => {
+interface ContactPageProps extends PageData {
+  pageData: Page
+}
+
+const ContactPage: FC<ContactPageProps> = ({ headerNav, footerNav, pageData, siteOptions }: ContactPageProps): ReactElement => {
   const breadcrumbs = [
     {
       text: 'Home',
@@ -49,7 +56,7 @@ const ContactPage: FC = ({ headerNav, footerNav, pageData, siteOptions }): React
           title={pageData.title}
           subtitle={pageData.additionalPageData.subtitleText.replace(/<\/?[^>]+(>|$)/g, '')}
         />
-        <ContactDetails contactDetails={pageData.contactInfo} />
+        <ContactDetails contactDetails={pageData.contactInfo!} />
       </Section>
     </PageLayout>
   )
@@ -70,6 +77,6 @@ export async function getStaticProps() {
       siteOptions: siteOptions.data,
       pageData: pageData.data.page,
     },
-    // revalidate: 60,
+    revalidate: 60,
   }
 }

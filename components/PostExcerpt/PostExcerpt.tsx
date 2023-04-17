@@ -14,31 +14,23 @@ import PageContext from '@context/PageContext'
 import type { PostExcerptProps } from './PostExcerpt.types'
 import * as Styled from './styles/PostExcerpt.style'
 
-const PostExcerpt: FC<PostExcerptProps> = ({
-  title,
-  date,
-  uri,
-  categories,
-  inverse = false,
-  featuredImage,
-  priority = false,
-}: PostExcerptProps): ReactElement => {
+const PostExcerpt: FC<PostExcerptProps> = ({ post, inverse = false, priority = false }: PostExcerptProps): ReactElement => {
   const { subscriptions } = useContext(PageContext) as PageContextProps
 
-  const membersOnly = categories && categories.nodes.find((category) => category.name === 'Members')
+  const membersOnly = post.categories && post.categories.nodes.find((category) => category.name === 'Members')
 
   return (
-    <Styled.PostExcerpt href={uri}>
-      <Thumbnail priority={priority} featuredImage={featuredImage?.node.postThumb} />
+    <Styled.PostExcerpt href={post.uri}>
+      <Thumbnail priority={priority} featuredImage={post.featuredImage.node.postThumb} />
       <Styled.Body>
-        <Meta categories={categories} date={date} inverse={inverse} />
+        <Meta categories={post.categories} date={post.date} inverse={inverse} />
         <Styled.Title inverse={inverse}>
           {(!subscriptions || subscriptions?.every((subscription) => subscription.status !== 'active')) && membersOnly && (
             <Styled.IconWrapper>
               <FontAwesomeIcon icon={faLockAlt as IconProp} />
             </Styled.IconWrapper>
           )}
-          <Heading size={1} text={title} inverse={inverse} />
+          <Heading size={1} text={post.title} inverse={inverse} />
         </Styled.Title>
       </Styled.Body>
     </Styled.PostExcerpt>

@@ -14,7 +14,7 @@ const formHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   Object.keys(req.body).forEach((key) => {
     if (req.body[key] instanceof Array) {
-      req.body[key].forEach((value, index) => {
+      req.body[key].forEach((value: unknown, index: number) => {
         formResponses = {
           ...formResponses,
           [`${key}_${req.body[key].length > 1 ? index : index + 1}`]: value,

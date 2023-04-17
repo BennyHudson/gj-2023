@@ -1,17 +1,21 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import type { NextApiRequest, NextApiResponse } from 'next'
+import Stripe from 'stripe'
+
+import type { Product } from '@typings/Product.types'
 
 import { WooCommerce } from '../WooCommerce'
 
 export default async function updatePaymentIntent(req: NextApiRequest, res: NextApiResponse) {
-  const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+    apiVersion: '2022-11-15',
+  })
 
   const getProductTotal = async (): Promise<number> => {
     let amount = 0
 
     await Promise.all(
-      req.body.cart.map(async (cartItem) => {
-        const itemDetails = await WooCommerce.get(`products/${cartItem}`)
+      req.body.cart.map(async (cartItem: number) => {
+        const itemDetails: Product = await WooCommerce.get(`products/${cartItem}`)
         const subscriptionFee = itemDetails.data.meta_data.find((meta) => meta.key === '_subscription_sign_up_fee')
         if (subscriptionFee) {
           amount = amount + parseFloat(subscriptionFee.value)

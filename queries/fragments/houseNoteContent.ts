@@ -1,23 +1,17 @@
 import { gql } from '@apollo/client'
 
-import type { FeaturedImage } from '@typings/FeaturedImage.types'
-
+import type { Article } from './articleContent'
 import { media } from './media'
 
-export interface HouseNote {
-  title: string
-  uri: string
-  articleType: {
-    articleType: string
-    articleTypeLandingPageExcerpt: string
-  }
-  featuredImage: {
-    node: FeaturedImage
-  }
+export interface HouseNote extends Article {
   author: {
     node: {
       name: string
     }
+  }
+  articleType: {
+    articleType: string
+    articleTypeLandingPageExcerpt: string
   }
 }
 
