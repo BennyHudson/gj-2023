@@ -5,6 +5,8 @@ import respondTo from '@mixins/respondTo'
 
 import type { StyledProductFeatureProps } from './ProductFeature.style.types'
 
+type ProductFeatureTheme = Pick<StyledProductFeatureProps, 'theme'>
+
 export const ProductFeature = styled.div(
   (props: StyledProductFeatureProps): FlattenSimpleInterpolation => css`
     background: ${props.theme.colours.lightGrey};
@@ -22,7 +24,7 @@ export const ProductFeature = styled.div(
 )
 
 export const ProductImage = styled.div(
-  (props: StyledProductFeatureProps): FlattenSimpleInterpolation => css`
+  (props: ProductFeatureTheme): FlattenSimpleInterpolation => css`
     grid-column: col-start / span 12;
     position: relative;
     background: ${props.theme.colours.black};
@@ -45,7 +47,7 @@ export const ProductImage = styled.div(
 )
 
 export const ProductContent = styled.div(
-  (props: StyledProductFeatureProps): FlattenSimpleInterpolation => css`
+  (props: ProductFeatureTheme): FlattenSimpleInterpolation => css`
     padding: ${props.theme.spacing[4]}px 5%;
     display: flex;
     align-items: flex-start;
@@ -65,7 +67,7 @@ export const ProductContent = styled.div(
 )
 
 export const ContentWrapper = styled.div(
-  (props: StyledProductFeatureProps): FlattenSimpleInterpolation => css`
+  (props: ProductFeatureTheme): FlattenSimpleInterpolation => css`
     max-width: 800px;
     display: flex;
     flex-direction: column;

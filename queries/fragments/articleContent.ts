@@ -1,5 +1,8 @@
 import { gql } from '@apollo/client'
 
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+
+import type { ContentBuilder } from './contentBuilder'
 import { media } from './media'
 
 export interface Article {
@@ -8,12 +11,8 @@ export interface Article {
   date: string
   uri: string
   databaseId: number
-  featuredImage?: {
-    node: {
-      fullSize: string
-      postThumb: string
-      squareThumb: string
-    }
+  featuredImage: {
+    node: FeaturedImage
   }
   categories?: {
     nodes: {
@@ -23,6 +22,7 @@ export interface Article {
   }
   articleAcf: {
     standfirst: string
+    contentBuilder: ContentBuilder[]
   }
 }
 

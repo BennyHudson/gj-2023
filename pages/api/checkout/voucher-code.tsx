@@ -1,11 +1,13 @@
 import dayjs from 'dayjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
+import type { Voucher } from '@typings/Voucher.types'
+
 import { WooCommerce } from '../WooCommerce'
 
 export default async function voucherCode(req: NextApiRequest, res: NextApiResponse) {
   const allVoucherCodes = await WooCommerce.get('coupons?per_page=100')
-  const currentCode = allVoucherCodes.data.find((voucher) => voucher.code.toLowerCase() === req.body.voucherCode.toLowerCase())
+  const currentCode = allVoucherCodes.data.find((voucher: Voucher) => voucher.code.toLowerCase() === req.body.voucherCode.toLowerCase())
 
   if (currentCode) {
     const now = dayjs().toISOString()

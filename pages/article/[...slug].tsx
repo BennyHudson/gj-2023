@@ -18,17 +18,18 @@ import client from '@lib/apollo-client'
 
 import type { ArticleBody } from '@queries/article/article-body'
 import { articleBody } from '@queries/article/article-body'
+import type { ContentBuilder } from '@queries/fragments/contentBuilder'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
 import type { PageData } from '@typings/PageData.types'
 import type { StaticPaths } from '@typings/StaticPaths.types'
 
-interface ArticleData extends PageData {
+interface ArticlePageProps extends PageData {
   data: ArticleBody
 }
 
-const Article: FC<ArticleData> = ({ data, headerNav, footerNav, siteOptions }: ArticleData): ReactElement => {
+const ArticlePage: FC<ArticlePageProps> = ({ data, headerNav, footerNav, siteOptions }: ArticlePageProps): ReactElement => {
   const articleData = data.article
   const { articleNote } = data.gjOptions
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
@@ -74,7 +75,7 @@ const Article: FC<ArticleData> = ({ data, headerNav, footerNav, siteOptions }: A
             sponsoredPost: articleData.sponsoredPost,
           }}
           contentBuilder={{
-            content: articleData.articleAcf.contentBuilder,
+            content: articleData.articleAcf.contentBuilder as ContentBuilder[],
             membersOnly: !!(articleData.categories && articleData.categories.nodes.find((category) => category.name === 'Members')),
           }}
           contentBuilderPrefix='Article_Articleacf_ContentBuilder'
@@ -93,14 +94,12 @@ const Article: FC<ArticleData> = ({ data, headerNav, footerNav, siteOptions }: A
   )
 }
 
-export default Article
+export default ArticlePage
 
 export async function getStaticPaths() {
   const allArticles = await getAllPosts('article')
 
   const paths = allArticles.map((article) => {
-    // if (!article) return
-    // if (!article.node) return
     return {
       params: {
         slug: [article.node.slug],
@@ -135,6 +134,6 @@ export async function getStaticProps({ preview = false, params }: StaticPaths) {
       data: article.data,
       siteOptions: siteOptions.data,
     },
-    // revalidate: 60,
+    revalidate: 60,
   }
 }

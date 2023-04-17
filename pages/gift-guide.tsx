@@ -19,12 +19,29 @@ import { useBreakpoints } from '@hooks/useBreakpoints'
 
 import client from '@lib/apollo-client'
 
+
+import type { Seo } from '@queries/fragments/seo'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import type { GiftGuide } from '@queries/pages/gift-guide'
 import { giftGuideContentQuery } from '@queries/pages/gift-guide'
+import type { PageData } from '@typings/PageData.types'
 
-const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav, siteOptions, databaseId }): ReactElement => {
+interface GiftGuidePageProps extends PageData {
+  databaseId: number
+  seo: Seo
+  pageData: GiftGuide
+}
+
+const GiftGuidePage: FC<GiftGuidePageProps> = ({
+  pageData,
+  seo,
+  headerNav,
+  footerNav,
+  siteOptions,
+  databaseId,
+}: GiftGuidePageProps): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   const { mdAndBelow } = useBreakpoints()
@@ -37,7 +54,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav, siteOptions, d
     <PageLayout headerNav={headerNav} footerNav={footerNav} seo={seo} siteOptions={siteOptions} databaseId={databaseId}>
       <GiftGuideFeature
         height={2}
-        meta={pageData.ctaFirst.categories.nodes[0].name}
+        meta={pageData.ctaFirst.categories!.nodes[0].name}
         title={pageData.ctaFirst.title}
         subtitle={pageData.ctaFirst.articleAcf.standfirst}
         url={pageData.ctaFirst.uri}
@@ -45,7 +62,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav, siteOptions, d
       />
       <Section>
         <GiftGuideFeature
-          meta={pageData.featuredGuides[0].categories.nodes[0].name}
+          meta={pageData.featuredGuides[0].categories!.nodes[0].name}
           title={pageData.featuredGuides[0].title}
           subtitle={pageData.featuredGuides[0].articleAcf.standfirst}
           url={pageData.featuredGuides[0].uri}
@@ -59,7 +76,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav, siteOptions, d
         />
       </Section>
       <GiftGuideFeature
-        meta={pageData.ctaSecond.categories.nodes[0].name}
+        meta={pageData.ctaSecond.categories!.nodes[0].name}
         title={pageData.ctaSecond.title}
         subtitle={pageData.ctaSecond.articleAcf.standfirst}
         url={pageData.ctaSecond.uri}
@@ -75,7 +92,7 @@ const GiftGuidePage: FC = ({ pageData, seo, headerNav, footerNav, siteOptions, d
       </Section>
       <BannerAdvert parent='gj_970x250' slot='GJ_970x250_001' />
       <GiftGuideFeature
-        meta={pageData.ctaThird.categories.nodes[0].name}
+        meta={pageData.ctaThird.categories!.nodes[0].name}
         title={pageData.ctaThird.title}
         subtitle={pageData.ctaThird.articleAcf.standfirst}
         url={pageData.ctaThird.uri}

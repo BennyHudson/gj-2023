@@ -3,17 +3,15 @@ import type { Image } from '@typings/FeaturedImage.types'
 import { media } from '../media'
 
 export interface ImageBlock {
-  [P: string]: {
-    fieldGroupName: string
-    image: Image
-    hasLink: boolean
-    imageSize: string
-    internalExternal?: string
-    externalLink?: string
-    internalLink?: {
-      [P: string]: {
-        uri: string
-      }
+  fieldGroupName: string
+  image: Image
+  hasLink: boolean
+  imageSize: 'standard' | 'standard--tall' | 'standard--full'
+  internalExternal?: string
+  externalLink?: string
+  internalLink?: {
+    [P: string]: {
+      uri: string
     }
   }
 }

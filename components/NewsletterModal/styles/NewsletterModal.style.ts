@@ -69,7 +69,7 @@ export const Column = styled.div(
       padding: ${props.theme.spacing[8]}px;
     `)}
 
-  ${Title} {
+    ${Title} {
       width: 100%;
     }
 

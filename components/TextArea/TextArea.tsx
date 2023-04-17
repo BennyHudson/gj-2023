@@ -22,6 +22,7 @@ const TextArea: FC<FormFieldProps> = ({
       required={isRequired}
       labelPlacement={labelPlacement}
       validationMessage={validationMessage}
+      id={id}
     >
       <Field
         className='styled-textarea'

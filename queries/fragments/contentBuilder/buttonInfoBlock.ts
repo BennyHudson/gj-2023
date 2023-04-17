@@ -3,13 +3,11 @@ import type { Image } from '@typings/FeaturedImage.types'
 import { media } from '../media'
 
 export interface ButtonInfoBlock {
-  [P: string]: {
-    callToAction: string
-    fieldGroupName: string
-    image: Image
-    link: string
-    title: string
-  }
+  callToAction: string
+  fieldGroupName: string
+  image: Image
+  link: string
+  title: string
 }
 
 export const buttonInfoBlock = (postType: string): string => {

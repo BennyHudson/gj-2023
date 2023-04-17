@@ -1,5 +1,6 @@
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
+import type { Appearance, PaymentIntent, StripeElementsOptions } from '@stripe/stripe-js'
 import type { FC, ReactElement } from 'react'
 import React, { useContext, useEffect, useState } from 'react'
 
@@ -16,17 +17,19 @@ import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import client from '@lib/apollo-client'
 
+
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import type { PageData } from '@typings/PageData.types'
 
-const CheckoutPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement => {
+const CheckoutPage: FC<PageData> = ({ headerNav, footerNav, siteOptions }: PageData): ReactElement => {
   const { setActiveNavElement, cart } = useContext(PageContext) as PageContextProps
 
   const [clientSecret, setClientSecret] = useState('')
-  const [paymentIntentId, setPaymentIntentId] = useState('')
+  const [paymentIntentId, setPaymentIntentId] = useState<PaymentIntent>()
 
-  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
   const createPaymentIntent = async () => {
     const paymentIntent = await fetch('/api/checkout/create-payment-intent', {
@@ -49,11 +52,11 @@ const CheckoutPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement =
     createPaymentIntent()
   }, [cart])
 
-  const appearance = {
+  const appearance: Appearance = {
     theme: 'stripe',
   }
 
-  const options = {
+  const options: StripeElementsOptions = {
     clientSecret,
     appearance,
   }
@@ -75,7 +78,7 @@ const CheckoutPage: FC = ({ headerNav, footerNav, siteOptions }): ReactElement =
             <EditButton href='/club' text='Sign Up' />
           </>
         )}
-        {clientSecret && (
+        {clientSecret && paymentIntentId && (
           <Elements options={options} stripe={stripePromise}>
             <Checkout paymentIntent={paymentIntentId} />
           </Elements>

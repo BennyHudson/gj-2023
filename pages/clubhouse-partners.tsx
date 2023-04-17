@@ -12,13 +12,22 @@ import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
 
+
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import type { PartnerOptions } from '@queries/partners/partnerOptions'
 import { partnerOptionsQuery } from '@queries/partners/partnerOptions'
+import type { Partner } from '@queries/partners/partners'
 import { partnerQuery } from '@queries/partners/partners'
+import type { PageData } from '@typings/PageData.types'
 
-const TeamPage: FC = ({ headerNav, footerNav, pageData, partners, siteOptions }): ReactElement => {
+interface TeamPageProps extends PageData {
+  partners: Partner[]
+  pageData: PartnerOptions
+}
+
+const TeamPage: FC<TeamPageProps> = ({ headerNav, footerNav, pageData, partners, siteOptions }: TeamPageProps): ReactElement => {
   const breadcrumbs = [
     {
       text: 'Home',
@@ -69,6 +78,6 @@ export async function getStaticProps() {
       pageData: pageData.data.clubhousePartnersOptions.clubhousePartnersOptions.clubhousePartnerArchive,
       partners: partners.data.partners.nodes,
     },
-    // revalidate: 60,
+    revalidate: 60,
   }
 }

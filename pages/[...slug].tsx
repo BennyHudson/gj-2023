@@ -134,6 +134,6 @@ export async function getStaticProps({ preview = false, params }: StaticPaths) {
       siteOptions: siteOptions.data,
       data: article.data,
     },
-    // revalidate: 60,
+    revalidate: 60,
   }
 }

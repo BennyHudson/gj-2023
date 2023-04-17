@@ -1,15 +1,14 @@
 import { gql } from '@apollo/client'
 
 import { articleNote } from '@queries/fragments/articleNote'
-import { ContentBuilder, contentBuilder } from '@queries/fragments/contentBuilder'
-import { HouseNote, houseNoteContent } from '@queries/fragments/houseNoteContent'
-import { Seo, seo } from '@queries/fragments/seo'
+import { contentBuilder } from '@queries/fragments/contentBuilder'
+import type { HouseNote } from '@queries/fragments/houseNoteContent'
+import { houseNoteContent } from '@queries/fragments/houseNoteContent'
+import type { Seo } from '@queries/fragments/seo'
+import { seo } from '@queries/fragments/seo'
 
 export interface HouseNoteBody extends HouseNote {
   seo: Seo
-  articleAcf: {
-    contentBuilder: ContentBuilder[]
-  }
 }
 
 export const houseNoteBodyQuery = (slug: string, preview: boolean) => {

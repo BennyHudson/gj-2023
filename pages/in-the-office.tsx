@@ -12,12 +12,19 @@ import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
 
+
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import type { Page } from '@queries/pages/page'
 import { pageQuery } from '@queries/pages/page'
+import type { PageData } from '@typings/PageData.types'
 
-const TeamPage: FC = ({ headerNav, footerNav, pageData, siteOptions }): ReactElement => {
+interface TeamPageProps extends PageData {
+  pageData: Page
+}
+
+const TeamPage: FC<TeamPageProps> = ({ headerNav, footerNav, pageData, siteOptions }: TeamPageProps): ReactElement => {
   const breadcrumbs = [
     {
       text: 'Home',
@@ -48,9 +55,9 @@ const TeamPage: FC = ({ headerNav, footerNav, pageData, siteOptions }): ReactEle
           title={
             'Gentleman\'s Journal is a leading men\'s luxury lifestyle publication, with a focus on style, travel, cars, watches, business and property. Here\'s our office:'
           }
-          teamMembers={pageData.membersOfStaff.staffMembers}
+          teamMembers={pageData.membersOfStaff!.staffMembers}
         />
-        <TeamGrid title={'Contributors:'} teamMembers={pageData.membersOfStaff.staffEditors} />
+        <TeamGrid title={'Contributors:'} teamMembers={pageData.membersOfStaff!.staffEditors} />
       </Section>
     </PageLayout>
   )
@@ -71,6 +78,6 @@ export async function getStaticProps() {
       siteOptions: siteOptions.data,
       pageData: pageData.data.page,
     },
-    // revalidate: 60,
+    revalidate: 60,
   }
 }

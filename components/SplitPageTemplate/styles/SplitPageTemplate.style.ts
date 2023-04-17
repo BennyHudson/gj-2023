@@ -7,8 +7,9 @@ import respondTo from '@mixins/respondTo'
 
 import type { StyledSplitPageTemplateProps } from './SplitPageTemplate.style.types'
 
+type SplitPageTemplateProps = Pick<StyledSplitPageTemplateProps, 'theme' | 'headerHeight'>
 export const SplitPageTemplate = styled.div(
-  (props: StyledSplitPageTemplateProps): FlattenSimpleInterpolation => css`
+  (props: SplitPageTemplateProps): FlattenSimpleInterpolation => css`
     background: ${props.theme.colours.white};
 
     ${respondTo.lg(css`
@@ -23,8 +24,9 @@ export const SplitPageTemplate = styled.div(
   `,
 )
 
+type BackgroundImageProps = Pick<StyledSplitPageTemplateProps, 'backgroundImage'>
 export const BackgroundImage = styled.div(
-  (props: StyledSplitPageTemplateProps): FlattenSimpleInterpolation => css`
+  (props: BackgroundImageProps): FlattenSimpleInterpolation => css`
     grid-column: col-start / span 12;
     position: relative;
     aspect-ratio: 3 / 2;
@@ -42,8 +44,9 @@ export const BackgroundImage = styled.div(
   `,
 )
 
+type ContentProps = Pick<StyledSplitPageTemplateProps, 'theme'>
 export const Content = styled.div(
-  (props: StyledSplitPageTemplateProps): FlattenSimpleInterpolation => css`
+  (props: ContentProps): FlattenSimpleInterpolation => css`
     padding: ${props.theme.spacing[4]}px 5%;
     display: flex;
     align-items: flex-start;
@@ -73,7 +76,7 @@ export const ContentWrapper = styled.div(
 )
 
 export const Title = styled.div(
-  (props: StyledSplitPageTemplateProps): FlattenSimpleInterpolation => css`
+  (props: ContentProps): FlattenSimpleInterpolation => css`
     margin-bottom: ${props.theme.spacing[4]}px;
 
     ${respondTo.lg(css`

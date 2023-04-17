@@ -1,17 +1,9 @@
 import { gql } from '@apollo/client'
 
-import type { FeaturedImage } from '@typings/FeaturedImage.types'
-
+import type { Article } from './articleContent'
 import { media } from './media'
 
-export interface Podcast {
-  uri: string
-  databaseId: number
-  title: string
-  date: string
-  featuredImage: {
-    node: FeaturedImage
-  }
+export interface Podcast extends Article {
   podcasts: {
     podcastMeta: {
       guest: {

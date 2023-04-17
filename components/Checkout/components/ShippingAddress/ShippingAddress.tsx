@@ -4,6 +4,7 @@ import React, { useContext } from 'react'
 
 import type { CheckoutState } from '@components/Checkout/Checkout.types'
 import ShippingForm, { shippingValidation } from '@components/ShippingForm'
+import type { ShippingFormProps } from '@components/ShippingForm/ShippingForm.types'
 
 import type { PageContextProps } from '@context/PageContext'
 import PageContext from '@context/PageContext'
@@ -66,7 +67,9 @@ const ShippingAddress: FC<ShippingAddressProps> = ({
             }
           }}
         >
-          {(props) => <ShippingForm {...props} billingAddress={checkoutForm.billing!} />}
+          {(props) => (
+            <ShippingForm {...props} billingAddress={checkoutForm.billing!} errors={props.errors as ShippingFormProps['errors']} />
+          )}
         </Formik>
       )}
     </CheckoutPanel>

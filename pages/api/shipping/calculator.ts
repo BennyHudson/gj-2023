@@ -1,5 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
+import type { Product } from '@typings/Product.types'
+import type { Shipping } from '@typings/Shipping.types'
+
 import { WooCommerce } from '../WooCommerce'
 
 const europeanCountries = [
@@ -68,8 +71,8 @@ export default async function shippingCalculator(req: NextApiRequest, res: NextA
   let shippingClass
 
   await Promise.all(
-    cart.map(async (cartItem) => {
-      const itemDetails = await WooCommerce.get(`products/${cartItem}`)
+    cart.map(async (cartItem: number) => {
+      const itemDetails: Product = await WooCommerce.get(`products/${cartItem}`)
       if (itemDetails.data.shipping_class_id > 0) {
         shippingClass = itemDetails.data.shipping_class_id
       }
@@ -85,7 +88,7 @@ export default async function shippingCalculator(req: NextApiRequest, res: NextA
   }
 
   const shippingMethods = await WooCommerce.get(`shipping/zones/${shippingZone}/methods`)
-  const flatRateShipping = shippingMethods.data.find((shippingMethod) => shippingMethod.method_id === 'flat_rate')
+  const flatRateShipping = shippingMethods.data.find((shippingMethod: Shipping) => shippingMethod.method_id === 'flat_rate')
   const value = flatRateShipping.settings[`class_cost_${shippingClass}`].value
   const cost = parseInt(value.replace('*[qty]', ''))
 

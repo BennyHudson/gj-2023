@@ -13,9 +13,7 @@ import TextField from '@components/TextField'
 import Title from '@components/Title'
 
 import type { NewsletterProps } from './Newsletter.types'
-
 import * as Styled from './styles/Newsletter.style'
-
 
 const Newsletter: FC<NewsletterProps> = ({ form, showTitle = true }: NewsletterProps): ReactElement => {
   const [confirmationMessage, setConfirmationMessage] = useState()
@@ -64,7 +62,14 @@ const Newsletter: FC<NewsletterProps> = ({ form, showTitle = true }: NewsletterP
             {form.formFields.nodes.map((formField, index) => {
               switch (formField.type) {
               case 'NAME': {
-                return <NameField key={index} {...formField as NameFieldProps} validationMessage={validationMessages[3]} labelPlacement='HIDDEN' />
+                return (
+                  <NameField
+                    key={index}
+                    {...(formField as NameFieldProps)}
+                    validationMessage={validationMessages[3]}
+                    labelPlacement='HIDDEN'
+                  />
+                )
               }
 
               case 'EMAIL': {
@@ -75,7 +80,7 @@ const Newsletter: FC<NewsletterProps> = ({ form, showTitle = true }: NewsletterP
                 return (
                   <CheckboxList
                     key={index}
-                    {...formField as CheckboxListProps}
+                    {...(formField as CheckboxListProps)}
                     choices={[
                       {
                         value: '1',

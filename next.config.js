@@ -1,4 +1,3 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   i18n: {
@@ -37,14 +36,7 @@ const nextConfig = {
       },
     ],
   },
-  typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    ignoreBuildErrors: true,
-  },
-  staticPageGenerationTimeout: 300000,
+  staticPageGenerationTimeout: 60,
 }
 
 module.exports = nextConfig

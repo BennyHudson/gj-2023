@@ -31,7 +31,9 @@ const ContentGrid: FC<ContentGridProps> = ({
           <RawHtmlWrapper content={content} />
         </Styled.Content>
       )}
-      {contentBuilder && <ContentBuilder {...contentBuilder} prefix={contentBuilderPrefix} />}
+      {contentBuilder && contentBuilder.content && (
+        <ContentBuilder prefix={contentBuilderPrefix} content={contentBuilder.content} membersOnly={contentBuilder.membersOnly} />
+      )}
       {articleNote && (
         <Styled.ArticleNote>
           <Image src={featuredImageUrl(articleNote.image.fullSize)} alt='' width={200} height={200} />

@@ -120,6 +120,6 @@ export async function getStaticProps({ params }: StaticPaths) {
       category: category.data.category,
       siteOptions: siteOptions.data,
     },
-    // revalidate: 60
+    revalidate: 60,
   }
 }

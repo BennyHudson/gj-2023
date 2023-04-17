@@ -1,7 +1,6 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/pro-thin-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Head from 'next/head'
 import type { FC, ReactElement } from 'react'
 import React from 'react'
 import Slider from 'react-slick'
@@ -47,9 +46,6 @@ const PodcastCarousel: FC<PodcastCarouselProps> = ({ podcasts, title }: PodcastC
 
   return (
     <Styled.PodcastCarousel>
-      <Head>
-        <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' />
-      </Head>
       <Section appearance='tertiary'>
         <Title title={title} />
         <Slider {...sliderSettings}>

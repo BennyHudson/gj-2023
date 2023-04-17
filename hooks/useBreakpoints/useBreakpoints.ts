@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useTheme } from 'styled-components'
 
-import { Theme } from '@themes/gjTheme/gjTheme.types'
+import type { Theme } from '@themes/gjTheme/gjTheme.types'
 
 import { addBreakpointCallback, breakpointWatcher, removeBreakpointCallback } from './helpers/breakpointTools'
 

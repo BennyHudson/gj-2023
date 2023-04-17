@@ -1,4 +1,5 @@
-import type { Post } from '@typings/Post.types'
+import type { Article } from '@queries/fragments/articleContent'
+import type { Post } from '@queries/fragments/postContent'
 
 export interface ThumbnailProps {
   type?: 'rectangle' | 'circle' | 'square'
@@ -6,9 +7,9 @@ export interface ThumbnailProps {
   size?: 1 | 2 | 3 | 4
   requestThumbnail?: boolean
   showTitle?: boolean
-  title?: Post['title']
-  categories?: Post['categories']
-  date?: Post['date']
+  title?: Post['title'] | Article['title']
+  categories?: Post['categories'] | Article['categories']
+  date?: Post['date'] | Article['date']
   featuredImage?: string
   priority?: boolean
   href?: string

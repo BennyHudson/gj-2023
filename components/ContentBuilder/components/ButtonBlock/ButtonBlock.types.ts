@@ -1,9 +1,10 @@
-import type { Image } from '@typings/FeaturedImage.types'
+import type { AffiliateProduct } from '@queries/fragments/contentBuilder/affiliateProductBlock'
+import type { ButtonInfoBlock } from '@queries/fragments/contentBuilder/buttonInfoBlock'
 
 export interface ButtonBlockProps {
-  title: string
-  callToAction?: string
-  link: string
-  price?: number
-  image?: Image
+  title: ButtonInfoBlock['title']
+  callToAction?: ButtonInfoBlock['callToAction']
+  link: ButtonInfoBlock['link']
+  price?: AffiliateProduct['price']
+  image?: ButtonInfoBlock['image']
 }

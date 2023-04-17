@@ -11,7 +11,6 @@ import type { PageContextProps } from '@context/PageContext'
 import PageContext from '@context/PageContext'
 
 import type { DateRanges, PopularPostsState } from './PopularPosts.types'
-
 import * as Styled from './styles/PopularPosts.style'
 
 const PopularPosts: FC = (): ReactElement => {

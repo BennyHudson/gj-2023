@@ -5,7 +5,7 @@ import type { HeaderProps } from '../Header.types'
 export interface StyledHeaderProps {
   theme: Theme
   transparent: boolean
-  headerStyle: HeaderProps['headerStyle']  
+  headerStyle: HeaderProps['headerStyle']
   fixed: boolean
   topPosition: number
   $inverse: boolean

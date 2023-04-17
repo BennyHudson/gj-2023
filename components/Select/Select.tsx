@@ -11,7 +11,7 @@ import FieldWrapper from '../FieldWrapper'
 
 const Select: FC<SelectProps> = ({ target, label, isRequired, id, choices, labelPlacement }: SelectProps): ReactElement => {
   return (
-    <FieldWrapper target={target} label={label} required={isRequired} labelPlacement={labelPlacement}>
+    <FieldWrapper target={target} label={label} required={isRequired} labelPlacement={labelPlacement} id={id}>
       <Styled.SelectWrapper>
         <Field className='styled-select' as='select' name={typeof id === 'number' ? `input_${id}` : id}>
           {choices.map((choice, index) => {

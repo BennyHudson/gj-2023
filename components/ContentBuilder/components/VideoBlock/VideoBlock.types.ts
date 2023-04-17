@@ -1,3 +1,5 @@
+import type { VideoBlock } from '@queries/fragments/contentBuilder/videoBlock'
+
 export interface VideoBlockProps {
-  videoUrl: string
+  videoUrl: VideoBlock['videoEmbed']
 }

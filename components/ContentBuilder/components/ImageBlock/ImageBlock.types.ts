@@ -1,6 +1,6 @@
-import type { Image } from '@typings/FeaturedImage.types'
+import type { ImageBlock } from '@queries/fragments/contentBuilder/imageBlock'
 
 export interface ImageBlockProps {
-  image: Image
-  imageSize: 'standard' | 'standard--tall' | 'standard--full'
+  image: ImageBlock['image']
+  imageSize: ImageBlock['imageSize']
 }

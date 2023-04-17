@@ -14,12 +14,19 @@ import PageContext from '@context/PageContext'
 
 import client from '@lib/apollo-client'
 
+
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import type { PodcastOptions } from '@queries/podcasts/podcast-options'
 import { podcastOptionsQuery } from '@queries/podcasts/podcast-options'
+import type { PageData } from '@typings/PageData.types'
 
-const Podcasts: FC = ({ podcastOptions, headerNav, footerNav, siteOptions }): ReactElement => {
+interface PodcastPageProps extends PageData {
+  podcastOptions: PodcastOptions
+}
+
+const PodcastPage: FC<PodcastPageProps> = ({ podcastOptions, headerNav, footerNav, siteOptions }: PodcastPageProps): ReactElement => {
   const { setActiveNavElement } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -49,7 +56,7 @@ const Podcasts: FC = ({ podcastOptions, headerNav, footerNav, siteOptions }): Re
   )
 }
 
-export default Podcasts
+export default PodcastPage
 
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)

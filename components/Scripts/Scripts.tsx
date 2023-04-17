@@ -13,7 +13,7 @@ const Scripts: FC = (): ReactElement => {
 
   return (
     <>
-      <Script id='facebook-pixel'>
+      <Script id='facebook-pixel' key='facebook-pixel'>
         {`
           !function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -30,8 +30,8 @@ const Scripts: FC = (): ReactElement => {
       <noscript>
         <img height='1' width='1' style={{ display: 'none' }} src='https://www.facebook.com/tr?id=467180983664563&ev=PageView&noscript=1' />
       </noscript>
-      <Script strategy='afterInteractive' src='https://www.googletagmanager.com/gtag/js?id=AW-10918806122' />
-      <Script id='googlePixel'>
+      <Script strategy='afterInteractive' src='https://www.googletagmanager.com/gtag/js?id=AW-10918806122' key='google-pixel' />
+      <Script id='googlePixel' key='google-pixel-2'>
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -39,8 +39,8 @@ const Scripts: FC = (): ReactElement => {
           gtag('config', 'AW-10918806122');
         `}
       </Script>
-      <Script strategy='afterInteractive' src='https://www.googletagmanager.com/gtag/js?id=G-YVYM9T292G' />
-      <Script id='googleAnalytics'>
+      <Script strategy='afterInteractive' src='https://www.googletagmanager.com/gtag/js?id=G-YVYM9T292G' key='google-analytics' />
+      <Script id='googleAnalytics' key='google-analytics-2'>
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -49,11 +49,11 @@ const Scripts: FC = (): ReactElement => {
           gtag('config', 'G-YVYM9T292G');
         `}
       </Script>
-      <Script async src='https://securepubads.g.doubleclick.net/tag/js/gpt.js'></Script>
-      {googleAds.map((adBlock, index) => {
+      <Script async src='https://securepubads.g.doubleclick.net/tag/js/gpt.js' key='gpt'></Script>
+      {googleAds.map((adBlock) => {
         return (
           <>
-            <Script id={`gdp-${adBlock.parentId}-main`} key={index}>
+            <Script id={`gdp-${adBlock.parentId}-main`} key={`gdp-${adBlock.parentId}-main`}>
               {`
                 window.googletag = window.googletag || {cmd: []};
                 googletag.cmd.push(function() {
@@ -79,9 +79,9 @@ const Scripts: FC = (): ReactElement => {
               `}
             </Script>
             {adBlock.children &&
-              adBlock.children.map((child, index) => {
+              adBlock.children.map((child) => {
                 return (
-                  <Script id={`gdp-${adBlock.parentId}-${child}-main`} key={`${child}-${index}`}>
+                  <Script id={`gdp-${adBlock.parentId}-${child}-main`} key={`gdp-${adBlock.parentId}-${child}-main`}>
                     {`
                     window.googletag = window.googletag || {cmd: []};
                     googletag.cmd.push(function() {

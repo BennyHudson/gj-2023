@@ -28,8 +28,9 @@ export const Title = styled.div(
   `,
 )
 
+type LinkListProps = Pick<StyledTitleProps, 'theme'>
 export const LinkList = styled.ul(
-  (props: StyledTitleProps): FlattenSimpleInterpolation => css`
+  (props: LinkListProps): FlattenSimpleInterpolation => css`
     display: flex;
     align-items: center;
     justify-content: flex-end;

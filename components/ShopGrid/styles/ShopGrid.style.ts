@@ -25,8 +25,9 @@ export const ShopCard = styled.a(
   `,
 )
 
+type ProductCarouselProps = Pick<StyledShopGridProps, 'theme'>
 export const ProductCarousel = styled.div(
-  (props: StyledShopGridProps): FlattenSimpleInterpolation => css`
+  (props: ProductCarouselProps): FlattenSimpleInterpolation => css`
     width: 100%;
     overflow: hidden;
 

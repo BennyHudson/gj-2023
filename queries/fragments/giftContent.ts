@@ -11,7 +11,7 @@ export interface Gift {
     giftPrice: string
     giftBrand: string
   }
-  featuredImage?: {
+  featuredImage: {
     node: FeaturedImage
   }
 }

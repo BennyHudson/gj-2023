@@ -1,12 +1,13 @@
-import type { Podcast } from '@typings/Podcast.types'
-import type { Post } from '@typings/Post.types'
+import type { Article } from '@queries/fragments/articleContent'
+import type { Podcast } from '@queries/fragments/podcastContent'
+import type { Post } from '@queries/fragments/postContent'
 
-interface PostProps extends Post {
+export interface PostProps extends Post, Article {
   subtitle?: string
   meta?: string
 }
 
-interface PodcastProps extends Podcast {
+export interface PodcastProps extends Podcast {
   subtitle?: string
   meta?: string
   categories?: {

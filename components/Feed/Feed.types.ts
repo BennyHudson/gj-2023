@@ -1,3 +1,4 @@
+import type { Article } from '@queries/fragments/articleContent'
 import type { Post } from '@queries/fragments/postContent'
 
 export interface FeedProps {
@@ -10,7 +11,7 @@ export interface FeedProps {
 export interface FeedState {
   last?: string
   allFeedElements: {
-    node: Post
+    node: Post | Article
   }[]
   moreArticles: boolean
 }

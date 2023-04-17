@@ -8,7 +8,6 @@ import LoadMore from '@components/LoadMore'
 import { latestHouseNotesQuery } from '@queries/global/latest-houseNotes'
 
 import type { HouseNotesFeedState } from './HouseNotesFeed.types'
-
 import * as Styled from './styles/HouseNotesFeed.style'
 
 const HouseNotesFeed: FC = (): ReactElement => {

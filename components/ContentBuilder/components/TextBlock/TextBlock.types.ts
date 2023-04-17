@@ -1,3 +1,5 @@
+import type { ParagraphBlock } from '@queries/fragments/contentBuilder/paragraphBlock'
+
 export interface TextBlockProps {
-  content: string
+  content: ParagraphBlock['paragraph']
 }

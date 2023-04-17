@@ -1,19 +1,10 @@
-import { FlattenSimpleInterpolation, createGlobalStyle, css } from 'styled-components'
+import type { FlattenSimpleInterpolation } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 
-import { GlobalStyleProps } from './GlobalStyle.types'
+import type { GlobalStyleProps } from './GlobalStyle.types'
 
 const GlobalStyle = createGlobalStyle(
   (props: GlobalStyleProps): FlattenSimpleInterpolation => css`
-    #___gatsby {
-      height: 100%;
-      display: flex;
-    }
-
-    #gatsby-focus-wrapper {
-      display: flex;
-      width: 100%;
-    }
-
     html,
     body {
       height: fit-content;
@@ -72,91 +63,94 @@ const GlobalStyle = createGlobalStyle(
       font-style: normal;
     }
 
-    .modal-enter {
-      opacity: 0;
-      transform: scale(1.1);
+    .slick-list,
+    .slick-slider,
+    .slick-track {
+      position: relative;
+      display: block;
     }
 
-    .modal-enter-active {
-      opacity: 1;
-      transform: translateX(0);
-      transition: opacity 300ms, transform 300ms;
+    .slick-loading .slick-slide,
+    .slick-loading .slick-track {
+      visibility: hidden;
     }
 
-    .modal-exit {
-      opacity: 0;
+    .slick-slider {
+      box-sizing: border-box;
+      user-select: none;
+      touch-action: pan-y;
     }
 
-    .modal-exit-active {
-      opacity: 0;
-      transform: scale(1.1);
-      transition: opacity 300ms, transform 300ms;
-    }
-
-    .mobile-nav-enter {
-      opacity: 0;
-      transform: translateX(-100%);
-      transition: opacity 400ms, transform 400ms;
-    }
-
-    .mobile-nav-enter-active {
-      opacity: 1;
-      transform: translateX(0);
-      transition: opacity 400ms, transform 400ms;
-    }
-
-    .mobile-nav-exit {
-      opacity: 0;
-    }
-
-    .mobile-nav-exit-active {
-      opacity: 0;
-      transform: translateX(-100%);
-      transition: opacity 400ms, transform 400ms;
-    }
-
-    .slide-down-enter {
-      opacity: 0;
-      height: 0;
+    .slick-list {
       overflow: hidden;
+      margin: 0;
+      padding: 0;
+
+      &:focus {
+        outline: 0;
+      }
+
+      &.dragging {
+        cursor: pointer;
+        cursor: hand;
+      }
     }
 
-    .slide-down-enter-active {
-      opacity: 1;
-      height: auto;
-      transition: opacity 300ms, transform 300ms;
+    .slick-slider {
+      .slick-list,
+      .slick-track {
+        transform: translate3d(0, 0, 0);
+      }
     }
 
-    .slide-down-exit {
-      opacity: 0;
-      height: 0;
+    .slick-track {
+      top: 0;
+      left: 0;
+
+      &::after,
+      &::before {
+        display: table;
+        content: '';
+      }
+
+      &::after {
+        clear: both;
+      }
     }
 
-    .slide-down-exit-active {
-      opacity: 0;
-      transform: scale(1.1);
-      transition: opacity 300ms, transform 300ms;
+    .slick-slide {
+      display: none;
+      float: left;
+      height: 100%;
+      min-height: 1px;
+
+      img {
+        display: block;
+      }
+
+      &.slick-loading {
+        img {
+          display: none;
+        }
+      }
+
+      &.dragging {
+        img {
+          pointer-events: none;
+        }
+      }
     }
 
-    .loader-enter {
-      opacity: 0;
-      transform: scale(1.1);
+    .slick-initialized {
+      .slick-slide {
+        display: block;
+      }
     }
 
-    .loader-enter-active {
-      opacity: 1;
-      transform: translateX(0);
-      transition: opacity 300ms, transform 300ms;
-    }
-
-    .loader-exit {
-      opacity: 1;
-    }
-
-    .loader-exit-active {
-      opacity: 0;
-      transform: scale(1.1);
-      transition: opacity 300ms, transform 300ms;
+    .slick-arrow {
+      .slick-hidden {
+        display: none;
+      }
     }
   `,
 )

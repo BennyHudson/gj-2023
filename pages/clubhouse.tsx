@@ -13,13 +13,27 @@ import featuredImageUrl from '@helpers/featuredImageUrl'
 
 import client from '@lib/apollo-client'
 
+
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { freeGiftQuery } from '@queries/global/free-gift'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
 import { subscriptionProductsQuery } from '@queries/global/subscription-products'
+import type { PageData } from '@typings/PageData.types'
+import type { Product } from '@typings/Product.types'
 
-const ClubPage: FC = ({ headerNav, footerNav, subscriptionProducts, freeGift, siteOptions }): ReactElement => {
+interface ClubhousePageProps extends PageData {
+  subscriptionProducts: Product[]
+  freeGift?: Product
+}
+
+const ClubhousePage: FC<ClubhousePageProps> = ({
+  headerNav,
+  footerNav,
+  subscriptionProducts,
+  freeGift,
+  siteOptions,
+}: ClubhousePageProps): ReactElement => {
   const { token, setActiveNavElement, customer } = useContext(PageContext) as PageContextProps
 
   useEffect(() => {
@@ -41,7 +55,7 @@ const ClubPage: FC = ({ headerNav, footerNav, subscriptionProducts, freeGift, si
   )
 }
 
-export default ClubPage
+export default ClubhousePage
 
 export async function getStaticProps() {
   const headerNav = await client.query(headerNavQuery)

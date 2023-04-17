@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import type { FC, ReactElement } from 'react'
+import type { ElementType, FC, ReactElement } from 'react'
 import React from 'react'
 
 import Heading from '@components/Heading'
@@ -25,7 +25,7 @@ const Thumbnail: FC<ThumbnailProps> = ({
   href,
   contain = false,
 }: ThumbnailProps): ReactElement => {
-  const renderAs = (): string | typeof Link => {
+  const renderAs = (): ElementType => {
     if (to) return Link
     if (href) return 'a'
     return 'div'
@@ -37,7 +37,7 @@ const Thumbnail: FC<ThumbnailProps> = ({
         <>
           <Styled.ThumbnailContent>
             <Meta categories={categories} date={date} inverse />
-            <Heading text={title} inverse font='ChronicleCondensed' size={3} />
+            {title && <Heading text={title} inverse font='ChronicleCondensed' size={3} />}
           </Styled.ThumbnailContent>
           <Overlay />
         </>

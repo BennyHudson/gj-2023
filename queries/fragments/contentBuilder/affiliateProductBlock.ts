@@ -6,16 +6,14 @@ export interface AffiliateProduct {
   urlButtonText: string
   title: string
   text: string
-  price: string
+  price: number
   affiliateLink: string
   image: Image
 }
 
 export interface AffiliateProductBlock {
-  [P: string]: {
-    fieldGroupName: string
-    affiliateProducts: AffiliateProduct[]
-  }
+  fieldGroupName: string
+  affiliateProducts: AffiliateProduct[]
 }
 
 export const affiliateProductBlock = (postType: string): string => {

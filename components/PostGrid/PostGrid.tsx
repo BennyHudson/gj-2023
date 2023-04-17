@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import type { FC, ReactElement } from 'react'
 import React from 'react'
 import Slider from 'react-slick'
@@ -52,18 +51,13 @@ const PostGrid: FC<PostGridProps> = ({
   return (
     <>
       {mdAndBelow && smCarousel ? (
-        <>
-          <Head>
-            <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' />
-          </Head>
-          <Styled.PostCarousel>
-            <Slider {...sliderSettings}>
-              {posts.map((post, index) => {
-                return <PostExcerpt priority={priority && index < 8} key={index} inverse={inverse} {...post} />
-              })}
-            </Slider>
-          </Styled.PostCarousel>
-        </>
+        <Styled.PostCarousel>
+          <Slider {...sliderSettings}>
+            {posts.map((post, index) => {
+              return <PostExcerpt priority={priority && index < 8} key={index} inverse={inverse} post={post} />
+            })}
+          </Slider>
+        </Styled.PostCarousel>
       ) : (
         <Styled.PostGrid columns={columns}>
           {posts.map((post, index) => {
@@ -73,11 +67,11 @@ const PostGrid: FC<PostGridProps> = ({
                   <Styled.TowerAdvert>
                     <TowerAdvert parent='GJ_300x600' slot='GJ_300x600_001' />
                   </Styled.TowerAdvert>
-                  <PostExcerpt priority={priority && index < 8} key={index} inverse={inverse} {...post} />
+                  <PostExcerpt priority={priority && index < 8} key={index} inverse={inverse} post={post} />
                 </>
               )
             }
-            return <PostExcerpt priority={priority && index < 8} key={index} inverse={inverse} {...post} />
+            return <PostExcerpt priority={priority && index < 8} key={index} inverse={inverse} post={post} />
           })}
         </Styled.PostGrid>
       )}

@@ -1,15 +1,5 @@
-import type { FeaturedImage } from '@typings/FeaturedImage.types'
+import type { Gift } from '@queries/fragments/giftContent'
 
 export interface GiftGridProps {
-  gifts: {
-    title: string
-    featuredImage: {
-      node: FeaturedImage
-    }
-    gift: {
-      giftBrand: string
-      giftLink: string
-      giftPrice: number
-    }
-  }[]
+  gifts: Gift[]
 }

@@ -2,6 +2,7 @@ import { gql } from '@apollo/client'
 
 import type { FeaturedImage } from '@typings/FeaturedImage.types'
 
+import type { ContentBuilder } from './contentBuilder'
 import { media } from './media'
 
 export interface Post {
@@ -20,6 +21,7 @@ export interface Post {
     }[]
   }
   articleAcf: {
+    contentBuilder: ContentBuilder[]
     standfirst: string
   }
 }

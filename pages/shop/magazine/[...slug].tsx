@@ -14,11 +14,25 @@ import client from '@lib/apollo-client'
 import { footerNavQuery } from '@queries/global/footer-nav'
 import { headerNavQuery } from '@queries/global/header-nav'
 import { siteOptionsQuery } from '@queries/global/site-options'
+import type { Magazine } from '@queries/products/external-product'
 import { magazineQuery } from '@queries/products/external-product'
 import { magazineCategoryQuery } from '@queries/products/magazine-category'
+import type { FeaturedImage } from '@typings/FeaturedImage.types'
+import type { PageData } from '@typings/PageData.types'
 import type { StaticPaths } from '@typings/StaticPaths.types'
 
-const ProductPage: FC = ({ headerNav, footerNav, product, magazines, siteOptions }): ReactElement => {
+interface ProductPageProps extends PageData {
+  product: Magazine
+  magazines: {
+    node: {
+      name: string
+      slug: string
+      image: FeaturedImage
+    }
+  }[]
+}
+
+const ProductPage: FC<ProductPageProps> = ({ headerNav, footerNav, product, magazines, siteOptions }: ProductPageProps): ReactElement => {
   return (
     <PageLayout
       headerNav={headerNav}
@@ -90,6 +104,6 @@ export async function getStaticProps({ params }: StaticPaths) {
       magazines: magazines.data.productCategory.products.edges,
       // data: article.data,
     },
-    // revalidate: 60,
+    revalidate: 60,
   }
 }
