@@ -14,10 +14,9 @@ export const Header = styled.div(
     top: 0;
     width: 100%;
     left: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
     transition: 0.4s background ease;
     z-index: 1000;
-    border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
 
     ${props.fixed &&
     css`

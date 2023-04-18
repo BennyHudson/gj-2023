@@ -48,10 +48,10 @@ type FullPageFeatureProps = Pick<StyledFullPageFeatureProps, 'theme' | 'opacity'
 export const FullPageFeature = styled.div(
   (props: FullPageFeatureProps): FlattenSimpleInterpolation => css`
     height: calc(100vh - ${props.headerHeight * 2}px);
-    padding: ${props.headerHeight}px ${props.theme.spacing[2]}px;
+    padding: ${props.headerHeight}px ${props.theme.spacing[2]}px 0;
     display: grid;
     grid-template-columns: repeat(12, [col-start] 1fr);
-    align-items: center;
+    align-items: end;
     width: 90%;
     opacity: ${props.opacity};
     position: relative;
@@ -61,7 +61,6 @@ export const FullPageFeature = styled.div(
     ${respondTo.md(css`
       height: 100vh;
       padding: ${props.theme.spacing[8]}px 0;
-      align-items: end;
     `)}
   `,
 )
@@ -71,14 +70,11 @@ export const Content = styled.div(
   (props: ContentProps): FlattenSimpleInterpolation => css`
     position: relative;
     z-index: 2;
-    border-top: 2px solid ${props.theme.colours.white};
-    border-bottom: 2px solid ${props.theme.colours.white};
     grid-column: col-start / span 12;
-    padding: ${props.theme.spacing[4]}px 0;
-    text-align: center;
+    padding: ${props.theme.spacing[4]}px 0 0;
+    text-align: left;
 
     ${respondTo.md(css`
-      text-align: left;
       grid-column: col-start / span 8;
       border-bottom: none;
       border-top: none;
