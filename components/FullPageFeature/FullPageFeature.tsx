@@ -43,7 +43,7 @@ const FullPageFeature: FC<FullPageFeatureProps> = ({ title, excerpt, uri, featur
         <Styled.FullPageFeature headerHeight={headerHeight} opacity={opacity}>
           <Styled.Content>
             <Paragraph size={1} weight={3} text='Featured Article' inverse font='Cera' transform='uppercase' />
-            <Heading text={title} level={1} size={5} inverse font='ChronicleCondensed' />
+            <Heading text={title} level={1} size={mdAndAbove ? 5 : 4} inverse font='ChronicleCondensed' />
             {mdAndAbove && <Paragraph text={excerpt} size={2} inverse font='Cera' />}
             <Link to={uri} size={1} weight={3} inverse font='Cera' transform='uppercase' showIcon>
               Read More
