@@ -48,7 +48,7 @@ type FullPageFeatureProps = Pick<StyledFullPageFeatureProps, 'theme' | 'opacity'
 export const FullPageFeature = styled.div(
   (props: FullPageFeatureProps): FlattenSimpleInterpolation => css`
     height: calc(100vh - ${props.headerHeight * 2}px);
-    padding: ${props.headerHeight}px ${props.theme.spacing[2]}px 0;
+    padding: ${props.headerHeight}px ${props.theme.spacing[2]}px ${props.theme.spacing[4]}px;
     display: grid;
     grid-template-columns: repeat(12, [col-start] 1fr);
     align-items: end;
