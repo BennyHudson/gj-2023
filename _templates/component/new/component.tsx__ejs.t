@@ -1,12 +1,12 @@
 ---
 to: components/<%= name %>/<%= name %>.tsx
 ---
-import React from 'react'
 import type { ReactElement, FC } from 'react'
-
-import type { <%= name %>Props } from <%- `\'./${name}.types\'` %>
+import React from 'react'
 
 import * as Styled from <%- `\'./styles/${name}.style\'` %>
+
+import type { <%= name %>Props } from <%- `\'./${name}.types\'` %>
 
 const <%= name %>: FC<<%= name %>Props> = ({
   // add props
